@@ -1,0 +1,771 @@
+fileFormatVersion: 2
+guid: a2f782cc1b2a3564c9c4f8944eac84e0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5123456992154394056
+    second: AncientBlackDragon_attack_hitbox_0
+  - first:
+      213: 2757509903445994404
+    second: AncientBlackDragon_attack_hitbox_1
+  - first:
+      213: 3099141824683994790
+    second: AncientBlackDragon_attack_hitbox_2
+  - first:
+      213: -6167926174974683466
+    second: AncientBlackDragon_attack_hitbox_3
+  - first:
+      213: -6027891295778377961
+    second: AncientBlackDragon_attack_hitbox_4
+  - first:
+      213: -9039690054368857217
+    second: AncientBlackDragon_attack_hitbox_5
+  - first:
+      213: 2550196093171696241
+    second: AncientBlackDragon_attack_hitbox_6
+  - first:
+      213: 8250669006471058995
+    second: AncientBlackDragon_attack_hitbox_7
+  - first:
+      213: 5999825606956752947
+    second: AncientBlackDragon_attack_hitbox_8
+  - first:
+      213: -2546611318686631711
+    second: AncientBlackDragon_attack_hitbox_9
+  - first:
+      213: 6110492068931378699
+    second: AncientBlackDragon_attack_hitbox_10
+  - first:
+      213: -2289993854160200139
+    second: AncientBlackDragon_attack_hitbox_11
+  - first:
+      213: 3445984775292887539
+    second: AncientBlackDragon_attack_hitbox_12
+  - first:
+      213: 4176649753804769315
+    second: AncientBlackDragon_attack_hitbox_13
+  - first:
+      213: -5008619453268475284
+    second: AncientBlackDragon_attack_hitbox_14
+  - first:
+      213: 5158600743623969550
+    second: AncientBlackDragon_attack_hitbox_15
+  - first:
+      213: -705051299464894137
+    second: AncientBlackDragon_attack_hitbox_16
+  - first:
+      213: -4542290012053224274
+    second: AncientBlackDragon_attack_hitbox_17
+  - first:
+      213: -2586922432283400917
+    second: AncientBlackDragon_attack_hitbox_18
+  - first:
+      213: 197261472234899189
+    second: AncientBlackDragon_attack_hitbox_19
+  - first:
+      213: 7912843685358544056
+    second: AncientBlackDragon_attack_hitbox_20
+  - first:
+      213: 7909766793017341149
+    second: AncientBlackDragon_attack_hitbox_21
+  - first:
+      213: 2396401829872588404
+    second: AncientBlackDragon_attack_hitbox_22
+  - first:
+      213: 1963276038727043582
+    second: AncientBlackDragon_attack_hitbox_23
+  - first:
+      213: -8888378066691441668
+    second: AncientBlackDragon_attack_hitbox_24
+  - first:
+      213: 7555790863143326713
+    second: AncientBlackDragon_attack_hitbox_25
+  - first:
+      213: -7646331630708951487
+    second: AncientBlackDragon_attack_hitbox_26
+  - first:
+      213: -3986875385127167648
+    second: AncientBlackDragon_attack_hitbox_27
+  - first:
+      213: -3013858588750709015
+    second: AncientBlackDragon_attack_hitbox_28
+  - first:
+      213: -6868952855775426944
+    second: AncientBlackDragon_attack_hitbox_29
+  - first:
+      213: -6459276298702501831
+    second: AncientBlackDragon_attack_hitbox_30
+  - first:
+      213: -964766111884399574
+    second: AncientBlackDragon_attack_hitbox_31
+  - first:
+      213: 7651402594235068443
+    second: AncientBlackDragon_attack_hitbox_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 432
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7ff563ed04e0144d980c6eb9ae3d538
+      internalID: 5123456992154394056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 432
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d5ecd86342755f48ab2de379f21143e
+      internalID: 2757509903445994404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_2
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 432
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 049b63a1f6c292f40a6a2f950363cace
+      internalID: 3099141824683994790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_3
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 432
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca797298f931876418189d5079b80474
+      internalID: -6167926174974683466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_4
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 432
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fddabbf2d3a7d8940b88c8324a0fb9ae
+      internalID: -6027891295778377961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_5
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 432
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 895799b526e3f22489695cdf0b75a506
+      internalID: -9039690054368857217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2004ca9a555c03d43a8a05422193f9ee
+      internalID: 2550196093171696241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_7
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 288
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f186490bf9cf08b429be85e113da6ebd
+      internalID: 8250669006471058995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_8
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 288
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5c3ad83d92870d4785f318af5d8a336
+      internalID: 5999825606956752947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_9
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 288
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e8afcbedcb9a0945820bc6327386bf5
+      internalID: -2546611318686631711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_10
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 288
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cf0c1d7d96b4084b89d35e55b2f7b96
+      internalID: 6110492068931378699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_11
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 288
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531f17a57281c2f40bd802c6fbbd5596
+      internalID: -2289993854160200139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d2d7ce4d3389ae4faed752c03e6545a
+      internalID: 3445984775292887539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_13
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 144
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26c61440a20a0664d9be2f44b33ddf35
+      internalID: 4176649753804769315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_14
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 144
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc55a8d62a5351f47ad9a99bb1ceaa90
+      internalID: -5008619453268475284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_15
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 144
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c07cb8cfff47d9541854224e3da5aa64
+      internalID: 5158600743623969550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_16
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 144
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d38e1b700473914bb804c5a19bd7356
+      internalID: -705051299464894137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_17
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 144
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f5b4155ccde4fa40a03b994eb8122fd
+      internalID: -4542290012053224274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_18
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71fb4225c0a0f5f4290a719d45bc3098
+      internalID: -2586922432283400917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_19
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e26bbe9c0626b34f9ff1e3974cbd938
+      internalID: 197261472234899189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_20
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf8f5f521068f9c478803ad90943f9e2
+      internalID: 7912843685358544056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_21
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37b95e93bf2dc6e409e43177fe0c02ed
+      internalID: 7909766793017341149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AncientBlackDragon_attack_hitbox_22
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 144
+        height: 144
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59214dc2eaef398489f8b3cb93bf899a
+      internalID: 2396401829872588404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 546376fe75a8a994c9b452fc5762627b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      AncientBlackDragon_attack_hitbox_0: 5123456992154394056
+      AncientBlackDragon_attack_hitbox_1: 2757509903445994404
+      AncientBlackDragon_attack_hitbox_10: 6110492068931378699
+      AncientBlackDragon_attack_hitbox_11: -2289993854160200139
+      AncientBlackDragon_attack_hitbox_12: 3445984775292887539
+      AncientBlackDragon_attack_hitbox_13: 4176649753804769315
+      AncientBlackDragon_attack_hitbox_14: -5008619453268475284
+      AncientBlackDragon_attack_hitbox_15: 5158600743623969550
+      AncientBlackDragon_attack_hitbox_16: -705051299464894137
+      AncientBlackDragon_attack_hitbox_17: -4542290012053224274
+      AncientBlackDragon_attack_hitbox_18: -2586922432283400917
+      AncientBlackDragon_attack_hitbox_19: 197261472234899189
+      AncientBlackDragon_attack_hitbox_2: 3099141824683994790
+      AncientBlackDragon_attack_hitbox_20: 7912843685358544056
+      AncientBlackDragon_attack_hitbox_21: 7909766793017341149
+      AncientBlackDragon_attack_hitbox_22: 2396401829872588404
+      AncientBlackDragon_attack_hitbox_3: -6167926174974683466
+      AncientBlackDragon_attack_hitbox_4: -6027891295778377961
+      AncientBlackDragon_attack_hitbox_5: -9039690054368857217
+      AncientBlackDragon_attack_hitbox_6: 2550196093171696241
+      AncientBlackDragon_attack_hitbox_7: 8250669006471058995
+      AncientBlackDragon_attack_hitbox_8: 5999825606956752947
+      AncientBlackDragon_attack_hitbox_9: -2546611318686631711
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

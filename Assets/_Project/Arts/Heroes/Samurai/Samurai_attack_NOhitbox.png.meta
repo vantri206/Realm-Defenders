@@ -1,0 +1,663 @@
+fileFormatVersion: 2
+guid: a1c89618162048d47bf935fdbf9ad112
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4299864419639558395
+    second: Samurai_attack_NOhitbox_0
+  - first:
+      213: -8275314730469088302
+    second: Samurai_attack_NOhitbox_1
+  - first:
+      213: -3796114580621550153
+    second: Samurai_attack_NOhitbox_2
+  - first:
+      213: 1979187041507301002
+    second: Samurai_attack_NOhitbox_3
+  - first:
+      213: 1131498322743075201
+    second: Samurai_attack_NOhitbox_4
+  - first:
+      213: -7905670805915925481
+    second: Samurai_attack_NOhitbox_5
+  - first:
+      213: 6936907167573327574
+    second: Samurai_attack_NOhitbox_6
+  - first:
+      213: -4185752585218844715
+    second: Samurai_attack_NOhitbox_7
+  - first:
+      213: -535717264833949796
+    second: Samurai_attack_NOhitbox_8
+  - first:
+      213: 2701145436634836615
+    second: Samurai_attack_NOhitbox_9
+  - first:
+      213: 3195427187573082211
+    second: Samurai_attack_NOhitbox_10
+  - first:
+      213: 870616637644776467
+    second: Samurai_attack_NOhitbox_11
+  - first:
+      213: 7776374069721573426
+    second: Samurai_attack_NOhitbox_12
+  - first:
+      213: -4076300088260446285
+    second: Samurai_attack_NOhitbox_13
+  - first:
+      213: -7590605603923204980
+    second: Samurai_attack_NOhitbox_14
+  - first:
+      213: 8927231151741767714
+    second: Samurai_attack_NOhitbox_15
+  - first:
+      213: -635430605011893863
+    second: Samurai_attack_NOhitbox_16
+  - first:
+      213: -7329306239892288437
+    second: Samurai_attack_NOhitbox_17
+  - first:
+      213: 2458110089496110703
+    second: Samurai_attack_NOhitbox_18
+  - first:
+      213: -843902449413230051
+    second: Samurai_attack_NOhitbox_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 168
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faa2e07f886ea9947b68b4b1179947e0
+      internalID: 4299864419639558395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 168
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f9bad697d818404286b869efd3e35d5
+      internalID: -8275314730469088302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 168
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b59ddafc0d3f6544bad7bbf6c008b27
+      internalID: -3796114580621550153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 168
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23a92c69f09250447ba3d539cccf55f4
+      internalID: 1979187041507301002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 168
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1c1d8d874472b848b3d8beaa944eb02
+      internalID: 1131498322743075201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 435d2e307e6de954f9bdd97968701337
+      internalID: -7905670805915925481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_6
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 112
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feb5a3df5d0e21646a3314afb5711511
+      internalID: 6936907167573327574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 112
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6407a031c04494444baa17950cdbe9e3
+      internalID: -4185752585218844715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_8
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 112
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f0283ead170c5d4fb5d0b31b2df7526
+      internalID: -535717264833949796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 112
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a8ea8e51e6b0b4eb387f6bc463d2cb
+      internalID: 2701145436634836615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 56
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d3fb7ea4e1f2741a312d6e19cf4aae
+      internalID: 3195427187573082211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 56
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd36374eb3034cb4598668dca31ab5af
+      internalID: 870616637644776467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 56
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e74d3fb8262604d8188c1265b353ae
+      internalID: 7776374069721573426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_13
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 56
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d22a21dcce8d1444da1ca04f1d9a36fb
+      internalID: -4076300088260446285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_14
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 56
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8669ae8b9fdbe344ba9e1118a78154ed
+      internalID: -7590605603923204980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2cecde2e5361094580a90072ea1723b
+      internalID: 8927231151741767714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_16
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9804ce7457f9fb45813ecd722f926b4
+      internalID: -635430605011893863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_17
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 569c141df30415547bdd8d9d37cb5dc1
+      internalID: -7329306239892288437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_18
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bdd440623664494391b90dcea5fb51c
+      internalID: 2458110089496110703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Samurai_attack_NOhitbox_19
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2e7376fee4a9414294c9999a65d8f67
+      internalID: -843902449413230051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7910dac5509f1b34090663807ca92501
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Samurai_attack_NOhitbox_0: 4299864419639558395
+      Samurai_attack_NOhitbox_1: -8275314730469088302
+      Samurai_attack_NOhitbox_10: 3195427187573082211
+      Samurai_attack_NOhitbox_11: 870616637644776467
+      Samurai_attack_NOhitbox_12: 7776374069721573426
+      Samurai_attack_NOhitbox_13: -4076300088260446285
+      Samurai_attack_NOhitbox_14: -7590605603923204980
+      Samurai_attack_NOhitbox_15: 8927231151741767714
+      Samurai_attack_NOhitbox_16: -635430605011893863
+      Samurai_attack_NOhitbox_17: -7329306239892288437
+      Samurai_attack_NOhitbox_18: 2458110089496110703
+      Samurai_attack_NOhitbox_19: -843902449413230051
+      Samurai_attack_NOhitbox_2: -3796114580621550153
+      Samurai_attack_NOhitbox_3: 1979187041507301002
+      Samurai_attack_NOhitbox_4: 1131498322743075201
+      Samurai_attack_NOhitbox_5: -7905670805915925481
+      Samurai_attack_NOhitbox_6: 6936907167573327574
+      Samurai_attack_NOhitbox_7: -4185752585218844715
+      Samurai_attack_NOhitbox_8: -535717264833949796
+      Samurai_attack_NOhitbox_9: 2701145436634836615
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

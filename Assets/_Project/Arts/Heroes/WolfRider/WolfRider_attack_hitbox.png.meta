@@ -1,0 +1,502 @@
+fileFormatVersion: 2
+guid: 5f6c28c225fda534ba973a576c3a4065
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1146783174367062925
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_0
+  - first:
+      213: 4390921845578151671
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_1
+  - first:
+      213: -5784466930284394891
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_2
+  - first:
+      213: 4388736305514868295
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_3
+  - first:
+      213: -9108150105824833112
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_4
+  - first:
+      213: -7461093455369883937
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_5
+  - first:
+      213: -5094087732184368421
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_6
+  - first:
+      213: 2109552210458540354
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_7
+  - first:
+      213: -5081447662844416465
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_8
+  - first:
+      213: -2775974112885751035
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_9
+  - first:
+      213: -6369919614371221477
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_10
+  - first:
+      213: -7647306969186284066
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_11
+  - first:
+      213: -2337725486440186597
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_12
+  - first:
+      213: 402937696772035664
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_13
+  - first:
+      213: -604120780663134653
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_14
+  - first:
+      213: 3414364684404096593
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_15
+  - first:
+      213: -8653622117100704386
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_16
+  - first:
+      213: -2786208507314590913
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_17
+  - first:
+      213: -2774367420401086154
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_18
+  - first:
+      213: 443055764222095250
+    second: WolfRider_attack_hitbox.png-edceb989dad5d0e9df57a2e27fb5f114_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: WolfRider_attack_hitbox_0
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 192
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2badb21b469b17c44952f59ae69daf98
+      internalID: -2106006924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_hitbox_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 192
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ff3a1f48ef24d844ac011490208f63e
+      internalID: 1917478182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_hitbox_2
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 192
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4496b47134595f942827e9cb8ea29926
+      internalID: 1831444317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_hitbox_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c453763e4c5beb84abf23abe99173685
+      internalID: -2086530813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_hitbox_4
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 128
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dad1225fbb6e9e41b43d7bfdceb21c3
+      internalID: -73110328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_hitbox_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43e68e25f5bfbfd439c491f09cc7206a
+      internalID: 247654517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_hitbox_6
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 128
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfa793538b12b194d8b120673de511db
+      internalID: -556340685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_hitbox_7
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86edac9577364b74ea916c9c7deab031
+      internalID: 1798858286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_hitbox_8
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f63a3bd6e97f9a4f8aef0433117850b
+      internalID: -599132711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_hitbox_9
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 64
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9103524932d0d641b477c062694a984
+      internalID: -1863700751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_hitbox_10
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d55542b90bb42194da2da7beca9c5860
+      internalID: -480515244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_hitbox_11
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec4e21f08744ba4685871d59c705dca
+      internalID: -1589679483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_hitbox_12
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f4df6b69c2a3b148ac6c6b9299fe441
+      internalID: 380379726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f907c8b51e843574591cd36219e93913
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      WolfRider_attack_hitbox_0: -2106006924
+      WolfRider_attack_hitbox_1: 1917478182
+      WolfRider_attack_hitbox_10: -480515244
+      WolfRider_attack_hitbox_11: -1589679483
+      WolfRider_attack_hitbox_12: 380379726
+      WolfRider_attack_hitbox_2: 1831444317
+      WolfRider_attack_hitbox_3: -2086530813
+      WolfRider_attack_hitbox_4: -73110328
+      WolfRider_attack_hitbox_5: 247654517
+      WolfRider_attack_hitbox_6: -556340685
+      WolfRider_attack_hitbox_7: 1798858286
+      WolfRider_attack_hitbox_8: -599132711
+      WolfRider_attack_hitbox_9: -1863700751
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

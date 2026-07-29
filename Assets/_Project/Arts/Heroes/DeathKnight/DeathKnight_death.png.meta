@@ -1,0 +1,1183 @@
+fileFormatVersion: 2
+guid: 900d5d99f48371d4481fdda3dc8d0553
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6969754327655416513
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_0
+  - first:
+      213: 8827468890031327722
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_1
+  - first:
+      213: 159028525094778222
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_2
+  - first:
+      213: 955436089107179667
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_3
+  - first:
+      213: 1595366483089483387
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_4
+  - first:
+      213: 827005393614913366
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_5
+  - first:
+      213: -3691096929545645741
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_6
+  - first:
+      213: 6449273209182332222
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_7
+  - first:
+      213: -2231320060221390768
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_8
+  - first:
+      213: 1225361772240600538
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_9
+  - first:
+      213: 8370693136073794447
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_10
+  - first:
+      213: -2351502886637680088
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_11
+  - first:
+      213: 2092389123367513422
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_12
+  - first:
+      213: 3371905873839431784
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_13
+  - first:
+      213: 461517236928785907
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_14
+  - first:
+      213: 1076424109217782753
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_15
+  - first:
+      213: -3210378609246080103
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_16
+  - first:
+      213: -4528183590398730786
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_17
+  - first:
+      213: 6188876496804851943
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_18
+  - first:
+      213: 8281496022345408235
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_19
+  - first:
+      213: 9175047468018726740
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_20
+  - first:
+      213: 6181844460778297833
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_21
+  - first:
+      213: -1867574464039856287
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_22
+  - first:
+      213: 362651396799537219
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_23
+  - first:
+      213: -1642771072228935672
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_24
+  - first:
+      213: 6913796431147870064
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_25
+  - first:
+      213: 9115982080240191149
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_26
+  - first:
+      213: -1267492096232965979
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_27
+  - first:
+      213: -1566642701283101802
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_28
+  - first:
+      213: 1761029120369607886
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_29
+  - first:
+      213: 7128268275131131009
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_30
+  - first:
+      213: -144268322868245798
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_31
+  - first:
+      213: 6215320904659675540
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_32
+  - first:
+      213: -6614653487342317095
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_33
+  - first:
+      213: -8653671136198327800
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_34
+  - first:
+      213: 2297142128912755879
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_35
+  - first:
+      213: -7445722977728356784
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_36
+  - first:
+      213: -1740583142725780609
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_37
+  - first:
+      213: 1885241433399519946
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_38
+  - first:
+      213: -4369538794487197629
+    second: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_39
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 207
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c284a732aa89b060800000000000000
+      internalID: 6969754327655416513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 207
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae901208f28718a70800000000000000
+      internalID: 8827468890031327722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 207
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e65bd6bd99bf43200800000000000000
+      internalID: 159028525094778222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_3
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 207
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39862d89f04624d00800000000000000
+      internalID: 955436089107179667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_4
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 207
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b76ec1f1d51e32610800000000000000
+      internalID: 1595366483089483387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_5
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 207
+        width: 29
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65fbfb9160d1a7b00800000000000000
+      internalID: 827005393614913366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_6
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 207
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35195ea16e696ccc0800000000000000
+      internalID: -3691096929545645741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_7
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 207
+        width: 36
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e35a1c460db608950800000000000000
+      internalID: 6449273209182332222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_8
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 207
+        width: 38
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0500d4e2a32c801e0800000000000000
+      internalID: -2231320060221390768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_9
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 207
+        width: 32
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: add7eb32a0c510110800000000000000
+      internalID: 1225361772240600538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_10
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 143
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f83aa73be0daa2470800000000000000
+      internalID: 8370693136073794447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_11
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 143
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82ac7a95598cd5fd0800000000000000
+      internalID: -2351502886637680088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_12
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 143
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4d263e52d8a90d10800000000000000
+      internalID: 2092389123367513422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_13
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 143
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 860a042f68a6bce20800000000000000
+      internalID: 3371905873839431784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_14
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 142
+        width: 39
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fd2cd45b73a76600800000000000000
+      internalID: 461517236928785907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_15
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 141
+        width: 41
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eb9791360a30fe00800000000000000
+      internalID: 1076424109217782753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_16
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 141
+        width: 43
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 993ff590aa17273d0800000000000000
+      internalID: -3210378609246080103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_17
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 143
+        width: 45
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eddd7801409a821c0800000000000000
+      internalID: -4528183590398730786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_18
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 143
+        width: 46
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e031de326e43e550800000000000000
+      internalID: 6188876496804851943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_19
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 143
+        width: 45
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bee55bc41c8cde270800000000000000
+      internalID: 8281496022345408235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_20
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 79
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4577a988f01545f70800000000000000
+      internalID: 9175047468018726740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_21
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 79
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e91865c8c25ac550800000000000000
+      internalID: 6181844460778297833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_22
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 79
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16750577bea0516e0800000000000000
+      internalID: -1867574464039856287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_23
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 79
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34029832685680500800000000000000
+      internalID: 362651396799537219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_24
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 78
+        width: 39
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 808b180e964b339e0800000000000000
+      internalID: -1642771072228935672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_25
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 77
+        width: 41
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 077aee7293db2ff50800000000000000
+      internalID: 6913796431147870064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_26
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 77
+        width: 43
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da60b874769728e70800000000000000
+      internalID: 9115982080240191149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_27
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 79
+        width: 45
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a83b6867a6f86ee0800000000000000
+      internalID: -1267492096232965979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_28
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 79
+        width: 46
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 693ff0c73ca224ae0800000000000000
+      internalID: -1566642701283101802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_29
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 79
+        width: 45
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec4cfb697ae607810800000000000000
+      internalID: 1761029120369607886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_30
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 15
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 184a0e2aa32bce260800000000000000
+      internalID: 7128268275131131009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_31
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 15
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adac81789b47ffdf0800000000000000
+      internalID: -144268322868245798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_32
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 15
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 499ac4fbe61414650800000000000000
+      internalID: 6215320904659675540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_33
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 15
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d199aef2b70434a0800000000000000
+      internalID: -6614653487342317095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_34
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 15
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80209d363fbf7e780800000000000000
+      internalID: -8653671136198327800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_35
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 15
+        width: 30
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aced60789611ef10800000000000000
+      internalID: 2297142128912755879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_36
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 15
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05e9980a66a7ba890800000000000000
+      internalID: -7445722977728356784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_37
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 15
+        width: 35
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7bfbcb8ad438d7e0800000000000000
+      internalID: -1740583142725780609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_38
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 15
+        width: 37
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aca60a16819b92a10800000000000000
+      internalID: 1885241433399519946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_39
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 15
+        width: 33
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3405d420e974c53c0800000000000000
+      internalID: -4369538794487197629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_0: 6969754327655416513
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_1: 8827468890031327722
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_10: 8370693136073794447
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_11: -2351502886637680088
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_12: 2092389123367513422
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_13: 3371905873839431784
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_14: 461517236928785907
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_15: 1076424109217782753
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_16: -3210378609246080103
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_17: -4528183590398730786
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_18: 6188876496804851943
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_19: 8281496022345408235
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_2: 159028525094778222
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_20: 9175047468018726740
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_21: 6181844460778297833
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_22: -1867574464039856287
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_23: 362651396799537219
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_24: -1642771072228935672
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_25: 6913796431147870064
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_26: 9115982080240191149
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_27: -1267492096232965979
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_28: -1566642701283101802
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_29: 1761029120369607886
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_3: 955436089107179667
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_30: 7128268275131131009
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_31: -144268322868245798
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_32: 6215320904659675540
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_33: -6614653487342317095
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_34: -8653671136198327800
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_35: 2297142128912755879
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_36: -7445722977728356784
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_37: -1740583142725780609
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_38: 1885241433399519946
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_39: -4369538794487197629
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_4: 1595366483089483387
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_5: 827005393614913366
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_6: -3691096929545645741
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_7: 6449273209182332222
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_8: -2231320060221390768
+      DeathKnight_death.png-720582c0e437bc594c2a70412eb9f9a5_9: 1225361772240600538
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -13,14 +13,14 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Neutral
+  - Hitbox
+  - Hurtbox
+  - Projectile
+  - Obstacle
+  - NoPhysics
   - 
   - 
   - 
@@ -41,3 +41,29 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 4133198557
+    locked: 0
+  - name: Ground
+    uniqueID: 1386553297
+    locked: 0
+  - name: GroundOverlay
+    uniqueID: 3116364665
+    locked: 0
+  - name: Entity
+    uniqueID: 166825055
+    locked: 0
+  - name: Projectile
+    uniqueID: 3181507877
+    locked: 0
+  - name: VFX
+    uniqueID: 2529986869
+    locked: 0
+  - name: Foreground
+    uniqueID: 2292207293
+    locked: 0
+  - name: WordUI
+    uniqueID: 1110219373
+    locked: 0
+  m_RenderingLayers:
+  - Default

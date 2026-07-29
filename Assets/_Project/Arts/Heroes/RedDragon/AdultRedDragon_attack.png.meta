@@ -1,0 +1,835 @@
+fileFormatVersion: 2
+guid: daf9d340cfd728443a493174c2023027
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6132212990487268303
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_0
+  - first:
+      213: -7882000033641069851
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_1
+  - first:
+      213: 2614911603572429690
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_2
+  - first:
+      213: -6819469509809447627
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_3
+  - first:
+      213: -5088140508174102214
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_4
+  - first:
+      213: -7742533043548696744
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_5
+  - first:
+      213: -3179269541717829848
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_6
+  - first:
+      213: 8952333554634678464
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_7
+  - first:
+      213: -5443904969898704277
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_8
+  - first:
+      213: -8074533682793552263
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_9
+  - first:
+      213: 286887685289818614
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_10
+  - first:
+      213: -5676906290601026738
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_11
+  - first:
+      213: 3017018325060378602
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_12
+  - first:
+      213: -3796043959993832923
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_13
+  - first:
+      213: 1686157780804768657
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_14
+  - first:
+      213: 5856937668186161940
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_15
+  - first:
+      213: -8778311385728174631
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_16
+  - first:
+      213: 8074495263469582974
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_17
+  - first:
+      213: 4617696630184208874
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_18
+  - first:
+      213: -3124732374072391296
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_19
+  - first:
+      213: 723001185382603399
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_20
+  - first:
+      213: 7943120596299980218
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_21
+  - first:
+      213: -4168560340464748132
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_22
+  - first:
+      213: -8205215804701504889
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_23
+  - first:
+      213: -8665166121137955595
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_24
+  - first:
+      213: 7682208412607144710
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_25
+  - first:
+      213: 6009426765591080624
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_26
+  - first:
+      213: -5642569185317029456
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_27
+  - first:
+      213: 503371557147263530
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_28
+  - first:
+      213: 7363238109757535173
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_29
+  - first:
+      213: 6592275145764347915
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_30
+  - first:
+      213: -7698954826268505633
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_31
+  - first:
+      213: -9144887536497925888
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_32
+  - first:
+      213: 153586841749947985
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_33
+  - first:
+      213: -5762593440749167148
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_34
+  - first:
+      213: -8751421956779724393
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_35
+  - first:
+      213: 8253995520111461180
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_36
+  - first:
+      213: 4724561446960745614
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_37
+  - first:
+      213: 1435582948933473821
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_38
+  - first:
+      213: -6961434751246680710
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_39
+  - first:
+      213: 885201060628235615
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_40
+  - first:
+      213: 5721501966888574143
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_41
+  - first:
+      213: -641284589535591690
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_42
+  - first:
+      213: -1516475660336475002
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_43
+  - first:
+      213: 2138501408233878091
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_44
+  - first:
+      213: -7530362327405062990
+    second: AdultRedDragon_attack.png-9500bc3fd3ff00ade5d892fc3bba8f1e_45
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61784d952ad2dc544aca54a27dba9b23
+      internalID: 408910559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_1
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 288
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 978b834632952804eaf45d0f5d21b9cf
+      internalID: 1030342709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_2
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 288
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be544b5b4e76713499eedc3dbdc45294
+      internalID: -793992763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_3
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 288
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36369506bb7529a43a250e24fe6204d4
+      internalID: -839997556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_4
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 288
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61b64bb3d83e7f4ca1caac174dc6e96
+      internalID: 1641394010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_5
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 288
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e69b1f17a75a1f42a1a2de1359ac7bd
+      internalID: 974584987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c5958e4134ed6d4fa90f78a57b5ab45
+      internalID: -428708438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 192
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 455ca946d3a34a545a6cc13b8068cefa
+      internalID: 870918152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_8
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 192
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d49c35d15720d04b99ae5656be7d745
+      internalID: 1466300130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_9
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 192
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3085bde57b91fca4c9fb28c77bff0b97
+      internalID: -519619477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_10
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 192
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fed50b717a047947b7f38e68d35e7ba
+      internalID: -4384714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_11
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 192
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48388d85b140f754b8eb97394a9b35d6
+      internalID: -1625095572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54163af60bfc8cc4ab09d844cee92457
+      internalID: -304323721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_13
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 96
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a32e5846858a1748a0109ddfe324ed5
+      internalID: 276477941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_14
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c06bc8faa1fe3f249922c770c6a75428
+      internalID: -2074780537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_15
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 96
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d1bfe39d42ff4045b3fc9917b266a1a
+      internalID: 553368918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_16
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 96
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f09f885789bf174482400fa3a846d98
+      internalID: 1007738769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_17
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 96
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb3088cae7f63c9479fd13c72402e0c2
+      internalID: 410679952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 856ba129303ffdb4cba1c4f7603752ed
+      internalID: 360285857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_19
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a7c257d0a07cec4daad37bc1196c2ea
+      internalID: 1147994021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_20
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1761dd9ac923b44e92ca57a576699b2
+      internalID: 111076421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_21
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d7acbaadd881f44499c0d26eae0a1ea
+      internalID: -2054073006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_22
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e49e61c918abd3a4d898344ca68ab079
+      internalID: -947199196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdultRedDragon_attack_23
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 0
+        width: 112
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95d09437e617efd4b85de1cbb4f24cac
+      internalID: -1737354657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: fe4689af761500c4d8f67175739e9169
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":4.0},"gridSpriteSize":{"x":112.0,"y":96.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.3333333432674408},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":1,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      AdultRedDragon_attack_0: 408910559
+      AdultRedDragon_attack_1: 1030342709
+      AdultRedDragon_attack_10: -4384714
+      AdultRedDragon_attack_11: -1625095572
+      AdultRedDragon_attack_12: -304323721
+      AdultRedDragon_attack_13: 276477941
+      AdultRedDragon_attack_14: -2074780537
+      AdultRedDragon_attack_15: 553368918
+      AdultRedDragon_attack_16: 1007738769
+      AdultRedDragon_attack_17: 410679952
+      AdultRedDragon_attack_18: 360285857
+      AdultRedDragon_attack_19: 1147994021
+      AdultRedDragon_attack_2: -793992763
+      AdultRedDragon_attack_20: 111076421
+      AdultRedDragon_attack_21: -2054073006
+      AdultRedDragon_attack_22: -947199196
+      AdultRedDragon_attack_23: -1737354657
+      AdultRedDragon_attack_3: -839997556
+      AdultRedDragon_attack_4: 1641394010
+      AdultRedDragon_attack_5: 974584987
+      AdultRedDragon_attack_6: -428708438
+      AdultRedDragon_attack_7: 870918152
+      AdultRedDragon_attack_8: 1466300130
+      AdultRedDragon_attack_9: -519619477
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

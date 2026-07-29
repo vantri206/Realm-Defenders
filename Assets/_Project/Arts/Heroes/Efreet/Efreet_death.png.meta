@@ -1,0 +1,1599 @@
+fileFormatVersion: 2
+guid: 79272025a9fd71e4f957de8a6feee7a3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3176674276466354687
+    second: Efreet_death_0
+  - first:
+      213: -5664017611632121290
+    second: Efreet_death_1
+  - first:
+      213: -3175189911686492736
+    second: Efreet_death_2
+  - first:
+      213: -4607005271047283225
+    second: Efreet_death_3
+  - first:
+      213: -4591469569635745735
+    second: Efreet_death_4
+  - first:
+      213: -1054836799336930991
+    second: Efreet_death_5
+  - first:
+      213: 6691625602177681182
+    second: Efreet_death_6
+  - first:
+      213: -5469241076136779556
+    second: Efreet_death_7
+  - first:
+      213: 1349570605212240454
+    second: Efreet_death_8
+  - first:
+      213: 761516917305113789
+    second: Efreet_death_9
+  - first:
+      213: 2982875696499924382
+    second: Efreet_death_10
+  - first:
+      213: -552225799601027089
+    second: Efreet_death_11
+  - first:
+      213: -3313620272492917015
+    second: Efreet_death_12
+  - first:
+      213: -7473579252165150704
+    second: Efreet_death_13
+  - first:
+      213: 7297753008197476365
+    second: Efreet_death_14
+  - first:
+      213: 4597925149263882903
+    second: Efreet_death_15
+  - first:
+      213: 2665429304990181973
+    second: Efreet_death_16
+  - first:
+      213: -4868197259140078204
+    second: Efreet_death_17
+  - first:
+      213: -299401976434990597
+    second: Efreet_death_18
+  - first:
+      213: -92315785586048380
+    second: Efreet_death_19
+  - first:
+      213: 6434082293640946682
+    second: Efreet_death_20
+  - first:
+      213: -7117090522277502993
+    second: Efreet_death_21
+  - first:
+      213: -8921402485810388841
+    second: Efreet_death_22
+  - first:
+      213: -6305503411171490901
+    second: Efreet_death_23
+  - first:
+      213: 2850540595486174743
+    second: Efreet_death_24
+  - first:
+      213: 7685309762708987730
+    second: Efreet_death_25
+  - first:
+      213: -651195808356049928
+    second: Efreet_death_26
+  - first:
+      213: -7382276478808704479
+    second: Efreet_death_27
+  - first:
+      213: -5705055477463149698
+    second: Efreet_death_28
+  - first:
+      213: -6950286792852134991
+    second: Efreet_death_29
+  - first:
+      213: 3540920983626338287
+    second: Efreet_death_30
+  - first:
+      213: -2097294576347209251
+    second: Efreet_death_31
+  - first:
+      213: -6652100943685515593
+    second: Efreet_death_32
+  - first:
+      213: -7415540652915060698
+    second: Efreet_death_33
+  - first:
+      213: 8421212920001660292
+    second: Efreet_death_34
+  - first:
+      213: -2352423044274181238
+    second: Efreet_death_35
+  - first:
+      213: 3575401270926857413
+    second: Efreet_death_36
+  - first:
+      213: -5459715446637940474
+    second: Efreet_death_37
+  - first:
+      213: 1833976735279292093
+    second: Efreet_death_38
+  - first:
+      213: -2288571058438364104
+    second: Efreet_death_39
+  - first:
+      213: -1008913455797860595
+    second: Efreet_death_40
+  - first:
+      213: -7822339852804516531
+    second: Efreet_death_41
+  - first:
+      213: -5333509993350014523
+    second: Efreet_death_42
+  - first:
+      213: 4683967923095079367
+    second: Efreet_death_43
+  - first:
+      213: -7138890808793224645
+    second: Efreet_death_44
+  - first:
+      213: 4362388856770066446
+    second: Efreet_death_45
+  - first:
+      213: -3521850025185370066
+    second: Efreet_death_46
+  - first:
+      213: -2103056324375528761
+    second: Efreet_death_47
+  - first:
+      213: -7311327717450343390
+    second: Efreet_death_48
+  - first:
+      213: -7816857858730786564
+    second: Efreet_death_49
+  - first:
+      213: -2513837758085225621
+    second: Efreet_death_50
+  - first:
+      213: 920845028652286452
+    second: Efreet_death_51
+  - first:
+      213: -2964666856091385889
+    second: Efreet_death_52
+  - first:
+      213: -6765897168825425171
+    second: Efreet_death_53
+  - first:
+      213: 1571519574030269937
+    second: Efreet_death_54
+  - first:
+      213: 1162667640168854242
+    second: Efreet_death_55
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Efreet_death_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 95
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff9e5e77c60d51c20800000000000000
+      internalID: 3176674276466354687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_1
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 100
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63a6c11ddfd5561b0800000000000000
+      internalID: -5664017611632121290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 105
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cdc58329957fe3d0800000000000000
+      internalID: -3175189911686492736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_3
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 95
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eddfdc6d11a010c0800000000000000
+      internalID: -4607005271047283225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_4
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 105
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93088d8c0c2d740c0800000000000000
+      internalID: -4591469569635745735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_5
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 95
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 151238f05877c51f0800000000000000
+      internalID: -1054836799336930991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_6
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 95
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e17c5bb080e6ddc50800000000000000
+      internalID: 6691625602177681182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_7
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 95
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd064e1f73a5914b0800000000000000
+      internalID: -5469241076136779556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_8
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 96
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64a0cfaa053aab210800000000000000
+      internalID: 1349570605212240454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_9
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 96
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbcfb620a93719a00800000000000000
+      internalID: 761516917305113789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_10
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 96
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9d160b54ad456920800000000000000
+      internalID: 2982875696499924382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_11
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 68
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe789f2af891658f0800000000000000
+      internalID: -552225799601027089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_12
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 96
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eec6812be7a302d0800000000000000
+      internalID: -3313620272492917015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_13
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 96
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01877f15443884890800000000000000
+      internalID: -7473579252165150704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_14
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 63
+        width: 16
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d00262022b3d64560800000000000000
+      internalID: 7297753008197476365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_15
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 71
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79a65b9ff8c1fcf30800000000000000
+      internalID: 4597925149263882903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_16
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 71
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55a2bd1b4d18df420800000000000000
+      internalID: 2665429304990181973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_17
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 73
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 485ec68b260b07cb0800000000000000
+      internalID: -4868197259140078204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_18
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 63
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf1ea8d1d7f48dbf0800000000000000
+      internalID: -299401976434990597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_19
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 73
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4828bf8384708bef0800000000000000
+      internalID: -92315785586048380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_20
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 63
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af36910c1c37a4950800000000000000
+      internalID: 6434082293640946682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_21
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 63
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fef9951c0e30b3d90800000000000000
+      internalID: -7117090522277502993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_22
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 63
+        width: 27
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7902cfee4bfc03480800000000000000
+      internalID: -8921402485810388841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_23
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 64
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba30c173e0a5e78a0800000000000000
+      internalID: -6305503411171490901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_24
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 64
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71ea8cb91972f8720800000000000000
+      internalID: 2850540595486174743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_25
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 64
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25f5c1bb284b7aa60800000000000000
+      internalID: 7685309762708987730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_26
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 36
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fbd6bbccdc76f6f0800000000000000
+      internalID: -651195808356049928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_27
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 64
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12ab2eec7a2ec8990800000000000000
+      internalID: -7382276478808704479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_28
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 64
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7399e9154293d0b0800000000000000
+      internalID: -5705055477463149698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_29
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 31
+        width: 16
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b3a5f07cfe9b8f90800000000000000
+      internalID: -6950286792852134991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_30
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 39
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fef46cebfd0e32130800000000000000
+      internalID: 3540920983626338287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_31
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 39
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd1a87bd1b9e4e2e0800000000000000
+      internalID: -2097294576347209251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_32
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 41
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b68591af6dfea3a0800000000000000
+      internalID: -6652100943685515593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_33
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 31
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 620978db015b61990800000000000000
+      internalID: -7415540652915060698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_34
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 41
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48501a288882ed470800000000000000
+      internalID: 8421212920001660292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_35
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 31
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8b289474b38a5fd0800000000000000
+      internalID: -2352423044274181238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_36
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 31
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c4531b33806e9130800000000000000
+      internalID: 3575401270926857413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_37
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 31
+        width: 27
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 601be646ab13b34b0800000000000000
+      internalID: -5459715446637940474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_38
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 32
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbe17a8bf18937910800000000000000
+      internalID: 1833976735279292093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_39
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 32
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 834aa8a6fbc5d30e0800000000000000
+      internalID: -2288571058438364104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_40
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 32
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d078e02be8e9ff1f0800000000000000
+      internalID: -1008913455797860595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_41
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 26
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4594313957717390800000000000000
+      internalID: -7822339852804516531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_42
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 32
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c950605be09bf5b0800000000000000
+      internalID: -5333509993350014523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_43
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 32
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c90863620cc00140800000000000000
+      internalID: 4683967923095079367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_44
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 0
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3a249302a09dec90800000000000000
+      internalID: -7138890808793224645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_45
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 9
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e08f6e36d815a8c30800000000000000
+      internalID: 4362388856770066446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_46
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 0
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2020a8cf00ef1fc0800000000000000
+      internalID: -3521850025185370066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_47
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 9
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ca35fa5a6170d2e0800000000000000
+      internalID: -2103056324375528761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_48
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 0
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22c97e49d22f88a90800000000000000
+      internalID: -7311327717450343390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_49
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 0
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf081a66131f48390800000000000000
+      internalID: -7816857858730786564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_50
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 0
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b63ad5eb0ed0d1dd0800000000000000
+      internalID: -2513837758085225621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_51
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 0
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f1010abcaf77cc00800000000000000
+      internalID: 920845028652286452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_52
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 0
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdf7c4da3336bd6d0800000000000000
+      internalID: -2964666856091385889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_53
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 0
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de2e6594f54ba12a0800000000000000
+      internalID: -6765897168825425171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_54
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 0
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fdb5afe9b82fc510800000000000000
+      internalID: 1571519574030269937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Efreet_death_55
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 0
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e23b140f00a22010800000000000000
+      internalID: 1162667640168854242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Efreet_death_0: 3176674276466354687
+      Efreet_death_1: -5664017611632121290
+      Efreet_death_10: 2982875696499924382
+      Efreet_death_11: -552225799601027089
+      Efreet_death_12: -3313620272492917015
+      Efreet_death_13: -7473579252165150704
+      Efreet_death_14: 7297753008197476365
+      Efreet_death_15: 4597925149263882903
+      Efreet_death_16: 2665429304990181973
+      Efreet_death_17: -4868197259140078204
+      Efreet_death_18: -299401976434990597
+      Efreet_death_19: -92315785586048380
+      Efreet_death_2: -3175189911686492736
+      Efreet_death_20: 6434082293640946682
+      Efreet_death_21: -7117090522277502993
+      Efreet_death_22: -8921402485810388841
+      Efreet_death_23: -6305503411171490901
+      Efreet_death_24: 2850540595486174743
+      Efreet_death_25: 7685309762708987730
+      Efreet_death_26: -651195808356049928
+      Efreet_death_27: -7382276478808704479
+      Efreet_death_28: -5705055477463149698
+      Efreet_death_29: -6950286792852134991
+      Efreet_death_3: -4607005271047283225
+      Efreet_death_30: 3540920983626338287
+      Efreet_death_31: -2097294576347209251
+      Efreet_death_32: -6652100943685515593
+      Efreet_death_33: -7415540652915060698
+      Efreet_death_34: 8421212920001660292
+      Efreet_death_35: -2352423044274181238
+      Efreet_death_36: 3575401270926857413
+      Efreet_death_37: -5459715446637940474
+      Efreet_death_38: 1833976735279292093
+      Efreet_death_39: -2288571058438364104
+      Efreet_death_4: -4591469569635745735
+      Efreet_death_40: -1008913455797860595
+      Efreet_death_41: -7822339852804516531
+      Efreet_death_42: -5333509993350014523
+      Efreet_death_43: 4683967923095079367
+      Efreet_death_44: -7138890808793224645
+      Efreet_death_45: 4362388856770066446
+      Efreet_death_46: -3521850025185370066
+      Efreet_death_47: -2103056324375528761
+      Efreet_death_48: -7311327717450343390
+      Efreet_death_49: -7816857858730786564
+      Efreet_death_5: -1054836799336930991
+      Efreet_death_50: -2513837758085225621
+      Efreet_death_51: 920845028652286452
+      Efreet_death_52: -2964666856091385889
+      Efreet_death_53: -6765897168825425171
+      Efreet_death_54: 1571519574030269937
+      Efreet_death_55: 1162667640168854242
+      Efreet_death_6: 6691625602177681182
+      Efreet_death_7: -5469241076136779556
+      Efreet_death_8: 1349570605212240454
+      Efreet_death_9: 761516917305113789
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

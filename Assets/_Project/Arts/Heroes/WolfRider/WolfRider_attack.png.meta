@@ -1,0 +1,723 @@
+fileFormatVersion: 2
+guid: d6bcdeca8a3d18649adab620045cca70
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8662623007452974659
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_0
+  - first:
+      213: -5208490904758288481
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_1
+  - first:
+      213: 723660199340308127
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_2
+  - first:
+      213: 5487172895827660552
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_3
+  - first:
+      213: -7213216440034307717
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_4
+  - first:
+      213: 1520560914733486675
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_5
+  - first:
+      213: -8880077350252002164
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_6
+  - first:
+      213: -2826485980896546046
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_7
+  - first:
+      213: 2101821058734162485
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_8
+  - first:
+      213: -1234308456915474252
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_9
+  - first:
+      213: -8786131222407090357
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_10
+  - first:
+      213: 7936995085291276371
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_11
+  - first:
+      213: 3091401308023469005
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_12
+  - first:
+      213: 772540808115289226
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_13
+  - first:
+      213: -7968652984669135893
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_14
+  - first:
+      213: -4550920582789911771
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_15
+  - first:
+      213: 2894386904512124228
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_16
+  - first:
+      213: -8104723003474371592
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_17
+  - first:
+      213: 1402075764532811784
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_18
+  - first:
+      213: 8145701387283854232
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_19
+  - first:
+      213: 2243785015462157865
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_20
+  - first:
+      213: -6219973236327575646
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_21
+  - first:
+      213: -337677275364178406
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_22
+  - first:
+      213: -4904962787992801167
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_23
+  - first:
+      213: 8445081509723975563
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_24
+  - first:
+      213: -5036432395741101822
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_25
+  - first:
+      213: -1986006537318775411
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_26
+  - first:
+      213: 6838134886728835082
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_27
+  - first:
+      213: -7716905661824822985
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_28
+  - first:
+      213: 8897039622618741658
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_29
+  - first:
+      213: 6648209391248898119
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_30
+  - first:
+      213: 6052206968599106807
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_31
+  - first:
+      213: -6691903663784758044
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_32
+  - first:
+      213: 7345534650591265527
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_33
+  - first:
+      213: -5560873079400386019
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_34
+  - first:
+      213: -6709775313735741954
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_35
+  - first:
+      213: 6132785731125448629
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_36
+  - first:
+      213: -6496722400263383456
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_37
+  - first:
+      213: 6415896752643617978
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_38
+  - first:
+      213: -4594226800197696595
+    second: WolfRider_attack.png-7266dd6e26dc61baa0562ffe0f7db616_39
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: WolfRider_attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b35cd9c5aeb495e4db651cd507bc4927
+      internalID: -578439732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d050edb97ddbe934f8fb23eecb83a6f8
+      internalID: -512753559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 459332a8af187114cb5ad8f12c99e824
+      internalID: -1988526960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49ad4bdeb0a8bce4ba602731176ca30e
+      internalID: 1176262457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d03ad45542a9966468307fc75c3a014d
+      internalID: 1987717798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38c1db581622b9647828cab820f1c6bd
+      internalID: 1248534519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 147deb9b614b281479eaab6984400d1a
+      internalID: 82746400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e990f93fc26d144988306579d637fe
+      internalID: 685864585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_8
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a52c9b8b2fdbc754290c20191a67fde0
+      internalID: -1183909269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8e9984f226700844aa5f4afc250408c
+      internalID: -1128224330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c84d7836f63df942b5874838ef0e008
+      internalID: 1162695820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_11
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5360ec5fb72f8d04e9f312d949c05d68
+      internalID: 1657362744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_12
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b62cb1e58699314aac4d2940ceefa54
+      internalID: -619037089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd388deafffe51c4d8f2cb95fdd9f3fd
+      internalID: -636406058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_14
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b492566a95865a947937037062c4627e
+      internalID: 1583344723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f20da82eff96a4a458703ca99ff1d0cc
+      internalID: -116206676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_16
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f9091e39c385c84d8d197d3b1e07181
+      internalID: -893066347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_17
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 748758cbde2787140a94624851c3221e
+      internalID: 1369168979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_18
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 019ae58b57d311948ab28b44253cc6da
+      internalID: 128501351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_attack_19
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38dec976ee483344192fc8f6e6c4c079
+      internalID: 1547183290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 01d86f09a644fd449a28b21fc8f3dd15
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      WolfRider_attack_0: -578439732
+      WolfRider_attack_1: -512753559
+      WolfRider_attack_10: 1162695820
+      WolfRider_attack_11: 1657362744
+      WolfRider_attack_12: -619037089
+      WolfRider_attack_13: -636406058
+      WolfRider_attack_14: 1583344723
+      WolfRider_attack_15: -116206676
+      WolfRider_attack_16: -893066347
+      WolfRider_attack_17: 1369168979
+      WolfRider_attack_18: 128501351
+      WolfRider_attack_19: 1547183290
+      WolfRider_attack_2: -1988526960
+      WolfRider_attack_3: 1176262457
+      WolfRider_attack_4: 1987717798
+      WolfRider_attack_5: 1248534519
+      WolfRider_attack_6: 82746400
+      WolfRider_attack_7: 685864585
+      WolfRider_attack_8: -1183909269
+      WolfRider_attack_9: -1128224330
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
