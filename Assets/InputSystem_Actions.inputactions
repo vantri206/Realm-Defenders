@@ -1052,15 +1052,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "StartWave",
-                    "type": "Button",
-                    "id": "8d761719-f0ec-419c-b099-f23f7d0d0c42",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Sell",
                     "type": "Button",
                     "id": "32017429-d24b-44e5-a4a2-6858b745fd75",
@@ -1110,17 +1101,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "SecondaryPress",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3364d86c-6651-43a9-b842-7d555513bed2",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "StartWave",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

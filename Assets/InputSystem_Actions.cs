@@ -1138,15 +1138,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""StartWave"",
-                    ""type"": ""Button"",
-                    ""id"": ""8d761719-f0ec-419c-b099-f23f7d0d0c42"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Sell"",
                     ""type"": ""Button"",
                     ""id"": ""32017429-d24b-44e5-a4a2-6858b745fd75"",
@@ -1196,17 +1187,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SecondaryPress"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3364d86c-6651-43a9-b842-7d555513bed2"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""StartWave"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1329,7 +1309,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Gameplay_PointerPosition = m_Gameplay.FindAction("PointerPosition", throwIfNotFound: true);
         m_Gameplay_PrimaryPress = m_Gameplay.FindAction("PrimaryPress", throwIfNotFound: true);
         m_Gameplay_SecondaryPress = m_Gameplay.FindAction("SecondaryPress", throwIfNotFound: true);
-        m_Gameplay_StartWave = m_Gameplay.FindAction("StartWave", throwIfNotFound: true);
         m_Gameplay_Sell = m_Gameplay.FindAction("Sell", throwIfNotFound: true);
         m_Gameplay_Relocate = m_Gameplay.FindAction("Relocate", throwIfNotFound: true);
     }
@@ -1893,7 +1872,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_PointerPosition;
     private readonly InputAction m_Gameplay_PrimaryPress;
     private readonly InputAction m_Gameplay_SecondaryPress;
-    private readonly InputAction m_Gameplay_StartWave;
     private readonly InputAction m_Gameplay_Sell;
     private readonly InputAction m_Gameplay_Relocate;
     /// <summary>
@@ -1919,10 +1897,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/SecondaryPress".
         /// </summary>
         public InputAction @SecondaryPress => m_Wrapper.m_Gameplay_SecondaryPress;
-        /// <summary>
-        /// Provides access to the underlying input action "Gameplay/StartWave".
-        /// </summary>
-        public InputAction @StartWave => m_Wrapper.m_Gameplay_StartWave;
         /// <summary>
         /// Provides access to the underlying input action "Gameplay/Sell".
         /// </summary>
@@ -1966,9 +1940,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SecondaryPress.started += instance.OnSecondaryPress;
             @SecondaryPress.performed += instance.OnSecondaryPress;
             @SecondaryPress.canceled += instance.OnSecondaryPress;
-            @StartWave.started += instance.OnStartWave;
-            @StartWave.performed += instance.OnStartWave;
-            @StartWave.canceled += instance.OnStartWave;
             @Sell.started += instance.OnSell;
             @Sell.performed += instance.OnSell;
             @Sell.canceled += instance.OnSell;
@@ -1995,9 +1966,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SecondaryPress.started -= instance.OnSecondaryPress;
             @SecondaryPress.performed -= instance.OnSecondaryPress;
             @SecondaryPress.canceled -= instance.OnSecondaryPress;
-            @StartWave.started -= instance.OnStartWave;
-            @StartWave.performed -= instance.OnStartWave;
-            @StartWave.canceled -= instance.OnStartWave;
             @Sell.started -= instance.OnSell;
             @Sell.performed -= instance.OnSell;
             @Sell.canceled -= instance.OnSell;
@@ -2294,13 +2262,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSecondaryPress(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "StartWave" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnStartWave(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Sell" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
