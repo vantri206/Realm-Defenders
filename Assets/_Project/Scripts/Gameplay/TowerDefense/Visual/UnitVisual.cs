@@ -15,6 +15,19 @@ public class UnitVisual : MonoBehaviour
     public Animator Animator => animator;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
 
+    public void Initialize(Sprite sprite, AnimatorOverrideController animatorOverrideController)
+    {
+        if (animator != null && animatorOverrideController != null)
+        {
+            animator.runtimeAnimatorController = animatorOverrideController;
+        }
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sprite = sprite;
+        }
+    }
+    
     private void Awake()
     {
         if (animator == null)

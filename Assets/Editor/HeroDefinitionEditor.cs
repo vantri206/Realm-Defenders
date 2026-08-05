@@ -5,34 +5,50 @@ using UnityEngine;
 [CustomEditor(typeof(HeroDefinition))]
 public sealed class HeroDefinitionEditor : Editor
 {
-    private const int GridSize = 7;
+    private const int GridSize = 9;
     private const int GridCenter = GridSize / 2;
     private const float CellSize = 32f;
 
+    private static readonly Color UnselectedCellColor = new Color(0.22f, 0.22f, 0.22f);
     private static readonly Color SelectedCellColor = new Color(0.25f, 0.75f, 0.38f);
 
     private SerializedProperty heroIdProperty;
     private SerializedProperty heroNameProperty;
     private SerializedProperty iconProperty;
+    private SerializedProperty heroClassProperty;
     private SerializedProperty prefabProperty;
     private SerializedProperty maxHealthProperty;
     private SerializedProperty attackProperty;
     private SerializedProperty attackIntervalProperty;
+    private SerializedProperty defenseProperty;
+    private SerializedProperty specialDefenseProperty;
+    private SerializedProperty blockProperty;
+    private SerializedProperty baseDeployCostProperty;
+    private SerializedProperty baseRedeployTimeProperty;
+    private SerializedProperty attackTypeProperty;
     private SerializedProperty targetPriorityModeProperty;
     private SerializedProperty attackPatternProperty;
 
     private GUIStyle centeredCellStyle;
     private GUIStyle selectedCellStyle;
+    private string prefabValidationMessage;
 
     private void OnEnable()
     {
         heroIdProperty = serializedObject.FindProperty("heroId");
         heroNameProperty = serializedObject.FindProperty("heroName");
-        iconProperty = serializedObject.FindProperty("icon");
-        prefabProperty = serializedObject.FindProperty("prefab");
+        iconProperty = serializedObject.FindProperty("heroIcon");
+        heroClassProperty = serializedObject.FindProperty("heroClass");
+        prefabProperty = serializedObject.FindProperty("heroPrefab");
         maxHealthProperty = serializedObject.FindProperty("maxHealth");
         attackProperty = serializedObject.FindProperty("attack");
         attackIntervalProperty = serializedObject.FindProperty("attackInterval");
+        defenseProperty = serializedObject.FindProperty("defense");
+        specialDefenseProperty = serializedObject.FindProperty("specialDefense");
+        blockProperty = serializedObject.FindProperty("block");
+        baseDeployCostProperty = serializedObject.FindProperty("baseDeployCost");
+        baseRedeployTimeProperty = serializedObject.FindProperty("baseRedeployTime");
+        attackTypeProperty = serializedObject.FindProperty("attackType");
         targetPriorityModeProperty = serializedObject.FindProperty("targetPriorityMode");
         attackPatternProperty = serializedObject.FindProperty("attackPattern");
     }
@@ -57,9 +73,48 @@ public sealed class HeroDefinitionEditor : Editor
         EditorGUILayout.BeginVertical(EditorStyles.helpBox);
         EditorGUILayout.PropertyField(heroIdProperty, new GUIContent("Hero ID"));
         EditorGUILayout.PropertyField(heroNameProperty, new GUIContent("Hero Name"));
-        EditorGUILayout.PropertyField(iconProperty);
-        EditorGUILayout.PropertyField(prefabProperty);
+        EditorGUILayout.PropertyField(iconProperty, new GUIContent("Hero Icon"));
+        EditorGUILayout.PropertyField(heroClassProperty, new GUIContent("Hero Class"));
+        DrawHeroPrefabField();
         EditorGUILayout.EndVertical();
+    }
+
+    private void DrawHeroPrefabField()
+    {
+        HeroRuntime currentPrefab = prefabProperty.objectReferenceValue as HeroRuntime;
+        GameObject currentPrefabObject = currentPrefab != null ? currentPrefab.gameObject : null;
+
+        EditorGUI.BeginChangeCheck();
+        GameObject selectedPrefabObject = EditorGUILayout.ObjectField(
+            new GUIContent("Hero Prefab"),
+            currentPrefabObject,
+            typeof(GameObject),
+            false) as GameObject;
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            prefabValidationMessage = null;
+
+            if (selectedPrefabObject == null)
+            {
+                prefabProperty.objectReferenceValue = null;
+                return;
+            }
+
+            HeroRuntime selectedHeroRuntime = selectedPrefabObject.GetComponent<HeroRuntime>();
+            if (selectedHeroRuntime == null)
+            {
+                prefabValidationMessage = "Selected prefab must have a HeroRuntime component.";
+                return;
+            }
+
+            prefabProperty.objectReferenceValue = selectedHeroRuntime;
+        }
+
+        if (!string.IsNullOrEmpty(prefabValidationMessage))
+        {
+            EditorGUILayout.HelpBox(prefabValidationMessage, MessageType.Error);
+        }
     }
 
     private void DrawStatsSection()
@@ -69,6 +124,11 @@ public sealed class HeroDefinitionEditor : Editor
         EditorGUILayout.PropertyField(maxHealthProperty, new GUIContent("Max Health"));
         EditorGUILayout.PropertyField(attackProperty);
         EditorGUILayout.PropertyField(attackIntervalProperty, new GUIContent("Attack Interval"));
+        EditorGUILayout.PropertyField(defenseProperty);
+        EditorGUILayout.PropertyField(specialDefenseProperty, new GUIContent("Special Defense"));
+        EditorGUILayout.PropertyField(blockProperty);
+        EditorGUILayout.PropertyField(baseDeployCostProperty, new GUIContent("Base Deploy Cost"));
+        EditorGUILayout.PropertyField(baseRedeployTimeProperty, new GUIContent("Base Redeploy Time"));
         EditorGUILayout.EndVertical();
     }
 
@@ -76,6 +136,7 @@ public sealed class HeroDefinitionEditor : Editor
     {
         EditorGUILayout.LabelField("Attack", EditorStyles.boldLabel);
         EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+        EditorGUILayout.PropertyField(attackTypeProperty, new GUIContent("Attack Type"));
         EditorGUILayout.PropertyField(targetPriorityModeProperty, new GUIContent("Target Priority"));
         EditorGUILayout.Space(5f);
 
@@ -144,7 +205,7 @@ public sealed class HeroDefinitionEditor : Editor
         if (outsideCount > 0)
         {
             EditorGUILayout.HelpBox(
-                $"{outsideCount} attack pattern offset(s) are outside the 7x7 editor grid and are preserved.",
+                $"{outsideCount} attack pattern offset(s) are outside the {GridSize}x{GridSize} editor grid and are preserved.",
                 MessageType.Warning);
         }
 
@@ -302,17 +363,16 @@ public sealed class HeroDefinitionEditor : Editor
             return;
         }
 
-        centeredCellStyle = new GUIStyle(EditorStyles.miniButton)
-        {
-            alignment = TextAnchor.MiddleCenter,
-            fixedWidth = CellSize,
-            fixedHeight = CellSize
-        };
-
+        centeredCellStyle = CreateFlatCellStyle(UnselectedCellColor, Color.white);
         selectedCellStyle = CreateColoredCellStyle(SelectedCellColor, Color.white);
     }
 
     private static GUIStyle CreateColoredCellStyle(Color backgroundColor, Color textColor)
+    {
+        return CreateFlatCellStyle(backgroundColor, textColor);
+    }
+
+    private static GUIStyle CreateFlatCellStyle(Color backgroundColor, Color textColor)
     {
         Texture2D background = new Texture2D(1, 1)
         {
@@ -321,11 +381,13 @@ public sealed class HeroDefinitionEditor : Editor
         background.SetPixel(0, 0, backgroundColor);
         background.Apply();
 
-        GUIStyle style = new GUIStyle(EditorStyles.miniButton)
+        GUIStyle style = new GUIStyle(GUIStyle.none)
         {
             alignment = TextAnchor.MiddleCenter,
             fixedWidth = CellSize,
-            fixedHeight = CellSize
+            fixedHeight = CellSize,
+            margin = new RectOffset(1, 1, 1, 1),
+            padding = new RectOffset(0, 0, 0, 0)
         };
 
         style.normal.background = background;

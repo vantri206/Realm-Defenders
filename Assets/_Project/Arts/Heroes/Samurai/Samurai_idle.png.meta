@@ -480,6 +480,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Samurai_idle_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a352e4259d3c0044eb3b963c00626d19
+      internalID: 190543965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -504,6 +526,7 @@ TextureImporter:
       Samurai_idle_13: -1225093474
       Samurai_idle_14: 740266843
       Samurai_idle_15: 979566654
+      Samurai_idle_16: 190543965
       Samurai_idle_2: -1425010894
       Samurai_idle_3: 1274727528
       Samurai_idle_4: -228866471

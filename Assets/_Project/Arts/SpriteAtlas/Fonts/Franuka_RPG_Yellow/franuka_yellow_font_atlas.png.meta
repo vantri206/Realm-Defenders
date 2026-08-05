@@ -1,0 +1,1807 @@
+fileFormatVersion: 2
+guid: 92e67e97fecfb504e8f8c2d3fa5220a8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3533914729895568440
+    second: font_atlas_0
+  - first:
+      213: -4360121289791743137
+    second: font_atlas_1
+  - first:
+      213: 6576242810449380235
+    second: font_atlas_2
+  - first:
+      213: 5908354388708847832
+    second: font_atlas_3
+  - first:
+      213: 4619814472166037318
+    second: font_atlas_4
+  - first:
+      213: 3883053749964664135
+    second: font_atlas_5
+  - first:
+      213: -4891374894750924501
+    second: font_atlas_6
+  - first:
+      213: -2167152716856621980
+    second: font_atlas_7
+  - first:
+      213: -1525792021872645403
+    second: font_atlas_8
+  - first:
+      213: 4891976073982459437
+    second: font_atlas_9
+  - first:
+      213: -8046452330719339533
+    second: font_atlas_10
+  - first:
+      213: 6342461563543777735
+    second: font_atlas_11
+  - first:
+      213: 2770679683645392146
+    second: font_atlas_12
+  - first:
+      213: -314946846561460031
+    second: font_atlas_13
+  - first:
+      213: -965950655829861668
+    second: font_atlas_14
+  - first:
+      213: -1657767903330791355
+    second: font_atlas_15
+  - first:
+      213: 6633022129564099667
+    second: font_atlas_16
+  - first:
+      213: 9212969813643067759
+    second: font_atlas_17
+  - first:
+      213: -738647661743055564
+    second: font_atlas_18
+  - first:
+      213: 7028685292626677885
+    second: font_atlas_19
+  - first:
+      213: -8218683617176613597
+    second: font_atlas_20
+  - first:
+      213: 4093829293003274252
+    second: font_atlas_21
+  - first:
+      213: 6961174676245438261
+    second: font_atlas_22
+  - first:
+      213: 660999863212854620
+    second: font_atlas_23
+  - first:
+      213: -5758186957484877934
+    second: font_atlas_24
+  - first:
+      213: -3817892897728501110
+    second: font_atlas_25
+  - first:
+      213: -490480822496551628
+    second: font_atlas_26
+  - first:
+      213: -7519000962536569983
+    second: font_atlas_27
+  - first:
+      213: -927151898435720625
+    second: font_atlas_28
+  - first:
+      213: -2426262312651085220
+    second: font_atlas_29
+  - first:
+      213: -7387364775675049477
+    second: font_atlas_30
+  - first:
+      213: 2629045744757031555
+    second: font_atlas_31
+  - first:
+      213: -9023492628538547672
+    second: font_atlas_32
+  - first:
+      213: -7668492034914959200
+    second: font_atlas_33
+  - first:
+      213: -1232107113918420591
+    second: font_atlas_34
+  - first:
+      213: -5621862770351927667
+    second: font_atlas_35
+  - first:
+      213: 8569663941314212262
+    second: font_atlas_36
+  - first:
+      213: -7605392599147634940
+    second: font_atlas_37
+  - first:
+      213: 4924806333710140232
+    second: font_atlas_38
+  - first:
+      213: -6489857891302756491
+    second: font_atlas_39
+  - first:
+      213: 8179009062591086074
+    second: font_atlas_40
+  - first:
+      213: 3228085249957690405
+    second: font_atlas_41
+  - first:
+      213: 3019569183129227852
+    second: font_atlas_42
+  - first:
+      213: 2236661589468665392
+    second: font_atlas_43
+  - first:
+      213: 3008213117764926239
+    second: font_atlas_44
+  - first:
+      213: 40658064361885672
+    second: font_atlas_45
+  - first:
+      213: 6773328762422467658
+    second: font_atlas_46
+  - first:
+      213: 1791801425553788039
+    second: font_atlas_47
+  - first:
+      213: -2253033379946500039
+    second: font_atlas_48
+  - first:
+      213: 7898323574576595946
+    second: font_atlas_49
+  - first:
+      213: -4039780033005457825
+    second: font_atlas_50
+  - first:
+      213: -3023280620812851178
+    second: font_atlas_51
+  - first:
+      213: 6137771310421690421
+    second: font_atlas_52
+  - first:
+      213: 7189607608553868895
+    second: font_atlas_53
+  - first:
+      213: -6398244715699227138
+    second: font_atlas_54
+  - first:
+      213: -8342171941697325248
+    second: font_atlas_55
+  - first:
+      213: 4173317245453422736
+    second: font_atlas_56
+  - first:
+      213: 2417978794018471024
+    second: font_atlas_57
+  - first:
+      213: 7014338443392773974
+    second: font_atlas_58
+  - first:
+      213: 7947636812261268295
+    second: font_atlas_59
+  - first:
+      213: -769936156787216902
+    second: font_atlas_60
+  - first:
+      213: -8832947545963205712
+    second: font_atlas_61
+  - first:
+      213: 6965828437675976899
+    second: font_atlas_62
+  - first:
+      213: -1753051850180290837
+    second: font_atlas_63
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: font_atlas_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 52
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cbdd02d64305fec0800000000000000
+      internalID: -3533914729895568440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_1
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 52
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5b5850b9ccbd73c0800000000000000
+      internalID: -4360121289791743137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_2
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 52
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b834d816ef1834b50800000000000000
+      internalID: 6576242810449380235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 52
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d07c124301bef150800000000000000
+      internalID: 5908354388708847832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_4
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 52
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6475aad19c0ec1040800000000000000
+      internalID: 4619814472166037318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_5
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 52
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74d6462ffc063e530800000000000000
+      internalID: 3883053749964664135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_6
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 52
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b218b17e2785e1cb0800000000000000
+      internalID: -4891374894750924501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_7
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 52
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4640db9061abce1e0800000000000000
+      internalID: -2167152716856621980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_8
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 52
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eae7277d3c43dae0800000000000000
+      internalID: -1525792021872645403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_9
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 52
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2e3f6b025ac3e340800000000000000
+      internalID: 4891976073982459437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_10
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 52
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fb1c55bc32455090800000000000000
+      internalID: -8046452330719339533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_11
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 52
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c178903033f40850800000000000000
+      internalID: 6342461563543777735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_12
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 52
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 215431a1e7e637620800000000000000
+      internalID: 2770679683645392146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_13
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 52
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c0239ff28511abf0800000000000000
+      internalID: -314946846561460031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_14
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 52
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cda94b01ff04892f0800000000000000
+      internalID: -965950655829861668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_15
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 52
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5409ce900ec6ef8e0800000000000000
+      internalID: -1657767903330791355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_16
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 51
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35429fbcb7a3d0c50800000000000000
+      internalID: 6633022129564099667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_17
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 52
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f61879cab3b0bdf70800000000000000
+      internalID: 9212969813643067759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_18
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 52
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43dd1ab7ddbcfb5f0800000000000000
+      internalID: -738647661743055564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_19
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 52
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d709609b808ea8160800000000000000
+      internalID: 7028685292626677885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_20
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 52
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32d8ddc6bce51fd80800000000000000
+      internalID: -8218683617176613597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_21
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 52
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c087c8c4d0430d830800000000000000
+      internalID: 4093829293003274252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_22
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 52
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53fdd057c7f0b9060800000000000000
+      internalID: 6961174676245438261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_23
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 52
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5d426b9fd75c2900800000000000000
+      internalID: 660999863212854620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_24
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 40
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29793d8687fc610b0800000000000000
+      internalID: -5758186957484877934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_25
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 40
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8ae76833ae140bc0800000000000000
+      internalID: -3817892897728501110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_26
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 40
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43d93f56a467139f0800000000000000
+      internalID: -490480822496551628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_27
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 40
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1830032467427a790800000000000000
+      internalID: -7519000962536569983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_28
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 40
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4ae8e8b2481223f0800000000000000
+      internalID: -927151898435720625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_29
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 40
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5aa382184f245ed0800000000000000
+      internalID: -2426262312651085220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_30
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 40
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf9c7af50eeca7990800000000000000
+      internalID: -7387364775675049477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_31
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 40
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 382ce72fc2f3c7420800000000000000
+      internalID: 2629045744757031555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_32
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 40
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 822aa9a434d16c280800000000000000
+      internalID: -9023492628538547672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_33
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 40
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a04bf7af1b049590800000000000000
+      internalID: -7668492034914959200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_34
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 40
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19929ad9b1da6eee0800000000000000
+      internalID: -1232107113918420591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_35
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 40
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8e0e25a8912bf1b0800000000000000
+      internalID: -5621862770351927667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_36
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 45
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a1f18a53ff8de670800000000000000
+      internalID: 8569663941314212262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_37
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 42
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40f9b66e9b7347690800000000000000
+      internalID: -7605392599147634940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_38
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 43
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 843036c844d685440800000000000000
+      internalID: 4924806333710140232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_39
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 40
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57f2222f1a46fe5a0800000000000000
+      internalID: -6489857891302756491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_40
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 40
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afd317e786da18170800000000000000
+      internalID: 8179009062591086074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_41
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 40
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52cf7648e667ccc20800000000000000
+      internalID: 3228085249957690405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_42
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 40
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4252277c2aa7e920800000000000000
+      internalID: 3019569183129227852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_43
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 45
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0365a038dd73a0f10800000000000000
+      internalID: 2236661589468665392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_44
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 45
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1b7c0574e15fb920800000000000000
+      internalID: 3008213117764926239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_45
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 42
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ef8b8b4b42709000800000000000000
+      internalID: 40658064361885672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_46
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 42
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4c902f6f92bffd50800000000000000
+      internalID: 6773328762422467658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_47
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 40
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78c0c2637e1cdd810800000000000000
+      internalID: 1791801425553788039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_48
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 41
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 930f039f31e9bb0e0800000000000000
+      internalID: -2253033379946500039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_49
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 27
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae34bb7a17b7c9d60800000000000000
+      internalID: 7898323574576595946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_50
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 29
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5e6ef1b671dfe7c0800000000000000
+      internalID: -4039780033005457825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_51
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 29
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 618a02c1b462b06d0800000000000000
+      internalID: -3023280620812851178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_52
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 29
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 538c44ecc7ebd2550800000000000000
+      internalID: 6137771310421690421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_53
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 29
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5e8c4e170e96c360800000000000000
+      internalID: 7189607608553868895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_54
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 27
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef53ab6945ed437a0800000000000000
+      internalID: -6398244715699227138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_55
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 27
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04776e751d6aa3c80800000000000000
+      internalID: -8342171941697325248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_56
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 27
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 090534e6ce99ae930800000000000000
+      internalID: 4173317245453422736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_57
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 27
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07cf5e3f6e26e8120800000000000000
+      internalID: 2417978794018471024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_58
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 27
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65feac496afe75160800000000000000
+      internalID: 7014338443392773974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_59
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 26
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74b96a6829dab4e60800000000000000
+      internalID: 7947636812261268295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_60
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 34
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afde7fa0523a055f0800000000000000
+      internalID: -769936156787216902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_61
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 31
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bb643381011b6580800000000000000
+      internalID: -8832947545963205712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_62
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 31
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c8adf9be089ba060800000000000000
+      internalID: 6965828437675976899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: font_atlas_63
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 33
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be6992d51a8eba7e0800000000000000
+      internalID: -1753051850180290837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      font_atlas_0: -3533914729895568440
+      font_atlas_1: -4360121289791743137
+      font_atlas_10: -8046452330719339533
+      font_atlas_11: 6342461563543777735
+      font_atlas_12: 2770679683645392146
+      font_atlas_13: -314946846561460031
+      font_atlas_14: -965950655829861668
+      font_atlas_15: -1657767903330791355
+      font_atlas_16: 6633022129564099667
+      font_atlas_17: 9212969813643067759
+      font_atlas_18: -738647661743055564
+      font_atlas_19: 7028685292626677885
+      font_atlas_2: 6576242810449380235
+      font_atlas_20: -8218683617176613597
+      font_atlas_21: 4093829293003274252
+      font_atlas_22: 6961174676245438261
+      font_atlas_23: 660999863212854620
+      font_atlas_24: -5758186957484877934
+      font_atlas_25: -3817892897728501110
+      font_atlas_26: -490480822496551628
+      font_atlas_27: -7519000962536569983
+      font_atlas_28: -927151898435720625
+      font_atlas_29: -2426262312651085220
+      font_atlas_3: 5908354388708847832
+      font_atlas_30: -7387364775675049477
+      font_atlas_31: 2629045744757031555
+      font_atlas_32: -9023492628538547672
+      font_atlas_33: -7668492034914959200
+      font_atlas_34: -1232107113918420591
+      font_atlas_35: -5621862770351927667
+      font_atlas_36: 8569663941314212262
+      font_atlas_37: -7605392599147634940
+      font_atlas_38: 4924806333710140232
+      font_atlas_39: -6489857891302756491
+      font_atlas_4: 4619814472166037318
+      font_atlas_40: 8179009062591086074
+      font_atlas_41: 3228085249957690405
+      font_atlas_42: 3019569183129227852
+      font_atlas_43: 2236661589468665392
+      font_atlas_44: 3008213117764926239
+      font_atlas_45: 40658064361885672
+      font_atlas_46: 6773328762422467658
+      font_atlas_47: 1791801425553788039
+      font_atlas_48: -2253033379946500039
+      font_atlas_49: 7898323574576595946
+      font_atlas_5: 3883053749964664135
+      font_atlas_50: -4039780033005457825
+      font_atlas_51: -3023280620812851178
+      font_atlas_52: 6137771310421690421
+      font_atlas_53: 7189607608553868895
+      font_atlas_54: -6398244715699227138
+      font_atlas_55: -8342171941697325248
+      font_atlas_56: 4173317245453422736
+      font_atlas_57: 2417978794018471024
+      font_atlas_58: 7014338443392773974
+      font_atlas_59: 7947636812261268295
+      font_atlas_6: -4891374894750924501
+      font_atlas_60: -769936156787216902
+      font_atlas_61: -8832947545963205712
+      font_atlas_62: 6965828437675976899
+      font_atlas_63: -1753051850180290837
+      font_atlas_7: -2167152716856621980
+      font_atlas_8: -1525792021872645403
+      font_atlas_9: 4891976073982459437
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

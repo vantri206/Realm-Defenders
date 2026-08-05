@@ -15,7 +15,6 @@ public class CombatGridTilemapSource
     public bool IsRequired => isRequired;
 }
 
-[DisallowMultipleComponent]
 public class CombatGrid : MonoBehaviour
 {
     [Header("References")]
@@ -36,9 +35,9 @@ public class CombatGrid : MonoBehaviour
     public BoundsInt CellBounds => cellBounds;
     public int CellCount => cells.Count;
 
-    public void Build()
+    public void BuildGridMap()
     {
-        Clear();
+        ClearGrid();
 
         if (grid == null)
         {
@@ -57,20 +56,38 @@ public class CombatGrid : MonoBehaviour
         }
     }
 
-    public void Clear()
+    public void ClearGrid()
     {
         cells.Clear();
         cellBounds = new BoundsInt();
     }
 
-    public bool TryGetCell(Vector3Int cellPosition, out CombatGridCell cell)
+    public bool TryWorldToCell(Vector3 worldPosition, out Vector3Int cellPosition)
     {
+        if (grid == null)
+        {
+            cellPosition = default;
+            return false;
+        }
+
+        cellPosition = grid.WorldToCell(worldPosition);
+        return true;
+    }
+
+    public bool WorldToCell(Vector3 worldPosition, out CombatGridCell cell)
+    {
+        if (!TryWorldToCell(worldPosition, out Vector3Int cellPosition))
+        {
+            cell = null;
+            return false;
+        }
+
         return cells.TryGetValue(cellPosition, out cell);
     }
 
-    public Vector3Int WorldToCell(Vector3 worldPosition)
+    public bool TryGetCell(Vector3Int cellPosition, out CombatGridCell cell)
     {
-        return grid != null ? grid.WorldToCell(worldPosition) : Vector3Int.zero;
+        return cells.TryGetValue(cellPosition, out cell);
     }
 
     public Vector3 CellToWorldCenter(Vector3Int cellPosition)
@@ -105,6 +122,21 @@ public class CombatGrid : MonoBehaviour
         }
 
         return cell;
+    }
+
+    public IReadOnlyCollection<CombatGridCell> GetAllDeployableCells()
+    {
+        List<CombatGridCell> deployableCells = new List<CombatGridCell>();
+
+        foreach (var cell in cells.Values)
+        {
+            if (cell.CanDeployHero())
+            {
+                deployableCells.Add(cell);
+            }
+        }
+
+        return deployableCells;
     }
 
     private bool IsValidSource(CombatGridTilemapSource source)
@@ -142,20 +174,30 @@ public class CombatGrid : MonoBehaviour
 
         foreach (CombatGridTilemapSource source in tilemapSources)
         {
-            if (source?.Tilemap == null || source.Tilemap.cellBounds.size == Vector3Int.zero)
+            Tilemap tilemap = source?.Tilemap;
+
+            if (tilemap == null)
+            {
+                continue;
+            }
+
+            tilemap.CompressBounds();
+            BoundsInt tilemapBounds = tilemap.cellBounds;
+
+            if (tilemapBounds.size == Vector3Int.zero)
             {
                 continue;
             }
 
             if (!hasBounds)
             {
-                sourceBounds = source.Tilemap.cellBounds;
+                sourceBounds = tilemapBounds;
                 hasBounds = true;
                 continue;
             }
 
-            Vector3Int min = Vector3Int.Min(sourceBounds.min, source.Tilemap.cellBounds.min);
-            Vector3Int max = Vector3Int.Max(sourceBounds.max, source.Tilemap.cellBounds.max);
+            Vector3Int min = Vector3Int.Min(sourceBounds.min, tilemapBounds.min);
+            Vector3Int max = Vector3Int.Max(sourceBounds.max, tilemapBounds.max);
             sourceBounds.SetMinMax(min, max);
         }
 
@@ -169,7 +211,8 @@ public class CombatGrid : MonoBehaviour
             return;
         }
 
-        BoundsInt boundsToDraw = cells.Count > 0 ? cellBounds : GetTilemapSourceBounds();
+        bool useBuiltCellBounds = Application.isPlaying && cells.Count > 0;
+        BoundsInt boundsToDraw = useBuiltCellBounds ? cellBounds : GetTilemapSourceBounds();
 
         if (boundsToDraw.size == Vector3Int.zero)
         {

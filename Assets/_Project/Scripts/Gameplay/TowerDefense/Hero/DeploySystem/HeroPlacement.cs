@@ -18,7 +18,7 @@ public class HeroPlacement : MonoBehaviour
             return false;
         }
 
-        if (instance.Definition.Prefab == null || combatGrid == null)
+        if (!instance.Definition.IsValid || combatGrid == null)
         {
             return false;
         }
@@ -54,27 +54,27 @@ public class HeroPlacement : MonoBehaviour
         return hero;
     }
 
-    public HeroRuntime RemoveHero(HeroRuntime hero)
+    public bool RemoveHero(HeroRuntime hero)
     {
         if (hero == null || combatGrid == null)
         {
-            return null;
+            return false;
         }
 
         if (hero.GridPosition == null || !hero.GridPosition.HasCell)
         {
-            return null;
+            return false;
         }
 
         Vector3Int cellPosition = hero.GridPosition.CurrentCell;
         if (!combatGrid.TryGetCell(cellPosition, out CombatGridCell cell) || cell.DeployedHero != hero)
         {
-            return null;
+            return false;
         }
 
         cell.ClearDeployedHero();
         hero.GridPosition.Clear();
         Destroy(hero.gameObject);
-        return hero;
+        return true;
     }
 }

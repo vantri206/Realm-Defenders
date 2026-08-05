@@ -4,8 +4,8 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class HeroDeploymentSystem : MonoBehaviour
 {
-    [SerializeField] private HeroInventory heroInventory;
-    [SerializeField] private HeroPlacement heroPlacement;
+    private HeroInventory heroInventory;
+    private HeroPlacement heroPlacement;
 
     private HeroInstance selectedHero;
     private readonly Dictionary<HeroInstance, HeroRuntime> deployedHero = new Dictionary<HeroInstance, HeroRuntime>();
@@ -72,14 +72,14 @@ public class HeroDeploymentSystem : MonoBehaviour
             return null;
         }
 
-        HeroRuntime deployedHero = heroPlacement.PlaceHero(selectedHero, cellPosition);
-        if (deployedHero != null)
+        HeroRuntime placedHero = heroPlacement.PlaceHero(selectedHero, cellPosition);
+        if (placedHero != null)
         {
-            AddDeployedHero(selectedHero, deployedHero);
+            AddDeployedHero(selectedHero, placedHero);
             ClearSelection();
         }
 
-        return deployedHero;
+        return placedHero;
     }
 
     public bool IsHeroDeployed(HeroInstance heroInstance)
@@ -123,25 +123,26 @@ public class HeroDeploymentSystem : MonoBehaviour
         return true;
     }
 
-    public HeroRuntime RetreatSelectedHero()
+    public bool RetreatSelectedHero()
     {
         if (!CanRetreatSelectedHero())
         {
-            return null;
+            return false;
         }
 
         if (!TryGetDeployedHero(selectedHero, out HeroRuntime heroRuntime))
         {
-            return null;
+            return false;
         }
 
-        HeroRuntime removedHero = heroPlacement.RemoveHero(heroRuntime);
-        if (removedHero != null)
+        HeroInstance heroInstance = selectedHero;
+        if (!heroPlacement.RemoveHero(heroRuntime))
         {
-            RemoveDeployedHero(removedHero.Instance);
+            return false;
         }
 
-        return removedHero;
+        RemoveDeployedHero(heroInstance);
+        return true;
     }
 
     private void AddDeployedHero(HeroInstance heroInstance, HeroRuntime heroRuntime)

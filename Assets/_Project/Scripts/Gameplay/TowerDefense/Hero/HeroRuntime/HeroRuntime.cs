@@ -10,14 +10,20 @@ public class HeroRuntime : MonoBehaviour
     private HeroDefinition heroDefinition;
     private CombatGrid combatGrid;
     private Vector2Int facingDirection = Vector2Int.left;
+    private float maxHealth;
+    private float attack;
+    private float attackInterval;
+    private float defense;
+    private float specialDefense;
+    private int block;
 
+    private UnitVisual unitVisual;
     private HeroGridPosition heroGridPosition;
     private TeamIdentity teamIdentity;
     private Health health;
     private TargetScanner targetScanner;
     private TargetSelector targetSelector;
     private NormalAttackController normalAttackController;
-    private UnitVisual unitVisual;
 
     private bool isInitialized;
 
@@ -26,6 +32,13 @@ public class HeroRuntime : MonoBehaviour
     public CombatGrid CombatGrid => combatGrid;
     public HeroGridPosition GridPosition => heroGridPosition;
     public Vector2Int FacingDirection => facingDirection;
+    public float MaxHealth => maxHealth;
+    public float Attack => attack;
+    public float AttackInterval => attackInterval;
+    public float Defense => defense;
+    public float SpecialDefense => specialDefense;
+    public int Block => block;
+    public HeroAttackType AttackType => heroDefinition != null ? heroDefinition.AttackType : HeroAttackType.Melee;
     public IReadOnlyList<Vector2Int> ResolvedAttackPattern => resolvedAttackPattern;
     public TeamIdentity TeamIdentity => teamIdentity;
     public Health Health => health;
@@ -42,7 +55,9 @@ public class HeroRuntime : MonoBehaviour
         heroDefinition = heroInstance.Definition;
         this.combatGrid = combatGrid;
 
-        CacheReferences();
+        SetupReferences();
+        LoadHeroStats();
+        SetupVisuals();
         heroGridPosition?.Initialize(combatGrid, currentCell);
         InitializeComponents();
         RefreshAttackPattern();
@@ -77,6 +92,16 @@ public class HeroRuntime : MonoBehaviour
         RefreshAttackPattern();
     }
 
+    private void SetupVisuals()
+    {
+        if (unitVisual == null || heroDefinition == null)
+        {
+            return;
+        }
+
+        unitVisual.Initialize(heroDefinition.HeroSprite, heroDefinition.AnimatorController);
+    }
+
     private void InitializeComponents()
     {
         if (heroDefinition == null)
@@ -86,8 +111,29 @@ public class HeroRuntime : MonoBehaviour
 
         targetScanner?.Initialize(combatGrid, teamIdentity);
         targetSelector?.Initialize(heroDefinition.TargetPriorityMode);
-        normalAttackController?.Initialize(heroDefinition.Attack, heroDefinition.AttackInterval);
-        health?.Initialize(heroDefinition.MaxHealth);
+        normalAttackController?.Initialize(attack, attackInterval);
+        health?.Initialize(maxHealth);
+    }
+
+    private void LoadHeroStats()
+    {
+        if (heroDefinition == null)
+        {
+            maxHealth = 0f;
+            attack = 0f;
+            attackInterval = 0f;
+            defense = 0f;
+            specialDefense = 0f;
+            block = 0;
+            return;
+        }
+
+        maxHealth = heroDefinition.MaxHealth;
+        attack = heroDefinition.Attack;
+        attackInterval = heroDefinition.AttackInterval;
+        defense = heroDefinition.Defense;
+        specialDefense = heroDefinition.SpecialDefense;
+        block = heroDefinition.Block;
     }
 
     private void RefreshAttackPattern()
@@ -106,7 +152,7 @@ public class HeroRuntime : MonoBehaviour
         }
     }
 
-    private void CacheReferences()
+    private void SetupReferences()
     {
         if (heroGridPosition == null)
         {

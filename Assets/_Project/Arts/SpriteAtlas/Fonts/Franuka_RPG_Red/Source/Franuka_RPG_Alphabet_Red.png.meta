@@ -1,0 +1,1924 @@
+fileFormatVersion: 2
+guid: 3b3380695d818a64b8bf684689f5672a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2609692373605039181
+    second: Franuka_RPG_Alphabet_Red_0
+  - first:
+      213: 9029852609303013852
+    second: Franuka_RPG_Alphabet_Red_1
+  - first:
+      213: -6319379866123239679
+    second: Franuka_RPG_Alphabet_Red_2
+  - first:
+      213: 9171402743766693747
+    second: Franuka_RPG_Alphabet_Red_3
+  - first:
+      213: 5098021221502388226
+    second: Franuka_RPG_Alphabet_Red_4
+  - first:
+      213: -5733024496351415234
+    second: Franuka_RPG_Alphabet_Red_5
+  - first:
+      213: 8880867322647668280
+    second: Franuka_RPG_Alphabet_Red_6
+  - first:
+      213: 4232991492543958634
+    second: Franuka_RPG_Alphabet_Red_7
+  - first:
+      213: -5124440639013591433
+    second: Franuka_RPG_Alphabet_Red_8
+  - first:
+      213: -3822605973136410546
+    second: Franuka_RPG_Alphabet_Red_9
+  - first:
+      213: -3512030927299965598
+    second: Franuka_RPG_Alphabet_Red_10
+  - first:
+      213: 7204397282410329818
+    second: Franuka_RPG_Alphabet_Red_11
+  - first:
+      213: -4575375323370314700
+    second: Franuka_RPG_Alphabet_Red_12
+  - first:
+      213: 4013553187859607133
+    second: Franuka_RPG_Alphabet_Red_13
+  - first:
+      213: 4770269507558399558
+    second: Franuka_RPG_Alphabet_Red_14
+  - first:
+      213: 3950282064710486318
+    second: Franuka_RPG_Alphabet_Red_15
+  - first:
+      213: 1435458858537189877
+    second: Franuka_RPG_Alphabet_Red_16
+  - first:
+      213: -5307051526060195223
+    second: Franuka_RPG_Alphabet_Red_17
+  - first:
+      213: 2234224444752825145
+    second: Franuka_RPG_Alphabet_Red_18
+  - first:
+      213: 4858045585518032583
+    second: Franuka_RPG_Alphabet_Red_19
+  - first:
+      213: -7691581197264773078
+    second: Franuka_RPG_Alphabet_Red_20
+  - first:
+      213: 1139242866320373476
+    second: Franuka_RPG_Alphabet_Red_21
+  - first:
+      213: 5390002317525664231
+    second: Franuka_RPG_Alphabet_Red_22
+  - first:
+      213: -6658460094588530834
+    second: Franuka_RPG_Alphabet_Red_23
+  - first:
+      213: -310541631404063971
+    second: Franuka_RPG_Alphabet_Red_24
+  - first:
+      213: -4615596235801833391
+    second: Franuka_RPG_Alphabet_Red_25
+  - first:
+      213: 8250465952313251336
+    second: Franuka_RPG_Alphabet_Red_26
+  - first:
+      213: -5335196913554352606
+    second: Franuka_RPG_Alphabet_Red_27
+  - first:
+      213: -7528517788981829382
+    second: Franuka_RPG_Alphabet_Red_28
+  - first:
+      213: -5194419935381459989
+    second: Franuka_RPG_Alphabet_Red_29
+  - first:
+      213: 1399288387104895107
+    second: Franuka_RPG_Alphabet_Red_30
+  - first:
+      213: 8728002868210780654
+    second: Franuka_RPG_Alphabet_Red_31
+  - first:
+      213: 2928640989500541353
+    second: Franuka_RPG_Alphabet_Red_32
+  - first:
+      213: 4364874732538279006
+    second: Franuka_RPG_Alphabet_Red_33
+  - first:
+      213: 8462132034286084650
+    second: Franuka_RPG_Alphabet_Red_34
+  - first:
+      213: 8052876940841228999
+    second: Franuka_RPG_Alphabet_Red_35
+  - first:
+      213: -4323363387996517910
+    second: Franuka_RPG_Alphabet_Red_36
+  - first:
+      213: -8788554674108009682
+    second: Franuka_RPG_Alphabet_Red_37
+  - first:
+      213: -5641917191565985899
+    second: Franuka_RPG_Alphabet_Red_38
+  - first:
+      213: 1669578062868922279
+    second: Franuka_RPG_Alphabet_Red_39
+  - first:
+      213: 5995906999543141244
+    second: Franuka_RPG_Alphabet_Red_40
+  - first:
+      213: 5983408239323978196
+    second: Franuka_RPG_Alphabet_Red_41
+  - first:
+      213: 8019023055944676876
+    second: Franuka_RPG_Alphabet_Red_42
+  - first:
+      213: -9016995512581656365
+    second: Franuka_RPG_Alphabet_Red_43
+  - first:
+      213: -7790767775477269595
+    second: Franuka_RPG_Alphabet_Red_44
+  - first:
+      213: -3894226850010221595
+    second: Franuka_RPG_Alphabet_Red_45
+  - first:
+      213: 928674097014161012
+    second: Franuka_RPG_Alphabet_Red_46
+  - first:
+      213: -2322514312263851282
+    second: Franuka_RPG_Alphabet_Red_47
+  - first:
+      213: -8375203804415111312
+    second: Franuka_RPG_Alphabet_Red_48
+  - first:
+      213: -3884927683302965881
+    second: Franuka_RPG_Alphabet_Red_49
+  - first:
+      213: 3038002479364952251
+    second: Franuka_RPG_Alphabet_Red_50
+  - first:
+      213: 8654604310885592555
+    second: Franuka_RPG_Alphabet_Red_51
+  - first:
+      213: 7934064420502814362
+    second: Franuka_RPG_Alphabet_Red_52
+  - first:
+      213: -7981626716211937443
+    second: Franuka_RPG_Alphabet_Red_53
+  - first:
+      213: 5500481536209364193
+    second: Franuka_RPG_Alphabet_Red_54
+  - first:
+      213: 3888275483025278622
+    second: Franuka_RPG_Alphabet_Red_55
+  - first:
+      213: -3227449513777213344
+    second: Franuka_RPG_Alphabet_Red_56
+  - first:
+      213: 152979194474608140
+    second: Franuka_RPG_Alphabet_Red_57
+  - first:
+      213: -4605299098252788146
+    second: Franuka_RPG_Alphabet_Red_58
+  - first:
+      213: -2878778499070200987
+    second: Franuka_RPG_Alphabet_Red_59
+  - first:
+      213: -5982677444647659222
+    second: Franuka_RPG_Alphabet_Red_60
+  - first:
+      213: -4846445007045046302
+    second: Franuka_RPG_Alphabet_Red_61
+  - first:
+      213: 8205796037838625813
+    second: Franuka_RPG_Alphabet_Red_62
+  - first:
+      213: 8373971293180470499
+    second: Franuka_RPG_Alphabet_Red_63
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4c36c5136d773420800000000000000
+      internalID: 2609692373605039181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd9e3af1b1b705d70800000000000000
+      internalID: 9029852609303013852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10ff7f64e7d0d48a0800000000000000
+      internalID: -6319379866123239679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 377b14a043e574f70800000000000000
+      internalID: 9171402743766693747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2088d0d5a4fcfb640800000000000000
+      internalID: 5098021221502388226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e347c5e68943070b0800000000000000
+      internalID: -5733024496351415234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836e9cfe6cd2f3b70800000000000000
+      internalID: 8880867322647668280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6e455ac55b9eba30800000000000000
+      internalID: 4232991492543958634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 776e407a36452e8b0800000000000000
+      internalID: -5124440639013591433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_9
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e48fae6de1063fac0800000000000000
+      internalID: -3822605973136410546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26d891aaa72c24fc0800000000000000
+      internalID: -3512030927299965598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_11
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad67bd668292bf360800000000000000
+      internalID: 7204397282410329818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 434ac6082600180c0800000000000000
+      internalID: -4575375323370314700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_13
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5e22811c5103b730800000000000000
+      internalID: 4013553187859607133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_14
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64e55e8d7d6633240800000000000000
+      internalID: 4770269507558399558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_15
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e294aadbb9832d630800000000000000
+      internalID: 3950282064710486318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f10cc8f936cbe310800000000000000
+      internalID: 1435458858537189877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_17
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 962cc7841c09956b0800000000000000
+      internalID: -5307051526060195223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_18
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93b8cf98b4f810f10800000000000000
+      internalID: 2234224444752825145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_19
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c6f47398be3b6340800000000000000
+      internalID: 4858045585518032583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_20
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a20a5ff17a3024590800000000000000
+      internalID: -7691581197264773078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_21
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e67ce7d9576fcf00800000000000000
+      internalID: 1139242866320373476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_22
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e146a2ec822dca40800000000000000
+      internalID: 5390002317525664231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_23
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6fcfee62d56893a0800000000000000
+      internalID: -6658460094588530834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_24
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d13c034180cb0bbf0800000000000000
+      internalID: -310541631404063971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_25
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 150d6629dab12ffb0800000000000000
+      internalID: -4615596235801833391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 806161f121b8f7270800000000000000
+      internalID: 8250465952313251336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_27
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22615d89ca295f5b0800000000000000
+      internalID: -5335196913554352606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_28
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af0678e65f4558790800000000000000
+      internalID: -7528517788981829382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_29
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beb61690796b9e7b0800000000000000
+      internalID: -5194419935381459989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_30
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38077b3df554b6310800000000000000
+      internalID: 1399288387104895107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_31
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee94b4e9d58102970800000000000000
+      internalID: 8728002868210780654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_32
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a904dd967f94a820800000000000000
+      internalID: 2928640989500541353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_33
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e54b5027176239c30800000000000000
+      internalID: 4364874732538279006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_34
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a22631a30488f6570800000000000000
+      internalID: 8462132034286084650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_35
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ca96c669e091cf60800000000000000
+      internalID: 8052876940841228999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_36
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae9c98f97e35004c0800000000000000
+      internalID: -4323363387996517910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_37
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2371b07618c80680800000000000000
+      internalID: -8788554674108009682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_38
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5973a88d432e3b1b0800000000000000
+      internalID: -5641917191565985899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_39
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7af361207688b2710800000000000000
+      internalID: 1669578062868922279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_40
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c731c0ef5adb53350800000000000000
+      internalID: 5995906999543141244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_41
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d91d0b9716590350800000000000000
+      internalID: 5983408239323978196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_42
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c06ff379bfa494f60800000000000000
+      internalID: 8019023055944676876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_43
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d0774bfa523dd280800000000000000
+      internalID: -9016995512581656365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_44
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5abfd174cf1a1e390800000000000000
+      internalID: -7790767775477269595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_45
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e33a5aff4de4f9c0800000000000000
+      internalID: -3894226850010221595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_46
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47eb2a0cb2053ec00800000000000000
+      internalID: 928674097014161012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_47
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee2a0c7c985c4cfd0800000000000000
+      internalID: -2322514312263851282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_48
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07f465c738c45cb80800000000000000
+      internalID: -8375203804415111312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_49
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78d35a2fad6f51ac0800000000000000
+      internalID: -3884927683302965881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_50
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb0dd41b827292a20800000000000000
+      internalID: 3038002479364952251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_51
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bed66e544c45b1870800000000000000
+      internalID: 8654604310885592555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9eb221dd857b1e60800000000000000
+      internalID: 7934064420502814362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_53
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5f7b624ac09b3190800000000000000
+      internalID: -7981626716211937443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_54
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e4aa5b70d2a55c40800000000000000
+      internalID: 5500481536209364193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_55
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e96059a63fde5f530800000000000000
+      internalID: 3888275483025278622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_56
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0605dc854cbc533d0800000000000000
+      internalID: -3227449513777213344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_57
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c063fa054cd7f1200800000000000000
+      internalID: 152979194474608140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_58
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4e373cbed0b610c0800000000000000
+      internalID: -4605299098252788146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_59
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56373ef15368c08d0800000000000000
+      internalID: -2878778499070200987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_60
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a29d80acf8249fca0800000000000000
+      internalID: -5982677444647659222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_61
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ef4d9391f7fdbcb0800000000000000
+      internalID: -4846445007045046302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_62
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51cddae2508d0e170800000000000000
+      internalID: 8205796037838625813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_63
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e427512682563470800000000000000
+      internalID: 8373971293180470499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_64
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0b3ca0f2c3baa84a8476faa84ee384d
+      internalID: 732861801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_65
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b39affafbe1af4c4bbb2fac867dbd1fd
+      internalID: -555332667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_66
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66c087f15227fd4459042848b74bde8f
+      internalID: -1764907095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_67
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce87195f6da02454b9280f1f0e65f4d5
+      internalID: 1100986885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Franuka_RPG_Alphabet_Red_68
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e9acaaa30020004fba28efea614efd3
+      internalID: -1707259686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 24990da6a2a8c154ca5d5cb5220d23e6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Franuka_RPG_Alphabet_Red_0: 2609692373605039181
+      Franuka_RPG_Alphabet_Red_1: 9029852609303013852
+      Franuka_RPG_Alphabet_Red_10: -3512030927299965598
+      Franuka_RPG_Alphabet_Red_11: 7204397282410329818
+      Franuka_RPG_Alphabet_Red_12: -4575375323370314700
+      Franuka_RPG_Alphabet_Red_13: 4013553187859607133
+      Franuka_RPG_Alphabet_Red_14: 4770269507558399558
+      Franuka_RPG_Alphabet_Red_15: 3950282064710486318
+      Franuka_RPG_Alphabet_Red_16: 1435458858537189877
+      Franuka_RPG_Alphabet_Red_17: -5307051526060195223
+      Franuka_RPG_Alphabet_Red_18: 2234224444752825145
+      Franuka_RPG_Alphabet_Red_19: 4858045585518032583
+      Franuka_RPG_Alphabet_Red_2: -6319379866123239679
+      Franuka_RPG_Alphabet_Red_20: -7691581197264773078
+      Franuka_RPG_Alphabet_Red_21: 1139242866320373476
+      Franuka_RPG_Alphabet_Red_22: 5390002317525664231
+      Franuka_RPG_Alphabet_Red_23: -6658460094588530834
+      Franuka_RPG_Alphabet_Red_24: -310541631404063971
+      Franuka_RPG_Alphabet_Red_25: -4615596235801833391
+      Franuka_RPG_Alphabet_Red_26: 8250465952313251336
+      Franuka_RPG_Alphabet_Red_27: -5335196913554352606
+      Franuka_RPG_Alphabet_Red_28: -7528517788981829382
+      Franuka_RPG_Alphabet_Red_29: -5194419935381459989
+      Franuka_RPG_Alphabet_Red_3: 9171402743766693747
+      Franuka_RPG_Alphabet_Red_30: 1399288387104895107
+      Franuka_RPG_Alphabet_Red_31: 8728002868210780654
+      Franuka_RPG_Alphabet_Red_32: 2928640989500541353
+      Franuka_RPG_Alphabet_Red_33: 4364874732538279006
+      Franuka_RPG_Alphabet_Red_34: 8462132034286084650
+      Franuka_RPG_Alphabet_Red_35: 8052876940841228999
+      Franuka_RPG_Alphabet_Red_36: -4323363387996517910
+      Franuka_RPG_Alphabet_Red_37: -8788554674108009682
+      Franuka_RPG_Alphabet_Red_38: -5641917191565985899
+      Franuka_RPG_Alphabet_Red_39: 1669578062868922279
+      Franuka_RPG_Alphabet_Red_4: 5098021221502388226
+      Franuka_RPG_Alphabet_Red_40: 5995906999543141244
+      Franuka_RPG_Alphabet_Red_41: 5983408239323978196
+      Franuka_RPG_Alphabet_Red_42: 8019023055944676876
+      Franuka_RPG_Alphabet_Red_43: -9016995512581656365
+      Franuka_RPG_Alphabet_Red_44: -7790767775477269595
+      Franuka_RPG_Alphabet_Red_45: -3894226850010221595
+      Franuka_RPG_Alphabet_Red_46: 928674097014161012
+      Franuka_RPG_Alphabet_Red_47: -2322514312263851282
+      Franuka_RPG_Alphabet_Red_48: -8375203804415111312
+      Franuka_RPG_Alphabet_Red_49: -3884927683302965881
+      Franuka_RPG_Alphabet_Red_5: -5733024496351415234
+      Franuka_RPG_Alphabet_Red_50: 3038002479364952251
+      Franuka_RPG_Alphabet_Red_51: 8654604310885592555
+      Franuka_RPG_Alphabet_Red_52: 7934064420502814362
+      Franuka_RPG_Alphabet_Red_53: -7981626716211937443
+      Franuka_RPG_Alphabet_Red_54: 5500481536209364193
+      Franuka_RPG_Alphabet_Red_55: 3888275483025278622
+      Franuka_RPG_Alphabet_Red_56: -3227449513777213344
+      Franuka_RPG_Alphabet_Red_57: 152979194474608140
+      Franuka_RPG_Alphabet_Red_58: -4605299098252788146
+      Franuka_RPG_Alphabet_Red_59: -2878778499070200987
+      Franuka_RPG_Alphabet_Red_6: 8880867322647668280
+      Franuka_RPG_Alphabet_Red_60: -5982677444647659222
+      Franuka_RPG_Alphabet_Red_61: -4846445007045046302
+      Franuka_RPG_Alphabet_Red_62: 8205796037838625813
+      Franuka_RPG_Alphabet_Red_63: 8373971293180470499
+      Franuka_RPG_Alphabet_Red_64: 732861801
+      Franuka_RPG_Alphabet_Red_65: -555332667
+      Franuka_RPG_Alphabet_Red_66: -1764907095
+      Franuka_RPG_Alphabet_Red_67: 1100986885
+      Franuka_RPG_Alphabet_Red_68: -1707259686
+      Franuka_RPG_Alphabet_Red_7: 4232991492543958634
+      Franuka_RPG_Alphabet_Red_8: -5124440639013591433
+      Franuka_RPG_Alphabet_Red_9: -3822605973136410546
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

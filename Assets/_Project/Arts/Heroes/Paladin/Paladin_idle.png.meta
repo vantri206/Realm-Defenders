@@ -504,6 +504,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Paladin_idle_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ecfe54b31bcc734ba17bda6518818c0
+      internalID: 1338903352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -528,6 +550,7 @@ TextureImporter:
       Paladin_idle_13: 1149138120
       Paladin_idle_14: -90168892
       Paladin_idle_15: -943725842
+      Paladin_idle_16: 1338903352
       Paladin_idle_2: -814274736211333085
       Paladin_idle_3: 7518880379234577280
       Paladin_idle_4: -1584166692726098483
