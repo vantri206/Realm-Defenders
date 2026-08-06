@@ -32,8 +32,7 @@ public class CombatGrid : MonoBehaviour
 
     public Grid Grid => grid;
     public IReadOnlyDictionary<Vector3Int, CombatGridCell> Cells => cells;
-    public BoundsInt CellBounds => cellBounds;
-    public int CellCount => cells.Count;
+    public Vector3 CellSize => grid != null ? grid.cellSize : Vector3.zero;
 
     public void BuildGridMap()
     {
@@ -93,6 +92,11 @@ public class CombatGrid : MonoBehaviour
     public Vector3 CellToWorldCenter(Vector3Int cellPosition)
     {
         return grid != null ? grid.GetCellCenterWorld(cellPosition) : Vector3.zero;
+    }
+
+    public Vector3 CellToWorldBottomCenter(Vector3Int cellPosition)
+    {
+        return grid != null ? grid.GetCellCenterWorld(cellPosition) - new Vector3(0f, CellSize.y * 0.5f, 0f) : Vector3.zero;
     }
 
     private void ResolveTilemapSource(CombatGridTilemapSource source)

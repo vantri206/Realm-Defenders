@@ -25,7 +25,10 @@ public class CombatUIController : MonoBehaviour
         gameInput = GameInput.Instance;
 
         RegisterInputEvents();
-        RegisterHeroCardInputs(heroInventoryView.HeroCards);
+        if (heroInventoryView != null)
+        {
+            RegisterHeroCardInputs(heroInventoryView.HeroCards);
+        }
 
         isInitialized = true;
     }
@@ -68,9 +71,13 @@ public class CombatUIController : MonoBehaviour
 
         gameInput.OnPrimaryPerformed -= HandlePrimaryPerformed;
         gameInput.OnSecondaryPerformed -= HandleSecondaryPerformed;
+        gameInput.OnDirectionPerformed -= HandleDirectionPerformed;
+        gameInput.OnActionPerformed -= HandleActionPerformed;
 
         gameInput.OnPrimaryPerformed += HandlePrimaryPerformed;
         gameInput.OnSecondaryPerformed += HandleSecondaryPerformed;
+        gameInput.OnDirectionPerformed += HandleDirectionPerformed;
+        gameInput.OnActionPerformed += HandleActionPerformed;
     }
 
     private void UnregisterInputEvents()
@@ -82,6 +89,8 @@ public class CombatUIController : MonoBehaviour
 
         gameInput.OnPrimaryPerformed -= HandlePrimaryPerformed;
         gameInput.OnSecondaryPerformed -= HandleSecondaryPerformed;
+        gameInput.OnDirectionPerformed -= HandleDirectionPerformed;
+        gameInput.OnActionPerformed -= HandleActionPerformed;
     }
 
     private void RegisterHeroCardInputs(IReadOnlyList<HeroCard> cards)
@@ -153,7 +162,6 @@ public class CombatUIController : MonoBehaviour
                 return;
             }
 
-            activeCard = card;
             BeginDeployDrag(card, heroInstance, screenPosition);
             return;
         }
@@ -193,7 +201,26 @@ public class CombatUIController : MonoBehaviour
         }
 
         CancelDeployDrag();
-        combatAction.RefreshMode();
+    }
+
+    private void HandleDirectionPerformed(Vector2Int direction)
+    {
+        if (!isInitialized || combatAction == null)
+        {
+            return;
+        }
+
+        combatAction.UpdateDeployDirection(direction);
+    }
+
+    private void HandleActionPerformed()
+    {
+        if (!isInitialized || combatAction == null)
+        {
+            return;
+        }
+
+        combatAction.PerformAction();
     }
 
     private void BeginDeployDrag(HeroCard card, HeroInstance heroInstance, Vector2 screenPosition)
@@ -204,11 +231,13 @@ public class CombatUIController : MonoBehaviour
             return;
         }
 
-        activeCard = card;
+        if (!combatAction.StartDeployHero(heroInstance, screenPosition))
+        {
+            activeCard = null;
+            return;
+        }
 
-        combatAction.ChangeMode(PlayerCombatActionMode.DeployingHero);
-        combatAction.DeployingHero(heroInstance);
-        combatAction.ShowDeployGhost(heroInstance);
+        activeCard = card;
         UpdateDeployDrag(screenPosition);
     }
 
@@ -232,12 +261,13 @@ public class CombatUIController : MonoBehaviour
 
         UpdateDeployDrag(screenPosition);
 
-        activeCard = null;
+        if (!combatAction.SaveDeployCellPosition())
+        {
+            CancelDeployDrag();
+            return;
+        }
 
-        combatAction.HideDeployGhost();
-        combatAction.RefreshMode();
-
-        combatAction.CancelDeployHero();
+        combatAction.ChangeMode(PlayerCombatActionMode.SelectingDeployDirection);
     }
 
     private void CancelDeployDrag()
@@ -247,8 +277,7 @@ public class CombatUIController : MonoBehaviour
             activeCard = null;
         }
 
-        combatAction.HideDeployGhost();
-        combatAction.RefreshMode();
+        combatAction.FinishDeployHero();
     }
 
     private void SetHeroCardHoverSelected(HeroCardInput cardInput, bool isSelected)

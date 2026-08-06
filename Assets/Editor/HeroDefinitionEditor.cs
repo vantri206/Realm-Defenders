@@ -14,8 +14,11 @@ public sealed class HeroDefinitionEditor : Editor
 
     private SerializedProperty heroIdProperty;
     private SerializedProperty heroNameProperty;
+    private SerializedProperty spriteProperty;
     private SerializedProperty iconProperty;
     private SerializedProperty heroClassProperty;
+    private SerializedProperty descriptionProperty;
+    private SerializedProperty animatorProperty;
     private SerializedProperty prefabProperty;
     private SerializedProperty maxHealthProperty;
     private SerializedProperty attackProperty;
@@ -37,8 +40,11 @@ public sealed class HeroDefinitionEditor : Editor
     {
         heroIdProperty = serializedObject.FindProperty("heroId");
         heroNameProperty = serializedObject.FindProperty("heroName");
+        spriteProperty = serializedObject.FindProperty("heroSprite");
         iconProperty = serializedObject.FindProperty("heroIcon");
         heroClassProperty = serializedObject.FindProperty("heroClass");
+        descriptionProperty = serializedObject.FindProperty("heroDescription");
+        animatorProperty = serializedObject.FindProperty("heroAnimator");
         prefabProperty = serializedObject.FindProperty("heroPrefab");
         maxHealthProperty = serializedObject.FindProperty("maxHealth");
         attackProperty = serializedObject.FindProperty("attack");
@@ -62,6 +68,8 @@ public sealed class HeroDefinitionEditor : Editor
         EditorGUILayout.Space(8f);
         DrawStatsSection();
         EditorGUILayout.Space(8f);
+        DrawDeployStatsSection();
+        EditorGUILayout.Space(8f);
         DrawAttackSection();
 
         serializedObject.ApplyModifiedProperties();
@@ -73,8 +81,11 @@ public sealed class HeroDefinitionEditor : Editor
         EditorGUILayout.BeginVertical(EditorStyles.helpBox);
         EditorGUILayout.PropertyField(heroIdProperty, new GUIContent("Hero ID"));
         EditorGUILayout.PropertyField(heroNameProperty, new GUIContent("Hero Name"));
+        EditorGUILayout.PropertyField(spriteProperty, new GUIContent("Hero Sprite"));
         EditorGUILayout.PropertyField(iconProperty, new GUIContent("Hero Icon"));
         EditorGUILayout.PropertyField(heroClassProperty, new GUIContent("Hero Class"));
+        EditorGUILayout.PropertyField(descriptionProperty, new GUIContent("Description"));
+        EditorGUILayout.PropertyField(animatorProperty, new GUIContent("Animator Override"));
         DrawHeroPrefabField();
         EditorGUILayout.EndVertical();
     }
@@ -127,6 +138,13 @@ public sealed class HeroDefinitionEditor : Editor
         EditorGUILayout.PropertyField(defenseProperty);
         EditorGUILayout.PropertyField(specialDefenseProperty, new GUIContent("Special Defense"));
         EditorGUILayout.PropertyField(blockProperty);
+        EditorGUILayout.EndVertical();
+    }
+
+    private void DrawDeployStatsSection()
+    {
+        EditorGUILayout.LabelField("Deploy Stats", EditorStyles.boldLabel);
+        EditorGUILayout.BeginVertical(EditorStyles.helpBox);
         EditorGUILayout.PropertyField(baseDeployCostProperty, new GUIContent("Base Deploy Cost"));
         EditorGUILayout.PropertyField(baseRedeployTimeProperty, new GUIContent("Base Redeploy Time"));
         EditorGUILayout.EndVertical();

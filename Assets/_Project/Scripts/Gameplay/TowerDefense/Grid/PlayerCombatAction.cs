@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum PlayerCombatActionMode
 {
     None,
     DeployingHero,
+    SelectingDeployDirection,
     SelectedDeployedHero,
     RelocatingHero,
 }
@@ -15,27 +17,29 @@ public class PlayerCombatAction : MonoBehaviour
     private Camera mainCamera;
     private CombatGrid combatGrid;
     private HeroDeploymentSystem heroDeploymentSystem;
+    private HeroDetailView heroDetailView;
     private TileOverlayRenderer tileOverlayRenderer;
     private GhostHeroView ghostHeroView;
 
     private PlayerCombatActionMode currentMode = PlayerCombatActionMode.None;
 
     private HeroInstance deployingHero;
+    private CombatGridCell currentDeployCell;
+    private Vector2Int currentDeployDirection = Vector2Int.left;
 
     private Vector3Int hoveredCellPosition;
     private CombatGridCell hoveredCell;
     private Vector3Int previousHoveredCellPosition;
     private CombatGridCell previousHoveredCell;
 
-    private Vector2Int currentDeployDirection = Vector2Int.left;
-
     private bool isInitialized;
 
-    public void Initialize(Camera mainCamera, CombatGrid combatGrid, HeroDeploymentSystem heroDeploymentSystem, TileOverlayRenderer tileOverlayRenderer, GhostHeroView ghostHeroView)
+    public void Initialize(Camera mainCamera, CombatGrid combatGrid, HeroDeploymentSystem heroDeploymentSystem, HeroDetailView heroDetailView, TileOverlayRenderer tileOverlayRenderer, GhostHeroView ghostHeroView)
     {
         this.mainCamera = mainCamera;
         this.combatGrid = combatGrid;
         this.heroDeploymentSystem = heroDeploymentSystem;
+        this.heroDetailView = heroDetailView;
         this.tileOverlayRenderer = tileOverlayRenderer;
         this.ghostHeroView = ghostHeroView;
 
@@ -74,6 +78,9 @@ public class PlayerCombatAction : MonoBehaviour
         {
             case PlayerCombatActionMode.DeployingHero:
                 DrawDeployableCells();
+                break;
+            case PlayerCombatActionMode.SelectingDeployDirection:
+                DrawPreviewAttackRange(currentDeployCell);
                 break;
             case PlayerCombatActionMode.SelectedDeployedHero:
                 break;
@@ -131,6 +138,8 @@ public class PlayerCombatAction : MonoBehaviour
             case PlayerCombatActionMode.SelectedDeployedHero:
                 break;
             case PlayerCombatActionMode.RelocatingHero:
+                break;
+            case PlayerCombatActionMode.SelectingDeployDirection:
                 break;
             default:
 
@@ -238,6 +247,7 @@ public class PlayerCombatAction : MonoBehaviour
         }
         else if (currentMode == PlayerCombatActionMode.DeployingHero)
         {
+            ClearPreviewAttackRange();
             if (hoveredCell.CanDeployHero())
             {
                 tileOverlayRenderer.DrawCell(TileOverlayLayer.CellState, hoveredCellPosition, TileOverlayType.Selected);
@@ -278,10 +288,17 @@ public class PlayerCombatAction : MonoBehaviour
         {
             case PlayerCombatActionMode.DeployingHero:
                 tileOverlayRenderer.ClearLayer(TileOverlayLayer.CellState);
+                ClearPreviewAttackRange();
+                break;
+            case PlayerCombatActionMode.SelectingDeployDirection:
+                ClearPreviewAttackRange();
                 break;
             case PlayerCombatActionMode.SelectedDeployedHero:
+                tileOverlayRenderer.ClearLayer(TileOverlayLayer.CellState);
+                ClearPreviewAttackRange();
                 break;
             case PlayerCombatActionMode.RelocatingHero:
+                tileOverlayRenderer.ClearLayer(TileOverlayLayer.CellState);
                 break;
         }
     }
@@ -297,9 +314,23 @@ public class PlayerCombatAction : MonoBehaviour
     
     public void ShowDeployGhost(HeroInstance heroInstance)
     {
-        ghostHeroView.Show(heroInstance);
+        if (ghostHeroView == null)
+        {
+            return;
+        }
+
         currentDeployDirection = Vector2Int.left;
-        ghostHeroView.SetFacingDirection(currentDeployDirection);
+        ghostHeroView.Show(heroInstance);
+    }
+
+    public void HideDeployGhost()
+    {
+        if (ghostHeroView == null)
+        {
+            return;
+        }
+
+        ghostHeroView.Hide();
     }
 
     public void UpdateDeployGhost(Vector2 screenPosition)
@@ -309,46 +340,42 @@ public class PlayerCombatAction : MonoBehaviour
             return;
         }
 
-        Vector3 cellPosition = combatGrid.CellToWorldCenter(hoveredCellPosition);
-        ghostHeroView.UpdateWorldPosition(cellPosition);
-
-        Vector2Int facingDirection = GetDeployDirection(screenPosition, cellPosition);
-        ghostHeroView.SetFacingDirection(facingDirection);
+        Vector3 bottomCenterPos = combatGrid.CellToWorldBottomCenter(hoveredCell.CellPosition);
+        ghostHeroView.UpdateWorldPosition(bottomCenterPos);
     }
 
-    private Vector2Int GetDeployDirection(Vector2 screenPosition, Vector3 cellPosition)
+    public void UpdateDeployDirection(Vector2Int direction)
     {
-        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(screenPosition);
-        mouseWorld.z = cellPosition.z;
-
-        Vector2 delta = mouseWorld - cellPosition;
-
-        if (delta.sqrMagnitude <= 0.01f)
+        if (currentMode != PlayerCombatActionMode.SelectingDeployDirection)
         {
-            return currentDeployDirection;
+            return;
         }
 
-        if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
+        if (ghostHeroView == null)
         {
-            return delta.x > 0f ? Vector2Int.right : Vector2Int.left;
+            return;
         }
 
-        return delta.y > 0f ? Vector2Int.up : Vector2Int.down;
+        currentDeployDirection = direction;
+        ghostHeroView.SetFacingDirection(currentDeployDirection);
+        DrawPreviewAttackRange(currentDeployCell);
     }
-
-    public void HideDeployGhost()
+    
+    public bool SaveDeployCellPosition()
     {
-        ghostHeroView.Hide();
-    }
+        if (hoveredCell == null || !hoveredCell.CanDeployHero())
+        {
+            return false;
+        }
 
-    public void DeployingHero(HeroInstance heroInstance)
-    {
-        deployingHero = heroInstance;
+        currentDeployCell = hoveredCell;
+        return true;
     }
 
     public void CancelDeployHero()
     {
         deployingHero = null;
+        heroDeploymentSystem.ClearSelection();
     }
 
     private void DrawPreviewAttackRange(CombatGridCell cell)
@@ -365,19 +392,120 @@ public class PlayerCombatAction : MonoBehaviour
             return;
         }
 
-        var attackPattern = deployingHero.Definition.AttackPattern;
+        IReadOnlyList<Vector2Int> attackPattern = deployingHero.Definition.AttackPattern;
         if (attackPattern == null)
         {
             return;
         }
 
-        foreach (var offset in attackPattern)
+        List<Vector2Int> rotatedPattern = RotateAttackPattern(attackPattern, currentDeployDirection);
+        foreach (var offset in rotatedPattern)
         {
             Vector3Int targetCellPosition = cell.CellPosition + new Vector3Int(offset.x, offset.y, 0);
-            if (combatGrid.TryGetCell(targetCellPosition, out CombatGridCell targetCell))
+            tileOverlayRenderer.DrawCell(TileOverlayLayer.Area, targetCellPosition, TileOverlayType.AttackArea);
+        }
+    }
+
+    private static List<Vector2Int> RotateAttackPattern(IReadOnlyList<Vector2Int> attackPattern, Vector2Int direction)
+    {
+        List<Vector2Int> rotatedPattern = new List<Vector2Int>();
+
+        if (attackPattern == null)
+        {
+            return rotatedPattern;
+        }
+
+        for (int i = 0; i < attackPattern.Count; i++)
+        {
+            Vector2Int offset = attackPattern[i];
+            Vector2Int rotatedOffset = offset;
+
+            if (direction == Vector2Int.right)
             {
-                tileOverlayRenderer.DrawCell(TileOverlayLayer.Area, targetCellPosition, TileOverlayType.AttackArea);
+                rotatedOffset = new Vector2Int(-offset.x, -offset.y);
+            }
+            else if (direction == Vector2Int.up)
+            {
+                rotatedOffset = new Vector2Int(offset.y, -offset.x);
+            }
+            else if (direction == Vector2Int.down)
+            {
+                rotatedOffset = new Vector2Int(-offset.y, offset.x);
+            }
+
+            rotatedPattern.Add(rotatedOffset);
+        }
+
+        return rotatedPattern;
+    }
+
+    private void ClearPreviewAttackRange()
+    {
+        if (tileOverlayRenderer == null)
+        {
+            return;
+        }
+
+        tileOverlayRenderer.ClearTypeInLayer(TileOverlayLayer.Area, TileOverlayType.AttackArea);
+    }
+
+    public void ShowDetailHero(HeroInstance heroInstance)
+    {
+        if (heroDetailView == null)
+        {
+            return;
+        }
+
+        heroDetailView.Show(heroInstance);
+    }
+
+    public void PerformAction()
+    {
+        if (currentMode == PlayerCombatActionMode.SelectingDeployDirection)
+        {
+            if (currentDeployCell != null && deployingHero != null)
+            {
+                HeroRuntime deployedHero = heroDeploymentSystem.DeploySelectedHero(currentDeployCell, currentDeployDirection);
+                if (deployedHero != null)
+                {
+                    FinishDeployHero();
+                }
             }
         }
+    }
+
+    public bool StartDeployHero(HeroInstance heroInstance, Vector2 screenPosition)
+    {
+        if (heroDeploymentSystem == null || heroInstance == null || !heroInstance.IsValid)
+        {
+            return false;
+        }
+
+        if (!heroDeploymentSystem.SelectHero(heroInstance))
+        {
+            return false;
+        }
+
+        deployingHero = heroInstance;
+        currentDeployCell = null;
+        currentDeployDirection = Vector2Int.left;
+
+        ShowDeployGhost(heroInstance);
+        ShowDetailHero(heroInstance);
+        UpdateHover(screenPosition);
+
+        ChangeMode(PlayerCombatActionMode.DeployingHero);
+        return true;
+    }
+
+    public void FinishDeployHero()
+    {
+        deployingHero = null;
+        currentDeployCell = null;
+        currentDeployDirection = Vector2Int.left;
+
+        HideDeployGhost();
+        RefreshMode();
+        CancelDeployHero();
     }
 }

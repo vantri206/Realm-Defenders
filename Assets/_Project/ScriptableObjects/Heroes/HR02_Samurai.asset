@@ -14,12 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HeroDefinition
   heroId: HR02
   heroName: Samurai
+  heroSprite: {fileID: -228866471, guid: d5a83523a8a4a2a4f9d7912435e9e3fd, type: 3}
   heroIcon: {fileID: 190543965, guid: d5a83523a8a4a2a4f9d7912435e9e3fd, type: 3}
   heroClass: {fileID: 11400000, guid: d1e339661971d38428eff4da401d6e20, type: 2}
+  heroDescription: 
+  heroAnimator: {fileID: 22100000, guid: 6970dfffb0d9be24fbc4da8c82e39f67, type: 2}
   heroPrefab: {fileID: 6873902697943297941, guid: cfdb2236ef19fe64c9462e151b552556, type: 3}
   maxHealth: 120
   attack: 8
   attackInterval: 1
+  defense: 0
+  specialDefense: 0
+  block: 1
+  baseDeployCost: 15
+  baseRedeployTime: 20
+  attackType: 0
   targetPriorityMode: 0
   attackPattern:
   - {x: 0, y: 0}

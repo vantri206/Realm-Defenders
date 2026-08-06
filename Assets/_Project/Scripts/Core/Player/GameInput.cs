@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class GameInput : SingletonMB<GameInput>
 {
@@ -12,6 +13,8 @@ public class GameInput : SingletonMB<GameInput>
     public event Action OnSellPerformed;
     public event Action OnRelocatePerformed;
     public event Action OnPausePerformed;
+    public event Action<Vector2Int> OnDirectionPerformed;
+    public event Action OnActionPerformed;
 
     public Vector2 MouseScreenPosition { get; private set; }
     public bool IsPrimaryHold { get; private set; }
@@ -99,6 +102,28 @@ public class GameInput : SingletonMB<GameInput>
         OnPausePerformed?.Invoke();
     }
 
+    private void HandleActionPerformed(InputAction.CallbackContext context)
+    {
+        OnActionPerformed?.Invoke();
+    }
+
+    private void HandleDirectionPerformed(InputAction.CallbackContext context)
+    {
+        if (context.control is ButtonControl buttonControl && !buttonControl.isPressed)
+        {
+            return;
+        }
+
+        Vector2Int direction = GetDirection(context.control, context.ReadValue<Vector2>());
+
+        if (direction == Vector2Int.zero)
+        {
+            return;
+        }
+
+        OnDirectionPerformed?.Invoke(direction);
+    }
+
     private void RegisterInputEvents()
     {
         inputActions.Gameplay.PointerPosition.performed += HandlePointerPosition;
@@ -108,6 +133,8 @@ public class GameInput : SingletonMB<GameInput>
         inputActions.Gameplay.Sell.performed += HandleSellPerformed;
         inputActions.Gameplay.Relocate.performed += HandleRelocatePerformed;
         inputActions.System.Pause.performed += HandlePausePerformed;
+        inputActions.Gameplay.Direction.performed += HandleDirectionPerformed;
+        inputActions.Gameplay.Action.performed += HandleActionPerformed;
     }
 
     private void UnregisterInputEvents()
@@ -119,10 +146,70 @@ public class GameInput : SingletonMB<GameInput>
         inputActions.Gameplay.Sell.performed -= HandleSellPerformed;
         inputActions.Gameplay.Relocate.performed -= HandleRelocatePerformed;
         inputActions.System.Pause.performed -= HandlePausePerformed;
+        inputActions.Gameplay.Direction.performed -= HandleDirectionPerformed;
+        inputActions.Gameplay.Action.performed -= HandleActionPerformed;
     }
 
     private void UpdateMousePosition()
     {
         MouseScreenPosition = inputActions.Gameplay.PointerPosition.ReadValue<Vector2>();
+    }
+
+    private Vector2Int GetDirection(InputControl control, Vector2 fallbackValue)
+    {
+        Vector2Int direction = Vector2Int.zero;
+
+        if (control == null)
+        {
+            return GetFallbackDirection(fallbackValue);
+        }
+
+        switch (control.name)
+        {
+            case "w":
+            case "upArrow":
+            case "up":
+                direction = Vector2Int.up;
+                break;
+            case "s":
+            case "downArrow":
+            case "down":
+                direction = Vector2Int.down;
+                break;
+            case "a":
+            case "leftArrow":
+            case "left":
+                direction = Vector2Int.left;
+                break;
+            case "d":
+            case "rightArrow":
+            case "right":
+                direction = Vector2Int.right;
+                break;
+            default:
+                return GetFallbackDirection(fallbackValue);
+        }
+
+        return direction;
+    }
+
+    private Vector2Int GetFallbackDirection(Vector2 value)
+    {
+        if (value == Vector2.zero)
+        {
+            return Vector2Int.zero;
+        }
+
+        if (Mathf.Abs(value.x) > Mathf.Abs(value.y))
+        {
+            return value.x > 0 ? Vector2Int.right : Vector2Int.left;
+        }
+
+        if (Mathf.Abs(value.y) > Mathf.Abs(value.x))
+        {
+            return value.y > 0 ? Vector2Int.up : Vector2Int.down;
+        }
+
+        return Vector2Int.zero;
     }
 }

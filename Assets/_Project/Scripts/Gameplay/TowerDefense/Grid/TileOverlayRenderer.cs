@@ -104,6 +104,35 @@ public class TileOverlayRenderer : MonoBehaviour
         }
     }
 
+    public void ClearTypeInLayer(TileOverlayLayer layer, TileOverlayType type)
+    {
+        if (!TryGetTilemap(layer, out Tilemap tilemap) || !TryGetBrush(type, out TileOverlayBrush brush))
+        {
+            return;
+        }
+
+        if (!paintedCell.TryGetValue(layer, out HashSet<Vector3Int> paintedCells))
+        {
+            return;
+        }
+
+        List<Vector3Int> cellsToClear = new List<Vector3Int>();
+        foreach (Vector3Int cellPosition in paintedCells)
+        {
+            if (tilemap.GetTile(cellPosition) == brush.Tile)
+            {
+                cellsToClear.Add(cellPosition);
+            }
+        }
+
+        for (int i = 0; i < cellsToClear.Count; i++)
+        {
+            Vector3Int cellPosition = cellsToClear[i];
+            tilemap.SetTile(cellPosition, null);
+            paintedCells.Remove(cellPosition);
+        }
+    }
+
     public void ClearAllCells()
     {
         ClearLayer(TileOverlayLayer.Area);

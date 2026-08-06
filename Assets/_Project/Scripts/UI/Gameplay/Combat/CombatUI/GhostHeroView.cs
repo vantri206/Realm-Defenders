@@ -6,6 +6,10 @@ public class GhostHeroView : MonoBehaviour
     [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer leftArrowRenderer;
+    [SerializeField] private SpriteRenderer rightArrowRenderer;
+    [SerializeField] private SpriteRenderer upArrowRenderer;
+    [SerializeField] private SpriteRenderer downArrowRenderer;
 
     [Header("Animator Parameters")]
     [SerializeField] private string dirXParameterName = "DirX";
@@ -13,6 +17,9 @@ public class GhostHeroView : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private Color invalidColor = Color.red;
+
+    private float selectedArrowAlpha = 1f;
+    private float unselectedArrowAlpha = 0.125f;
 
     private Color initColor = Color.white;
 
@@ -47,6 +54,14 @@ public class GhostHeroView : MonoBehaviour
         }
     }
 
+    public void SetAnimatorController(RuntimeAnimatorController animatorController)
+    {
+        if (animator != null)
+        {
+            animator.runtimeAnimatorController = animatorController;
+        }
+    }
+
     public void SetFacingDirection(Vector2Int direction)
     {
         if (direction == Vector2Int.zero)
@@ -55,11 +70,12 @@ public class GhostHeroView : MonoBehaviour
         }
 
         SetAnimatorDirection(new Vector2(direction.x, direction.y));
+        SetArrowDirection(direction);
     }
 
     private void SetAnimatorDirection(Vector2 direction)
     {
-        if (animator == null)
+        if (animator == null || animator.runtimeAnimatorController == null)
         {
             return;
         }
@@ -77,14 +93,10 @@ public class GhostHeroView : MonoBehaviour
         }
 
         SetHeroSprite(heroInstance.Definition.HeroSprite);
-        if (animator != null)
-        {
-            animator.runtimeAnimatorController = heroInstance.Definition.AnimatorController;
-        }
-
+        SetAnimatorController(heroInstance.Definition.AnimatorController);
+        gameObject.SetActive(true);
         SetInvalidState(false);
         SetFacingDirection(Vector2Int.left);
-        gameObject.SetActive(true);
     }
 
     public void Hide()
@@ -103,5 +115,25 @@ public class GhostHeroView : MonoBehaviour
         {
             spriteRenderer.color = isInvalid ? invalidColor : initColor;
         }
+    }
+
+    private void SetArrowDirection(Vector2Int direction)
+    {
+        SetArrowAlpha(leftArrowRenderer, direction == Vector2Int.left ? selectedArrowAlpha : unselectedArrowAlpha);
+        SetArrowAlpha(rightArrowRenderer, direction == Vector2Int.right ? selectedArrowAlpha : unselectedArrowAlpha);
+        SetArrowAlpha(upArrowRenderer, direction == Vector2Int.up ? selectedArrowAlpha : unselectedArrowAlpha);
+        SetArrowAlpha(downArrowRenderer, direction == Vector2Int.down ? selectedArrowAlpha : unselectedArrowAlpha);
+    }
+
+    private void SetArrowAlpha(SpriteRenderer arrowRenderer, float alpha)
+    {
+        if (arrowRenderer == null)
+        {
+            return;
+        }
+
+        Color color = arrowRenderer.color;
+        color.a = Mathf.Clamp01(alpha);
+        arrowRenderer.color = color;
     }
 }

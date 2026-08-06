@@ -50,7 +50,7 @@ public class HeroDeploymentSystem : MonoBehaviour
         return true;
     }
 
-    public bool CanDeploySelectedHero(Vector3Int cellPosition)
+    public bool CanDeploySelectedHero(CombatGridCell cell)
     {
         if (selectedHero == null || heroPlacement == null)
         {
@@ -62,21 +62,23 @@ public class HeroDeploymentSystem : MonoBehaviour
             return false;
         }
 
-        return heroPlacement.CanPlaceHero(selectedHero, cellPosition);
+        return heroPlacement.CanPlaceHero(selectedHero, cell);
     }
 
-    public HeroRuntime DeploySelectedHero(Vector3Int cellPosition)
+    public HeroRuntime DeploySelectedHero(CombatGridCell cell, Vector2Int direction)
     {
-        if (!CanDeploySelectedHero(cellPosition))
+        if (!CanDeploySelectedHero(cell))
         {
             return null;
         }
 
-        HeroRuntime placedHero = heroPlacement.PlaceHero(selectedHero, cellPosition);
+        HeroRuntime placedHero = heroPlacement.PlaceHero(selectedHero, cell);
         if (placedHero != null)
         {
             AddDeployedHero(selectedHero, placedHero);
             ClearSelection();
+
+            placedHero?.SetFacingDirection(direction);
         }
 
         return placedHero;

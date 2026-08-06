@@ -14,12 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HeroDefinition
   heroId: HR03
   heroName: Medusa
+  heroSprite: {fileID: 5648560729270772815, guid: a882b06dff9b3c94e86371f8d20b3655, type: 3}
   heroIcon: {fileID: -1309111644, guid: a882b06dff9b3c94e86371f8d20b3655, type: 3}
   heroClass: {fileID: 11400000, guid: 2c440a5f700186347869b8c9055fb59d, type: 2}
+  heroDescription: 
+  heroAnimator: {fileID: 22100000, guid: 8e24f866d2a114044ba1f0bc4b45825b, type: 2}
   heroPrefab: {fileID: 6873902697943297941, guid: cfdb2236ef19fe64c9462e151b552556, type: 3}
   maxHealth: 120
   attack: 8
   attackInterval: 1
+  defense: 0
+  specialDefense: 0
+  block: 1
+  baseDeployCost: 15
+  baseRedeployTime: 20
+  attackType: 0
   targetPriorityMode: 0
   attackPattern:
   - {x: 0, y: 0}

@@ -150,7 +150,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": ""Previous"",
                     ""type"": ""Button"",
                     ""id"": ""2776c80d-3c14-4091-8c56-d04ced07a2b0"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -580,6 +580,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ff668e7f-c924-4b2d-82b7-8bd4936da80f"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2ce8b356-e5ea-4a0e-98fb-ae731322e04a"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -1154,6 +1165,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Direction"",
+                    ""type"": ""Value"",
+                    ""id"": ""6cc27a30-5445-4791-88c3-15a1fd4488ca"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Action"",
+                    ""type"": ""Button"",
+                    ""id"": ""9616bc94-4a40-4175-9b15-7fb2e5a790cb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1193,7 +1222,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""357ff5a1-5403-4188-af7a-cdb9eadc79aa"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1209,6 +1238,72 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Relocate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""eb98ed83-5c73-4341-bc6d-ef934fbc43b4"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""a52bff20-eadc-4c7f-bc9e-ac18c4b1a3ad"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b3226b32-191c-4e99-b64e-e52b3c7a4a0e"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""9b8c8fd7-87ab-44f5-9bea-59a060b2d52b"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""3d3ca574-f195-41b7-b66d-5ab0c89865f4"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71cd8103-04c0-438f-9c43-05690c82f906"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1311,6 +1406,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Gameplay_SecondaryPress = m_Gameplay.FindAction("SecondaryPress", throwIfNotFound: true);
         m_Gameplay_Sell = m_Gameplay.FindAction("Sell", throwIfNotFound: true);
         m_Gameplay_Relocate = m_Gameplay.FindAction("Relocate", throwIfNotFound: true);
+        m_Gameplay_Direction = m_Gameplay.FindAction("Direction", throwIfNotFound: true);
+        m_Gameplay_Action = m_Gameplay.FindAction("Action", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1874,6 +1971,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_SecondaryPress;
     private readonly InputAction m_Gameplay_Sell;
     private readonly InputAction m_Gameplay_Relocate;
+    private readonly InputAction m_Gameplay_Direction;
+    private readonly InputAction m_Gameplay_Action;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -1905,6 +2004,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/Relocate".
         /// </summary>
         public InputAction @Relocate => m_Wrapper.m_Gameplay_Relocate;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/Direction".
+        /// </summary>
+        public InputAction @Direction => m_Wrapper.m_Gameplay_Direction;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/Action".
+        /// </summary>
+        public InputAction @Action => m_Wrapper.m_Gameplay_Action;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1946,6 +2053,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Relocate.started += instance.OnRelocate;
             @Relocate.performed += instance.OnRelocate;
             @Relocate.canceled += instance.OnRelocate;
+            @Direction.started += instance.OnDirection;
+            @Direction.performed += instance.OnDirection;
+            @Direction.canceled += instance.OnDirection;
+            @Action.started += instance.OnAction;
+            @Action.performed += instance.OnAction;
+            @Action.canceled += instance.OnAction;
         }
 
         /// <summary>
@@ -1972,6 +2085,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Relocate.started -= instance.OnRelocate;
             @Relocate.performed -= instance.OnRelocate;
             @Relocate.canceled -= instance.OnRelocate;
+            @Direction.started -= instance.OnDirection;
+            @Direction.performed -= instance.OnDirection;
+            @Direction.canceled -= instance.OnDirection;
+            @Action.started -= instance.OnAction;
+            @Action.performed -= instance.OnAction;
+            @Action.canceled -= instance.OnAction;
         }
 
         /// <summary>
@@ -2276,5 +2395,19 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRelocate(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Direction" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDirection(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAction(InputAction.CallbackContext context);
     }
 }

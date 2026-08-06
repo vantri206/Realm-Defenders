@@ -11,7 +11,7 @@ public class HeroPlacement : MonoBehaviour
         this.combatGrid = combatGrid;
     }
 
-    public bool CanPlaceHero(HeroInstance instance, Vector3Int cellPosition)
+    public bool CanPlaceHero(HeroInstance instance, CombatGridCell cell)
     {
         if (instance == null || !instance.IsValid)
         {
@@ -23,7 +23,7 @@ public class HeroPlacement : MonoBehaviour
             return false;
         }
 
-        if (!combatGrid.TryGetCell(cellPosition, out CombatGridCell cell))
+        if (cell == null || !combatGrid.TryGetCell(cell.CellPosition, out CombatGridCell gridCell) || gridCell != cell)
         {
             return false;
         }
@@ -31,24 +31,19 @@ public class HeroPlacement : MonoBehaviour
         return cell.CanDeployHero();
     }
 
-    public HeroRuntime PlaceHero(HeroInstance instance, Vector3Int cellPosition)
+    public HeroRuntime PlaceHero(HeroInstance instance, CombatGridCell cell)
     {
         HeroRuntime hero = null;
 
-        if (!CanPlaceHero(instance, cellPosition))
+        if (!CanPlaceHero(instance, cell))
         {
             return null;
         }
 
-        if (!combatGrid.TryGetCell(cellPosition, out CombatGridCell cell))
-        {
-            return null;
-        }
-
-        Vector3 spawnPosition = combatGrid.CellToWorldCenter(cellPosition);
+        Vector3 spawnPosition = combatGrid.CellToWorldBottomCenter(cell.CellPosition);
         hero = Instantiate(instance.Definition.Prefab, spawnPosition, Quaternion.identity, transform);
 
-        hero.Initialize(instance, combatGrid, cellPosition);
+        hero.Initialize(instance, combatGrid, cell.CellPosition);
         cell.SetDeployedHero(hero);
 
         return hero;

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public enum HeroAttackType
 {
@@ -29,7 +28,7 @@ public class HeroDefinition : ScriptableObject
     [SerializeField] private float specialDefense = 0f;
     [SerializeField] private int block = 1;
 
-    [FormerlySerializedAs("Deploy Stats")]
+    [Header("Deploy Stats")]
     [SerializeField] private int baseDeployCost = 15;
     [SerializeField] private float baseRedeployTime = 20f;
 
@@ -39,7 +38,6 @@ public class HeroDefinition : ScriptableObject
     [SerializeField] private List<Vector2Int> attackPattern = new List<Vector2Int>
     {
         Vector2Int.zero,
-        Vector2Int.left,
     };
 
     public string HeroId => heroId;
