@@ -4,18 +4,28 @@ using UnityEngine;
 [Serializable]
 public class HeroInstance
 {
-    [SerializeField] private HeroDefinition definition;
-    [SerializeField] private int level = 1;
-    [SerializeField] private int star = 1;
-    [SerializeField] private int deployCost = 15;
-    [SerializeField] private float redeployTime = 20f;
+    private HeroDefinition definition;
+    private UnitStats unitStats;
+    private HeroBlocker heroBlocker;
+    private int level = 1;
+    private int star = 1;
+    private int deployCost = 15;
+    private float redeployTime = 20f;
+
+    private HeroDeployState deployState = HeroDeployState.Available;
+
+    public event Action<HeroInstance, HeroDeployState> OnDeployStateChanged;
 
     public HeroDefinition Definition => definition;
     public int Level => level;
     public int Star => star;
+    public UnitStats Stats => unitStats;
+    public HeroBlocker Blocker => heroBlocker;
     public float RedeployTime => redeployTime;
     public int DeployCost => deployCost;
     public float RedeployCountdownTime => redeployTimer.RemainingTime;
+    public HeroDeployState DeployState => deployState;
+
     public bool IsReadyDeploy => redeployTimer.IsFinished;
     public bool IsValid => definition != null;
 
@@ -34,6 +44,8 @@ public class HeroInstance
         star = 1;
         deployCost = Mathf.Max(0, definition.BaseDeployCost);
         redeployTime = Mathf.Max(0f, definition.BaseRedeployTime);
+        unitStats = new UnitStats(definition.MaxHealth, definition.Attack, definition.AttackInterval, definition.Defense, definition.SpecialDefense);
+        heroBlocker = new HeroBlocker(definition.BlockCount);
 
         redeployTimer = new CountdownTimer(redeployTime);
     }
@@ -73,6 +85,12 @@ public class HeroInstance
     public void TickRedeployTimer(float deltaTime)
     {
         redeployTimer.Tick(deltaTime);
+    }
+
+    public void SetDeployState(HeroDeployState state)
+    {
+        deployState = state;
+        OnDeployStateChanged?.Invoke(this, deployState);
     }
 
 #if UNITY_EDITOR

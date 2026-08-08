@@ -1,12 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum HeroAttackType
-{
-    Melee,
-    Ranged,
-}
-
 [CreateAssetMenu(fileName = "HeroDefinition", menuName = "Scriptable Objects/HeroDefinition")]
 public class HeroDefinition : ScriptableObject
 {
@@ -26,7 +20,7 @@ public class HeroDefinition : ScriptableObject
     [SerializeField] private float attackInterval = 1f;
     [SerializeField] private float defense = 0f;
     [SerializeField] private float specialDefense = 0f;
-    [SerializeField] private int block = 1;
+    [SerializeField] private int blockCount = 1;
 
     [Header("Deploy Stats")]
     [SerializeField] private int baseDeployCost = 15;
@@ -53,7 +47,7 @@ public class HeroDefinition : ScriptableObject
     public float AttackInterval => attackInterval;
     public float Defense => defense;
     public float SpecialDefense => specialDefense;
-    public int Block => block;
+    public int BlockCount => blockCount;
     public int BaseDeployCost => baseDeployCost;
     public float BaseRedeployTime => baseRedeployTime;
     public HeroAttackType AttackType => attackType;
@@ -68,9 +62,6 @@ public class HeroDefinition : ScriptableObject
         maxHealth = Mathf.Max(0f, maxHealth);
         attack = Mathf.Max(0f, attack);
         attackInterval = Mathf.Max(0f, attackInterval);
-        defense = Mathf.Max(0f, defense);
-        specialDefense = Mathf.Max(0f, specialDefense);
-        block = Mathf.Max(0, block);
         baseDeployCost = Mathf.Max(0, baseDeployCost);
         baseRedeployTime = Mathf.Max(0f, baseRedeployTime);
     }

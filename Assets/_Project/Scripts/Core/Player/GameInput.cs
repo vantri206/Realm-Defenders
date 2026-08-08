@@ -121,6 +121,16 @@ public class GameInput : SingletonMB<GameInput>
             return;
         }
 
+        RaiseDirectionPerformed(direction);
+    }
+
+    public void RaiseDirectionPerformed(Vector2Int direction)
+    {
+        if (direction == Vector2Int.zero)
+        {
+            return;
+        }
+
         OnDirectionPerformed?.Invoke(direction);
     }
 

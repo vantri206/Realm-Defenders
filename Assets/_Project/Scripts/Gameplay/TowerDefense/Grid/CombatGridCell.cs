@@ -1,16 +1,6 @@
 using System;
 using UnityEngine;
 
-
-[Flags]
-public enum CombatGridCellStates
-{
-    None = 0,
-    Walkable = 1 << 0,
-    Deployable = 1 << 1,
-    Blocked = 1 << 2,
-}
-
 [Serializable]
 public class CombatGridCell
 {

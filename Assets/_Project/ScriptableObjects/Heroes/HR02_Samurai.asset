@@ -23,11 +23,11 @@ MonoBehaviour:
   maxHealth: 120
   attack: 8
   attackInterval: 1
-  defense: 0
-  specialDefense: 0
-  block: 1
-  baseDeployCost: 15
-  baseRedeployTime: 20
+  defense: 5
+  specialDefense: 5
+  blockCount: 1
+  baseDeployCost: 20
+  baseRedeployTime: 25
   attackType: 0
   targetPriorityMode: 0
   attackPattern:

@@ -18,8 +18,8 @@ public class GhostHeroView : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private Color invalidColor = Color.red;
 
-    private float selectedArrowAlpha = 1f;
-    private float unselectedArrowAlpha = 0.125f;
+    private float selectedArrowAlpha = 0.75f;
+    private float unselectedArrowAlpha = 0.25f;
 
     private Color initColor = Color.white;
 

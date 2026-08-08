@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 [DisallowMultipleComponent]
 public class HeroCardInput : MonoBehaviour
 {
-    private HeroCardView heroCardView;
     private HeroInstance heroInstance;
     private GameInput gameInput;
     private PointerEventData pointerEventData;
@@ -170,5 +169,17 @@ public class HeroCardInput : MonoBehaviour
     public void SetInputEnabled(bool enabled)
     {
         isInputEnabled = enabled;
+    }
+
+    public void SetState(HeroDeployState newState)
+    {
+        if (newState == HeroDeployState.Available)
+        {
+            SetInputEnabled(true);
+        }
+        else
+        {
+            SetInputEnabled(false);
+        }
     }
 }

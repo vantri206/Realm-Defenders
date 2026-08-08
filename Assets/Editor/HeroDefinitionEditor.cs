@@ -51,7 +51,7 @@ public sealed class HeroDefinitionEditor : Editor
         attackIntervalProperty = serializedObject.FindProperty("attackInterval");
         defenseProperty = serializedObject.FindProperty("defense");
         specialDefenseProperty = serializedObject.FindProperty("specialDefense");
-        blockProperty = serializedObject.FindProperty("block");
+        blockProperty = serializedObject.FindProperty("blockCount");
         baseDeployCostProperty = serializedObject.FindProperty("baseDeployCost");
         baseRedeployTimeProperty = serializedObject.FindProperty("baseRedeployTime");
         attackTypeProperty = serializedObject.FindProperty("attackType");
@@ -137,7 +137,7 @@ public sealed class HeroDefinitionEditor : Editor
         EditorGUILayout.PropertyField(attackIntervalProperty, new GUIContent("Attack Interval"));
         EditorGUILayout.PropertyField(defenseProperty);
         EditorGUILayout.PropertyField(specialDefenseProperty, new GUIContent("Special Defense"));
-        EditorGUILayout.PropertyField(blockProperty);
+        EditorGUILayout.PropertyField(blockProperty, new GUIContent("Block Count"));
         EditorGUILayout.EndVertical();
     }
 

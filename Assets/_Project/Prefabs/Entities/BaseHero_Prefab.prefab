@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e841efc8dd76d4990337160c59d11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hurtbox
-  damageableMB: {fileID: 0}
+  damageableMB: {fileID: 484668256975825859}
 --- !u!1 &6360995233734530165
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 8792332204736689504}
   - component: {fileID: 7947616607030417923}
   - component: {fileID: 5638550953452632778}
+  - component: {fileID: 2228095518467912174}
   m_Layer: 8
   m_Name: BaseHero_Prefab
   m_TagString: Untagged
@@ -245,6 +246,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1a17ef17646f742927be38761f75c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeroRuntime
+  health: {fileID: 484668256975825859}
+  unitVisual: {fileID: 6689265504623526020}
+  heroGridPosition: {fileID: 4311050230591658909}
+  teamIdentity: {fileID: 5638550953452632778}
+  targetScanner: {fileID: 8792332204736689504}
+  targetSelector: {fileID: 7947616607030417923}
+  normalAttackController: {fileID: 2228095518467912174}
 --- !u!114 &4311050230591658909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +314,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeamIdentity
   team: 1
+--- !u!114 &2228095518467912174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360995233734530165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e61d85e9ada5ab42ab5eb1988b3326f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalAttackController
 --- !u!1 &8512884463051957597
 GameObject:
   m_ObjectHideFlags: 0

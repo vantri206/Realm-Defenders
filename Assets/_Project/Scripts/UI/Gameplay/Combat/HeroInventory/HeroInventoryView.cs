@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[DisallowMultipleComponent]
 public class HeroInventoryView : MonoBehaviour
 {
     [Header("References")]
@@ -16,7 +15,6 @@ public class HeroInventoryView : MonoBehaviour
     public void Initialize()
     {
         ClearAllCards();
-        CreateHeroCards();
     }
 
     private void ClearAllCards()
@@ -34,29 +32,95 @@ public class HeroInventoryView : MonoBehaviour
         }
     }
 
-    private void CreateHeroCards()
+    public HeroCard AddHeroCard(HeroInstance heroInstance)
     {
         if (heroInventory == null || heroCardPrefab == null || heroCardContainer == null)
         {
-            Debug.LogWarning("[HeroInventoryView] Missing references. Cannot create hero cards.");
-            return;
+            Debug.LogWarning("[HeroInventoryView] Missing references. Cannot add hero card.");
+            return null;
         }
 
-        foreach (HeroInstance heroInstance in heroInventory.HeroInstances)
+        if (heroInstance != null && heroInstance.IsValid)
         {
-            if (heroInstance != null && heroInstance.IsValid)
+            HeroCard heroCard = Instantiate(heroCardPrefab, heroCardContainer);
+
+            int index = heroCards.Count;
+            SortCardsByHeroCost();
+            for (int i = 0; i < heroCards.Count; i++)
             {
-                HeroCard heroCard = Instantiate(heroCardPrefab, heroCardContainer);
-                if (heroCard != null)
+                if (heroCards[i] != null && heroCards[i].HeroInstance != null && heroCards[i].HeroInstance.DeployCost > heroInstance.DeployCost)
                 {
-                    heroCard.Initialize(heroInstance);
-                    heroCards.Add(heroCard);
-                }
-                else 
-                {
-                    Debug.LogWarning("[HeroInventoryView] Failed to instantiate hero card prefab.");
+                    index = i;
+                    break;
                 }
             }
+
+            if (heroCard != null)
+            {
+                heroCard.Initialize(heroInstance);
+                heroCards.Insert(index, heroCard);
+                heroCard.transform.SetSiblingIndex(index);
+            }
+            else 
+            {
+                Debug.LogWarning("[HeroInventoryView] Failed to instantiate hero card prefab.");
+            }
+            return heroCard;
         }
+        return null;
+    }
+
+    public bool RemoveHeroCard(HeroInstance heroInstance)
+    {
+        if (heroInstance == null || !heroInstance.IsValid)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < heroCards.Count; i++)
+        {
+            HeroCard card = heroCards[i];
+            if (card != null && card.HeroInstance == heroInstance)
+            {
+                UnregisterHeroEvents(card, heroInstance);
+                heroCards.RemoveAt(i);
+                Destroy(card.gameObject);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void UnregisterHeroEvents(HeroCard card, HeroInstance heroInstance)
+    {
+        if (card != null && heroInstance != null)
+        {
+            heroInstance.OnDeployStateChanged -= card.OnHeroDeployStateChanged;
+        }
+    }
+
+    private void SortCardsByHeroCost()
+    {
+        heroCards.Sort((cardA, cardB) =>
+        {
+            if (cardA == null || cardB == null)
+            {
+                return 0;
+            }
+
+            HeroInstance heroA = cardA.HeroInstance;
+            HeroInstance heroB = cardB.HeroInstance;
+
+            if (heroA == null || heroB == null)
+            {
+                return 0;
+            }
+
+            int costA = heroA.DeployCost;
+            int costB = heroB.DeployCost;
+
+            return costA.CompareTo(costB);
+        });
     }
 }

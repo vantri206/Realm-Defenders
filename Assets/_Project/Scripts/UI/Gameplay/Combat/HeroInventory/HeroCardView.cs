@@ -2,13 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-[DisallowMultipleComponent]
 public class HeroCardView : MonoBehaviour
 {
     [Header("Selection")]
-    [SerializeField] private Transform visualRoot;
+    [SerializeField] private RectTransform visualRoot;
     [SerializeField] private Canvas sortingCanvas;
     [SerializeField] private float selectedScale = 1.25f;
+    [SerializeField] private float selectedYOffset = 4f;
 
     [Header("Info")]
     [SerializeField] private Image heroIcon;
@@ -20,17 +20,22 @@ public class HeroCardView : MonoBehaviour
     [Header("State Overlay")]
     [SerializeField] private Image unavailableOverlay;
     [SerializeField] private Image countdownOverlay;
-    [SerializeField] private Image countdownIcon;
+    [SerializeField] private Image countdownCircle;
     [SerializeField] private UIValueTextBinding countdownText = new UIValueTextBinding();
 
     private HeroInstance heroInstance;
+    
     private Tween selectedTween;
+    private Vector2 defaultAnchoredPosition;
+    private Vector3 defaultLocalPosition;
+    private bool hasDefaultLocalPos;
 
     private float selectedTweenDuration = 0.2f;
     private int selectedSortingOrder = 100;
 
     private void Awake()
     {
+        CacheDefaultPosition();
         Clear();
     }
 
@@ -95,16 +100,48 @@ public class HeroCardView : MonoBehaviour
             return;
         }
 
+        CacheDefaultPosition();
+
         selectedTween?.Kill();
-        selectedTween = visualRoot.DOScale(isSelected ? selectedScale : 1f, selectedTweenDuration).SetEase(Ease.OutQuad);
+
+        Sequence sequence = DOTween.Sequence();
+        sequence.Join(visualRoot.DOScale(isSelected ? selectedScale : 1f, selectedTweenDuration));
+
+        float targetY = isSelected ? selectedYOffset : 0f;
+        if (visualRoot != null)
+        {
+            sequence.Join(visualRoot.DOAnchorPosY(defaultAnchoredPosition.y + targetY, selectedTweenDuration));
+        }
+        else
+        {
+            sequence.Join(visualRoot.DOLocalMoveY(defaultLocalPosition.y + targetY, selectedTweenDuration));
+        }
+
+        selectedTween = sequence.SetEase(Ease.OutQuad);
+    }
+
+    private void CacheDefaultPosition()
+    {
+        if (hasDefaultLocalPos || visualRoot == null)
+        {
+            return;
+        }
+
+        if (visualRoot != null)
+        {
+            defaultAnchoredPosition = visualRoot.anchoredPosition;
+        }
+
+        defaultLocalPosition = visualRoot.localPosition;
+        hasDefaultLocalPos = true;
     }
 
     public void HideAllOverlays()
     {
         SetUnavailableOverlay(false);
-        SetCooldownOverlay(false);
+        SetCountdownOverlay(false);
         countdownText.SetVisible(false);
-        countdownIcon.gameObject.SetActive(false);
+        countdownCircle.gameObject.SetActive(false);
     }
 
     public void SetUnavailableOverlay(bool isVisible)
@@ -125,7 +162,7 @@ public class HeroCardView : MonoBehaviour
         SetUnavailableOverlay(false);
     }
 
-    public void SetCooldownOverlay(bool isVisible)
+    public void SetCountdownOverlay(bool isVisible)
     {
         if (countdownOverlay != null)
         {
@@ -133,6 +170,7 @@ public class HeroCardView : MonoBehaviour
         }
 
         countdownText.SetVisible(isVisible);
+        countdownCircle.gameObject.SetActive(true);
     }
 
     public void ShowCountdown(float remainingTime, float totalTime)
@@ -141,7 +179,7 @@ public class HeroCardView : MonoBehaviour
         totalTime = Mathf.Max(0f, totalTime);
 
         bool hasCountdown = remainingTime > 0f && totalTime > 0f;
-        SetCooldownOverlay(hasCountdown);
+        SetCountdownOverlay(hasCountdown);
 
         if (!hasCountdown)
         {
@@ -149,28 +187,26 @@ public class HeroCardView : MonoBehaviour
             return;
         }
 
-        if (countdownOverlay != null)
+        if (countdownCircle != null)
         {
-            countdownOverlay.fillAmount = Mathf.Clamp01(remainingTime / totalTime);
+            countdownCircle.fillAmount = Mathf.Clamp01(remainingTime / totalTime);
         }
-
-        countdownIcon.gameObject.SetActive(true);
 
         countdownText.SetNumber(remainingTime);
     }
 
     public void ClearCountdown()
     {
-        if (countdownOverlay != null)
+        if (countdownCircle != null)
         {
-            countdownOverlay.fillAmount = 0f;
+            countdownCircle.fillAmount = 0f;
         }
 
         countdownText.Refresh();
 
-        countdownIcon.gameObject.SetActive(false);
+        countdownCircle.gameObject.SetActive(false);
 
-        SetCooldownOverlay(false);
+        SetCountdownOverlay(false);
     }
 
     public void RefreshCountdown()
@@ -191,7 +227,6 @@ public class HeroCardView : MonoBehaviour
             return;
         }
 
-        heroInstance.TickRedeployTimer(deltaTime);
         RefreshCountdown();
     }
 
@@ -213,4 +248,25 @@ public class HeroCardView : MonoBehaviour
         image.enabled = true;
     }
 
+    public void SetState(HeroDeployState newState)
+    {
+        switch (newState)
+        {
+            case HeroDeployState.Available:
+                HideAllOverlays();
+                break;
+            case HeroDeployState.Unavailable:
+                ShowUnavailableOverlay();
+                break;
+            case HeroDeployState.Countdown:
+                ShowCountdown(heroInstance.RedeployCountdownTime, heroInstance.RedeployTime);
+                break;
+            case HeroDeployState.Deployed:
+                HideAllOverlays();
+                break;
+            default:
+                HideAllOverlays();
+                break;
+        }
+    }
 }

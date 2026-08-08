@@ -19,6 +19,24 @@ public class HeroDeploymentSystem : MonoBehaviour
         this.heroPlacement = heroPlacement;
     }
 
+    private void Update()
+    {
+        for (int i = 0; i < heroInventory.HeroCount; i++)
+        {
+            HeroInstance heroInstance = heroInventory.HeroInstances[i];
+            if (heroInstance == null || !heroInstance.IsValid)
+            {
+                continue;
+            }
+
+            if (!heroInstance.IsReadyDeploy)
+            {
+                heroInstance.TickRedeployTimer(Time.deltaTime);
+            }
+        }
+    }
+
+
     public void ClearSelection()
     {
         selectedHero = null;
@@ -76,8 +94,9 @@ public class HeroDeploymentSystem : MonoBehaviour
         if (placedHero != null)
         {
             AddDeployedHero(selectedHero, placedHero);
+            selectedHero.SetDeployState(HeroDeployState.Deployed);
+            
             ClearSelection();
-
             placedHero?.SetFacingDirection(direction);
         }
 

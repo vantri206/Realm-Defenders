@@ -8,9 +8,13 @@ public class HeroDetailView : MonoBehaviour
     [SerializeField] private GameObject viewRoot;
 
     [Header("Identity")]
-    [SerializeField] private GameObject avatarRoot;
     [SerializeField] private Image avatarImage;
     [SerializeField] private UIValueTextBinding heroName = new UIValueTextBinding();
+
+    [Header("Trait")]
+    [SerializeField] private Image classIcon;
+    [SerializeField] private UIValueTextBinding className = new UIValueTextBinding();
+    [SerializeField] private UIValueTextBinding attackTypeText;
 
     [Header("Health")]
     [SerializeField] private UIValueTextBinding currentHealth = new UIValueTextBinding();
@@ -41,15 +45,30 @@ public class HeroDetailView : MonoBehaviour
             return;
         }
 
-        currentHero = heroInstance;
         Refresh();
         SetData(heroInstance);
+
+        Debug.Log($"Showing hero detail view for {heroInstance.Definition.HeroName}");
+    }
+
+    public void Show(HeroRuntime heroRuntime)
+    {
+        if (heroRuntime == null || !heroRuntime.IsInitialized)
+        {
+            return;
+        }
+
+        Refresh();
+        SetData(heroRuntime);
     }
 
     public void Refresh()
     {
         SetAvatar(null);
         heroName.Refresh();
+        SetClassIcon(null);
+        className.Refresh();
+        attackTypeText.Refresh();
         currentHealth.Refresh();
         maxHealth.Refresh();
         attack.Refresh();
@@ -72,7 +91,6 @@ public class HeroDetailView : MonoBehaviour
             return;
         }
 
-        Debug.LogWarning("View root is not assigned in HeroDetailView.");
         gameObject.SetActive(false);
     }
 
@@ -84,19 +102,41 @@ public class HeroDetailView : MonoBehaviour
             return;
         }
 
-        HeroDefinition definition = heroInstance.Definition;
+        currentHero = heroInstance;
 
+        HeroDefinition definition = heroInstance.Definition;
+        UnitStats stats = heroInstance.Stats;
+        HeroBlocker blocker = heroInstance.Blocker;
+
+        // Identity
         SetAvatar(definition.HeroIcon);
-        heroName.SetText(definition.HeroName);
-        currentHealth.SetInt(definition.MaxHealth);
-        maxHealth.SetInt(definition.MaxHealth);
-        attack.SetInt(definition.Attack);
-        defense.SetInt(definition.Defense);
-        specialDefense.SetInt(definition.SpecialDefense);
-        attackSpeed.SetSeconds(definition.AttackInterval);
-        block.SetInt(definition.Block);
+        SetClassIcon(definition.HeroClass.Icon);
+        heroName.SetText(definition.HeroName.ToString().ToUpper());
+        className.SetText(definition.HeroClass.ClassId.ToString().ToUpper());
+        attackTypeText.SetText(definition.AttackType.ToString().ToUpper());
+
+        // Stats
+        maxHealth.SetInt(stats.MaxHealth);
+        currentHealth.SetInt(stats.CurrentHealth);
+        attack.SetInt(stats.Attack);
+        defense.SetInt(stats.Defense);
+        specialDefense.SetInt(stats.SpecialDefense);
+        attackSpeed.SetSeconds(stats.AttackInterval);
+        block.SetInt(blocker.BlockCount);
         deployCost.SetInt(heroInstance.DeployCost);
         redeployTime.SetSeconds(heroInstance.RedeployTime);
+    }
+
+    public void SetData(HeroRuntime heroRuntime)
+    {
+        if (heroRuntime == null || !heroRuntime.IsInitialized)
+        {
+            Refresh();
+            return;
+        }
+
+        SetData(currentHero);
+        currentHealth.SetInt(heroRuntime.CurrentHealth);
     }
 
     private void SetAvatar(Sprite sprite)
@@ -115,5 +155,23 @@ public class HeroDetailView : MonoBehaviour
 
         avatarImage.sprite = sprite;
         avatarImage.enabled = true;
+    }
+
+    private void SetClassIcon(Sprite sprite)
+    {
+        if (classIcon == null)
+        {
+            return;
+        }
+
+        if (sprite == null)
+        {
+            classIcon.sprite = null;
+            classIcon.enabled = false;
+            return;
+        }
+
+        classIcon.sprite = sprite;
+        classIcon.enabled = true;
     }
 }

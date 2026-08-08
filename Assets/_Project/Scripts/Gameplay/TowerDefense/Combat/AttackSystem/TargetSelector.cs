@@ -1,12 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TargetPriorityMode
-{
-    Nearest,
-    HighestPathProgress,
-}
-
 [DisallowMultipleComponent]
 public class TargetSelector : MonoBehaviour
 {

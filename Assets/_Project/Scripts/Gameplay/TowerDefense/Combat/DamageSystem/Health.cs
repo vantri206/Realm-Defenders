@@ -41,6 +41,9 @@ public class Health : MonoBehaviour, IDamageable
         }
     }
 
+    public float MaxHealth => CurrentData.MaxHealth;
+    public float CurrentHealth => CurrentData.CurrentHealth;
+
     private bool isInitialized;
 
     public void Initialize(float maxHealth)

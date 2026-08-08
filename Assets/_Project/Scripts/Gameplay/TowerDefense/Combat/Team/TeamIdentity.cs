@@ -1,12 +1,5 @@
 using UnityEngine;
 
-public enum Team
-{
-    Environment,    // Neutral entities can damage all other factions, and only be damaged by player
-    Player,
-    Enemy
-}
-
 public class TeamIdentity : MonoBehaviour
 {
     [SerializeField] private Team team = Team.Environment;

@@ -4,12 +4,6 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class NormalAttackController : MonoBehaviour
 {
-    private readonly List<Vector2Int> defaultPatternOffsets = new List<Vector2Int>
-    {
-        Vector2Int.zero,
-        Vector2Int.left,
-    };
-
     // References
     private readonly List<Hurtbox> validTargets = new List<Hurtbox>();
     private TargetScanner targetScanner;
@@ -33,52 +27,58 @@ public class NormalAttackController : MonoBehaviour
         attackTimer = new CountdownTimer(0f);
     }
 
-    public void Initialize(float attack, float attackInterval)
+    public void Initialize(float attack, float attackInterval, TargetScanner targetScanner, TargetSelector targetSelector, UnitVisual unitVisual)
     {
         this.attack = Mathf.Max(0f, attack);
         this.attackInterval = Mathf.Max(0f, attackInterval);
-        attackTimer = new CountdownTimer(this.attackInterval);
+
+        this.targetScanner = targetScanner;
+        this.targetSelector = targetSelector;
+        this.unitVisual = unitVisual;
+
         isInitialized = true;
     }
 
-    public void Tick(float deltaTime, Vector3Int originCell, IReadOnlyList<Vector2Int> patternOffsets)
+    public void Tick(float deltaTime, Vector3Int attackerCell, IReadOnlyList<Vector2Int> patternOffsets)
     {
         if (!isInitialized)
         {
             return;
         }
 
-        attackTimer.Tick(deltaTime);
+        if (attackTimer.IsRunning)
+        {
+            attackTimer.Tick(deltaTime);
+        }
 
         if (!IsReadyAttack)
         {
             return;
         }
 
-        TryAttack(originCell, patternOffsets);
+        TriggerAttack(attackerCell, patternOffsets);
     }
 
-    public bool TryAttack(Vector3Int originCell, IReadOnlyList<Vector2Int> patternOffsets)
+    public void TriggerAttack(Vector3Int attackerCell, IReadOnlyList<Vector2Int> patternOffsets)
     {
         if (!isInitialized)
         {
-            return false;
+            return;
         }
 
-        Hurtbox target = SelectTarget(originCell, patternOffsets);
+        Hurtbox target = SelectTarget(attackerCell, patternOffsets);
         if (target == null)
         {
             currentTarget = null;
-            return false;
+            return;
         }
 
-        Attack(target);
+        NormalAttack(target);
         attackTimer.Reset(attackInterval);
         attackTimer.StartTimer();
-        return true;
     }
 
-    public Hurtbox SelectTarget(Vector3Int originCell, IReadOnlyList<Vector2Int> patternOffsets)
+    public Hurtbox SelectTarget(Vector3Int attackerCell, IReadOnlyList<Vector2Int> patternOffsets)
     {
         Hurtbox target = null;
 
@@ -87,13 +87,13 @@ public class NormalAttackController : MonoBehaviour
             return null;
         }
 
-        targetScanner.Scan(originCell, patternOffsets, validTargets);
+        targetScanner.Scan(attackerCell, patternOffsets, validTargets);
 
-        target = targetSelector.SelectTarget(validTargets, targetScanner.CombatGrid.CellToWorldCenter(originCell));
+        target = targetSelector.SelectTarget(validTargets, targetScanner.CombatGrid.CellToWorldCenter(attackerCell));
         return target;
     }
 
-    private void Attack(Hurtbox target)
+    private void NormalAttack(Hurtbox target)
     {
         currentTarget = target;
 

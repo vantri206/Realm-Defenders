@@ -1,15 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerCombatActionMode
-{
-    None,
-    DeployingHero,
-    SelectingDeployDirection,
-    SelectedDeployedHero,
-    RelocatingHero,
-}
-
 [DisallowMultipleComponent]
 public class PlayerCombatAction : MonoBehaviour
 {
@@ -491,7 +482,6 @@ public class PlayerCombatAction : MonoBehaviour
         currentDeployDirection = Vector2Int.left;
 
         ShowDeployGhost(heroInstance);
-        ShowDetailHero(heroInstance);
         UpdateHover(screenPosition);
 
         ChangeMode(PlayerCombatActionMode.DeployingHero);
