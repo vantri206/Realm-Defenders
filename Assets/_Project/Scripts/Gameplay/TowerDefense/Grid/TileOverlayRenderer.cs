@@ -49,11 +49,13 @@ public class TileOverlayRenderer : MonoBehaviour
 
         if (!TryGetTilemap(layer, out Tilemap tilemap) || !TryGetBrush(type, out TileOverlayBrush brush))
         {
+            Debug.LogError($"[TileOverlayRenderer] Tilemap and brush are required to draw overlay type '{type}' on layer '{layer}'.", this);
             return;
         }
 
         if (brush.Tile == null)
         {
+            Debug.LogError($"[TileOverlayRenderer] Brush for overlay type '{type}' requires a Tile asset.", this);
             return;
         }
 
@@ -80,6 +82,7 @@ public class TileOverlayRenderer : MonoBehaviour
     {
         if (!TryGetTilemap(layer, out Tilemap tilemap))
         {
+            Debug.LogError($"[TileOverlayRenderer] Tilemap is required to clear overlay layer '{layer}'.", this);
             return;
         }
 
@@ -108,6 +111,7 @@ public class TileOverlayRenderer : MonoBehaviour
     {
         if (!TryGetTilemap(layer, out Tilemap tilemap) || !TryGetBrush(type, out TileOverlayBrush brush))
         {
+            Debug.LogError($"[TileOverlayRenderer] Tilemap and brush are required to clear overlay type '{type}' on layer '{layer}'.", this);
             return;
         }
 

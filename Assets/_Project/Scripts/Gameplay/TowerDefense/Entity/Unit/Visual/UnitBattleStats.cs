@@ -5,7 +5,6 @@ using UnityEngine;
 public class UnitStats
 {
     private float maxHealth;
-    private float currentHealth;
     private float attack;
     private float attackInterval;
     private float defense;
@@ -15,11 +14,6 @@ public class UnitStats
     {
         get => maxHealth;
         set => maxHealth = Mathf.Max(0f, value);
-    }
-    public float CurrentHealth
-    {
-        get => currentHealth;
-        set => currentHealth = Mathf.Min(value, maxHealth);
     }
     public float Attack
     {
@@ -42,6 +36,15 @@ public class UnitStats
         set => specialDefense = value;
     }
 
+    public UnitStats()
+    {
+        maxHealth = 0f;
+        attack = 0f;
+        attackInterval = 0f;
+        defense = 0f;
+        specialDefense = 0f;
+    }
+    
     public UnitStats(float maxHealth, float attack, float attackInterval, float defense, float specialDefense)
     {
         this.maxHealth = Mathf.Max(0f, maxHealth);

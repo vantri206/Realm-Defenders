@@ -1158,15 +1158,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Relocate"",
-                    ""type"": ""Button"",
-                    ""id"": ""f490db09-15fa-4a03-a61a-0d99c700671f"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Direction"",
                     ""type"": ""Value"",
                     ""id"": ""6cc27a30-5445-4791-88c3-15a1fd4488ca"",
@@ -1227,17 +1218,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sell"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4db74d4d-181f-448c-a3a7-fe67875b7515"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Relocate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1405,7 +1385,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Gameplay_PrimaryPress = m_Gameplay.FindAction("PrimaryPress", throwIfNotFound: true);
         m_Gameplay_SecondaryPress = m_Gameplay.FindAction("SecondaryPress", throwIfNotFound: true);
         m_Gameplay_Sell = m_Gameplay.FindAction("Sell", throwIfNotFound: true);
-        m_Gameplay_Relocate = m_Gameplay.FindAction("Relocate", throwIfNotFound: true);
         m_Gameplay_Direction = m_Gameplay.FindAction("Direction", throwIfNotFound: true);
         m_Gameplay_Action = m_Gameplay.FindAction("Action", throwIfNotFound: true);
     }
@@ -1970,7 +1949,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_PrimaryPress;
     private readonly InputAction m_Gameplay_SecondaryPress;
     private readonly InputAction m_Gameplay_Sell;
-    private readonly InputAction m_Gameplay_Relocate;
     private readonly InputAction m_Gameplay_Direction;
     private readonly InputAction m_Gameplay_Action;
     /// <summary>
@@ -2000,10 +1978,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/Sell".
         /// </summary>
         public InputAction @Sell => m_Wrapper.m_Gameplay_Sell;
-        /// <summary>
-        /// Provides access to the underlying input action "Gameplay/Relocate".
-        /// </summary>
-        public InputAction @Relocate => m_Wrapper.m_Gameplay_Relocate;
         /// <summary>
         /// Provides access to the underlying input action "Gameplay/Direction".
         /// </summary>
@@ -2050,9 +2024,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Sell.started += instance.OnSell;
             @Sell.performed += instance.OnSell;
             @Sell.canceled += instance.OnSell;
-            @Relocate.started += instance.OnRelocate;
-            @Relocate.performed += instance.OnRelocate;
-            @Relocate.canceled += instance.OnRelocate;
             @Direction.started += instance.OnDirection;
             @Direction.performed += instance.OnDirection;
             @Direction.canceled += instance.OnDirection;
@@ -2082,9 +2053,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Sell.started -= instance.OnSell;
             @Sell.performed -= instance.OnSell;
             @Sell.canceled -= instance.OnSell;
-            @Relocate.started -= instance.OnRelocate;
-            @Relocate.performed -= instance.OnRelocate;
-            @Relocate.canceled -= instance.OnRelocate;
             @Direction.started -= instance.OnDirection;
             @Direction.performed -= instance.OnDirection;
             @Direction.canceled -= instance.OnDirection;
@@ -2388,13 +2356,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSell(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Relocate" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnRelocate(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Direction" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

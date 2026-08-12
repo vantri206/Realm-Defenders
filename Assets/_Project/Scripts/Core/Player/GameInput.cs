@@ -11,7 +11,6 @@ public class GameInput : SingletonMB<GameInput>
     public event Action<Vector2> OnPrimaryCanceled;
     public event Action<Vector2> OnSecondaryPerformed;
     public event Action OnSellPerformed;
-    public event Action OnRelocatePerformed;
     public event Action OnPausePerformed;
     public event Action<Vector2Int> OnDirectionPerformed;
     public event Action OnActionPerformed;
@@ -32,6 +31,7 @@ public class GameInput : SingletonMB<GameInput>
     {
         if (inputActions == null)
         {
+            Debug.LogError("[GameInput] Input actions are required before enabling input.", this);
             return;
         }
 
@@ -92,11 +92,6 @@ public class GameInput : SingletonMB<GameInput>
         OnSellPerformed?.Invoke();
     }
 
-    private void HandleRelocatePerformed(InputAction.CallbackContext context)
-    {
-        OnRelocatePerformed?.Invoke();
-    }
-
     private void HandlePausePerformed(InputAction.CallbackContext context)
     {
         OnPausePerformed?.Invoke();
@@ -141,7 +136,6 @@ public class GameInput : SingletonMB<GameInput>
         inputActions.Gameplay.PrimaryPress.canceled += HandlePrimaryCanceled;
         inputActions.Gameplay.SecondaryPress.performed += HandleSecondaryPerformed;
         inputActions.Gameplay.Sell.performed += HandleSellPerformed;
-        inputActions.Gameplay.Relocate.performed += HandleRelocatePerformed;
         inputActions.System.Pause.performed += HandlePausePerformed;
         inputActions.Gameplay.Direction.performed += HandleDirectionPerformed;
         inputActions.Gameplay.Action.performed += HandleActionPerformed;
@@ -154,7 +148,6 @@ public class GameInput : SingletonMB<GameInput>
         inputActions.Gameplay.PrimaryPress.canceled -= HandlePrimaryCanceled;
         inputActions.Gameplay.SecondaryPress.performed -= HandleSecondaryPerformed;
         inputActions.Gameplay.Sell.performed -= HandleSellPerformed;
-        inputActions.Gameplay.Relocate.performed -= HandleRelocatePerformed;
         inputActions.System.Pause.performed -= HandlePausePerformed;
         inputActions.Gameplay.Direction.performed -= HandleDirectionPerformed;
         inputActions.Gameplay.Action.performed -= HandleActionPerformed;

@@ -14,6 +14,12 @@ public class HeroInventory : MonoBehaviour
     
     public void Initialize(HeroInventoryView inventoryView)
     {
+        if (inventoryView == null)
+        {
+            Debug.LogError("[HeroInventory] HeroInventoryView is required to initialize inventory.", this);
+            return;
+        }
+
         heroInventoryView = inventoryView;
 
         heroInventoryView.Initialize();
@@ -50,7 +56,13 @@ public class HeroInventory : MonoBehaviour
         }
 
         heroInstances.Add(heroInstance);
-        HeroCard heroCard = heroInventoryView?.AddHeroCard(heroInstance);
+        if (heroInventoryView == null)
+        {
+            Debug.LogError("[HeroInventory] HeroInventoryView is required before adding hero cards.", this);
+            return false;
+        }
+
+        HeroCard heroCard = heroInventoryView.AddHeroCard(heroInstance);
         if (heroCard == null)
         {
             Debug.LogWarning("[HeroInventory] Failed to create a HeroCard for the added HeroInstance.");
@@ -58,7 +70,6 @@ public class HeroInventory : MonoBehaviour
         }
         
         heroInstance.OnDeployStateChanged += OnHeroDeployStateChanged;
-        heroInstance.OnDeployStateChanged += heroCard.OnHeroDeployStateChanged;
 
         return true;
     }
@@ -71,7 +82,13 @@ public class HeroInventory : MonoBehaviour
             return false;
         }
 
-        heroInventoryView?.RemoveHeroCard(heroInstance);
+        if (heroInventoryView == null)
+        {
+            Debug.LogError("[HeroInventory] HeroInventoryView is required before removing hero cards.", this);
+            return false;
+        }
+
+        heroInventoryView.RemoveHeroCard(heroInstance);
         heroInstance.OnDeployStateChanged -= OnHeroDeployStateChanged;
         heroInstances.Remove(heroInstance);
         return true;
@@ -79,15 +96,27 @@ public class HeroInventory : MonoBehaviour
 
     private void OnHeroDeployStateChanged(HeroInstance heroInstance, HeroDeployState newState)
     {
+        if (heroInventoryView == null)
+        {
+            Debug.LogError("[HeroInventory] HeroInventoryView is required to update hero card deploy state.", this);
+            return;
+        }
+
         if (newState == HeroDeployState.Deployed)
         {
-            heroInventoryView?.RemoveHeroCard(heroInstances.FirstOrDefault(hero => hero == heroInstance));
+            heroInventoryView.RemoveHeroCard(heroInstances.FirstOrDefault(hero => hero == heroInstance));
         }
         else
         {
             if (!heroInventoryView.HeroCards.Any(card => card.HeroInstance == heroInstance))
             {
-                heroInventoryView?.AddHeroCard(heroInstance);
+                heroInventoryView.AddHeroCard(heroInstance);
+            }
+
+            HeroCard heroCard = heroInventoryView.HeroCards.FirstOrDefault(card => card.HeroInstance == heroInstance);
+            if (heroCard != null)
+            {
+                heroCard.OnHeroDeployStateChanged(newState);
             }
         }
     }

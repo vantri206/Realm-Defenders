@@ -27,7 +27,7 @@ public class HeroDefinition : ScriptableObject
     [SerializeField] private float baseRedeployTime = 20f;
 
     [Header("Attack")]
-    [SerializeField] private HeroAttackType attackType = HeroAttackType.Melee;
+    [SerializeField] private UnitAttackType attackType = UnitAttackType.Melee;
     [SerializeField] private TargetPriorityMode targetPriorityMode = TargetPriorityMode.Nearest;
     [SerializeField] private List<Vector2Int> attackPattern = new List<Vector2Int>
     {
@@ -50,7 +50,7 @@ public class HeroDefinition : ScriptableObject
     public int BlockCount => blockCount;
     public int BaseDeployCost => baseDeployCost;
     public float BaseRedeployTime => baseRedeployTime;
-    public HeroAttackType AttackType => attackType;
+    public UnitAttackType AttackType => attackType;
     public TargetPriorityMode TargetPriorityMode => targetPriorityMode;
     public IReadOnlyList<Vector2Int> AttackPattern => attackPattern;
 

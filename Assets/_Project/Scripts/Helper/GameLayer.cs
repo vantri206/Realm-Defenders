@@ -10,8 +10,9 @@ public static class GameLayer
     public static readonly int HitboxIndex = LayerMask.NameToLayer("Hitbox");
     public static readonly int HurtboxIndex = LayerMask.NameToLayer("Hurtbox");
     public static readonly int ProjectileIndex = LayerMask.NameToLayer("Projectile");
-    public static readonly int ObstacleIndex = LayerMask.NameToLayer("Obstacle");
+    public static readonly int BlockedIndex = LayerMask.NameToLayer("Blocked");
     public static readonly int NoPhysicsIndex = LayerMask.NameToLayer("NoPhysics");
+    public static readonly int ObstacleIndex = LayerMask.NameToLayer("Obstacle");
 
     // 2. LAYER MASKS
 
@@ -21,14 +22,18 @@ public static class GameLayer
     public static readonly LayerMask HitboxMask = 1 << HitboxIndex;
     public static readonly LayerMask HurtboxMask = 1 << HurtboxIndex;
     public static readonly LayerMask ProjectileMask = 1 << ProjectileIndex;
-    public static readonly LayerMask ObstacleMask = 1 << ObstacleIndex;
+    public static readonly LayerMask BlockedMask = 1 << BlockedIndex;
     public static readonly LayerMask NoPhysicsMask = 1 << NoPhysicsIndex;
-
+    public static readonly LayerMask ObstacleMask = 1 << ObstacleIndex;
     // 3. LAYER MASK GROUP CHECK
 
     public static readonly LayerMask PlayerAttackTargetMask = EnemyMask | HurtboxMask;
 
     public static readonly LayerMask EnemyAttackTargetMask = PlayerMask | HurtboxMask;
+
+    public static readonly LayerMask MovementBlockerMask = BlockedMask;
+
+    public static readonly LayerMask ObstacleBlockerMask = ObstacleMask;
 
     static GameLayer()
     {
@@ -39,8 +44,9 @@ public static class GameLayer
         ValidateLayer(HitboxIndex, "Hitbox");
         ValidateLayer(HurtboxIndex, "Hurtbox");
         ValidateLayer(ProjectileIndex, "Projectile");
-        ValidateLayer(ObstacleIndex, "Obstacle");
+        ValidateLayer(BlockedIndex, "Blocked");
         ValidateLayer(NoPhysicsIndex, "NoPhysics");
+        ValidateLayer(ObstacleIndex, "Obstacle");
 #endif
     }
 

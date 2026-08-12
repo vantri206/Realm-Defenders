@@ -6,7 +6,7 @@ public class HeroInstance
 {
     private HeroDefinition definition;
     private UnitStats unitStats;
-    private HeroBlocker heroBlocker;
+    private HeroBlock heroBlocker;
     private int level = 1;
     private int star = 1;
     private int deployCost = 15;
@@ -20,7 +20,7 @@ public class HeroInstance
     public int Level => level;
     public int Star => star;
     public UnitStats Stats => unitStats;
-    public HeroBlocker Blocker => heroBlocker;
+    public HeroBlock Blocker => heroBlocker;
     public float RedeployTime => redeployTime;
     public int DeployCost => deployCost;
     public float RedeployCountdownTime => redeployTimer.RemainingTime;
@@ -45,7 +45,7 @@ public class HeroInstance
         deployCost = Mathf.Max(0, definition.BaseDeployCost);
         redeployTime = Mathf.Max(0f, definition.BaseRedeployTime);
         unitStats = new UnitStats(definition.MaxHealth, definition.Attack, definition.AttackInterval, definition.Defense, definition.SpecialDefense);
-        heroBlocker = new HeroBlocker(definition.BlockCount);
+        heroBlocker = new HeroBlock(definition.BlockCount);
 
         redeployTimer = new CountdownTimer(redeployTime);
     }

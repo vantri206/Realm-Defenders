@@ -39,6 +39,7 @@ public class PlayerCombatAction : MonoBehaviour
 
         if (this.mainCamera == null || this.combatGrid == null || this.heroDeploymentSystem == null || this.tileOverlayRenderer == null)
         {
+            Debug.LogError("[PlayerCombatAction] mainCamera, combatGrid, heroDeploymentSystem, and tileOverlayRenderer are required to initialize player combat actions.", this);
             isInitialized = false;
             return;
         }
@@ -101,6 +102,12 @@ public class PlayerCombatAction : MonoBehaviour
 
     public void UpdateHover(Vector2 screenPosition)
     {
+        if (!isInitialized)
+        {
+            Debug.LogError("[PlayerCombatAction] Cannot update hover before Initialize succeeds.", this);
+            return;
+        }
+
         if (GetCellFromScreenPosition(screenPosition, out CombatGridCell cell))
         {
             if (hoveredCellPosition != cell.CellPosition)
@@ -152,6 +159,7 @@ public class PlayerCombatAction : MonoBehaviour
     {
         if (combatGrid == null || tileOverlayRenderer == null)
         {
+            Debug.LogError("[PlayerCombatAction] CombatGrid and TileOverlayRenderer are required to draw deployable cells.", this);
             return;
         }
 
@@ -165,8 +173,14 @@ public class PlayerCombatAction : MonoBehaviour
 
     public void DrawAttackRangePreview(HeroRuntime heroRuntime)
     {
-        if (heroRuntime == null || tileOverlayRenderer == null)
+        if (heroRuntime == null)
         {
+            return;
+        }
+
+        if (tileOverlayRenderer == null)
+        {
+            Debug.LogError("[PlayerCombatAction] TileOverlayRenderer is required to draw attack range preview.", this);
             return;
         }
 
@@ -260,18 +274,20 @@ public class PlayerCombatAction : MonoBehaviour
         cell = null;
         if (mainCamera == null || combatGrid == null)
         {
+            Debug.LogError("[PlayerCombatAction] Camera and CombatGrid are required to resolve screen position to a combat cell.", this);
             return false;
         }
 
         Vector3 worldPosition = mainCamera.ScreenToWorldPoint(screenPosition);
         worldPosition.z = 0f;
-        return combatGrid.WorldToCell(worldPosition, out cell);
+        return combatGrid.TryWorldToCell(worldPosition, out cell);
     }
 
     public void ClearCurrentModeOverlays()
     {
         if (tileOverlayRenderer == null)
         {
+            Debug.LogError("[PlayerCombatAction] TileOverlayRenderer is required to clear current mode overlays.", this);
             return;
         }
 
@@ -307,6 +323,7 @@ public class PlayerCombatAction : MonoBehaviour
     {
         if (ghostHeroView == null)
         {
+            Debug.LogError("[PlayerCombatAction] GhostHeroView is required to show deploy ghost.", this);
             return;
         }
 
@@ -318,6 +335,7 @@ public class PlayerCombatAction : MonoBehaviour
     {
         if (ghostHeroView == null)
         {
+            Debug.LogError("[PlayerCombatAction] GhostHeroView is required to hide deploy ghost.", this);
             return;
         }
 
@@ -326,12 +344,22 @@ public class PlayerCombatAction : MonoBehaviour
 
     public void UpdateDeployGhost(Vector2 screenPosition)
     {
-        if (ghostHeroView == null || hoveredCell == null)
+        if (ghostHeroView == null)
+        {
+            Debug.LogError("[PlayerCombatAction] GhostHeroView is required to update deploy ghost.", this);
+            return;
+        }
+
+        if (hoveredCell == null)
         {
             return;
         }
 
-        Vector3 bottomCenterPos = combatGrid.CellToWorldBottomCenter(hoveredCell.CellPosition);
+        if (!combatGrid.TryCellToWorldBottomCenter(hoveredCell.CellPosition, out Vector3 bottomCenterPos))
+        {
+            return;
+        }
+
         ghostHeroView.UpdateWorldPosition(bottomCenterPos);
     }
 
@@ -344,6 +372,7 @@ public class PlayerCombatAction : MonoBehaviour
 
         if (ghostHeroView == null)
         {
+            Debug.LogError("[PlayerCombatAction] GhostHeroView is required to update deploy direction.", this);
             return;
         }
 
@@ -371,8 +400,14 @@ public class PlayerCombatAction : MonoBehaviour
 
     private void DrawPreviewAttackRange(CombatGridCell cell)
     {
-        if (cell == null || tileOverlayRenderer == null)
+        if (cell == null)
         {
+            return;
+        }
+
+        if (tileOverlayRenderer == null)
+        {
+            Debug.LogError("[PlayerCombatAction] TileOverlayRenderer is required to draw preview attack range.", this);
             return;
         }
 
@@ -386,6 +421,7 @@ public class PlayerCombatAction : MonoBehaviour
         IReadOnlyList<Vector2Int> attackPattern = deployingHero.Definition.AttackPattern;
         if (attackPattern == null)
         {
+            Debug.LogError("[PlayerCombatAction] Deploying hero definition requires an attack pattern to draw preview range.", this);
             return;
         }
 
@@ -434,6 +470,7 @@ public class PlayerCombatAction : MonoBehaviour
     {
         if (tileOverlayRenderer == null)
         {
+            Debug.LogError("[PlayerCombatAction] TileOverlayRenderer is required to clear preview attack range.", this);
             return;
         }
 
@@ -444,6 +481,7 @@ public class PlayerCombatAction : MonoBehaviour
     {
         if (heroDetailView == null)
         {
+            Debug.LogError("[PlayerCombatAction] HeroDetailView is required to show hero details.", this);
             return;
         }
 
@@ -467,7 +505,13 @@ public class PlayerCombatAction : MonoBehaviour
 
     public bool StartDeployHero(HeroInstance heroInstance, Vector2 screenPosition)
     {
-        if (heroDeploymentSystem == null || heroInstance == null || !heroInstance.IsValid)
+        if (heroDeploymentSystem == null)
+        {
+            Debug.LogError("[PlayerCombatAction] HeroDeploymentSystem is required to start hero deployment.", this);
+            return false;
+        }
+
+        if (heroInstance == null || !heroInstance.IsValid)
         {
             return false;
         }

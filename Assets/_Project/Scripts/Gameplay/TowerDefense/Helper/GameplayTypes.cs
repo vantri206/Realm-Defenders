@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum HeroAttackType
+public enum UnitAttackType
 {
     Melee,
     Ranged,
@@ -18,6 +18,8 @@ public enum TargetPriorityMode
 {
     Nearest,
     HighestPathProgress,
+    LowestHealth,
+    RangedPriority
 }
 
 [Flags]
@@ -46,7 +48,49 @@ public enum HeroDeployState
     Deployed,
 }
 
-public enum GridDirection
+public enum EightWayDirection
+{
+    Left,
+    Right,
+    Down,
+    Up,
+    DownLeft,
+    DownRight,
+    UpLeft,
+    UpRight,
+}
+
+public static class GridDirectionHelpers
+{
+    public const int CardinalDirectionCount = 4;
+    public const int EightWayDirectionCount = 8;
+
+    public static readonly Vector2Int[] EightWayOffsets =
+    {
+        Vector2Int.left,
+        Vector2Int.right,
+        Vector2Int.down,
+        Vector2Int.up,
+        new Vector2Int(-1, -1),
+        new Vector2Int(1, -1),
+        new Vector2Int(-1, 1),
+        new Vector2Int(1, 1),
+    };
+
+    public static Vector2Int ToVector2Int(this EightWayDirection direction)
+    {
+        return EightWayOffsets[(int)direction];
+    }
+}
+
+public enum RouteCheckpointType
+{
+    Spawn,
+    Checkpoint,
+    End,
+}
+
+public enum RouteCheckpointDirection
 {
     Left,
     Right,
@@ -54,22 +98,30 @@ public enum GridDirection
     Down,
 }
 
-public static class GridDirectionHelpers
+public enum PathfindingMode
 {
-    public static Vector2Int ToVector2Int(this GridDirection direction)
-    {
-        switch (direction)
-        {
-            case GridDirection.Left:
-                return Vector2Int.left;
-            case GridDirection.Right:
-                return Vector2Int.right;
-            case GridDirection.Up:
-                return Vector2Int.up;
-            case GridDirection.Down:
-                return Vector2Int.down;
-            default:
-                return Vector2Int.zero;
-        }
-    }
+    None,
+    FlowField,
+    BFS
+}
+
+public enum SearchNodeState
+{
+    Unvisited,
+    Open,
+    Closed
+}
+
+public enum EnemySpawnEventStartCondition
+{
+    AfterDelay,
+    AfterSpawnEventFinished,
+}
+
+public enum EnemySpawnEventState
+{
+    Waiting,
+    Spawning,
+    Finished,
+    Resolved,
 }

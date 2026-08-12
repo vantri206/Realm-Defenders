@@ -8,6 +8,12 @@ public class HeroPlacement : MonoBehaviour
 
     public void Initialize(CombatGrid combatGrid)
     {
+        if (combatGrid == null)
+        {
+            Debug.LogError("[HeroPlacement] CombatGrid is required to initialize hero placement.", this);
+            return;
+        }
+
         this.combatGrid = combatGrid;
     }
 
@@ -18,8 +24,14 @@ public class HeroPlacement : MonoBehaviour
             return false;
         }
 
-        if (!instance.Definition.IsValid || combatGrid == null)
+        if (!instance.Definition.IsValid)
         {
+            return false;
+        }
+
+        if (combatGrid == null)
+        {
+            Debug.LogError("[HeroPlacement] CombatGrid is required before checking hero placement.", this);
             return false;
         }
 
@@ -40,7 +52,7 @@ public class HeroPlacement : MonoBehaviour
             return null;
         }
 
-        Vector3 spawnPosition = combatGrid.CellToWorldBottomCenter(cell.CellPosition);
+        combatGrid.TryCellToWorldBottomCenter(cell, out Vector3 spawnPosition);
         hero = Instantiate(instance.Definition.Prefab, spawnPosition, Quaternion.identity, transform);
 
         hero.Initialize(instance, combatGrid, cell.CellPosition);
@@ -51,24 +63,31 @@ public class HeroPlacement : MonoBehaviour
 
     public bool RemoveHero(HeroRuntime hero)
     {
-        if (hero == null || combatGrid == null)
+        if (hero == null)
         {
             return false;
         }
 
-        if (hero.GridPosition == null || !hero.GridPosition.HasCell)
+        if (combatGrid == null)
+        {
+            Debug.LogError("[HeroPlacement] CombatGrid is required before removing a hero.", this);
+            return false;
+        }
+
+        if (hero.AnchorCell == null || !combatGrid.TryGetCell(hero.AnchorCell.CellPosition, out CombatGridCell anchorCell) || anchorCell != hero.AnchorCell)
         {
             return false;
         }
 
-        Vector3Int cellPosition = hero.GridPosition.CurrentCell;
+        Vector3Int cellPosition = hero.AnchorCell.CellPosition;
+
         if (!combatGrid.TryGetCell(cellPosition, out CombatGridCell cell) || cell.DeployedHero != hero)
         {
             return false;
         }
 
         cell.ClearDeployedHero();
-        hero.GridPosition.Clear();
+        hero.ClearAnchorCell();
         Destroy(hero.gameObject);
         return true;
     }

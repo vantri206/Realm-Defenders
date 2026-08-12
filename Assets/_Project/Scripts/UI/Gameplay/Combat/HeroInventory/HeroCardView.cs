@@ -97,6 +97,7 @@ public class HeroCardView : MonoBehaviour
 
         if (visualRoot == null)
         {
+            Debug.LogError("[HeroCardView] Visual root is required to update selection visuals.", this);
             return;
         }
 
@@ -124,6 +125,11 @@ public class HeroCardView : MonoBehaviour
     {
         if (hasDefaultLocalPos || visualRoot == null)
         {
+            if (visualRoot == null)
+            {
+                Debug.LogError("[HeroCardView] Visual root is required to cache card position.", this);
+            }
+
             return;
         }
 
@@ -141,7 +147,10 @@ public class HeroCardView : MonoBehaviour
         SetUnavailableOverlay(false);
         SetCountdownOverlay(false);
         countdownText.SetVisible(false);
-        countdownCircle.gameObject.SetActive(false);
+        if (countdownCircle != null)
+        {
+            countdownCircle.gameObject.SetActive(false);
+        }
     }
 
     public void SetUnavailableOverlay(bool isVisible)
@@ -170,7 +179,17 @@ public class HeroCardView : MonoBehaviour
         }
 
         countdownText.SetVisible(isVisible);
-        countdownCircle.gameObject.SetActive(true);
+        if (countdownCircle == null)
+        {
+            if (isVisible)
+            {
+                Debug.LogError("[HeroCardView] Countdown circle Image is required to show countdown overlay.", this);
+            }
+
+            return;
+        }
+
+        countdownCircle.gameObject.SetActive(isVisible);
     }
 
     public void ShowCountdown(float remainingTime, float totalTime)
@@ -203,8 +222,6 @@ public class HeroCardView : MonoBehaviour
         }
 
         countdownText.Refresh();
-
-        countdownCircle.gameObject.SetActive(false);
 
         SetCountdownOverlay(false);
     }

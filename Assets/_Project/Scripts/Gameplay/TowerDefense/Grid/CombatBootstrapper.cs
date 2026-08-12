@@ -1,8 +1,7 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [DisallowMultipleComponent]
-public class CombatSystemController : MonoBehaviour
+public class CombatBootstrapper : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Camera mainCamera;
@@ -16,15 +15,18 @@ public class CombatSystemController : MonoBehaviour
     [SerializeField] private PlayerCombatAction playerCombatAction;
     [SerializeField] private CombatUIController combatUIController;
     [SerializeField] private GhostHeroView ghostHeroPrefab;
+    [SerializeField] private EnemyRouteGraph enemyRouteGraph;
+    [SerializeField] private UnitPathfindingSystem pathfindingSystem;
+    [SerializeField] private EnemyWaveController enemyWaveController;
 
     private GhostHeroView ghostHero;
 
     private void Awake()
     {
-        InitializeCombatSystem();
+        InitializeCombatBootstrapper();
     }
 
-    public void InitializeCombatSystem()
+    public void InitializeCombatBootstrapper()
     {
         if (!CheckReferences())
         {
@@ -37,14 +39,22 @@ public class CombatSystemController : MonoBehaviour
             return;
         }
 
+        // Initialize grid map and pathfinding systems
         combatGrid.BuildGridMap();
+        pathfindingSystem.BuildCostGrid(combatGrid.Cells);
+        enemyRouteGraph.InitializeRoutes(combatGrid);
+
+        // Initialize hero systems
         heroPlacement.Initialize(combatGrid);
         heroDeploymentSystem.Initialize(heroInventory, heroPlacement);
-        playerCombatAction.Initialize(mainCamera, combatGrid, heroDeploymentSystem, heroDetailView, tileOverlayRenderer, ghostHero);
-        playerCombatAction.ChangeMode(PlayerCombatActionMode.None);
-
         heroInventory.Initialize(heroInventoryView);
 
+        // Initialize enemy systems
+        enemyWaveController.Initialize(combatGrid, enemyRouteGraph, pathfindingSystem);
+
+        // Initialize player input action and UI controller
+        playerCombatAction.Initialize(mainCamera, combatGrid, heroDeploymentSystem, heroDetailView, tileOverlayRenderer, ghostHero);
+        playerCombatAction.ChangeMode(PlayerCombatActionMode.None);
         combatUIController.Initialize(playerCombatAction, heroInventoryView);
     }
 
@@ -83,70 +93,88 @@ public class CombatSystemController : MonoBehaviour
 
         if (mainCamera == null)
         {
-            Debug.LogWarning("[CombatSystemController] mainCamera is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] mainCamera is not assigned.", this);
             hasReferences = false;
         }
 
         if (combatGrid == null)
         {
-            Debug.LogWarning("[CombatSystemController] combatGrid is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] combatGrid is not assigned.", this);
             hasReferences = false;
         }
 
         if (heroInventory == null)
         {
-            Debug.LogWarning("[CombatSystemController] heroInventory is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] heroInventory is not assigned.", this);
             hasReferences = false;
         }
 
         if (heroInventoryView == null)
         {
-            Debug.LogWarning("[CombatSystemController] heroInventoryView is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] heroInventoryView is not assigned.", this);
             hasReferences = false;
         }
 
         if (heroPlacement == null)
         {
-            Debug.LogWarning("[CombatSystemController] heroPlacement is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] heroPlacement is not assigned.", this);
             hasReferences = false;
         }
 
         if (heroDeploymentSystem == null)
         {
-            Debug.LogWarning("[CombatSystemController] heroDeploymentSystem is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] heroDeploymentSystem is not assigned.", this);
             hasReferences = false;
         }
 
         if (heroDetailView == null)
         {
-            Debug.LogWarning("[CombatSystemController] heroDetailView is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] heroDetailView is not assigned.", this);
             hasReferences = false;
         }
 
         if (tileOverlayRenderer == null)
         {
-            Debug.LogWarning("[CombatSystemController] tileOverlayRenderer is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] tileOverlayRenderer is not assigned.", this);
             hasReferences = false;
         }
 
         if (playerCombatAction == null)
         {
-            Debug.LogWarning("[CombatSystemController] playerCombatAction is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] playerCombatAction is not assigned.", this);
             hasReferences = false;
         }
 
         if (combatUIController == null)
         {
-            Debug.LogWarning("[CombatSystemController] combatUIController is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] combatUIController is not assigned.", this);
             hasReferences = false;
         }
 
         if (ghostHeroPrefab == null)
         {
-            Debug.LogWarning("[CombatSystemController] ghostHeroPrefab is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] ghostHeroPrefab is not assigned.", this);
             hasReferences = false;
         }
 
+        if (enemyRouteGraph == null)
+        {
+            Debug.LogWarning("[CombatBootstrapper] enemyRouteGraph is not assigned.", this);
+            hasReferences = false;
+        }
+
+        if (pathfindingSystem == null)
+        {
+            Debug.LogWarning("[CombatBootstrapper] pathfindingSystem is not assigned.", this);
+            hasReferences = false;
+        }
+
+        if (enemyWaveController == null)
+        {
+            Debug.LogWarning("[CombatBootstrapper] enemyWaveController is not assigned.", this);
+            hasReferences = false;
+        }
+        
         return hasReferences;
     }
 }

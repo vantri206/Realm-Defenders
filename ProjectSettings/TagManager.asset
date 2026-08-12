@@ -19,9 +19,9 @@ TagManager:
   - Hitbox
   - Hurtbox
   - Projectile
-  - Obstacle
+  - Blocked
   - NoPhysics
-  - 
+  - Obstacle
   - 
   - 
   - 
@@ -59,7 +59,7 @@ TagManager:
   - name: Foreground
     uniqueID: 2292207293
     locked: 0
-  - name: WordUI
+  - name: WorldUI
     uniqueID: 1110219373
     locked: 0
   - name: Default

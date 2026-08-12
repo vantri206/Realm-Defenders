@@ -18,15 +18,13 @@ public class Health : MonoBehaviour, IDamageable
     private float maxHealth = 100f;
     private float currentHealth = 0f;
 
-    public event Action<HealthData, HealthData> OnHealthChanged;
+    public event Action<HealthData> OnHealthChanged;
 
     public event Action<float> OnDamaged;
     public event Action<float> OnHealed;
     public event Action OnDied;
 
     public bool IsDead { get; private set; } = false;
-
-    public HealthData PreviousData { get; private set; }
 
     public HealthData CurrentData
     {
@@ -61,8 +59,6 @@ public class Health : MonoBehaviour, IDamageable
     {
         if (IsDead || damage <= 0f) return 0f;
 
-        PreviousData = CurrentData;
-
         currentHealth = Mathf.Max(0f, currentHealth - damage);
 
         OnDamaged?.Invoke(damage);
@@ -80,8 +76,6 @@ public class Health : MonoBehaviour, IDamageable
     public void Heal(float healAmount, Vector3 hitPosition)
     {
         if (IsDead || currentHealth >= maxHealth || healAmount <= 0f) return;
-
-        PreviousData = CurrentData;
 
         currentHealth = Mathf.Min(maxHealth, currentHealth + healAmount);
 
@@ -105,8 +99,6 @@ public class Health : MonoBehaviour, IDamageable
 
     public void RefreshHealth(bool isNotify)
     {
-        PreviousData = CurrentData;
-
         currentHealth = maxHealth;
         IsDead = false;
         isInitialized = true;
@@ -119,7 +111,7 @@ public class Health : MonoBehaviour, IDamageable
 
     private void NotifyHealthChanged()
     {
-        OnHealthChanged?.Invoke(PreviousData, CurrentData);
+        OnHealthChanged?.Invoke(CurrentData);
     }
 
     [ContextMenu("Take 20% Damage")]

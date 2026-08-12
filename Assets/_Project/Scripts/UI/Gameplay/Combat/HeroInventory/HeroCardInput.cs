@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[DisallowMultipleComponent]
 public class HeroCardInput : MonoBehaviour
 {
-    private HeroInstance heroInstance;
+    private HeroCard heroCard;
     private GameInput gameInput;
     private PointerEventData pointerEventData;
 
@@ -16,18 +15,24 @@ public class HeroCardInput : MonoBehaviour
 
     private readonly List<RaycastResult> raycastResults = new List<RaycastResult>();
     
-    public event Action<HeroCardInput, Vector2> OnHoverEntered;
-    public event Action<HeroCardInput, Vector2> OnHoverExited;
-    public event Action<HeroCardInput, Vector2> OnPrimaryPerformed;
-    public event Action<HeroCardInput, Vector2> OnPrimaryCanceled;
+    public event Action<HeroCard> OnHoverEntered;
+    public event Action<HeroCard> OnHoverExited;
+    public event Action<HeroCard, Vector2> OnPrimaryPerformed;
+    public event Action<HeroCard, Vector2> OnPrimaryCanceled;
 
-    public HeroInstance HeroInstance => heroInstance;
+    public HeroCard HeroCard => heroCard;
 
     private bool IsInputEnabled => isInputEnabled && gameInput != null;
 
-    public void Initialize(HeroInstance instance)
+    public void Initialize(HeroCard card)
     {
-        heroInstance = instance;
+        if (card == null)
+        {
+            Debug.LogError("[HeroCardInput] HeroCard is required to initialize card input.", this);
+            return;
+        }
+
+        heroCard = card;
     }
 
     private void Awake()
@@ -63,6 +68,7 @@ public class HeroCardInput : MonoBehaviour
     {
         if (gameInput == null)
         {
+            Debug.LogError("[HeroCardInput] GameInput is required to register hero card input events.", this);
             return;
         }
 
@@ -99,11 +105,11 @@ public class HeroCardInput : MonoBehaviour
 
         if (isHovering)
         {
-            OnHoverEntered?.Invoke(this, screenPosition);
+            OnHoverEntered?.Invoke(heroCard);
         }
         else
         {
-            OnHoverExited?.Invoke(this, screenPosition);
+            OnHoverExited?.Invoke(heroCard);
         }
     }
 
@@ -117,7 +123,7 @@ public class HeroCardInput : MonoBehaviour
         if (IsTopRaycastTarget(screenPosition))
         {
             isPrimaryPressed = true;
-            OnPrimaryPerformed?.Invoke(this, screenPosition);
+            OnPrimaryPerformed?.Invoke(heroCard, screenPosition);
         }
     }
 
@@ -134,7 +140,7 @@ public class HeroCardInput : MonoBehaviour
         }
 
         isPrimaryPressed = false;
-        OnPrimaryCanceled?.Invoke(this, screenPosition);
+        OnPrimaryCanceled?.Invoke(heroCard, screenPosition);
     }
 
     private bool IsTopRaycastTarget(Vector2 screenPosition)
@@ -142,6 +148,7 @@ public class HeroCardInput : MonoBehaviour
         EventSystem eventSystem = EventSystem.current;
         if (eventSystem == null)
         {
+            Debug.LogError("[HeroCardInput] EventSystem is required to raycast hero card input.", this);
             return false;
         }
 
@@ -156,10 +163,10 @@ public class HeroCardInput : MonoBehaviour
 
         for (int i = 0; i < raycastResults.Count; i++)
         {
-            HeroCardInput cardInput = raycastResults[i].gameObject.GetComponentInParent<HeroCardInput>();
-            if (cardInput != null)
+            HeroCard card = raycastResults[i].gameObject.GetComponentInParent<HeroCard>();
+            if (card != null)
             {
-                return cardInput == this;
+                return card == heroCard;
             }
         }
 

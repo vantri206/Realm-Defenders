@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class HeroInventoryView : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class HeroInventoryView : MonoBehaviour
 
     public IReadOnlyList<HeroCard> HeroCards => heroCards;
 
+    public event Action<HeroCard> OnCardAdded;
+    public event Action<HeroCard> OnCardRemoved;
+
     public void Initialize()
     {
         ClearAllCards();
@@ -19,17 +23,19 @@ public class HeroInventoryView : MonoBehaviour
 
     private void ClearAllCards()
     {
+        for (int i = heroCards.Count - 1; i >= 0; i--)
+        {
+            HeroCard card = heroCards[i];
+            if (card == null)
+            {
+                continue;
+            }
+
+            OnCardRemoved?.Invoke(card);
+            Destroy(card.gameObject);
+        }
+
         heroCards.Clear();
-
-        if (heroCardContainer == null)
-        {
-            return;
-        }
-
-        foreach (Transform child in heroCardContainer)
-        {
-            Destroy(child.gameObject);
-        }
     }
 
     public HeroCard AddHeroCard(HeroInstance heroInstance)
@@ -60,13 +66,12 @@ public class HeroInventoryView : MonoBehaviour
                 heroCard.Initialize(heroInstance);
                 heroCards.Insert(index, heroCard);
                 heroCard.transform.SetSiblingIndex(index);
+
+                OnCardAdded?.Invoke(heroCard);
+                return heroCard;
             }
-            else 
-            {
-                Debug.LogWarning("[HeroInventoryView] Failed to instantiate hero card prefab.");
-            }
-            return heroCard;
         }
+        Debug.LogWarning("[HeroInventoryView] Failed to instantiate hero card prefab.");
         return null;
     }
 
@@ -74,6 +79,7 @@ public class HeroInventoryView : MonoBehaviour
     {
         if (heroInstance == null || !heroInstance.IsValid)
         {
+            Debug.LogWarning("[HeroInventoryView] A valid HeroInstance is required to remove a hero card.", this);
             return false;
         }
 
@@ -82,22 +88,14 @@ public class HeroInventoryView : MonoBehaviour
             HeroCard card = heroCards[i];
             if (card != null && card.HeroInstance == heroInstance)
             {
-                UnregisterHeroEvents(card, heroInstance);
                 heroCards.RemoveAt(i);
+                OnCardRemoved?.Invoke(card);
                 Destroy(card.gameObject);
                 return true;
             }
         }
 
         return false;
-    }
-
-    private void UnregisterHeroEvents(HeroCard card, HeroInstance heroInstance)
-    {
-        if (card != null && heroInstance != null)
-        {
-            heroInstance.OnDeployStateChanged -= card.OnHeroDeployStateChanged;
-        }
     }
 
     private void SortCardsByHeroCost()

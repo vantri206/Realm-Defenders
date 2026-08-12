@@ -4,6 +4,8 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class NormalAttackController : MonoBehaviour
 {
+    [SerializeField] private Transform attackPoint;
+
     // References
     private readonly List<Hurtbox> validTargets = new List<Hurtbox>();
     private TargetScanner targetScanner;
@@ -29,6 +31,18 @@ public class NormalAttackController : MonoBehaviour
 
     public void Initialize(float attack, float attackInterval, TargetScanner targetScanner, TargetSelector targetSelector, UnitVisual unitVisual)
     {
+        if (targetScanner == null)
+        {
+            Debug.LogError("[NormalAttackController] TargetScanner is required to initialize attacks.", this);
+            return;
+        }
+
+        if (targetSelector == null)
+        {
+            Debug.LogError("[NormalAttackController] TargetSelector is required to initialize attacks.", this);
+            return;
+        }
+
         this.attack = Mathf.Max(0f, attack);
         this.attackInterval = Mathf.Max(0f, attackInterval);
 
@@ -39,7 +53,7 @@ public class NormalAttackController : MonoBehaviour
         isInitialized = true;
     }
 
-    public void Tick(float deltaTime, Vector3Int attackerCell, IReadOnlyList<Vector2Int> patternOffsets)
+    public void Tick(float deltaTime, IReadOnlyList<Vector2Int> patternOffsets)
     {
         if (!isInitialized)
         {
@@ -56,17 +70,17 @@ public class NormalAttackController : MonoBehaviour
             return;
         }
 
-        TriggerAttack(attackerCell, patternOffsets);
+        TriggerAttack(patternOffsets);
     }
 
-    public void TriggerAttack(Vector3Int attackerCell, IReadOnlyList<Vector2Int> patternOffsets)
+    public void TriggerAttack(IReadOnlyList<Vector2Int> patternOffsets)
     {
         if (!isInitialized)
         {
             return;
         }
 
-        Hurtbox target = SelectTarget(attackerCell, patternOffsets);
+        Hurtbox target = SelectTarget(patternOffsets);
         if (target == null)
         {
             currentTarget = null;
@@ -78,18 +92,20 @@ public class NormalAttackController : MonoBehaviour
         attackTimer.StartTimer();
     }
 
-    public Hurtbox SelectTarget(Vector3Int attackerCell, IReadOnlyList<Vector2Int> patternOffsets)
+    public Hurtbox SelectTarget(IReadOnlyList<Vector2Int> patternOffsets)
     {
         Hurtbox target = null;
 
         if (targetScanner == null || targetSelector == null || targetScanner.CombatGrid == null || patternOffsets == null)
         {
+            Debug.LogError("[NormalAttackController] Cannot select target because required attack dependencies are missing.", this);
             return null;
         }
 
-        targetScanner.Scan(attackerCell, patternOffsets, validTargets);
+        Vector2 originPosition = GetAttackOriginPosition();
+        targetScanner.Scan(originPosition, patternOffsets, validTargets);
 
-        target = targetSelector.SelectTarget(validTargets, targetScanner.CombatGrid.CellToWorldCenter(attackerCell));
+        target = targetSelector.SelectTarget(validTargets, originPosition);
         return target;
     }
 
@@ -100,12 +116,25 @@ public class NormalAttackController : MonoBehaviour
         IDamageable damageable = target.GetDamageable();
         if (damageable == null)
         {
+            Debug.LogWarning("[NormalAttackController] Selected Hurtbox does not resolve to an IDamageable target.", this);
             return;
         }
 
-        unitVisual?.TriggerAttack();
+        if (unitVisual == null)
+        {
+            Debug.LogError("[NormalAttackController] UnitVisual is required to trigger attack animation.", this);
+        }
+        else
+        {
+            unitVisual.TriggerAttack();
+        }
 
         DamageSystem.ApplyDamage(new DamageRequest(gameObject, damageable, attack, target.Position));
+    }
+
+    private Vector2 GetAttackOriginPosition()
+    {
+        return attackPoint != null ? attackPoint.position : transform.position;
     }
 
     private void CacheReferences()

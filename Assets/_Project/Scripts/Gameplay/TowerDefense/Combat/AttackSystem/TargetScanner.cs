@@ -26,13 +26,26 @@ public class TargetScanner : MonoBehaviour
         InitializeBuffer();
     }
 
-    public void Scan(Vector3Int originCell, IReadOnlyList<Vector2Int> pattern, List<Hurtbox> results)
+    public void Scan(Vector2 originPosition, IReadOnlyList<Vector2Int> pattern, List<Hurtbox> results)
     {
+        if (results == null)
+        {
+            Debug.LogError("[TargetScanner] Results list is required for scanning.", this);
+            return;
+        }
+
         results.Clear();
         uniqueTargets.Clear();
 
-        if (combatGrid == null || combatGrid.Grid == null || pattern == null)
+        if (combatGrid == null || combatGrid.Grid == null)
         {
+            Debug.LogError("[TargetScanner] CombatGrid is required before scanning targets.", this);
+            return;
+        }
+
+        if (pattern == null)
+        {
+            Debug.LogError("[TargetScanner] Attack pattern is required before scanning targets.", this);
             return;
         }
 
@@ -42,8 +55,8 @@ public class TargetScanner : MonoBehaviour
         for (int i = 0; i < pattern.Count; i++)
         {
             Vector2Int offset = pattern[i];
-            Vector3Int targetCell = originCell + new Vector3Int(offset.x, offset.y, 0);
-            ScanCell(targetCell, results);
+            Vector2 scanPosition = GetPatternScanPosition(originPosition, offset);
+            ScanAtPosition(scanPosition, results);
         }
     }
 
@@ -69,11 +82,10 @@ public class TargetScanner : MonoBehaviour
         return true;
     }
 
-    private void ScanCell(Vector3Int cellPosition, List<Hurtbox> results)
+    private void ScanAtPosition(Vector2 centerPosition, List<Hurtbox> results)
     {
-        Vector3 cellCenter = combatGrid.CellToWorldCenter(cellPosition);
         Vector2 cellSize = GetCellScanSize();
-        int hitCount = Physics2D.OverlapBox(cellCenter, cellSize, 0f, scanFilter, scanBuffer);
+        int hitCount = Physics2D.OverlapBox(centerPosition, cellSize, 0f, scanFilter, scanBuffer);
 
         for (int i = 0; i < hitCount; i++)
         {
@@ -89,6 +101,12 @@ public class TargetScanner : MonoBehaviour
 
             results.Add(hurtbox);
         }
+    }
+
+    private Vector2 GetPatternScanPosition(Vector2 originPosition, Vector2Int offset)
+    {
+        Vector3 gridCellSize = combatGrid.Grid.cellSize;
+        return originPosition + new Vector2(offset.x * gridCellSize.x, offset.y * gridCellSize.y);
     }
 
     private Vector2 GetCellScanSize()

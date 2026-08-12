@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class GhostDirectionInput : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] private GridDirection direction;
+    [SerializeField] private EightWayDirection direction;
 
     public void OnPointerClick(PointerEventData eventData)
     {

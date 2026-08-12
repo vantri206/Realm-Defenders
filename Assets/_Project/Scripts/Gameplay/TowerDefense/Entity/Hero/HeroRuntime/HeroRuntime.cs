@@ -1,57 +1,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroRuntime : MonoBehaviour
+public class HeroRuntime : UnitRuntime
 {
-    private List<Vector2Int> defaultAttackPattern = new List<Vector2Int>();    // Left-facing default attack pattern
-    private List<Vector2Int> resolvedAttackPattern = new List<Vector2Int>();
-
-    private CombatGrid combatGrid;
 
     // Hero Identity
     private HeroInstance heroInstance;
-    private HeroDefinition heroDefinition;
+    [SerializeField] private HeroDefinition heroDefinition;
+
+    // Hero Components
+    [SerializeField] private HeroBlocker heroBlocker;
+    private CombatGridCell anchorCell;
 
     // Hero Stats
-    [SerializeField] private Health health;
-    [SerializeField] private UnitVisual unitVisual;
-    [SerializeField] private UnitGridPosition heroGridPosition;
-
-    // Attacker and Skills
-    [SerializeField] private TeamIdentity teamIdentity;
-    [SerializeField] private TargetScanner targetScanner;
-    [SerializeField] private TargetSelector targetSelector;
-    [SerializeField] private NormalAttackController normalAttackController;
-
-    private Vector2Int facingDirection = Vector2Int.left;
-
-    private bool isInitialized;
-
-    // Stats
-    public UnitStats Stats => heroInstance != null ? heroInstance.Stats : null;
-    public HeroBlocker Blocker => heroInstance != null ? heroInstance.Blocker : null;
-    public float MaxHealth => health != null ? health.MaxHealth : 0f;
-    public float CurrentHealth => health != null ? health.CurrentHealth : 0f;
-    public float Attack => Stats != null ? Stats.Attack : 0f;
-    public float AttackInterval => Stats != null ? Stats.AttackInterval : 0f;
-    public float Defense => Stats != null ? Stats.Defense : 0f;
-    public float SpecialDefense => Stats != null ? Stats.SpecialDefense : 0f;
+    public override UnitStats Stats => heroInstance != null ? heroInstance.Stats : null;
+    public HeroBlock Blocker => heroInstance != null ? heroInstance.Blocker : null;
     public int BlockCount => Blocker != null ? Blocker.BlockCount : 0;
     public int CurrentBlock => Blocker != null ? Blocker.CurrentBlock : 0;
+    public override UnitAttackType AttackType => heroDefinition != null ? heroDefinition.AttackType : base.AttackType;
 
+    // Getters
     public HeroInstance Instance => heroInstance;
     public HeroDefinition Definition => heroDefinition;
-    public UnitGridPosition GridPosition => heroGridPosition;
-    public Vector2Int FacingDirection => facingDirection;
-    public HeroAttackType AttackType => heroDefinition.AttackType;
-    public IReadOnlyList<Vector2Int> ResolvedAttackPattern => resolvedAttackPattern;
-    public TeamIdentity TeamIdentity => teamIdentity;
-    public bool IsInitialized => isInitialized;
+    public HeroBlocker HeroBlocker => heroBlocker;
+    public CombatGridCell AnchorCell => anchorCell;
 
     public void Initialize(HeroInstance heroInstance, CombatGrid combatGrid, Vector3Int currentCell)
     {
         if (heroInstance == null || !heroInstance.IsValid)
         {
+            Debug.LogError("[HeroRuntime] A valid HeroInstance is required to initialize hero runtime.", this);
             return;
         }
 
@@ -60,13 +38,15 @@ public class HeroRuntime : MonoBehaviour
         this.combatGrid = combatGrid;
 
         CacheReferences();
-        SetupVisuals();
+        SetupVisuals(heroDefinition.HeroSprite, heroDefinition.AnimatorController);
         InitializeStats();
-        InitializeComponents();
-        
-        SetCurrentCell(currentCell);
-        
+        InitializeAttackSystems(heroDefinition.TargetPriorityMode);
+    
+        SetActiveCell(combatGrid.TryGetCell(currentCell, out CombatGridCell activeCell) ? activeCell : null);
+        SetAnchorCell(combatGrid.TryGetCell(currentCell, out CombatGridCell anchorCell) ? anchorCell : null);
+
         defaultAttackPattern = new List<Vector2Int>(heroDefinition.AttackPattern);
+        SetFacingDirection(facingDirection);
 
         isInitialized = true;
     }
@@ -77,96 +57,38 @@ public class HeroRuntime : MonoBehaviour
         {
             return;
         }
-        
-        normalAttackController?.Tick(Time.deltaTime, heroGridPosition.CurrentCell, resolvedAttackPattern);
-    }
-
-    public void SetCurrentCell(Vector3Int cellPosition)
-    {
-        heroGridPosition?.SetCell(cellPosition);
-    }
-
-    public void SetFacingDirection(Vector2Int direction)
-    {
-        if (direction == Vector2Int.zero)
-        {
-            return;
-        }
-
-        facingDirection = direction;
-        unitVisual?.SetDirection(direction);
-
-        resolvedAttackPattern = AttackPatternResolver.RefreshAttackPattern(defaultAttackPattern, facingDirection);
-    }
-
-    private void SetupVisuals()
-    {
-        if (unitVisual == null || heroDefinition == null)
-        {
-            return;
-        }
-
-        unitVisual.Initialize(heroDefinition.HeroSprite, heroDefinition.AnimatorController);
-    }
-
-    private void InitializeStats()
-    {
-        if (heroInstance == null)
-        {
-            return;
-        }
-
-        health.Initialize(heroInstance.Stats.MaxHealth);
-    }
-
-    private void InitializeComponents()
-    {
-        if (heroDefinition == null)
-        {
-            return;
-        }
-
-        targetScanner?.Initialize(combatGrid, teamIdentity);
-        targetSelector?.Initialize(heroDefinition.TargetPriorityMode);
-
-        normalAttackController?.Initialize(Stats.Attack, Stats.AttackInterval, targetScanner, targetSelector, unitVisual);
-    }
-    
-    private void CacheReferences()
-    {
-        if (heroGridPosition == null)
-        {
-            heroGridPosition = GetComponent<UnitGridPosition>();
-        }
-
-        if (teamIdentity == null)
-        {
-            teamIdentity = GetComponent<TeamIdentity>();
-        }
-
-        if (health == null)
-        {
-            health = GetComponent<Health>();
-        }
-
-        if (targetScanner == null)
-        {
-            targetScanner = GetComponent<TargetScanner>();
-        }
-
-        if (targetSelector == null)
-        {
-            targetSelector = GetComponent<TargetSelector>();
-        }
 
         if (normalAttackController == null)
         {
-            normalAttackController = GetComponent<NormalAttackController>();
+            Debug.LogError("[HeroRuntime] NormalAttackController component is required to update hero attacks.", this);
+            return;
         }
 
-        if (unitVisual == null)
+        normalAttackController.Tick(Time.deltaTime, resolvedAttackPattern);
+    }
+
+    protected override void InitializeStats()
+    {
+        InitializeHealth();
+    }
+
+    public void SetAnchorCell(CombatGridCell cell)
+    {
+        anchorCell = cell;
+    }
+
+    public void ClearAnchorCell()
+    {
+        anchorCell = null;
+    }
+
+    protected override void CacheReferences()
+    {
+        base.CacheReferences();
+
+        if (heroBlocker == null)
         {
-            unitVisual = GetComponentInChildren<UnitVisual>();
+            heroBlocker = GetComponent<HeroBlocker>();
         }
     }
 }

@@ -106,7 +106,7 @@ public class HeroDetailView : MonoBehaviour
 
         HeroDefinition definition = heroInstance.Definition;
         UnitStats stats = heroInstance.Stats;
-        HeroBlocker blocker = heroInstance.Blocker;
+        HeroBlock blocker = heroInstance.Blocker;
 
         // Identity
         SetAvatar(definition.HeroIcon);
@@ -117,7 +117,7 @@ public class HeroDetailView : MonoBehaviour
 
         // Stats
         maxHealth.SetInt(stats.MaxHealth);
-        currentHealth.SetInt(stats.CurrentHealth);
+        currentHealth.SetInt(stats.MaxHealth);
         attack.SetInt(stats.Attack);
         defense.SetInt(stats.Defense);
         specialDefense.SetInt(stats.SpecialDefense);
@@ -134,6 +134,8 @@ public class HeroDetailView : MonoBehaviour
             Refresh();
             return;
         }
+
+        currentHero = heroRuntime.Instance;
 
         SetData(currentHero);
         currentHealth.SetInt(heroRuntime.CurrentHealth);

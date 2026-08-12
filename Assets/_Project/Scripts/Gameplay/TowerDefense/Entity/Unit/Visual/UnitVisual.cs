@@ -15,11 +15,11 @@ public class UnitVisual : MonoBehaviour
     public Animator Animator => animator;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
 
-    public void Initialize(Sprite sprite, AnimatorOverrideController animatorOverrideController)
+    public void Initialize(Sprite sprite, RuntimeAnimatorController animatorController)
     {
-        if (animator != null && animatorOverrideController != null)
+        if (animator != null && animatorController != null)
         {
-            animator.runtimeAnimatorController = animatorOverrideController;
+            animator.runtimeAnimatorController = animatorController;
         }
 
         if (spriteRenderer != null)
@@ -43,27 +43,63 @@ public class UnitVisual : MonoBehaviour
 
     public void SetDirection(Vector2 direction)
     {
+        if (!HasAnimatorReference("set direction"))
+        {
+            return;
+        }
+
         animator.SetFloat(dirXParameterName, direction.x);
         animator.SetFloat(dirYParameterName, direction.y);
     }
 
     public void SetIsMoving(bool isMoving)
     {
+        if (!HasAnimatorReference("set movement state"))
+        {
+            return;
+        }
+
         animator.SetBool(isMovingParameterName, isMoving);
     }
 
     public void TriggerAttack()
     {
+        if (!HasAnimatorReference("trigger attack animation"))
+        {
+            return;
+        }
+
         animator.SetTrigger(attackTriggerName);
     }
 
     public void TriggerDie()
     {
+        if (!HasAnimatorReference("trigger die animation"))
+        {
+            return;
+        }
+
         animator.SetTrigger(dieTriggerName);
     }
 
     public void TriggerHurt()
     {
+        if (!HasAnimatorReference("trigger hurt animation"))
+        {
+            return;
+        }
+
         animator.SetTrigger(hurtTriggerName);
+    }
+
+    private bool HasAnimatorReference(string actionName)
+    {
+        if (animator != null)
+        {
+            return true;
+        }
+
+        Debug.LogError($"[UnitVisual] Animator is required to {actionName}.", this);
+        return false;
     }
 }

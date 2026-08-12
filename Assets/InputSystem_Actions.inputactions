@@ -1072,15 +1072,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Relocate",
-                    "type": "Button",
-                    "id": "f490db09-15fa-4a03-a61a-0d99c700671f",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Direction",
                     "type": "Value",
                     "id": "6cc27a30-5445-4791-88c3-15a1fd4488ca",
@@ -1141,17 +1132,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Sell",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4db74d4d-181f-448c-a3a7-fe67875b7515",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Relocate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

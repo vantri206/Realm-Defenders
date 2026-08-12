@@ -9,18 +9,39 @@ public class HeroDeploymentSystem : MonoBehaviour
 
     private HeroInstance selectedHero;
     private readonly Dictionary<HeroInstance, HeroRuntime> deployedHero = new Dictionary<HeroInstance, HeroRuntime>();
+    private bool isInitialized;
 
     public HeroInstance SelectedHero => selectedHero;
     public IReadOnlyDictionary<HeroInstance, HeroRuntime> DeployedHero => deployedHero;
 
     public void Initialize(HeroInventory heroInventory, HeroPlacement heroPlacement)
     {
+        if (heroInventory == null)
+        {
+            Debug.LogError("[HeroDeploymentSystem] HeroInventory is required to initialize deployment.", this);
+            isInitialized = false;
+            return;
+        }
+
+        if (heroPlacement == null)
+        {
+            Debug.LogError("[HeroDeploymentSystem] HeroPlacement is required to initialize deployment.", this);
+            isInitialized = false;
+            return;
+        }
+
         this.heroInventory = heroInventory;
         this.heroPlacement = heroPlacement;
+        isInitialized = true;
     }
 
     private void Update()
     {
+        if (!isInitialized)
+        {
+            return;
+        }
+
         for (int i = 0; i < heroInventory.HeroCount; i++)
         {
             HeroInstance heroInstance = heroInventory.HeroInstances[i];
@@ -70,8 +91,14 @@ public class HeroDeploymentSystem : MonoBehaviour
 
     public bool CanDeploySelectedHero(CombatGridCell cell)
     {
-        if (selectedHero == null || heroPlacement == null)
+        if (selectedHero == null)
         {
+            return false;
+        }
+
+        if (heroPlacement == null)
+        {
+            Debug.LogError("[HeroDeploymentSystem] HeroPlacement is required to deploy selected hero.", this);
             return false;
         }
 
@@ -97,7 +124,7 @@ public class HeroDeploymentSystem : MonoBehaviour
             selectedHero.SetDeployState(HeroDeployState.Deployed);
             
             ClearSelection();
-            placedHero?.SetFacingDirection(direction);
+            placedHero.SetFacingDirection(direction);
         }
 
         return placedHero;
@@ -128,6 +155,7 @@ public class HeroDeploymentSystem : MonoBehaviour
     {
         if (heroPlacement == null || heroPlacement.CombatGrid == null)
         {
+            Debug.LogError("[HeroDeploymentSystem] HeroPlacement with a CombatGrid is required to retreat a hero.", this);
             return false;
         }
 
@@ -193,6 +221,11 @@ public class HeroDeploymentSystem : MonoBehaviour
     {
         if (heroInventory == null || heroInstance == null)
         {
+            if (heroInventory == null)
+            {
+                Debug.LogError("[HeroDeploymentSystem] HeroInventory is required before checking inventory membership.", this);
+            }
+
             return false;
         }
 

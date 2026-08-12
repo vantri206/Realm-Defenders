@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -7,11 +8,15 @@ public class CombatGridCell
     private Vector3Int cellPosition;
     private CombatGridCellStates cellStates;
     private HeroRuntime deployedHero;
+    private List<EnemyRuntime> enemies = new List<EnemyRuntime>();
 
     public Vector3Int CellPosition => cellPosition;
     public CombatGridCellStates CellStates => cellStates;
     public HeroRuntime DeployedHero => deployedHero;
     public bool HasDeployedHero => deployedHero != null;
+    public IReadOnlyList<EnemyRuntime> Enemies => enemies;
+    public bool HasEnemies => enemies.Count > 0;
+
     public bool IsWalkable => HasState(CombatGridCellStates.Walkable);
     public bool IsDeployable => HasState(CombatGridCellStates.Deployable);
     public bool IsBlocked => HasState(CombatGridCellStates.Blocked);
@@ -45,6 +50,27 @@ public class CombatGridCell
     public void ClearDeployedHero()
     {
         deployedHero = null;
+    }
+
+    public void AddEnemy(EnemyRuntime enemy)
+    {
+        if (!enemies.Contains(enemy))
+        {
+            enemies.Add(enemy);
+        }
+    }
+
+    public void RemoveEnemy(EnemyRuntime enemy)
+    {
+        if (enemies.Contains(enemy))
+        {
+            enemies.Remove(enemy);
+        }
+    }
+
+    public void ClearEnemies()
+    {
+        enemies.Clear();
     }
 
     public bool CanDeployHero()

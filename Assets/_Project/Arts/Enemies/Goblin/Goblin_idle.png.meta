@@ -504,6 +504,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Goblin_idle_16
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 51
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7af351a4dffdfc4792924b8877ffb9e
+      internalID: -437937312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -528,6 +550,7 @@ TextureImporter:
       Goblin_idle_13: 121272325
       Goblin_idle_14: -287649781
       Goblin_idle_15: -515614679
+      Goblin_idle_16: -437937312
       Goblin_idle_2: 8291384746569046504
       Goblin_idle_3: 3523942966460874553
       Goblin_idle_4: -9207445983486245235

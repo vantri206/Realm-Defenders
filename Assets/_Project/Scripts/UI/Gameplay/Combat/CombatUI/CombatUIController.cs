@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[DisallowMultipleComponent]
 public class CombatUIController : MonoBehaviour
 {
     private readonly List<HeroCard> heroCards = new List<HeroCard>();
 
     private PlayerCombatAction combatAction;
+    private HeroInventoryView heroInventoryView;
     private GameInput gameInput;
 
     private HeroCard activeCard = null;
@@ -18,37 +18,67 @@ public class CombatUIController : MonoBehaviour
 
     private bool isInitialized;
 
-    public void Initialize(PlayerCombatAction playerCombatAction, HeroInventoryView heroInventoryView)
+    public void Initialize(PlayerCombatAction playerCombatAction, HeroInventoryView inventoryView)
     {
         if (isInitialized)
         {
             return;
         }
 
-        combatAction = playerCombatAction;
+        if (playerCombatAction == null || inventoryView == null)
+        {
+            Debug.LogError("[CombatUIController] Required references are null.", this);
+            return;
+        }
 
+        combatAction = playerCombatAction;
+        heroInventoryView = inventoryView;
         gameInput = GameInput.Instance;
 
         RegisterInputEvents();
-        if (heroInventoryView != null)
-        {
-            RegisterHeroCardInputs(heroInventoryView.HeroCards);
-        }
+        RegisterInventoryEvents();
 
         isInitialized = true;
+    }
+
+    private void OnEnable()
+    {
+        if (!isInitialized)
+        {
+            return;
+        }
+
+        gameInput = GameInput.Instance;
+        RegisterInputEvents();
+        RegisterAllHeroCardInputs();
     }
 
     private void OnDisable()
     {
         ClearDeploy();
+        activeCard = null;
+
         UnregisterInputEvents();
-        UnregisterHeroCardInputs();
+        UnregisterAllHeroCardInputs();
+    }
+
+    private void OnDestroy()
+    {
+        UnregisterInventoryEvents();
+        UnregisterInputEvents();
+        UnregisterAllHeroCardInputs();
     }
 
     private void Update()
     {
         if (!isInitialized)
         {
+            return;
+        }
+
+        if (gameInput == null)
+        {
+            Debug.LogError("[CombatUIController] GameInput is required to update combat UI input.", this);
             return;
         }
 
@@ -69,6 +99,80 @@ public class CombatUIController : MonoBehaviour
         combatAction.UpdateHover(screenPosition);
     }
 
+    public void AddCard(HeroCard card)
+    {
+        if (card == null)
+        {
+            return;
+        }
+
+        if (!heroCards.Contains(card))
+        {
+            heroCards.Add(card);
+
+            if (isActiveAndEnabled)
+            {
+                RegisterHeroCardInputs(card);
+            }
+        }
+    }
+
+    public void RemoveCard(HeroCard card)
+    {
+        if (card == null)
+        {
+            return;
+        }
+
+        UnregisterHeroCardInputs(card);
+        heroCards.Remove(card);
+
+        if (activeCard == card || deployingCard == card)
+        {
+            CancelDeployDrag();
+            return;
+        }
+    }
+
+    private void RegisterAllHeroCardInputs()
+    {
+        for (int i = 0; i < heroCards.Count; i++)
+        {
+            RegisterHeroCardInputs(heroCards[i]);
+        }
+    }
+
+    private void UnregisterAllHeroCardInputs()
+    {
+        for (int i = 0; i < heroCards.Count; i++)
+        {
+            UnregisterHeroCardInputs(heroCards[i]);
+        }
+    }
+
+    private void RegisterInventoryEvents()
+    {
+        if (heroInventoryView == null)
+        {
+            Debug.LogError("[CombatUIController] HeroInventoryView is required to register inventory events.", this);
+            return;
+        }
+
+        heroInventoryView.OnCardAdded += AddCard;
+        heroInventoryView.OnCardRemoved += RemoveCard;
+    }
+
+    private void UnregisterInventoryEvents()
+    {
+        if (heroInventoryView == null)
+        {
+            return;
+        }
+
+        heroInventoryView.OnCardAdded -= AddCard;
+        heroInventoryView.OnCardRemoved -= RemoveCard;
+    }
+
     private void RegisterInputEvents()
     {
         if (gameInput == null)
@@ -78,6 +182,7 @@ public class CombatUIController : MonoBehaviour
 
         if (gameInput == null)
         {
+            Debug.LogError("[CombatUIController] GameInput is required to register combat UI input events.", this);
             return;
         }
 
@@ -105,100 +210,77 @@ public class CombatUIController : MonoBehaviour
         gameInput.OnActionPerformed -= HandleActionPerformed;
     }
 
-    private void RegisterHeroCardInputs(IReadOnlyList<HeroCard> cards)
+    public void RegisterHeroCardInputs(HeroCard card)
     {
-        if (cards == null)
+        if (card == null || card.CardInput == null)
+        {
+            Debug.LogError("[CombatUIController] HeroCard and HeroCardInput are required to register card input events.", this);
+            return;
+        }
+
+        card.CardInput.OnHoverEntered += HandleHeroCardHoverEntered;
+        card.CardInput.OnHoverExited += HandleHeroCardHoverExited;
+        card.CardInput.OnPrimaryPerformed += HandleHeroCardPrimaryPerformed;
+        card.CardInput.OnPrimaryCanceled += HandleHeroCardPrimaryCanceled;
+    }
+
+    public void UnregisterHeroCardInputs(HeroCard card)
+    {
+        if (card != null && card.CardInput != null)
+        {
+            card.CardInput.OnHoverEntered -= HandleHeroCardHoverEntered;
+            card.CardInput.OnHoverExited -= HandleHeroCardHoverExited;
+            card.CardInput.OnPrimaryPerformed -= HandleHeroCardPrimaryPerformed;
+            card.CardInput.OnPrimaryCanceled -= HandleHeroCardPrimaryCanceled;
+        }
+    }
+
+    private void HandleHeroCardHoverEntered(HeroCard card)
+    {
+        SetHeroCardHoverSelected(card, true);
+    }
+
+    private void HandleHeroCardHoverExited(HeroCard card)
+    {
+        SetHeroCardHoverSelected(card, false);
+    }
+
+    private void HandleHeroCardPrimaryPerformed(HeroCard card, Vector2 screenPosition)
+    {
+        if (!isInitialized || card == null || activeCard != null)
         {
             return;
         }
 
-        heroCards.Clear();
-        heroCards.AddRange(cards);
-
-        for (int i = 0; i < cards.Count; i++)
-        {
-            HeroCard card = cards[i];
-            if (card != null && card.CardInput != null)
-            {
-                card.CardInput.OnHoverEntered += HandleHeroCardHoverEntered;
-                card.CardInput.OnHoverExited += HandleHeroCardHoverExited;
-                card.CardInput.OnPrimaryPerformed += HandleHeroCardPrimaryPerformed;
-                card.CardInput.OnPrimaryCanceled += HandleHeroCardPrimaryCanceled;
-            }
-        }
-    }
-
-    private void UnregisterHeroCardInputs()
-    {
-        for (int i = 0; i < heroCards.Count; i++)
-        {
-            HeroCard card = heroCards[i];
-            if (card != null && card.CardInput != null)
-            {
-                card.CardInput.OnHoverEntered -= HandleHeroCardHoverEntered;
-                card.CardInput.OnHoverExited -= HandleHeroCardHoverExited;
-                card.CardInput.OnPrimaryPerformed -= HandleHeroCardPrimaryPerformed;
-                card.CardInput.OnPrimaryCanceled -= HandleHeroCardPrimaryCanceled;
-            }
-        }
-    }
-
-    private void HandleHeroCardHoverEntered(HeroCardInput cardInput, Vector2 screenPosition)
-    {
-        SetHeroCardHoverSelected(cardInput, true);
-    }
-
-    private void HandleHeroCardHoverExited(HeroCardInput cardInput, Vector2 screenPosition)
-    {
-        SetHeroCardHoverSelected(cardInput, false);
-    }
-
-    private void HandleHeroCardPrimaryPerformed(HeroCardInput cardInput, Vector2 screenPosition)
-    {
-        if (!isInitialized || cardInput == null || activeCard != null)
+        HeroInstance heroInstance = card.HeroInstance;
+        if (heroInstance == null || !heroInstance.IsValid)
         {
             return;
         }
 
-        for (int i = 0; i < heroCards.Count; i++)
-        {
-            HeroCard card = heroCards[i];
-            if (card == null || card.CardInput != cardInput)
-            {
-                continue;
-            }
-
-            HeroInstance heroInstance = cardInput.HeroInstance;
-            if (heroInstance == null || !heroInstance.IsValid)
-            {
-                return;
-            }
-
-            StartDeploy(card, heroInstance);
-            return;
-        }
+        StartDeploy(card, heroInstance);
+        return;
     }
 
-    private void HandleHeroCardPrimaryCanceled(HeroCardInput cardInput, Vector2 screenPosition)
+    private void HandleHeroCardPrimaryCanceled(HeroCard card, Vector2 screenPosition)
     {
-        if (!isInitialized || cardInput == null)
+        if (!isInitialized || card == null)
         {
             return;
         }
 
-        if (deployingCard != null && deployingCard.CardInput == cardInput)
+        if (activeCard != null && activeCard == card)
+        {
+            EndDeployDrag(screenPosition);
+            ClearActiveCard();
+            return;
+        }
+
+        if (deployingCard != null && deployingCard == card)
         {
             ClearDeploy();
             return;
         }
-
-        if (activeCard == null || activeCard.CardInput != cardInput)
-        {
-            return;
-        }
-
-        EndDeployDrag(screenPosition);
-        activeCard = null;
     }
 
     private void HandlePrimaryPerformed(Vector2 screenPosition)
@@ -280,6 +362,11 @@ public class CombatUIController : MonoBehaviour
         deployStartTime = 0f;
     }
 
+    private void ClearActiveCard()
+    {
+        activeCard = null;
+    }
+
     private void BeginDeployDrag(HeroCard card, HeroInstance heroInstance, Vector2 screenPosition)
     {
         if (card == null || heroInstance == null || !heroInstance.IsValid || combatAction == null)
@@ -330,32 +417,27 @@ public class CombatUIController : MonoBehaviour
     private void CancelDeployDrag()
     {
         ClearDeploy();
+        activeCard = null;
 
-        if (activeCard != null)
+        if (combatAction != null)
         {
-            activeCard = null;
+            combatAction.FinishDeployHero();
         }
-
-        combatAction.FinishDeployHero();
     }
 
-    private void SetHeroCardHoverSelected(HeroCardInput cardInput, bool isSelected)
+    private void SetHeroCardHoverSelected(HeroCard card, bool isSelected)
     {
-        if (cardInput == null)
+        if (card == null)
         {
             return;
         }
 
-        for (int i = 0; i < heroCards.Count; i++)
+        if (card.CardView == null)
         {
-            HeroCard card = heroCards[i];
-            if (card == null || card.CardInput != cardInput)
-            {
-                continue;
-            }
-
-            card.CardView.SetSelected(isSelected);
+            Debug.LogError("[CombatUIController] HeroCardView is required to update hover selection.", this);
             return;
         }
+
+        card.CardView.SetSelected(isSelected);
     }
 }

@@ -39,6 +39,7 @@ public class UIValueTextBinding
     {
         if (text == null)
         {
+            Debug.LogError("[UIValueTextBinding] TMP_Text reference is required before setting text.");
             return;
         }
 

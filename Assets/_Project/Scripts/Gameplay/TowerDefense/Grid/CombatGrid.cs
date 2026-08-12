@@ -61,42 +61,79 @@ public class CombatGrid : MonoBehaviour
         cellBounds = new BoundsInt();
     }
 
-    public bool TryWorldToCell(Vector3 worldPosition, out Vector3Int cellPosition)
-    {
-        if (grid == null)
-        {
-            cellPosition = default;
-            return false;
-        }
-
-        cellPosition = grid.WorldToCell(worldPosition);
-        return true;
-    }
-
-    public bool WorldToCell(Vector3 worldPosition, out CombatGridCell cell)
-    {
-        if (!TryWorldToCell(worldPosition, out Vector3Int cellPosition))
-        {
-            cell = null;
-            return false;
-        }
-
-        return cells.TryGetValue(cellPosition, out cell);
-    }
-
     public bool TryGetCell(Vector3Int cellPosition, out CombatGridCell cell)
     {
         return cells.TryGetValue(cellPosition, out cell);
     }
 
-    public Vector3 CellToWorldCenter(Vector3Int cellPosition)
+    public bool TryWorldToCellPosition(Vector3 worldPosition, out Vector3Int cellPosition)
     {
-        return grid != null ? grid.GetCellCenterWorld(cellPosition) : Vector3.zero;
+        if (!TryWorldToCell(worldPosition, out CombatGridCell cell))
+        {
+            cellPosition = default;
+            return false;
+        }
+
+        cellPosition = cell.CellPosition;
+        return true;
     }
 
-    public Vector3 CellToWorldBottomCenter(Vector3Int cellPosition)
+    public bool TryWorldToCell(Vector3 worldPosition, out CombatGridCell cell)
     {
-        return grid != null ? grid.GetCellCenterWorld(cellPosition) - new Vector3(0f, CellSize.y * 0.5f, 0f) : Vector3.zero;
+        if (grid == null)
+        {
+            cell = null;
+            return false;
+        }
+
+        Vector3Int cellPosition = grid.WorldToCell(worldPosition);
+        return cells.TryGetValue(cellPosition, out cell);
+    }
+
+    public bool TryCellToWorldCenter(Vector3Int cellPosition, out Vector3 worldPosition)
+    {
+        if (grid == null || !cells.ContainsKey(cellPosition))
+        {
+            worldPosition = Vector3.zero;
+            return false;
+        }   
+
+        worldPosition = grid.GetCellCenterWorld(cellPosition);
+        return true;
+    }
+
+    public bool TryCellToWorldBottomCenter(Vector3Int cellPosition, out Vector3 worldPosition)
+    {
+        if (grid == null || !cells.ContainsKey(cellPosition))
+        {
+            worldPosition = Vector3.zero;
+            return false;
+        }
+
+        worldPosition = grid.GetCellCenterWorld(cellPosition) - new Vector3(0f, CellSize.y * 0.5f, 0f);
+        return true;
+    }
+
+    public bool TryCellToWorldCenter(CombatGridCell cell, out Vector3 worldPosition)
+    {
+        if (cell == null)
+        {
+            worldPosition = Vector3.zero;
+            return false;
+        }
+
+        return TryCellToWorldCenter(cell.CellPosition, out worldPosition);
+    }
+
+    public bool TryCellToWorldBottomCenter(CombatGridCell cell, out Vector3 worldPosition)
+    {
+        if (cell == null)
+        {
+            worldPosition = Vector3.zero;
+            return false;
+        }
+
+        return TryCellToWorldBottomCenter(cell.CellPosition, out worldPosition);
     }
 
     private void ResolveTilemapSource(CombatGridTilemapSource source)

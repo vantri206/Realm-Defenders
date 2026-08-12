@@ -27,6 +27,12 @@ public class HeroCard : MonoBehaviour
 
         if (heroInstance.DeployState == HeroDeployState.Countdown)
         {
+            if (heroCardView == null)
+            {
+                Debug.LogError("[HeroCard] HeroCardView is required to tick countdown UI.", this);
+                return;
+            }
+
             heroCardView.Tick(Time.deltaTime);
         }
     }
@@ -43,17 +49,22 @@ public class HeroCard : MonoBehaviour
 
         this.heroInstance = heroInstance;
 
-        if (heroCardView != null)
+        if (heroCardView == null)
         {
-            heroCardView.SetData(heroInstance);
+            Debug.LogError("[HeroCard] HeroCardView is required to initialize a hero card.", this);
+            return;
         }
 
-        if (heroCardInput != null)
+        heroCardView.SetData(heroInstance);
+
+        if (heroCardInput == null)
         {
-            heroCardInput.Initialize(heroInstance);
+            Debug.LogError("[HeroCard] HeroCardInput is required to initialize a hero card.", this);
+            return;
         }
 
-        OnHeroDeployStateChanged(heroInstance, heroInstance.DeployState);
+        heroCardInput.Initialize(this);
+        OnHeroDeployStateChanged(heroInstance.DeployState);
     }
 
     public void Clear()
@@ -69,7 +80,7 @@ public class HeroCard : MonoBehaviour
         }
     }
 
-    public void OnHeroDeployStateChanged(HeroInstance heroInstance, HeroDeployState newState)
+    public void OnHeroDeployStateChanged(HeroDeployState newState)
     {
         if (heroCardView != null)
         {
