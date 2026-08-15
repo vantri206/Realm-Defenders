@@ -45,7 +45,7 @@ public class CombatBootstrapper : MonoBehaviour
         enemyRouteGraph.InitializeRoutes(combatGrid);
 
         // Initialize hero systems
-        heroPlacement.Initialize(combatGrid);
+        heroPlacement.Initialize(combatGrid, pathfindingSystem);
         heroDeploymentSystem.Initialize(heroInventory, heroPlacement);
         heroInventory.Initialize(heroInventoryView);
 

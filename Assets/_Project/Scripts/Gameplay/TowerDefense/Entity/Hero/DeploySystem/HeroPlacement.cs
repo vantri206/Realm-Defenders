@@ -3,18 +3,20 @@ using UnityEngine;
 public class HeroPlacement : MonoBehaviour
 {
     private CombatGrid combatGrid;
+    private UnitPathfindingSystem unitPathfindingSystem;
 
     public CombatGrid CombatGrid => combatGrid;
 
-    public void Initialize(CombatGrid combatGrid)
+    public void Initialize(CombatGrid combatGrid, UnitPathfindingSystem unitPathfindingSystem)
     {
-        if (combatGrid == null)
+        if (combatGrid == null || unitPathfindingSystem == null)
         {
-            Debug.LogError("[HeroPlacement] CombatGrid is required to initialize hero placement.", this);
+            Debug.LogError("[HeroPlacement] Both CombatGrid and UnitPathfindingSystem are required to initialize hero placement.", this);
             return;
         }
 
         this.combatGrid = combatGrid;
+        this.unitPathfindingSystem = unitPathfindingSystem;
     }
 
     public bool CanPlaceHero(HeroInstance instance, CombatGridCell cell)
@@ -45,18 +47,15 @@ public class HeroPlacement : MonoBehaviour
 
     public HeroRuntime PlaceHero(HeroInstance instance, CombatGridCell cell)
     {
-        HeroRuntime hero = null;
-
         if (!CanPlaceHero(instance, cell))
         {
             return null;
         }
 
         combatGrid.TryCellToWorldBottomCenter(cell, out Vector3 spawnPosition);
-        hero = Instantiate(instance.Definition.Prefab, spawnPosition, Quaternion.identity, transform);
+        HeroRuntime hero = Instantiate(instance.Definition.Prefab, spawnPosition, Quaternion.identity, transform);
 
-        hero.Initialize(instance, combatGrid, cell.CellPosition);
-        cell.SetDeployedHero(hero);
+        hero.Initialize(instance, combatGrid, cell.CellPosition, unitPathfindingSystem);
 
         return hero;
     }
@@ -81,12 +80,12 @@ public class HeroPlacement : MonoBehaviour
 
         Vector3Int cellPosition = hero.AnchorCell.CellPosition;
 
-        if (!combatGrid.TryGetCell(cellPosition, out CombatGridCell cell) || cell.DeployedHero != hero)
+        if (!combatGrid.TryGetCell(cellPosition, out CombatGridCell cell) || cell.AnchoredHero != hero)
         {
             return false;
         }
 
-        cell.ClearDeployedHero();
+        cell.ClearAnchoredHero();
         hero.ClearAnchorCell();
         Destroy(hero.gameObject);
         return true;

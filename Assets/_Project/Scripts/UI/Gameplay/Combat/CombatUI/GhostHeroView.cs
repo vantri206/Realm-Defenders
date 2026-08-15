@@ -15,13 +15,8 @@ public class GhostHeroView : MonoBehaviour
     [SerializeField] private string dirXParameterName = "DirX";
     [SerializeField] private string dirYParameterName = "DirY";
 
-    [Header("Settings")]
-    [SerializeField] private Color invalidColor = Color.red;
-
-    private float selectedArrowAlpha = 0.75f;
-    private float unselectedArrowAlpha = 0.25f;
-
-    private Color initColor = Color.white;
+    private float selectedArrowAlpha = 1.0f;
+    private float unselectedArrowAlpha = 0.5f;
 
     private void Awake()
     {
@@ -33,11 +28,6 @@ public class GhostHeroView : MonoBehaviour
         if (spriteRenderer == null)
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
-        }
-
-        if (spriteRenderer != null)
-        {
-            initColor = spriteRenderer.color;
         }
     }
 
@@ -95,7 +85,6 @@ public class GhostHeroView : MonoBehaviour
         SetHeroSprite(heroInstance.Definition.HeroSprite);
         SetAnimatorController(heroInstance.Definition.AnimatorController);
         gameObject.SetActive(true);
-        SetInvalidState(false);
         SetFacingDirection(Vector2Int.left);
     }
 
@@ -107,14 +96,6 @@ public class GhostHeroView : MonoBehaviour
     public void UpdateWorldPosition(Vector3 worldPosition)
     {
         transform.position = worldPosition;
-    }
-
-    public void SetInvalidState(bool isInvalid)
-    {
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = isInvalid ? invalidColor : initColor;
-        }
     }
 
     private void SetArrowDirection(Vector2Int direction)

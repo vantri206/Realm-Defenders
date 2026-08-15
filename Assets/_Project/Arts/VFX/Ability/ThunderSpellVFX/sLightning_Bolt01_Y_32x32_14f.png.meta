@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: adb4d713bac6fae45a347404cd7b85c5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3722200692352771191
+    second: sLightning_Bolt01_Y_32x32_14f_0
+  - first:
+      213: 7651343206725056715
+    second: sLightning_Bolt01_Y_32x32_14f_1
+  - first:
+      213: -4361863842805764835
+    second: sLightning_Bolt01_Y_32x32_14f_2
+  - first:
+      213: 8833402143004958398
+    second: sLightning_Bolt01_Y_32x32_14f_3
+  - first:
+      213: 6955888119360854772
+    second: sLightning_Bolt01_Y_32x32_14f_4
+  - first:
+      213: 8115881181392151956
+    second: sLightning_Bolt01_Y_32x32_14f_5
+  - first:
+      213: -9183042891660468298
+    second: sLightning_Bolt01_Y_32x32_14f_6
+  - first:
+      213: 6160149140964441654
+    second: sLightning_Bolt01_Y_32x32_14f_7
+  - first:
+      213: -1436544934557302582
+    second: sLightning_Bolt01_Y_32x32_14f_8
+  - first:
+      213: -4822708999567439081
+    second: sLightning_Bolt01_Y_32x32_14f_9
+  - first:
+      213: -103659933722144154
+    second: sLightning_Bolt01_Y_32x32_14f_10
+  - first:
+      213: 650232475941811783
+    second: sLightning_Bolt01_Y_32x32_14f_11
+  - first:
+      213: 1846422488782125455
+    second: sLightning_Bolt01_Y_32x32_14f_12
+  - first:
+      213: 793153336232853361
+    second: sLightning_Bolt01_Y_32x32_14f_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 9
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77466620fc9e7a330800000000000000
+      internalID: 3722200692352771191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 11
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc8f173ab180f2a60800000000000000
+      internalID: 7651343206725056715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_2
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 8
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1d21f2f1fb8773c0800000000000000
+      internalID: -4361863842805764835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 6
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebe1cfb927c869a70800000000000000
+      internalID: 8833402143004958398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_4
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 6
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fa1dd30467488060800000000000000
+      internalID: 6955888119360854772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_5
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 6
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49528284fe661a070800000000000000
+      internalID: 8115881181392151956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_6
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 9
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bfd665d4274f8080800000000000000
+      internalID: -9183042891660468298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_7
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 8
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63efc9e710f3d7550800000000000000
+      internalID: 6160149140964441654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_8
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 10
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac043df3efd501ce0800000000000000
+      internalID: -1436544934557302582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_9
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 11
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71b04b977bb421db0800000000000000
+      internalID: -4822708999567439081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_10
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 13
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6621d09e6d9bf8ef0800000000000000
+      internalID: -103659933722144154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_11
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 11
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7463fe5edf6160900800000000000000
+      internalID: 650232475941811783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_12
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 10
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f89b625887fcf9910800000000000000
+      internalID: 1846422488782125455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Bolt01_Y_32x32_14f_13
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 9
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17f339ac1c8d10b00800000000000000
+      internalID: 793153336232853361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sLightning_Bolt01_Y_32x32_14f_0: 3722200692352771191
+      sLightning_Bolt01_Y_32x32_14f_1: 7651343206725056715
+      sLightning_Bolt01_Y_32x32_14f_10: -103659933722144154
+      sLightning_Bolt01_Y_32x32_14f_11: 650232475941811783
+      sLightning_Bolt01_Y_32x32_14f_12: 1846422488782125455
+      sLightning_Bolt01_Y_32x32_14f_13: 793153336232853361
+      sLightning_Bolt01_Y_32x32_14f_2: -4361863842805764835
+      sLightning_Bolt01_Y_32x32_14f_3: 8833402143004958398
+      sLightning_Bolt01_Y_32x32_14f_4: 6955888119360854772
+      sLightning_Bolt01_Y_32x32_14f_5: 8115881181392151956
+      sLightning_Bolt01_Y_32x32_14f_6: -9183042891660468298
+      sLightning_Bolt01_Y_32x32_14f_7: 6160149140964441654
+      sLightning_Bolt01_Y_32x32_14f_8: -1436544934557302582
+      sLightning_Bolt01_Y_32x32_14f_9: -4822708999567439081
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

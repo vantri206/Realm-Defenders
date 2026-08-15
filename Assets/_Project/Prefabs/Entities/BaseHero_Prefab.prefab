@@ -31,88 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 734500780959113815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1030690014745469706
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3667239103473279648}
-  - component: {fileID: 550754454397629903}
-  - component: {fileID: 7663278035100045213}
-  m_Layer: 8
-  m_Name: Blocker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3667239103473279648
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1030690014745469706}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 734500780959113815}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &550754454397629903
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1030690014745469706}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.5}
-  m_Size: {x: 1, y: 1}
-  m_Direction: 0
---- !u!114 &7663278035100045213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1030690014745469706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ed19aa4d31f064da9da364c6eaa40b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HeroBlocker
 --- !u!1 &5906598430302128008
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +138,10 @@ GameObject:
   - component: {fileID: 7947616607030417923}
   - component: {fileID: 5638550953452632778}
   - component: {fileID: 2228095518467912174}
+  - component: {fileID: 6425519867161089796}
+  - component: {fileID: 664752502939576448}
   - component: {fileID: 7536385526354005014}
+  - component: {fileID: 1932848692319366539}
   m_Layer: 8
   m_Name: BaseHero_Prefab
   m_TagString: Untagged
@@ -243,7 +164,6 @@ Transform:
   m_Children:
   - {fileID: 7193229888949336143}
   - {fileID: 7864727337953707630}
-  - {fileID: 3667239103473279648}
   - {fileID: 6802249588291718203}
   - {fileID: 7863766457353853434}
   m_Father: {fileID: 0}
@@ -262,13 +182,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HeroRuntime
   health: {fileID: 484668256975825859}
   unitVisual: {fileID: 6689265504623526020}
-  combatGrid: {fileID: 0}
+  unitMovement: {fileID: 6425519867161089796}
   teamIdentity: {fileID: 5638550953452632778}
   targetScanner: {fileID: 8792332204736689504}
   targetSelector: {fileID: 7947616607030417923}
   normalAttackController: {fileID: 2228095518467912174}
-  heroDefinition: {fileID: 0}
-  heroBlocker: {fileID: 0}
+  heroBlocker: {fileID: 1932848692319366539}
+  heroPathfindingController: {fileID: 664752502939576448}
 --- !u!114 &484668256975825859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +251,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NormalAttackController
   attackPoint: {fileID: 6802249588291718203}
+--- !u!114 &6425519867161089796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360995233734530165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1808aef302b7bc748a2892c628094ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
+  rb: {fileID: 7536385526354005014}
+  unitRuntime: {fileID: 6873902697943297941}
+--- !u!114 &664752502939576448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360995233734530165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a36223c965a8b24e91e4865f0025fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeroPathfindingController
 --- !u!50 &7536385526354005014
 Rigidbody2D:
   serializedVersion: 5
@@ -354,10 +300,22 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &1932848692319366539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360995233734530165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ed19aa4d31f064da9da364c6eaa40b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeroBlocker
 --- !u!1 &8512884463051957597
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,8 +396,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 166825055
-  m_SortingLayer: -5
-  m_SortingOrder: 0
+  m_SortingLayer: -4
+  m_SortingOrder: 100
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7580479321075253035, guid: d5a83523a8a4a2a4f9d7912435e9e3fd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -487,6 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UnitVisual
   animator: {fileID: 3990750807442122324}
   spriteRenderer: {fileID: 1656737084757076886}
+  sortingGroup: {fileID: 0}
   dirXParameterName: DirX
   dirYParameterName: DirY
   isMovingParameterName: IsMoving

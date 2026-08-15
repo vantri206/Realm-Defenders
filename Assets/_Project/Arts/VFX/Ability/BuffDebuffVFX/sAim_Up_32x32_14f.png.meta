@@ -1,0 +1,923 @@
+fileFormatVersion: 2
+guid: bf7c25fa36f99ba4082141521ed3fbee
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -903849057916010055
+    second: sAim_Up_32x32_14f_0
+  - first:
+      213: 3726292404752403423
+    second: sAim_Up_32x32_14f_1
+  - first:
+      213: -8898078237150198308
+    second: sAim_Up_32x32_14f_2
+  - first:
+      213: 6780413339064923404
+    second: sAim_Up_32x32_14f_3
+  - first:
+      213: 2934514156370215483
+    second: sAim_Up_32x32_14f_4
+  - first:
+      213: -8929128354000068803
+    second: sAim_Up_32x32_14f_5
+  - first:
+      213: 8101683139080438234
+    second: sAim_Up_32x32_14f_6
+  - first:
+      213: 3446606781296942011
+    second: sAim_Up_32x32_14f_7
+  - first:
+      213: -3849807700489701989
+    second: sAim_Up_32x32_14f_8
+  - first:
+      213: 8605985592698661306
+    second: sAim_Up_32x32_14f_9
+  - first:
+      213: 1520695399620727652
+    second: sAim_Up_32x32_14f_10
+  - first:
+      213: -2897423309771347777
+    second: sAim_Up_32x32_14f_11
+  - first:
+      213: 4230237614344337582
+    second: sAim_Up_32x32_14f_12
+  - first:
+      213: -6119947193677160444
+    second: sAim_Up_32x32_14f_13
+  - first:
+      213: -2176633928032862778
+    second: sAim_Up_32x32_14f_14
+  - first:
+      213: 6901051700130732017
+    second: sAim_Up_32x32_14f_15
+  - first:
+      213: -6868557151912633312
+    second: sAim_Up_32x32_14f_16
+  - first:
+      213: -8080842878295912268
+    second: sAim_Up_32x32_14f_17
+  - first:
+      213: -6914448798155486263
+    second: sAim_Up_32x32_14f_18
+  - first:
+      213: -8468677331956125089
+    second: sAim_Up_32x32_14f_19
+  - first:
+      213: -4677800942775971527
+    second: sAim_Up_32x32_14f_20
+  - first:
+      213: -1604171135023022338
+    second: sAim_Up_32x32_14f_21
+  - first:
+      213: 7055977292060610175
+    second: sAim_Up_32x32_14f_22
+  - first:
+      213: 1933134383262734190
+    second: sAim_Up_32x32_14f_23
+  - first:
+      213: -3927982213763597500
+    second: sAim_Up_32x32_14f_24
+  - first:
+      213: 3461183579562042550
+    second: sAim_Up_32x32_14f_25
+  - first:
+      213: 6348839681050148829
+    second: sAim_Up_32x32_14f_26
+  - first:
+      213: 1588181593576493879
+    second: sAim_Up_32x32_14f_27
+  - first:
+      213: 3090518824145589472
+    second: sAim_Up_32x32_14f_28
+  - first:
+      213: -8047735023204453683
+    second: sAim_Up_32x32_14f_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 11
+        width: 65
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b148541212e473f0800000000000000
+      internalID: -903849057916010055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdbc08a033376b330800000000000000
+      internalID: 3726292404752403423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_2
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 7
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd54703ccfca38480800000000000000
+      internalID: -8898078237150198308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_3
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c05f849f10ed81e50800000000000000
+      internalID: 6780413339064923404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_4
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b324dc6d31d79b820800000000000000
+      internalID: 2934514156370215483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_5
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3f15f1121d551480800000000000000
+      internalID: -8929128354000068803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_6
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 7
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad149a3f3e5fe6070800000000000000
+      internalID: 8101683139080438234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 7
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbb18af4b9ec4df20800000000000000
+      internalID: 3446606781296942011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_8
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b957fb62b4cb29ac0800000000000000
+      internalID: -3849807700489701989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_9
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab9eee2dc4a9e6770800000000000000
+      internalID: 8605985592698661306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_10
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 7
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 463d6f1b8689a1510800000000000000
+      internalID: 1520695399620727652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_11
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 8
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb86429d9d84ac7d0800000000000000
+      internalID: -2897423309771347777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_12
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea87d7e82b2d4ba30800000000000000
+      internalID: 4230237614344337582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_13
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40069b4c374911ba0800000000000000
+      internalID: -6119947193677160444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_14
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 7
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cdb98989fa0bc1e0800000000000000
+      internalID: -2176633928032862778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_15
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 9
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f7d5ea35f575cf50800000000000000
+      internalID: 6901051700130732017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_16
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02c57c859abfda0a0800000000000000
+      internalID: -6868557151912633312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_17
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b05d6167341bdf80800000000000000
+      internalID: -8080842878295912268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_18
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 7
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cbc050d371fa00a0800000000000000
+      internalID: -6914448798155486263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_19
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 10
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f523a57e5d6397a80800000000000000
+      internalID: -8468677331956125089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_20
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 931d9db93dc151fb0800000000000000
+      internalID: -4677800942775971527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_21
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efe740a1ad6dcb9e0800000000000000
+      internalID: -1604171135023022338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_22
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 7
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7ece7486fddbe160800000000000000
+      internalID: 7055977292060610175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_23
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 11
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e671879ba7fd3da10800000000000000
+      internalID: 1933134383262734190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_24
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44b7198ecf00d79c0800000000000000
+      internalID: -3927982213763597500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_25
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b4e532a028980030800000000000000
+      internalID: 3461183579562042550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_26
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 7
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddff5e46d0c9b1850800000000000000
+      internalID: 6348839681050148829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_27
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 12
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 733d0fbaeba5a0610800000000000000
+      internalID: 1588181593576493879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_28
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 5
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e41bdc0f7ab3ea20800000000000000
+      internalID: 3090518824145589472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Up_32x32_14f_29
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 11
+        width: 93
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc2bd6792a3b05090800000000000000
+      internalID: -8047735023204453683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sAim_Up_32x32_14f_0: -903849057916010055
+      sAim_Up_32x32_14f_1: 3726292404752403423
+      sAim_Up_32x32_14f_10: 1520695399620727652
+      sAim_Up_32x32_14f_11: -2897423309771347777
+      sAim_Up_32x32_14f_12: 4230237614344337582
+      sAim_Up_32x32_14f_13: -6119947193677160444
+      sAim_Up_32x32_14f_14: -2176633928032862778
+      sAim_Up_32x32_14f_15: 6901051700130732017
+      sAim_Up_32x32_14f_16: -6868557151912633312
+      sAim_Up_32x32_14f_17: -8080842878295912268
+      sAim_Up_32x32_14f_18: -6914448798155486263
+      sAim_Up_32x32_14f_19: -8468677331956125089
+      sAim_Up_32x32_14f_2: -8898078237150198308
+      sAim_Up_32x32_14f_20: -4677800942775971527
+      sAim_Up_32x32_14f_21: -1604171135023022338
+      sAim_Up_32x32_14f_22: 7055977292060610175
+      sAim_Up_32x32_14f_23: 1933134383262734190
+      sAim_Up_32x32_14f_24: -3927982213763597500
+      sAim_Up_32x32_14f_25: 3461183579562042550
+      sAim_Up_32x32_14f_26: 6348839681050148829
+      sAim_Up_32x32_14f_27: 1588181593576493879
+      sAim_Up_32x32_14f_28: 3090518824145589472
+      sAim_Up_32x32_14f_29: -8047735023204453683
+      sAim_Up_32x32_14f_3: 6780413339064923404
+      sAim_Up_32x32_14f_4: 2934514156370215483
+      sAim_Up_32x32_14f_5: -8929128354000068803
+      sAim_Up_32x32_14f_6: 8101683139080438234
+      sAim_Up_32x32_14f_7: 3446606781296942011
+      sAim_Up_32x32_14f_8: -3849807700489701989
+      sAim_Up_32x32_14f_9: 8605985592698661306
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

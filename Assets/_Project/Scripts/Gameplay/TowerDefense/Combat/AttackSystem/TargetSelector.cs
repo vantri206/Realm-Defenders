@@ -4,12 +4,20 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class TargetSelector : MonoBehaviour
 {
+    private UnitRuntime owner;
+
     private TargetPriorityMode priorityMode = TargetPriorityMode.Nearest;
 
     public TargetPriorityMode PriorityMode => priorityMode;
 
-    public void Initialize(TargetPriorityMode priorityMode)
+    private void Awake()
     {
+        CacheReferences();
+    }
+
+    public void Initialize(UnitRuntime owner, TargetPriorityMode priorityMode)
+    {
+        this.owner = owner;
         this.priorityMode = priorityMode;
     }
 
@@ -23,7 +31,7 @@ public class TargetSelector : MonoBehaviour
         switch (priorityMode)
         {
             case TargetPriorityMode.HighestPathProgress:
-                return SelectHighestPathProgress(validTargets, origin);
+                return SelectNearest(validTargets, origin);
 
             case TargetPriorityMode.Nearest:
             default:
@@ -44,7 +52,7 @@ public class TargetSelector : MonoBehaviour
                 continue;
             }
 
-            float distance = ((Vector2)position - target.Position).sqrMagnitude;
+            float distance = ((Vector2)position - target.CenterPosition).sqrMagnitude;
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
@@ -55,9 +63,125 @@ public class TargetSelector : MonoBehaviour
         return selectedTarget;
     }
 
-    private Hurtbox SelectHighestPathProgress(IReadOnlyList<Hurtbox> candidates, Vector3 fallbackPosition)
+    private Hurtbox SelectHighestPathProgress(IReadOnlyList<Hurtbox> validTargets)
     {
-        // TODO: Select by enemy route progress once EnemyRuntime/path progress data exists.
-        return SelectNearest(candidates, fallbackPosition);
+        return SelectNearest(validTargets, owner.CenterPosition);
+    }
+
+    public bool TrySelectLockedBlockingTarget(out Hurtbox target)
+    {
+        target = null;
+        CacheReferences();
+
+        if (owner == null)
+        {
+            return false;
+        }
+
+        if (TrySelectBlockedTarget(out target))
+        {
+            return true;
+        }
+
+        if (TrySelectBlockingTarget(out target))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool TrySelectBlockedTarget(out Hurtbox target)
+    {
+        target = null;
+
+        if (!owner.TryGetComponent(out IBlocker blocker))
+        {
+            return false;
+        }
+
+        if (blocker.BlockedTargets.Count == 0)
+        {
+            return false;
+        }
+
+        IReadOnlyList<IBlockable> blockedTargets = blocker.BlockedTargets;
+        for (int i = 0; i < blockedTargets.Count; i++)
+        {
+            IBlockable blockable = blockedTargets[i];
+            if (blockable == null || blockable.Owner == null)
+            {
+                continue;
+            }
+
+            if (TryGetHurtbox(blockable.Owner, out target))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool TrySelectBlockingTarget(out Hurtbox target)
+    {
+        target = null;
+
+        if (!owner.TryGetComponent(out IBlockable blockable))
+        {
+            return false;
+        }
+
+        if (!blockable.IsBlocked)
+        {
+            return false;
+        }
+
+        if (blockable.CurrentBlocker == null || blockable.CurrentBlocker.Owner == null)
+        {
+            return false;
+        }
+
+        return TryGetHurtbox(blockable.CurrentBlocker.Owner, out target);
+    }
+
+    private bool TryGetHurtbox(UnitRuntime runtime, out Hurtbox target)
+    {
+        target = null;
+
+        if (runtime == null || runtime.IsDead)
+        {
+            return false;
+        }
+
+        target = runtime.GetComponentInChildren<Hurtbox>();
+        if (target == null)
+        {
+            return false;
+        }
+
+        IDamageable damageable = target.GetDamageable();
+        if (damageable == null || damageable.IsDead)
+        {
+            target = null;
+            return false;
+        }
+
+        TeamIdentity targetTeam = target.GetTargetTeam();
+        if (owner.TeamIdentity != null && !owner.TeamIdentity.IsEnemy(targetTeam))
+        {
+            target = null;
+            return false;
+        }
+
+        return true;
+    }
+
+    private void CacheReferences()
+    {
+        if (owner == null)
+        {
+            owner = GetComponent<UnitRuntime>();
+        }
     }
 }

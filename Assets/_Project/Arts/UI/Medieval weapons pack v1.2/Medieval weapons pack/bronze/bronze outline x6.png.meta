@@ -1,0 +1,1313 @@
+fileFormatVersion: 2
+guid: 12a7fd79098e7ea448f4a99b0836eda8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6420544254612619860
+    second: bronze outline x6_0
+  - first:
+      213: 536845741914715344
+    second: bronze outline x6_1
+  - first:
+      213: -666188983613719163
+    second: bronze outline x6_2
+  - first:
+      213: 1298474797360359710
+    second: bronze outline x6_3
+  - first:
+      213: 5900670392090270759
+    second: bronze outline x6_4
+  - first:
+      213: -3486524204483544010
+    second: bronze outline x6_5
+  - first:
+      213: -3289381153246616412
+    second: bronze outline x6_6
+  - first:
+      213: 8059845966718630042
+    second: bronze outline x6_7
+  - first:
+      213: 4527990823686410496
+    second: bronze outline x6_8
+  - first:
+      213: 2318800383406026228
+    second: bronze outline x6_9
+  - first:
+      213: 6289621707338347292
+    second: bronze outline x6_10
+  - first:
+      213: -528757403815086417
+    second: bronze outline x6_11
+  - first:
+      213: 4330815781602249184
+    second: bronze outline x6_12
+  - first:
+      213: -3280871155794389728
+    second: bronze outline x6_13
+  - first:
+      213: 1620083598754943457
+    second: bronze outline x6_14
+  - first:
+      213: 5485097455053046055
+    second: bronze outline x6_15
+  - first:
+      213: -4415852918298276445
+    second: bronze outline x6_16
+  - first:
+      213: -5920918719721650511
+    second: bronze outline x6_17
+  - first:
+      213: -5100125485947524908
+    second: bronze outline x6_18
+  - first:
+      213: 4552027827384355355
+    second: bronze outline x6_19
+  - first:
+      213: 1158033241342677021
+    second: bronze outline x6_20
+  - first:
+      213: 3759686328799616363
+    second: bronze outline x6_21
+  - first:
+      213: -6224933984393165431
+    second: bronze outline x6_22
+  - first:
+      213: 7269859186007386214
+    second: bronze outline x6_23
+  - first:
+      213: -2876767257824494323
+    second: bronze outline x6_24
+  - first:
+      213: 3399473280169270230
+    second: bronze outline x6_25
+  - first:
+      213: 4335504878891802316
+    second: bronze outline x6_26
+  - first:
+      213: -291894827327130020
+    second: bronze outline x6_27
+  - first:
+      213: 6613772256189080024
+    second: bronze outline x6_28
+  - first:
+      213: -6879314111904496725
+    second: bronze outline x6_29
+  - first:
+      213: 4082843961119532296
+    second: bronze outline x6_30
+  - first:
+      213: -8433585788423119824
+    second: bronze outline x6_31
+  - first:
+      213: -8151873133991599350
+    second: bronze outline x6_32
+  - first:
+      213: -2579801697655294919
+    second: bronze outline x6_33
+  - first:
+      213: -4279233827435572694
+    second: bronze outline x6_34
+  - first:
+      213: -1537616786361397225
+    second: bronze outline x6_35
+  - first:
+      213: -3246597832514956278
+    second: bronze outline x6_36
+  - first:
+      213: -6149000935593086845
+    second: bronze outline x6_37
+  - first:
+      213: 4553378810348767120
+    second: bronze outline x6_38
+  - first:
+      213: -5178288841776250293
+    second: bronze outline x6_39
+  - first:
+      213: 5522830146505426061
+    second: bronze outline x6_40
+  - first:
+      213: 6749230127364874349
+    second: bronze outline x6_41
+  - first:
+      213: -4605028247015006672
+    second: bronze outline x6_42
+  - first:
+      213: 2203822819559003191
+    second: bronze outline x6_43
+  - first:
+      213: -4729325463930571321
+    second: bronze outline x6_44
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bronze outline x6_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 521
+        width: 44
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cadb3279405a5e6a0800000000000000
+      internalID: -6420544254612619860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_1
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 521
+        width: 44
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d4f102ab52437700800000000000000
+      internalID: 536845741914715344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_2
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 521
+        width: 44
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58dfc6626a831c6f0800000000000000
+      internalID: -666188983613719163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_3
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 521
+        width: 44
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e192676d2fb150210800000000000000
+      internalID: 1298474797360359710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_4
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 521
+        width: 26
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72c9431657463e150800000000000000
+      internalID: 5900670392090270759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_5
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 515
+        width: 50
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63cf4fa55b06d9fc0800000000000000
+      internalID: -3486524204483544010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_6
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 521
+        width: 44
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a4eeddd445c952d0800000000000000
+      internalID: -3289381153246616412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_7
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 515
+        width: 44
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a98f0ae24335adf60800000000000000
+      internalID: 8059845966718630042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_8
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 521
+        width: 38
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0019e00f9a7a6de30800000000000000
+      internalID: 4527990823686410496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_9
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 527
+        width: 44
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fda4f5c9a80e2020800000000000000
+      internalID: 2318800383406026228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_10
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 533
+        width: 26
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c13fc757e99394750800000000000000
+      internalID: 6289621707338347292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_11
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 527
+        width: 32
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa67e3551f979a8f0800000000000000
+      internalID: -528757403815086417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_12
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 521
+        width: 44
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e9ce0af1062a1c30800000000000000
+      internalID: 4330815781602249184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_13
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 383
+        width: 92
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 025dc0d01110872d0800000000000000
+      internalID: -3280871155794389728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_14
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 383
+        width: 44
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e199321371bb7610800000000000000
+      internalID: 1620083598754943457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_15
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 371
+        width: 44
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72106d6f21bfe1c40800000000000000
+      internalID: 5485097455053046055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_16
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 365
+        width: 50
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ad8570ca2db7b2c0800000000000000
+      internalID: -4415852918298276445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_17
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 371
+        width: 44
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b6c7077bcba4dda0800000000000000
+      internalID: -5920918719721650511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_18
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 371
+        width: 44
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d86e2464e6b839b0800000000000000
+      internalID: -5100125485947524908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_19
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 359
+        width: 62
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1a00faf03d0c2f30800000000000000
+      internalID: 4552027827384355355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_20
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 359
+        width: 44
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d101354f819221010800000000000000
+      internalID: 1158033241342677021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_21
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 371
+        width: 50
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6d5efedbc61d2430800000000000000
+      internalID: 3759686328799616363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_22
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 377
+        width: 62
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9850df5b5879c99a0800000000000000
+      internalID: -6224933984393165431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_23
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 383
+        width: 68
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 668a41d896ab3e460800000000000000
+      internalID: 7269859186007386214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_24
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 389
+        width: 50
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0d75e7bb6ba318d0800000000000000
+      internalID: -2876767257824494323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_25
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 203
+        width: 32
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dbdbe7efea5d2f20800000000000000
+      internalID: 3399473280169270230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_26
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 167
+        width: 44
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cce915487beca2c30800000000000000
+      internalID: 4335504878891802316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_27
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 203
+        width: 32
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c567469733bf2fbf0800000000000000
+      internalID: -291894827327130020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_28
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 203
+        width: 44
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d1eb7363d6d8cb50800000000000000
+      internalID: 6613772256189080024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_29
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 221
+        width: 44
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba3c99d6344c780a0800000000000000
+      internalID: -6879314111904496725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_30
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 221
+        width: 56
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 805e0e763fc29a830800000000000000
+      internalID: 4082843961119532296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_31
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 215
+        width: 68
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03cd1429862e5fa80800000000000000
+      internalID: -8433585788423119824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_32
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 197
+        width: 44
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a03616a339abede80800000000000000
+      internalID: -8151873133991599350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_33
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 197
+        width: 56
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9347e4c3604b23cd0800000000000000
+      internalID: -2579801697655294919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_34
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 191
+        width: 74
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a221edc918b1d94c0800000000000000
+      internalID: -4279233827435572694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_35
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 173
+        width: 62
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7105040fda949aae0800000000000000
+      internalID: -1537616786361397225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_36
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 197
+        width: 44
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a049468f874c1f2d0800000000000000
+      internalID: -3246597832514956278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_37
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 17
+        width: 110
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 380fd665a3c5aaaa0800000000000000
+      internalID: -6149000935593086845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_38
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 17
+        width: 110
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09701a637e9d03f30800000000000000
+      internalID: 4553378810348767120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_39
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 17
+        width: 110
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b42ce81fbb50328b0800000000000000
+      internalID: -5178288841776250293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_40
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 17
+        width: 110
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d84464dc1c805ac40800000000000000
+      internalID: 5522830146505426061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_41
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 23
+        width: 104
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d60a2f8ba051aad50800000000000000
+      internalID: 6749230127364874349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_42
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 29
+        width: 116
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03ed7043537a710c0800000000000000
+      internalID: -4605028247015006672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_43
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 35
+        width: 98
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 734d6b39d2d859e10800000000000000
+      internalID: 2203822819559003191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bronze outline x6_44
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 35
+        width: 80
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c5753f2c8f0e5eb0800000000000000
+      internalID: -4729325463930571321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      bronze outline x6_0: -6420544254612619860
+      bronze outline x6_1: 536845741914715344
+      bronze outline x6_10: 6289621707338347292
+      bronze outline x6_11: -528757403815086417
+      bronze outline x6_12: 4330815781602249184
+      bronze outline x6_13: -3280871155794389728
+      bronze outline x6_14: 1620083598754943457
+      bronze outline x6_15: 5485097455053046055
+      bronze outline x6_16: -4415852918298276445
+      bronze outline x6_17: -5920918719721650511
+      bronze outline x6_18: -5100125485947524908
+      bronze outline x6_19: 4552027827384355355
+      bronze outline x6_2: -666188983613719163
+      bronze outline x6_20: 1158033241342677021
+      bronze outline x6_21: 3759686328799616363
+      bronze outline x6_22: -6224933984393165431
+      bronze outline x6_23: 7269859186007386214
+      bronze outline x6_24: -2876767257824494323
+      bronze outline x6_25: 3399473280169270230
+      bronze outline x6_26: 4335504878891802316
+      bronze outline x6_27: -291894827327130020
+      bronze outline x6_28: 6613772256189080024
+      bronze outline x6_29: -6879314111904496725
+      bronze outline x6_3: 1298474797360359710
+      bronze outline x6_30: 4082843961119532296
+      bronze outline x6_31: -8433585788423119824
+      bronze outline x6_32: -8151873133991599350
+      bronze outline x6_33: -2579801697655294919
+      bronze outline x6_34: -4279233827435572694
+      bronze outline x6_35: -1537616786361397225
+      bronze outline x6_36: -3246597832514956278
+      bronze outline x6_37: -6149000935593086845
+      bronze outline x6_38: 4553378810348767120
+      bronze outline x6_39: -5178288841776250293
+      bronze outline x6_4: 5900670392090270759
+      bronze outline x6_40: 5522830146505426061
+      bronze outline x6_41: 6749230127364874349
+      bronze outline x6_42: -4605028247015006672
+      bronze outline x6_43: 2203822819559003191
+      bronze outline x6_44: -4729325463930571321
+      bronze outline x6_5: -3486524204483544010
+      bronze outline x6_6: -3289381153246616412
+      bronze outline x6_7: 8059845966718630042
+      bronze outline x6_8: 4527990823686410496
+      bronze outline x6_9: 2318800383406026228
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

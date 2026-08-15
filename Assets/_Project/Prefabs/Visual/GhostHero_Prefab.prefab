@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b83be0444604224d96574cd8adecafc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostDirectionInput
-  direction: 2
+  direction: 3
 --- !u!1 &3905820721086264455
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b83be0444604224d96574cd8adecafc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostDirectionInput
-  direction: 3
+  direction: 2
 --- !u!1 &6081728937574448886
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +744,6 @@ MonoBehaviour:
   downArrowRenderer: {fileID: 4420051262370539221}
   dirXParameterName: DirX
   dirYParameterName: DirY
-  invalidColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &7456111141886968003
 GameObject:
   m_ObjectHideFlags: 0

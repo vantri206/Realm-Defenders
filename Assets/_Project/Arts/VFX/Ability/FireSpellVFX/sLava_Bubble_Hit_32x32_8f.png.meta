@@ -1,0 +1,663 @@
+fileFormatVersion: 2
+guid: ecb0f4aca19de2f42838b01fbdbb13b8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3759632720648845599
+    second: sLava_Bubble_Hit_32x32_8f_0
+  - first:
+      213: 8664575473639855961
+    second: sLava_Bubble_Hit_32x32_8f_1
+  - first:
+      213: 6510008083441686595
+    second: sLava_Bubble_Hit_32x32_8f_2
+  - first:
+      213: 2920116074670314449
+    second: sLava_Bubble_Hit_32x32_8f_3
+  - first:
+      213: 4155479368540039154
+    second: sLava_Bubble_Hit_32x32_8f_4
+  - first:
+      213: -3620256881062160920
+    second: sLava_Bubble_Hit_32x32_8f_5
+  - first:
+      213: 5597924485373769202
+    second: sLava_Bubble_Hit_32x32_8f_6
+  - first:
+      213: -2026162490212705177
+    second: sLava_Bubble_Hit_32x32_8f_7
+  - first:
+      213: 4159354186650564431
+    second: sLava_Bubble_Hit_32x32_8f_8
+  - first:
+      213: -6474169884519853119
+    second: sLava_Bubble_Hit_32x32_8f_9
+  - first:
+      213: 7782872678336073300
+    second: sLava_Bubble_Hit_32x32_8f_10
+  - first:
+      213: -3470636035476709107
+    second: sLava_Bubble_Hit_32x32_8f_11
+  - first:
+      213: -586104298526805010
+    second: sLava_Bubble_Hit_32x32_8f_12
+  - first:
+      213: 4674476089666632920
+    second: sLava_Bubble_Hit_32x32_8f_13
+  - first:
+      213: -7641305694106908358
+    second: sLava_Bubble_Hit_32x32_8f_14
+  - first:
+      213: 6409168596637685874
+    second: sLava_Bubble_Hit_32x32_8f_15
+  - first:
+      213: -4102396339867359340
+    second: sLava_Bubble_Hit_32x32_8f_16
+  - first:
+      213: 936004116469992706
+    second: sLava_Bubble_Hit_32x32_8f_17
+  - first:
+      213: -1091786684561868386
+    second: sLava_Bubble_Hit_32x32_8f_18
+  - first:
+      213: -214486840781254303
+    second: sLava_Bubble_Hit_32x32_8f_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 6
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e64acfb5f913dbc0800000000000000
+      internalID: -3759632720648845599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 11
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9579dd38c71ce3870800000000000000
+      internalID: 8664575473639855961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_2
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 18
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34896724cd1385a50800000000000000
+      internalID: 6510008083441686595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_3
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 6
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d3d1a53916568820800000000000000
+      internalID: 2920116074670314449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_4
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 16
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f72b41187a3ba930800000000000000
+      internalID: 4155479368540039154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_5
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 4
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e550a03c8342cdc0800000000000000
+      internalID: -3620256881062160920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_6
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 10
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f53a2e09a2dfad40800000000000000
+      internalID: 5597924485373769202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_7
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 14
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76c96a143ff91e3e0800000000000000
+      internalID: -2026162490212705177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_8
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 9
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f473756789ef8b930800000000000000
+      internalID: 4159354186650564431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_9
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 11
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c399a9aac02726a0800000000000000
+      internalID: -6474169884519853119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_10
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 8
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45e805c2771520c60800000000000000
+      internalID: 7782872678336073300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_11
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 6
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d01adb8f9e2d5dfc0800000000000000
+      internalID: -3470636035476709107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_12
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 3
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee3fafcee3dbdd7f0800000000000000
+      internalID: -586104298526805010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_13
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 8
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dcf2a3bc331fd040800000000000000
+      internalID: 4674476089666632920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_14
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 4
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a398692e4f0a4f590800000000000000
+      internalID: -7641305694106908358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_15
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 3
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2789d24a1e0f1f850800000000000000
+      internalID: 6409168596637685874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_16
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 0
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 497e75aa34c5117c0800000000000000
+      internalID: -4102396339867359340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_17
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 5
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20d4f76e8ca5dfc00800000000000000
+      internalID: 936004116469992706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_18
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 0
+        width: 77
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9930308bc139d0f0800000000000000
+      internalID: -1091786684561868386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLava_Bubble_Hit_32x32_8f_19
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 161dc3eca5df50df0800000000000000
+      internalID: -214486840781254303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sLava_Bubble_Hit_32x32_8f_0: -3759632720648845599
+      sLava_Bubble_Hit_32x32_8f_1: 8664575473639855961
+      sLava_Bubble_Hit_32x32_8f_10: 7782872678336073300
+      sLava_Bubble_Hit_32x32_8f_11: -3470636035476709107
+      sLava_Bubble_Hit_32x32_8f_12: -586104298526805010
+      sLava_Bubble_Hit_32x32_8f_13: 4674476089666632920
+      sLava_Bubble_Hit_32x32_8f_14: -7641305694106908358
+      sLava_Bubble_Hit_32x32_8f_15: 6409168596637685874
+      sLava_Bubble_Hit_32x32_8f_16: -4102396339867359340
+      sLava_Bubble_Hit_32x32_8f_17: 936004116469992706
+      sLava_Bubble_Hit_32x32_8f_18: -1091786684561868386
+      sLava_Bubble_Hit_32x32_8f_19: -214486840781254303
+      sLava_Bubble_Hit_32x32_8f_2: 6510008083441686595
+      sLava_Bubble_Hit_32x32_8f_3: 2920116074670314449
+      sLava_Bubble_Hit_32x32_8f_4: 4155479368540039154
+      sLava_Bubble_Hit_32x32_8f_5: -3620256881062160920
+      sLava_Bubble_Hit_32x32_8f_6: 5597924485373769202
+      sLava_Bubble_Hit_32x32_8f_7: -2026162490212705177
+      sLava_Bubble_Hit_32x32_8f_8: 4159354186650564431
+      sLava_Bubble_Hit_32x32_8f_9: -6474169884519853119
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

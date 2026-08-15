@@ -124,7 +124,13 @@ public class HeroDeploymentSystem : MonoBehaviour
             selectedHero.SetDeployState(HeroDeployState.Deployed);
             
             ClearSelection();
-            placedHero.SetFacingDirection(direction);
+            placedHero.SetInitialFacingDirection(direction);
+
+            placedHero.OnDestoryed += () =>
+            {
+                RemoveDeployedHero(placedHero.Instance);
+                placedHero.Instance.SetDeployState(HeroDeployState.Countdown);
+            };
         }
 
         return placedHero;

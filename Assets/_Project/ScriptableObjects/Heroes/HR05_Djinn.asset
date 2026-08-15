@@ -22,14 +22,16 @@ MonoBehaviour:
   heroPrefab: {fileID: 6873902697943297941, guid: cfdb2236ef19fe64c9462e151b552556, type: 3}
   maxHealth: 120
   attack: 8
-  attackInterval: 1
+  attackInterval: 0.5
   defense: 4
   specialDefense: 4
-  blockCount: 1
+  blockCount: 0
+  moveSpeed: 3
   baseDeployCost: 35
   baseRedeployTime: 12
   attackType: 1
   targetPriorityMode: 0
+  canGuard: 0
   attackPattern:
   - {x: 0, y: 0}
   - {x: -1, y: 1}
@@ -43,3 +45,9 @@ MonoBehaviour:
   - {x: -3, y: 1}
   - {x: -3, y: 0}
   - {x: -3, y: -1}
+  - {x: -4, y: 0}
+  - {x: -4, y: 1}
+  - {x: -4, y: -1}
+  attackMethod: 0
+  attackDamageType: 1
+  normalAttackDamageMultiplier: 1

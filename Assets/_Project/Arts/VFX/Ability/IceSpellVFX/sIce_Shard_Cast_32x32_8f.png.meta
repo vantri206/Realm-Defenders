@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: e9d8b3d85b3992843b62f9e11f67ed85
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -415613437093196657
+    second: sIce_Shard_Cast_32x32_8f_0
+  - first:
+      213: -523874180928042194
+    second: sIce_Shard_Cast_32x32_8f_1
+  - first:
+      213: 6737089574262693864
+    second: sIce_Shard_Cast_32x32_8f_2
+  - first:
+      213: -6430200565344682424
+    second: sIce_Shard_Cast_32x32_8f_3
+  - first:
+      213: -2263837241498721217
+    second: sIce_Shard_Cast_32x32_8f_4
+  - first:
+      213: 2101153143086494376
+    second: sIce_Shard_Cast_32x32_8f_5
+  - first:
+      213: -1506213453190679468
+    second: sIce_Shard_Cast_32x32_8f_6
+  - first:
+      213: 4604282640456977714
+    second: sIce_Shard_Cast_32x32_8f_7
+  - first:
+      213: 2501224196380561199
+    second: sIce_Shard_Cast_32x32_8f_8
+  - first:
+      213: -8904753801479416406
+    second: sIce_Shard_Cast_32x32_8f_9
+  - first:
+      213: -4726783125679479276
+    second: sIce_Shard_Cast_32x32_8f_10
+  - first:
+      213: -6473900269986034272
+    second: sIce_Shard_Cast_32x32_8f_11
+  - first:
+      213: -54370876693986142
+    second: sIce_Shard_Cast_32x32_8f_12
+  - first:
+      213: -4442282764248216479
+    second: sIce_Shard_Cast_32x32_8f_13
+  - first:
+      213: 6083444743511367934
+    second: sIce_Shard_Cast_32x32_8f_14
+  - first:
+      213: -8346965826599656617
+    second: sIce_Shard_Cast_32x32_8f_15
+  - first:
+      213: -8551212361616241730
+    second: sIce_Shard_Cast_32x32_8f_16
+  - first:
+      213: -1459978060641015697
+    second: sIce_Shard_Cast_32x32_8f_17
+  - first:
+      213: -5541462935532021616
+    second: sIce_Shard_Cast_32x32_8f_18
+  - first:
+      213: 5309984210461109994
+    second: sIce_Shard_Cast_32x32_8f_19
+  - first:
+      213: -5291415339819592855
+    second: sIce_Shard_Cast_32x32_8f_20
+  - first:
+      213: 5728507160243685496
+    second: sIce_Shard_Cast_32x32_8f_21
+  - first:
+      213: -6477987382143458859
+    second: sIce_Shard_Cast_32x32_8f_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 18
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8c4e2ee7c17b3af0800000000000000
+      internalID: -415613437093196657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 19
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2b09c24533dab8f0800000000000000
+      internalID: -523874180928042194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_2
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 17
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ef5aede543fe7d50800000000000000
+      internalID: 6737089574262693864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_3
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 19
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84e3d1c87a653c6a0800000000000000
+      internalID: -6430200565344682424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_4
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 10
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f342b2fe50c3590e0800000000000000
+      internalID: -2263837241498721217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_5
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 23
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a2bd58b6abc82d10800000000000000
+      internalID: 2101153143086494376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_6
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 19
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 454b7a638dad81be0800000000000000
+      internalID: -1506213453190679468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_7
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 7
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23d8fedbaa2b5ef30800000000000000
+      internalID: 4604282640456977714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_8
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 11
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2f00e0972226b220800000000000000
+      internalID: 2501224196380561199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_9
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 12
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa59282d895fb6480800000000000000
+      internalID: -8904753801479416406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_10
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 16
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 416609f6ac7176eb0800000000000000
+      internalID: -4726783125679479276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_11
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 6
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ad4d2031061826a0800000000000000
+      internalID: -6473900269986034272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_12
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 7
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a44788c9f5de3ff0800000000000000
+      internalID: -54370876693986142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_13
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 7
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16c0525bc57d952c0800000000000000
+      internalID: -4442282764248216479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_14
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 5
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef066b343ccbc6450800000000000000
+      internalID: 6083444743511367934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_15
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 13
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 753e3390ece992c80800000000000000
+      internalID: -8346965826599656617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_16
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 12
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebb4fe2d9adf35980800000000000000
+      internalID: -8551212361616241730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_17
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 6
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f68e0ab60bd1dbbe0800000000000000
+      internalID: -1459978060641015697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_18
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 12
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 098de9fe1d4c813b0800000000000000
+      internalID: -5541462935532021616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_19
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 5
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeea773818ad0b940800000000000000
+      internalID: 5309984210461109994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_20
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 6
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 963100798cd1196b0800000000000000
+      internalID: -5291415339819592855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_21
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 8
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8784b9b49eebf7f40800000000000000
+      internalID: 5728507160243685496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_Cast_32x32_8f_22
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 11
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d160eb3cc09916a0800000000000000
+      internalID: -6477987382143458859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sIce_Shard_Cast_32x32_8f_0: -415613437093196657
+      sIce_Shard_Cast_32x32_8f_1: -523874180928042194
+      sIce_Shard_Cast_32x32_8f_10: -4726783125679479276
+      sIce_Shard_Cast_32x32_8f_11: -6473900269986034272
+      sIce_Shard_Cast_32x32_8f_12: -54370876693986142
+      sIce_Shard_Cast_32x32_8f_13: -4442282764248216479
+      sIce_Shard_Cast_32x32_8f_14: 6083444743511367934
+      sIce_Shard_Cast_32x32_8f_15: -8346965826599656617
+      sIce_Shard_Cast_32x32_8f_16: -8551212361616241730
+      sIce_Shard_Cast_32x32_8f_17: -1459978060641015697
+      sIce_Shard_Cast_32x32_8f_18: -5541462935532021616
+      sIce_Shard_Cast_32x32_8f_19: 5309984210461109994
+      sIce_Shard_Cast_32x32_8f_2: 6737089574262693864
+      sIce_Shard_Cast_32x32_8f_20: -5291415339819592855
+      sIce_Shard_Cast_32x32_8f_21: 5728507160243685496
+      sIce_Shard_Cast_32x32_8f_22: -6477987382143458859
+      sIce_Shard_Cast_32x32_8f_3: -6430200565344682424
+      sIce_Shard_Cast_32x32_8f_4: -2263837241498721217
+      sIce_Shard_Cast_32x32_8f_5: 2101153143086494376
+      sIce_Shard_Cast_32x32_8f_6: -1506213453190679468
+      sIce_Shard_Cast_32x32_8f_7: 4604282640456977714
+      sIce_Shard_Cast_32x32_8f_8: 2501224196380561199
+      sIce_Shard_Cast_32x32_8f_9: -8904753801479416406
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

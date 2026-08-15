@@ -15,6 +15,10 @@ public readonly struct HealthData
 
 public class Health : MonoBehaviour, IDamageable
 {
+    // Defensive stats
+    private float defense = 0f;
+    private float specialDefense = 0f;
+
     private float maxHealth = 100f;
     private float currentHealth = 0f;
 
@@ -41,12 +45,24 @@ public class Health : MonoBehaviour, IDamageable
 
     public float MaxHealth => CurrentData.MaxHealth;
     public float CurrentHealth => CurrentData.CurrentHealth;
+    public float Defense => defense;
+    public float SpecialDefense => specialDefense;
 
     private bool isInitialized;
 
     public void Initialize(float maxHealth)
     {
         this.maxHealth = Mathf.Max(0f, maxHealth);
+        defense = 0f;
+        specialDefense = 0f;
+        RefreshHealth(false);
+    }
+
+    public void Initialize(float maxHealth, float defense, float specialDefense)
+    {
+        this.maxHealth = Mathf.Max(0f, maxHealth);
+        this.defense = Mathf.Max(0f, defense);
+        this.specialDefense = Mathf.Max(0f, specialDefense);
         RefreshHealth(false);
     }
 
@@ -55,13 +71,42 @@ public class Health : MonoBehaviour, IDamageable
         RefreshHealth(false);
     }
 
-    public float ApplyDamage(float damage, Vector3 hitPosition, GameObject source)
+    public DamageResult TakeDamage(DamageRequest request)
     {
-        if (IsDead || damage <= 0f) return 0f;
+        if (IsDead || request.BaseDamage <= 0f)
+        {
+            return default;
+        }
 
+        float defensiveStat = GetDefensiveStat(request.DamageType);
+        float finalDamage = DamageCalculator.CalculateDamageTaken(request.BaseDamage, defensiveStat);
+
+        return ApplyFinalDamage(finalDamage);
+    }
+
+    private float GetDefensiveStat(AttackDamageType damageType)
+    {
+        return damageType switch
+        {
+            AttackDamageType.PhysicalDamage => defense,
+            AttackDamageType.MagicalDamage => specialDefense,
+            AttackDamageType.TrueDamage => 0f,
+            _ => 0f
+        };
+    }
+
+    private DamageResult ApplyFinalDamage(float damage)
+    {
+        if (IsDead || damage <= 0f)
+        {
+            return default;
+        }
+
+        float previousHealth = currentHealth;
         currentHealth = Mathf.Max(0f, currentHealth - damage);
+        float damageTaken = previousHealth - currentHealth;
 
-        OnDamaged?.Invoke(damage);
+        OnDamaged?.Invoke(damageTaken);
 
         NotifyHealthChanged();
 
@@ -70,7 +115,7 @@ public class Health : MonoBehaviour, IDamageable
             Die();
         }
 
-        return damage;
+        return new DamageResult(damageTaken, damageTaken > 0f && IsDead);
     }
 
     public void Heal(float healAmount, Vector3 hitPosition)
@@ -114,9 +159,16 @@ public class Health : MonoBehaviour, IDamageable
         OnHealthChanged?.Invoke(CurrentData);
     }
 
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        defense = Mathf.Max(0f, defense);
+        specialDefense = Mathf.Max(0f, specialDefense);
+    }
     [ContextMenu("Take 20% Damage")]
     private void ContextTakeTwentyPercentDamage()
     {
-        DamageSystem.ApplyDamage(new DamageRequest(null, this, maxHealth * 0.2f, transform.position));
+        DamageSystem.ApplyDamage(new DamageRequest(null, this, maxHealth * 0.2f, AttackDamageType.TrueDamage, transform.position));
     }
+#endif
 }

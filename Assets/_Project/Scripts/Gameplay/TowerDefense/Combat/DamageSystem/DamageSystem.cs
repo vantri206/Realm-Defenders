@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public static class DamageSystem
 {
     public static DamageResult ApplyDamage(DamageRequest request)
@@ -9,15 +7,11 @@ public static class DamageSystem
             return default;
         }
 
-        float damage = Mathf.Max(0f, request.Damage);
-        if (damage <= 0f)
+        if (request.BaseDamage <= 0f)
         {
             return default;
         }
 
-        float damageTaken = request.Target.ApplyDamage(damage, request.HitPosition, request.Source);
-        bool isLastHit = damageTaken > 0f && request.Target.IsDead;
-
-        return new DamageResult(damageTaken, isLastHit);
+        return request.Target.TakeDamage(request);
     }
 }

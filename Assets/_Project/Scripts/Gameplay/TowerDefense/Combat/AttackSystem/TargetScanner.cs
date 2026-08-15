@@ -84,12 +84,17 @@ public class TargetScanner : MonoBehaviour
 
     private void ScanAtPosition(Vector2 centerPosition, List<Hurtbox> results)
     {
-        Vector2 cellSize = GetCellScanSize();
+        Vector2 cellSize = GetCellSize();
         int hitCount = Physics2D.OverlapBox(centerPosition, cellSize, 0f, scanFilter, scanBuffer);
 
         for (int i = 0; i < hitCount; i++)
         {
             if (!scanBuffer[i].TryGetComponent(out Hurtbox hurtbox))
+            {
+                continue;
+            }
+
+            if (!CheckHurtboxInsideArea(hurtbox, centerPosition, cellSize))
             {
                 continue;
             }
@@ -103,13 +108,20 @@ public class TargetScanner : MonoBehaviour
         }
     }
 
+    private static bool CheckHurtboxInsideArea(Hurtbox hurtbox, Vector2 centerPosition, Vector2 cellSize)
+    {
+        Vector2 offset = hurtbox.CenterPosition - centerPosition;
+        Vector2 halfSize = cellSize * 0.5f + 0.1f * Vector2.one; // Add a small tolerance
+        return Mathf.Abs(offset.x) <= halfSize.x && Mathf.Abs(offset.y) <= halfSize.y;
+    }
+
     private Vector2 GetPatternScanPosition(Vector2 originPosition, Vector2Int offset)
     {
         Vector3 gridCellSize = combatGrid.Grid.cellSize;
         return originPosition + new Vector2(offset.x * gridCellSize.x, offset.y * gridCellSize.y);
     }
 
-    private Vector2 GetCellScanSize()
+    private Vector2 GetCellSize()
     {
         Vector3 gridCellSize = combatGrid.Grid.cellSize;
         return new Vector2(Mathf.Max(0f, gridCellSize.x), Mathf.Max(0f, gridCellSize.y));

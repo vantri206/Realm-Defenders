@@ -2,19 +2,29 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    private const float spawnSpreadCell = 0.18f;
+
     private CombatGrid combatGrid;
     private EnemyRouteGraph routeGraph;
     private UnitPathfindingSystem pathfindingSystem;
+    private EnemyDepthSorter enemyDepthSorter;
 
     private bool isInitialized;
 
     public bool IsInitialized => isInitialized;
 
-    public void Initialize(CombatGrid combatGrid, EnemyRouteGraph routeGraph, UnitPathfindingSystem pathfindingSystem)
+    private void Awake()
     {
+        CacheDepthSorter();
+    }
+
+    public void Initialize(CombatGrid combatGrid, EnemyRouteGraph routeGraph, UnitPathfindingSystem pathfindingSystem, EnemyDepthSorter enemyDepthSorter)
+    {
+        CacheDepthSorter();
         this.combatGrid = combatGrid;
         this.routeGraph = routeGraph;
         this.pathfindingSystem = pathfindingSystem;
+        this.enemyDepthSorter = enemyDepthSorter;
         isInitialized = this.combatGrid != null && this.routeGraph != null && this.pathfindingSystem != null;
 
         if (!isInitialized)
@@ -43,14 +53,14 @@ public class EnemySpawner : MonoBehaviour
             return null;
         }
 
-        if (!TryResolveSpawnCell(spawnEvent.SpawnPoint, out CombatGridCell spawnCell))
+        if (!TryGetSpawnCell(spawnEvent.SpawnPoint, out CombatGridCell spawnCell))
         {
             return null;
         }
 
-        if (!combatGrid.TryCellToWorldBottomCenter(spawnCell, out Vector3 spawnPosition))
+        if (!TryGetSpawnPosition(spawnEvent.EnemyDefinition, spawnCell, out Vector3 spawnPosition))
         {
-            Debug.LogError($"[EnemySpawner] Failed to resolve spawn world position for cell {spawnCell.CellPosition}.", this);
+            Debug.LogError($"[EnemySpawner] Failed to get spawn position for cell {spawnCell.CellPosition}.", this);
             return null;
         }
         
@@ -73,12 +83,14 @@ public class EnemySpawner : MonoBehaviour
             return null;
         }
 
-        enemy.Initialize(enemyInstance, combatGrid, spawnCell.CellPosition, routeGraph, pathfindingSystem, routeId);
+        enemy.Initialize(enemyInstance, combatGrid, spawnCell.CellPosition, routeGraph, pathfindingSystem, routeId, enemyDepthSorter);
         if (!enemy.IsInitialized)
         {
             Debug.LogError("[EnemySpawner] Spawned enemy failed to initialize.", enemy);
             return null;
         }
+
+        enemyDepthSorter.RegisterEnemy(enemy);
 
         return enemy;
     }
@@ -96,7 +108,15 @@ public class EnemySpawner : MonoBehaviour
         return enemyInstance;
     }
 
-    private bool TryResolveSpawnCell(EnemySpawnPoint spawnPoint, out CombatGridCell cell)
+    private void CacheDepthSorter()
+    {
+        if (enemyDepthSorter == null)
+        {
+            enemyDepthSorter = GetComponent<EnemyDepthSorter>();
+        }
+    }
+
+    private bool TryGetSpawnCell(EnemySpawnPoint spawnPoint, out CombatGridCell cell)
     {
         if (spawnPoint == null)
         {
@@ -106,5 +126,26 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return spawnPoint.TryGetSpawnCell(combatGrid, out cell);
+    }
+
+    private bool TryGetSpawnPosition(EnemyDefinition enemyDefinition, CombatGridCell spawnCell, out Vector3 spawnPosition)
+    {
+        spawnPosition = Vector3.zero;
+        if (enemyDefinition == null || spawnCell == null || combatGrid == null)
+        {
+            return false;
+        }
+
+        if (!combatGrid.TryCellToWorldCenter(spawnCell, out Vector3 cellCenter))
+        {
+            return false;
+        }
+
+        Vector3 cellSize = combatGrid.CellSize;
+        float spreadRadius = Mathf.Min(Mathf.Abs(cellSize.x), Mathf.Abs(cellSize.y)) * spawnSpreadCell;
+        Vector2 centerSpread = Random.insideUnitCircle * spreadRadius;
+        Vector3 enemyCenterSpawnPosition = cellCenter + (Vector3)centerSpread;
+        spawnPosition = enemyCenterSpawnPosition - (Vector3)enemyDefinition.CenterOffset;
+        return true;
     }
 }

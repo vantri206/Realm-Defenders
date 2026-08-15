@@ -29,6 +29,10 @@ public class EnemyDefinition : ScriptableObject
         Vector2Int.zero,
     };
 
+    [SerializeField] private AttackMethod attackMethod;
+    [SerializeField] private AttackDamageType attackDamageType;
+    [SerializeField] private float normalAttackDamageMultiplier = 1f;
+
     [Header("Customization")]
     [SerializeField] private Vector2 centerOffset = new Vector2(0f, 0.5f);
 
@@ -48,6 +52,9 @@ public class EnemyDefinition : ScriptableObject
     public UnitAttackType AttackType => attackType;
     public TargetPriorityMode TargetPriorityMode => targetPriorityMode;
     public IReadOnlyList<Vector2Int> AttackPattern => attackPattern;
+    public AttackMethod AttackMethod => attackMethod;
+    public AttackDamageType AttackDamageType => attackDamageType;
+    public float NormalAttackDamageMultiplier => normalAttackDamageMultiplier;
     public Vector2 CenterOffset => centerOffset;
 
     public bool IsValid => enemyPrefab != null;
@@ -58,6 +65,7 @@ public class EnemyDefinition : ScriptableObject
         maxHealth = Mathf.Max(0f, maxHealth);
         attack = Mathf.Max(0f, attack);
         attackInterval = Mathf.Max(0f, attackInterval);
+        normalAttackDamageMultiplier = Mathf.Max(0f, normalAttackDamageMultiplier);
         moveSpeed = Mathf.Max(0f, moveSpeed);
     }
 #endif

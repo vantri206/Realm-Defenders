@@ -1,0 +1,663 @@
+fileFormatVersion: 2
+guid: aade69e2dafe065408d2d847cbde6b70
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8473022491355715576
+    second: sFrostbite_Cast_32x32_14f_0
+  - first:
+      213: 13298527209554808
+    second: sFrostbite_Cast_32x32_14f_1
+  - first:
+      213: -933083072932461153
+    second: sFrostbite_Cast_32x32_14f_2
+  - first:
+      213: 5965959311548543557
+    second: sFrostbite_Cast_32x32_14f_3
+  - first:
+      213: 5830336969287912770
+    second: sFrostbite_Cast_32x32_14f_4
+  - first:
+      213: 7216921393948911908
+    second: sFrostbite_Cast_32x32_14f_5
+  - first:
+      213: 4646863551651581897
+    second: sFrostbite_Cast_32x32_14f_6
+  - first:
+      213: 4351941560272941669
+    second: sFrostbite_Cast_32x32_14f_7
+  - first:
+      213: 1728124061156587441
+    second: sFrostbite_Cast_32x32_14f_8
+  - first:
+      213: -8288622301760709184
+    second: sFrostbite_Cast_32x32_14f_9
+  - first:
+      213: -8418624182859390160
+    second: sFrostbite_Cast_32x32_14f_10
+  - first:
+      213: -1857652380420074626
+    second: sFrostbite_Cast_32x32_14f_11
+  - first:
+      213: -2347523660103097309
+    second: sFrostbite_Cast_32x32_14f_12
+  - first:
+      213: 2198984955531650097
+    second: sFrostbite_Cast_32x32_14f_13
+  - first:
+      213: -4519592751632292163
+    second: sFrostbite_Cast_32x32_14f_14
+  - first:
+      213: 3072206266641822372
+    second: sFrostbite_Cast_32x32_14f_15
+  - first:
+      213: -3204558871772297775
+    second: sFrostbite_Cast_32x32_14f_16
+  - first:
+      213: 6577357103757369305
+    second: sFrostbite_Cast_32x32_14f_17
+  - first:
+      213: -4081508043344279773
+    second: sFrostbite_Cast_32x32_14f_18
+  - first:
+      213: -8506137773291542552
+    second: sFrostbite_Cast_32x32_14f_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 11
+        width: 36
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f7172b5019369570800000000000000
+      internalID: 8473022491355715576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 18
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8738c56a0fe3f2000800000000000000
+      internalID: 13298527209554808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_2
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 2
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f954eeb83e50d03f0800000000000000
+      internalID: -933083072932461153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_3
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 1
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 542f84582685bc250800000000000000
+      internalID: 5965959311548543557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_4
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 10
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24dcb37459489e050800000000000000
+      internalID: 5830336969287912770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_5
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 17
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 429ed3a55c7a72460800000000000000
+      internalID: 7216921393948911908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_6
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 2
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cf07e3b7c9fc7040800000000000000
+      internalID: 4646863551651581897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_7
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 6
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 562f35f9ac3356c30800000000000000
+      internalID: 4351941560272941669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_8
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 11
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b73b097da78bf710800000000000000
+      internalID: 1728124061156587441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_9
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 4
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cd1c2a7ee5e8fc80800000000000000
+      internalID: -8288622301760709184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_10
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 4
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0332723d8e90b2b80800000000000000
+      internalID: -8418624182859390160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_11
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 17
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7317e4900b4836e0800000000000000
+      internalID: -1857652380420074626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_12
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 3
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 324eab93babeb6fd0800000000000000
+      internalID: -2347523660103097309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_13
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 3
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13464e49a2d548e10800000000000000
+      internalID: 2198984955531650097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_14
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 3
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db6e685965e2741c0800000000000000
+      internalID: -4519592751632292163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_15
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 3
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a23aef725ba2aa20800000000000000
+      internalID: 3072206266641822372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_16
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 3
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d58f224fae1783d0800000000000000
+      internalID: -3204558871772297775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_17
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 3
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9df99520077774b50800000000000000
+      internalID: 6577357103757369305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_18
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 3
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32780903f029b57c0800000000000000
+      internalID: -4081508043344279773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sFrostbite_Cast_32x32_14f_19
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 3
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e7ec6c33c024f980800000000000000
+      internalID: -8506137773291542552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sFrostbite_Cast_32x32_14f_0: 8473022491355715576
+      sFrostbite_Cast_32x32_14f_1: 13298527209554808
+      sFrostbite_Cast_32x32_14f_10: -8418624182859390160
+      sFrostbite_Cast_32x32_14f_11: -1857652380420074626
+      sFrostbite_Cast_32x32_14f_12: -2347523660103097309
+      sFrostbite_Cast_32x32_14f_13: 2198984955531650097
+      sFrostbite_Cast_32x32_14f_14: -4519592751632292163
+      sFrostbite_Cast_32x32_14f_15: 3072206266641822372
+      sFrostbite_Cast_32x32_14f_16: -3204558871772297775
+      sFrostbite_Cast_32x32_14f_17: 6577357103757369305
+      sFrostbite_Cast_32x32_14f_18: -4081508043344279773
+      sFrostbite_Cast_32x32_14f_19: -8506137773291542552
+      sFrostbite_Cast_32x32_14f_2: -933083072932461153
+      sFrostbite_Cast_32x32_14f_3: 5965959311548543557
+      sFrostbite_Cast_32x32_14f_4: 5830336969287912770
+      sFrostbite_Cast_32x32_14f_5: 7216921393948911908
+      sFrostbite_Cast_32x32_14f_6: 4646863551651581897
+      sFrostbite_Cast_32x32_14f_7: 4351941560272941669
+      sFrostbite_Cast_32x32_14f_8: 1728124061156587441
+      sFrostbite_Cast_32x32_14f_9: -8288622301760709184
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

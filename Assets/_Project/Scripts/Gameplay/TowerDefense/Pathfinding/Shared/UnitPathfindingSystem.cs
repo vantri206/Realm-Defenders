@@ -5,6 +5,9 @@ public class UnitPathfindingSystem : MonoBehaviour
 {
     private Dictionary<Vector3Int, byte> costGrid = new Dictionary<Vector3Int, byte>();
     private Dictionary<Vector3Int, FlowField> flowFields = new Dictionary<Vector3Int, FlowField>();
+    private LocalBFSPathfinding localBFSPathfinding = new LocalBFSPathfinding();
+
+    private byte blockedCost = GameplayConstants.BLOCKED_COST;
 
     public void BuildCostGrid(IReadOnlyDictionary<Vector3Int, CombatGridCell> gridCells)
     {
@@ -16,10 +19,10 @@ public class UnitPathfindingSystem : MonoBehaviour
             Vector3Int cellPosition = cell.Key;
             CombatGridCell gridCell = cell.Value;
 
-            byte cost = (byte)255;
+            byte cost = blockedCost;
             if (gridCell.CellStates.HasFlag(CombatGridCellStates.Blocked))
             {
-                cost = 255;
+                cost = blockedCost;
             } 
             else if (gridCell.CellStates.HasFlag(CombatGridCellStates.Walkable))
             {
@@ -58,9 +61,13 @@ public class UnitPathfindingSystem : MonoBehaviour
         return currentCell.BestDirection;
     }
 
-    public void TryGetLocalBFSDirection(Vector3Int currentCellPosition, Vector3Int targetCellPosition, out Vector2Int direction)
+    public bool TryGetLocalBFSDirection(Vector3Int currentCellPosition, Vector3Int targetCellPosition, int searchRange, out Vector2Int direction)
     {
-        // Use Local BFS for hero pathfinding in local range
-        direction = Vector2Int.zero;
+        return localBFSPathfinding.TryGetDirection(costGrid, searchRange, currentCellPosition, targetCellPosition, out direction);
+    }
+
+    public bool TryGetLocalBFSDirection(Vector3Int currentCellPosition, IReadOnlyCollection<Vector3Int> targetCellPositions, int searchRange, out Vector2Int direction)
+    {
+        return localBFSPathfinding.TryGetDirection(costGrid, searchRange, currentCellPosition, targetCellPositions, out direction);
     }
 }

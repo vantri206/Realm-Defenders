@@ -187,12 +187,21 @@ public class EnemyWaveDirector : MonoBehaviour
 
         spawnEvent.MarkSpawning();
 
-        int spawnCount = Mathf.Max(0, spawnEvent.Count);
+        int spawnCount = Mathf.Max(0, Mathf.CeilToInt(spawnEvent.SpawnCount));
         float spawnInterval = Mathf.Max(0f, spawnEvent.Interval);
 
         for (int i = 0; i < spawnCount; i++)
         {
-            enemySpawner.SpawnEnemy(spawnEvent);
+            for  (int j = 0; j < spawnEvent.EnemyCount; j++)
+            {
+                if (spawnEvent.SpawnPoint == null || spawnEvent.EnemyDefinition == null)
+                {
+                    Debug.LogWarning($"[EnemyWaveDirector] Spawn event '{spawnEvent.EventId}' has invalid spawn point or enemy definition.", this);
+                    continue;
+                }
+
+                enemySpawner.SpawnEnemy(spawnEvent);
+            }
 
             if (i < spawnCount - 1 && spawnInterval > 0f)
             {

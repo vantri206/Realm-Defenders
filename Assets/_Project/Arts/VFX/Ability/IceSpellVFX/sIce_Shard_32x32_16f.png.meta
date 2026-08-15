@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: 5a5e78d9d7ca2f5478d77e94dcbe2cc8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3223631342238466841
+    second: sIce_Shard_32x32_16f_0
+  - first:
+      213: 835758327272621887
+    second: sIce_Shard_32x32_16f_1
+  - first:
+      213: 2940245085592019445
+    second: sIce_Shard_32x32_16f_2
+  - first:
+      213: -738725168304882443
+    second: sIce_Shard_32x32_16f_3
+  - first:
+      213: -8239860786481115880
+    second: sIce_Shard_32x32_16f_4
+  - first:
+      213: 6000070618990119186
+    second: sIce_Shard_32x32_16f_5
+  - first:
+      213: -2974084399056163382
+    second: sIce_Shard_32x32_16f_6
+  - first:
+      213: 5934119937538937136
+    second: sIce_Shard_32x32_16f_7
+  - first:
+      213: -5314221474994263281
+    second: sIce_Shard_32x32_16f_8
+  - first:
+      213: -8364282131321629385
+    second: sIce_Shard_32x32_16f_9
+  - first:
+      213: -6840083064644495984
+    second: sIce_Shard_32x32_16f_10
+  - first:
+      213: 1524058293941795910
+    second: sIce_Shard_32x32_16f_11
+  - first:
+      213: -6745022879498599488
+    second: sIce_Shard_32x32_16f_12
+  - first:
+      213: -5332667514922786540
+    second: sIce_Shard_32x32_16f_13
+  - first:
+      213: -7861258036120787956
+    second: sIce_Shard_32x32_16f_14
+  - first:
+      213: 1271153292707840675
+    second: sIce_Shard_32x32_16f_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 9
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ec7f0faf5c5343d0800000000000000
+      internalID: -3223631342238466841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 10
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f37c82745c5399b00800000000000000
+      internalID: 835758327272621887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_2
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 11
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f1ec47c359ddc820800000000000000
+      internalID: 2940245085592019445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_3
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 11
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fcfb849f558fb5f0800000000000000
+      internalID: -738725168304882443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_4
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 9
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81d4f17754226ad80800000000000000
+      internalID: -8239860786481115880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_5
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 10
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2190a203078844350800000000000000
+      internalID: 6000070618990119186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_6
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 11
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acde9361ffde9b6d0800000000000000
+      internalID: -2974084399056163382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_7
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 11
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 031529394aa3a5250800000000000000
+      internalID: 5934119937538937136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_8
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 9
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0be63579b71046b0800000000000000
+      internalID: -5314221474994263281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_9
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 10
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7355d69a7b91ceb80800000000000000
+      internalID: -8364282131321629385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_10
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 11
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09513b961b42311a0800000000000000
+      internalID: -6840083064644495984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_11
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 11
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64c736b81fa862510800000000000000
+      internalID: 1524058293941795910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_12
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 9
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c38a918d6dd462a0800000000000000
+      internalID: -6745022879498599488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_13
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 10
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41123cb162f8ef5b0800000000000000
+      internalID: -5332667514922786540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_14
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 11
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c04e555877337e290800000000000000
+      internalID: -7861258036120787956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sIce_Shard_32x32_16f_15
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 11
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a24be25f2b04a110800000000000000
+      internalID: 1271153292707840675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sIce_Shard_32x32_16f_0: -3223631342238466841
+      sIce_Shard_32x32_16f_1: 835758327272621887
+      sIce_Shard_32x32_16f_10: -6840083064644495984
+      sIce_Shard_32x32_16f_11: 1524058293941795910
+      sIce_Shard_32x32_16f_12: -6745022879498599488
+      sIce_Shard_32x32_16f_13: -5332667514922786540
+      sIce_Shard_32x32_16f_14: -7861258036120787956
+      sIce_Shard_32x32_16f_15: 1271153292707840675
+      sIce_Shard_32x32_16f_2: 2940245085592019445
+      sIce_Shard_32x32_16f_3: -738725168304882443
+      sIce_Shard_32x32_16f_4: -8239860786481115880
+      sIce_Shard_32x32_16f_5: 6000070618990119186
+      sIce_Shard_32x32_16f_6: -2974084399056163382
+      sIce_Shard_32x32_16f_7: 5934119937538937136
+      sIce_Shard_32x32_16f_8: -5314221474994263281
+      sIce_Shard_32x32_16f_9: -8364282131321629385
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

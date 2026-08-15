@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 49007fe85370c874b96456be7a6538cf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3425937701613759434
+    second: Frostball_192x128_1f_0
+  - first:
+      213: 8124425787154683829
+    second: Frostball_192x128_1f_1
+  - first:
+      213: -7242431815750133922
+    second: Frostball_192x128_1f_2
+  - first:
+      213: 515760242255724062
+    second: Frostball_192x128_1f_3
+  - first:
+      213: -3415774804565797521
+    second: Frostball_192x128_1f_4
+  - first:
+      213: 951846380739285212
+    second: Frostball_192x128_1f_5
+  - first:
+      213: -3418436020086477807
+    second: Frostball_192x128_1f_6
+  - first:
+      213: -655701392371556018
+    second: Frostball_192x128_1f_7
+  - first:
+      213: -5674980642391629183
+    second: Frostball_192x128_1f_8
+  - first:
+      213: -5914056290386448169
+    second: Frostball_192x128_1f_9
+  - first:
+      213: 7687023219129581562
+    second: Frostball_192x128_1f_10
+  - first:
+      213: -6792428837447759361
+    second: Frostball_192x128_1f_11
+  - first:
+      213: 739863252929374425
+    second: Frostball_192x128_1f_12
+  - first:
+      213: -3714022634428395477
+    second: Frostball_192x128_1f_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 106
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63491b0dfcf9470d0800000000000000
+      internalID: -3425937701613759434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 106
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b7d0675532cfb070800000000000000
+      internalID: 8124425787154683829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_2
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 106
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e57d938b2a6bd7b90800000000000000
+      internalID: -7242431815750133922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_3
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 106
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1efbec2539582700800000000000000
+      internalID: 515760242255724062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_4
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 106
+        width: 23
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f65502da9eab890d0800000000000000
+      internalID: -3415774804565797521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_5
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 106
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd0d4bc7d33a53d00800000000000000
+      internalID: 951846380739285212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 74
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11c68572d864f80d0800000000000000
+      internalID: -3418436020086477807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_7
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 74
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e41e6f4ce0b76e6f0800000000000000
+      internalID: -655701392371556018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 74
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 182670f4c2b6e31b0800000000000000
+      internalID: -5674980642391629183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_9
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 74
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d0f9dd432d0deda0800000000000000
+      internalID: -5914056290386448169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_10
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 74
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afff564e3eacdaa60800000000000000
+      internalID: 7687023219129581562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_11
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 74
+        width: 23
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff98ecdc5f17cb1a0800000000000000
+      internalID: -6792428837447759361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_12
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 42
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d8683565b5844a00800000000000000
+      internalID: 739863252929374425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Frostball_192x128_1f_13
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 42
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b20922b7714257cc0800000000000000
+      internalID: -3714022634428395477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Frostball_192x128_1f_0: -3425937701613759434
+      Frostball_192x128_1f_1: 8124425787154683829
+      Frostball_192x128_1f_10: 7687023219129581562
+      Frostball_192x128_1f_11: -6792428837447759361
+      Frostball_192x128_1f_12: 739863252929374425
+      Frostball_192x128_1f_13: -3714022634428395477
+      Frostball_192x128_1f_2: -7242431815750133922
+      Frostball_192x128_1f_3: 515760242255724062
+      Frostball_192x128_1f_4: -3415774804565797521
+      Frostball_192x128_1f_5: 951846380739285212
+      Frostball_192x128_1f_6: -3418436020086477807
+      Frostball_192x128_1f_7: -655701392371556018
+      Frostball_192x128_1f_8: -5674980642391629183
+      Frostball_192x128_1f_9: -5914056290386448169
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,1157 @@
+fileFormatVersion: 2
+guid: 36735bf28f61e4e4a9a41ee819259a75
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1499031775949084719
+    second: Wands-original_0
+  - first:
+      213: -8694134567703425497
+    second: Wands-original_1
+  - first:
+      213: 2428081684120106519
+    second: Wands-original_2
+  - first:
+      213: -3966738290768182830
+    second: Wands-original_3
+  - first:
+      213: 5183579600997495196
+    second: Wands-original_4
+  - first:
+      213: 2641007459538606139
+    second: Wands-original_5
+  - first:
+      213: 740975203908353107
+    second: Wands-original_6
+  - first:
+      213: 5316830088819669595
+    second: Wands-original_7
+  - first:
+      213: -2501739921931832319
+    second: Wands-original_8
+  - first:
+      213: -4333604127879000809
+    second: Wands-original_9
+  - first:
+      213: -3339600295308003489
+    second: Wands-original_10
+  - first:
+      213: -1981660930904227117
+    second: Wands-original_11
+  - first:
+      213: -6561307540085730838
+    second: Wands-original_12
+  - first:
+      213: -3628445567247550668
+    second: Wands-original_13
+  - first:
+      213: -5679881947647185422
+    second: Wands-original_14
+  - first:
+      213: -8497619571041606315
+    second: Wands-original_15
+  - first:
+      213: 3822212968191802366
+    second: Wands-original_16
+  - first:
+      213: 2291716683687913780
+    second: Wands-original_17
+  - first:
+      213: -7234060951155610942
+    second: Wands-original_18
+  - first:
+      213: 5561873383292764170
+    second: Wands-original_19
+  - first:
+      213: -8570018282800088257
+    second: Wands-original_20
+  - first:
+      213: 125633591291509785
+    second: Wands-original_21
+  - first:
+      213: -4715341057536680608
+    second: Wands-original_22
+  - first:
+      213: -7169417777578377475
+    second: Wands-original_23
+  - first:
+      213: -4536362820812377892
+    second: Wands-original_24
+  - first:
+      213: 2798107518715095453
+    second: Wands-original_25
+  - first:
+      213: -1308176280356353162
+    second: Wands-original_26
+  - first:
+      213: -2367309038267916698
+    second: Wands-original_27
+  - first:
+      213: 6673207775972931441
+    second: Wands-original_28
+  - first:
+      213: 3642796539602259660
+    second: Wands-original_29
+  - first:
+      213: 2729086203738860162
+    second: Wands-original_30
+  - first:
+      213: -107481936372619690
+    second: Wands-original_31
+  - first:
+      213: 4170597956397154824
+    second: Wands-original_32
+  - first:
+      213: 1045330290987594682
+    second: Wands-original_33
+  - first:
+      213: -2101017650739410486
+    second: Wands-original_34
+  - first:
+      213: 4341889860759981562
+    second: Wands-original_35
+  - first:
+      213: 4387773996058645091
+    second: Wands-original_36
+  - first:
+      213: 4274234818656110854
+    second: Wands-original_37
+  - first:
+      213: -7032031433705632841
+    second: Wands-original_38
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Wands-original_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 70
+        width: 9
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d7288fba8e523be0800000000000000
+      internalID: -1499031775949084719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 70
+        width: 9
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72ec7969caa385780800000000000000
+      internalID: -8694134567703425497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_2
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 71
+        width: 11
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7167c9b5d6742b120800000000000000
+      internalID: 2428081684120106519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_3
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 71
+        width: 9
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d182dd8a8053f8c0800000000000000
+      internalID: -3966738290768182830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_4
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 71
+        width: 10
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c91ba6eee26cfe740800000000000000
+      internalID: 5183579600997495196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_5
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 71
+        width: 10
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3894f2ba4eb6a420800000000000000
+      internalID: 2641007459538606139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_6
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 71
+        width: 10
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35c7458a509784a00800000000000000
+      internalID: 740975203908353107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_7
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 71
+        width: 7
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5a7437cbcc29c940800000000000000
+      internalID: 5316830088819669595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_8
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 71
+        width: 9
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 104f6d8bbc8084dd0800000000000000
+      internalID: -2501739921931832319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_9
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 71
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71d0b909102fbd3c0800000000000000
+      internalID: -4333604127879000809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_10
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 71
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f577062b93b57a1d0800000000000000
+      internalID: -3339600295308003489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_11
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 71
+        width: 9
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d20f24f1e9bf74e0800000000000000
+      internalID: -1981660930904227117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_12
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 71
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae1191b3e8d81f4a0800000000000000
+      internalID: -6561307540085730838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_13
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 37
+        width: 9
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4377e5d1bfb25adc0800000000000000
+      internalID: -3628445567247550668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_14
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 37
+        width: 9
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fde55046710d21b0800000000000000
+      internalID: -5679881947647185422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_15
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 38
+        width: 11
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55568afb504621a80800000000000000
+      internalID: -8497619571041606315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_16
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 38
+        width: 10
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efbb6f0917a3b0530800000000000000
+      internalID: 3822212968191802366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_17
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 38
+        width: 10
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 439ed098e20ddcf10800000000000000
+      internalID: 2291716683687913780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_18
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 38
+        width: 9
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ca68d284e37b9b90800000000000000
+      internalID: -7234060951155610942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_19
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 38
+        width: 10
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a008dd0cf5ebf2d40800000000000000
+      internalID: 5561873383292764170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_20
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 38
+        width: 7
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3bf81717cd211980800000000000000
+      internalID: -8570018282800088257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_21
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 38
+        width: 9
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91c79cce5175eb100800000000000000
+      internalID: 125633591291509785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_22
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 38
+        width: 11
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06d16b68a4ebf8eb0800000000000000
+      internalID: -4715341057536680608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_23
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 38
+        width: 11
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfef119348c118c90800000000000000
+      internalID: -7169417777578377475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_24
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 38
+        width: 10
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd070359c0a9b01c0800000000000000
+      internalID: -4536362820812377892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_25
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 38
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d99ec5896ffd4d620800000000000000
+      internalID: 2798107518715095453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_26
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 4
+        width: 8
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67b84c1aa9c68dde0800000000000000
+      internalID: -1308176280356353162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_27
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 4
+        width: 10
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66e1874e8f0a52fd0800000000000000
+      internalID: -2367309038267916698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_28
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 5
+        width: 11
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 177bd37bd1ffb9c50800000000000000
+      internalID: 6673207775972931441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_29
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 5
+        width: 10
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccec3040720dd8230800000000000000
+      internalID: 3642796539602259660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_30
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 5
+        width: 11
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28a26476179afd520800000000000000
+      internalID: 2729086203738860162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_31
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 5
+        width: 9
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6562db29fb5228ef0800000000000000
+      internalID: -107481936372619690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_32
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 5
+        width: 10
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 802c50c9eb0f0e930800000000000000
+      internalID: 4170597956397154824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_33
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 5
+        width: 7
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab3754b7c52c18e00800000000000000
+      internalID: 1045330290987594682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_34
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 5
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac90adc049fa7d2e0800000000000000
+      internalID: -2101017650739410486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_35
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 5
+        width: 11
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afd0874f2dd714c30800000000000000
+      internalID: 4341889860759981562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_36
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 5
+        width: 11
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36295c5b33184ec30800000000000000
+      internalID: 4387773996058645091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_37
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 5
+        width: 10
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6098a94fbe1215b30800000000000000
+      internalID: 4274234818656110854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wands-original_38
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 5
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bb48981ba4396e90800000000000000
+      internalID: -7032031433705632841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Wands-original_0: -1499031775949084719
+      Wands-original_1: -8694134567703425497
+      Wands-original_10: -3339600295308003489
+      Wands-original_11: -1981660930904227117
+      Wands-original_12: -6561307540085730838
+      Wands-original_13: -3628445567247550668
+      Wands-original_14: -5679881947647185422
+      Wands-original_15: -8497619571041606315
+      Wands-original_16: 3822212968191802366
+      Wands-original_17: 2291716683687913780
+      Wands-original_18: -7234060951155610942
+      Wands-original_19: 5561873383292764170
+      Wands-original_2: 2428081684120106519
+      Wands-original_20: -8570018282800088257
+      Wands-original_21: 125633591291509785
+      Wands-original_22: -4715341057536680608
+      Wands-original_23: -7169417777578377475
+      Wands-original_24: -4536362820812377892
+      Wands-original_25: 2798107518715095453
+      Wands-original_26: -1308176280356353162
+      Wands-original_27: -2367309038267916698
+      Wands-original_28: 6673207775972931441
+      Wands-original_29: 3642796539602259660
+      Wands-original_3: -3966738290768182830
+      Wands-original_30: 2729086203738860162
+      Wands-original_31: -107481936372619690
+      Wands-original_32: 4170597956397154824
+      Wands-original_33: 1045330290987594682
+      Wands-original_34: -2101017650739410486
+      Wands-original_35: 4341889860759981562
+      Wands-original_36: 4387773996058645091
+      Wands-original_37: 4274234818656110854
+      Wands-original_38: -7032031433705632841
+      Wands-original_4: 5183579600997495196
+      Wands-original_5: 2641007459538606139
+      Wands-original_6: 740975203908353107
+      Wands-original_7: 5316830088819669595
+      Wands-original_8: -2501739921931832319
+      Wands-original_9: -4333604127879000809
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

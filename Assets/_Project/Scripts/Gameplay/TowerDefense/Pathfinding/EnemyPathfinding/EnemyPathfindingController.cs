@@ -3,6 +3,9 @@ using System;
 
 public class EnemyPathfindingController : MonoBehaviour
 {
+    [SerializeField] private UnitSeparationResolver separationResolver;
+    [SerializeField] private UnitSeparationSettings separationSettings;
+
     private UnitPathfindingSystem pathfindingSystem;
 
     private string routeId;
@@ -11,18 +14,29 @@ public class EnemyPathfindingController : MonoBehaviour
     private int currentCheckpointIndex = 0;
     private int targetCheckpointIndex = 0;
 
-    private float cellTargetThreshold = 0.08f; // Threshold distance to consider the enemy has reached the center of the cell
+    private float cellTargetThreshold = GameplayConstants.CELL_TARGET_THRESHOLD; // Threshold distance to consider the enemy has reached the center of the cell
 
-    private bool hasActiveCell = false;
-    private Vector3Int lastActiveCellPosition = Vector3Int.zero;
-    private bool isMovingToCellCenter = false;
+    private float flowWeight = 1.0f;
+
+    private const float cornerTurnMinDot = -0.75f;
+    private const float cornerTurnMaxDot = 0.01f;
+    private const float cornerStartDepth = 0f;
+    private const float cornerFinishDepth = 0.8f;
+    private const float cornerMinTurnDepth = 0.05f;
     private bool hasPreviousFlowDirection = false;
     private Vector2 previousFlowDirection = Vector2.zero;
+    private bool isCornerSmoothing = false;
+    private Vector3Int cornerCellPosition = Vector3Int.zero;
+    private Vector2 cornerEntryDirection = Vector2.zero;
+    private Vector2 cornerExitDirection = Vector2.zero;
 
     private bool hasPreviousEnemyPosition = false;
     private Vector3 previousEnemyPosition = Vector3.zero;
+    private float pathProgressScore = 0f;
+    private bool hasReachedFinalCheckpoint = false;
 
     public event Action OnReachedFinalCheckpoint;
+    public float PathProgressScore => pathProgressScore;
 
     private void Awake()
     {
@@ -49,12 +63,11 @@ public class EnemyPathfindingController : MonoBehaviour
 
         currentCheckpointIndex = 0;
         targetCheckpointIndex = route.CheckpointCount > 1 ? 1 : 0; // Start with the next checkpoint as the target
-        hasActiveCell = false;
-        isMovingToCellCenter = false;
-        hasPreviousFlowDirection = false;
-        previousFlowDirection = Vector2.zero;
+        ResetCornerSmoothing();
         previousEnemyPosition = Vector3.zero;
         hasPreviousEnemyPosition = false;
+        pathProgressScore = 0f;
+        hasReachedFinalCheckpoint = false;
         return true;
     }
 
@@ -80,67 +93,63 @@ public class EnemyPathfindingController : MonoBehaviour
         return route.Checkpoints[targetCheckpointIndex];
     }
 
-    public Vector2 GetCurrentMoveDirection(Vector3Int activeCellPosition, Vector3 activeCellWorldCenter, Vector3 enemyWorldPosition)
+    public Vector2 GetCurrentMoveDirection(EnemyRuntime enemy, Vector3Int activeCellPosition, Vector3 activeCellWorldCenter, Vector3 enemyCenterPosition)
     {
+        if (hasReachedFinalCheckpoint)
+        {
+            return ChangeMoveDirection(Vector2.zero, enemyCenterPosition);
+        }
+
         RouteCheckpoint targetCheckpoint = GetTargetCheckpoint();
         if (targetCheckpoint == null)
         {
             Debug.LogError("[EnemyPathfindingController] Target checkpoint is not defined.");
-            return ChangeMoveDirection(Vector2.zero, enemyWorldPosition);
-        }
-
-        if (!hasActiveCell || activeCellPosition != lastActiveCellPosition)
-        {
-            UpdateActiveCell(activeCellPosition, targetCheckpoint.CellPosition);
-        }
-        
-        if (isMovingToCellCenter)
-        {
-            if (!HasReachedTarget(activeCellWorldCenter, enemyWorldPosition))
-            {
-                return ChangeMoveDirection((activeCellWorldCenter - enemyWorldPosition).normalized, enemyWorldPosition);
-            }
-            
-            isMovingToCellCenter = false; // Reached the center of the cell, now move towards the target checkpoint
+            return ChangeMoveDirection(Vector2.zero, enemyCenterPosition);
         }
 
         if (activeCellPosition == targetCheckpoint.CellPosition)
         {
-            if (!HasReachedTarget(targetCheckpoint.WorldPosition, enemyWorldPosition))
+            if (IsFinalCheckpoint(targetCheckpointIndex))
             {
-                return ChangeMoveDirection((targetCheckpoint.WorldPosition - enemyWorldPosition).normalized, enemyWorldPosition);
+                if (!HasReachedTarget(targetCheckpoint.WorldPosition, enemyCenterPosition))
+                {
+                    ResetCornerSmoothing();
+                    Vector2 finalTargetDirection = GetDirectionToTarget(enemyCenterPosition, targetCheckpoint.WorldPosition);
+                    UpdatePathProgress(enemyCenterPosition);
+                    return ChangeMoveDirection(finalTargetDirection, enemyCenterPosition);
+                }
+
+                OnCheckpointReached(targetCheckpoint);
+                UpdatePathProgress(enemyCenterPosition);
+                return ChangeMoveDirection(Vector2.zero, enemyCenterPosition);
             }
-            
-            bool isFinished = OnCheckpointReached(targetCheckpoint);
-            if (isFinished)
+
+            OnCheckpointReached(targetCheckpoint);
+            targetCheckpoint = GetTargetCheckpoint();
+            if (targetCheckpoint == null)
             {
-                return ChangeMoveDirection(Vector2.zero, enemyWorldPosition); // Enemy has reached the final checkpoint, stop moving
+                UpdatePathProgress(enemyCenterPosition);
+                return ChangeMoveDirection(Vector2.zero, enemyCenterPosition);
             }
-            
-            return GetCurrentMoveDirection(activeCellPosition, activeCellWorldCenter, enemyWorldPosition);
         }
 
         if (pathfindingSystem == null)
         {
-            return ChangeMoveDirection(Vector2.zero, enemyWorldPosition);
+            return ChangeMoveDirection(Vector2.zero, enemyCenterPosition);
         }
 
         Vector2 flowDirection = GetFlowFieldDirection(activeCellPosition, targetCheckpoint.CellPosition);
-        UpdatePreviousFlowDirection(flowDirection);
-        return ChangeMoveDirection(flowDirection, enemyWorldPosition);
-    }
-
-    private void UpdateActiveCell(Vector3Int activeCellPosition, Vector3Int targetCellPosition)
-    {
-        if (!hasActiveCell || activeCellPosition != lastActiveCellPosition)
+        Vector3 cellSize = Vector3.one; // Default cell size if combat grid is not available
+        if (enemy != null && enemy.CombatGrid != null)
         {
-            Vector2 currentFlowDirection = GetFlowFieldDirection(activeCellPosition, targetCellPosition);
-            isMovingToCellCenter = ShouldMoveToCellCenter(currentFlowDirection);
-            UpdatePreviousFlowDirection(currentFlowDirection);
-
-            lastActiveCellPosition = activeCellPosition;
-            hasActiveCell = true;
+            cellSize = enemy.CombatGrid.CellSize;
         }
+        Vector2 smoothedFlowDirection = ResolveCornerSmoothedDirection(flowDirection, activeCellPosition, activeCellWorldCenter, enemyCenterPosition, cellSize);
+
+        Vector2 currentSeparationDirection = GetSeparationDirection(enemy);
+        Vector2 moveDirection = BlendMoveDirection(smoothedFlowDirection, currentSeparationDirection);
+        UpdatePathProgress(enemyCenterPosition);
+        return ChangeMoveDirection(moveDirection, enemyCenterPosition);
     }
 
     private Vector2 GetFlowFieldDirection(Vector3Int activeCellPosition, Vector3Int targetCellPosition)
@@ -153,26 +162,176 @@ public class EnemyPathfindingController : MonoBehaviour
         return pathfindingSystem.TryGetFlowFieldDirection(activeCellPosition, targetCellPosition);
     }
 
-    private bool ShouldMoveToCellCenter(Vector2 currentFlowDirection)
+    private Vector2 GetSeparationDirection(EnemyRuntime enemy)
     {
-        if (!hasPreviousFlowDirection || currentFlowDirection == Vector2.zero || previousFlowDirection == Vector2.zero)
+        if (enemy == null || separationResolver == null || enemy.CombatGrid == null)
+        {
+            return Vector2.zero;
+        }
+
+        return separationResolver.GetSeparationDirection(enemy, enemy.CombatGrid, separationSettings);
+    }
+
+    private Vector2 BlendMoveDirection(Vector2 flowDirection, Vector2 separationDirection)
+    {
+        Vector2 weightedSeparation = Vector2.zero;
+        if (separationResolver != null)
+        {
+            weightedSeparation = separationResolver.ApplyWeight(separationDirection, separationSettings);
+        }
+
+        float flowDirectionWeight = Mathf.Max(0f, flowWeight);
+
+        Vector2 moveDirection = flowDirection.normalized * flowDirectionWeight + weightedSeparation;
+
+        return ResolvedDirection(moveDirection);
+    }
+
+    private Vector2 ResolveCornerSmoothedDirection(Vector2 flowDirection, Vector3Int activeCellPosition,
+                                                Vector3 activeCellWorldCenter, Vector3 enemyCenterPosition, Vector3 cellSize)
+    {
+        Vector2 resolvedFlowDirection = ResolvedDirection(flowDirection);
+        if (resolvedFlowDirection == Vector2.zero)
+        {
+            ResetCornerSmoothing();
+            return Vector2.zero;
+        }
+
+        if (!hasPreviousFlowDirection)
+        {
+            previousFlowDirection = resolvedFlowDirection;
+            hasPreviousFlowDirection = true;
+            return resolvedFlowDirection;
+        }
+
+        if (ShouldStartCornerSmoothing(resolvedFlowDirection))
+        {
+            StartCornerSmoothing(activeCellPosition, previousFlowDirection, resolvedFlowDirection);
+        }
+
+        previousFlowDirection = resolvedFlowDirection;
+
+        if (!isCornerSmoothing)
+        {
+            return resolvedFlowDirection;
+        }
+
+        if (activeCellPosition != cornerCellPosition)
+        {
+            isCornerSmoothing = false;
+            return resolvedFlowDirection;
+        }
+
+        float turnDistance = GetCornerTurnDistance(activeCellWorldCenter, enemyCenterPosition, cellSize);
+        Vector2 smoothedDirection = Vector2.Lerp(cornerEntryDirection, cornerExitDirection, turnDistance);
+        if (turnDistance >= 1f)
+        {
+            isCornerSmoothing = false;
+        }
+
+        return ResolvedDirection(smoothedDirection);
+    }
+
+    private bool ShouldStartCornerSmoothing(Vector2 currentFlowDirection)
+    {
+        if (isCornerSmoothing && Vector2.Dot(cornerExitDirection, currentFlowDirection) > 0.99f)
         {
             return false;
         }
 
         float directionDot = Vector2.Dot(previousFlowDirection.normalized, currentFlowDirection.normalized);
-        return directionDot <= 0.5f;
+        bool shouldSmoothCorner = directionDot >= cornerTurnMinDot && directionDot <= cornerTurnMaxDot;
+        if (!shouldSmoothCorner)
+        {
+            isCornerSmoothing = false;
+        }
+
+        return shouldSmoothCorner;
     }
 
-    private void UpdatePreviousFlowDirection(Vector2 currentFlowDirection)
+    private void StartCornerSmoothing(Vector3Int activeCellPosition, Vector2 entryDirection, Vector2 exitDirection)
     {
-        if (currentFlowDirection == Vector2.zero)
+        isCornerSmoothing = true;
+        cornerCellPosition = activeCellPosition;
+        cornerEntryDirection = entryDirection;
+        cornerExitDirection = exitDirection;
+    }
+
+    private float GetCornerTurnDistance(Vector3 activeCellWorldCenter, Vector3 enemyCenterPosition, Vector3 cellSize)
+    {
+        float entryHalfDistanceCorner = GetEntryHalfDistanceCorner(cornerEntryDirection, cellSize);
+        float entryCellLength = entryHalfDistanceCorner * 2f;
+        if (entryCellLength <= Mathf.Epsilon)
         {
+            return 1f;
+        }
+
+        Vector2 cellCenter = activeCellWorldCenter;
+        Vector2 enemyCenter = enemyCenterPosition;
+        Vector2 entryBoundaryCenter = cellCenter - cornerEntryDirection * entryHalfDistanceCorner;
+        float depth = Vector2.Dot(enemyCenter - entryBoundaryCenter, cornerEntryDirection);
+        float normalizedDepth = Mathf.Clamp01(depth / entryCellLength);
+
+        float minDepth = Mathf.Clamp01(cornerMinTurnDepth / entryCellLength);
+        float startDepth = Mathf.Clamp01(Mathf.Max(cornerStartDepth, minDepth));
+        float finishDepth = Mathf.Clamp01(Mathf.Max(cornerFinishDepth, startDepth + minDepth));
+        if (finishDepth <= startDepth + Mathf.Epsilon)
+        {
+            return normalizedDepth >= finishDepth ? 1f : 0f;
+        }
+
+        float progress = Mathf.InverseLerp(startDepth, finishDepth, normalizedDepth);
+        return Mathf.SmoothStep(0f, 1f, progress);
+    }
+
+    private float GetEntryHalfDistanceCorner(Vector2 direction, Vector3 cellSize)
+    {
+        Vector2 halfCellSize = new Vector2(Mathf.Abs(cellSize.x) * 0.5f, Mathf.Abs(cellSize.y) * 0.5f);
+        return Mathf.Abs(direction.x) * halfCellSize.x + Mathf.Abs(direction.y) * halfCellSize.y;
+    }
+
+    private void ResetCornerSmoothing()
+    {
+        hasPreviousFlowDirection = false;
+        previousFlowDirection = Vector2.zero;
+        isCornerSmoothing = false;
+        cornerCellPosition = Vector3Int.zero;
+        cornerEntryDirection = Vector2.zero;
+        cornerExitDirection = Vector2.zero;
+    }
+
+    private void UpdatePathProgress(Vector3 enemyCenterPosition)
+    {
+        if (route == null || route.CheckpointCount == 0)
+        {
+            pathProgressScore = 0f;
             return;
         }
 
-        previousFlowDirection = currentFlowDirection;
-        hasPreviousFlowDirection = true;
+        RouteCheckpoint currentCheckpoint = GetCurrentCheckpoint();
+        RouteCheckpoint targetCheckpoint = GetTargetCheckpoint();
+        if (currentCheckpoint == null || targetCheckpoint == null)
+        {
+            pathProgressScore = currentCheckpointIndex;
+            return;
+        }
+
+        float segmentLength = Vector2.Distance(currentCheckpoint.WorldPosition, targetCheckpoint.WorldPosition);
+        float segmentProgress = 0f;
+
+        if (segmentLength > Mathf.Epsilon)
+        {
+            float targetDistance = Vector2.Distance(enemyCenterPosition, targetCheckpoint.WorldPosition);
+            segmentProgress = 1f - Mathf.Clamp01(targetDistance / segmentLength);
+        }
+
+        pathProgressScore = currentCheckpointIndex + segmentProgress;
+    }
+
+    private Vector2 GetDirectionToTarget(Vector3 enemyCenterPosition, Vector3 targetWorldPosition)
+    {
+        Vector2 direction = targetWorldPosition - enemyCenterPosition;
+        return ResolvedDirection(direction);
     }
 
     public bool OnCheckpointReached(RouteCheckpoint checkpoint)
@@ -193,6 +352,8 @@ public class EnemyPathfindingController : MonoBehaviour
             }
             else
             {
+                hasReachedFinalCheckpoint = true;
+                ResetCornerSmoothing();
                 Debug.Log($"[EnemyPathfindingController] Enemy has reached the final checkpoint '{checkpoint.CheckpointId}' in route '{route.RouteId}'.");
                 currentCheckpointIndex = targetCheckpointIndex;
                 OnReachedFinalCheckpoint?.Invoke();
@@ -200,6 +361,11 @@ public class EnemyPathfindingController : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private bool IsFinalCheckpoint(int checkpointIndex)
+    {
+        return route != null && checkpointIndex >= route.CheckpointCount - 1;
     }
 
     private bool HasReachedTarget(Vector3 targetPosition, Vector3 enemyPosition)
@@ -227,6 +393,11 @@ public class EnemyPathfindingController : MonoBehaviour
         return direction;
     }
 
+    private Vector2 ResolvedDirection(Vector2 direction)
+    {
+        return direction.sqrMagnitude > Mathf.Epsilon ? direction.normalized : Vector2.zero;
+    }
+
     public void ResetPathfinding()
     {
         if (route == null || route.Checkpoints.Count == 0)
@@ -237,12 +408,11 @@ public class EnemyPathfindingController : MonoBehaviour
 
         currentCheckpointIndex = 0;
         targetCheckpointIndex = route.CheckpointCount > 1 ? 1 : 0; // Reset to the first checkpoint and next checkpoint
-        hasActiveCell = false;
-        isMovingToCellCenter = false;
-        hasPreviousFlowDirection = false;
-        previousFlowDirection = Vector2.zero;
+        ResetCornerSmoothing();
         previousEnemyPosition = Vector3.zero;
         hasPreviousEnemyPosition = false;
+        pathProgressScore = 0f;
+        hasReachedFinalCheckpoint = false;
     }
 
     private void CacheReferences()
@@ -250,6 +420,11 @@ public class EnemyPathfindingController : MonoBehaviour
         if (pathfindingSystem == null)
         {
             pathfindingSystem = FindAnyObjectByType<UnitPathfindingSystem>();
+        }
+
+        if (separationResolver == null)
+        {
+            separationResolver = FindAnyObjectByType<UnitSeparationResolver>();
         }
     }
 }

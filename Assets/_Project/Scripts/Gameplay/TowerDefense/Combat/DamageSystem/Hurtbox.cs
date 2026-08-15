@@ -15,7 +15,7 @@ public class Hurtbox : MonoBehaviour
         }
     }
 
-    public Vector2 Position
+    public Vector2 CenterPosition
     {
         get
         {

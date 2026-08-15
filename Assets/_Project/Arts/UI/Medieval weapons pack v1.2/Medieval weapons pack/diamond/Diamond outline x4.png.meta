@@ -1,0 +1,1313 @@
+fileFormatVersion: 2
+guid: 580a7849151289942b2e72cabb7847a2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8975543884814739328
+    second: Diamond outline x4_0
+  - first:
+      213: 8632308671698632980
+    second: Diamond outline x4_1
+  - first:
+      213: 1887904143812418430
+    second: Diamond outline x4_2
+  - first:
+      213: 5097252599043407680
+    second: Diamond outline x4_3
+  - first:
+      213: -4392598166474410781
+    second: Diamond outline x4_4
+  - first:
+      213: -8044373557036116412
+    second: Diamond outline x4_5
+  - first:
+      213: -3617473130957968337
+    second: Diamond outline x4_6
+  - first:
+      213: -7078302172218801514
+    second: Diamond outline x4_7
+  - first:
+      213: -5258120814260316448
+    second: Diamond outline x4_8
+  - first:
+      213: 4826060894267065053
+    second: Diamond outline x4_9
+  - first:
+      213: 271023320023049959
+    second: Diamond outline x4_10
+  - first:
+      213: -3674026165325099480
+    second: Diamond outline x4_11
+  - first:
+      213: 814655734738105171
+    second: Diamond outline x4_12
+  - first:
+      213: 7200940564667037416
+    second: Diamond outline x4_13
+  - first:
+      213: -5732750669863366365
+    second: Diamond outline x4_14
+  - first:
+      213: 2616588707630477102
+    second: Diamond outline x4_15
+  - first:
+      213: -3441005124711586788
+    second: Diamond outline x4_16
+  - first:
+      213: 4654741772864445166
+    second: Diamond outline x4_17
+  - first:
+      213: 5897550158529982615
+    second: Diamond outline x4_18
+  - first:
+      213: -7773879624583028158
+    second: Diamond outline x4_19
+  - first:
+      213: -1995418734719826808
+    second: Diamond outline x4_20
+  - first:
+      213: -2159207694017287463
+    second: Diamond outline x4_21
+  - first:
+      213: -6558357497639247233
+    second: Diamond outline x4_22
+  - first:
+      213: 578173283517793058
+    second: Diamond outline x4_23
+  - first:
+      213: 7955048867376568086
+    second: Diamond outline x4_24
+  - first:
+      213: 4528429851209513230
+    second: Diamond outline x4_25
+  - first:
+      213: 5418803925534944333
+    second: Diamond outline x4_26
+  - first:
+      213: 1414918546297514639
+    second: Diamond outline x4_27
+  - first:
+      213: 7567295686805512731
+    second: Diamond outline x4_28
+  - first:
+      213: -2576386485102931946
+    second: Diamond outline x4_29
+  - first:
+      213: -2610979702201511198
+    second: Diamond outline x4_30
+  - first:
+      213: -5423723662335536619
+    second: Diamond outline x4_31
+  - first:
+      213: 6763042583777558138
+    second: Diamond outline x4_32
+  - first:
+      213: 7165963937519573397
+    second: Diamond outline x4_33
+  - first:
+      213: 6313416707436644203
+    second: Diamond outline x4_34
+  - first:
+      213: -1273325124448268007
+    second: Diamond outline x4_35
+  - first:
+      213: 4434463892500814357
+    second: Diamond outline x4_36
+  - first:
+      213: 8629082245798949396
+    second: Diamond outline x4_37
+  - first:
+      213: -2880761193337068207
+    second: Diamond outline x4_38
+  - first:
+      213: 349961619704328133
+    second: Diamond outline x4_39
+  - first:
+      213: -7043549427262433359
+    second: Diamond outline x4_40
+  - first:
+      213: -5470585703688931935
+    second: Diamond outline x4_41
+  - first:
+      213: 8888476890692451081
+    second: Diamond outline x4_42
+  - first:
+      213: -4871681024210277899
+    second: Diamond outline x4_43
+  - first:
+      213: -2365312329034566324
+    second: Diamond outline x4_44
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Diamond outline x4_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 347
+        width: 30
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 087ef48db998f8c70800000000000000
+      internalID: 8975543884814739328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_1
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 347
+        width: 30
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4110f10400f1cc770800000000000000
+      internalID: 8632308671698632980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_2
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 347
+        width: 30
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7b5de5f0de233a10800000000000000
+      internalID: 1887904143812418430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_3
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 347
+        width: 30
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04f3b608b341db640800000000000000
+      internalID: 5097252599043407680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_4
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 347
+        width: 18
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e4b2469d3b5a03c0800000000000000
+      internalID: -4392598166474410781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_5
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 343
+        width: 34
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 446115ceed4ac5090800000000000000
+      internalID: -8044373557036116412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_6
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 347
+        width: 30
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2ceab48a572ccdc0800000000000000
+      internalID: -3617473130957968337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_7
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 343
+        width: 30
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 692c5044da1d4cd90800000000000000
+      internalID: -7078302172218801514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_8
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 347
+        width: 26
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e61de76af66707b0800000000000000
+      internalID: -5258120814260316448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_9
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 351
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd2413350dc99f240800000000000000
+      internalID: 4826060894267065053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_10
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 355
+        width: 18
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e622db064ed2c300800000000000000
+      internalID: 271023320023049959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_11
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 351
+        width: 22
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82e8e402bac330dc0800000000000000
+      internalID: -3674026165325099480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_12
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 347
+        width: 30
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 353bc43131d3e4b00800000000000000
+      internalID: 814655734738105171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_13
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 255
+        width: 62
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e6fda59a41eee360800000000000000
+      internalID: 7200940564667037416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_14
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 255
+        width: 30
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32159e0a3ad2170b0800000000000000
+      internalID: -5732750669863366365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_15
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 247
+        width: 30
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2fec99f09dff4420800000000000000
+      internalID: 2616588707630477102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_16
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 243
+        width: 34
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c14644ff1181f30d0800000000000000
+      internalID: -3441005124711586788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_17
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 247
+        width: 30
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eead1c40bf6f89040800000000000000
+      internalID: 4654741772864445166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_18
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 247
+        width: 30
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7907a346f9e48d150800000000000000
+      internalID: 5897550158529982615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_19
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 239
+        width: 42
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 242e4125ba1ad1490800000000000000
+      internalID: -7773879624583028158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_20
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 239
+        width: 30
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8848dd2ab39de44e0800000000000000
+      internalID: -1995418734719826808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_21
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 247
+        width: 34
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9da2fc1da04f802e0800000000000000
+      internalID: -2159207694017287463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_22
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 251
+        width: 42
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7261338a980cf4a0800000000000000
+      internalID: -6558357497639247233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_23
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 255
+        width: 46
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22303beb985160800800000000000000
+      internalID: 578173283517793058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_24
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 259
+        width: 34
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6179ad61cc2066e60800000000000000
+      internalID: 7955048867376568086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_25
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 135
+        width: 22
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e093e9ff4f638de30800000000000000
+      internalID: 4528429851209513230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_26
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 111
+        width: 30
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4ca001d575733b40800000000000000
+      internalID: 5418803925534944333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_27
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 135
+        width: 22
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8aec2adbecc2a310800000000000000
+      internalID: 1414918546297514639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_28
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 135
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b12636a755f640960800000000000000
+      internalID: 7567295686805512731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_29
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 147
+        width: 30
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 610925f5426de3cd0800000000000000
+      internalID: -2576386485102931946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_30
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 147
+        width: 38
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e2168e5bcfe3cbd0800000000000000
+      internalID: -2610979702201511198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_31
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 143
+        width: 46
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5121c92b0101bb4b0800000000000000
+      internalID: -5423723662335536619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_32
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 131
+        width: 30
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7eb6e6d5672bdd50800000000000000
+      internalID: 6763042583777558138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_33
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 131
+        width: 38
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5991d19fb3e927360800000000000000
+      internalID: 7165963937519573397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_34
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 127
+        width: 50
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6707c5ab03cd9750800000000000000
+      internalID: 6313416707436644203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_35
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 115
+        width: 42
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9115ea1bb8d345ee0800000000000000
+      internalID: -1273325124448268007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_36
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 131
+        width: 30
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51a9ec95a616a8d30800000000000000
+      internalID: 4434463892500814357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_37
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 11
+        width: 74
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 412f97e6598a0c770800000000000000
+      internalID: 8629082245798949396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_38
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 11
+        width: 74
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 155e96425fa7508d0800000000000000
+      internalID: -2880761193337068207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_39
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 11
+        width: 74
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cf2f7b2d305bd400800000000000000
+      internalID: 349961619704328133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_40
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 11
+        width: 74
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b7dd1e3d19404e90800000000000000
+      internalID: -7043549427262433359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_41
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 15
+        width: 70
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a57a4279439414b0800000000000000
+      internalID: -5470585703688931935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_42
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 19
+        width: 78
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90bfdff83a63a5b70800000000000000
+      internalID: 8888476890692451081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_43
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 23
+        width: 66
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f96fe47bef446cb0800000000000000
+      internalID: -4871681024210277899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond outline x4_44
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 23
+        width: 54
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c45fa0df7f8bc2fd0800000000000000
+      internalID: -2365312329034566324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Diamond outline x4_0: 8975543884814739328
+      Diamond outline x4_1: 8632308671698632980
+      Diamond outline x4_10: 271023320023049959
+      Diamond outline x4_11: -3674026165325099480
+      Diamond outline x4_12: 814655734738105171
+      Diamond outline x4_13: 7200940564667037416
+      Diamond outline x4_14: -5732750669863366365
+      Diamond outline x4_15: 2616588707630477102
+      Diamond outline x4_16: -3441005124711586788
+      Diamond outline x4_17: 4654741772864445166
+      Diamond outline x4_18: 5897550158529982615
+      Diamond outline x4_19: -7773879624583028158
+      Diamond outline x4_2: 1887904143812418430
+      Diamond outline x4_20: -1995418734719826808
+      Diamond outline x4_21: -2159207694017287463
+      Diamond outline x4_22: -6558357497639247233
+      Diamond outline x4_23: 578173283517793058
+      Diamond outline x4_24: 7955048867376568086
+      Diamond outline x4_25: 4528429851209513230
+      Diamond outline x4_26: 5418803925534944333
+      Diamond outline x4_27: 1414918546297514639
+      Diamond outline x4_28: 7567295686805512731
+      Diamond outline x4_29: -2576386485102931946
+      Diamond outline x4_3: 5097252599043407680
+      Diamond outline x4_30: -2610979702201511198
+      Diamond outline x4_31: -5423723662335536619
+      Diamond outline x4_32: 6763042583777558138
+      Diamond outline x4_33: 7165963937519573397
+      Diamond outline x4_34: 6313416707436644203
+      Diamond outline x4_35: -1273325124448268007
+      Diamond outline x4_36: 4434463892500814357
+      Diamond outline x4_37: 8629082245798949396
+      Diamond outline x4_38: -2880761193337068207
+      Diamond outline x4_39: 349961619704328133
+      Diamond outline x4_4: -4392598166474410781
+      Diamond outline x4_40: -7043549427262433359
+      Diamond outline x4_41: -5470585703688931935
+      Diamond outline x4_42: 8888476890692451081
+      Diamond outline x4_43: -4871681024210277899
+      Diamond outline x4_44: -2365312329034566324
+      Diamond outline x4_5: -8044373557036116412
+      Diamond outline x4_6: -3617473130957968337
+      Diamond outline x4_7: -7078302172218801514
+      Diamond outline x4_8: -5258120814260316448
+      Diamond outline x4_9: 4826060894267065053
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

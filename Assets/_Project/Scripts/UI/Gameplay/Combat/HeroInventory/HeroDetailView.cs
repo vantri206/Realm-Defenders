@@ -106,7 +106,7 @@ public class HeroDetailView : MonoBehaviour
 
         HeroDefinition definition = heroInstance.Definition;
         UnitStats stats = heroInstance.Stats;
-        HeroBlock blocker = heroInstance.Blocker;
+        UnitBlock blocker = heroInstance.Block;
 
         // Identity
         SetAvatar(definition.HeroIcon);

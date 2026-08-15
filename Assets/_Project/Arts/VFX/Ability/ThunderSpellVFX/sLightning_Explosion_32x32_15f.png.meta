@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: a6838ca3e949c4941999c6dd9238f15b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1077970325900945354
+    second: sLightning_Explosion_32x32_15f_0
+  - first:
+      213: -525901087312905430
+    second: sLightning_Explosion_32x32_15f_1
+  - first:
+      213: -1290438776619595240
+    second: sLightning_Explosion_32x32_15f_2
+  - first:
+      213: -6559234410603600110
+    second: sLightning_Explosion_32x32_15f_3
+  - first:
+      213: 776637332369543403
+    second: sLightning_Explosion_32x32_15f_4
+  - first:
+      213: 5460354989850475781
+    second: sLightning_Explosion_32x32_15f_5
+  - first:
+      213: 2184620674701021305
+    second: sLightning_Explosion_32x32_15f_6
+  - first:
+      213: 3444854326473858186
+    second: sLightning_Explosion_32x32_15f_7
+  - first:
+      213: -2701251479344652540
+    second: sLightning_Explosion_32x32_15f_8
+  - first:
+      213: -5333364094368306855
+    second: sLightning_Explosion_32x32_15f_9
+  - first:
+      213: -748674659075257476
+    second: sLightning_Explosion_32x32_15f_10
+  - first:
+      213: 2926294524550767604
+    second: sLightning_Explosion_32x32_15f_11
+  - first:
+      213: 1701304235757335188
+    second: sLightning_Explosion_32x32_15f_12
+  - first:
+      213: 9045514938861871157
+    second: sLightning_Explosion_32x32_15f_13
+  - first:
+      213: 4586386646410775546
+    second: sLightning_Explosion_32x32_15f_14
+  - first:
+      213: 1432100201064980809
+    second: sLightning_Explosion_32x32_15f_15
+  - first:
+      213: 3801612548739361749
+    second: sLightning_Explosion_32x32_15f_16
+  - first:
+      213: 607731279761287261
+    second: sLightning_Explosion_32x32_15f_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 19
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac7ecb1dc48b5fe00800000000000000
+      internalID: 1077970325900945354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_1
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 19
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2bf8b75fbf93b8f0800000000000000
+      internalID: -525901087312905430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_2
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 8
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81a033b05c0771ee0800000000000000
+      internalID: -1290438776619595240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_3
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 12
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 217247d4e0be8f4a0800000000000000
+      internalID: -6559234410603600110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_4
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 16
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be0913bf98b27ca00800000000000000
+      internalID: 776637332369543403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_5
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 9
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50db19ddee317cb40800000000000000
+      internalID: 5460354989850475781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_6
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 13
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9705784dde4515e10800000000000000
+      internalID: 2184620674701021305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_7
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 13
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8c117022c49ecf20800000000000000
+      internalID: 3444854326473858186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_8
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 9
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40fd9a4671a338ad0800000000000000
+      internalID: -2701251479344652540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_9
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 10
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 959aa511d951cf5b0800000000000000
+      internalID: -5333364094368306855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_10
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 10
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7b8b7d3d5c2c95f0800000000000000
+      internalID: -748674659075257476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_11
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 3
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f3e40cad594c9820800000000000000
+      internalID: 2926294524550767604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_12
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 2
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 492fe23403f3c9710800000000000000
+      internalID: 1701304235757335188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_13
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 6
+        width: 30
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 530e95569ef188d70800000000000000
+      internalID: 9045514938861871157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_14
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 10
+        width: 84
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afbc8edea5e16af30800000000000000
+      internalID: 4586386646410775546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_15
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 6
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9416e379b87dfd310800000000000000
+      internalID: 1432100201064980809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_16
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 6
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dbe645a87a02c430800000000000000
+      internalID: 3801612548739361749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sLightning_Explosion_32x32_15f_17
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 8
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d58a01901681f6800800000000000000
+      internalID: 607731279761287261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sLightning_Explosion_32x32_15f_0: 1077970325900945354
+      sLightning_Explosion_32x32_15f_1: -525901087312905430
+      sLightning_Explosion_32x32_15f_10: -748674659075257476
+      sLightning_Explosion_32x32_15f_11: 2926294524550767604
+      sLightning_Explosion_32x32_15f_12: 1701304235757335188
+      sLightning_Explosion_32x32_15f_13: 9045514938861871157
+      sLightning_Explosion_32x32_15f_14: 4586386646410775546
+      sLightning_Explosion_32x32_15f_15: 1432100201064980809
+      sLightning_Explosion_32x32_15f_16: 3801612548739361749
+      sLightning_Explosion_32x32_15f_17: 607731279761287261
+      sLightning_Explosion_32x32_15f_2: -1290438776619595240
+      sLightning_Explosion_32x32_15f_3: -6559234410603600110
+      sLightning_Explosion_32x32_15f_4: 776637332369543403
+      sLightning_Explosion_32x32_15f_5: 5460354989850475781
+      sLightning_Explosion_32x32_15f_6: 2184620674701021305
+      sLightning_Explosion_32x32_15f_7: 3444854326473858186
+      sLightning_Explosion_32x32_15f_8: -2701251479344652540
+      sLightning_Explosion_32x32_15f_9: -5333364094368306855
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

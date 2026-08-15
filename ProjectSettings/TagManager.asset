@@ -50,9 +50,6 @@ TagManager:
   - name: Entity
     uniqueID: 166825055
     locked: 0
-  - name: Projectile
-    uniqueID: 3181507877
-    locked: 0
   - name: VFX
     uniqueID: 2529986869
     locked: 0

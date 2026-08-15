@@ -7,15 +7,15 @@ public class CombatGridCell
 {
     private Vector3Int cellPosition;
     private CombatGridCellStates cellStates;
-    private HeroRuntime deployedHero;
-    private List<EnemyRuntime> enemies = new List<EnemyRuntime>();
+    private HeroRuntime anchoredHero;
+    private List<UnitRuntime> activeUnits = new List<UnitRuntime>();
 
     public Vector3Int CellPosition => cellPosition;
     public CombatGridCellStates CellStates => cellStates;
-    public HeroRuntime DeployedHero => deployedHero;
-    public bool HasDeployedHero => deployedHero != null;
-    public IReadOnlyList<EnemyRuntime> Enemies => enemies;
-    public bool HasEnemies => enemies.Count > 0;
+    public HeroRuntime AnchoredHero => anchoredHero;
+    public bool HasAnchoredHero => anchoredHero != null;
+    public IReadOnlyList<UnitRuntime> Units => activeUnits;
+    public bool HasUnits => activeUnits.Count > 0;
 
     public bool IsWalkable => HasState(CombatGridCellStates.Walkable);
     public bool IsDeployable => HasState(CombatGridCellStates.Deployable);
@@ -42,40 +42,40 @@ public class CombatGridCell
         cellStates &= ~state;
     }
 
-    public void SetDeployedHero(HeroRuntime hero)
+    public void SetAchoredHero(HeroRuntime hero)
     {
-        deployedHero = hero;
+        anchoredHero = hero;
     }
 
-    public void ClearDeployedHero()
+    public void ClearAnchoredHero()
     {
-        deployedHero = null;
+        anchoredHero = null;
     }
 
-    public void AddEnemy(EnemyRuntime enemy)
+    public void AddUnit(UnitRuntime unit)
     {
-        if (!enemies.Contains(enemy))
+        if (!activeUnits.Contains(unit))
         {
-            enemies.Add(enemy);
+            activeUnits.Add(unit);
         }
     }
 
-    public void RemoveEnemy(EnemyRuntime enemy)
+    public void RemoveUnit(UnitRuntime unit)
     {
-        if (enemies.Contains(enemy))
+        if (activeUnits.Contains(unit))
         {
-            enemies.Remove(enemy);
+            activeUnits.Remove(unit);
         }
     }
 
-    public void ClearEnemies()
+    public void ClearUnits()
     {
-        enemies.Clear();
+        activeUnits.Clear();
     }
 
     public bool CanDeployHero()
     {
-        return IsDeployable && !HasDeployedHero;
+        return IsDeployable && !HasAnchoredHero;
     }
 
     public bool CanWalk()

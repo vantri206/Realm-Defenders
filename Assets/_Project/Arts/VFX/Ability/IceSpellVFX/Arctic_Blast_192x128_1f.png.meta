@@ -1,0 +1,1209 @@
+fileFormatVersion: 2
+guid: 5214c04df5231f74397b3b944f862c9b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6266570926103204667
+    second: Arctic_Blast_192x128_1f_0
+  - first:
+      213: 1776901881721073194
+    second: Arctic_Blast_192x128_1f_1
+  - first:
+      213: -1436266505184737790
+    second: Arctic_Blast_192x128_1f_2
+  - first:
+      213: 2543327357468554034
+    second: Arctic_Blast_192x128_1f_3
+  - first:
+      213: -6587222812407042917
+    second: Arctic_Blast_192x128_1f_4
+  - first:
+      213: -1061685634759930767
+    second: Arctic_Blast_192x128_1f_5
+  - first:
+      213: 8575491352135034926
+    second: Arctic_Blast_192x128_1f_6
+  - first:
+      213: 6182978613073631368
+    second: Arctic_Blast_192x128_1f_7
+  - first:
+      213: 3838068537180731742
+    second: Arctic_Blast_192x128_1f_8
+  - first:
+      213: 7407108791493089726
+    second: Arctic_Blast_192x128_1f_9
+  - first:
+      213: -3004621038424094810
+    second: Arctic_Blast_192x128_1f_10
+  - first:
+      213: -8736903288258728623
+    second: Arctic_Blast_192x128_1f_11
+  - first:
+      213: 8815229337557432403
+    second: Arctic_Blast_192x128_1f_12
+  - first:
+      213: -9094802506022300523
+    second: Arctic_Blast_192x128_1f_13
+  - first:
+      213: 3942224418795882278
+    second: Arctic_Blast_192x128_1f_14
+  - first:
+      213: 3346864496684378515
+    second: Arctic_Blast_192x128_1f_15
+  - first:
+      213: 9183467985750130989
+    second: Arctic_Blast_192x128_1f_16
+  - first:
+      213: 9108425643030348494
+    second: Arctic_Blast_192x128_1f_17
+  - first:
+      213: 6639792241998091575
+    second: Arctic_Blast_192x128_1f_18
+  - first:
+      213: -4422119340992543182
+    second: Arctic_Blast_192x128_1f_19
+  - first:
+      213: 8035194408877482176
+    second: Arctic_Blast_192x128_1f_20
+  - first:
+      213: 4221582800445024750
+    second: Arctic_Blast_192x128_1f_21
+  - first:
+      213: 7332275945141228008
+    second: Arctic_Blast_192x128_1f_22
+  - first:
+      213: -5335045923288335851
+    second: Arctic_Blast_192x128_1f_23
+  - first:
+      213: 8192939239440374261
+    second: Arctic_Blast_192x128_1f_24
+  - first:
+      213: 417244067017397378
+    second: Arctic_Blast_192x128_1f_25
+  - first:
+      213: -5312075068535784409
+    second: Arctic_Blast_192x128_1f_26
+  - first:
+      213: -1972436535464980207
+    second: Arctic_Blast_192x128_1f_27
+  - first:
+      213: -7958693967481175306
+    second: Arctic_Blast_192x128_1f_28
+  - first:
+      213: 402672832439720514
+    second: Arctic_Blast_192x128_1f_29
+  - first:
+      213: 4718207904744414017
+    second: Arctic_Blast_192x128_1f_30
+  - first:
+      213: 2312690877264181967
+    second: Arctic_Blast_192x128_1f_31
+  - first:
+      213: 5343513713952585363
+    second: Arctic_Blast_192x128_1f_32
+  - first:
+      213: 2151358824559975557
+    second: Arctic_Blast_192x128_1f_33
+  - first:
+      213: -4941096428491344065
+    second: Arctic_Blast_192x128_1f_34
+  - first:
+      213: -4026565154294178923
+    second: Arctic_Blast_192x128_1f_35
+  - first:
+      213: 7679815337985910562
+    second: Arctic_Blast_192x128_1f_36
+  - first:
+      213: 8170303496878228315
+    second: Arctic_Blast_192x128_1f_37
+  - first:
+      213: -6280047134798906392
+    second: Arctic_Blast_192x128_1f_38
+  - first:
+      213: 6198764728162510295
+    second: Arctic_Blast_192x128_1f_39
+  - first:
+      213: 3612937507037574331
+    second: Arctic_Blast_192x128_1f_40
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 116
+        width: 49
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cce3d5c1faa809a0800000000000000
+      internalID: -6266570926103204667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_1
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 116
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2e25b4d8d2d8a810800000000000000
+      internalID: 1776901881721073194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_2
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 115
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2060ca3293b511ce0800000000000000
+      internalID: -1436266505184737790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_3
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 118
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2333279a1c6bb4320800000000000000
+      internalID: 2543327357468554034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_4
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 117
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9ce022b0cb7594a0800000000000000
+      internalID: -6587222812407042917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_5
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 118
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17ccffc4a822441f0800000000000000
+      internalID: -1061685634759930767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_6
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 115
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e28617a23f3420770800000000000000
+      internalID: 8575491352135034926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_7
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 118
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 888571e2a4a5ec550800000000000000
+      internalID: 6182978613073631368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_8
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 117
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e59b246effe834530800000000000000
+      internalID: 3838068537180731742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_9
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 118
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb95e9983365bc660800000000000000
+      internalID: 7407108791493089726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_10
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 115
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a70110b5117d46d0800000000000000
+      internalID: -3004621038424094810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_11
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 118
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15d656adfb840c680800000000000000
+      internalID: -8736903288258728623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_12
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 117
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35876be906cf55a70800000000000000
+      internalID: 8815229337557432403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_13
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 118
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 594553e9e45c8c180800000000000000
+      internalID: -9094802506022300523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_14
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 115
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 627033bd83895b630800000000000000
+      internalID: 3942224418795882278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_15
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 118
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3992d3cf683727e20800000000000000
+      internalID: 3346864496684378515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_16
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 115
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d210fc81a7b327f70800000000000000
+      internalID: 9183467985750130989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 83
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec202e32dd0a76e70800000000000000
+      internalID: 9108425643030348494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_18
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 86
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 735d0be6dd7452c50800000000000000
+      internalID: 6639792241998091575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_19
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 85
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23641c583e971a2c0800000000000000
+      internalID: -4422119340992543182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_20
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 86
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c0e85a1ebeb28f60800000000000000
+      internalID: 8035194408877482176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_21
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 85
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee9ac6aa033169a30800000000000000
+      internalID: 4221582800445024750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_22
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 86
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e1d841cf1a71c560800000000000000
+      internalID: 7332275945141228008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_23
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 85
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51ab002cffb16f5b0800000000000000
+      internalID: -5335045923288335851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_24
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 97
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f9d33984da23b170800000000000000
+      internalID: 8192939239440374261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_25
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 81
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 284163fa4495ac500800000000000000
+      internalID: 417244067017397378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_26
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 97
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72c37b7aed7b746b0800000000000000
+      internalID: -5312075068535784409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_27
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 85
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1119b91eb6f70a4e0800000000000000
+      internalID: -1972436535464980207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_28
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 87
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f28d38e00a0d8190800000000000000
+      internalID: -7958693967481175306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_29
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 63
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24a1542cec4969500800000000000000
+      internalID: 402672832439720514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_30
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 65
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14b1bba57117a7140800000000000000
+      internalID: 4718207904744414017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_31
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 65
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fca3e968914581020800000000000000
+      internalID: 2312690877264181967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_32
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 65
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39672946969f72a40800000000000000
+      internalID: 5343513713952585363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_33
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 65
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58c9c4ad3792bdd10800000000000000
+      internalID: 2151358824559975557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_34
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 64
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3772d23af2bd6bb0800000000000000
+      internalID: -4941096428491344065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_35
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 64
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59b54596354ce18c0800000000000000
+      internalID: -4026565154294178923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_36
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 31
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2272f394c5f249a60800000000000000
+      internalID: 7679815337985910562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_37
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 31
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b530f860ebfb26170800000000000000
+      internalID: 8170303496878228315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_38
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 31
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ebf99d676ac8d8a0800000000000000
+      internalID: -6280047134798906392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_39
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 31
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d5e8548daf660650800000000000000
+      internalID: 6198764728162510295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arctic_Blast_192x128_1f_40
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 31
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb4f8ae358bb32230800000000000000
+      internalID: 3612937507037574331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Arctic_Blast_192x128_1f_0: -6266570926103204667
+      Arctic_Blast_192x128_1f_1: 1776901881721073194
+      Arctic_Blast_192x128_1f_10: -3004621038424094810
+      Arctic_Blast_192x128_1f_11: -8736903288258728623
+      Arctic_Blast_192x128_1f_12: 8815229337557432403
+      Arctic_Blast_192x128_1f_13: -9094802506022300523
+      Arctic_Blast_192x128_1f_14: 3942224418795882278
+      Arctic_Blast_192x128_1f_15: 3346864496684378515
+      Arctic_Blast_192x128_1f_16: 9183467985750130989
+      Arctic_Blast_192x128_1f_17: 9108425643030348494
+      Arctic_Blast_192x128_1f_18: 6639792241998091575
+      Arctic_Blast_192x128_1f_19: -4422119340992543182
+      Arctic_Blast_192x128_1f_2: -1436266505184737790
+      Arctic_Blast_192x128_1f_20: 8035194408877482176
+      Arctic_Blast_192x128_1f_21: 4221582800445024750
+      Arctic_Blast_192x128_1f_22: 7332275945141228008
+      Arctic_Blast_192x128_1f_23: -5335045923288335851
+      Arctic_Blast_192x128_1f_24: 8192939239440374261
+      Arctic_Blast_192x128_1f_25: 417244067017397378
+      Arctic_Blast_192x128_1f_26: -5312075068535784409
+      Arctic_Blast_192x128_1f_27: -1972436535464980207
+      Arctic_Blast_192x128_1f_28: -7958693967481175306
+      Arctic_Blast_192x128_1f_29: 402672832439720514
+      Arctic_Blast_192x128_1f_3: 2543327357468554034
+      Arctic_Blast_192x128_1f_30: 4718207904744414017
+      Arctic_Blast_192x128_1f_31: 2312690877264181967
+      Arctic_Blast_192x128_1f_32: 5343513713952585363
+      Arctic_Blast_192x128_1f_33: 2151358824559975557
+      Arctic_Blast_192x128_1f_34: -4941096428491344065
+      Arctic_Blast_192x128_1f_35: -4026565154294178923
+      Arctic_Blast_192x128_1f_36: 7679815337985910562
+      Arctic_Blast_192x128_1f_37: 8170303496878228315
+      Arctic_Blast_192x128_1f_38: -6280047134798906392
+      Arctic_Blast_192x128_1f_39: 6198764728162510295
+      Arctic_Blast_192x128_1f_4: -6587222812407042917
+      Arctic_Blast_192x128_1f_40: 3612937507037574331
+      Arctic_Blast_192x128_1f_5: -1061685634759930767
+      Arctic_Blast_192x128_1f_6: 8575491352135034926
+      Arctic_Blast_192x128_1f_7: 6182978613073631368
+      Arctic_Blast_192x128_1f_8: 3838068537180731742
+      Arctic_Blast_192x128_1f_9: 7407108791493089726
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

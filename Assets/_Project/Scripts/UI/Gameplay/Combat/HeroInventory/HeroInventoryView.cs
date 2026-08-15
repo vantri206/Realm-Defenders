@@ -21,6 +21,11 @@ public class HeroInventoryView : MonoBehaviour
         ClearAllCards();
     }
 
+    public void OnDisable()
+    {
+        ClearAllCards();
+    }
+
     private void ClearAllCards()
     {
         for (int i = heroCards.Count - 1; i >= 0; i--)

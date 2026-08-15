@@ -26,10 +26,15 @@ public sealed class HeroDefinitionEditor : Editor
     private SerializedProperty defenseProperty;
     private SerializedProperty specialDefenseProperty;
     private SerializedProperty blockProperty;
+    private SerializedProperty moveSpeedProperty;
     private SerializedProperty baseDeployCostProperty;
     private SerializedProperty baseRedeployTimeProperty;
     private SerializedProperty attackTypeProperty;
+    private SerializedProperty attackMethodProperty;
+    private SerializedProperty attackDamageTypeProperty;
+    private SerializedProperty normalAttackDamageMultiplierProperty;
     private SerializedProperty targetPriorityModeProperty;
+    private SerializedProperty canGuardProperty;
     private SerializedProperty attackPatternProperty;
 
     private GUIStyle centeredCellStyle;
@@ -52,10 +57,15 @@ public sealed class HeroDefinitionEditor : Editor
         defenseProperty = serializedObject.FindProperty("defense");
         specialDefenseProperty = serializedObject.FindProperty("specialDefense");
         blockProperty = serializedObject.FindProperty("blockCount");
+        moveSpeedProperty = serializedObject.FindProperty("moveSpeed");
         baseDeployCostProperty = serializedObject.FindProperty("baseDeployCost");
         baseRedeployTimeProperty = serializedObject.FindProperty("baseRedeployTime");
         attackTypeProperty = serializedObject.FindProperty("attackType");
+        attackMethodProperty = serializedObject.FindProperty("attackMethod");
+        attackDamageTypeProperty = serializedObject.FindProperty("attackDamageType");
+        normalAttackDamageMultiplierProperty = serializedObject.FindProperty("normalAttackDamageMultiplier");
         targetPriorityModeProperty = serializedObject.FindProperty("targetPriorityMode");
+        canGuardProperty = serializedObject.FindProperty("canGuard");
         attackPatternProperty = serializedObject.FindProperty("attackPattern");
     }
 
@@ -138,6 +148,7 @@ public sealed class HeroDefinitionEditor : Editor
         EditorGUILayout.PropertyField(defenseProperty);
         EditorGUILayout.PropertyField(specialDefenseProperty, new GUIContent("Special Defense"));
         EditorGUILayout.PropertyField(blockProperty, new GUIContent("Block Count"));
+        EditorGUILayout.PropertyField(moveSpeedProperty, new GUIContent("Move Speed"));
         EditorGUILayout.EndVertical();
     }
 
@@ -155,7 +166,11 @@ public sealed class HeroDefinitionEditor : Editor
         EditorGUILayout.LabelField("Attack", EditorStyles.boldLabel);
         EditorGUILayout.BeginVertical(EditorStyles.helpBox);
         EditorGUILayout.PropertyField(attackTypeProperty, new GUIContent("Attack Type"));
+        EditorGUILayout.PropertyField(attackMethodProperty, new GUIContent("Attack Method"));
+        EditorGUILayout.PropertyField(attackDamageTypeProperty, new GUIContent("Damage Type"));
+        EditorGUILayout.PropertyField(normalAttackDamageMultiplierProperty, new GUIContent("Damage Multiplier"));
         EditorGUILayout.PropertyField(targetPriorityModeProperty, new GUIContent("Target Priority"));
+        EditorGUILayout.PropertyField(canGuardProperty, new GUIContent("Can Guard"));
         EditorGUILayout.Space(5f);
 
         EditorGUILayout.LabelField("Attack Pattern", EditorStyles.miniBoldLabel);

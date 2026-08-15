@@ -1,0 +1,897 @@
+fileFormatVersion: 2
+guid: 66e9faefb7f480748b3ba81d30e78ff8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -96793423674516912
+    second: sAim_Down_32x32_14f_0
+  - first:
+      213: 6745544377409878756
+    second: sAim_Down_32x32_14f_1
+  - first:
+      213: 6936971612068648117
+    second: sAim_Down_32x32_14f_2
+  - first:
+      213: -9076984583959773248
+    second: sAim_Down_32x32_14f_3
+  - first:
+      213: 1224705389363383625
+    second: sAim_Down_32x32_14f_4
+  - first:
+      213: -1764252699568460221
+    second: sAim_Down_32x32_14f_5
+  - first:
+      213: 8220093702418314606
+    second: sAim_Down_32x32_14f_6
+  - first:
+      213: 3592804306688088706
+    second: sAim_Down_32x32_14f_7
+  - first:
+      213: 6364533215486624807
+    second: sAim_Down_32x32_14f_8
+  - first:
+      213: 1051738857499520561
+    second: sAim_Down_32x32_14f_9
+  - first:
+      213: -8331739424359503709
+    second: sAim_Down_32x32_14f_10
+  - first:
+      213: 3044515567321932813
+    second: sAim_Down_32x32_14f_11
+  - first:
+      213: -6756446664699914285
+    second: sAim_Down_32x32_14f_12
+  - first:
+      213: 4003914637526309626
+    second: sAim_Down_32x32_14f_13
+  - first:
+      213: -73874325702639394
+    second: sAim_Down_32x32_14f_14
+  - first:
+      213: -7136645848223630278
+    second: sAim_Down_32x32_14f_15
+  - first:
+      213: 3488885953294814619
+    second: sAim_Down_32x32_14f_16
+  - first:
+      213: -1213011497356005668
+    second: sAim_Down_32x32_14f_17
+  - first:
+      213: 8160658944640738541
+    second: sAim_Down_32x32_14f_18
+  - first:
+      213: -5376603433037222469
+    second: sAim_Down_32x32_14f_19
+  - first:
+      213: -6575568281297958276
+    second: sAim_Down_32x32_14f_20
+  - first:
+      213: -6405011854972770583
+    second: sAim_Down_32x32_14f_21
+  - first:
+      213: -2965931313674738725
+    second: sAim_Down_32x32_14f_22
+  - first:
+      213: 1683885312284471074
+    second: sAim_Down_32x32_14f_23
+  - first:
+      213: -6138612892462267442
+    second: sAim_Down_32x32_14f_24
+  - first:
+      213: 6970900684035369219
+    second: sAim_Down_32x32_14f_25
+  - first:
+      213: -8005704885934738455
+    second: sAim_Down_32x32_14f_26
+  - first:
+      213: 3784333662601583843
+    second: sAim_Down_32x32_14f_27
+  - first:
+      213: -6304494255161857154
+    second: sAim_Down_32x32_14f_28
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 11
+        width: 65
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05a594dd4ee18aef0800000000000000
+      internalID: -96793423674516912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ea36203fdcfc9d50800000000000000
+      internalID: 6745544377409878756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_2
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 7
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b412527de2154060800000000000000
+      internalID: 6936971612068648117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_3
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cf7161ec92180280800000000000000
+      internalID: -9076984583959773248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_4
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94dc28710170ff010800000000000000
+      internalID: 1224705389363383625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_5
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34ea234648d1487e0800000000000000
+      internalID: -1764252699568460221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_6
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 7
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e65b111aba3a31270800000000000000
+      internalID: 8220093702418314606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 9
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28a13af3b743cd130800000000000000
+      internalID: 3592804306688088706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_8
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 724414e1d3d535850800000000000000
+      internalID: 6364533215486624807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_9
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13eebb52be6889e00800000000000000
+      internalID: 1051738857499520561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_10
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 7
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a82fe11327bf5c80800000000000000
+      internalID: -8331739424359503709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_11
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 8
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d04ee5727ca404a20800000000000000
+      internalID: 3044515567321932813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_12
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d750be3e874c32a0800000000000000
+      internalID: -6756446664699914285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_13
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afa1eb03623c09730800000000000000
+      internalID: 4003914637526309626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_14
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 7
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed0097231bb89fef0800000000000000
+      internalID: -73874325702639394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_15
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 7
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3c3dd0a96a85fc90800000000000000
+      internalID: -7136645848223630278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_16
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9dccf32a430b6030800000000000000
+      internalID: 3488885953294814619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_17
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cde61af48748a2fe0800000000000000
+      internalID: -1213011497356005668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_18
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 6
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de4ec68b21c704170800000000000000
+      internalID: 8160658944640738541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_19
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbdaba30aa77265b0800000000000000
+      internalID: -5376603433037222469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_20
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7ac8ecac73eeb4a0800000000000000
+      internalID: -6575568281297958276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_21
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 5
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e6ae2237a3dc17a0800000000000000
+      internalID: -6405011854972770583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_22
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd3a5343f25e6d6d0800000000000000
+      internalID: -2965931313674738725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_23
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 17
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22fa63915cc5e5710800000000000000
+      internalID: 1683885312284471074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_24
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 4
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec3472b19144fcaa0800000000000000
+      internalID: -6138612892462267442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_25
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 13
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 309a47c1d3d9db060800000000000000
+      internalID: 6970900684035369219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_26
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 5
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e3304182d506e090800000000000000
+      internalID: -8005704885934738455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_27
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 11
+        width: 93
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ec9be67a67a48430800000000000000
+      internalID: 3784333662601583843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sAim_Down_32x32_14f_28
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 7
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7b2698a0efe188a0800000000000000
+      internalID: -6304494255161857154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sAim_Down_32x32_14f_0: -96793423674516912
+      sAim_Down_32x32_14f_1: 6745544377409878756
+      sAim_Down_32x32_14f_10: -8331739424359503709
+      sAim_Down_32x32_14f_11: 3044515567321932813
+      sAim_Down_32x32_14f_12: -6756446664699914285
+      sAim_Down_32x32_14f_13: 4003914637526309626
+      sAim_Down_32x32_14f_14: -73874325702639394
+      sAim_Down_32x32_14f_15: -7136645848223630278
+      sAim_Down_32x32_14f_16: 3488885953294814619
+      sAim_Down_32x32_14f_17: -1213011497356005668
+      sAim_Down_32x32_14f_18: 8160658944640738541
+      sAim_Down_32x32_14f_19: -5376603433037222469
+      sAim_Down_32x32_14f_2: 6936971612068648117
+      sAim_Down_32x32_14f_20: -6575568281297958276
+      sAim_Down_32x32_14f_21: -6405011854972770583
+      sAim_Down_32x32_14f_22: -2965931313674738725
+      sAim_Down_32x32_14f_23: 1683885312284471074
+      sAim_Down_32x32_14f_24: -6138612892462267442
+      sAim_Down_32x32_14f_25: 6970900684035369219
+      sAim_Down_32x32_14f_26: -8005704885934738455
+      sAim_Down_32x32_14f_27: 3784333662601583843
+      sAim_Down_32x32_14f_28: -6304494255161857154
+      sAim_Down_32x32_14f_3: -9076984583959773248
+      sAim_Down_32x32_14f_4: 1224705389363383625
+      sAim_Down_32x32_14f_5: -1764252699568460221
+      sAim_Down_32x32_14f_6: 8220093702418314606
+      sAim_Down_32x32_14f_7: 3592804306688088706
+      sAim_Down_32x32_14f_8: 6364533215486624807
+      sAim_Down_32x32_14f_9: 1051738857499520561
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

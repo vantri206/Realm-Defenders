@@ -1,0 +1,689 @@
+fileFormatVersion: 2
+guid: c6f4e941352daf74a9e0b7327fd22267
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3189723924745018494
+    second: sCharm_Down_32x32_20f_0
+  - first:
+      213: -7580434376029014265
+    second: sCharm_Down_32x32_20f_1
+  - first:
+      213: -8953642074440939526
+    second: sCharm_Down_32x32_20f_2
+  - first:
+      213: 1599070914414633194
+    second: sCharm_Down_32x32_20f_3
+  - first:
+      213: 3421961006731756987
+    second: sCharm_Down_32x32_20f_4
+  - first:
+      213: 464549652558721996
+    second: sCharm_Down_32x32_20f_5
+  - first:
+      213: 8634785430216208609
+    second: sCharm_Down_32x32_20f_6
+  - first:
+      213: -131367026294114897
+    second: sCharm_Down_32x32_20f_7
+  - first:
+      213: -7224686909209751965
+    second: sCharm_Down_32x32_20f_8
+  - first:
+      213: -846289606412254662
+    second: sCharm_Down_32x32_20f_9
+  - first:
+      213: 265773366919325125
+    second: sCharm_Down_32x32_20f_10
+  - first:
+      213: 841343691451292560
+    second: sCharm_Down_32x32_20f_11
+  - first:
+      213: 7623297799944353253
+    second: sCharm_Down_32x32_20f_12
+  - first:
+      213: 5278771972851280036
+    second: sCharm_Down_32x32_20f_13
+  - first:
+      213: 5002299348195212043
+    second: sCharm_Down_32x32_20f_14
+  - first:
+      213: -7226085321026173723
+    second: sCharm_Down_32x32_20f_15
+  - first:
+      213: -5107642200796488994
+    second: sCharm_Down_32x32_20f_16
+  - first:
+      213: -3858364433370246846
+    second: sCharm_Down_32x32_20f_17
+  - first:
+      213: -2665332645419771880
+    second: sCharm_Down_32x32_20f_18
+  - first:
+      213: -6452971981201346426
+    second: sCharm_Down_32x32_20f_19
+  - first:
+      213: 6327390456223806155
+    second: sCharm_Down_32x32_20f_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 13
+        width: 38
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7cddf9720d244c20800000000000000
+      internalID: 3189723924745018494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 12
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70771ad0913ecc690800000000000000
+      internalID: -7580434376029014265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_2
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 11
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af7c4f2c8f54eb380800000000000000
+      internalID: -8953642074440939526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_3
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 9
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae0e750468a013610800000000000000
+      internalID: 1599070914414633194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_4
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 9
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb50c71c76f3d7f20800000000000000
+      internalID: 3421961006731756987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_5
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 8
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc33b4d9279627600800000000000000
+      internalID: 464549652558721996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_6
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 8
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e071c7899be4d770800000000000000
+      internalID: 8634785430216208609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_7
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 9
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa53a86b26a4d2ef0800000000000000
+      internalID: -131367026294114897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_8
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 9
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36e432bb881ccbb90800000000000000
+      internalID: -7224686909209751965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_9
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 8
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3241b836106144f0800000000000000
+      internalID: -846289606412254662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_10
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 8
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c56cf5187730b300800000000000000
+      internalID: 265773366919325125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_11
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 8
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09b58f631ad0dab00800000000000000
+      internalID: 841343691451292560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_12
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 8
+        width: 23
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e533b685f46bc960800000000000000
+      internalID: 7623297799944353253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_13
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 7
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a8a6142427f14940800000000000000
+      internalID: 5278771972851280036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_14
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 7
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0bf75df0ccbb6540800000000000000
+      internalID: 5002299348195212043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_15
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 7
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e4029b9fa9c7bb90800000000000000
+      internalID: -7226085321026173723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_16
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 7
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eda1bb5da720e19b0800000000000000
+      internalID: -5107642200796488994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_17
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 7
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24117f68df5547ac0800000000000000
+      internalID: -3858364433370246846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_18
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 7
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 818908d9416d20bd0800000000000000
+      internalID: -2665332645419771880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_19
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 5
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 680f1f22c207276a0800000000000000
+      internalID: -6452971981201346426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sCharm_Down_32x32_20f_20
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 5
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc2ba6298186fc750800000000000000
+      internalID: 6327390456223806155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sCharm_Down_32x32_20f_0: 3189723924745018494
+      sCharm_Down_32x32_20f_1: -7580434376029014265
+      sCharm_Down_32x32_20f_10: 265773366919325125
+      sCharm_Down_32x32_20f_11: 841343691451292560
+      sCharm_Down_32x32_20f_12: 7623297799944353253
+      sCharm_Down_32x32_20f_13: 5278771972851280036
+      sCharm_Down_32x32_20f_14: 5002299348195212043
+      sCharm_Down_32x32_20f_15: -7226085321026173723
+      sCharm_Down_32x32_20f_16: -5107642200796488994
+      sCharm_Down_32x32_20f_17: -3858364433370246846
+      sCharm_Down_32x32_20f_18: -2665332645419771880
+      sCharm_Down_32x32_20f_19: -6452971981201346426
+      sCharm_Down_32x32_20f_2: -8953642074440939526
+      sCharm_Down_32x32_20f_20: 6327390456223806155
+      sCharm_Down_32x32_20f_3: 1599070914414633194
+      sCharm_Down_32x32_20f_4: 3421961006731756987
+      sCharm_Down_32x32_20f_5: 464549652558721996
+      sCharm_Down_32x32_20f_6: 8634785430216208609
+      sCharm_Down_32x32_20f_7: -131367026294114897
+      sCharm_Down_32x32_20f_8: -7224686909209751965
+      sCharm_Down_32x32_20f_9: -846289606412254662
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,10 +1,26 @@
 using System;
 using UnityEngine;
 
-public enum UnitAttackType
+public enum UnitMovementType
 {
-    Melee,
-    Ranged,
+    Ground,
+    Flying,
+}
+
+public enum UnitSpeedType
+{
+    Slow,
+    Normal,
+    Fast,
+    VeryFast,
+}
+
+public enum UnitStatsRating
+{
+    Low,
+    Normal,
+    High,
+    VeryHigh,
 }
 
 public enum Team
@@ -48,6 +64,21 @@ public enum HeroDeployState
     Deployed,
 }
 
+public enum HeroBlockState
+{
+    NonBlocking,
+    Blocking,
+}
+
+public enum UnitRuntimeState
+{
+    Idle,
+    Moving,
+    Attacking,
+    Dead,
+    SkillCasting
+}
+
 public enum EightWayDirection
 {
     Left,
@@ -80,6 +111,11 @@ public static class GridDirectionHelpers
     public static Vector2Int ToVector2Int(this EightWayDirection direction)
     {
         return EightWayOffsets[(int)direction];
+    }
+
+    public static bool IsDiagonalMove(Vector2Int offset)
+    {
+        return Mathf.Abs(offset.x) == 1 && Mathf.Abs(offset.y) == 1;
     }
 }
 
@@ -124,4 +160,24 @@ public enum EnemySpawnEventState
     Spawning,
     Finished,
     Resolved,
+}
+
+public enum UnitAttackType
+{
+    Melee,
+    Ranged,
+}
+
+public enum AttackDamageType
+{
+    PhysicalDamage,
+    MagicalDamage,
+    TrueDamage,
+}
+
+public enum AttackMethod
+{
+    DirectTarget,
+    Projectile,
+    Hitbox,
 }

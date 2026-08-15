@@ -20,7 +20,8 @@ public class HeroDefinition : ScriptableObject
     [SerializeField] private float attackInterval = 1f;
     [SerializeField] private float defense = 0f;
     [SerializeField] private float specialDefense = 0f;
-    [SerializeField] private int blockCount = 1;
+    [SerializeField] private int blockCount = 0;
+    [SerializeField] private float moveSpeed = 5f;
 
     [Header("Deploy Stats")]
     [SerializeField] private int baseDeployCost = 15;
@@ -29,10 +30,14 @@ public class HeroDefinition : ScriptableObject
     [Header("Attack")]
     [SerializeField] private UnitAttackType attackType = UnitAttackType.Melee;
     [SerializeField] private TargetPriorityMode targetPriorityMode = TargetPriorityMode.Nearest;
+    [SerializeField] private bool canGuard = true;
     [SerializeField] private List<Vector2Int> attackPattern = new List<Vector2Int>
     {
         Vector2Int.zero,
     };
+    [SerializeField] private AttackMethod attackMethod;
+    [SerializeField] private AttackDamageType attackDamageType;
+    [SerializeField] private float normalAttackDamageMultiplier = 1f;
 
     public string HeroId => heroId;
     public string HeroName => heroName;
@@ -48,11 +53,16 @@ public class HeroDefinition : ScriptableObject
     public float Defense => defense;
     public float SpecialDefense => specialDefense;
     public int BlockCount => blockCount;
+    public float MoveSpeed => moveSpeed;
     public int BaseDeployCost => baseDeployCost;
     public float BaseRedeployTime => baseRedeployTime;
     public UnitAttackType AttackType => attackType;
     public TargetPriorityMode TargetPriorityMode => targetPriorityMode;
+    public bool CanGuard => canGuard;
     public IReadOnlyList<Vector2Int> AttackPattern => attackPattern;
+    public AttackMethod AttackMethod => attackMethod;
+    public AttackDamageType AttackDamageType => attackDamageType;
+    public float NormalAttackDamageMultiplier => normalAttackDamageMultiplier;
 
     public bool IsValid => heroPrefab != null;
 
@@ -62,6 +72,8 @@ public class HeroDefinition : ScriptableObject
         maxHealth = Mathf.Max(0f, maxHealth);
         attack = Mathf.Max(0f, attack);
         attackInterval = Mathf.Max(0f, attackInterval);
+        normalAttackDamageMultiplier = Mathf.Max(0f, normalAttackDamageMultiplier);
+        moveSpeed = Mathf.Max(0f, moveSpeed);
         baseDeployCost = Mathf.Max(0, baseDeployCost);
         baseRedeployTime = Mathf.Max(0f, baseRedeployTime);
     }

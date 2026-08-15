@@ -8,7 +8,8 @@ public class EnemySpawnEvent
     [SerializeField] private EnemyDefinition enemyDefinition;
     [SerializeField] private EnemySpawnPoint spawnPoint;
     [SerializeField] private string routeId;
-    [SerializeField] private int count = 1;
+    [SerializeField] private int spawnCount = 1;
+    [SerializeField] private int enemyCount =  1;
     [SerializeField] private float interval = 0.5f;
     [SerializeField] private EnemySpawnEventStartCondition startCondition = EnemySpawnEventStartCondition.AfterDelay;
     [SerializeField] private string requiredEventId;
@@ -20,7 +21,8 @@ public class EnemySpawnEvent
     public EnemyDefinition EnemyDefinition => enemyDefinition;
     public EnemySpawnPoint SpawnPoint => spawnPoint;
     public string RouteId => routeId;
-    public int Count => count;
+    public int SpawnCount => spawnCount;
+    public int EnemyCount => enemyCount;
     public float Interval => interval;
     public EnemySpawnEventStartCondition StartCondition => startCondition;
     public string RequiredEventId => requiredEventId;

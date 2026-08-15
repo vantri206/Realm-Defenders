@@ -8,6 +8,8 @@ public class EnemyWaveController : MonoBehaviour
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private EnemyWaveDirector enemyWaveDirector;
 
+    [SerializeField] private EnemyDepthSorter enemyDepthSorter;
+
     [Header("Wave Settings")]
     [SerializeField] private List<EnemySpawnEvent> spawnEvents = new List<EnemySpawnEvent>();
 
@@ -42,7 +44,7 @@ public class EnemyWaveController : MonoBehaviour
 
         if (enemySpawner != null)
         {
-            enemySpawner.Initialize(combatGrid, routeGraph, pathfindingSystem);
+            enemySpawner.Initialize(combatGrid, routeGraph, pathfindingSystem, enemyDepthSorter);
         }
 
         if (enemySpawner == null || !enemySpawner.IsInitialized)
@@ -61,6 +63,8 @@ public class EnemyWaveController : MonoBehaviour
 
         isInitialized = true;
         isSpawnCompleted = false;
+
+        StartWave();
     }
 
     public void StartWave()
@@ -134,11 +138,5 @@ public class EnemyWaveController : MonoBehaviour
     private bool CheckWaveResolved()
     {
         return CheckWaveSpawnFinished();    // Add logic resolved = kill all enmies, or all enemies are dead, or all enemies are despawned. PLACEHOLDER
-    }
-
-    [ContextMenu("Test Spawn")]
-    private void TestSpawn()
-    {
-        StartWave();
     }
 }

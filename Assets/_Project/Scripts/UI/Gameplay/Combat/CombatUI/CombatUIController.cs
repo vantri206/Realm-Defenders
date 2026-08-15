@@ -38,6 +38,11 @@ public class CombatUIController : MonoBehaviour
         RegisterInputEvents();
         RegisterInventoryEvents();
 
+        for (int i = 0; i < heroInventoryView.HeroCards.Count; i++)
+        {
+            AddCard(heroInventoryView.HeroCards[i]);
+        }
+
         isInitialized = true;
     }
 
