@@ -35,3 +35,8 @@ MonoBehaviour:
   attackPattern:
   - {x: 0, y: 0}
   - {x: -1, y: 0}
+  attackMethod: 0
+  attackDamageType: 0
+  normalAttackDamageMultiplier: 1
+  normalAttackProjectilePrefab: {fileID: 0}
+  normalAttackHitVFXPrefab: {fileID: 5006250830996535109, guid: 326cade601d06734b89b36364c081a10, type: 3}

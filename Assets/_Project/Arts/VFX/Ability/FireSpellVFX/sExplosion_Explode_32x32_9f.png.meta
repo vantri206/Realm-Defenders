@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,10 +75,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -156,12 +156,12 @@ TextureImporter:
       name: sExplosion_Explode_32x32_9f_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 7
-        width: 17
-        height: 17
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -178,12 +178,12 @@ TextureImporter:
       name: sExplosion_Explode_32x32_9f_1
       rect:
         serializedVersion: 2
-        x: 70
-        y: 6
-        width: 20
-        height: 20
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -200,12 +200,12 @@ TextureImporter:
       name: sExplosion_Explode_32x32_9f_2
       rect:
         serializedVersion: 2
-        x: 100
-        y: 4
-        width: 24
-        height: 24
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -222,12 +222,12 @@ TextureImporter:
       name: sExplosion_Explode_32x32_9f_3
       rect:
         serializedVersion: 2
-        x: 130
-        y: 13
-        width: 13
-        height: 16
+        x: 96
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -244,12 +244,12 @@ TextureImporter:
       name: sExplosion_Explode_32x32_9f_4
       rect:
         serializedVersion: 2
-        x: 141
-        y: 23
-        width: 12
-        height: 7
+        x: 128
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -266,12 +266,12 @@ TextureImporter:
       name: sExplosion_Explode_32x32_9f_5
       rect:
         serializedVersion: 2
-        x: 151
-        y: 1
-        width: 40
-        height: 30
+        x: 160
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -288,20 +288,20 @@ TextureImporter:
       name: sExplosion_Explode_32x32_9f_6
       rect:
         serializedVersion: 2
-        x: 10
-        y: 10
-        width: 12
-        height: 12
+        x: 192
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5bd4bfe689cae3010800000000000000
-      internalID: 1170562723859877301
+      spriteID: b1562642bc1cbad4f80c4434325f3811
+      internalID: -1962665812
       vertices: []
       indices: 
       edges: []
@@ -310,20 +310,20 @@ TextureImporter:
       name: sExplosion_Explode_32x32_9f_7
       rect:
         serializedVersion: 2
-        x: 132
-        y: 3
-        width: 9
-        height: 10
+        x: 224
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c6db073b891e5c700800000000000000
-      internalID: 560101774639283564
+      spriteID: d8af82096b4f67e4bac0cf375b49e227
+      internalID: 1804862957
       vertices: []
       indices: 
       edges: []
@@ -332,42 +332,20 @@ TextureImporter:
       name: sExplosion_Explode_32x32_9f_8
       rect:
         serializedVersion: 2
-        x: 150
-        y: 6
-        width: 8
-        height: 10
+        x: 256
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 739f4d094236131e0800000000000000
-      internalID: -2219884132617094857
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sExplosion_Explode_32x32_9f_9
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 2
-        width: 12
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a6fa4f20234ea2d70800000000000000
-      internalID: 9019272107211927402
+      spriteID: b9eaf7fb2ad693c4d8ba2e60fcfb773a
+      internalID: 358288139
       vertices: []
       indices: 
       edges: []
@@ -376,7 +354,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7e47da42b16f9a741b91f41b419d4a9a
     internalID: 0
     vertices: []
     indices: 
@@ -384,7 +362,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       sExplosion_Explode_32x32_9f_0: 7540658515752462423
       sExplosion_Explode_32x32_9f_1: -2541030485862224131
@@ -392,10 +372,9 @@ TextureImporter:
       sExplosion_Explode_32x32_9f_3: -6773244484139742949
       sExplosion_Explode_32x32_9f_4: -4283348710101334157
       sExplosion_Explode_32x32_9f_5: -7009930442073758030
-      sExplosion_Explode_32x32_9f_6: 1170562723859877301
-      sExplosion_Explode_32x32_9f_7: 560101774639283564
-      sExplosion_Explode_32x32_9f_8: -2219884132617094857
-      sExplosion_Explode_32x32_9f_9: 9019272107211927402
+      sExplosion_Explode_32x32_9f_6: -1962665812
+      sExplosion_Explode_32x32_9f_7: 1804862957
+      sExplosion_Explode_32x32_9f_8: 358288139
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

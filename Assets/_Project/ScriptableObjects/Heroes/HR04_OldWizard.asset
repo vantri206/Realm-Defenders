@@ -46,6 +46,11 @@ MonoBehaviour:
   - {x: -3, y: 0}
   - {x: -3, y: -1}
   - {x: -4, y: 0}
+  targetSide: 0
+  attackEffect: 0
   attackMethod: 2
   attackDamageType: 1
-  normalAttackDamageMultiplier: 1
+  normalAttackEffectMultiplier: 1
+  normalAttackProjectilePrefab: {fileID: 0}
+  normalAttackAOEHitPrefab: {fileID: 5242528492286644227, guid: 1ce7f8d243e91e745b37392c4aacb704, type: 3}
+  normalAttackHitVFXPrefab: {fileID: 0}

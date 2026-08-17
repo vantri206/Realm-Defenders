@@ -19,18 +19,24 @@ MonoBehaviour:
   enemyDescription: 
   enemyAnimator: {fileID: 22100000, guid: 5d215b53f437b494f8fa597a9728759b, type: 2}
   enemyPrefab: {fileID: 1262049475646235035, guid: b7d4a188a06efe342ab7cba6ba439b78, type: 3}
-  maxHealth: 20
+  maxHealth: 150
   attack: 10
   attackInterval: 1
-  defense: 100
-  specialDefense: 100
+  defense: 20
+  specialDefense: 20
   moveSpeed: 2
+  movementType: 0
   attackType: 0
   targetPriorityMode: 0
   attackPattern:
   - {x: 0, y: 0}
   - {x: -1, y: 0}
+  targetSide: 0
+  attackEffect: 0
   attackMethod: 0
   attackDamageType: 0
-  normalAttackDamageMultiplier: 1
+  normalAttackEffectMultiplier: 1
+  normalAttackProjectilePrefab: {fileID: 0}
+  normalAttackAOEHitPrefab: {fileID: 0}
+  normalAttackHitVFXPrefab: {fileID: 5006250830996535109, guid: 326cade601d06734b89b36364c081a10, type: 3}
   centerOffset: {x: 0, y: 0.4}

@@ -30,7 +30,7 @@ MonoBehaviour:
   baseDeployCost: 35
   baseRedeployTime: 12
   attackType: 1
-  targetPriorityMode: 0
+  targetPriorityMode: 2
   canGuard: 0
   attackPattern:
   - {x: 0, y: 0}
@@ -48,6 +48,12 @@ MonoBehaviour:
   - {x: -4, y: 0}
   - {x: -4, y: 1}
   - {x: -4, y: -1}
+  targetSide: 1
+  attackEffect: 1
   attackMethod: 0
   attackDamageType: 1
-  normalAttackDamageMultiplier: 1
+  normalAttackEffectMultiplier: 1
+  normalAttackProjectilePrefab: {fileID: 0}
+  normalAttackAOEHitPrefab: {fileID: 0}
+  normalAttackHitVFXPrefab: {fileID: 0}
+  normalAttackHealVFXPrefab: {fileID: 2897203167134258638, guid: d944ff61e3387444b96accba9d4fd54d, type: 3}

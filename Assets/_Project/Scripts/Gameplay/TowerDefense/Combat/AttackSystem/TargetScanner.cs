@@ -4,6 +4,7 @@ using UnityEngine;
 public class TargetScanner : MonoBehaviour
 {
     private CombatGrid combatGrid;
+    private UnitRuntime owner;
     private TeamIdentity ownerTeam;
     private LayerMask targetMask;
     private int maxTargets = 128;
@@ -19,14 +20,16 @@ public class TargetScanner : MonoBehaviour
         targetMask = GameLayer.HurtboxMask;
     }
 
-    public void Initialize(CombatGrid combatGrid, TeamIdentity ownerTeam)
+    public void Initialize(CombatGrid combatGrid, UnitRuntime owner)
     {
         this.combatGrid = combatGrid;
-        this.ownerTeam = ownerTeam;
+        this.owner = owner;
+        ownerTeam = owner != null ? owner.TeamIdentity : null;
         InitializeBuffer();
     }
 
-    public void Scan(Vector2 originPosition, IReadOnlyList<Vector2Int> pattern, List<Hurtbox> results)
+    public void Scan(Vector2 originPosition, IReadOnlyList<Vector2Int> pattern, TargetSide targetSide,
+                     AttackEffect attackEffect, List<Hurtbox> results)
     {
         if (results == null)
         {
@@ -56,13 +59,18 @@ public class TargetScanner : MonoBehaviour
         {
             Vector2Int offset = pattern[i];
             Vector2 scanPosition = GetPatternScanPosition(originPosition, offset);
-            ScanAtPosition(scanPosition, results);
+            ScanAtPosition(scanPosition, targetSide, attackEffect, results);
         }
     }
 
-    public bool IsValidTarget(Hurtbox hurtbox)
+    public bool IsValidTarget(Hurtbox hurtbox, TargetSide targetSide, AttackEffect attackEffect)
     {
         if (hurtbox == null)
+        {
+            return false;
+        }
+
+        if (!AttackTargetRulling.CanTarget(owner, hurtbox))
         {
             return false;
         }
@@ -74,7 +82,12 @@ public class TargetScanner : MonoBehaviour
         }
 
         TeamIdentity targetTeam = hurtbox.GetTargetTeam();
-        if (ownerTeam != null && !ownerTeam.IsEnemy(targetTeam))
+        if (ownerTeam == null || !ownerTeam.IsTargetSide(targetTeam, targetSide))
+        {
+            return false;
+        }
+
+        if (attackEffect == AttackEffect.Heal && damageable.CurrentHealth >= damageable.MaxHealth)
         {
             return false;
         }
@@ -82,7 +95,7 @@ public class TargetScanner : MonoBehaviour
         return true;
     }
 
-    private void ScanAtPosition(Vector2 centerPosition, List<Hurtbox> results)
+    private void ScanAtPosition(Vector2 centerPosition, TargetSide targetSide, AttackEffect attackEffect, List<Hurtbox> results)
     {
         Vector2 cellSize = GetCellSize();
         int hitCount = Physics2D.OverlapBox(centerPosition, cellSize, 0f, scanFilter, scanBuffer);
@@ -99,7 +112,7 @@ public class TargetScanner : MonoBehaviour
                 continue;
             }
 
-            if (!IsValidTarget(hurtbox) || !uniqueTargets.Add(hurtbox))
+            if (!IsValidTarget(hurtbox, targetSide, attackEffect) || !uniqueTargets.Add(hurtbox))
             {
                 continue;
             }

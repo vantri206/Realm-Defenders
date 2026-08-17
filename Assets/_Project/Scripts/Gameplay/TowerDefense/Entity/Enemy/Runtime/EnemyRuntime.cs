@@ -15,6 +15,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
     // Enemy Stats
     public override UnitStats Stats => enemyInstance != null ? enemyInstance.Stats : base.Stats;
     public UnitSpeed Speed => enemyInstance != null ? enemyInstance.Speed : null;
+    public override UnitMovementType MovementType => enemyDefinition != null ? enemyDefinition.MovementType : base.MovementType;
     public override UnitAttackType AttackType => enemyDefinition != null ? enemyDefinition.AttackType : base.AttackType;
     // Getters
     public EnemyInstance Instance => enemyInstance;
@@ -22,15 +23,20 @@ public class EnemyRuntime : UnitRuntime, IBlockable
     public EnemyPathfindingController PathfindingController => enemyPathfindingController;
     public float PathProgressScore => enemyPathfindingController != null ? enemyPathfindingController.PathProgressScore : 0f;
     public override Vector2 CenterOffset => enemyDefinition != null ? enemyDefinition.CenterOffset : base.CenterOffset;
-    public bool CanBeBlocked => IsInitialized && !IsDead;
+    public bool CanBeBlocked => IsInitialized && !IsDead && MovementType != UnitMovementType.Flying;
     public bool IsBlocked => currentBlocker != null;
     public UnitRuntime Owner => this;
     public IBlocker CurrentBlocker => currentBlocker;
     public override bool IsMovementBlocked => base.IsMovementBlocked || IsBlocked;
 
+    public override TargetSide TargetSide => enemyDefinition != null ? enemyDefinition.TargetSide : base.TargetSide;
+    public override AttackEffect AttackEffect => enemyDefinition != null ? enemyDefinition.AttackEffect : base.AttackEffect;
     public override AttackMethod AttackMethod => enemyDefinition != null ? enemyDefinition.AttackMethod : base.AttackMethod;
     public override AttackDamageType AttackDamageType => enemyDefinition != null ? enemyDefinition.AttackDamageType : base.AttackDamageType;
-    public override float NormalAttackDamageMultiplier => enemyDefinition != null ? enemyDefinition.NormalAttackDamageMultiplier : base.NormalAttackDamageMultiplier;
+    public override float NormalAttackEffectMultiplier => enemyDefinition != null ? enemyDefinition.NormalAttackEffectMultiplier : base.NormalAttackEffectMultiplier;
+    public override AttackProjectile NormalAttackProjectilePrefab => enemyDefinition != null ? enemyDefinition.NormalAttackProjectilePrefab : base.NormalAttackProjectilePrefab;
+    public override AttackAOEHit NormalAttackAOEHitPrefab => enemyDefinition != null ? enemyDefinition.NormalAttackAOEHitPrefab : base.NormalAttackAOEHitPrefab;
+    public override SimpleSpriteAnimatorVFX NormalAttackHitVFXPrefab => enemyDefinition != null ? enemyDefinition.NormalAttackHitVFXPrefab : base.NormalAttackHitVFXPrefab;
 
     private void Awake()
     {
@@ -142,6 +148,11 @@ public class EnemyRuntime : UnitRuntime, IBlockable
 
         if (!CanMove)
         {
+            if (IsBlocked)
+            {
+                UpdateBlockedFacingDirection();
+            }
+
             SetMovementDirection(Vector2.zero);
             unitMovement.FixedTick(Time.fixedDeltaTime);
             return;
@@ -188,7 +199,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
             return;
         }
 
-        unitMovement.Initialize(Speed);
+        unitMovement.Initialize(Speed, MovementType);
     }
 
     protected void SetMovementDirection(Vector2 direction)
@@ -252,6 +263,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         currentBlocker?.ReleaseBlockedTarget(this);
 
         currentBlocker = blocker;
+        UpdateBlockedFacingDirection();
         SetMovementDirection(Vector2.zero);
     }
 
@@ -263,6 +275,39 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         }
 
         currentBlocker = null;
+    }
+
+    private void UpdateBlockedFacingDirection()
+    {
+        if (currentBlocker == null || currentBlocker.Owner == null)
+        {
+            return;
+        }
+
+        Vector2 directionToBlocker = (Vector2)currentBlocker.Owner.CenterPosition - (Vector2)CenterPosition;
+        Vector2Int blockerFacingDirection = GetFourDirection(directionToBlocker);
+
+        if (blockerFacingDirection == Vector2Int.zero || blockerFacingDirection == facingDirection)
+        {
+            return;
+        }
+
+        SetFacingDirection(blockerFacingDirection);
+    }
+
+    private static Vector2Int GetFourDirection(Vector2 direction)
+    {
+        if (direction.sqrMagnitude <= Mathf.Epsilon)
+        {
+            return Vector2Int.zero;
+        }
+
+        if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
+        {
+            return direction.x >= 0f ? Vector2Int.right : Vector2Int.left;
+        }
+
+        return direction.y >= 0f ? Vector2Int.up : Vector2Int.down;
     }
 
     protected override void CacheReferences()

@@ -1,6 +1,9 @@
 public interface IDamageable
 {
     bool IsDead { get; }
+    float CurrentHealth { get; }
+    float MaxHealth { get; }
 
-    DamageResult TakeDamage(DamageRequest request);
+    HitResult TakeDamage(DamageRequest request);
+    HitResult Heal(HealRequest request);
 }

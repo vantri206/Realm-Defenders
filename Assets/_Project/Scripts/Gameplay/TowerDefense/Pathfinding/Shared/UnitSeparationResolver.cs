@@ -61,6 +61,11 @@ public class UnitSeparationResolver : MonoBehaviour
                 continue;
             }
 
+            if (other.MovementType != self.MovementType)
+            {
+                continue;
+            }
+
             TeamIdentity otherTeam = other.TeamIdentity;
             if (otherTeam == null || otherTeam.Team != selfTeam.Team)
             {

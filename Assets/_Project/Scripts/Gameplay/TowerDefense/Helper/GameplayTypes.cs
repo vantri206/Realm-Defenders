@@ -34,7 +34,7 @@ public enum TargetPriorityMode
 {
     Nearest,
     HighestPathProgress,
-    LowestHealth,
+    LowestHealthPercent,
     RangedPriority
 }
 
@@ -179,5 +179,23 @@ public enum AttackMethod
 {
     DirectTarget,
     Projectile,
-    Hitbox,
+    AOEHit,
+}
+
+public enum ProjectileMode
+{
+    Linear,
+    Chase,
+}
+
+public enum TargetSide
+{
+    Enemy,
+    Ally,
+}
+
+public enum AttackEffect
+{
+    Damage,
+    Heal,
 }

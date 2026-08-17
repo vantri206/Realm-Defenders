@@ -3,50 +3,52 @@ using UnityEngine;
 
 public class UnitPathfindingSystem : MonoBehaviour
 {
-    private Dictionary<Vector3Int, byte> costGrid = new Dictionary<Vector3Int, byte>();
-    private Dictionary<Vector3Int, FlowField> flowFields = new Dictionary<Vector3Int, FlowField>();
+    private readonly Dictionary<UnitMovementType, Dictionary<Vector3Int, byte>> costGrids = new Dictionary<UnitMovementType, Dictionary<Vector3Int, byte>>();
+    private readonly Dictionary<UnitMovementType, Dictionary<Vector3Int, FlowField>> flowFields = new Dictionary<UnitMovementType, Dictionary<Vector3Int, FlowField>>();
     private LocalBFSPathfinding localBFSPathfinding = new LocalBFSPathfinding();
-
-    private byte blockedCost = GameplayConstants.BLOCKED_COST;
 
     public void BuildCostGrid(IReadOnlyDictionary<Vector3Int, CombatGridCell> gridCells)
     {
-        costGrid.Clear();
+        costGrids.Clear();
         flowFields.Clear();
 
-        foreach (var cell in gridCells)
-        {
-            Vector3Int cellPosition = cell.Key;
-            CombatGridCell gridCell = cell.Value;
-
-            byte cost = blockedCost;
-            if (gridCell.CellStates.HasFlag(CombatGridCellStates.Blocked))
-            {
-                cost = blockedCost;
-            } 
-            else if (gridCell.CellStates.HasFlag(CombatGridCellStates.Walkable))
-            {
-                cost = 1;
-            } 
-
-            costGrid[cellPosition] = cost;
-        }
+        BuildCostGrid(gridCells, UnitMovementType.Ground);
+        BuildCostGrid(gridCells, UnitMovementType.Flying);
     }
 
-    private FlowField GetOrCreateFlowField(Vector3Int targetCellPosition)
+    private void BuildCostGrid(IReadOnlyDictionary<Vector3Int, CombatGridCell> gridCells, UnitMovementType movementType)
     {
-        if (!flowFields.TryGetValue(targetCellPosition, out FlowField flowField))
+        Dictionary<Vector3Int, byte> costGrid = new Dictionary<Vector3Int, byte>();
+        foreach (KeyValuePair<Vector3Int, CombatGridCell> cell in gridCells)
+        {
+            costGrid[cell.Key] = UnitMovementRules.GetPathfindingCost(movementType, cell.Value);
+        }
+
+        costGrids[movementType] = costGrid;
+        flowFields[movementType] = new Dictionary<Vector3Int, FlowField>();
+    }
+
+    private FlowField GetOrCreateFlowField(Vector3Int targetCellPosition, UnitMovementType movementType)
+    {
+        if (!costGrids.TryGetValue(movementType, out Dictionary<Vector3Int, byte> costGrid) ||
+            !flowFields.TryGetValue(movementType, out Dictionary<Vector3Int, FlowField> movementFlowFields))
+        {
+            Debug.LogError($"[UnitPathfindingSystem] Cost grid for movement type '{movementType}' has not been built.", this);
+            return null;
+        }
+
+        if (!movementFlowFields.TryGetValue(targetCellPosition, out FlowField flowField))
         {
             flowField = new FlowField(targetCellPosition, costGrid);
             flowField.BuildFlowField();
-            flowFields[targetCellPosition] = flowField;
+            movementFlowFields[targetCellPosition] = flowField;
         }
         return flowField;
     }
 
-    public Vector2Int TryGetFlowFieldDirection(Vector3Int currentCellPosition, Vector3Int targetCellPosition)
+    public Vector2Int TryGetFlowFieldDirection(Vector3Int currentCellPosition, Vector3Int targetCellPosition, UnitMovementType movementType)
     {
-        FlowField flowField = GetOrCreateFlowField(targetCellPosition);
+        FlowField flowField = GetOrCreateFlowField(targetCellPosition, movementType);
         if (flowField == null)
         {
             return Vector2Int.zero;
@@ -63,11 +65,29 @@ public class UnitPathfindingSystem : MonoBehaviour
 
     public bool TryGetLocalBFSDirection(Vector3Int currentCellPosition, Vector3Int targetCellPosition, int searchRange, out Vector2Int direction)
     {
+        direction = Vector2Int.zero;
+        if (!TryGetGroundCostGrid(out Dictionary<Vector3Int, byte> costGrid))
+        {
+            return false;
+        }
+
         return localBFSPathfinding.TryGetDirection(costGrid, searchRange, currentCellPosition, targetCellPosition, out direction);
     }
 
-    public bool TryGetLocalBFSDirection(Vector3Int currentCellPosition, IReadOnlyCollection<Vector3Int> targetCellPositions, int searchRange, out Vector2Int direction)
+    public bool TryGetLocalBFSDirection(Vector3Int currentCellPosition, IReadOnlyCollection<Vector3Int> targetCellPositions, 
+                                        int searchRange, out Vector2Int direction)
     {
+        direction = Vector2Int.zero;
+        if (!TryGetGroundCostGrid(out Dictionary<Vector3Int, byte> costGrid))
+        {
+            return false;
+        }
+
         return localBFSPathfinding.TryGetDirection(costGrid, searchRange, currentCellPosition, targetCellPositions, out direction);
+    }
+
+    private bool TryGetGroundCostGrid(out Dictionary<Vector3Int, byte> costGrid)
+    {
+        return costGrids.TryGetValue(UnitMovementType.Ground, out costGrid);
     }
 }

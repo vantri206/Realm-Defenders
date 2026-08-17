@@ -1,0 +1,324 @@
+using UnityEngine;
+
+public class AttackProjectile : MonoBehaviour, IPoolable
+{
+    public int PrefabID { get; set; }
+
+    [Header("References")]
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Collider2D col;
+
+    [Header("VFX")]
+    [SerializeField] private SimpleSpriteAnimatorVFX hitVFXPrefab;
+    [SerializeField] private float hitVFXRotationOffset = 180f;
+
+    [Header("Movement")]
+    [SerializeField] private ProjectileMode projectileMode = ProjectileMode.Linear;
+    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float lifetime = 8f;
+    [SerializeField] private float maxRange = 20f;
+    [SerializeField, Range(0f, 180f)] private float maxTurnAngle = 90f;
+
+    private GameObject attacker;
+    private TeamIdentity attackerTeam;
+    private UnitRuntime target;
+    private TargetSide targetSide;
+    private AttackEffect attackEffect;
+    private UnitAttackType attackType;
+    private ParticleVFX healVFXPrefab;
+    private float baseEffectValue;
+    private AttackDamageType damageType;
+
+    private ProjectileMode currentMode;
+    private Vector2 spawnPosition;
+    private Vector2 moveDirection;
+    private CountdownTimer lifetimeTimer;
+    
+    private bool hasHitTarget;
+
+    private bool isInitialized;
+    private bool isReturningToPool;
+
+    protected virtual SimpleSpriteAnimatorVFX HitVFXPrefab => hitVFXPrefab;
+
+    private void Awake()
+    {
+        CacheReferences();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!isInitialized || hasHitTarget || isReturningToPool)
+        {
+            return;
+        }
+
+        lifetimeTimer.Tick(Time.fixedDeltaTime);
+        if (lifetimeTimer.IsFinished || CheckReachMaxRange())
+        {
+            ReturnToPool();
+            return;
+        }
+
+        UpdateMoveDirection();
+        Move(Time.fixedDeltaTime);
+    }
+
+    public void Initialize(GameObject attacker, TeamIdentity attackerTeam, UnitRuntime target, TargetSide targetSide,
+                           AttackEffect attackEffect, UnitAttackType attackType, ParticleVFX healVFXPrefab,
+                           float baseEffectValue,
+                           AttackDamageType damageType)
+    {
+        this.attacker = attacker;
+        this.attackerTeam = attackerTeam;
+        this.target = target;
+        this.targetSide = targetSide;
+        this.attackEffect = attackEffect;
+        this.attackType = attackType;
+        this.healVFXPrefab = healVFXPrefab;
+        this.baseEffectValue = Mathf.Max(0f, baseEffectValue);
+        this.damageType = damageType;
+
+        isInitialized = true;
+    }
+
+    public void OnSpawn()
+    {
+        isReturningToPool = false;
+        hasHitTarget = false;
+        currentMode = projectileMode;
+
+        CacheReferences();
+
+        if (!CanStart())
+        {
+            Debug.LogError("[AttackProjectile] Projectile missing data are required before spawning.", this);
+            ReturnToPool();
+            return;
+        }
+
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+        spawnPosition = rb.position;
+        moveDirection = GetDirectionToTarget();
+
+        if (moveDirection == Vector2.zero)
+        {
+            ReturnToPool();
+            return;
+        }
+
+        if (currentMode == ProjectileMode.Linear)
+        {
+            target = null;
+        }
+
+        lifetimeTimer = new CountdownTimer(lifetime);
+        lifetimeTimer.StartTimer();
+        UpdateRotation();
+    }
+
+    public void OnDespawn()
+    {
+        if (lifetimeTimer != null)
+        {
+            lifetimeTimer.StopTimer();
+            lifetimeTimer = null;
+        }
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+
+        attacker = null;
+        attackerTeam = null;
+        target = null;
+        targetSide = default;
+        attackEffect = default;
+        attackType = default;
+        healVFXPrefab = null;
+        baseEffectValue = 0f;
+        damageType = default;
+
+        currentMode = projectileMode;
+        spawnPosition = Vector2.zero;
+        moveDirection = Vector2.zero;
+
+        isInitialized = false;
+        hasHitTarget = false;
+        isReturningToPool = true;
+    }
+
+    public void ReturnToPool()
+    {
+        if (isReturningToPool)
+        {
+            return;
+        }
+
+        isReturningToPool = true;
+        ObjectPoolingHelper.Release(this);
+    }
+
+    private void UpdateMoveDirection()
+    {
+        if (currentMode != ProjectileMode.Chase)
+        {
+            return;
+        }
+
+        if (target == null || target.IsDead)
+        {
+            ChangeToLinearMode();
+            return;
+        }
+
+        Vector2 desiredDirection = GetDirectionToTarget();
+        if (desiredDirection == Vector2.zero)
+        {
+            return;
+        }
+
+        float turnAngle = Vector2.Angle(moveDirection, desiredDirection);
+        if (turnAngle > maxTurnAngle)
+        {
+            ChangeToLinearMode();
+            return;
+        }
+
+        moveDirection = desiredDirection;
+    }
+
+    private void ChangeToLinearMode()
+    {
+        currentMode = ProjectileMode.Linear;
+        target = null;
+    }
+
+    private void Move(float deltaTime)
+    {
+        Vector2 movement = moveDirection * moveSpeed * deltaTime;
+        rb.MovePosition(rb.position + movement);
+        UpdateRotation();
+    }
+
+    private bool CheckReachMaxRange()
+    {
+        return Vector2.Distance(spawnPosition, rb.position) >= maxRange;
+    }
+
+    private Vector2 GetDirectionToTarget()
+    {
+        if (target == null)
+        {
+            return Vector2.zero;
+        }
+
+        Vector2 direction = (Vector2)target.CenterPosition - rb.position;
+        return direction.sqrMagnitude > Mathf.Epsilon ? direction.normalized : Vector2.zero;
+    }
+
+    private void UpdateRotation()
+    {
+        if (moveDirection == Vector2.zero)
+        {
+            return;
+        }
+
+        float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+        rb.SetRotation(angle);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!isInitialized || hasHitTarget || isReturningToPool)
+        {
+            return;
+        }
+
+        if (!other.TryGetComponent(out Hurtbox hurtbox))
+        {
+            return;
+        }
+
+        Vector3 hitPosition = GetHitPosition(other, hurtbox);
+        HitData hitData = new HitData(attacker, hurtbox, attackerTeam, targetSide, attackEffect, attackType,
+                                      baseEffectValue, damageType, hitPosition);
+        if (!HitProcessor.TryProcessHit(hitData, out HitResult hitResult))
+        {
+            return;
+        }
+
+        if (HitVFXPrefab != null)
+        {
+            float hitVFXAngle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg + hitVFXRotationOffset;
+            Quaternion hitVFXRotation = Quaternion.Euler(0f, 0f, hitVFXAngle);
+            CombatVFXSpawner.SpawnSimpleSpriteVFX(HitVFXPrefab, hitPosition, hitVFXRotation);
+        }
+
+        SpawnHealVFX(hurtbox, hitResult);
+
+        hasHitTarget = true;
+        ReturnToPool();
+    }
+
+    private Vector3 GetHitPosition(Collider2D otherCollider, Hurtbox hurtbox)
+    {
+        if (col == null || otherCollider == null)
+        {
+            return hurtbox.CenterPosition;
+        }
+
+        ColliderDistance2D colliderDistance = col.Distance(otherCollider);
+        if (!colliderDistance.isValid)
+        {
+            return hurtbox.CenterPosition;
+        }
+
+        Vector2 contactPosition = (colliderDistance.pointA + colliderDistance.pointB) * 0.5f;
+        return new Vector3(contactPosition.x, contactPosition.y, transform.position.z);
+    }
+
+    private void SpawnHealVFX(Hurtbox targetHurtbox, in HitResult hitResult)
+    {
+        if (attackEffect != AttackEffect.Heal || hitResult.HealthRestored <= 0f ||
+            healVFXPrefab == null || targetHurtbox == null)
+        {
+            return;
+        }
+
+        CombatVFXSpawner.SpawnParticleVFX(healVFXPrefab, targetHurtbox);
+    }
+
+    private bool CanStart()
+    {
+        return isInitialized && rb != null && col != null && attackerTeam != null && target != null &&
+               !target.IsDead && baseEffectValue > 0f;
+    }
+
+    private void CacheReferences()
+    {
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+
+        if (col == null)
+        {
+            col = GetComponent<Collider2D>();
+        }
+    }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        moveSpeed = Mathf.Max(0f, moveSpeed);
+        lifetime = Mathf.Max(0f, lifetime);
+        maxRange = Mathf.Max(0f, maxRange);
+        maxTurnAngle = Mathf.Clamp(maxTurnAngle, 0f, 360f);
+        CacheReferences();
+    }
+#endif
+}

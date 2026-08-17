@@ -9,6 +9,8 @@ public class EnemyDepthSorter : MonoBehaviour
     private int baseSortingOrder;
 
     private readonly List<EnemyRuntime> registeredEnemies = new List<EnemyRuntime>();
+    private readonly List<EnemyRuntime> groundEnemies = new List<EnemyRuntime>();
+    private readonly List<EnemyRuntime> flyingEnemies = new List<EnemyRuntime>();
     private readonly List<EnemyRuntime> processedEnemies = new List<EnemyRuntime>();
     private readonly List<EnemyRuntime> currentDepthGroup = new List<EnemyRuntime>();
     private readonly Dictionary<EnemyRuntime, int> depthIdEnemy = new Dictionary<EnemyRuntime, int>();
@@ -66,19 +68,55 @@ public class EnemyDepthSorter : MonoBehaviour
     public void RefreshSorting()
     {
         RemoveMissingEnemies();
+        GroupEnemiesByMovementType();
 
+        int groundBandSize = RefreshMovementTypeSorting(groundEnemies, baseSortingOrder);
+        int flyingBaseSortingOrder = baseSortingOrder + groundBandSize;
+        RefreshMovementTypeSorting(flyingEnemies, flyingBaseSortingOrder);
+    }
+
+    private int RefreshMovementTypeSorting(IReadOnlyList<EnemyRuntime> enemies, int bandBaseSortingOrder)
+    {
         processedEnemies.Clear();
-        for (int i = 0; i < registeredEnemies.Count; i++)
+        int bandSize = 0;
+        for (int i = 0; i < enemies.Count; i++)
         {
-            EnemyRuntime enemy = registeredEnemies[i];
+            EnemyRuntime enemy = enemies[i];
             if (enemy == null || processedEnemies.Contains(enemy))
             {
                 continue;
             }
 
-            CollectDepthGroup(enemy);
+            CollectDepthGroup(enemy, enemies);
             SortDepthGroupByDepthId();
-            ApplyDepthGroupSorting();
+            ApplyDepthGroupSorting(bandBaseSortingOrder);
+            bandSize = Mathf.Max(bandSize, currentDepthGroup.Count);
+        }
+
+        return bandSize;
+    }
+
+    private void GroupEnemiesByMovementType()
+    {
+        groundEnemies.Clear();
+        flyingEnemies.Clear();
+
+        for (int i = 0; i < registeredEnemies.Count; i++)
+        {
+            EnemyRuntime enemy = registeredEnemies[i];
+            if (enemy == null)
+            {
+                continue;
+            }
+
+            if (enemy.MovementType == UnitMovementType.Flying)
+            {
+                flyingEnemies.Add(enemy);
+            }
+            else
+            {
+                groundEnemies.Add(enemy);
+            }
         }
     }
 
@@ -98,7 +136,7 @@ public class EnemyDepthSorter : MonoBehaviour
         }
     }
 
-    private void CollectDepthGroup(EnemyRuntime seedEnemy)
+    private void CollectDepthGroup(EnemyRuntime seedEnemy, IReadOnlyList<EnemyRuntime> enemies)
     {
         currentDepthGroup.Clear();
         AddEnemyToDepthGroup(seedEnemy);
@@ -113,9 +151,9 @@ public class EnemyDepthSorter : MonoBehaviour
             }
 
             Vector3Int groupCellPosition = groupEnemy.ActiveCellPosition;
-            for (int i = 0; i < registeredEnemies.Count; i++)
+            for (int i = 0; i < enemies.Count; i++)
             {
-                EnemyRuntime enemy = registeredEnemies[i];
+                EnemyRuntime enemy = enemies[i];
                 if (enemy == null || enemy.ActiveCell == null || processedEnemies.Contains(enemy))
                 {
                     continue;
@@ -154,14 +192,14 @@ public class EnemyDepthSorter : MonoBehaviour
         return firstDepthId.CompareTo(secondDepthId);
     }
 
-    private void ApplyDepthGroupSorting()
+    private void ApplyDepthGroupSorting(int bandBaseSortingOrder)
     {
         for (int i = 0; i < currentDepthGroup.Count; i++)
         {
             EnemyRuntime enemy = currentDepthGroup[i];
             if (sortingGroupByEnemy.TryGetValue(enemy, out SortingGroup sortingGroup) && sortingGroup != null)
             {
-                sortingGroup.sortingOrder = baseSortingOrder + i;
+                sortingGroup.sortingOrder = bandBaseSortingOrder + i;
             }
         }
     }

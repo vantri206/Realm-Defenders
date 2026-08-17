@@ -3,15 +3,28 @@ using UnityEngine;
 public class Hurtbox : MonoBehaviour
 {
     [SerializeField] private MonoBehaviour damageableMB;
+    [SerializeField] private UnitRuntime ownerRuntime;
+    [SerializeField] private TeamIdentity ownerTeam;
 
     private IDamageable damageable;
     private Collider2D hurtboxCollider;
+
+    public UnitRuntime OwnerRuntime => ownerRuntime;
+    public TeamIdentity OwnerTeam => ownerTeam;
 
     private void Awake()
     {
         if (hurtboxCollider == null)
         {
             hurtboxCollider = GetComponent<Collider2D>();
+        }
+        if (ownerRuntime == null)
+        {
+            ownerRuntime = GetComponentInParent<UnitRuntime>();
+        }
+        if (ownerTeam == null)
+        {
+            ownerTeam = GetComponentInParent<TeamIdentity>();
         }
     }
 
@@ -55,14 +68,12 @@ public class Hurtbox : MonoBehaviour
 
     public TeamIdentity GetTargetTeam()
     {
-        TeamIdentity teamIdentity = GetComponentInParent<TeamIdentity>();
-
-        if (teamIdentity == null)
+        if (ownerTeam == null)
         {
             Debug.LogWarning($"[Hurtbox] {name} does not have a TeamIdentity.", this);
         }
 
-        return teamIdentity;
+        return ownerTeam;
     }
 
 

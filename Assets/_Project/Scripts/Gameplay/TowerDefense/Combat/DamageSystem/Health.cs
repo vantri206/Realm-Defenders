@@ -71,7 +71,7 @@ public class Health : MonoBehaviour, IDamageable
         RefreshHealth(false);
     }
 
-    public DamageResult TakeDamage(DamageRequest request)
+    public HitResult TakeDamage(DamageRequest request)
     {
         if (IsDead || request.BaseDamage <= 0f)
         {
@@ -95,18 +95,16 @@ public class Health : MonoBehaviour, IDamageable
         };
     }
 
-    private DamageResult ApplyFinalDamage(float damage)
+    private HitResult ApplyFinalDamage(float damage)
     {
         if (IsDead || damage <= 0f)
         {
             return default;
         }
 
-        float previousHealth = currentHealth;
         currentHealth = Mathf.Max(0f, currentHealth - damage);
-        float damageTaken = previousHealth - currentHealth;
 
-        OnDamaged?.Invoke(damageTaken);
+        OnDamaged?.Invoke(damage);
 
         NotifyHealthChanged();
 
@@ -115,18 +113,27 @@ public class Health : MonoBehaviour, IDamageable
             Die();
         }
 
-        return new DamageResult(damageTaken, damageTaken > 0f && IsDead);
+        return new HitResult(damage, damage > 0f && IsDead);
+    }
+
+    public HitResult Heal(HealRequest request)
+    {
+        if (IsDead || currentHealth >= maxHealth || request.BaseHeal <= 0f)
+        {
+            return default;
+        }
+
+        currentHealth = Mathf.Min(maxHealth, currentHealth + request.BaseHeal);
+
+        OnHealed?.Invoke(request.BaseHeal);
+
+        NotifyHealthChanged();
+        return new HitResult(AttackEffect.Heal, request.BaseHeal, false);
     }
 
     public void Heal(float healAmount, Vector3 hitPosition)
     {
-        if (IsDead || currentHealth >= maxHealth || healAmount <= 0f) return;
-
-        currentHealth = Mathf.Min(maxHealth, currentHealth + healAmount);
-
-        OnHealed?.Invoke(healAmount);
-
-        NotifyHealthChanged();
+        Heal(new HealRequest(null, this, healAmount, hitPosition));
     }
 
     public void Die()

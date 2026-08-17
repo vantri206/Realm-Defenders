@@ -48,7 +48,7 @@ public class HeroPathfindingController : MonoBehaviour
             combatGrid = hero.CombatGrid;
         }
 
-        bool shouldMoveReturn = !TryFindEnemyInGuard(anchorCell.CellPosition);
+        bool shouldMoveReturn = !TryFindEnemyInGuard(hero, anchorCell.CellPosition);
         if (hasMoveTarget && shouldMoveReturn != isReturning)
         {
             ResetMoveTarget();
@@ -114,7 +114,7 @@ public class HeroPathfindingController : MonoBehaviour
         return Vector2Int.zero;
     }
 
-    private bool TryFindEnemyInGuard(Vector3Int anchorCellPosition)
+    private bool TryFindEnemyInGuard(HeroRuntime hero, Vector3Int anchorCellPosition)
     {
         targetEnemyCells.Clear();
 
@@ -143,7 +143,8 @@ public class HeroPathfindingController : MonoBehaviour
                         continue;
                     }
 
-                    if (teamIdentity != null && unit.TeamIdentity != null && teamIdentity.IsEnemy(unit.TeamIdentity))
+                    if (teamIdentity != null && unit.TeamIdentity != null && teamIdentity.IsEnemy(unit.TeamIdentity) &&
+                        AttackTargetRulling.CanTarget(hero, unit))
                     {
                         targetEnemyCells.Add(cellPosition);
                         break;

@@ -15,6 +15,7 @@ public class UnitRuntime : MonoBehaviour
     // States
     protected UnitRuntimeState currentState = UnitRuntimeState.Idle;
     private CountdownTimer actionStateTimer = new CountdownTimer(0f);
+    private bool hasNotifiedDestroyed;
     
     // Unit Components
     [SerializeField] protected Health health;
@@ -46,6 +47,7 @@ public class UnitRuntime : MonoBehaviour
     public float SpecialDefense => Stats != null ? Stats.SpecialDefense : 0f;
 
     // Properties
+    public virtual UnitMovementType MovementType => UnitMovementType.Ground;
     public virtual UnitAttackType AttackType => UnitAttackType.Melee; // Default attack type, can be overridden in derived classes
 
     // Getters
@@ -69,9 +71,15 @@ public class UnitRuntime : MonoBehaviour
     public bool CanMove => !IsDead && !IsMovementBlocked && (currentState == UnitRuntimeState.Idle || currentState == UnitRuntimeState.Moving);
     public bool CanUseNormalAttack => !IsDead && currentState == UnitRuntimeState.Idle;
 
+    public virtual TargetSide TargetSide => TargetSide.Enemy;
+    public virtual AttackEffect AttackEffect => AttackEffect.Damage;
     public virtual AttackMethod AttackMethod => AttackMethod.DirectTarget; // Default attack method, can be overridden in derived classes
     public virtual AttackDamageType AttackDamageType => AttackDamageType.PhysicalDamage;
-    public virtual float NormalAttackDamageMultiplier => 1f;
+    public virtual float NormalAttackEffectMultiplier => 1f;
+    public virtual AttackProjectile NormalAttackProjectilePrefab => null;
+    public virtual AttackAOEHit NormalAttackAOEHitPrefab => null;
+    public virtual SimpleSpriteAnimatorVFX NormalAttackHitVFXPrefab => null;
+    public virtual ParticleVFX NormalAttackHealVFXPrefab => null;
 
     public event Action<UnitRuntime, UnitRuntimeState, UnitRuntimeState> OnStateChanged;
     public event Action OnDestoryed;
@@ -79,6 +87,16 @@ public class UnitRuntime : MonoBehaviour
     protected virtual void OnDisable()
     {
         ClearActiveCell();
+    }
+
+    public void RemoveCombat()
+    {
+        if (hasNotifiedDestroyed)
+        {
+            return;
+        }
+
+        hasNotifiedDestroyed = true;
         OnDestoryed?.Invoke();
     }
 
@@ -194,11 +212,15 @@ public class UnitRuntime : MonoBehaviour
             return;
         }
 
-        targetScanner.Initialize(combatGrid, teamIdentity);
+        targetScanner.Initialize(combatGrid, this);
         targetSelector.Initialize(this, targetPriorityMode);
 
-        normalAttackController.Initialize(Stats.Attack, Stats.AttackInterval, NormalAttackDamageMultiplier,
-                                          AttackDamageType, AttackMethod, targetScanner, targetSelector, unitVisual);
+        normalAttackController.Initialize(Stats, NormalAttackEffectMultiplier, AttackEffect,
+                                           TargetSide, AttackType, AttackDamageType,
+                                           AttackMethod, NormalAttackProjectilePrefab,
+                                           NormalAttackAOEHitPrefab, NormalAttackHitVFXPrefab,
+                                           NormalAttackHealVFXPrefab,
+                                           targetScanner, targetSelector, unitVisual);
         normalAttackController.OnAttack -= HandleNormalAttack;
         normalAttackController.OnAttack += HandleNormalAttack;
     }
@@ -236,6 +258,7 @@ public class UnitRuntime : MonoBehaviour
 
         if (currentState == UnitRuntimeState.Dead)
         {
+            RemoveCombat();
             Destroy(gameObject);
             return;
         }

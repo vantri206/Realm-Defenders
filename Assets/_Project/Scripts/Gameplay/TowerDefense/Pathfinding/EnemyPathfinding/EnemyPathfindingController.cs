@@ -138,7 +138,8 @@ public class EnemyPathfindingController : MonoBehaviour
             return ChangeMoveDirection(Vector2.zero, enemyCenterPosition);
         }
 
-        Vector2 flowDirection = GetFlowFieldDirection(activeCellPosition, targetCheckpoint.CellPosition);
+        UnitMovementType movementType = enemy != null ? enemy.MovementType : UnitMovementType.Ground;
+        Vector2 flowDirection = GetFlowFieldDirection(activeCellPosition, targetCheckpoint.CellPosition, movementType);
         Vector3 cellSize = Vector3.one; // Default cell size if combat grid is not available
         if (enemy != null && enemy.CombatGrid != null)
         {
@@ -152,14 +153,14 @@ public class EnemyPathfindingController : MonoBehaviour
         return ChangeMoveDirection(moveDirection, enemyCenterPosition);
     }
 
-    private Vector2 GetFlowFieldDirection(Vector3Int activeCellPosition, Vector3Int targetCellPosition)
+    private Vector2 GetFlowFieldDirection(Vector3Int activeCellPosition, Vector3Int targetCellPosition, UnitMovementType movementType)
     {
         if (pathfindingSystem == null)
         {
             return Vector2.zero;
         }
 
-        return pathfindingSystem.TryGetFlowFieldDirection(activeCellPosition, targetCellPosition);
+        return pathfindingSystem.TryGetFlowFieldDirection(activeCellPosition, targetCellPosition, movementType);
     }
 
     private Vector2 GetSeparationDirection(EnemyRuntime enemy)

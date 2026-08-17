@@ -2,7 +2,7 @@ using UnityEngine;
 
 public static class BlockSpacingResolver
 {
-    private const float pushDistance = 0.75f;
+    private const float pushDistance = 0.5f;
     private const float pushDuration = 0.25f;
 
     public static void ApplyBlockForce(UnitRuntime blockerOwner, IBlockable target)

@@ -1,6 +1,6 @@
 public static class DamageSystem
 {
-    public static DamageResult ApplyDamage(DamageRequest request)
+    public static HitResult ApplyDamage(DamageRequest request)
     {
         if (request.Target == null || request.Target.IsDead)
         {
@@ -13,5 +13,20 @@ public static class DamageSystem
         }
 
         return request.Target.TakeDamage(request);
+    }
+
+    public static HitResult ApplyHeal(HealRequest request)
+    {
+        if (request.Target == null || request.Target.IsDead)
+        {
+            return default;
+        }
+
+        if (request.BaseHeal <= 0f || request.Target.CurrentHealth >= request.Target.MaxHealth)
+        {
+            return default;
+        }
+
+        return request.Target.Heal(request);
     }
 }

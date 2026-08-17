@@ -2,9 +2,14 @@ using UnityEngine;
 
 public static class DamageCalculator
 {
+    public static float CalculateBaseEffectValue(float attributeValue, float effectMultiplier)
+    {
+        return Mathf.Max(0f, attributeValue * effectMultiplier);
+    }
+
     public static float CalculateBaseDamage(float offensiveStat, float damageMultiplier)
     {
-        return Mathf.Max(0f, offensiveStat * damageMultiplier);
+        return CalculateBaseEffectValue(offensiveStat, damageMultiplier);
     }
 
     public static float CalculateDamageTaken(float baseDamage, float defensiveStat)

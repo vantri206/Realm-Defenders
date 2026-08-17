@@ -46,7 +46,8 @@ public class HeroInstance
         star = 1;
         deployCost = Mathf.Max(0, definition.BaseDeployCost);
         redeployTime = Mathf.Max(0f, definition.BaseRedeployTime);
-        unitStats = new UnitStats(definition.MaxHealth, definition.Attack, definition.AttackInterval, definition.Defense, definition.SpecialDefense);
+        unitStats = new UnitStats(definition.MaxHealth, definition.Attack, definition.AttackInterval,
+                                  definition.Defense, definition.SpecialDefense);
         unitSpeed = new UnitSpeed(definition.MoveSpeed);
         heroBlock = new UnitBlock(definition.BlockCount);
 

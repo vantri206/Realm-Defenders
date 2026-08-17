@@ -123,6 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hurtbox
   damageableMB: {fileID: 484668256975825859}
+  ownerRuntime: {fileID: 0}
+  ownerTeam: {fileID: 0}
 --- !u!1 &6360995233734530165
 GameObject:
   m_ObjectHideFlags: 0

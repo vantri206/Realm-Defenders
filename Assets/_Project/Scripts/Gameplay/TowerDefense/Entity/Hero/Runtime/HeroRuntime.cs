@@ -31,9 +31,15 @@ public class HeroRuntime : UnitRuntime
     public HeroBlocker HeroBlocker => heroBlocker;
     public CombatGridCell AnchorCell => anchorCell;
 
+    public override TargetSide TargetSide => heroDefinition != null ? heroDefinition.TargetSide : base.TargetSide;
+    public override AttackEffect AttackEffect => heroDefinition != null ? heroDefinition.AttackEffect : base.AttackEffect;
     public override AttackMethod AttackMethod => heroDefinition != null ? heroDefinition.AttackMethod : base.AttackMethod;
     public override AttackDamageType AttackDamageType => heroDefinition != null ? heroDefinition.AttackDamageType : base.AttackDamageType;
-    public override float NormalAttackDamageMultiplier => heroDefinition != null ? heroDefinition.NormalAttackDamageMultiplier : base.NormalAttackDamageMultiplier;
+    public override float NormalAttackEffectMultiplier => heroDefinition != null ? heroDefinition.NormalAttackEffectMultiplier : base.NormalAttackEffectMultiplier;
+    public override AttackProjectile NormalAttackProjectilePrefab => heroDefinition != null ? heroDefinition.NormalAttackProjectilePrefab : base.NormalAttackProjectilePrefab;
+    public override AttackAOEHit NormalAttackAOEHitPrefab => heroDefinition != null ? heroDefinition.NormalAttackAOEHitPrefab : base.NormalAttackAOEHitPrefab;
+    public override SimpleSpriteAnimatorVFX NormalAttackHitVFXPrefab => heroDefinition != null ? heroDefinition.NormalAttackHitVFXPrefab : base.NormalAttackHitVFXPrefab;
+    public override ParticleVFX NormalAttackHealVFXPrefab => heroDefinition != null ? heroDefinition.NormalAttackHealVFXPrefab : base.NormalAttackHealVFXPrefab;
 
     public void Initialize(HeroInstance heroInstance, CombatGrid combatGrid, Vector3Int currentCell, UnitPathfindingSystem unitPathfindingSystem)
     {
@@ -214,7 +220,7 @@ public class HeroRuntime : UnitRuntime
             return;
         }
 
-        unitMovement.Initialize(Speed);
+        unitMovement.Initialize(Speed, MovementType);
     }
 
     private void SetMovementDirection(Vector2 direction)

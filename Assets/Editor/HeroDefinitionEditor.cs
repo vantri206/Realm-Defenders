@@ -30,9 +30,15 @@ public sealed class HeroDefinitionEditor : Editor
     private SerializedProperty baseDeployCostProperty;
     private SerializedProperty baseRedeployTimeProperty;
     private SerializedProperty attackTypeProperty;
+    private SerializedProperty targetSideProperty;
+    private SerializedProperty attackEffectProperty;
     private SerializedProperty attackMethodProperty;
     private SerializedProperty attackDamageTypeProperty;
-    private SerializedProperty normalAttackDamageMultiplierProperty;
+    private SerializedProperty normalAttackEffectMultiplierProperty;
+    private SerializedProperty normalAttackProjectilePrefabProperty;
+    private SerializedProperty normalAttackAOEHitPrefabProperty;
+    private SerializedProperty normalAttackHitVFXPrefabProperty;
+    private SerializedProperty normalAttackHealVFXPrefabProperty;
     private SerializedProperty targetPriorityModeProperty;
     private SerializedProperty canGuardProperty;
     private SerializedProperty attackPatternProperty;
@@ -61,9 +67,15 @@ public sealed class HeroDefinitionEditor : Editor
         baseDeployCostProperty = serializedObject.FindProperty("baseDeployCost");
         baseRedeployTimeProperty = serializedObject.FindProperty("baseRedeployTime");
         attackTypeProperty = serializedObject.FindProperty("attackType");
+        targetSideProperty = serializedObject.FindProperty("targetSide");
+        attackEffectProperty = serializedObject.FindProperty("attackEffect");
         attackMethodProperty = serializedObject.FindProperty("attackMethod");
         attackDamageTypeProperty = serializedObject.FindProperty("attackDamageType");
-        normalAttackDamageMultiplierProperty = serializedObject.FindProperty("normalAttackDamageMultiplier");
+        normalAttackEffectMultiplierProperty = serializedObject.FindProperty("normalAttackEffectMultiplier");
+        normalAttackProjectilePrefabProperty = serializedObject.FindProperty("normalAttackProjectilePrefab");
+        normalAttackAOEHitPrefabProperty = serializedObject.FindProperty("normalAttackAOEHitPrefab");
+        normalAttackHitVFXPrefabProperty = serializedObject.FindProperty("normalAttackHitVFXPrefab");
+        normalAttackHealVFXPrefabProperty = serializedObject.FindProperty("normalAttackHealVFXPrefab");
         targetPriorityModeProperty = serializedObject.FindProperty("targetPriorityMode");
         canGuardProperty = serializedObject.FindProperty("canGuard");
         attackPatternProperty = serializedObject.FindProperty("attackPattern");
@@ -166,9 +178,24 @@ public sealed class HeroDefinitionEditor : Editor
         EditorGUILayout.LabelField("Attack", EditorStyles.boldLabel);
         EditorGUILayout.BeginVertical(EditorStyles.helpBox);
         EditorGUILayout.PropertyField(attackTypeProperty, new GUIContent("Attack Type"));
+        EditorGUILayout.PropertyField(targetSideProperty, new GUIContent("Target Side"));
+        EditorGUILayout.PropertyField(attackEffectProperty, new GUIContent("Attack Effect"));
         EditorGUILayout.PropertyField(attackMethodProperty, new GUIContent("Attack Method"));
-        EditorGUILayout.PropertyField(attackDamageTypeProperty, new GUIContent("Damage Type"));
-        EditorGUILayout.PropertyField(normalAttackDamageMultiplierProperty, new GUIContent("Damage Multiplier"));
+
+        AttackEffect attackEffect = (AttackEffect)attackEffectProperty.enumValueIndex;
+        if (attackEffect == AttackEffect.Damage)
+        {
+            EditorGUILayout.PropertyField(attackDamageTypeProperty, new GUIContent("Damage Type"));
+        }
+
+        EditorGUILayout.PropertyField(normalAttackEffectMultiplierProperty, new GUIContent("Effect Multiplier"));
+        DrawAttackDeliveryAssets();
+
+        if (attackEffect == AttackEffect.Heal)
+        {
+            EditorGUILayout.PropertyField(normalAttackHealVFXPrefabProperty, new GUIContent("Heal VFX Prefab"));
+        }
+
         EditorGUILayout.PropertyField(targetPriorityModeProperty, new GUIContent("Target Priority"));
         EditorGUILayout.PropertyField(canGuardProperty, new GUIContent("Can Guard"));
         EditorGUILayout.Space(5f);
@@ -183,6 +210,34 @@ public sealed class HeroDefinitionEditor : Editor
         DrawAttackPatternFooter(selectedOffsets.Count);
 
         EditorGUILayout.EndVertical();
+    }
+
+    private void DrawAttackDeliveryAssets()
+    {
+        AttackMethod attackMethod = (AttackMethod)attackMethodProperty.enumValueIndex;
+
+        if (attackMethod == AttackMethod.Projectile)
+        {
+            EditorGUILayout.PropertyField(normalAttackProjectilePrefabProperty, new GUIContent("Projectile Prefab"));
+
+            if (normalAttackProjectilePrefabProperty.objectReferenceValue == null)
+            {
+                EditorGUILayout.HelpBox("Projectile attack requires an AttackProjectile prefab.", MessageType.Warning);
+            }
+        }
+        else if (attackMethod == AttackMethod.DirectTarget)
+        {
+            EditorGUILayout.PropertyField(normalAttackHitVFXPrefabProperty, new GUIContent("Hit VFX Prefab"));
+        }
+        else if (attackMethod == AttackMethod.AOEHit)
+        {
+            EditorGUILayout.PropertyField(normalAttackAOEHitPrefabProperty, new GUIContent("AOE Hit Prefab"));
+
+            if (normalAttackAOEHitPrefabProperty.objectReferenceValue == null)
+            {
+                EditorGUILayout.HelpBox("AOE hit attack requires an AttackAOEHit prefab.", MessageType.Warning);
+            }
+        }
     }
 
     private void DrawAttackPatternGrid(HashSet<Vector2Int> selectedOffsets)

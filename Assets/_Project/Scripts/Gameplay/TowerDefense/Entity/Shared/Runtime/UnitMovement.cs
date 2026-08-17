@@ -10,11 +10,12 @@ public class UnitMovement : MonoBehaviour
     [SerializeField] private UnitRuntime unitRuntime;
     
     private UnitSpeed enemySpeed;
+    private UnitMovementType movementType = UnitMovementType.Ground;
     private Vector2 currentMoveDirection;
-    private Vector2 impulseVelocity;
-    private float impulseDeceleration;
+    private Vector2 externalVelocity;
+    private float deceleration;
 
-    private Vector2 rigidbodyCenterPosition => rb.position + (unitRuntime != null ? unitRuntime.CenterOffset : Vector2.zero);
+    private Vector2 rbCenterPosition => rb.position + unitRuntime.CenterOffset;
 
     public UnitSpeed Speed => enemySpeed;
     public Vector2 CurrentMoveDirection => currentMoveDirection;
@@ -32,7 +33,7 @@ public class UnitMovement : MonoBehaviour
         }
     }
     
-    public void Initialize(UnitSpeed enemySpeed)
+    public void Initialize(UnitSpeed enemySpeed, UnitMovementType movementType)
     {
         if (enemySpeed == null)
         {
@@ -41,6 +42,7 @@ public class UnitMovement : MonoBehaviour
         }
 
         this.enemySpeed = enemySpeed;
+        this.movementType = movementType;
     }
 
     public void FixedTick(float fixedDeltaTime)
@@ -64,29 +66,26 @@ public class UnitMovement : MonoBehaviour
 
     private Vector2 GetImpulseMovement(float fixedDeltaTime)
     {
-        if (impulseVelocity.sqrMagnitude <= impulseStopSpeed * impulseStopSpeed)
+        if (externalVelocity.sqrMagnitude <= impulseStopSpeed * impulseStopSpeed)
         {
-            impulseVelocity = Vector2.zero;
-            impulseDeceleration = 0f;
+            externalVelocity = Vector2.zero;
+            deceleration = 0f;
             return Vector2.zero;
         }
 
-        Vector2 previousVelocity = impulseVelocity;
-        impulseVelocity = Vector2.MoveTowards(impulseVelocity, Vector2.zero, impulseDeceleration * fixedDeltaTime);
+        Vector2 previousVelocity = externalVelocity;
+        externalVelocity = Vector2.MoveTowards(externalVelocity, Vector2.zero, deceleration * fixedDeltaTime);
 
-        Vector2 averageVelocity = (previousVelocity + impulseVelocity) * 0.5f;
+        Vector2 averageVelocity = (previousVelocity + externalVelocity) * 0.5f;
         return averageVelocity * fixedDeltaTime;
     }
 
     private void Move(Vector2 movement)
     {
-        Vector3 startCenterPosition = rigidbodyCenterPosition;
+        Vector3 startCenterPosition = rbCenterPosition;
         Vector2 resolvedMovement = ResolveGridMovement(startCenterPosition, movement);
         Vector3 targetCenterPosition = startCenterPosition + (Vector3)resolvedMovement;
-        if (resolvedMovement.sqrMagnitude > Mathf.Epsilon &&
-            unitRuntime != null &&
-            unitRuntime.CombatGrid != null &&
-            !IsWorldPositionWalkable(unitRuntime.CombatGrid, targetCenterPosition))
+        if (resolvedMovement.sqrMagnitude > Mathf.Epsilon && !CanEnterWorldPosition(unitRuntime.CombatGrid, targetCenterPosition))
         {
             resolvedMovement = Vector2.zero;
         }
@@ -102,8 +101,8 @@ public class UnitMovement : MonoBehaviour
         }
 
         float initialSpeed = 2f * targetDistance / duration;
-        impulseVelocity = direction.normalized * initialSpeed;
-        impulseDeceleration = initialSpeed / duration;
+        externalVelocity = direction.normalized * initialSpeed;
+        deceleration = initialSpeed / duration;
         return true;
     }
 
@@ -146,10 +145,10 @@ public class UnitMovement : MonoBehaviour
     private bool CanMoveWithBlockedDistance(CombatGrid combatGrid, Vector3 startPosition, Vector2 movement)
     {
         Vector2 checkedMovement = movement + movement.normalized * minBlockedCellDistance;
-        return CanMoveThroughWalkableCells(combatGrid, startPosition, checkedMovement);
+        return CanMoveThroughGridCells(combatGrid, startPosition, checkedMovement);
     }
 
-    private bool CanMoveThroughWalkableCells(CombatGrid combatGrid, Vector3 startPosition, Vector2 movement)
+    private bool CanMoveThroughGridCells(CombatGrid combatGrid, Vector3 startPosition, Vector2 movement)
     {
         float moveDistance = movement.magnitude;
         if (moveDistance <= Mathf.Epsilon)
@@ -164,7 +163,8 @@ public class UnitMovement : MonoBehaviour
         }
 
         Vector3 endPosition = startPosition + (Vector3)movement;
-        if (!combatGrid.TryWorldToCell(startPosition, out CombatGridCell startCell) ||  startCell == null || !startCell.CanWalk() ||
+        if (!combatGrid.TryWorldToCell(startPosition, out CombatGridCell startCell) ||
+            !UnitMovementRules.CanEnterCell(movementType, startCell) ||
             !combatGrid.TryWorldToCell(endPosition, out CombatGridCell endCell) || endCell == null)
         {
             return false;
@@ -174,7 +174,7 @@ public class UnitMovement : MonoBehaviour
         Vector3Int endCellPosition = endCell.CellPosition;
         if (currentCellPosition == endCellPosition)
         {
-            return endCell.CanWalk();
+            return UnitMovementRules.CanEnterCell(movementType, endCell);
         }
 
         Vector3 localStartPosition = grid.transform.InverseTransformPoint(startPosition);
@@ -211,9 +211,9 @@ public class UnitMovement : MonoBehaviour
                 Vector3Int horizontalCellPosition = currentCellPosition + new Vector3Int(stepX, 0, 0);
                 Vector3Int verticalCellPosition = currentCellPosition + new Vector3Int(0, stepY, 0);
                 Vector3Int diagonalCellPosition = currentCellPosition + new Vector3Int(stepX, stepY, 0);
-                if (!IsCellWalkable(combatGrid, horizontalCellPosition) ||
-                    !IsCellWalkable(combatGrid, verticalCellPosition) ||
-                    !IsCellWalkable(combatGrid, diagonalCellPosition))
+                if (!CanEnterCell(combatGrid, horizontalCellPosition) ||
+                    !CanEnterCell(combatGrid, verticalCellPosition) ||
+                    !CanEnterCell(combatGrid, diagonalCellPosition))
                 {
                     return false;
                 }
@@ -235,7 +235,7 @@ public class UnitMovement : MonoBehaviour
                 nextCrossingY += crossingIntervalY;
             }
 
-            if (!IsCellWalkable(combatGrid, currentCellPosition))
+            if (!CanEnterCell(combatGrid, currentCellPosition))
             {
                 return false;
             }
@@ -244,14 +244,14 @@ public class UnitMovement : MonoBehaviour
         return true;
     }
 
-    private bool IsCellWalkable(CombatGrid combatGrid, Vector3Int cellPosition)
+    private bool CanEnterCell(CombatGrid combatGrid, Vector3Int cellPosition)
     {
-        return combatGrid.TryGetCell(cellPosition, out CombatGridCell cell) && cell != null && cell.CanWalk();
+        return combatGrid.TryGetCell(cellPosition, out CombatGridCell cell) && UnitMovementRules.CanEnterCell(movementType, cell);
     }
 
-    private bool IsWorldPositionWalkable(CombatGrid combatGrid, Vector3 worldPosition)
+    private bool CanEnterWorldPosition(CombatGrid combatGrid, Vector3 worldPosition)
     {
-        return combatGrid.TryWorldToCell(worldPosition, out CombatGridCell cell) && cell != null && cell.CanWalk();
+        return combatGrid.TryWorldToCell(worldPosition, out CombatGridCell cell) && UnitMovementRules.CanEnterCell(movementType, cell);
     }
     
     public void SetMoveSpeed(float newMoveSpeed)

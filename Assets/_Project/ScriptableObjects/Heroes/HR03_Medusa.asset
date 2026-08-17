@@ -51,3 +51,5 @@ MonoBehaviour:
   attackMethod: 1
   attackDamageType: 0
   normalAttackDamageMultiplier: 1
+  normalAttackProjectilePrefab: {fileID: 3870154896822293685, guid: 6b054ab65f6f50941bf164b6358386bc, type: 3}
+  normalAttackHitVFXPrefab: {fileID: 0}

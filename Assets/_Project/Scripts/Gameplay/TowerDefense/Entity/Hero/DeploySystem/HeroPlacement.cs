@@ -87,6 +87,7 @@ public class HeroPlacement : MonoBehaviour
 
         cell.ClearAnchoredHero();
         hero.ClearAnchorCell();
+        hero.RemoveCombat();
         Destroy(hero.gameObject);
         return true;
     }

@@ -33,6 +33,9 @@ public class TargetSelector : MonoBehaviour
             case TargetPriorityMode.HighestPathProgress:
                 return SelectNearest(validTargets, origin);
 
+            case TargetPriorityMode.LowestHealthPercent:
+                return SelectLowestHealthPercent(validTargets);
+
             case TargetPriorityMode.Nearest:
             default:
                 return SelectNearest(validTargets, origin);
@@ -47,7 +50,7 @@ public class TargetSelector : MonoBehaviour
         for (int i = 0; i < validTargets.Count; i++)
         {
             Hurtbox target = validTargets[i];
-            if (target == null)
+            if (target == null || !AttackTargetRulling.CanTarget(owner, target))
             {
                 continue;
             }
@@ -56,6 +59,36 @@ public class TargetSelector : MonoBehaviour
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
+                selectedTarget = target;
+            }
+        }
+
+        return selectedTarget;
+    }
+
+    private Hurtbox SelectLowestHealthPercent(IReadOnlyList<Hurtbox> validTargets)
+    {
+        Hurtbox selectedTarget = null;
+        float lowestHealthPercent = float.PositiveInfinity;
+
+        for (int i = 0; i < validTargets.Count; i++)
+        {
+            Hurtbox target = validTargets[i];
+            if (target == null || !AttackTargetRulling.CanTarget(owner, target))
+            {
+                continue;
+            }
+
+            IDamageable damageable = target.GetDamageable();
+            if (damageable == null || damageable.IsDead || damageable.MaxHealth <= 0f)
+            {
+                continue;
+            }
+
+            float healthPercent = damageable.CurrentHealth / damageable.MaxHealth;
+            if (healthPercent < lowestHealthPercent)
+            {
+                lowestHealthPercent = healthPercent;
                 selectedTarget = target;
             }
         }
@@ -157,6 +190,12 @@ public class TargetSelector : MonoBehaviour
         target = runtime.GetComponentInChildren<Hurtbox>();
         if (target == null)
         {
+            return false;
+        }
+
+        if (!AttackTargetRulling.CanTarget(owner, target))
+        {
+            target = null;
             return false;
         }
 
