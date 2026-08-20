@@ -13,7 +13,8 @@ public class NormalAttackController : MonoBehaviour
     private TargetSelector targetSelector;
     private TeamIdentity attackerTeam;
     private UnitVisual unitVisual;
-    private CountdownTimer attackTimer;
+    private CombatTimeController combatTime;
+    private CountdownTimer attackTimer = new CountdownTimer(0f);
     private Hurtbox currentTarget;
 
     // Attack properties
@@ -39,38 +40,22 @@ public class NormalAttackController : MonoBehaviour
     private void Awake()
     {
         CacheReferences();
-        attackTimer = new CountdownTimer(0f);
     }
 
-    public void Initialize(UnitStats stats, float effectMultiplier, AttackEffect attackEffect, TargetSide targetSide,
+    public bool Initialize(UnitStats stats, float effectMultiplier, AttackEffect attackEffect, TargetSide targetSide,
                         UnitAttackType attackType, AttackDamageType damageType, AttackMethod attackMethod,
                         AttackProjectile normalAttackProjectilePrefab, AttackAOEHit normalAttackAOEHitPrefab,
-                        SimpleSpriteAnimatorVFX normalAttackHitVFXPrefab,
-                        ParticleVFX normalAttackHealVFXPrefab,
-                        TargetScanner targetScanner, TargetSelector targetSelector, UnitVisual unitVisual)
+                        SimpleSpriteAnimatorVFX normalAttackHitVFXPrefab, ParticleVFX normalAttackHealVFXPrefab,
+                        TargetScanner targetScanner, TargetSelector targetSelector, UnitVisual unitVisual,
+                        CombatTimeController combatTime)
     {
-        if (targetScanner == null)
-        {
-            Debug.LogError("[NormalAttackController] TargetScanner is required to initialize attacks.", this);
-            return;
-        }
+        isInitialized = false;
+        CacheReferences();
 
-        if (targetSelector == null)
+        if (!CheckRequiredReferences(stats, attackMethod, normalAttackProjectilePrefab, normalAttackAOEHitPrefab,
+                                     targetScanner, targetSelector, unitVisual, combatTime))
         {
-            Debug.LogError("[NormalAttackController] TargetSelector is required to initialize attacks.", this);
-            return;
-        }
-
-        if (attackerTeam == null)
-        {
-            Debug.LogError("[NormalAttackController] TeamIdentity is required to initialize attacks.", this);
-            return;
-        }
-
-        if (stats == null)
-        {
-            Debug.LogError("[NormalAttackController] UnitStats are required to initialize attacks.", this);
-            return;
+            return false;
         }
 
         this.stats = stats;
@@ -89,8 +74,10 @@ public class NormalAttackController : MonoBehaviour
         this.targetScanner = targetScanner;
         this.targetSelector = targetSelector;
         this.unitVisual = unitVisual;
+        this.combatTime = combatTime;
 
         isInitialized = true;
+        return true;
     }
 
     public void Tick(float deltaTime, IReadOnlyList<Vector2Int> patternOffsets, bool canTriggerAttack)
@@ -136,11 +123,11 @@ public class NormalAttackController : MonoBehaviour
         attackTimer.StartTimer();
     }
 
-    public Hurtbox SelectTarget(IReadOnlyList<Vector2Int> patternOffsets)
+    private Hurtbox SelectTarget(IReadOnlyList<Vector2Int> patternOffsets)
     {
-        if (targetScanner == null || targetSelector == null || targetScanner.CombatGrid == null || patternOffsets == null)
+        if (patternOffsets == null)
         {
-            Debug.LogError("[NormalAttackController] Cannot select target because required attack dependencies are missing.", this);
+            Debug.LogError("[NormalAttackController] Attack pattern is required to select a target.", this);
             return null;
         }
 
@@ -159,12 +146,6 @@ public class NormalAttackController : MonoBehaviour
     private bool ExecuteNormalAttack(Hurtbox target)
     {
         currentTarget = target;
-
-        if (target == null)
-        {
-            Debug.LogWarning("[NormalAttackController] No valid target selected for attack.", this);
-            return false;
-        }
 
         bool isAttackExecuted = false;
 
@@ -193,27 +174,13 @@ public class NormalAttackController : MonoBehaviour
             return false;
         }
 
-        if (unitVisual == null)
-        {
-            Debug.LogError("[NormalAttackController] UnitVisual is required to trigger attack animation.", this);
-        }
-        else
-        {
-            unitVisual.TriggerAttack();
-        }
-
         OnAttack?.Invoke(target);
+        unitVisual.TriggerAttack();
         return true;
     }
 
     private bool ExecuteDirectTargetAttack(Hurtbox target)
     {
-        if (target == null)
-        {
-            Debug.LogWarning("[NormalAttackController] Direct target is null, cannot execute attack.", this);
-            return false;
-        }
-
         float baseEffectValue = CalculateBaseEffectValue();
 
         HitData hitData = new HitData(gameObject, target, attackerTeam, targetSide, attackEffect, attackType, 
@@ -238,18 +205,6 @@ public class NormalAttackController : MonoBehaviour
 
     private bool ExecuteProjectileAttack(Hurtbox target)
     {
-        if (target == null)
-        {
-            Debug.LogWarning("[NormalAttackController] Projectile target is null, cannot execute attack.", this);
-            return false;
-        }
-
-        if (normalAttackProjectilePrefab == null)
-        {
-            Debug.LogError("[NormalAttackController] Normal attack projectile prefab is required for projectile attacks.", this);
-            return false;
-        }
-
         UnitRuntime targetRuntime = target.OwnerRuntime;
 
         if (targetRuntime == null || targetRuntime.IsDead)
@@ -271,7 +226,8 @@ public class NormalAttackController : MonoBehaviour
             attackType,
             normalAttackHealVFXPrefab,
             baseEffectValue,
-            damageType
+            damageType,
+            combatTime
         ));
 
         return projectile != null;
@@ -279,18 +235,6 @@ public class NormalAttackController : MonoBehaviour
 
     private bool ExecuteAOEHitAttack(Hurtbox target)
     {
-        if (target == null)
-        {
-            Debug.LogWarning("[NormalAttackController] AOE hit target is null, cannot execute attack.", this);
-            return false;
-        }
-
-        if (normalAttackAOEHitPrefab == null)
-        {
-            Debug.LogError("[NormalAttackController] Normal attack AOE hit prefab is required for AOE hit attacks.", this);
-            return false;
-        }
-
         float baseEffectValue = CalculateBaseEffectValue();
 
         AttackAOEHit aoeHit = ObjectPoolingHelper.Spawn(normalAttackAOEHitPrefab, target.CenterPosition, Quaternion.identity, spawnedAOEHit =>
@@ -303,7 +247,8 @@ public class NormalAttackController : MonoBehaviour
             attackType,
             normalAttackHealVFXPrefab,
             baseEffectValue,
-            damageType
+            damageType,
+            combatTime
         ));
 
         return aoeHit != null;
@@ -311,11 +256,6 @@ public class NormalAttackController : MonoBehaviour
 
     private float CalculateBaseEffectValue()
     {
-        if (stats == null)
-        {
-            return 0f;
-        }
-
         return DamageCalculator.CalculateBaseEffectValue(stats.Attack, effectMultiplier);
     }
 
@@ -336,12 +276,39 @@ public class NormalAttackController : MonoBehaviour
 
     private void SpawnHealVFX(Hurtbox target, in HitResult hitResult)
     {
-        if (normalAttackHealVFXPrefab == null || target == null)
+        if (normalAttackHealVFXPrefab == null)
         {
             return;
         }
 
         CombatVFXSpawner.SpawnParticleVFX(normalAttackHealVFXPrefab, target);
+    }
+
+    private bool CheckRequiredReferences(UnitStats stats, AttackMethod method,
+                                        AttackProjectile projectilePrefab, AttackAOEHit aoeHitPrefab,
+                                        TargetScanner scanner, TargetSelector selector, UnitVisual visual,
+                                        CombatTimeController combatTime)
+    {
+        if (stats == null || scanner == null || !scanner.IsInitialized || selector == null ||
+            !selector.IsInitialized || visual == null || attackerTeam == null || combatTime == null)
+        {
+            Debug.LogError("[NormalAttackController] Missing required references.", this);
+            return false;
+        }
+
+        if (method == AttackMethod.Projectile && projectilePrefab == null)
+        {
+            Debug.LogError("[NormalAttackController] Projectile attacks require an AttackProjectile prefab.", this);
+            return false;
+        }
+
+        if (method == AttackMethod.AOEHit && aoeHitPrefab == null)
+        {
+            Debug.LogError("[NormalAttackController] AOE attacks require an AttackAOEHit prefab.", this);
+            return false;
+        }
+
+        return true;
     }
 
     private void CacheReferences()

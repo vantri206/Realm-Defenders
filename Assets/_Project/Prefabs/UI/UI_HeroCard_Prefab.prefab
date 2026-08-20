@@ -112,6 +112,68 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1736266721148676292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7783571014553252033}
+  - component: {fileID: 7879523499745222482}
+  m_Layer: 5
+  m_Name: Stars_Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7783571014553252033
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736266721148676292}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7930146147182188274}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 2, y: 16}
+  m_SizeDelta: {x: -4, y: 32}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7879523499745222482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736266721148676292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
+  m_ReverseArrangement: 0
 --- !u!1 &2191558446427087584
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 8}
+  m_AnchoredPosition: {x: 2, y: 6}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7073602676314906287
@@ -177,7 +239,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 12.3
+  m_text: 12.4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0bdb9b9c61786b7409ccd3b7ef32d549, type: 2}
   m_sharedMaterial: {fileID: 4867089289479532884, guid: 0bdb9b9c61786b7409ccd3b7ef32d549, type: 2}
@@ -323,8 +385,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278246911
-  m_fontColor: {r: 1, g: 0.8669212, b: 0, a: 1}
+    rgba: 4278248703
+  m_fontColor: {r: 1, g: 0.8945999, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -478,7 +540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &559472976588633158
 RectTransform:
   m_ObjectHideFlags: 0
@@ -722,8 +784,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: 8}
-  m_SizeDelta: {x: 24, y: 24}
+  m_AnchoredPosition: {x: -4, y: 8}
+  m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &162974784778970546
 CanvasRenderer:
@@ -753,7 +815,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1257091933, guid: 8acc7c0ec6c6cc944a7cb56ccc8c3123, type: 3}
+  m_Sprite: {fileID: -651043920, guid: 8acc7c0ec6c6cc944a7cb56ccc8c3123, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -829,6 +891,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5048936053616668449}
+  - {fileID: 7783571014553252033}
   - {fileID: 9202158272349367608}
   - {fileID: 88373844667277378}
   - {fileID: 271505632496680706}

@@ -9,7 +9,7 @@ public class HeroInstance
     private UnitSpeed unitSpeed;
     private UnitBlock heroBlock;
     private int level = 1;
-    private int star = 1;
+    private int star = 0;
     private int deployCost = 15;
     private float redeployTime = 20f;
 
@@ -43,11 +43,10 @@ public class HeroInstance
 
         this.definition = definition;
         level = 1;
-        star = 1;
+        star = 0;
         deployCost = Mathf.Max(0, definition.BaseDeployCost);
         redeployTime = Mathf.Max(0f, definition.BaseRedeployTime);
-        unitStats = new UnitStats(definition.MaxHealth, definition.Attack, definition.AttackInterval,
-                                  definition.Defense, definition.SpecialDefense);
+        unitStats = new UnitStats(definition.MaxHealth, definition.Attack, definition.AttackInterval, definition.Defense, definition.SpecialDefense);
         unitSpeed = new UnitSpeed(definition.MoveSpeed);
         heroBlock = new UnitBlock(definition.BlockCount);
 
@@ -61,9 +60,9 @@ public class HeroInstance
 
     public void SetStar(int value)
     {
-        star = Mathf.Max(1, value);
+        star = Mathf.Max(0, value);
     }
-
+    
     public void SetRedeployTime(float value)
     {
         redeployTime = Mathf.Max(0f, value);
@@ -86,9 +85,16 @@ public class HeroInstance
         redeployTimer.StartTimer();
     }
 
-    public void TickRedeployTimer(float deltaTime)
+    public bool TickRedeployTimer(float deltaTime)
     {
         redeployTimer.Tick(deltaTime);
+
+        if (redeployTimer.IsFinished)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void SetDeployState(HeroDeployState state)

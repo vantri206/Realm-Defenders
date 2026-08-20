@@ -8,9 +8,10 @@ public class HeroBlocker : MonoBehaviour, IBlocker
     private UnitBlock block;
 
     private readonly List<IBlockable> blockedTargets = new List<IBlockable>();
+    private readonly Dictionary<IBlockable, int> blockSlotAssignments = new Dictionary<IBlockable, int>();
+    private readonly bool[] occupiedBlockSlots = new bool[BlockSpacingResolver.SlotCount];
 
-    public bool CanBlock => owner != null && owner.IsInitialized && !owner.IsDead && owner.ActiveCell != null 
-                            && block != null && MaxBlockCount > 0;
+    public bool CanBlock => !owner.IsDead && owner.ActiveCell != null && block != null && MaxBlockCount > 0;
     public int MaxBlockCount => block != null ? block.BlockCount : 0;
     public int CurrentBlockCount => blockedTargets.Count;
     public UnitRuntime Owner => owner;
@@ -53,11 +54,13 @@ public class HeroBlocker : MonoBehaviour, IBlocker
             IBlockable blockable = blockedTargets[i];
             if (blockable != null)
             {
+                ReleaseBlockSlot(blockable);
                 blockable.ClearBlocked(this);
             }
         }
 
         blockedTargets.Clear();
+        ClearBlockSlotAssignments();
         UpdateBlockCount();
     }
 
@@ -73,6 +76,7 @@ public class HeroBlocker : MonoBehaviour, IBlocker
             return;
         }
 
+        ReleaseBlockSlot(target);
         target.ClearBlocked(this);
         UpdateBlockCount();
     }
@@ -94,9 +98,24 @@ public class HeroBlocker : MonoBehaviour, IBlocker
                 continue;
             }
 
+            bool wasNotBlocking = blockedTargets.Count == 0;
+            bool hasBlockSlot = BlockSpacingResolver.TryResolveBlockSlot(owner, blockable, occupiedBlockSlots,
+                                                                        out int blockSlotIndex);
+
             blockedTargets.Add(blockable);
-            BlockSpacingResolver.ApplyBlockForce(owner, blockable);
             blockable.OnBlocked(this);
+
+            if (hasBlockSlot)
+            {
+                blockSlotAssignments.Add(blockable, blockSlotIndex);
+                occupiedBlockSlots[blockSlotIndex] = true;
+                BlockSpacingResolver.ApplyBlockSlot(owner, blockable, blockSlotIndex);
+            }
+
+            if (wasNotBlocking)
+            {
+                owner.FacePosition(blockable.Owner.CenterPosition);
+            }
         }
     }
 
@@ -111,10 +130,32 @@ public class HeroBlocker : MonoBehaviour, IBlocker
             }
 
             blockedTargets.RemoveAt(i);
+            ReleaseBlockSlot(blockable);
             if (blockable != null)
             {
                 blockable.ClearBlocked(this);
             }
+        }
+    }
+
+    private void ReleaseBlockSlot(IBlockable target)
+    {
+        BlockSpacingResolver.ClearBlockSlot(target);
+        if (target == null || !blockSlotAssignments.TryGetValue(target, out int slotIndex))
+        {
+            return;
+        }
+
+        blockSlotAssignments.Remove(target);
+        occupiedBlockSlots[slotIndex] = false;
+    }
+
+    private void ClearBlockSlotAssignments()
+    {
+        blockSlotAssignments.Clear();
+        for (int i = 0; i < occupiedBlockSlots.Length; i++)
+        {
+            occupiedBlockSlots[i] = false;
         }
     }
 

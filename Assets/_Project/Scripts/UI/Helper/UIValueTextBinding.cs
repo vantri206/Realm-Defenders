@@ -35,6 +35,17 @@ public class UIValueTextBinding
         SetText(emptyValue);
     }
 
+    public void SetTextColor(Color color)
+    {
+        if (text == null)
+        {
+            Debug.LogError("[UIValueTextBinding] TMP_Text reference is required before setting text color.");
+            return;
+        }
+
+        text.color = color;
+    }
+
     public void SetText(string value)
     {
         if (text == null)
@@ -68,6 +79,6 @@ public class UIValueTextBinding
 
     private static string FormatNumber(float value)
     {
-        return value.ToString("0.##", CultureInfo.InvariantCulture);
+        return value.ToString("0.#", CultureInfo.InvariantCulture);
     }
 }

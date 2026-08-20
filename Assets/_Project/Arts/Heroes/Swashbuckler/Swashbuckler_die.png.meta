@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 7c3199a6d6380c74cb1aad54b3deb471
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 343784477554574272
+    second: Swashbuckler_die_0
+  - first:
+      213: -8079043394817095831
+    second: Swashbuckler_die_1
+  - first:
+      213: 7760462824555818553
+    second: Swashbuckler_die_2
+  - first:
+      213: -6835742819379143866
+    second: Swashbuckler_die_3
+  - first:
+      213: 1712324500715558889
+    second: Swashbuckler_die_4
+  - first:
+      213: -8398334698707322589
+    second: Swashbuckler_die_5
+  - first:
+      213: 2319742754421401776
+    second: Swashbuckler_die_6
+  - first:
+      213: -6301643039614366197
+    second: Swashbuckler_die_7
+  - first:
+      213: -4392434949440231188
+    second: Swashbuckler_die_8
+  - first:
+      213: -6310526320977159111
+    second: Swashbuckler_die_9
+  - first:
+      213: 1892023049066570949
+    second: Swashbuckler_die_10
+  - first:
+      213: -7608343855805869979
+    second: Swashbuckler_die_11
+  - first:
+      213: -3253854299074701951
+    second: Swashbuckler_die_12
+  - first:
+      213: 5395928913387613969
+    second: Swashbuckler_die_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Swashbuckler_die_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 325
+        width: 30
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c30fef292e55c400800000000000000
+      internalID: 343784477554574272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_die_1
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 319
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96706f646d871ef80800000000000000
+      internalID: -8079043394817095831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_die_2
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 321
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93e264e72d3b2bb60800000000000000
+      internalID: 7760462824555818553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_die_3
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 317
+        width: 30
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64b9af28f109221a0800000000000000
+      internalID: -6835742819379143866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_die_4
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 225
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e75955af0663c710800000000000000
+      internalID: 1712324500715558889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_die_5
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 223
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32976ba761f137b80800000000000000
+      internalID: -8398334698707322589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_die_6
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 223
+        width: 45
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b8e29f9eb1613020800000000000000
+      internalID: 2319742754421401776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_die_7
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 225
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0e09720b011c88a0800000000000000
+      internalID: -6301643039614366197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_die_8
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 223
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce8aa938fafea03c0800000000000000
+      internalID: -4392434949440231188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_die_9
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 129
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93c5764eeb18c68a0800000000000000
+      internalID: -6310526320977159111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_die_10
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 35
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c4e67250f0d14a10800000000000000
+      internalID: 1892023049066570949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_die_11
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 31
+        width: 38
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5605aa9e29bb96690800000000000000
+      internalID: -7608343855805869979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_die_12
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 33
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18556c031ccf7d2d0800000000000000
+      internalID: -3253854299074701951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_die_13
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 31
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11f6ab302c032ea40800000000000000
+      internalID: 5395928913387613969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Swashbuckler_die_0: 343784477554574272
+      Swashbuckler_die_1: -8079043394817095831
+      Swashbuckler_die_10: 1892023049066570949
+      Swashbuckler_die_11: -7608343855805869979
+      Swashbuckler_die_12: -3253854299074701951
+      Swashbuckler_die_13: 5395928913387613969
+      Swashbuckler_die_2: 7760462824555818553
+      Swashbuckler_die_3: -6835742819379143866
+      Swashbuckler_die_4: 1712324500715558889
+      Swashbuckler_die_5: -8398334698707322589
+      Swashbuckler_die_6: 2319742754421401776
+      Swashbuckler_die_7: -6301643039614366197
+      Swashbuckler_die_8: -4392434949440231188
+      Swashbuckler_die_9: -6310526320977159111
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

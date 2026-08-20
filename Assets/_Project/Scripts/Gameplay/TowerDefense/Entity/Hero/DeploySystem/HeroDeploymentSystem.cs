@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,15 +7,18 @@ public class HeroDeploymentSystem : MonoBehaviour
 {
     private HeroInventory heroInventory;
     private HeroPlacement heroPlacement;
+    private CombatTimeController combatTime;
 
     private HeroInstance selectedHero;
+    private HeroRuntime selectedHeroRuntime;
     private readonly Dictionary<HeroInstance, HeroRuntime> deployedHero = new Dictionary<HeroInstance, HeroRuntime>();
     private bool isInitialized;
 
     public HeroInstance SelectedHero => selectedHero;
+    public HeroRuntime SelectedHeroRuntime => selectedHeroRuntime;
     public IReadOnlyDictionary<HeroInstance, HeroRuntime> DeployedHero => deployedHero;
 
-    public void Initialize(HeroInventory heroInventory, HeroPlacement heroPlacement)
+    public void Initialize(HeroInventory heroInventory, HeroPlacement heroPlacement, CombatTimeController combatTime)
     {
         if (heroInventory == null)
         {
@@ -30,8 +34,16 @@ public class HeroDeploymentSystem : MonoBehaviour
             return;
         }
 
+        if (combatTime == null)
+        {
+            Debug.LogError("[HeroDeploymentSystem] CombatTimeController is required to initialize deployment.", this);
+            isInitialized = false;
+            return;
+        }
+
         this.heroInventory = heroInventory;
         this.heroPlacement = heroPlacement;
+        this.combatTime = combatTime;
         isInitialized = true;
     }
 
@@ -52,7 +64,11 @@ public class HeroDeploymentSystem : MonoBehaviour
 
             if (!heroInstance.IsReadyDeploy)
             {
-                heroInstance.TickRedeployTimer(Time.deltaTime);
+                bool isReady = heroInstance.TickRedeployTimer(combatTime.CombatDeltaTime);
+                if (isReady)
+                {
+                    heroInstance.SetDeployState(HeroDeployState.Available);
+                }
             }
         }
     }
@@ -63,24 +79,9 @@ public class HeroDeploymentSystem : MonoBehaviour
         selectedHero = null;
     }
 
-    public bool CanSelectHero(HeroInstance heroInstance)
-    {
-        if (heroInstance == null || !heroInstance.IsValid)
-        {
-            return false;
-        }
-
-        if (!HasHeroInInventory(heroInstance))
-        {
-            return false;
-        }
-
-        return true;
-    }
-
     public bool SelectHero(HeroInstance heroInstance)
     {
-        if (!CanSelectHero(heroInstance))
+        if (heroInstance == null || !heroInstance.IsValid)
         {
             return false;
         }
@@ -110,6 +111,22 @@ public class HeroDeploymentSystem : MonoBehaviour
         return heroPlacement.CanPlaceHero(selectedHero, cell);
     }
 
+    public bool SelectHeroRuntime(HeroRuntime heroRuntime)
+    {
+        if (heroRuntime == null)
+        {
+            return false;
+        }
+
+        if (!SelectHero(heroRuntime.Instance))
+        {
+            return false;
+        }
+
+        selectedHeroRuntime = heroRuntime;
+        return true;
+    }
+
     public HeroRuntime DeploySelectedHero(CombatGridCell cell, Vector2Int direction)
     {
         if (!CanDeploySelectedHero(cell))
@@ -126,11 +143,7 @@ public class HeroDeploymentSystem : MonoBehaviour
             ClearSelection();
             placedHero.SetInitialFacingDirection(direction);
 
-            placedHero.OnDestoryed += () =>
-            {
-                RemoveDeployedHero(placedHero.Instance);
-                placedHero.Instance.SetDeployState(HeroDeployState.Countdown);
-            };
+            placedHero.OnDestroyed += HandleHeroDestroyed;
         }
 
         return placedHero;
@@ -178,6 +191,16 @@ public class HeroDeploymentSystem : MonoBehaviour
         return true;
     }
 
+    public bool RetreatHero(HeroRuntime heroRuntime)
+    {
+        if (!heroPlacement.RemoveHero(heroRuntime))
+        {
+            return false;
+        }
+
+        return RemoveDeployedHero(heroRuntime.Instance);
+    }
+
     public bool RetreatSelectedHero()
     {
         if (!CanRetreatSelectedHero())
@@ -190,37 +213,33 @@ public class HeroDeploymentSystem : MonoBehaviour
             return false;
         }
 
-        HeroInstance heroInstance = selectedHero;
-        if (!heroPlacement.RemoveHero(heroRuntime))
-        {
-            return false;
-        }
-
-        RemoveDeployedHero(heroInstance);
-        return true;
+        return RetreatHero(heroRuntime);
     }
 
-    private void AddDeployedHero(HeroInstance heroInstance, HeroRuntime heroRuntime)
+    private bool AddDeployedHero(HeroInstance heroInstance, HeroRuntime heroRuntime)
     {
         if (heroInstance == null || !heroInstance.IsValid || heroRuntime == null)
         {
-            return;
+            return false;
         }
 
         if (!deployedHero.ContainsKey(heroInstance))
         {
             deployedHero.Add(heroInstance, heroRuntime);
+            return true;
         }
+
+        return false;
     }
 
-    private void RemoveDeployedHero(HeroInstance heroInstance)
+    private bool RemoveDeployedHero(HeroInstance heroInstance)
     {
         if (heroInstance == null || !heroInstance.IsValid)
         {
-            return;
+            return false;
         }
 
-        deployedHero.Remove(heroInstance);
+        return deployedHero.Remove(heroInstance);
     }
 
     private bool HasHeroInInventory(HeroInstance heroInstance)
@@ -245,5 +264,21 @@ public class HeroDeploymentSystem : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void HandleHeroDestroyed(UnitRuntime unitRuntime)
+    {
+        if (!(unitRuntime is HeroRuntime heroRuntime))
+        {
+            return;
+        }
+
+
+        if (heroRuntime == null || heroRuntime.Instance == null)
+        {
+            return;
+        }
+
+        RemoveDeployedHero(heroRuntime.Instance);
     }
 }

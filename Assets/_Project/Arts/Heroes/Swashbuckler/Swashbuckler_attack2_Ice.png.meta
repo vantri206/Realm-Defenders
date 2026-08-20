@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 83c187af88f93b140b53d995c2d25eae
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2490200137750719890
+    second: Swashbuckler_attack2_Ice_0
+  - first:
+      213: 6995383329881491995
+    second: Swashbuckler_attack2_Ice_1
+  - first:
+      213: -4207056947881227390
+    second: Swashbuckler_attack2_Ice_2
+  - first:
+      213: -2675158685514426825
+    second: Swashbuckler_attack2_Ice_3
+  - first:
+      213: 977050745651992454
+    second: Swashbuckler_attack2_Ice_4
+  - first:
+      213: 5630404437962333201
+    second: Swashbuckler_attack2_Ice_5
+  - first:
+      213: 4396813552437888280
+    second: Swashbuckler_attack2_Ice_6
+  - first:
+      213: -8296084212318089694
+    second: Swashbuckler_attack2_Ice_7
+  - first:
+      213: -5119428201921388853
+    second: Swashbuckler_attack2_Ice_8
+  - first:
+      213: 741784249329017868
+    second: Swashbuckler_attack2_Ice_9
+  - first:
+      213: 8735501485477169805
+    second: Swashbuckler_attack2_Ice_10
+  - first:
+      213: 5217267398700994639
+    second: Swashbuckler_attack2_Ice_11
+  - first:
+      213: 2422314013804323712
+    second: Swashbuckler_attack2_Ice_12
+  - first:
+      213: 2548521541109490941
+    second: Swashbuckler_attack2_Ice_13
+  - first:
+      213: 5755120711627972828
+    second: Swashbuckler_attack2_Ice_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 317
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29da246e4d7fe8220800000000000000
+      internalID: 2490200137750719890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_1
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 287
+        width: 57
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1a864d4318941160800000000000000
+      internalID: 6995383329881491995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_2
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 288
+        width: 46
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28b43bfeef78d95c0800000000000000
+      internalID: -4207056947881227390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_3
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 317
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7369c10695defdad0800000000000000
+      internalID: -2675158685514426825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_4
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 223
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6871e1ef97e2f8d00800000000000000
+      internalID: 977050745651992454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_5
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 223
+        width: 62
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11c17825107332e40800000000000000
+      internalID: 5630404437962333201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_6
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 223
+        width: 57
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8150fa071ae940d30800000000000000
+      internalID: 4396813552437888280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_7
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 223
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22ecd0a0d536edc80800000000000000
+      internalID: -8296084212318089694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_8
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 127
+        width: 62
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcedb5b9c2324f8b0800000000000000
+      internalID: -5119428201921388853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_9
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 127
+        width: 52
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c046c3938d85b4a00800000000000000
+      internalID: 741784249329017868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_10
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 127
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8a83c0815cba3970800000000000000
+      internalID: 8735501485477169805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_11
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 29
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f409ccd8e05776840800000000000000
+      internalID: 5217267398700994639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_12
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 29
+        width: 54
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 083e147f2c9cd9120800000000000000
+      internalID: 2422314013804323712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_13
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 29
+        width: 51
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df42348c6da2e5320800000000000000
+      internalID: 2548521541109490941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack2_Ice_14
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 29
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd024189bcb4edf40800000000000000
+      internalID: 5755120711627972828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Swashbuckler_attack2_Ice_0: 2490200137750719890
+      Swashbuckler_attack2_Ice_1: 6995383329881491995
+      Swashbuckler_attack2_Ice_10: 8735501485477169805
+      Swashbuckler_attack2_Ice_11: 5217267398700994639
+      Swashbuckler_attack2_Ice_12: 2422314013804323712
+      Swashbuckler_attack2_Ice_13: 2548521541109490941
+      Swashbuckler_attack2_Ice_14: 5755120711627972828
+      Swashbuckler_attack2_Ice_2: -4207056947881227390
+      Swashbuckler_attack2_Ice_3: -2675158685514426825
+      Swashbuckler_attack2_Ice_4: 977050745651992454
+      Swashbuckler_attack2_Ice_5: 5630404437962333201
+      Swashbuckler_attack2_Ice_6: 4396813552437888280
+      Swashbuckler_attack2_Ice_7: -8296084212318089694
+      Swashbuckler_attack2_Ice_8: -5119428201921388853
+      Swashbuckler_attack2_Ice_9: 741784249329017868
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

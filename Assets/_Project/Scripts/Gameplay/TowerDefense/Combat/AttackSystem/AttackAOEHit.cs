@@ -24,6 +24,7 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
     private ParticleVFX healVFXPrefab;
     private float baseEffectValue;
     private AttackDamageType damageType;
+    private CombatTimeController combatTime;
     private CountdownTimer aoeTimer;
 
     private bool isInitialized;
@@ -43,7 +44,7 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
             return;
         }
 
-        aoeTimer.Tick(Time.fixedDeltaTime);
+        aoeTimer.Tick(combatTime.CombatFixedDeltaTime);
         if (aoeTimer.IsFinished)
         {
             ReturnToPool();
@@ -53,7 +54,7 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
     public void Initialize(GameObject attacker, TeamIdentity attackerTeam, TargetSide targetSide,
                            AttackEffect attackEffect, UnitAttackType attackType, ParticleVFX healVFXPrefab,
                            float baseEffectValue,
-                           AttackDamageType damageType)
+                           AttackDamageType damageType, CombatTimeController combatTime)
     {
         this.attacker = attacker;
         this.attackerTeam = attackerTeam;
@@ -63,6 +64,7 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         this.healVFXPrefab = healVFXPrefab;
         this.baseEffectValue = Mathf.Max(0f, baseEffectValue);
         this.damageType = damageType;
+        this.combatTime = combatTime;
 
         isInitialized = true;
     }
@@ -108,6 +110,7 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         healVFXPrefab = null;
         baseEffectValue = 0f;
         damageType = default;
+        combatTime = null;
 
         isInitialized = false;
         isReturningToPool = true;
@@ -180,7 +183,7 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
 
     private bool CanStart()
     {
-        return isInitialized && col != null && attackerTeam != null && baseEffectValue > 0f;
+        return isInitialized && col != null && attackerTeam != null && baseEffectValue > 0f && combatTime != null;
     }
 
     private void CacheReferences()

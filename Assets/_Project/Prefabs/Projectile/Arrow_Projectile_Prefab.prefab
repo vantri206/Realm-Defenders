@@ -182,8 +182,9 @@ MonoBehaviour:
   rb: {fileID: 7000760542104209917}
   col: {fileID: 4450089544286103985}
   hitVFXPrefab: {fileID: 5006250830996535109, guid: 0d59c0df3aab2744c8ee8209543698ee, type: 3}
+  hitVFXRotationOffset: 180
   projectileMode: 1
-  moveSpeed: 8
+  moveSpeed: 10
   lifetime: 8
   maxRange: 20
   maxTurnAngle: 60

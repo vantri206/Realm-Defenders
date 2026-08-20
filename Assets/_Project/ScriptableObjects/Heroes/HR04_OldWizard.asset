@@ -13,22 +13,22 @@ MonoBehaviour:
   m_Name: HR04_OldWizard
   m_EditorClassIdentifier: Assembly-CSharp::HeroDefinition
   heroId: HR04
-  heroName: OldWizard
+  heroName: Elder Wizard
   heroSprite: {fileID: 310034395, guid: 74ee6dec9fc9b2d4eb53c9431212f436, type: 3}
   heroIcon: {fileID: 2090117177, guid: 74ee6dec9fc9b2d4eb53c9431212f436, type: 3}
   heroClass: {fileID: 11400000, guid: 3b99815df3e3792438e8a532bb11f635, type: 2}
   heroDescription: 
   heroAnimator: {fileID: 22100000, guid: a6fffbc389361a44fb04f3927c3d38cf, type: 2}
   heroPrefab: {fileID: 6873902697943297941, guid: cfdb2236ef19fe64c9462e151b552556, type: 3}
-  maxHealth: 120
-  attack: 8
-  attackInterval: 0.5
-  defense: 3
-  specialDefense: 3
+  maxHealth: 110
+  attack: 45
+  attackInterval: 2
+  defense: 5
+  specialDefense: 20
   blockCount: 0
-  moveSpeed: 3
-  baseDeployCost: 30
-  baseRedeployTime: 15
+  moveSpeed: 0
+  baseDeployCost: 20
+  baseRedeployTime: 25
   attackType: 1
   targetPriorityMode: 0
   canGuard: 0
@@ -54,3 +54,4 @@ MonoBehaviour:
   normalAttackProjectilePrefab: {fileID: 0}
   normalAttackAOEHitPrefab: {fileID: 5242528492286644227, guid: 1ce7f8d243e91e745b37392c4aacb704, type: 3}
   normalAttackHitVFXPrefab: {fileID: 0}
+  normalAttackHealVFXPrefab: {fileID: 0}

@@ -35,14 +35,7 @@ public static class AttackTargetRulling
             return false;
         }
 
-        UnitMovementType targetMovementType = UnitMovementType.Ground;
-
-        if (targetRuntime != null)
-        {
-            targetMovementType = targetRuntime.MovementType;
-        }
-
-        return CanAttackMovementType(attackType, targetMovementType);
+        return CanAttackMovementType(attackType, targetRuntime.MovementType);
     }
 
     private static bool CanAttackMovementType(UnitAttackType attackType, UnitMovementType targetMovementType)

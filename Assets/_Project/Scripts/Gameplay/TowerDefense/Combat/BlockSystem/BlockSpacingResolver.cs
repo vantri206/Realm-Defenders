@@ -1,42 +1,108 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class BlockSpacingResolver
 {
-    private const float pushDistance = 0.5f;
-    private const float pushDuration = 0.25f;
+    public const int SlotCount = 8;
 
-    public static void ApplyBlockForce(UnitRuntime blockerOwner, IBlockable target)
+    private const float slotRadiusInCells = 0.8f;
+
+    private static readonly Vector2[] slotDirections =
     {
-        if (blockerOwner == null || target == null || target.Owner == null)
+        EightWayDirection.Right.ToVector2Int(),
+        EightWayDirection.UpRight.ToVector2Int(),
+        EightWayDirection.Up.ToVector2Int(),
+        EightWayDirection.UpLeft.ToVector2Int(),
+        EightWayDirection.Left.ToVector2Int(),
+        EightWayDirection.DownLeft.ToVector2Int(),
+        EightWayDirection.Down.ToVector2Int(),
+        EightWayDirection.DownRight.ToVector2Int(),
+    };
+
+    public static bool TryResolveBlockSlot(UnitRuntime blockerOwner, IBlockable target, IReadOnlyList<bool> slots, out int slotIndex)
+    {
+        slotIndex = -1;
+        if (blockerOwner == null || target == null || target.Owner == null || slots == null || slots.Count < SlotCount)
         {
-            return;
+            return false;
         }
 
-        UnitRuntime targetOwner = target.Owner;
-        if (!targetOwner.TryGetComponent(out UnitMovement movement))
+        int mainSlotIndex = ResolveDirectionIndex(ResolveBlockDirection(blockerOwner, target.Owner));
+        int nextSlotIndex = WrapSlotIndex(mainSlotIndex + 1);
+        int prevSlotIndex = WrapSlotIndex(mainSlotIndex - 1);
+
+        if (!slots[mainSlotIndex])
         {
-            Debug.LogError("[BlockSpacingResolver] UnitMovement is required to apply block force.", targetOwner);
-            return;
+            slotIndex = mainSlotIndex;
+            return true;
         }
 
-        Vector2 direction = ResolvePushDirection(blockerOwner, targetOwner, movement);
-        if (direction == Vector2.zero)
+        bool isNextAvailable = !slots[nextSlotIndex];
+        bool isPrevAvailable = !slots[prevSlotIndex];
+        if (!isNextAvailable && !isPrevAvailable)
         {
-            return;
+            return false;
         }
 
-        movement.ApplyForce(direction, pushDistance, pushDuration);
+        if (isNextAvailable && isPrevAvailable)
+        {
+            Vector2 targetPosition = target.Owner.WorldPosition;
+            Vector2 nextPosition = ResolveBlockSlotWorldPosition(blockerOwner, nextSlotIndex);
+            Vector2 prevPosition = ResolveBlockSlotWorldPosition(blockerOwner, prevSlotIndex);
+            slotIndex = (targetPosition - nextPosition).sqrMagnitude <= (targetPosition - prevPosition).sqrMagnitude ? nextSlotIndex : prevSlotIndex;
+            return true;
+        }
+
+        slotIndex = isNextAvailable ? nextSlotIndex : prevSlotIndex;
+        return true;
     }
 
-    private static Vector2 ResolvePushDirection(UnitRuntime blockerOwner, UnitRuntime targetOwner, UnitMovement movement)
+    public static void ApplyBlockSlot(UnitRuntime blockerOwner, IBlockable target, int slotIndex)
     {
-        Vector2 moveDirection = movement.CurrentMoveDirection;
-        if (moveDirection.sqrMagnitude > Mathf.Epsilon)
+        if (blockerOwner == null || target == null || target.Owner == null ||
+            slotIndex < 0 || slotIndex >= SlotCount)
         {
-            return -moveDirection.normalized;
+            return;
         }
 
-        Vector2 offset = (Vector2)targetOwner.CenterPosition - (Vector2)blockerOwner.CenterPosition;
+        if (!target.Owner.TryGetComponent(out UnitMovement movement))
+        {
+            Debug.LogError("[BlockSpacingResolver] UnitMovement is required to align a blocked target.", target.Owner);
+            return;
+        }
+
+        movement.SetMovementOverride(ResolveBlockSlotWorldPosition(blockerOwner, slotIndex));
+    }
+
+    public static void ClearBlockSlot(IBlockable target)
+    {
+        if (target?.Owner != null && target.Owner.TryGetComponent(out UnitMovement movement))
+        {
+            movement.ClearMovementOverride();
+        }
+    }
+
+    public static Vector2 ResolveBlockSlotWorldPosition(UnitRuntime blockerOwner, int slotIndex)
+    {
+        int resolvedSlotIndex = WrapSlotIndex(slotIndex);
+        Vector3 cellSize = blockerOwner.CombatGrid.CellSize;
+        float cellScale = Mathf.Min(Mathf.Abs(cellSize.x), Mathf.Abs(cellSize.y));
+        if (cellScale <= Mathf.Epsilon)
+        {
+            cellScale = 1f;
+        }
+
+        return (Vector2)blockerOwner.WorldPosition + slotDirections[resolvedSlotIndex] * (cellScale * slotRadiusInCells);
+    }
+
+    private static Vector2 ResolveBlockDirection(UnitRuntime blockerOwner, UnitRuntime targetOwner)
+    {
+        if (targetOwner.Movement != null && targetOwner.Movement.CurrentMoveDirection.sqrMagnitude > Mathf.Epsilon)
+        {
+            return -targetOwner.Movement.CurrentMoveDirection.normalized;
+        }
+
+        Vector2 offset = (Vector2)targetOwner.WorldPosition - (Vector2)blockerOwner.WorldPosition;
         if (offset.sqrMagnitude > Mathf.Epsilon)
         {
             return offset.normalized;
@@ -49,6 +115,17 @@ public static class BlockSpacingResolver
         }
 
         Vector2 blockerFacingDirection = blockerOwner.FacingDirection;
-        return blockerFacingDirection.sqrMagnitude > Mathf.Epsilon ? -blockerFacingDirection.normalized : Vector2.right;
+        return blockerFacingDirection.sqrMagnitude > Mathf.Epsilon ? blockerFacingDirection.normalized : Vector2.right;
+    }
+
+    private static int ResolveDirectionIndex(Vector2 direction)
+    {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        return WrapSlotIndex(Mathf.RoundToInt(angle / 45f));
+    }
+
+    private static int WrapSlotIndex(int slotIndex)
+    {
+        return (slotIndex % SlotCount + SlotCount) % SlotCount;
     }
 }

@@ -7,18 +7,30 @@ public class TargetSelector : MonoBehaviour
     private UnitRuntime owner;
 
     private TargetPriorityMode priorityMode = TargetPriorityMode.Nearest;
+    private bool isInitialized;
 
     public TargetPriorityMode PriorityMode => priorityMode;
+
+    public bool IsInitialized => isInitialized;
 
     private void Awake()
     {
         CacheReferences();
     }
 
-    public void Initialize(UnitRuntime owner, TargetPriorityMode priorityMode)
+    public bool Initialize(UnitRuntime owner, TargetPriorityMode priorityMode)
     {
+        if (owner == null || owner.TeamIdentity == null)
+        {
+            Debug.LogError("[TargetSelector] UnitRuntime with TeamIdentity is required.", this);
+            isInitialized = false;
+            return false;
+        }
+
         this.owner = owner;
         this.priorityMode = priorityMode;
+        isInitialized = true;
+        return true;
     }
 
     public Hurtbox SelectTarget(IReadOnlyList<Hurtbox> validTargets, Vector3 origin)
@@ -104,9 +116,7 @@ public class TargetSelector : MonoBehaviour
     public bool TrySelectLockedBlockingTarget(out Hurtbox target)
     {
         target = null;
-        CacheReferences();
-
-        if (owner == null)
+        if (!isInitialized)
         {
             return false;
         }
@@ -207,7 +217,7 @@ public class TargetSelector : MonoBehaviour
         }
 
         TeamIdentity targetTeam = target.GetTargetTeam();
-        if (owner.TeamIdentity != null && !owner.TeamIdentity.IsEnemy(targetTeam))
+        if (!owner.TeamIdentity.IsEnemy(targetTeam))
         {
             target = null;
             return false;

@@ -19,12 +19,12 @@ MonoBehaviour:
   enemyDescription: 
   enemyAnimator: {fileID: 22100000, guid: 5d215b53f437b494f8fa597a9728759b, type: 2}
   enemyPrefab: {fileID: 1262049475646235035, guid: b7d4a188a06efe342ab7cba6ba439b78, type: 3}
-  maxHealth: 150
-  attack: 10
-  attackInterval: 1
-  defense: 20
-  specialDefense: 20
-  moveSpeed: 2
+  maxHealth: 90
+  attack: 18
+  attackInterval: 1.5
+  defense: 5
+  specialDefense: 5
+  moveSpeed: 1.5
   movementType: 0
   attackType: 0
   targetPriorityMode: 0

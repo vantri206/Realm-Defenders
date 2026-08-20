@@ -9,7 +9,7 @@ public class UnitRuntime : MonoBehaviour
 
     protected List<Vector2Int> defaultAttackPattern = new List<Vector2Int>();    // Left-facing default attack pattern
     protected List<Vector2Int> resolvedAttackPattern = new List<Vector2Int>();
-    protected CombatGrid combatGrid;
+    protected UnitCombatContext combatContext;
     protected CombatGridCell activeCell;
 
     // States
@@ -38,13 +38,13 @@ public class UnitRuntime : MonoBehaviour
     protected bool isInitialized;
 
     // Stats
-    public virtual UnitStats Stats => new UnitStats(); // To be overridden in derived classes
-    public float MaxHealth => health != null ? health.MaxHealth : 0f;
-    public float CurrentHealth => health != null ? health.CurrentHealth : 0f;
-    public float Attack => Stats != null ? Stats.Attack : 0f;
-    public float AttackInterval => Stats != null ? Stats.AttackInterval : 0f;
-    public float Defense => Stats != null ? Stats.Defense : 0f;
-    public float SpecialDefense => Stats != null ? Stats.SpecialDefense : 0f;
+    public virtual UnitStats Stats => null; // Must be provided by a concrete runtime.
+    public float MaxHealth => health.MaxHealth;
+    public float CurrentHealth => health.CurrentHealth;
+    public float Attack => Stats.Attack;
+    public float AttackInterval => Stats.AttackInterval;
+    public float Defense => Stats.Defense;
+    public float SpecialDefense => Stats.SpecialDefense;
 
     // Properties
     public virtual UnitMovementType MovementType => UnitMovementType.Ground;
@@ -52,8 +52,9 @@ public class UnitRuntime : MonoBehaviour
 
     // Getters
     public UnitVisual Visual => unitVisual;
+    public UnitMovement Movement => unitMovement;
     public CombatGridCell ActiveCell => activeCell;
-    public CombatGrid CombatGrid => combatGrid;
+    public CombatGrid CombatGrid => combatContext?.CombatGrid;
     public Vector3 WorldPosition => transform.position;
 
     public Vector3Int ActiveCellPosition => activeCell != null ? activeCell.CellPosition : Vector3Int.zero;
@@ -66,7 +67,7 @@ public class UnitRuntime : MonoBehaviour
     public bool IsInitialized => isInitialized;
     public UnitRuntimeState CurrentState => currentState;
     public Health Health => health;
-    public bool IsDead => currentState == UnitRuntimeState.Dead || (health != null && health.IsDead);
+    public bool IsDead => currentState == UnitRuntimeState.Dead || health.IsDead;
     public virtual bool IsMovementBlocked => false;
     public bool CanMove => !IsDead && !IsMovementBlocked && (currentState == UnitRuntimeState.Idle || currentState == UnitRuntimeState.Moving);
     public bool CanUseNormalAttack => !IsDead && currentState == UnitRuntimeState.Idle;
@@ -82,14 +83,14 @@ public class UnitRuntime : MonoBehaviour
     public virtual ParticleVFX NormalAttackHealVFXPrefab => null;
 
     public event Action<UnitRuntime, UnitRuntimeState, UnitRuntimeState> OnStateChanged;
-    public event Action OnDestoryed;
+    public event Action<UnitRuntime> OnDestroyed;
 
     protected virtual void OnDisable()
     {
         ClearActiveCell();
     }
 
-    public void RemoveCombat()
+    public virtual void RemoveCombat()
     {
         if (hasNotifiedDestroyed)
         {
@@ -97,7 +98,7 @@ public class UnitRuntime : MonoBehaviour
         }
 
         hasNotifiedDestroyed = true;
-        OnDestoryed?.Invoke();
+        OnDestroyed?.Invoke(this);
     }
 
     public void SetActiveCell(CombatGridCell cell)
@@ -125,12 +126,12 @@ public class UnitRuntime : MonoBehaviour
         SetActiveCell(null);
     }
 
-    public bool TryStartSkillCasting(float duration)
+    protected bool TryStartSkillCasting(float duration)
     {
         return TryStartActionState(UnitRuntimeState.SkillCasting, duration);
     }
 
-    public void SetFacingDirection(Vector2Int direction)
+    protected void SetFacingDirection(Vector2Int direction)
     {
         if (direction == Vector2Int.zero)
         {
@@ -138,91 +139,67 @@ public class UnitRuntime : MonoBehaviour
         }
 
         facingDirection = direction;
-        if (unitVisual == null)
-        {
-            Debug.LogError("[UnitRuntime] UnitVisual component is required to set facing direction.", this);
-        }
-        else
-        {
-            unitVisual.SetDirection(direction);
-        }
+        unitVisual.SetDirection(direction);
 
         resolvedAttackPattern = AttackPatternResolver.RefreshAttackPattern(defaultAttackPattern, facingDirection);
     }
 
-    protected virtual void InitializeStats()
+    public void FacePosition(Vector2 targetPosition)
     {
-        
+        Vector2 direction = targetPosition - (Vector2)CenterPosition;
+        Vector2Int resolvedDirection = ResolveFourDirection(direction);
+        if (resolvedDirection != Vector2Int.zero)
+        {
+            SetFacingDirection(resolvedDirection);
+        }
     }
 
-    protected void InitializeHealth()
+    protected static Vector2Int ResolveFourDirection(Vector2 direction)
     {
-        if (Stats == null)
+        if (direction.sqrMagnitude <= Mathf.Epsilon)
         {
-            Debug.LogError("[UnitRuntime] UnitStats are required to initialize Health.", this);
-            return;
+            return Vector2Int.zero;
         }
 
-        if (health == null)
+        if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
         {
-            Debug.LogError("[UnitRuntime] Health component is required to initialize unit health.", this);
-            return;
+            return direction.x >= 0f ? Vector2Int.right : Vector2Int.left;
         }
 
+        return direction.y >= 0f ? Vector2Int.up : Vector2Int.down;
+    }
+
+    protected bool InitializeHealth()
+    {
         health.Initialize(Stats.MaxHealth, Stats.Defense, Stats.SpecialDefense);
         health.OnDied -= HandleDied;
         health.OnDied += HandleDied;
+        return true;
     }
 
-    protected void InitializeAttackSystems(TargetPriorityMode targetPriorityMode)
+    protected bool InitializeAttackSystems(TargetPriorityMode targetPriorityMode)
     {
-        if (Stats == null)
+        if (!targetScanner.Initialize(combatContext.CombatGrid, this) ||
+            !targetSelector.Initialize(this, targetPriorityMode) ||
+            !normalAttackController.Initialize(Stats, NormalAttackEffectMultiplier, AttackEffect,
+                                               TargetSide, AttackType, AttackDamageType,
+                                               AttackMethod, NormalAttackProjectilePrefab,
+                                               NormalAttackAOEHitPrefab, NormalAttackHitVFXPrefab,
+                                               NormalAttackHealVFXPrefab,
+                                               targetScanner, targetSelector, unitVisual,
+                                               combatContext.CombatTime))
         {
-            Debug.LogError("[UnitRuntime] UnitStats are required to initialize attack systems.", this);
-            return;
+            return false;
         }
 
-        if (targetScanner == null)
-        {
-            Debug.LogError("[UnitRuntime] TargetScanner component is required to initialize attack systems.", this);
-            return;
-        }
-
-        if (combatGrid == null)
-        {
-            Debug.LogError("[UnitRuntime] CombatGrid is required to initialize attack systems.", this);
-            return;
-        }
-
-        if (teamIdentity == null)
-        {
-            Debug.LogError("[UnitRuntime] TeamIdentity component is required to initialize attack systems.", this);
-            return;
-        }
-
-        if (targetSelector == null)
-        {
-            Debug.LogError("[UnitRuntime] TargetSelector component is required to initialize attack systems.", this);
-            return;
-        }
-
-        if (normalAttackController == null)
-        {
-            Debug.LogError("[UnitRuntime] NormalAttackController component is required to initialize attack systems.", this);
-            return;
-        }
-
-        targetScanner.Initialize(combatGrid, this);
-        targetSelector.Initialize(this, targetPriorityMode);
-
-        normalAttackController.Initialize(Stats, NormalAttackEffectMultiplier, AttackEffect,
-                                           TargetSide, AttackType, AttackDamageType,
-                                           AttackMethod, NormalAttackProjectilePrefab,
-                                           NormalAttackAOEHitPrefab, NormalAttackHitVFXPrefab,
-                                           NormalAttackHealVFXPrefab,
-                                           targetScanner, targetSelector, unitVisual);
         normalAttackController.OnAttack -= HandleNormalAttack;
         normalAttackController.OnAttack += HandleNormalAttack;
+        return true;
+    }
+
+    protected bool InitializeMovementSystem(UnitSpeed speed, UnitMovementType movementType)
+    {
+        return unitMovement.Initialize(speed, movementType);
     }
 
     protected bool ChangeState(UnitRuntimeState newState)
@@ -307,12 +284,12 @@ public class UnitRuntime : MonoBehaviour
         ChangeState(isMoving ? UnitRuntimeState.Moving : UnitRuntimeState.Idle);
     }
 
-    protected void HandleNormalAttack(Hurtbox target)
+    protected virtual void HandleNormalAttack(Hurtbox target)
     {
         TryStartActionState(UnitRuntimeState.Attacking, normalAttackStateDuration);
     }
 
-    protected void HandleDied()
+    protected virtual void HandleDied()
     {
         if (currentState == UnitRuntimeState.Dead)
         {
@@ -323,27 +300,58 @@ public class UnitRuntime : MonoBehaviour
 
         StartStateTimer(deathStateDuration);
 
-        if (unitMovement != null)
-        {
-            unitMovement.SetMoveDirection(Vector2.zero);
-        }
-
-        if (unitVisual != null)
-        {
-            unitVisual.SetIsMoving(false);
-            unitVisual.TriggerDie();
-        }
+        unitMovement.SetMoveDirection(Vector2.zero);
+        unitVisual.SetIsMoving(false);
+        unitVisual.TriggerDie();
     }
 
     protected void SetupVisuals(Sprite sprite, RuntimeAnimatorController animatorController)
     {
-        if (unitVisual == null)
+        unitVisual.Initialize(sprite, animatorController);
+    }
+
+    protected bool CheckCoreReferences()
+    {
+        if (combatContext != null && combatContext.IsValid && combatContext.CombatGrid.Grid != null && unitVisual != null && teamIdentity != null)
         {
-            Debug.LogError("[UnitRuntime] UnitVisual component is required to setup unit visuals.", this);
-            return;
+            return true;
         }
 
-        unitVisual.Initialize(sprite, animatorController);
+        Debug.LogError("[UnitRuntime] Core runtime requires a valid CombatReferencesContext, CombatGrid with Grid, UnitVisual, and TeamIdentity.", this);
+        return false;
+    }
+
+    protected bool CheckHealthSystemReferences()
+    {
+        if (Stats != null && health != null)
+        {
+            return true;
+        }
+
+        Debug.LogError("[UnitRuntime] Health system requires UnitStats and Health.", this);
+        return false;
+    }
+
+    protected bool CheckMovementSystemReferences(UnitSpeed speed)
+    {
+        if (speed != null && unitMovement != null)
+        {
+            return true;
+        }
+
+        Debug.LogError("[UnitRuntime] Movement system requires UnitSpeed and UnitMovement.", this);
+        return false;
+    }
+
+    protected bool CheckAttackSystemReferences()
+    {
+        if (targetScanner != null && targetSelector != null && normalAttackController != null)
+        {
+            return true;
+        }
+
+        Debug.LogError("[UnitRuntime] Attack system requires TargetScanner, TargetSelector, and NormalAttackController.", this);
+        return false;
     }
 
     protected void StartStateTimer(float duration)
@@ -379,6 +387,11 @@ public class UnitRuntime : MonoBehaviour
         if (normalAttackController == null)
         {
             normalAttackController = GetComponent<NormalAttackController>();
+        }
+
+        if (unitMovement == null)
+        {
+            unitMovement = GetComponent<UnitMovement>();
         }
 
         if (unitVisual == null)

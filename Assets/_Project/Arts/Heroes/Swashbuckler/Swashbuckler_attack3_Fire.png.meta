@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: c414566ee624c0f4e820082534c7bbff
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1582728093052486720
+    second: Swashbuckler_attack3_Fire_0
+  - first:
+      213: -5235560239958128885
+    second: Swashbuckler_attack3_Fire_1
+  - first:
+      213: -1562437240865910013
+    second: Swashbuckler_attack3_Fire_2
+  - first:
+      213: -4810473314600884431
+    second: Swashbuckler_attack3_Fire_3
+  - first:
+      213: -5824052505829367824
+    second: Swashbuckler_attack3_Fire_4
+  - first:
+      213: -6141732032424279314
+    second: Swashbuckler_attack3_Fire_5
+  - first:
+      213: 6240999155195638952
+    second: Swashbuckler_attack3_Fire_6
+  - first:
+      213: 6499205442877883396
+    second: Swashbuckler_attack3_Fire_7
+  - first:
+      213: -4815940885493767734
+    second: Swashbuckler_attack3_Fire_8
+  - first:
+      213: 2854366274929137150
+    second: Swashbuckler_attack3_Fire_9
+  - first:
+      213: -3110267384355609660
+    second: Swashbuckler_attack3_Fire_10
+  - first:
+      213: -406121664600864711
+    second: Swashbuckler_attack3_Fire_11
+  - first:
+      213: -5850397024062687522
+    second: Swashbuckler_attack3_Fire_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Swashbuckler_attack3_Fire_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 333
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cb339d5f25090ae0800000000000000
+      internalID: -1582728093052486720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack3_Fire_1
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 305
+        width: 36
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b07032173bd8757b0800000000000000
+      internalID: -5235560239958128885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack3_Fire_2
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 305
+        width: 32
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 303985a8b9b115ae0800000000000000
+      internalID: -1562437240865910013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack3_Fire_3
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 317
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 137e7b1e104cd3db0800000000000000
+      internalID: -4810473314600884431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack3_Fire_4
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 235
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ff11d46a1fcc2fa0800000000000000
+      internalID: -5824052505829367824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack3_Fire_5
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 221
+        width: 46
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee286bdb14f24caa0800000000000000
+      internalID: -6141732032424279314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack3_Fire_6
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 231
+        width: 16
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a4f2f85aab7c9650800000000000000
+      internalID: 6240999155195638952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack3_Fire_7
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 223
+        width: 34
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40485018ae0d13a50800000000000000
+      internalID: 6499205442877883396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack3_Fire_8
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 223
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac12dd4d7475a2db0800000000000000
+      internalID: -4815940885493767734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack3_Fire_9
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 41
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef59104010fbc9720800000000000000
+      internalID: 2854366274929137150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack3_Fire_10
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 27
+        width: 30
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c32007fa4c16d4d0800000000000000
+      internalID: -3110267384355609660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack3_Fire_11
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 29
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93800ed6f7a2d5af0800000000000000
+      internalID: -406121664600864711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_attack3_Fire_12
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 29
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed6bdb147e63fcea0800000000000000
+      internalID: -5850397024062687522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Swashbuckler_attack3_Fire_0: -1582728093052486720
+      Swashbuckler_attack3_Fire_1: -5235560239958128885
+      Swashbuckler_attack3_Fire_10: -3110267384355609660
+      Swashbuckler_attack3_Fire_11: -406121664600864711
+      Swashbuckler_attack3_Fire_12: -5850397024062687522
+      Swashbuckler_attack3_Fire_2: -1562437240865910013
+      Swashbuckler_attack3_Fire_3: -4810473314600884431
+      Swashbuckler_attack3_Fire_4: -5824052505829367824
+      Swashbuckler_attack3_Fire_5: -6141732032424279314
+      Swashbuckler_attack3_Fire_6: 6240999155195638952
+      Swashbuckler_attack3_Fire_7: 6499205442877883396
+      Swashbuckler_attack3_Fire_8: -4815940885493767734
+      Swashbuckler_attack3_Fire_9: 2854366274929137150
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

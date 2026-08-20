@@ -171,7 +171,7 @@ public class HeroCardView : MonoBehaviour
         SetUnavailableOverlay(false);
     }
 
-    public void SetCountdownOverlay(bool isVisible)
+    private void SetCountdownOverlay(bool isVisible)
     {
         if (countdownOverlay != null)
         {
@@ -192,7 +192,7 @@ public class HeroCardView : MonoBehaviour
         countdownCircle.gameObject.SetActive(isVisible);
     }
 
-    public void ShowCountdown(float remainingTime, float totalTime)
+    private void ShowCountdown(float remainingTime, float totalTime)
     {
         remainingTime = Mathf.Max(0f, remainingTime);
         totalTime = Mathf.Max(0f, totalTime);

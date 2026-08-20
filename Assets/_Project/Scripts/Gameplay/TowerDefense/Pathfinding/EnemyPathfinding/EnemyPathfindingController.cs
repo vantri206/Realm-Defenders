@@ -43,7 +43,7 @@ public class EnemyPathfindingController : MonoBehaviour
         CacheReferences();
     }
 
-    public bool Initialize(EnemyRouteGraph routeGraph, UnitPathfindingSystem pathfindingSystem, string routeId)
+    public bool Initialize(EnemyRouteGraph routeGraph, UnitPathfindingSystem pathfindingSystem, string routeId, Action actionOnEscaped)
     {
         this.routeId = routeId;
         this.pathfindingSystem = pathfindingSystem;
@@ -59,6 +59,11 @@ public class EnemyPathfindingController : MonoBehaviour
         {
             Debug.LogError($"[EnemyPathfindingController] Route with ID '{routeId}' not found.", this);
             return false;
+        }
+
+        if (actionOnEscaped != null)
+        {
+            OnReachedFinalCheckpoint += actionOnEscaped;
         }
 
         currentCheckpointIndex = 0;

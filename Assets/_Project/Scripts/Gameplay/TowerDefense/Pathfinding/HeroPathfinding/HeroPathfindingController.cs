@@ -17,22 +17,18 @@ public class HeroPathfindingController : MonoBehaviour
 
     public bool HasGuardTarget => targetEnemyCells.Count > 0;
 
-    private void Awake()
-    {
-        CacheReferences();
-    }
-
-    public void Initialize(CombatGrid combatGrid, UnitPathfindingSystem pathfindingSystem, TeamIdentity teamIdentity)
+    public bool Initialize(CombatGrid combatGrid, UnitPathfindingSystem pathfindingSystem, TeamIdentity teamIdentity)
     {
         if (combatGrid == null || pathfindingSystem == null || teamIdentity == null)
         {
             Debug.LogError("[HeroPathfindingController] CombatGrid, PathfindingSystem, and TeamIdentity are required to initialize HeroPathfindingController.", this);
-            return;
+            return false;
         }
 
         this.combatGrid = combatGrid;
         this.pathfindingSystem = pathfindingSystem;
         this.teamIdentity = teamIdentity;
+        return true;
     }
 
     public Vector2 GetCurrentMoveDirection(HeroRuntime hero, CombatGridCell activeCell, CombatGridCell anchorCell, Vector3 heroCenterPosition)
@@ -41,11 +37,6 @@ public class HeroPathfindingController : MonoBehaviour
         {
             ResetMoveTarget();
             return Vector2.zero;
-        }
-
-        if (combatGrid == null)
-        {
-            combatGrid = hero.CombatGrid;
         }
 
         bool shouldMoveReturn = !TryFindEnemyInGuard(hero, anchorCell.CellPosition);
@@ -86,11 +77,6 @@ public class HeroPathfindingController : MonoBehaviour
 
     private Vector2Int GetPrimaryDirection(CombatGridCell activeCell, CombatGridCell anchorCell, bool shouldMoveReturn)
     {
-        if (pathfindingSystem == null)
-        {
-            return Vector2Int.zero;
-        }
-
         if (!shouldMoveReturn)
         {
             if (pathfindingSystem.TryGetLocalBFSDirection(activeCell.CellPosition, targetEnemyCells, guardRange, out Vector2Int chaseDirection))
@@ -118,18 +104,13 @@ public class HeroPathfindingController : MonoBehaviour
     {
         targetEnemyCells.Clear();
 
-        if (combatGrid == null)
-        {
-            return false;
-        }
-
         int resolvedGuardRange = Mathf.Max(0, guardRange);
         for (int x = -resolvedGuardRange; x <= resolvedGuardRange; x++)
         {
             for (int y = -resolvedGuardRange; y <= resolvedGuardRange; y++)
             {
                 Vector3Int cellPosition = anchorCellPosition + new Vector3Int(x, y, 0);
-                if (!combatGrid.TryGetCell(cellPosition, out CombatGridCell cell) || cell == null || !cell.HasUnits)
+                if (!combatGrid.TryGetCell(cellPosition, out CombatGridCell cell) || !cell.HasUnits)
                 {
                     continue;
                 }
@@ -143,8 +124,7 @@ public class HeroPathfindingController : MonoBehaviour
                         continue;
                     }
 
-                    if (teamIdentity != null && unit.TeamIdentity != null && teamIdentity.IsEnemy(unit.TeamIdentity) &&
-                        AttackTargetRulling.CanTarget(hero, unit))
+                    if (teamIdentity.IsEnemy(unit.TeamIdentity) && AttackTargetRulling.CanTarget(hero, unit))
                     {
                         targetEnemyCells.Add(cellPosition);
                         break;
@@ -158,7 +138,7 @@ public class HeroPathfindingController : MonoBehaviour
 
     private Vector2 GetDirectionToMoveTarget(Vector3 heroCenterPosition)
     {
-        if (combatGrid == null || !combatGrid.TryCellToWorldCenter(moveTargetCellPosition, out Vector3 targetWorldCenter))
+        if (!combatGrid.TryCellToWorldCenter(moveTargetCellPosition, out Vector3 targetWorldCenter))
         {
             return Vector2.zero;
         }
@@ -171,19 +151,4 @@ public class HeroPathfindingController : MonoBehaviour
 
         return toTarget.normalized;
     }
-        
-    private void CacheReferences()
-    {
-        if (pathfindingSystem == null)
-        {
-            pathfindingSystem = FindAnyObjectByType<UnitPathfindingSystem>();
-        }
-    }
-
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        CacheReferences();
-    }
-#endif
 }

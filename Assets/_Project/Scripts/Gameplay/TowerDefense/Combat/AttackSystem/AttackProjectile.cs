@@ -28,6 +28,7 @@ public class AttackProjectile : MonoBehaviour, IPoolable
     private ParticleVFX healVFXPrefab;
     private float baseEffectValue;
     private AttackDamageType damageType;
+    private CombatTimeController combatTime;
 
     private ProjectileMode currentMode;
     private Vector2 spawnPosition;
@@ -53,7 +54,8 @@ public class AttackProjectile : MonoBehaviour, IPoolable
             return;
         }
 
-        lifetimeTimer.Tick(Time.fixedDeltaTime);
+        float combatFixedDeltaTime = combatTime.CombatFixedDeltaTime;
+        lifetimeTimer.Tick(combatFixedDeltaTime);
         if (lifetimeTimer.IsFinished || CheckReachMaxRange())
         {
             ReturnToPool();
@@ -61,13 +63,13 @@ public class AttackProjectile : MonoBehaviour, IPoolable
         }
 
         UpdateMoveDirection();
-        Move(Time.fixedDeltaTime);
+        Move(combatFixedDeltaTime);
     }
 
     public void Initialize(GameObject attacker, TeamIdentity attackerTeam, UnitRuntime target, TargetSide targetSide,
                            AttackEffect attackEffect, UnitAttackType attackType, ParticleVFX healVFXPrefab,
                            float baseEffectValue,
-                           AttackDamageType damageType)
+                           AttackDamageType damageType, CombatTimeController combatTime)
     {
         this.attacker = attacker;
         this.attackerTeam = attackerTeam;
@@ -78,6 +80,7 @@ public class AttackProjectile : MonoBehaviour, IPoolable
         this.healVFXPrefab = healVFXPrefab;
         this.baseEffectValue = Mathf.Max(0f, baseEffectValue);
         this.damageType = damageType;
+        this.combatTime = combatTime;
 
         isInitialized = true;
     }
@@ -141,6 +144,7 @@ public class AttackProjectile : MonoBehaviour, IPoolable
         healVFXPrefab = null;
         baseEffectValue = 0f;
         damageType = default;
+        combatTime = null;
 
         currentMode = projectileMode;
         spawnPosition = Vector2.zero;
@@ -295,7 +299,7 @@ public class AttackProjectile : MonoBehaviour, IPoolable
     private bool CanStart()
     {
         return isInitialized && rb != null && col != null && attackerTeam != null && target != null &&
-               !target.IsDead && baseEffectValue > 0f;
+               !target.IsDead && baseEffectValue > 0f && combatTime != null;
     }
 
     private void CacheReferences()

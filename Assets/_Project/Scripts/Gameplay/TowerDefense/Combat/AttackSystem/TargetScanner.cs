@@ -12,20 +12,32 @@ public class TargetScanner : MonoBehaviour
     private readonly HashSet<Hurtbox> uniqueTargets = new HashSet<Hurtbox>();
     private Collider2D[] scanBuffer;
     private ContactFilter2D scanFilter;
+    private bool isInitialized;
 
     public CombatGrid CombatGrid => combatGrid;
+
+    public bool IsInitialized => isInitialized;
 
     private void Awake()
     {
         targetMask = GameLayer.HurtboxMask;
     }
 
-    public void Initialize(CombatGrid combatGrid, UnitRuntime owner)
+    public bool Initialize(CombatGrid combatGrid, UnitRuntime owner)
     {
+        if (combatGrid == null || combatGrid.Grid == null || owner == null || owner.TeamIdentity == null)
+        {
+            Debug.LogError("[TargetScanner] CombatGrid with Grid, UnitRuntime, and TeamIdentity are required.", this);
+            isInitialized = false;
+            return false;
+        }
+
         this.combatGrid = combatGrid;
         this.owner = owner;
-        ownerTeam = owner != null ? owner.TeamIdentity : null;
+        ownerTeam = owner.TeamIdentity;
         InitializeBuffer();
+        isInitialized = true;
+        return true;
     }
 
     public void Scan(Vector2 originPosition, IReadOnlyList<Vector2Int> pattern, TargetSide targetSide,
@@ -40,9 +52,9 @@ public class TargetScanner : MonoBehaviour
         results.Clear();
         uniqueTargets.Clear();
 
-        if (combatGrid == null || combatGrid.Grid == null)
+        if (!isInitialized)
         {
-            Debug.LogError("[TargetScanner] CombatGrid is required before scanning targets.", this);
+            Debug.LogError("[TargetScanner] Initialize must succeed before scanning targets.", this);
             return;
         }
 
@@ -63,7 +75,7 @@ public class TargetScanner : MonoBehaviour
         }
     }
 
-    public bool IsValidTarget(Hurtbox hurtbox, TargetSide targetSide, AttackEffect attackEffect)
+    private bool IsValidTarget(Hurtbox hurtbox, TargetSide targetSide, AttackEffect attackEffect)
     {
         if (hurtbox == null)
         {
@@ -82,7 +94,7 @@ public class TargetScanner : MonoBehaviour
         }
 
         TeamIdentity targetTeam = hurtbox.GetTargetTeam();
-        if (ownerTeam == null || !ownerTeam.IsTargetSide(targetTeam, targetSide))
+        if (!ownerTeam.IsTargetSide(targetTeam, targetSide))
         {
             return false;
         }

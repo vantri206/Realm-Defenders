@@ -7,12 +7,14 @@ public class HeroInventory : MonoBehaviour
     [SerializeField] private List<HeroDefinition> initialHeroes = new List<HeroDefinition>();
 
     private List<HeroInstance> heroInstances = new List<HeroInstance>();
+
     private HeroInventoryView heroInventoryView;
+    private LevelSystem levelSystem;
 
     public IReadOnlyList<HeroInstance> HeroInstances => heroInstances;
     public int HeroCount => heroInstances.Count;
     
-    public void Initialize(HeroInventoryView inventoryView)
+    public void Initialize(HeroInventoryView inventoryView, LevelSystem levelSystem)
     {
         if (inventoryView == null)
         {
@@ -21,6 +23,7 @@ public class HeroInventory : MonoBehaviour
         }
 
         heroInventoryView = inventoryView;
+        this.levelSystem = levelSystem;
 
         heroInventoryView.Initialize();
 
@@ -31,6 +34,11 @@ public class HeroInventory : MonoBehaviour
             {
                 AddHeroInstance(heroInstance);
             }
+        }
+
+        if (levelSystem != null)
+        {
+            levelSystem.OnLevelStatsChanged += UpdateHeroDeployStates;
         }
     }
 
@@ -92,6 +100,26 @@ public class HeroInventory : MonoBehaviour
         heroInstance.OnDeployStateChanged -= OnHeroDeployStateChanged;
         heroInstances.Remove(heroInstance);
         return true;
+    }
+
+    private void UpdateHeroDeployStates()
+    {
+        if (levelSystem == null)
+        {
+            Debug.LogError("[HeroInventory] LevelSystem is required to update hero deploy states.", this);
+            return;
+        }
+
+        foreach (var heroInstance in heroInstances)
+        {
+            if (heroInstance == null || (heroInstance.DeployState != HeroDeployState.Available && heroInstance.DeployState != HeroDeployState.Unavailable))
+            {
+                continue;
+            }
+
+            bool canDeploy = levelSystem.CanDeployHero(heroInstance.DeployCost);
+            heroInstance.SetDeployState(canDeploy ? HeroDeployState.Available : HeroDeployState.Unavailable);
+        }
     }
 
     private void OnHeroDeployStateChanged(HeroInstance heroInstance, HeroDeployState newState)

@@ -11,6 +11,8 @@ public class PlayerCombatAction : MonoBehaviour
     private HeroDetailView heroDetailView;
     private TileOverlayRenderer tileOverlayRenderer;
     private GhostHeroView ghostHeroView;
+    private LevelSystem levelSystem;
+    private CombatTimeController combatTime;
 
     private PlayerCombatActionMode currentMode = PlayerCombatActionMode.None;
 
@@ -23,9 +25,15 @@ public class PlayerCombatAction : MonoBehaviour
     private Vector3Int previousHoveredCellPosition;
     private CombatGridCell previousHoveredCell;
 
+    private float previousSpeedMultiplier = 1f;
+    private float speedMultiplierOverride = 1f;
+
     private bool isInitialized;
 
-    public void Initialize(Camera mainCamera, CombatGrid combatGrid, HeroDeploymentSystem heroDeploymentSystem, HeroDetailView heroDetailView, TileOverlayRenderer tileOverlayRenderer, GhostHeroView ghostHeroView)
+    public bool HasSpeedOverride => speedMultiplierOverride != 1f;
+
+    public void Initialize(Camera mainCamera, CombatGrid combatGrid, HeroDeploymentSystem heroDeploymentSystem, HeroDetailView heroDetailView,
+                           TileOverlayRenderer tileOverlayRenderer, GhostHeroView ghostHeroView, LevelSystem levelSystem, CombatTimeController combatTime)
     {
         this.mainCamera = mainCamera;
         this.combatGrid = combatGrid;
@@ -33,13 +41,16 @@ public class PlayerCombatAction : MonoBehaviour
         this.heroDetailView = heroDetailView;
         this.tileOverlayRenderer = tileOverlayRenderer;
         this.ghostHeroView = ghostHeroView;
+        this.levelSystem = levelSystem;
+        this.combatTime = combatTime;
 
         currentMode = PlayerCombatActionMode.None;
         ResetHoverState();
 
-        if (this.mainCamera == null || this.combatGrid == null || this.heroDeploymentSystem == null || this.tileOverlayRenderer == null)
+        if (this.mainCamera == null || this.combatGrid == null || this.heroDeploymentSystem == null ||
+            this.tileOverlayRenderer == null || this.combatTime == null)
         {
-            Debug.LogError("[PlayerCombatAction] mainCamera, combatGrid, heroDeploymentSystem, and tileOverlayRenderer are required to initialize player combat actions.", this);
+            Debug.LogError("[PlayerCombatAction] mainCamera, combatGrid, heroDeploymentSystem, tileOverlayRenderer, and CombatTimeController are required to initialize player combat actions.", this);
             isInitialized = false;
             return;
         }
@@ -62,6 +73,18 @@ public class PlayerCombatAction : MonoBehaviour
             return;
         }
 
+        bool previousActionMode = IsActionMode(currentMode);
+        bool isActionMode = IsActionMode(mode);
+
+        if (!previousActionMode && isActionMode)
+        {
+            StartActionTime();
+        }
+        else if (previousActionMode && !isActionMode)
+        {
+            StopActionTime();
+        }
+
         ClearCurrentModeOverlays();
         currentMode = mode;
         ResetHoverState();
@@ -76,11 +99,52 @@ public class PlayerCombatAction : MonoBehaviour
                 break;
             case PlayerCombatActionMode.SelectedDeployedHero:
                 break;
-            case PlayerCombatActionMode.RelocatingHero:
-                break;
             default:
                 break;
         }
+    }
+
+    private static bool IsActionMode(PlayerCombatActionMode mode)
+    {
+        return mode == PlayerCombatActionMode.DeployingHero || mode == PlayerCombatActionMode.SelectingDeployDirection || mode == PlayerCombatActionMode.SelectedDeployedHero;
+    }
+
+    private void StartActionTime()
+    {
+        if (combatTime == null || HasSpeedOverride)
+        {
+            return;
+        }
+
+        previousSpeedMultiplier = combatTime.CombatSpeedMultiplier;
+
+        speedMultiplierOverride = GameplayConstants.ACTION_SPEED_MULTIPLIER;
+        combatTime.SetSpeedMultiplier(speedMultiplierOverride);
+    }
+
+    private void StopActionTime()
+    {
+        if (combatTime == null || !HasSpeedOverride)
+        {
+            return;
+        }
+
+        combatTime.SetSpeedMultiplier(previousSpeedMultiplier);
+
+        speedMultiplierOverride = 1f;
+    }
+
+    private void OnEnable()
+    {
+        if (isInitialized && IsActionMode(currentMode))
+        {
+            StartActionTime();
+        }
+    }
+
+    private void OnDisable()
+    {
+        StopActionTime();
     }
 
     public void RefreshMode()
@@ -91,7 +155,7 @@ public class PlayerCombatAction : MonoBehaviour
                 break;
             case PlayerCombatActionMode.SelectedDeployedHero:
                 break;
-            case PlayerCombatActionMode.RelocatingHero:
+            case PlayerCombatActionMode.SelectingDeployDirection:
                 break;
             default:
                 break;
@@ -135,22 +199,14 @@ public class PlayerCombatAction : MonoBehaviour
                 break;
             case PlayerCombatActionMode.SelectedDeployedHero:
                 break;
-            case PlayerCombatActionMode.RelocatingHero:
-                break;
             case PlayerCombatActionMode.SelectingDeployDirection:
                 break;
             default:
-
                 break;
         }
     }
 
-    public void SellSelectedHero()
-    {
-        
-    }
-
-    public void RelocateSelectedHero()
+    public void RetreatSelectedHero()
     {
         
     }
@@ -303,9 +359,6 @@ public class PlayerCombatAction : MonoBehaviour
             case PlayerCombatActionMode.SelectedDeployedHero:
                 tileOverlayRenderer.ClearLayer(TileOverlayLayer.CellState);
                 ClearPreviewAttackRange();
-                break;
-            case PlayerCombatActionMode.RelocatingHero:
-                tileOverlayRenderer.ClearLayer(TileOverlayLayer.CellState);
                 break;
         }
     }
@@ -488,15 +541,41 @@ public class PlayerCombatAction : MonoBehaviour
         heroDetailView.Show(heroInstance);
     }
 
+    public void ShowDetailHero(HeroRuntime heroRuntime)
+    {
+        if (heroDetailView == null)
+        {
+            Debug.LogError("[PlayerCombatAction] HeroDetailView is required to show hero details.", this);
+            return;
+        }
+
+        heroDetailView.Show(heroRuntime);
+    }
+
+
     public void PerformAction()
     {
         if (currentMode == PlayerCombatActionMode.SelectingDeployDirection)
         {
             if (currentDeployCell != null && deployingHero != null)
             {
+                if (levelSystem != null)
+                {
+                    if (!levelSystem.CanDeployHero(deployingHero.DeployCost))
+                    {
+                        Debug.LogWarning("[PlayerCombatAction] Cannot deploy hero due to level system restrictions.", this);
+                        return;
+                    }
+                }
+
                 HeroRuntime deployedHero = heroDeploymentSystem.DeploySelectedHero(currentDeployCell, currentDeployDirection);
                 if (deployedHero != null)
                 {
+                    RegisterDeployedHeroEvents(deployedHero);
+                    if (levelSystem != null)
+                    {
+                        levelSystem.TrySpendFood(deployingHero.DeployCost);
+                    }
                     FinishDeployHero();
                 }
             }
@@ -532,6 +611,26 @@ public class PlayerCombatAction : MonoBehaviour
         return true;
     }
 
+    private void RegisterDeployedHeroEvents(HeroRuntime heroRuntime)
+    {
+        if (heroRuntime == null)
+        {
+            return;
+        }
+
+        heroRuntime.OnSelected += HandleHeroSelected;
+    }
+
+    private void UnregisterDeployedHeroEvents(HeroRuntime heroRuntime)
+    {
+        if (heroRuntime == null)
+        {
+            return;
+        }
+
+        heroRuntime.OnSelected -= HandleHeroSelected;
+    }
+
     public void FinishDeployHero()
     {
         deployingHero = null;
@@ -541,5 +640,17 @@ public class PlayerCombatAction : MonoBehaviour
         HideDeployGhost();
         RefreshMode();
         CancelDeployHero();
+    }
+
+    private void HandleHeroSelected(HeroRuntime heroRuntime)
+    {
+        if (heroRuntime == null)
+        {
+            return;
+        }
+
+        heroDeploymentSystem.SelectHeroRuntime(heroRuntime);
+        ChangeMode(PlayerCombatActionMode.SelectedDeployedHero);
+        ShowDetailHero(heroRuntime);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,38 +6,41 @@ public class EnemyRuntime : UnitRuntime, IBlockable
 {
     // Enemy Identity
     private EnemyInstance enemyInstance;
-    private EnemyDefinition enemyDefinition => enemyInstance != null ? enemyInstance.Definition : null;
+    private EnemyDefinition enemyDefinition;
 
     // Enemy Components
     [SerializeField] private EnemyPathfindingController enemyPathfindingController;
     private EnemyDepthSorter enemyDepthSorter;
+    private EnemyRouteGraph routeGraph;
     private IBlocker currentBlocker;
 
     // Enemy Stats
-    public override UnitStats Stats => enemyInstance != null ? enemyInstance.Stats : base.Stats;
-    public UnitSpeed Speed => enemyInstance != null ? enemyInstance.Speed : null;
-    public override UnitMovementType MovementType => enemyDefinition != null ? enemyDefinition.MovementType : base.MovementType;
-    public override UnitAttackType AttackType => enemyDefinition != null ? enemyDefinition.AttackType : base.AttackType;
+    public override UnitStats Stats => enemyInstance.Stats;
+    public UnitSpeed Speed => enemyInstance.Speed;
+    public override UnitMovementType MovementType => enemyDefinition.MovementType;
+    public override UnitAttackType AttackType => enemyDefinition.AttackType;
     // Getters
     public EnemyInstance Instance => enemyInstance;
     public EnemyDefinition Definition => enemyDefinition;
     public EnemyPathfindingController PathfindingController => enemyPathfindingController;
-    public float PathProgressScore => enemyPathfindingController != null ? enemyPathfindingController.PathProgressScore : 0f;
-    public override Vector2 CenterOffset => enemyDefinition != null ? enemyDefinition.CenterOffset : base.CenterOffset;
+    public float PathProgressScore => enemyPathfindingController.PathProgressScore;
+    public override Vector2 CenterOffset => enemyDefinition.CenterOffset;
     public bool CanBeBlocked => IsInitialized && !IsDead && MovementType != UnitMovementType.Flying;
     public bool IsBlocked => currentBlocker != null;
     public UnitRuntime Owner => this;
     public IBlocker CurrentBlocker => currentBlocker;
     public override bool IsMovementBlocked => base.IsMovementBlocked || IsBlocked;
 
-    public override TargetSide TargetSide => enemyDefinition != null ? enemyDefinition.TargetSide : base.TargetSide;
-    public override AttackEffect AttackEffect => enemyDefinition != null ? enemyDefinition.AttackEffect : base.AttackEffect;
-    public override AttackMethod AttackMethod => enemyDefinition != null ? enemyDefinition.AttackMethod : base.AttackMethod;
-    public override AttackDamageType AttackDamageType => enemyDefinition != null ? enemyDefinition.AttackDamageType : base.AttackDamageType;
-    public override float NormalAttackEffectMultiplier => enemyDefinition != null ? enemyDefinition.NormalAttackEffectMultiplier : base.NormalAttackEffectMultiplier;
-    public override AttackProjectile NormalAttackProjectilePrefab => enemyDefinition != null ? enemyDefinition.NormalAttackProjectilePrefab : base.NormalAttackProjectilePrefab;
-    public override AttackAOEHit NormalAttackAOEHitPrefab => enemyDefinition != null ? enemyDefinition.NormalAttackAOEHitPrefab : base.NormalAttackAOEHitPrefab;
-    public override SimpleSpriteAnimatorVFX NormalAttackHitVFXPrefab => enemyDefinition != null ? enemyDefinition.NormalAttackHitVFXPrefab : base.NormalAttackHitVFXPrefab;
+    public override TargetSide TargetSide => enemyDefinition.TargetSide;
+    public override AttackEffect AttackEffect => enemyDefinition.AttackEffect;
+    public override AttackMethod AttackMethod => enemyDefinition.AttackMethod;
+    public override AttackDamageType AttackDamageType => enemyDefinition.AttackDamageType;
+    public override float NormalAttackEffectMultiplier => enemyDefinition.NormalAttackEffectMultiplier;
+    public override AttackProjectile NormalAttackProjectilePrefab => enemyDefinition.NormalAttackProjectilePrefab;
+    public override AttackAOEHit NormalAttackAOEHitPrefab => enemyDefinition.NormalAttackAOEHitPrefab;
+    public override SimpleSpriteAnimatorVFX NormalAttackHitVFXPrefab => enemyDefinition.NormalAttackHitVFXPrefab;
+
+    public event Action<EnemyRuntime> OnEscaped;
 
     private void Awake()
     {
@@ -61,9 +65,11 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         base.OnDisable();
     }
 
-    public void Initialize(EnemyInstance enemyInstance, CombatGrid combatGrid, Vector3Int currentCell, 
-                        EnemyRouteGraph routeGraph, UnitPathfindingSystem pathfindingSystem, string routeId, EnemyDepthSorter enemyDepthSorter)
+    public void Initialize(EnemyInstance enemyInstance, UnitCombatContext combatContext, EnemyRouteGraph routeGraph,
+                         Vector3Int currentCell, string routeId, EnemyDepthSorter enemyDepthSorter)
     {
+        isInitialized = false;
+
         if (enemyInstance == null || !enemyInstance.IsValid)
         {
             Debug.LogError("[EnemyRuntime] A valid EnemyInstance is required to initialize enemy runtime.", this);
@@ -71,21 +77,39 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         }
 
         this.enemyInstance = enemyInstance;
-        this.combatGrid = combatGrid;
+        enemyDefinition = enemyInstance.Definition;
+        this.routeGraph = routeGraph;
+        this.combatContext = combatContext;
 
         CacheReferences();
-        SetupVisuals(Definition.EnemySprite, Definition.AnimatorController);
-        InitializeStats();
-        InitializeAttackSystems(Definition.TargetPriorityMode);
-        SetDepthSorter(enemyDepthSorter);
-        
-        if (combatGrid == null)
+
+        if (!CheckCoreReferences() ||
+            !CheckHealthSystemReferences() ||
+            !CheckMovementSystemReferences(Speed) ||
+            !CheckAttackSystemReferences() ||
+            !CheckPathfindingSystemReferences())
         {
-            Debug.LogError("[EnemyRuntime] CombatGrid is required to initialize enemy runtime.", this);
             return;
         }
+
+        SetupVisuals(Definition.EnemySprite, Definition.AnimatorController);
+        if (!InitializeMovementSystem(Speed, MovementType))
+        {
+            return;
+        }
+
+        if (!InitializeHealth())
+        {
+            return;
+        }
+
+        if (!InitializeAttackSystems(Definition.TargetPriorityMode))
+        {
+            return;
+        }
+        SetDepthSorter(enemyDepthSorter);
         
-        if (combatGrid.TryGetCell(currentCell, out CombatGridCell cell))
+        if (combatContext.CombatGrid.TryGetCell(currentCell, out CombatGridCell cell))
         {
             SetActiveCell(cell);
         }
@@ -100,13 +124,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
 
         centerOffset = Definition.CenterOffset;
 
-        if (enemyPathfindingController == null)
-        {
-            Debug.LogError("[EnemyRuntime] EnemyPathfindingController component is required to initialize enemy pathfinding.", this);
-            return;
-        }
-
-        bool isPathfindingInitialized = enemyPathfindingController.Initialize(routeGraph, pathfindingSystem, routeId);
+        bool isPathfindingInitialized = enemyPathfindingController.Initialize(routeGraph, combatContext.UnitPathfindingSystem, routeId, () => OnEscaped?.Invoke(this));
 
         isInitialized = isPathfindingInitialized;
     }
@@ -118,14 +136,9 @@ public class EnemyRuntime : UnitRuntime, IBlockable
             return;
         }
 
-        if (normalAttackController == null)
-        {
-            Debug.LogError("[EnemyRuntime] NormalAttackController component is required to update enemy attacks.", this);
-            return;
-        }
-
-        TickState(Time.deltaTime);
-        normalAttackController.Tick(Time.deltaTime, resolvedAttackPattern, CanUseNormalAttack);
+        float combatDeltaTime = combatContext.CombatTime.CombatDeltaTime;
+        TickState(combatDeltaTime);
+        normalAttackController.Tick(combatDeltaTime, resolvedAttackPattern, CanUseNormalAttack);
     }
 
     public void FixedUpdate()
@@ -135,15 +148,8 @@ public class EnemyRuntime : UnitRuntime, IBlockable
             return;
         }
 
-        if (enemyPathfindingController == null || combatGrid == null || unitMovement == null)
-        {
-            Debug.LogError("[EnemyRuntime] EnemyPathfindingController, CombatGrid, and UnitMovement are required to update enemy movement.", this);
-            SetMovementDirection(Vector2.zero);
-            return;
-        }
-        
         Vector3 centerPosition = CenterPosition;
-        CombatGridCell nextActiveCell = combatGrid.TryWorldToCell(centerPosition, out CombatGridCell cell) ? cell : null;
+        CombatGridCell nextActiveCell = combatContext.CombatGrid.TryWorldToCell(centerPosition, out CombatGridCell cell) ? cell : null;
         SetActiveCell(nextActiveCell);
 
         if (!CanMove)
@@ -154,13 +160,13 @@ public class EnemyRuntime : UnitRuntime, IBlockable
             }
 
             SetMovementDirection(Vector2.zero);
-            unitMovement.FixedTick(Time.fixedDeltaTime);
+            unitMovement.FixedTick(combatContext.CombatTime.CombatFixedDeltaTime);
             return;
         }
 
         if (activeCell != null)
         {
-            if (combatGrid.TryCellToWorldCenter(activeCell.CellPosition, out Vector3 activeCellWorldCenter))
+            if (combatContext.CombatGrid.TryCellToWorldCenter(activeCell.CellPosition, out Vector3 activeCellWorldCenter))
             {
                 SetMovementDirection(enemyPathfindingController.GetCurrentMoveDirection(this, activeCell.CellPosition, activeCellWorldCenter, centerPosition));
             }
@@ -175,41 +181,22 @@ public class EnemyRuntime : UnitRuntime, IBlockable
             SetMovementDirection(Vector2.zero);
         }
 
-        unitMovement.FixedTick(Time.fixedDeltaTime);
+        unitMovement.FixedTick(combatContext.CombatTime.CombatFixedDeltaTime);
     }
 
-    protected override void InitializeStats()
+    private bool CheckPathfindingSystemReferences()
     {
-        InitializeHealth();
-
-        InitializeMovement();
-    }
-
-    private void InitializeMovement()
-    {
-        if (Speed == null)
+        if (enemyPathfindingController != null && routeGraph != null && combatContext.UnitPathfindingSystem != null)
         {
-            Debug.LogError("[EnemyRuntime] UnitSpeed is required to initialize enemy movement.", this);
-            return;
+            return true;
         }
 
-        if (unitMovement == null)
-        {
-            Debug.LogError("[EnemyRuntime] UnitMovement component is required to initialize movement.", this);
-            return;
-        }
-
-        unitMovement.Initialize(Speed, MovementType);
+        Debug.LogError("[EnemyRuntime] Pathfinding system requires EnemyPathfindingController, EnemyRouteGraph, and UnitPathfindingSystem.", this);
+        return false;
     }
 
     protected void SetMovementDirection(Vector2 direction)
     {
-        if (unitMovement == null)
-        {
-            Debug.LogError("[EnemyRuntime] UnitMovement component is required to set movement direction.", this);
-            return;
-        }
-
         if (!CanMove && direction != Vector2.zero)
         {
             unitMovement.SetMoveDirection(Vector2.zero);
@@ -221,14 +208,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         if (direction == Vector2.zero)
         {
             unitMovement.SetMoveDirection(Vector2.zero);
-            if (unitVisual == null)
-            {
-                Debug.LogError("[EnemyRuntime] UnitVisual component is required to update movement animation state.", this);
-            }
-            else
-            {
-                unitVisual.SetIsMoving(false);
-            }
+            unitVisual.SetIsMoving(false);
 
             SetMovementState(false);
             return;
@@ -236,14 +216,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
 
         SetFacingDirection(Vector2Int.RoundToInt(direction));
         unitMovement.SetMoveDirection(direction);
-        if (unitVisual == null)
-        {
-            Debug.LogError("[EnemyRuntime] UnitVisual component is required to update movement animation state.", this);
-        }
-        else
-        {
-            unitVisual.SetIsMoving(true);
-        }
+        unitVisual.SetIsMoving(true);
 
         SetMovementState(true);
     }
@@ -262,6 +235,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
 
         currentBlocker?.ReleaseBlockedTarget(this);
 
+        unitMovement.ClearMovementOverride();
         currentBlocker = blocker;
         UpdateBlockedFacingDirection();
         SetMovementDirection(Vector2.zero);
@@ -274,6 +248,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
             return;
         }
 
+        unitMovement.ClearMovementOverride();
         currentBlocker = null;
     }
 
@@ -285,7 +260,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         }
 
         Vector2 directionToBlocker = (Vector2)currentBlocker.Owner.CenterPosition - (Vector2)CenterPosition;
-        Vector2Int blockerFacingDirection = GetFourDirection(directionToBlocker);
+        Vector2Int blockerFacingDirection = ResolveFourDirection(directionToBlocker);
 
         if (blockerFacingDirection == Vector2Int.zero || blockerFacingDirection == facingDirection)
         {
@@ -293,21 +268,6 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         }
 
         SetFacingDirection(blockerFacingDirection);
-    }
-
-    private static Vector2Int GetFourDirection(Vector2 direction)
-    {
-        if (direction.sqrMagnitude <= Mathf.Epsilon)
-        {
-            return Vector2Int.zero;
-        }
-
-        if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
-        {
-            return direction.x >= 0f ? Vector2Int.right : Vector2Int.left;
-        }
-
-        return direction.y >= 0f ? Vector2Int.up : Vector2Int.down;
     }
 
     protected override void CacheReferences()
@@ -331,7 +291,7 @@ private void OnDrawGizmosSelected()
     Color centerGizmoColor = Color.purple;
     float centerGizmoRadius = 0.1f;
     Gizmos.color = centerGizmoColor;
-    Gizmos.DrawSphere(transform.position + (Vector3)CenterOffset, centerGizmoRadius);
+    Gizmos.DrawSphere(transform.position + (Vector3)centerOffset, centerGizmoRadius);
 }
 #endif
 }

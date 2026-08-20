@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: b942afd5ad707ef49a8ffac4873633b5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6032502110064673942
+    second: Swashbuckler_skill_1_0
+  - first:
+      213: -6438332001918930211
+    second: Swashbuckler_skill_1_1
+  - first:
+      213: 7172093344332109083
+    second: Swashbuckler_skill_1_2
+  - first:
+      213: -5040659882726359849
+    second: Swashbuckler_skill_1_3
+  - first:
+      213: -302236446076454209
+    second: Swashbuckler_skill_1_4
+  - first:
+      213: 2583099356518451788
+    second: Swashbuckler_skill_1_5
+  - first:
+      213: -2553039293967903349
+    second: Swashbuckler_skill_1_6
+  - first:
+      213: 403945446098657807
+    second: Swashbuckler_skill_1_7
+  - first:
+      213: 5772756014013296811
+    second: Swashbuckler_skill_1_8
+  - first:
+      213: -279047110695688390
+    second: Swashbuckler_skill_1_9
+  - first:
+      213: -4832703979577566695
+    second: Swashbuckler_skill_1_10
+  - first:
+      213: 3796974919494783711
+    second: Swashbuckler_skill_1_11
+  - first:
+      213: -2519619065247986705
+    second: Swashbuckler_skill_1_12
+  - first:
+      213: 6820452385985456198
+    second: Swashbuckler_skill_1_13
+  - first:
+      213: -5244019655746980968
+    second: Swashbuckler_skill_1_14
+  - first:
+      213: -80121187008142132
+    second: Swashbuckler_skill_1_15
+  - first:
+      213: -7286359037634433802
+    second: Swashbuckler_skill_1_16
+  - first:
+      213: 4309877056073976108
+    second: Swashbuckler_skill_1_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 317
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6bfcceda4f384ca0800000000000000
+      internalID: -6032502110064673942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_1
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 317
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd2b79fe72376a6a0800000000000000
+      internalID: -6438332001918930211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_2
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 305
+        width: 50
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b15dbd4b5e4688360800000000000000
+      internalID: 7172093344332109083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_3
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 305
+        width: 46
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dc78801b8afb0ab0800000000000000
+      internalID: -5040659882726359849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_4
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 305
+        width: 38
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbabf69bd8d3ecbf0800000000000000
+      internalID: -302236446076454209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_5
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 317
+        width: 34
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4a82dccd2309d320800000000000000
+      internalID: 2583099356518451788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_6
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 223
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b85dd69e948c19cd0800000000000000
+      internalID: -2553039293967903349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_7
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 223
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f02e8573e3a1b9500800000000000000
+      internalID: 403945446098657807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_8
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 219
+        width: 58
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba033466203fc1050800000000000000
+      internalID: 5772756014013296811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_9
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 219
+        width: 58
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a37626b9120a02cf0800000000000000
+      internalID: -279047110695688390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_10
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 219
+        width: 43
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91a99a8d559ceecb0800000000000000
+      internalID: -4832703979577566695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_11
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 223
+        width: 34
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd2dd81729091b430800000000000000
+      internalID: 3796974919494783711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_12
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 29
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: feb87964fc3880dd0800000000000000
+      internalID: -2519619065247986705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_13
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 29
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 648e02a0f4d17ae50800000000000000
+      internalID: 6820452385985456198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_14
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 25
+        width: 46
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 893f80838ef7937b0800000000000000
+      internalID: -5244019655746980968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_15
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 25
+        width: 42
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc4a565743a53eef0800000000000000
+      internalID: -80121187008142132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_16
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 25
+        width: 42
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fca7df5f07a1ea90800000000000000
+      internalID: -7286359037634433802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swashbuckler_skill_1_17
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 29
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2945e80952cfcb30800000000000000
+      internalID: 4309877056073976108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Swashbuckler_skill_1_0: -6032502110064673942
+      Swashbuckler_skill_1_1: -6438332001918930211
+      Swashbuckler_skill_1_10: -4832703979577566695
+      Swashbuckler_skill_1_11: 3796974919494783711
+      Swashbuckler_skill_1_12: -2519619065247986705
+      Swashbuckler_skill_1_13: 6820452385985456198
+      Swashbuckler_skill_1_14: -5244019655746980968
+      Swashbuckler_skill_1_15: -80121187008142132
+      Swashbuckler_skill_1_16: -7286359037634433802
+      Swashbuckler_skill_1_17: 4309877056073976108
+      Swashbuckler_skill_1_2: 7172093344332109083
+      Swashbuckler_skill_1_3: -5040659882726359849
+      Swashbuckler_skill_1_4: -302236446076454209
+      Swashbuckler_skill_1_5: 2583099356518451788
+      Swashbuckler_skill_1_6: -2553039293967903349
+      Swashbuckler_skill_1_7: 403945446098657807
+      Swashbuckler_skill_1_8: 5772756014013296811
+      Swashbuckler_skill_1_9: -279047110695688390
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

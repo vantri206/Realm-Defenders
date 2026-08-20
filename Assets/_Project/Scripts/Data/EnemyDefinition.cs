@@ -21,6 +21,7 @@ public class EnemyDefinition : ScriptableObject
     [SerializeField] private float specialDefense = 0f;
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private UnitMovementType movementType = UnitMovementType.Ground;
+    [SerializeField] private int foodReward = 2;
 
     [Header("Attack")]
     [SerializeField] private UnitAttackType attackType = UnitAttackType.Melee;
@@ -56,6 +57,7 @@ public class EnemyDefinition : ScriptableObject
     public float SpecialDefense => specialDefense;
     public float MoveSpeed => moveSpeed;
     public UnitMovementType MovementType => movementType;
+    public int FoodReward => foodReward;
     public UnitAttackType AttackType => attackType;
     public TargetPriorityMode TargetPriorityMode => targetPriorityMode;
     public IReadOnlyList<Vector2Int> AttackPattern => attackPattern;

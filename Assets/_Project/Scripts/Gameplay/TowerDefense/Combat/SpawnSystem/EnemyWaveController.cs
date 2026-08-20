@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,23 +5,24 @@ public class EnemyWaveController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private EnemySpawner enemySpawner;
-    [SerializeField] private EnemyWaveDirector enemyWaveDirector;
-
     [SerializeField] private EnemyDepthSorter enemyDepthSorter;
 
     [Header("Wave Settings")]
     [SerializeField] private List<EnemySpawnEvent> spawnEvents = new List<EnemySpawnEvent>();
 
+    private readonly EnemyWaveDirector enemyWaveDirector = new EnemyWaveDirector();
+
+    private UnitCombatContext combatContext;
+    private int totalSpawnCount;
+
     private bool isWaveRunning;
     private bool isSpawnCompleted;
-    private Coroutine waveRoutine;
-
     private bool isInitialized;
 
     public bool IsWaveRunning => isWaveRunning;
     public bool IsSpawnCompleted => isSpawnCompleted;
     public IReadOnlyList<EnemySpawnEvent> SpawnEvents => spawnEvents;
-
+    public int TotalSpawnCount => totalSpawnCount;
     public bool IsInitialized => isInitialized;
 
     private void Awake()
@@ -32,19 +32,28 @@ public class EnemyWaveController : MonoBehaviour
             enemySpawner = GetComponent<EnemySpawner>();
         }
 
-        if (enemyWaveDirector == null)
+        if (enemyDepthSorter == null)
         {
-            enemyWaveDirector = GetComponent<EnemyWaveDirector>();
+            enemyDepthSorter = GetComponent<EnemyDepthSorter>();
         }
     }
-
-    public void Initialize(CombatGrid combatGrid, EnemyRouteGraph routeGraph, UnitPathfindingSystem pathfindingSystem)
+    
+    public void Initialize(UnitCombatContext combatContext, EnemyRouteGraph enemyRouteGraph, LevelSystem levelSystem)
     {
         StopWave();
+        isInitialized = false;
+
+        if (combatContext == null || !combatContext.IsValid)
+        {
+            Debug.LogError("[EnemyWaveController] A valid CombatReferencesContext is required to initialize wave controller.", this);
+            return;
+        }
+
+        this.combatContext = combatContext;
 
         if (enemySpawner != null)
         {
-            enemySpawner.Initialize(combatGrid, routeGraph, pathfindingSystem, enemyDepthSorter);
+            enemySpawner.Initialize(combatContext, enemyRouteGraph, enemyDepthSorter, levelSystem);
         }
 
         if (enemySpawner == null || !enemySpawner.IsInitialized)
@@ -53,18 +62,30 @@ public class EnemyWaveController : MonoBehaviour
             return;
         }
 
-        if (enemyWaveDirector == null)
-        {
-            Debug.LogError("[EnemyWaveController] EnemyWaveDirector reference is missing.", this);
-            return;
-        }
-
         enemyWaveDirector.Initialize(enemySpawner, spawnEvents);
 
         isInitialized = true;
         isSpawnCompleted = false;
 
-        StartWave();
+        totalSpawnCount = 0;
+        foreach (var spawnEvent in spawnEvents)
+        {
+            if (spawnEvent != null)
+            {
+                totalSpawnCount += spawnEvent.SpawnCount * spawnEvent.EnemyCount;
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (!isWaveRunning)
+        {
+            return;
+        }
+
+        enemyWaveDirector.Tick(combatContext.CombatTime.CombatDeltaTime);
+        RefreshSpawnCompletion();
     }
 
     public void StartWave()
@@ -83,56 +104,41 @@ public class EnemyWaveController : MonoBehaviour
 
         isWaveRunning = true;
         isSpawnCompleted = false;
-        waveRoutine = StartCoroutine(RunWaveRoutine());
+        enemyWaveDirector.StartDirector();
+        enemyWaveDirector.Tick(0f);
+        RefreshSpawnCompletion();
     }
 
     public void StopWave()
     {
-        if (waveRoutine != null)
-        {
-            StopCoroutine(waveRoutine);
-            waveRoutine = null;
-        }
-
-        if (enemyWaveDirector != null)
-        {
-            enemyWaveDirector.StopDirector();
-        }
-
+        enemyWaveDirector.StopDirector();
         isWaveRunning = false;
     }
 
     public void ClearWave()
     {
         StopWave();
+        enemyWaveDirector.ClearDirector();
 
-        if (enemyWaveDirector != null)
-        {
-            enemyWaveDirector.ClearDirector();
-        }
-
+        combatContext = null;
         isInitialized = false;
         isSpawnCompleted = false;
     }
 
-    private IEnumerator RunWaveRoutine()
+    private bool CheckWaveSpawnFinished()
     {
-        enemyWaveDirector.StartDirector();
+        return enemyWaveDirector.CheckAllSpawnFinished();
+    }
 
-        while (!CheckWaveSpawnFinished())
+    private void RefreshSpawnCompletion()
+    {
+        if (!CheckWaveSpawnFinished())
         {
-            yield return null;
+            return;
         }
 
         isSpawnCompleted = true;
-
         isWaveRunning = false;
-        waveRoutine = null;
-    }
-
-    private bool CheckWaveSpawnFinished()
-    {
-        return enemyWaveDirector != null && enemyWaveDirector.CheckAllSpawnFinished();
     }
 
     private bool CheckWaveResolved()

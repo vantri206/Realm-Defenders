@@ -2,21 +2,19 @@ using UnityEngine;
 
 public class HeroPlacement : MonoBehaviour
 {
-    private CombatGrid combatGrid;
-    private UnitPathfindingSystem unitPathfindingSystem;
+    private UnitCombatContext combatContext;
 
-    public CombatGrid CombatGrid => combatGrid;
+    public CombatGrid CombatGrid => combatContext?.CombatGrid;
 
-    public void Initialize(CombatGrid combatGrid, UnitPathfindingSystem unitPathfindingSystem)
+    public void Initialize(UnitCombatContext combatContext)
     {
-        if (combatGrid == null || unitPathfindingSystem == null)
+        if (combatContext == null || !combatContext.IsValid)
         {
-            Debug.LogError("[HeroPlacement] Both CombatGrid and UnitPathfindingSystem are required to initialize hero placement.", this);
+            Debug.LogError("[HeroPlacement] A valid CombatReferencesContext is required to initialize hero placement.", this);
             return;
         }
 
-        this.combatGrid = combatGrid;
-        this.unitPathfindingSystem = unitPathfindingSystem;
+        this.combatContext = combatContext;
     }
 
     public bool CanPlaceHero(HeroInstance instance, CombatGridCell cell)
@@ -31,13 +29,13 @@ public class HeroPlacement : MonoBehaviour
             return false;
         }
 
-        if (combatGrid == null)
+        if (combatContext == null || combatContext.CombatGrid == null)
         {
             Debug.LogError("[HeroPlacement] CombatGrid is required before checking hero placement.", this);
             return false;
         }
 
-        if (cell == null || !combatGrid.TryGetCell(cell.CellPosition, out CombatGridCell gridCell) || gridCell != cell)
+        if (cell == null || !combatContext.CombatGrid.TryGetCell(cell.CellPosition, out CombatGridCell gridCell) || gridCell != cell)
         {
             return false;
         }
@@ -52,10 +50,10 @@ public class HeroPlacement : MonoBehaviour
             return null;
         }
 
-        combatGrid.TryCellToWorldBottomCenter(cell, out Vector3 spawnPosition);
+        combatContext.CombatGrid.TryCellToWorldBottomCenter(cell, out Vector3 spawnPosition);
         HeroRuntime hero = Instantiate(instance.Definition.Prefab, spawnPosition, Quaternion.identity, transform);
 
-        hero.Initialize(instance, combatGrid, cell.CellPosition, unitPathfindingSystem);
+        hero.Initialize(instance, combatContext, cell.CellPosition);
 
         return hero;
     }
@@ -67,20 +65,20 @@ public class HeroPlacement : MonoBehaviour
             return false;
         }
 
-        if (combatGrid == null)
+        if (combatContext == null || combatContext.CombatGrid == null)
         {
             Debug.LogError("[HeroPlacement] CombatGrid is required before removing a hero.", this);
             return false;
         }
 
-        if (hero.AnchorCell == null || !combatGrid.TryGetCell(hero.AnchorCell.CellPosition, out CombatGridCell anchorCell) || anchorCell != hero.AnchorCell)
+        if (hero.AnchorCell == null || !combatContext.CombatGrid.TryGetCell(hero.AnchorCell.CellPosition, out CombatGridCell anchorCell) || anchorCell != hero.AnchorCell)
         {
             return false;
         }
 
         Vector3Int cellPosition = hero.AnchorCell.CellPosition;
 
-        if (!combatGrid.TryGetCell(cellPosition, out CombatGridCell cell) || cell.AnchoredHero != hero)
+        if (!combatContext.CombatGrid.TryGetCell(cellPosition, out CombatGridCell cell) || cell.AnchoredHero != hero)
         {
             return false;
         }

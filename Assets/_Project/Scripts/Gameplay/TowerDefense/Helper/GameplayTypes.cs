@@ -52,8 +52,7 @@ public enum PlayerCombatActionMode
     None,
     DeployingHero,
     SelectingDeployDirection,
-    SelectedDeployedHero,
-    RelocatingHero,
+    SelectedDeployedHero
 }
 
 public enum HeroDeployState
@@ -98,20 +97,82 @@ public static class GridDirectionHelpers
 
     public static readonly Vector2Int[] EightWayOffsets =
     {
-        Vector2Int.left,
-        Vector2Int.right,
-        Vector2Int.down,
-        Vector2Int.up,
-        new Vector2Int(-1, -1),
-        new Vector2Int(1, -1),
-        new Vector2Int(-1, 1),
-        new Vector2Int(1, 1),
+        Vector2Int.right,        // 0°
+        new Vector2Int(1, 1),    // 45°
+        Vector2Int.up,           // 90°
+        new Vector2Int(-1, 1),   // 135°
+        Vector2Int.left,         // 180°
+        new Vector2Int(-1, -1),  // 225°
+        Vector2Int.down,         // 270°
+        new Vector2Int(1, -1),   // 315°
+    };
+
+    public static readonly EightWayDirection[] DirectionsByAngle =
+    {
+        EightWayDirection.Right,
+        EightWayDirection.UpRight,
+        EightWayDirection.Up,
+        EightWayDirection.UpLeft,
+        EightWayDirection.Left,
+        EightWayDirection.DownLeft,
+        EightWayDirection.Down,
+        EightWayDirection.DownRight,
     };
 
     public static Vector2Int ToVector2Int(this EightWayDirection direction)
     {
-        return EightWayOffsets[(int)direction];
+        return EightWayOffsets[direction.GetAngleIndex()];
     }
+
+    public static EightWayDirection FromVector2(Vector2 vector)
+    {
+        if (vector.sqrMagnitude <= Mathf.Epsilon)
+        {
+            return EightWayDirection.Right;
+        }
+
+        float angle = Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
+        int index = Mathf.RoundToInt(Mathf.Repeat(angle, 360f) / 45f) % EightWayDirectionCount;
+
+        return DirectionsByAngle[index];
+    }
+
+    public static EightWayDirection Rotate45(this EightWayDirection direction, int stepCount)
+    {
+        int currentIndex = GetAngleIndex(direction);
+        int nextIndex = WrapAngleIndex(currentIndex + stepCount);
+
+        return DirectionsByAngle[nextIndex];
+    }
+
+    public static int GetAngleIndex(this EightWayDirection direction)
+    {
+        return direction switch
+        {
+            EightWayDirection.Right     => 0,
+            EightWayDirection.UpRight   => 1,
+            EightWayDirection.Up        => 2,
+            EightWayDirection.UpLeft    => 3,
+            EightWayDirection.Left      => 4,
+            EightWayDirection.DownLeft  => 5,
+            EightWayDirection.Down      => 6,
+            EightWayDirection.DownRight => 7,
+            _ => throw new ArgumentOutOfRangeException(nameof(direction))
+        };
+    }
+
+    public static int WrapAngleIndex(int index)
+    {
+        index %= EightWayDirectionCount;
+
+        if (index < 0)
+        {
+            index += EightWayDirectionCount;
+        }
+
+        return index;
+    }
+
 
     public static bool IsDiagonalMove(Vector2Int offset)
     {
@@ -198,4 +259,10 @@ public enum AttackEffect
 {
     Damage,
     Heal,
+}
+
+public enum EnemyResolveReason
+{
+    Killed,
+    Escaped,
 }

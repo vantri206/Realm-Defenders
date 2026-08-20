@@ -1,0 +1,663 @@
+fileFormatVersion: 2
+guid: 69e7ba017c28fc243a9a2ff10c50cddc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -801448649182689786
+    second: Hero_mining_0
+  - first:
+      213: -4584764270679775678
+    second: Hero_mining_1
+  - first:
+      213: 3760139386378509745
+    second: Hero_mining_2
+  - first:
+      213: -146306311730079601
+    second: Hero_mining_3
+  - first:
+      213: -4712952943562904891
+    second: Hero_mining_4
+  - first:
+      213: 8703789550984004592
+    second: Hero_mining_5
+  - first:
+      213: -3485910555454182735
+    second: Hero_mining_6
+  - first:
+      213: -3113861022393741936
+    second: Hero_mining_7
+  - first:
+      213: 6055429525636948001
+    second: Hero_mining_8
+  - first:
+      213: -527245695084152283
+    second: Hero_mining_9
+  - first:
+      213: -421877139349943353
+    second: Hero_mining_10
+  - first:
+      213: 8883143491343244975
+    second: Hero_mining_11
+  - first:
+      213: -7098174352127554776
+    second: Hero_mining_12
+  - first:
+      213: -1128485130768019432
+    second: Hero_mining_13
+  - first:
+      213: -64074960475468117
+    second: Hero_mining_14
+  - first:
+      213: 907814923543153277
+    second: Hero_mining_15
+  - first:
+      213: 3847506040511598780
+    second: Hero_mining_16
+  - first:
+      213: 6476149598943453506
+    second: Hero_mining_17
+  - first:
+      213: 5464684850937532923
+    second: Hero_mining_18
+  - first:
+      213: 2014423974088990470
+    second: Hero_mining_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hero_mining_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 319
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 606cfb723bea0e4f0800000000000000
+      internalID: -801448649182689786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_1
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 319
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 246aa3bdf25af50c0800000000000000
+      internalID: -4584764270679775678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_2
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 299
+        width: 30
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bddb0f89d2be2430800000000000000
+      internalID: 3760139386378509745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_3
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 297
+        width: 30
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f885ee44f2738fdf0800000000000000
+      internalID: -146306311730079601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_4
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 297
+        width: 30
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ca2dc3a44a389eb0800000000000000
+      internalID: -4712952943562904891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_5
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 223
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f388226b721ac870800000000000000
+      internalID: 8703789550984004592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_6
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 223
+        width: 40
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ba6e57a1de8f9fc0800000000000000
+      internalID: -3485910555454182735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_7
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 219
+        width: 58
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09d4948e5e759c4d0800000000000000
+      internalID: -3113861022393741936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_8
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 217
+        width: 58
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 120a00e0215390450800000000000000
+      internalID: 6055429525636948001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_9
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 217
+        width: 58
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52ab72375d8dea8f0800000000000000
+      internalID: -527245695084152283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_10
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 127
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cb403a1af0352af0800000000000000
+      internalID: -421877139349943353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_11
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 127
+        width: 40
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fae5652c0f3474b70800000000000000
+      internalID: 8883143491343244975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_12
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 123
+        width: 58
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82b06a3d8083e7d90800000000000000
+      internalID: -7098174352127554776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_13
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 121
+        width: 58
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8101346a0c0d650f0800000000000000
+      internalID: -1128485130768019432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_14
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 121
+        width: 58
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baeccd5b92c5c1ff0800000000000000
+      internalID: -64074960475468117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_15
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 31
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7a8697fcd4399c00800000000000000
+      internalID: 907814923543153277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_16
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 31
+        width: 34
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb01ddfdb56156530800000000000000
+      internalID: 3847506040511598780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_17
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 31
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24120558fb7efd950800000000000000
+      internalID: 6476149598943453506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_18
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 31
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf117953be576db40800000000000000
+      internalID: 5464684850937532923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_mining_19
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 31
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60fda9a7eeba4fb10800000000000000
+      internalID: 2014423974088990470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Hero_mining_0: -801448649182689786
+      Hero_mining_1: -4584764270679775678
+      Hero_mining_10: -421877139349943353
+      Hero_mining_11: 8883143491343244975
+      Hero_mining_12: -7098174352127554776
+      Hero_mining_13: -1128485130768019432
+      Hero_mining_14: -64074960475468117
+      Hero_mining_15: 907814923543153277
+      Hero_mining_16: 3847506040511598780
+      Hero_mining_17: 6476149598943453506
+      Hero_mining_18: 5464684850937532923
+      Hero_mining_19: 2014423974088990470
+      Hero_mining_2: 3760139386378509745
+      Hero_mining_3: -146306311730079601
+      Hero_mining_4: -4712952943562904891
+      Hero_mining_5: 8703789550984004592
+      Hero_mining_6: -3485910555454182735
+      Hero_mining_7: -3113861022393741936
+      Hero_mining_8: 6055429525636948001
+      Hero_mining_9: -527245695084152283
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

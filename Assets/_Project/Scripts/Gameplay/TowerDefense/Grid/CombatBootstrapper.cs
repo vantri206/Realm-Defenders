@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[DisallowMultipleComponent]
 public class CombatBootstrapper : MonoBehaviour
 {
     [Header("References")]
@@ -14,12 +13,16 @@ public class CombatBootstrapper : MonoBehaviour
     [SerializeField] private TileOverlayRenderer tileOverlayRenderer;
     [SerializeField] private PlayerCombatAction playerCombatAction;
     [SerializeField] private CombatUIController combatUIController;
+    [SerializeField] private LevelMenuController levelMenuController;
     [SerializeField] private GhostHeroView ghostHeroPrefab;
     [SerializeField] private EnemyRouteGraph enemyRouteGraph;
     [SerializeField] private UnitPathfindingSystem pathfindingSystem;
     [SerializeField] private EnemyWaveController enemyWaveController;
+    [SerializeField] private LevelSystem levelSystem;
+    [SerializeField] private CombatTimeController combatTime;
 
     private GhostHeroView ghostHero;
+    private UnitCombatContext combatContext;
 
     private void Awake()
     {
@@ -39,23 +42,37 @@ public class CombatBootstrapper : MonoBehaviour
             return;
         }
 
+        combatContext = new UnitCombatContext(combatGrid, pathfindingSystem, combatTime);
+
         // Initialize grid map and pathfinding systems
         combatGrid.BuildGridMap();
         pathfindingSystem.BuildCostGrid(combatGrid.Cells);
         enemyRouteGraph.InitializeRoutes(combatGrid);
 
         // Initialize hero systems
-        heroPlacement.Initialize(combatGrid, pathfindingSystem);
-        heroDeploymentSystem.Initialize(heroInventory, heroPlacement);
-        heroInventory.Initialize(heroInventoryView);
+        heroPlacement.Initialize(combatContext);
+        heroDeploymentSystem.Initialize(heroInventory, heroPlacement, combatTime);
+        heroInventory.Initialize(heroInventoryView, levelSystem);
 
         // Initialize enemy systems
-        enemyWaveController.Initialize(combatGrid, enemyRouteGraph, pathfindingSystem);
+        enemyWaveController.Initialize(combatContext, enemyRouteGraph, levelSystem);
 
         // Initialize player input action and UI controller
-        playerCombatAction.Initialize(mainCamera, combatGrid, heroDeploymentSystem, heroDetailView, tileOverlayRenderer, ghostHero);
+        playerCombatAction.Initialize(mainCamera, combatGrid, heroDeploymentSystem, heroDetailView, tileOverlayRenderer, ghostHero, levelSystem, combatTime);
         playerCombatAction.ChangeMode(PlayerCombatActionMode.None);
         combatUIController.Initialize(playerCombatAction, heroInventoryView);
+        levelMenuController.Initialize(levelSystem, playerCombatAction, combatTime);
+
+        // Initialize level system
+        levelSystem.Initialize(levelSystem.StartingFood, levelSystem.StartingLives, enemyWaveController.TotalSpawnCount, combatTime);
+
+
+        StartCombat();
+    }
+
+    private void StartCombat()
+    {
+        enemyWaveController.StartWave();
     }
 
     private GhostHeroView CreateGhostHeroView()
@@ -151,6 +168,12 @@ public class CombatBootstrapper : MonoBehaviour
             hasReferences = false;
         }
 
+        if (levelMenuController == null)
+        {
+            Debug.LogWarning("[CombatBootstrapper] levelMenuController is not assigned.", this);
+            hasReferences = false;
+        }
+
         if (ghostHeroPrefab == null)
         {
             Debug.LogWarning("[CombatBootstrapper] ghostHeroPrefab is not assigned.", this);
@@ -172,6 +195,18 @@ public class CombatBootstrapper : MonoBehaviour
         if (enemyWaveController == null)
         {
             Debug.LogWarning("[CombatBootstrapper] enemyWaveController is not assigned.", this);
+            hasReferences = false;
+        }
+
+        if (levelSystem == null)
+        {
+            Debug.LogWarning("[CombatBootstrapper] levelSystem is not assigned.", this);
+            hasReferences = false;
+        }
+
+        if (combatTime == null)
+        {
+            Debug.LogWarning("[CombatBootstrapper] combatTime is not assigned.", this);
             hasReferences = false;
         }
         

@@ -5,22 +5,56 @@ public class UnitMovement : MonoBehaviour
 {
     private const float minBlockedCellDistance = 0.05f;
     private const float impulseStopSpeed = 0.01f;
+    private const float overrideAlignSpeedInCells = 2f;
+    private const float overrideArrivalDistanceInCells = 0.01f;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private UnitRuntime unitRuntime;
     
-    private UnitSpeed enemySpeed;
+    private UnitSpeed speed;
     private UnitMovementType movementType = UnitMovementType.Ground;
     private Vector2 currentMoveDirection;
     private Vector2 externalVelocity;
     private float deceleration;
+    private Vector2 movementOverridePosition;
+    private bool hasMovementOverride;
+    private bool isInitialized;
 
     private Vector2 rbCenterPosition => rb.position + unitRuntime.CenterOffset;
 
-    public UnitSpeed Speed => enemySpeed;
+    public UnitSpeed Speed => speed;
     public Vector2 CurrentMoveDirection => currentMoveDirection;
+    public bool IsInitialized => isInitialized;
 
     private void Awake()
+    {
+        CacheReferences();
+    }
+
+    public bool Initialize(UnitSpeed speed, UnitMovementType movementType)
+    {
+        CacheReferences();
+
+        if (speed == null || rb == null || unitRuntime == null || unitRuntime.CombatGrid == null || unitRuntime.CombatGrid.Grid == null)
+        {
+            Debug.LogError("[UnitMovement] Missing required references.", this);
+            isInitialized = false;
+            return false;
+        }
+
+        this.speed = speed;
+        this.movementType = movementType;
+        ResetTransientMovement();
+        isInitialized = true;
+        return true;
+    }
+
+    private void OnDisable()
+    {
+        ResetTransientMovement();
+    }
+
+    private void CacheReferences()
     {
         if (rb == null)
         {
@@ -32,36 +66,54 @@ public class UnitMovement : MonoBehaviour
             unitRuntime = GetComponent<UnitRuntime>();
         }
     }
-    
-    public void Initialize(UnitSpeed enemySpeed, UnitMovementType movementType)
-    {
-        if (enemySpeed == null)
-        {
-            Debug.LogError("[UnitMovement] UnitSpeed is required for movement initialization.", this);
-            return;
-        }
-
-        this.enemySpeed = enemySpeed;
-        this.movementType = movementType;
-    }
 
     public void FixedTick(float fixedDeltaTime)
     {
-        if (rb == null)
+        if (!isInitialized)
         {
-            Debug.LogError("[UnitMovement] Rigidbody2D is required to process movement.", this);
             return;
         }
 
-        if (enemySpeed == null)
+        Vector2 movement = Vector2.zero;
+        if (hasMovementOverride)
         {
-            Debug.LogError("[UnitMovement] UnitSpeed is required to process movement. Call Initialize before FixedTick.", this);
-            return;
+            movement = GetOverrideMovement(fixedDeltaTime);
         }
-
-        Vector2 normalVelocity = currentMoveDirection.normalized * enemySpeed.MoveSpeed;
-        Vector2 movement = normalVelocity * fixedDeltaTime + GetImpulseMovement(fixedDeltaTime);
+        else if (currentMoveDirection.sqrMagnitude > Mathf.Epsilon)
+        {
+            movement = currentMoveDirection.normalized * speed.MoveSpeed * fixedDeltaTime;
+        }
+        movement += GetImpulseMovement(fixedDeltaTime);
         Move(movement);
+    }
+
+    private Vector2 GetOverrideMovement(float fixedDeltaTime)
+    {
+        Vector2 toTarget = movementOverridePosition - rb.position;
+        float cellScale = GetCellScale();
+        float arrivalDistance = cellScale * overrideArrivalDistanceInCells;
+        if (toTarget.sqrMagnitude <= arrivalDistance * arrivalDistance)
+        {
+            return Vector2.zero;
+        }
+
+        float maxMovement = cellScale * overrideAlignSpeedInCells * fixedDeltaTime;
+        Vector2 requestedMovement = Vector2.ClampMagnitude(toTarget, maxMovement);
+        Vector2 resolvedMovement = ResolveGridMovement(rbCenterPosition, requestedMovement);
+        if (resolvedMovement.sqrMagnitude > Mathf.Epsilon)
+        {
+            return resolvedMovement;
+        }
+
+        ClearMovementOverride();
+        return Vector2.zero;
+    }
+
+    private float GetCellScale()
+    {
+        Vector3 cellSize = unitRuntime.CombatGrid.CellSize;
+        float cellScale = Mathf.Min(Mathf.Abs(cellSize.x), Mathf.Abs(cellSize.y));
+        return cellScale > Mathf.Epsilon ? cellScale : 1f;
     }
 
     private Vector2 GetImpulseMovement(float fixedDeltaTime)
@@ -108,7 +160,7 @@ public class UnitMovement : MonoBehaviour
 
     private Vector2 ResolveGridMovement(Vector3 centerPosition, Vector2 movement)
     {
-        if (movement.sqrMagnitude <= Mathf.Epsilon || unitRuntime == null || unitRuntime.CombatGrid == null)
+        if (movement.sqrMagnitude <= Mathf.Epsilon)
         {
             return movement;
         }
@@ -157,15 +209,10 @@ public class UnitMovement : MonoBehaviour
         }
 
         Grid grid = combatGrid.Grid;
-        if (grid == null || grid.cellLayout != GridLayout.CellLayout.Rectangle)
-        {
-            return false;
-        }
-
         Vector3 endPosition = startPosition + (Vector3)movement;
         if (!combatGrid.TryWorldToCell(startPosition, out CombatGridCell startCell) ||
             !UnitMovementRules.CanEnterCell(movementType, startCell) ||
-            !combatGrid.TryWorldToCell(endPosition, out CombatGridCell endCell) || endCell == null)
+            !combatGrid.TryWorldToCell(endPosition, out CombatGridCell endCell))
         {
             return false;
         }
@@ -256,17 +303,37 @@ public class UnitMovement : MonoBehaviour
     
     public void SetMoveSpeed(float newMoveSpeed)
     {
-        if (enemySpeed == null)
+        if (!isInitialized)
         {
             Debug.LogError("[UnitMovement] Cannot set move speed before Initialize.", this);
             return;
         }
         
-        enemySpeed.SetMoveSpeed(newMoveSpeed);
+        speed.SetMoveSpeed(newMoveSpeed);
     }
 
     public void SetMoveDirection(Vector2 direction)
     {
         currentMoveDirection = direction;
+    }
+
+    public void SetMovementOverride(Vector2 worldPosition)
+    {
+        movementOverridePosition = worldPosition;
+        hasMovementOverride = true;
+    }
+
+    public void ClearMovementOverride()
+    {
+        movementOverridePosition = Vector2.zero;
+        hasMovementOverride = false;
+    }
+
+    private void ResetTransientMovement()
+    {
+        currentMoveDirection = Vector2.zero;
+        externalVelocity = Vector2.zero;
+        deceleration = 0f;
+        ClearMovementOverride();
     }
 }
