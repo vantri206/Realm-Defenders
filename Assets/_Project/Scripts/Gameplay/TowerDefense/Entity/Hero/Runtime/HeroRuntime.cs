@@ -4,76 +4,70 @@ using UnityEngine;
 
 public class HeroRuntime : UnitRuntime
 {
+    private const float normalAttackStateDuration = 0.3f;
+
     // Hero Identity
-    private HeroInstance heroInstance;
+    private HeroCombatState combatState;
     private HeroDefinition heroDefinition;
 
     private CombatGridCell anchorCell;
     private Vector2Int initialFacingDirection = Vector2Int.left;
 
+    private IReadOnlyList<Vector2Int> defaultAttackPattern = new List<Vector2Int>();
+    private IReadOnlyList<Vector2Int> resolvedAttackPattern = new List<Vector2Int>();
+
     // Hero Components
     [SerializeField] private HeroBlocker heroBlocker;
-    [SerializeField] private HeroPathfindingController heroPathfindingController;
+    [SerializeField] private HeroActionHUD heroActionHUD;    
+    [SerializeField] protected TargetScanner targetScanner;
+    [SerializeField] protected TargetSelector targetSelector;
+    [SerializeField] protected NormalAttackController normalAttackController;
+
     private bool hasBlocker;
-    private bool hasGuardMovement;
 
     // Hero Stats
-    public override UnitStats Stats => heroInstance.Stats;
-    public UnitBlock Blocker => heroInstance.Block;
-    public UnitSpeed Speed => heroInstance.Speed;
-    public int BlockCount => Blocker.BlockCount;
-    public int CurrentBlock => Blocker.CurrentBlock;
-    public HeroBlockState BlockState => Blocker.IsBlocked ? HeroBlockState.Blocking : HeroBlockState.NonBlocking;
-    public override UnitAttackType AttackType => heroDefinition.AttackType;
-    public bool CanGuard => heroDefinition.CanGuard;
-    public override bool IsMovementBlocked => base.IsMovementBlocked || Blocker.IsBlocked;
+    public int BlockCount => Stats.BlockCount;
+    public int CurrentBlock => heroBlocker != null ? heroBlocker.CurrentBlockCount : 0;
 
     // Getters
-    public HeroInstance Instance => heroInstance;
+    public HeroCombatState CombatState => combatState;
     public HeroDefinition Definition => heroDefinition;
     public HeroBlocker HeroBlocker => heroBlocker;
     public CombatGridCell AnchorCell => anchorCell;
 
-    public override TargetSide TargetSide => heroDefinition.TargetSide;
-    public override AttackEffect AttackEffect => heroDefinition.AttackEffect;
-    public override AttackMethod AttackMethod => heroDefinition.AttackMethod;
-    public override AttackDamageType AttackDamageType => heroDefinition.AttackDamageType;
-    public override float NormalAttackEffectMultiplier => heroDefinition.NormalAttackEffectMultiplier;
-    public override AttackProjectile NormalAttackProjectilePrefab => heroDefinition.NormalAttackProjectilePrefab;
-    public override AttackAOEHit NormalAttackAOEHitPrefab => heroDefinition.NormalAttackAOEHitPrefab;
-    public override SimpleSpriteAnimatorVFX NormalAttackHitVFXPrefab => heroDefinition.NormalAttackHitVFXPrefab;
-    public override ParticleVFX NormalAttackHealVFXPrefab => heroDefinition.NormalAttackHealVFXPrefab;
+    // Attack Pattern
+    public NormalAttackDefinition NormalAttackDefinition => heroDefinition != null ? heroDefinition.NormalAttackDefinition : null;
+    public IReadOnlyList<Vector2Int> ResolvedAttackPattern => resolvedAttackPattern;
+    public HeroBlockState BlockState => heroBlocker != null ? heroBlocker.BlockState : HeroBlockState.NonBlocking;
+    public override bool IsMovementBlocked => base.IsMovementBlocked || (BlockState == HeroBlockState.Blocking);
 
     public event Action<HeroRuntime> OnSelected;
 
-    public void Initialize(HeroInstance heroInstance, UnitCombatContext combatContext, Vector3Int currentCell)
+    public void Initialize(HeroCombatState combatState, UnitCombatContext combatContext, Vector3Int currentCell)
     {
         isInitialized = false;
 
-        if (heroInstance == null || !heroInstance.IsValid)
+        if (combatState == null || !combatState.IsValid)
         {
-            Debug.LogError("[HeroRuntime] A valid HeroInstance is required to initialize hero runtime.", this);
+            Debug.LogError("[HeroRuntime] A valid HeroCombatState is required to initialize hero runtime.", this);
             return;
         }
 
-        this.heroInstance = heroInstance;
-        heroDefinition = heroInstance.Definition;
+        this.combatState = combatState;
+        heroDefinition = combatState.Definition;
         this.combatContext = combatContext;
+        InitializeRuntimeStats(combatState);
 
         CacheReferences();
+        HideActionHUD();
 
-        if (!CheckCoreReferences() ||
-            !CheckHealthSystemReferences() ||
-            !CheckMovementSystemReferences(Speed) ||
-            !CheckAttackSystemReferences() ||
-            !CheckBlockSystemReferences() ||
-            !CheckGuardSystemReferences())
+        if (!CheckCoreReferences() || !CheckHealthSystemReferences() || !CheckMovementSystemReferences() || !CheckAttackSystemReferences() || !CheckBlockSystemReferences())
         {
             return;
         }
 
         SetupVisuals(heroDefinition.HeroSprite, heroDefinition.AnimatorController);
-        if (!InitializeMovementSystem(Speed, MovementType))
+        if (!InitializeMovementSystem(Stats, MovementType))
         {
             return;
         }
@@ -83,7 +77,7 @@ public class HeroRuntime : UnitRuntime
             return;
         }
 
-        if (!InitializeAttackSystems(heroDefinition.TargetPriorityMode))
+        if (!InitializeAttackSystems())
         {
             return;
         }
@@ -91,24 +85,51 @@ public class HeroRuntime : UnitRuntime
         SetActiveCell(combatContext.CombatGrid.TryGetCell(currentCell, out CombatGridCell activeCell) ? activeCell : null);
         SetAnchorCell(combatContext.CombatGrid.TryGetCell(currentCell, out CombatGridCell anchorCell) ? anchorCell : null);
 
-        defaultAttackPattern = new List<Vector2Int>(heroDefinition.AttackPattern);
+        defaultAttackPattern = new List<Vector2Int>(NormalAttackDefinition.AttackPattern);
         initialFacingDirection = facingDirection;
         SetFacingDirection(facingDirection);
 
-        if (hasGuardMovement)
-        {
-            if (!heroPathfindingController.Initialize(combatContext.CombatGrid, combatContext.UnitPathfindingSystem, teamIdentity))
-            {
-                return;
-            }
-        }
-
         if (hasBlocker)
         {
-            heroBlocker.Initialize(this, heroInstance.Block);
+            heroBlocker.Initialize(this, Stats);
+        }
+
+        if (normalAttackController != null)
+        {
+            normalAttackController.OnAttack += HandleNormalAttack;
         }
 
         isInitialized = true;
+    }
+
+    protected void OnDestroy()
+    {
+        if (normalAttackController != null)
+        {
+            normalAttackController.OnAttack -= HandleNormalAttack;
+        }
+    }
+
+    protected override void OnDisable()
+    {
+        if (heroBlocker != null)
+        {
+            heroBlocker.ClearBlocks();
+        }
+
+        ClearAnchorCell();
+
+        if (normalAttackController != null)
+        {
+            normalAttackController.OnAttack -= HandleNormalAttack;
+        }
+
+        base.OnDisable();
+    }
+
+    private void InitializeRuntimeStats(HeroCombatState combatState)
+    {
+        runtimeStats = new UnitStats(combatState.Stats);
     }
 
     public void Update()
@@ -120,7 +141,7 @@ public class HeroRuntime : UnitRuntime
 
         float combatDeltaTime = combatContext.CombatTime.CombatDeltaTime;
         TickState(combatDeltaTime);
-        normalAttackController.Tick(combatDeltaTime, resolvedAttackPattern, CanUseNormalAttack);
+        normalAttackController.Tick(combatDeltaTime, ResolvedAttackPattern, CanUseNormalAttack);
     }
 
     private void FixedUpdate()
@@ -132,9 +153,41 @@ public class HeroRuntime : UnitRuntime
 
         RefreshActiveCell();
         TickBlock();
-        TickGuardMovement();
         FixedTickMovement();
     }
+
+    protected bool InitializeAttackSystems()
+    {
+        if (normalAttackController == null || targetScanner == null || targetSelector == null || combatContext.CombatTime == null)
+        {
+            Debug.LogError("[HeroRuntime] NormalAttackController is required to initialize attack systems.", this);
+            return false;
+        }
+
+        targetScanner.Initialize(combatContext.CombatGrid, this);
+        targetSelector.Initialize(this);
+
+        if (!normalAttackController.Initialize(battleTeam, Stats, NormalAttackDefinition, targetScanner, targetSelector, combatContext.CombatTime))
+        {
+            Debug.LogError("[HeroRuntime] Failed to initialize NormalAttackController.", this);
+            return false;
+        }
+
+        return true;
+    }
+
+    protected override void SetFacingDirection(Vector2Int direction)
+    {
+        if (direction == Vector2Int.zero)
+        {
+            return;
+        }
+
+        resolvedAttackPattern = AttackPatternResolver.RefreshAttackPattern(defaultAttackPattern, direction);
+        
+        base.SetFacingDirection(direction);
+    }
+
 
     private void RefreshActiveCell()
     {
@@ -156,25 +209,6 @@ public class HeroRuntime : UnitRuntime
         }
     }
 
-    private void TickGuardMovement()
-    {
-        if (!hasGuardMovement)
-        {
-            SetMovementDirection(Vector2.zero);
-            return;
-        }
-
-        if (!CanMove || !CanGuard || anchorCell == null || activeCell == null)
-        {
-            StopGuardMovement();
-            return;
-        }
-
-        Vector2 moveDirection = heroPathfindingController.GetCurrentMoveDirection(this,activeCell, anchorCell, CenterPosition);
-        SetMovementDirection(moveDirection);
-        ResetFacingDirection(moveDirection);
-    }
-
     private void FixedTickMovement()
     {
         unitMovement.FixedTick(combatContext.CombatTime.CombatFixedDeltaTime);
@@ -182,7 +216,6 @@ public class HeroRuntime : UnitRuntime
 
     private void StopGuardMovement()
     {
-        heroPathfindingController.ResetMoveTarget();
         SetMovementDirection(Vector2.zero);
     }
 
@@ -199,7 +232,7 @@ public class HeroRuntime : UnitRuntime
 
     private void ResetFacingDirection(Vector2 moveDirection)
     {
-        if (heroPathfindingController.HasGuardTarget)
+        if (normalAttackController.HasCurrentTarget)
         {
             return;
         }
@@ -238,34 +271,16 @@ public class HeroRuntime : UnitRuntime
         return true;
     }
 
-    private bool CheckGuardSystemReferences()
-    {
-        hasGuardMovement = CanGuard;
-
-        if (hasGuardMovement && (heroPathfindingController == null || combatContext.UnitPathfindingSystem == null))
-        {
-            Debug.LogError("[HeroRuntime] Guard system requires HeroPathfindingController and UnitPathfindingSystem.", this);
-            return false;
-        }
-
-        return true;
-    }
-
-    protected override void HandleNormalAttack(Hurtbox target)
+    protected void HandleNormalAttack(Hurtbox target)
     {
         if (target != null)
         {
-            FacePosition(target.CenterPosition);
+            FacePosition(target.AimPosition);
         }
 
-        base.HandleNormalAttack(target);
-    }
+        TryStartActionState(UnitRuntimeState.Attacking, normalAttackStateDuration);
 
-    public override void RemoveCombat()
-    {
-        base.RemoveCombat();
-
-        heroInstance.StartRedeployCountdown();
+        unitVisual.TriggerAttack();
     }
 
     private void SetMovementDirection(Vector2 direction)
@@ -310,18 +325,6 @@ public class HeroRuntime : UnitRuntime
         }
     }
 
-    protected override void OnDisable()
-    {
-        if (heroBlocker != null)
-        {
-            heroBlocker.ClearBlocks();
-        }
-
-        ClearAnchorCell();
-
-        base.OnDisable();
-    }
-
     public void HandleSelection()
     {
         if (!isInitialized)
@@ -330,6 +333,36 @@ public class HeroRuntime : UnitRuntime
         }
 
         OnSelected?.Invoke(this);
+    }
+
+    public void ShowActionHUD(PlayerCombatAction playerCombatAction)
+    {
+        if (heroActionHUD == null)
+        {
+            Debug.LogWarning("[HeroRuntime] HeroActionHUD is not assigned.", this);
+            return;
+        }
+
+        heroActionHUD.Show(playerCombatAction);
+    }
+
+    public void HideActionHUD()
+    {
+        if (heroActionHUD != null)
+        {
+            heroActionHUD.Hide();
+        }
+    }
+
+    protected bool CheckAttackSystemReferences()
+    {
+        if (normalAttackController == null || targetScanner == null || targetSelector == null)
+        {
+            Debug.LogError("[HeroRuntime] Attack system requires missing components.", this);
+            return false;
+        }
+
+        return true;
     }
 
     protected override void CacheReferences()
@@ -341,9 +374,24 @@ public class HeroRuntime : UnitRuntime
             heroBlocker = GetComponent<HeroBlocker>();
         }
 
-        if (heroPathfindingController == null)
+        if (heroActionHUD == null)
         {
-            heroPathfindingController = GetComponent<HeroPathfindingController>();
+            heroActionHUD = GetComponentInChildren<HeroActionHUD>(true);
+        }
+
+        if (targetScanner == null)
+        {
+            targetScanner = GetComponentInChildren<TargetScanner>(true);
+        }
+
+        if (targetSelector == null)
+        {
+            targetSelector = GetComponentInChildren<TargetSelector>(true);
+        }
+
+        if (normalAttackController == null)
+        {
+            normalAttackController = GetComponentInChildren<NormalAttackController>(true);
         }
     }
 }

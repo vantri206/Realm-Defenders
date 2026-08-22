@@ -108,7 +108,7 @@ public class WorldHealthHUD : MonoBehaviour
 
         HealthData currentData = health.CurrentData;
 
-        healthBar.SetValue(currentData.CurrentHealth, currentData.MaxHealth, false);
+        healthBar.SetValue(currentData.CurrentHealth, currentData.MaxHealth);
 
         if (health.IsDead)
         {
@@ -156,7 +156,7 @@ public class WorldHealthHUD : MonoBehaviour
             return;
         }
 
-        healthBar.SetValue(currentData.CurrentHealth, currentData.MaxHealth, true);
+        healthBar.SetValue(currentData.CurrentHealth, currentData.MaxHealth);
     }
 
     private void OnDied()

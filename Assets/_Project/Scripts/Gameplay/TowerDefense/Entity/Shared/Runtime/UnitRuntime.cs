@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class UnitRuntime : MonoBehaviour
 {
-    private const float normalAttackStateDuration = 0.3f;
     private const float deathStateDuration = 0.2f;
 
-    protected List<Vector2Int> defaultAttackPattern = new List<Vector2Int>();    // Left-facing default attack pattern
-    protected List<Vector2Int> resolvedAttackPattern = new List<Vector2Int>();
     protected UnitCombatContext combatContext;
     protected CombatGridCell activeCell;
+
+    protected UnitStats runtimeStats;
 
     // States
     protected UnitRuntimeState currentState = UnitRuntimeState.Idle;
@@ -21,12 +20,10 @@ public class UnitRuntime : MonoBehaviour
     [SerializeField] protected Health health;
     [SerializeField] protected UnitVisual unitVisual;
     [SerializeField] protected UnitMovement unitMovement;
+    [SerializeField] protected Hurtbox hurtbox;
 
     // Unit Battle System
-    [SerializeField] protected TeamIdentity teamIdentity;
-    [SerializeField] protected TargetScanner targetScanner;
-    [SerializeField] protected TargetSelector targetSelector;
-    [SerializeField] protected NormalAttackController normalAttackController;
+    [SerializeField] protected TeamIdentity battleTeam;
 
     // Facing Direction
     protected Vector2Int facingDirection = Vector2Int.left;
@@ -38,52 +35,44 @@ public class UnitRuntime : MonoBehaviour
     protected bool isInitialized;
 
     // Stats
-    public virtual UnitStats Stats => null; // Must be provided by a concrete runtime.
-    public float MaxHealth => health.MaxHealth;
+    public UnitStats Stats => runtimeStats; // Must be provided by a concrete runtime.
+    public float MaxHealth => Stats != null ? Stats.MaxHealth : 0f;
     public float CurrentHealth => health.CurrentHealth;
-    public float Attack => Stats.Attack;
-    public float AttackInterval => Stats.AttackInterval;
-    public float Defense => Stats.Defense;
-    public float SpecialDefense => Stats.SpecialDefense;
-
-    // Properties
+    public float Attack => Stats != null ? Stats.Attack : 0f;
+    public float AttackInterval => Stats != null ? Stats.AttackInterval : UnitStats.MinAttackInterval;
+    public float Defense => Stats != null ? Stats.Defense : 0f;
+    public float SpecialDefense => Stats != null ? Stats.SpecialDefense : 0f;
+    
+    // Movement System
     public virtual UnitMovementType MovementType => UnitMovementType.Ground;
-    public virtual UnitAttackType AttackType => UnitAttackType.Melee; // Default attack type, can be overridden in derived classes
 
     // Getters
+    public Health Health => health;
     public UnitVisual Visual => unitVisual;
     public UnitMovement Movement => unitMovement;
+    public Hurtbox Hurtbox => hurtbox;
     public CombatGridCell ActiveCell => activeCell;
     public CombatGrid CombatGrid => combatContext?.CombatGrid;
     public Vector3 WorldPosition => transform.position;
 
     public Vector3Int ActiveCellPosition => activeCell != null ? activeCell.CellPosition : Vector3Int.zero;
     public Vector2Int FacingDirection => facingDirection;
-    public IReadOnlyList<Vector2Int> ResolvedAttackPattern => resolvedAttackPattern;
-    public TeamIdentity TeamIdentity => teamIdentity;
+    public TeamIdentity BattleTeam => battleTeam;
     public virtual Vector2 CenterOffset => centerOffset;
     public Vector3 CenterPosition => transform.position + (Vector3)CenterOffset;
 
-    public bool IsInitialized => isInitialized;
     public UnitRuntimeState CurrentState => currentState;
-    public Health Health => health;
+
+    // State Checks
     public bool IsDead => currentState == UnitRuntimeState.Dead || health.IsDead;
     public virtual bool IsMovementBlocked => false;
     public bool CanMove => !IsDead && !IsMovementBlocked && (currentState == UnitRuntimeState.Idle || currentState == UnitRuntimeState.Moving);
     public bool CanUseNormalAttack => !IsDead && currentState == UnitRuntimeState.Idle;
 
-    public virtual TargetSide TargetSide => TargetSide.Enemy;
-    public virtual AttackEffect AttackEffect => AttackEffect.Damage;
-    public virtual AttackMethod AttackMethod => AttackMethod.DirectTarget; // Default attack method, can be overridden in derived classes
-    public virtual AttackDamageType AttackDamageType => AttackDamageType.PhysicalDamage;
-    public virtual float NormalAttackEffectMultiplier => 1f;
-    public virtual AttackProjectile NormalAttackProjectilePrefab => null;
-    public virtual AttackAOEHit NormalAttackAOEHitPrefab => null;
-    public virtual SimpleSpriteAnimatorVFX NormalAttackHitVFXPrefab => null;
-    public virtual ParticleVFX NormalAttackHealVFXPrefab => null;
-
     public event Action<UnitRuntime, UnitRuntimeState, UnitRuntimeState> OnStateChanged;
     public event Action<UnitRuntime> OnDestroyed;
+
+    public bool IsInitialized => isInitialized;
 
     protected virtual void OnDisable()
     {
@@ -131,7 +120,7 @@ public class UnitRuntime : MonoBehaviour
         return TryStartActionState(UnitRuntimeState.SkillCasting, duration);
     }
 
-    protected void SetFacingDirection(Vector2Int direction)
+    protected virtual void SetFacingDirection(Vector2Int direction)
     {
         if (direction == Vector2Int.zero)
         {
@@ -140,8 +129,6 @@ public class UnitRuntime : MonoBehaviour
 
         facingDirection = direction;
         unitVisual.SetDirection(direction);
-
-        resolvedAttackPattern = AttackPatternResolver.RefreshAttackPattern(defaultAttackPattern, facingDirection);
     }
 
     public void FacePosition(Vector2 targetPosition)
@@ -171,35 +158,15 @@ public class UnitRuntime : MonoBehaviour
 
     protected bool InitializeHealth()
     {
-        health.Initialize(Stats.MaxHealth, Stats.Defense, Stats.SpecialDefense);
+        health.Initialize(Stats);
         health.OnDied -= HandleDied;
         health.OnDied += HandleDied;
         return true;
     }
 
-    protected bool InitializeAttackSystems(TargetPriorityMode targetPriorityMode)
+    protected bool InitializeMovementSystem(UnitStats combatStats, UnitMovementType movementType)
     {
-        if (!targetScanner.Initialize(combatContext.CombatGrid, this) ||
-            !targetSelector.Initialize(this, targetPriorityMode) ||
-            !normalAttackController.Initialize(Stats, NormalAttackEffectMultiplier, AttackEffect,
-                                               TargetSide, AttackType, AttackDamageType,
-                                               AttackMethod, NormalAttackProjectilePrefab,
-                                               NormalAttackAOEHitPrefab, NormalAttackHitVFXPrefab,
-                                               NormalAttackHealVFXPrefab,
-                                               targetScanner, targetSelector, unitVisual,
-                                               combatContext.CombatTime))
-        {
-            return false;
-        }
-
-        normalAttackController.OnAttack -= HandleNormalAttack;
-        normalAttackController.OnAttack += HandleNormalAttack;
-        return true;
-    }
-
-    protected bool InitializeMovementSystem(UnitSpeed speed, UnitMovementType movementType)
-    {
-        return unitMovement.Initialize(speed, movementType);
+        return unitMovement.Initialize(combatStats, movementType);
     }
 
     protected bool ChangeState(UnitRuntimeState newState)
@@ -284,11 +251,6 @@ public class UnitRuntime : MonoBehaviour
         ChangeState(isMoving ? UnitRuntimeState.Moving : UnitRuntimeState.Idle);
     }
 
-    protected virtual void HandleNormalAttack(Hurtbox target)
-    {
-        TryStartActionState(UnitRuntimeState.Attacking, normalAttackStateDuration);
-    }
-
     protected virtual void HandleDied()
     {
         if (currentState == UnitRuntimeState.Dead)
@@ -312,12 +274,12 @@ public class UnitRuntime : MonoBehaviour
 
     protected bool CheckCoreReferences()
     {
-        if (combatContext != null && combatContext.IsValid && combatContext.CombatGrid.Grid != null && unitVisual != null && teamIdentity != null)
+        if (combatContext != null && combatContext.IsValid && combatContext.CombatGrid.Grid != null && unitVisual != null && battleTeam != null && hurtbox != null)
         {
             return true;
         }
 
-        Debug.LogError("[UnitRuntime] Core runtime requires a valid CombatReferencesContext, CombatGrid with Grid, UnitVisual, and TeamIdentity.", this);
+        Debug.LogError("[UnitRuntime] Core runtime requires a valid CombatReferencesContext, CombatGrid with Grid, UnitVisual, TeamIdentity, and primary Hurtbox.", this);
         return false;
     }
 
@@ -328,29 +290,18 @@ public class UnitRuntime : MonoBehaviour
             return true;
         }
 
-        Debug.LogError("[UnitRuntime] Health system requires UnitStats and Health.", this);
+        Debug.LogError("[UnitRuntime] Health system requires UnitCombatStats and Health.", this);
         return false;
     }
 
-    protected bool CheckMovementSystemReferences(UnitSpeed speed)
+    protected bool CheckMovementSystemReferences()
     {
-        if (speed != null && unitMovement != null)
+        if (Stats != null && unitMovement != null)
         {
             return true;
         }
 
-        Debug.LogError("[UnitRuntime] Movement system requires UnitSpeed and UnitMovement.", this);
-        return false;
-    }
-
-    protected bool CheckAttackSystemReferences()
-    {
-        if (targetScanner != null && targetSelector != null && normalAttackController != null)
-        {
-            return true;
-        }
-
-        Debug.LogError("[UnitRuntime] Attack system requires TargetScanner, TargetSelector, and NormalAttackController.", this);
+        Debug.LogError("[UnitRuntime] Movement system requires UnitCombatStats and UnitMovement.", this);
         return false;
     }
 
@@ -364,29 +315,14 @@ public class UnitRuntime : MonoBehaviour
     
     protected virtual void CacheReferences()
     {
-        if (teamIdentity == null)
+        if (battleTeam == null)
         {
-            teamIdentity = GetComponent<TeamIdentity>();
+            battleTeam = GetComponent<TeamIdentity>();
         }
 
         if (health == null)
         {
             health = GetComponent<Health>();
-        }
-
-        if (targetScanner == null)
-        {
-            targetScanner = GetComponent<TargetScanner>();
-        }
-
-        if (targetSelector == null)
-        {
-            targetSelector = GetComponent<TargetSelector>();
-        }
-
-        if (normalAttackController == null)
-        {
-            normalAttackController = GetComponent<NormalAttackController>();
         }
 
         if (unitMovement == null)
@@ -397,6 +333,11 @@ public class UnitRuntime : MonoBehaviour
         if (unitVisual == null)
         {
             unitVisual = GetComponentInChildren<UnitVisual>();
+        }
+
+        if (hurtbox == null)
+        {
+            hurtbox = GetComponentInChildren<Hurtbox>(true);
         }
     }
 }

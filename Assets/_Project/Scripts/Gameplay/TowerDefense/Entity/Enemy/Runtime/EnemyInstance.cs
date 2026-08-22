@@ -6,19 +6,22 @@ public class EnemyInstance
 {
     private EnemyDefinition definition;
     private int level = 1;
-    private UnitStats unitStats;
-    private UnitSpeed enemySpeed;
+    private UnitStats stats = new UnitStats();
     private bool isObjectiveEnemy = true;
 
     public EnemyDefinition Definition => definition;
     public int Level => level;
-    public UnitStats Stats => unitStats;
-    public UnitSpeed Speed => enemySpeed;
+    public UnitStats Stats => stats;
     public bool IsObjectiveEnemy => isObjectiveEnemy;
 
-    public bool IsValid => definition != null;
+    public bool IsValid => definition != null && stats != null;
 
     public void Initialize(EnemyDefinition definition)
+    {
+        Initialize(definition, null);
+    }
+
+    public void Initialize(EnemyDefinition definition, UnitStats stats)
     {
         if (definition == null)
         {
@@ -27,9 +30,26 @@ public class EnemyInstance
         }
 
         this.definition = definition;
-        unitStats = new UnitStats(definition.MaxHealth, definition.Attack, definition.AttackInterval, definition.Defense, definition.SpecialDefense);
-        enemySpeed = new UnitSpeed(definition.MoveSpeed);
+        if (stats != null)
+        {
+            stats = new UnitStats(stats);
+        }
+        else
+        {
+            stats = new UnitStats(GetDefaultStats(definition));
+        }
         isObjectiveEnemy = true;
     }
 
+    private static UnitBaseStats GetDefaultStats(EnemyDefinition definition)
+    {
+        return new UnitBaseStats(
+            definition.MaxHealth,
+            definition.Attack,
+            definition.AttackInterval,
+            definition.Defense,
+            definition.SpecialDefense,
+            definition.MoveSpeed,
+            0);
+    }
 }

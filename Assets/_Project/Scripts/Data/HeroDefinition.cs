@@ -20,33 +20,16 @@ public class HeroDefinition : ScriptableObject
     [SerializeField] private float attackInterval = 1f;
     [SerializeField] private float defense = 0f;
     [SerializeField] private float specialDefense = 0f;
-    [SerializeField] private int blockCount = 0;
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private int blockCount = 1;
+    [SerializeField] private UnitMovementType movementType = UnitMovementType.Ground;
+    [SerializeField] private float moveSpeed = 0f;
+
+    [Header("Attack")]
+    [SerializeField] private NormalAttackDefinition normalAttackDefinition;
 
     [Header("Deploy Stats")]
     [SerializeField] private int baseDeployCost = 15;
     [SerializeField] private float baseRedeployTime = 20f;
-
-    [Header("Attack")]
-    [SerializeField] private UnitAttackType attackType = UnitAttackType.Melee;
-    [SerializeField] private TargetPriorityMode targetPriorityMode = TargetPriorityMode.Nearest;
-    [SerializeField] private bool canGuard = true;
-    [SerializeField] private List<Vector2Int> attackPattern = new List<Vector2Int>
-    {
-        Vector2Int.zero,
-    };
-    [SerializeField] private TargetSide targetSide = TargetSide.Enemy;
-    [SerializeField] private AttackEffect attackEffect = AttackEffect.Damage;
-    [SerializeField] private AttackMethod attackMethod;
-    [SerializeField] private AttackDamageType attackDamageType;
-    [SerializeField] private float normalAttackEffectMultiplier = 1f;
-    [SerializeField] private AttackProjectile normalAttackProjectilePrefab;
-    [SerializeField] private AttackAOEHit normalAttackAOEHitPrefab;
-
-    [Header("Normal Attack VFX")]
-    [SerializeField] private SimpleSpriteAnimatorVFX normalAttackHitVFXPrefab;
-    [SerializeField, Tooltip("Particle VFX spawned at each target after a normal attack successfully restores health.")]
-    private ParticleVFX normalAttackHealVFXPrefab;
 
     public string HeroId => heroId;
     public string HeroName => heroName;
@@ -61,23 +44,12 @@ public class HeroDefinition : ScriptableObject
     public float AttackInterval => attackInterval;
     public float Defense => defense;
     public float SpecialDefense => specialDefense;
+    public UnitMovementType MovementType => movementType;
+    public NormalAttackDefinition NormalAttackDefinition => normalAttackDefinition;
     public int BlockCount => blockCount;
     public float MoveSpeed => moveSpeed;
     public int BaseDeployCost => baseDeployCost;
     public float BaseRedeployTime => baseRedeployTime;
-    public UnitAttackType AttackType => attackType;
-    public TargetPriorityMode TargetPriorityMode => targetPriorityMode;
-    public bool CanGuard => canGuard;
-    public IReadOnlyList<Vector2Int> AttackPattern => attackPattern;
-    public TargetSide TargetSide => targetSide;
-    public AttackEffect AttackEffect => attackEffect;
-    public AttackMethod AttackMethod => attackMethod;
-    public AttackDamageType AttackDamageType => attackDamageType;
-    public float NormalAttackEffectMultiplier => normalAttackEffectMultiplier;
-    public AttackProjectile NormalAttackProjectilePrefab => normalAttackProjectilePrefab;
-    public AttackAOEHit NormalAttackAOEHitPrefab => normalAttackAOEHitPrefab;
-    public SimpleSpriteAnimatorVFX NormalAttackHitVFXPrefab => normalAttackHitVFXPrefab;
-    public ParticleVFX NormalAttackHealVFXPrefab => normalAttackHealVFXPrefab;
 
     public bool IsValid => heroPrefab != null;
 
@@ -87,7 +59,6 @@ public class HeroDefinition : ScriptableObject
         maxHealth = Mathf.Max(0f, maxHealth);
         attack = Mathf.Max(0f, attack);
         attackInterval = Mathf.Max(0f, attackInterval);
-        normalAttackEffectMultiplier = Mathf.Max(0f, normalAttackEffectMultiplier);
         moveSpeed = Mathf.Max(0f, moveSpeed);
         baseDeployCost = Mathf.Max(0, baseDeployCost);
         baseRedeployTime = Mathf.Max(0f, baseRedeployTime);

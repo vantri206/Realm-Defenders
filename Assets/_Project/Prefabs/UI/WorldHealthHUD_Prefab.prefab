@@ -65,9 +65,6 @@ MonoBehaviour:
   fillRenderer: {fileID: 1573065323416766524}
   backgroundAlpha: 0.75
   fillAlpha: 0.75
-  hideWhenFull: 1
-  visibleDuration: 2
-  fillTweenTime: 0.2
 --- !u!1 &7233715318288870087
 GameObject:
   m_ObjectHideFlags: 0

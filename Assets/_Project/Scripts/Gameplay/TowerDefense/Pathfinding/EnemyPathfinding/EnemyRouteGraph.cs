@@ -86,6 +86,7 @@ public class EnemyRouteGraph : MonoBehaviour
 
             DrawRouteLine(fromPosition, toPosition);
             DrawRouteArrow(fromPosition, toPosition);
+            DrawCheckpointLine(fromPosition, toPosition);
         }
 
         for (int i = 0; i < selectedRoute.CheckpointCount; i++)
@@ -163,5 +164,20 @@ public class EnemyRouteGraph : MonoBehaviour
         Gizmos.DrawLine(leftPoint, arrowPosition);
         Gizmos.DrawLine(rightPoint, arrowPosition);
 #endif
+    }
+
+    private void DrawCheckpointLine(Vector3 from, Vector3 to)
+    {
+        Vector3 segmentDirection = to - from;
+        if (segmentDirection.sqrMagnitude <= Mathf.Epsilon)
+        {
+            return;
+        }
+
+        segmentDirection.Normalize();
+        Vector3 checkpointTangent = new Vector3(-segmentDirection.y, segmentDirection.x, 0f);
+        float checkpointHalfWidth = GameplayConstants.CELL_SIZE * 0.5f;
+        DrawRouteLine(to - checkpointTangent * checkpointHalfWidth,
+                      to + checkpointTangent * checkpointHalfWidth);
     }
 }

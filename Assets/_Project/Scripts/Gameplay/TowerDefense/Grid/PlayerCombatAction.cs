@@ -14,9 +14,12 @@ public class PlayerCombatAction : MonoBehaviour
     private LevelSystem levelSystem;
     private CombatTimeController combatTime;
 
+    [Header("Hero Action")]
+    [SerializeField] private SimpleSpriteAnimatorVFX retreatVFXPrefab;
+
     private PlayerCombatActionMode currentMode = PlayerCombatActionMode.None;
 
-    private HeroInstance deployingHero;
+    private HeroCombatState deployingHero;
     private CombatGridCell currentDeployCell;
     private Vector2Int currentDeployDirection = Vector2Int.left;
 
@@ -73,6 +76,17 @@ public class PlayerCombatAction : MonoBehaviour
             return;
         }
 
+        if (currentMode == PlayerCombatActionMode.SelectedDeployedHero && mode != PlayerCombatActionMode.SelectedDeployedHero)
+        {
+            HeroRuntime selectedHeroRuntime = heroDeploymentSystem.SelectedHeroRuntime;
+            if (selectedHeroRuntime != null)
+            {
+                selectedHeroRuntime.HideActionHUD();
+            }
+
+            heroDeploymentSystem.ClearSelection();
+        }
+
         bool previousActionMode = IsActionMode(currentMode);
         bool isActionMode = IsActionMode(mode);
 
@@ -98,6 +112,7 @@ public class PlayerCombatAction : MonoBehaviour
                 DrawPreviewAttackRange(currentDeployCell);
                 break;
             case PlayerCombatActionMode.SelectedDeployedHero:
+                DrawHeroSelectedCell(heroDeploymentSystem.SelectedHeroRuntime);
                 break;
             default:
                 break;
@@ -206,9 +221,91 @@ public class PlayerCombatAction : MonoBehaviour
         }
     }
 
-    public void RetreatSelectedHero()
+    public void HandleCurrentHeroAction(HeroActionType actionType)
     {
+        if(!TryGetSelectedHeroRuntime(out HeroRuntime selectedHeroRuntime))
+        {
+            return;
+        }
         
+        switch (actionType)
+        {
+            case HeroActionType.None:
+                break;
+            case HeroActionType.Retreat:
+                RetreatHero(selectedHeroRuntime);
+                break;
+            case HeroActionType.Skill:
+                CastHeroSkill(selectedHeroRuntime);
+                break;
+            case HeroActionType.Upgrade:
+                UpgradeHero(selectedHeroRuntime);
+                break;
+            default:
+                Debug.LogWarning($"[PlayerCombatAction] Unhandled hero action type: {actionType}", this);
+                break;
+        }
+    }
+
+    public void RetreatHero(HeroRuntime heroRuntime)
+    {
+        if (heroRuntime == null)
+        {
+            return;
+        }
+
+        int deployCost = heroRuntime.CombatState.DeployCost;
+        Vector3 retreatPosition = heroRuntime.WorldPosition;
+
+        if (!heroDeploymentSystem.RetreatSelectedHero())
+        {
+            return;
+        }
+
+        UnregisterDeployedHeroEvents(heroRuntime);
+        levelSystem.RefundRetreatFood(deployCost);
+
+        if (retreatVFXPrefab != null)
+        {
+            CombatVFXSpawner.SpawnSimpleSpriteVFX(retreatVFXPrefab, retreatPosition);
+        }
+
+        ChangeMode(PlayerCombatActionMode.None);
+    }
+
+    public void CastHeroSkill(HeroRuntime heroRuntime)
+    {
+        if (heroRuntime == null)
+        {
+            return;
+        }
+    }
+
+    public void UpgradeHero(HeroRuntime heroRuntime)
+    {
+        if (heroRuntime == null)
+        {
+            return;
+        }
+    }
+
+    private bool TryGetSelectedHeroRuntime(out HeroRuntime heroRuntime)
+    {
+        heroRuntime = null;
+
+        if (!isInitialized || currentMode != PlayerCombatActionMode.SelectedDeployedHero)
+        {
+            return false;
+        }
+
+        HeroRuntime selectedHeroRuntime = heroDeploymentSystem.SelectedHeroRuntime;
+        if (selectedHeroRuntime == null)
+        {
+            return false;
+        }
+
+        heroRuntime = selectedHeroRuntime;
+        return true;
     }
 
     public void DrawDeployableCells()
@@ -227,7 +324,7 @@ public class PlayerCombatAction : MonoBehaviour
         }
     }
 
-    public void DrawAttackRangePreview(HeroRuntime heroRuntime)
+    public void DrawHeroSelectedCell(HeroRuntime heroRuntime)
     {
         if (heroRuntime == null)
         {
@@ -236,11 +333,53 @@ public class PlayerCombatAction : MonoBehaviour
 
         if (tileOverlayRenderer == null)
         {
-            Debug.LogError("[PlayerCombatAction] TileOverlayRenderer is required to draw attack range preview.", this);
+            Debug.LogError("[PlayerCombatAction] TileOverlayRenderer is required to draw hero selected cell.", this);
             return;
         }
 
-        tileOverlayRenderer.ClearLayer(TileOverlayLayer.CellState);
+        Vector3Int cellPosition = heroRuntime.ActiveCellPosition;
+        if (!combatGrid.TryGetCell(cellPosition, out var cell))
+        {
+            Debug.LogWarning("[PlayerCombatAction] HeroRuntime's active cell position is not valid in the combat grid.", this);
+            return;
+        }
+
+        tileOverlayRenderer.DrawCell(TileOverlayLayer.CellState, cellPosition, TileOverlayType.Hover);
+    }
+
+    private void DrawPreviewAttackRange(CombatGridCell cell)
+    {
+        if (cell == null)
+        {
+            return;
+        }
+
+        if (tileOverlayRenderer == null)
+        {
+            Debug.LogError("[PlayerCombatAction] TileOverlayRenderer is required to draw preview attack range.", this);
+            return;
+        }
+
+        tileOverlayRenderer.ClearLayer(TileOverlayLayer.Area);
+
+        if (deployingHero == null)
+        {
+            return;
+        }
+
+        IReadOnlyList<Vector2Int> attackPattern = deployingHero.Definition.NormalAttackDefinition.AttackPattern;
+        if (attackPattern == null)
+        {
+            Debug.LogError("[PlayerCombatAction] Deploying hero definition requires an attack pattern to draw preview range.", this);
+            return;
+        }
+
+        List<Vector2Int> rotatedPattern = RotateAttackPattern(attackPattern, currentDeployDirection);
+        foreach (var offset in rotatedPattern)
+        {
+            Vector3Int targetCellPosition = cell.CellPosition + new Vector3Int(offset.x, offset.y, 0);
+            tileOverlayRenderer.DrawCell(TileOverlayLayer.Area, targetCellPosition, TileOverlayType.AttackArea);
+        }
     }
 
     public void UpdateHoverCell()
@@ -372,7 +511,7 @@ public class PlayerCombatAction : MonoBehaviour
     }
 
     
-    public void ShowDeployGhost(HeroInstance heroInstance)
+    public void ShowDeployGhost(HeroCombatState combatState)
     {
         if (ghostHeroView == null)
         {
@@ -381,7 +520,7 @@ public class PlayerCombatAction : MonoBehaviour
         }
 
         currentDeployDirection = Vector2Int.left;
-        ghostHeroView.Show(heroInstance);
+        ghostHeroView.Show(combatState);
     }
 
     public void HideDeployGhost()
@@ -451,41 +590,6 @@ public class PlayerCombatAction : MonoBehaviour
         heroDeploymentSystem.ClearSelection();
     }
 
-    private void DrawPreviewAttackRange(CombatGridCell cell)
-    {
-        if (cell == null)
-        {
-            return;
-        }
-
-        if (tileOverlayRenderer == null)
-        {
-            Debug.LogError("[PlayerCombatAction] TileOverlayRenderer is required to draw preview attack range.", this);
-            return;
-        }
-
-        tileOverlayRenderer.ClearLayer(TileOverlayLayer.Area);
-
-        if (deployingHero == null)
-        {
-            return;
-        }
-
-        IReadOnlyList<Vector2Int> attackPattern = deployingHero.Definition.AttackPattern;
-        if (attackPattern == null)
-        {
-            Debug.LogError("[PlayerCombatAction] Deploying hero definition requires an attack pattern to draw preview range.", this);
-            return;
-        }
-
-        List<Vector2Int> rotatedPattern = RotateAttackPattern(attackPattern, currentDeployDirection);
-        foreach (var offset in rotatedPattern)
-        {
-            Vector3Int targetCellPosition = cell.CellPosition + new Vector3Int(offset.x, offset.y, 0);
-            tileOverlayRenderer.DrawCell(TileOverlayLayer.Area, targetCellPosition, TileOverlayType.AttackArea);
-        }
-    }
-
     private static List<Vector2Int> RotateAttackPattern(IReadOnlyList<Vector2Int> attackPattern, Vector2Int direction)
     {
         List<Vector2Int> rotatedPattern = new List<Vector2Int>();
@@ -530,7 +634,7 @@ public class PlayerCombatAction : MonoBehaviour
         tileOverlayRenderer.ClearTypeInLayer(TileOverlayLayer.Area, TileOverlayType.AttackArea);
     }
 
-    public void ShowDetailHero(HeroInstance heroInstance)
+    public void ShowDetailHero(HeroCombatState combatState)
     {
         if (heroDetailView == null)
         {
@@ -538,7 +642,7 @@ public class PlayerCombatAction : MonoBehaviour
             return;
         }
 
-        heroDetailView.Show(heroInstance);
+        heroDetailView.Show(combatState);
     }
 
     public void ShowDetailHero(HeroRuntime heroRuntime)
@@ -582,7 +686,7 @@ public class PlayerCombatAction : MonoBehaviour
         }
     }
 
-    public bool StartDeployHero(HeroInstance heroInstance, Vector2 screenPosition)
+    public bool StartDeployHero(HeroCombatState combatState, Vector2 screenPosition)
     {
         if (heroDeploymentSystem == null)
         {
@@ -590,21 +694,21 @@ public class PlayerCombatAction : MonoBehaviour
             return false;
         }
 
-        if (heroInstance == null || !heroInstance.IsValid)
+        if (combatState == null || !combatState.IsValid)
         {
             return false;
         }
 
-        if (!heroDeploymentSystem.SelectHero(heroInstance))
+        if (!heroDeploymentSystem.SelectHero(combatState))
         {
             return false;
         }
 
-        deployingHero = heroInstance;
+        deployingHero = combatState;
         currentDeployCell = null;
         currentDeployDirection = Vector2Int.left;
 
-        ShowDeployGhost(heroInstance);
+        ShowDeployGhost(combatState);
         UpdateHover(screenPosition);
 
         ChangeMode(PlayerCombatActionMode.DeployingHero);
@@ -619,6 +723,8 @@ public class PlayerCombatAction : MonoBehaviour
         }
 
         heroRuntime.OnSelected += HandleHeroSelected;
+        heroRuntime.OnDestroyed -= HandleDeployedHeroDestroyed;
+        heroRuntime.OnDestroyed += HandleDeployedHeroDestroyed;
     }
 
     private void UnregisterDeployedHeroEvents(HeroRuntime heroRuntime)
@@ -629,6 +735,7 @@ public class PlayerCombatAction : MonoBehaviour
         }
 
         heroRuntime.OnSelected -= HandleHeroSelected;
+        heroRuntime.OnDestroyed -= HandleDeployedHeroDestroyed;
     }
 
     public void FinishDeployHero()
@@ -649,8 +756,34 @@ public class PlayerCombatAction : MonoBehaviour
             return;
         }
 
-        heroDeploymentSystem.SelectHeroRuntime(heroRuntime);
+        HeroRuntime previousSelectedHero = heroDeploymentSystem.SelectedHeroRuntime;
+        if (!heroDeploymentSystem.SelectHeroRuntime(heroRuntime))
+        {
+            return;
+        }
+
+        if (previousSelectedHero != null && previousSelectedHero != heroRuntime)
+        {
+            previousSelectedHero.HideActionHUD();
+        }
+
         ChangeMode(PlayerCombatActionMode.SelectedDeployedHero);
+        heroRuntime.ShowActionHUD(this);
         ShowDetailHero(heroRuntime);
+    }
+
+    private void HandleDeployedHeroDestroyed(UnitRuntime unitRuntime)
+    {
+        if (!(unitRuntime is HeroRuntime heroRuntime))
+        {
+            return;
+        }
+
+        UnregisterDeployedHeroEvents(heroRuntime);
+
+        if (heroDeploymentSystem.SelectedHeroRuntime == heroRuntime)
+        {
+            ChangeMode(PlayerCombatActionMode.None);
+        }
     }
 }

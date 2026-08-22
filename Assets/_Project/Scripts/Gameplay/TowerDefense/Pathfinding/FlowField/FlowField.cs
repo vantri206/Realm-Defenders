@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class FlowField
 {
+    private const int STRAIGHT_COST = 10;
+    private const int DIAGONAL_COST = 14; // Approximation of sqrt(2) * 10
+
     private Vector3Int targetCellPosition;
     private Dictionary<Vector3Int, FlowFieldCell> cells;
 
@@ -34,47 +37,82 @@ public class FlowField
 
     public void BuildFlowField()
     {
-        openCells.Clear();
-        if (cells.TryGetValue(targetCellPosition, out FlowFieldCell targetCell) && targetCell.Cost < BLOCKED_COST)
+        foreach (FlowFieldCell cell in cells.Values)
         {
-            targetCell.SetIntegrationCost(0);
-            openCells.Enqueue(targetCell);
+            cell.ResetValue();
         }
-        else
+
+        if (!cells.TryGetValue(targetCellPosition, out FlowFieldCell flowTargetCell) || flowTargetCell.Cost == GameplayConstants.BLOCKED_COST)
         {
-            Debug.LogWarning($"[FlowField] Target cell position {targetCellPosition} is not in the flow field.");
             return;
         }
 
-        while (openCells.Count > 0)
-        {
-            FlowFieldCell currentCell = openCells.Dequeue();
+        SortedDictionary<int, Queue<FlowFieldCell>> openCellsByCost = new SortedDictionary<int, Queue<FlowFieldCell>>();
 
-            if (currentCell.NodeState == SearchNodeState.Closed)
+        void Enqueue(FlowFieldCell cell, int integrationCost)
+        {
+            if (!openCellsByCost.TryGetValue(integrationCost, out Queue<FlowFieldCell> cellsWithSameCost))
+            {
+                cellsWithSameCost = new Queue<FlowFieldCell>();
+                openCellsByCost.Add(integrationCost, cellsWithSameCost);
+            }
+
+            cellsWithSameCost.Enqueue(cell);
+        }
+
+        flowTargetCell.SetIntegrationCost(0);
+        flowTargetCell.SetNodeState(SearchNodeState.Open);
+        Enqueue(flowTargetCell, 0);
+
+        while (openCellsByCost.Count > 0)
+        {
+            KeyValuePair<int, Queue<FlowFieldCell>> lowestCostEntry;
+            using (SortedDictionary<int, Queue<FlowFieldCell>>.Enumerator enumerator = openCellsByCost.GetEnumerator())
+            {
+                enumerator.MoveNext();
+                lowestCostEntry = enumerator.Current;
+            }
+
+            int queuedIntegrationCost = lowestCostEntry.Key;
+            Queue<FlowFieldCell> lowestCostCells = lowestCostEntry.Value;
+            FlowFieldCell currentCell = lowestCostCells.Dequeue();
+            if (lowestCostCells.Count == 0)
+            {
+                openCellsByCost.Remove(queuedIntegrationCost);
+            }
+
+            if (queuedIntegrationCost != currentCell.IntegrationCost)
             {
                 continue;
             }
+
             currentCell.SetNodeState(SearchNodeState.Closed);
-            for (int  i = 0; i < GridDirectionHelpers.EightWayDirectionCount; i++)
+
+            for (int i = 0; i < GridDirectionHelpers.EightWayDirectionCount; i++)
             {
                 Vector2Int offset = GridDirectionHelpers.EightWayOffsets[i];
                 Vector3Int neighborCellPosition = currentCell.CellPosition + (Vector3Int)offset;
 
-                if (cells.TryGetValue(neighborCellPosition, out FlowFieldCell neighborCell))
+                if (!cells.TryGetValue(neighborCellPosition, out FlowFieldCell neighborCell) ||
+                    neighborCell.Cost == GameplayConstants.BLOCKED_COST ||
+                    !CanMoveDiagonal(currentCell.CellPosition, offset))
                 {
-                    if (neighborCell.Cost == BLOCKED_COST || !CanMoveDiagonal(currentCell.CellPosition, offset))
-                    {
-                        continue;
-                    }
-
-                    bool isUpdated = neighborCell.SetIntegrationCost(currentCell.IntegrationCost + neighborCell.Cost);
-                    if (isUpdated)
-                    {
-                        neighborCell.SetBestDirection(-offset); // negative to point towards the current cell
-                        neighborCell.SetNodeState(SearchNodeState.Open);
-                        openCells.Enqueue(neighborCell);
-                    }
+                    continue;
                 }
+
+                int directionCost = IsDiagonalDirection(offset) ? DIAGONAL_COST : STRAIGHT_COST;
+                int targetCellCost = neighborCell.Cost;
+                int moveCost = directionCost * targetCellCost;
+                int newIntegrationCost = currentCell.IntegrationCost + moveCost;
+
+                if (!neighborCell.SetIntegrationCost(newIntegrationCost))
+                {
+                    continue;
+                }
+
+                neighborCell.SetBestDirection(-offset);
+                neighborCell.SetNodeState(SearchNodeState.Open);
+                Enqueue(neighborCell, newIntegrationCost);
             }
         }
     }

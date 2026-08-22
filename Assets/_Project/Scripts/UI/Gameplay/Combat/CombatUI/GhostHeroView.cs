@@ -74,16 +74,16 @@ public class GhostHeroView : MonoBehaviour
         animator.SetFloat(dirYParameterName, direction.y);
     }
 
-    public void Show(HeroInstance heroInstance)
+    public void Show(HeroCombatState combatState)
     {
-        if (heroInstance == null || !heroInstance.IsValid)
+        if (combatState == null || !combatState.IsValid)
         {
-            Debug.LogWarning("[GhostHeroView] Invalid hero instance. Cannot show ghost hero.");
+            Debug.LogWarning("[GhostHeroView] Invalid hero combat state. Cannot show ghost hero.");
             return;
         }
 
-        SetHeroSprite(heroInstance.Definition.HeroSprite);
-        SetAnimatorController(heroInstance.Definition.AnimatorController);
+        SetHeroSprite(combatState.Definition.HeroSprite);
+        SetAnimatorController(combatState.Definition.AnimatorController);
         gameObject.SetActive(true);
         SetFacingDirection(Vector2Int.left);
     }

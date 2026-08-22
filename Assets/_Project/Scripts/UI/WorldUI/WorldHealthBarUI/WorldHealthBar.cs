@@ -11,20 +11,14 @@ public class WorldHealthBar : MonoBehaviour
     [SerializeField] private float backgroundAlpha = 0.75f;
     [SerializeField] private float fillAlpha = 0.75f;
 
-    [Header("Visibility")]
-    [SerializeField] private bool hideWhenFull = true;
-    [SerializeField] private float visibleDuration = 2f;
-
     private Transform fillTransform;
     private Vector3 fullFillScale;
     private int maxFillPixels;
 
     private float targetPercent = 1f;
     private float displayedPercent = 1f;
-    private CountdownTimer visibleTimer;
 
     private Tween fillTween;
-    [SerializeField]
     private float fillTweenTime = 0.2f;
 
     private bool isDead;
@@ -52,21 +46,6 @@ public class WorldHealthBar : MonoBehaviour
         KillFillTween();
     }
 
-    private void Update()
-    {
-        if (visibleTimer == null || !visibleTimer.IsRunning)
-        {
-            return;
-        }
-
-        visibleTimer.Tick(Time.deltaTime);
-
-        if (!visibleTimer.IsRunning)
-        {
-            ApplyVisibility();
-        }
-    }
-
     public void Initialize()
     {
         if (isInitialized)
@@ -76,7 +55,6 @@ public class WorldHealthBar : MonoBehaviour
 
         CacheReferences();
 
-        visibleTimer = new CountdownTimer(visibleDuration);
         displayedPercent = targetPercent;
         isInitialized = true;
 
@@ -85,7 +63,7 @@ public class WorldHealthBar : MonoBehaviour
         ApplyVisibility();
     }
 
-    public void SetValue(float currentHealth, float maxHealth, bool isShowBar)
+    public void SetValue(float currentHealth, float maxHealth)
     {
         float maxHealthValue = Mathf.Max(0f, maxHealth);
         float currentHealthValue = Mathf.Clamp(currentHealth, 0f, maxHealthValue);
@@ -98,21 +76,8 @@ public class WorldHealthBar : MonoBehaviour
 
         isDead = currentHealthValue <= 0f;
 
-        if (isShowBar)
-        {
-            AnimateFill(targetPercent);
-        }
-        else
-        {
-            SetFillImmediate(targetPercent);
-        }
-
-        if (isShowBar && !isDead)
-        {
-            Show();
-            return;
-        }
-
+        AnimateFill(targetPercent);
+        
         ApplyVisibility();
     }
 
@@ -121,23 +86,7 @@ public class WorldHealthBar : MonoBehaviour
         isDead = true;
         KillFillTween();
 
-        if (visibleTimer != null)
-        {
-            visibleTimer.StopTimer();
-        }
-
         ApplyVisibility();
-    }
-
-    public void Show()
-    {
-        if (isDead || visibleTimer == null)
-        {
-            return;
-        }
-
-        visibleTimer.StartTimer();
-        SetVisible(true);
     }
 
     private void CacheReferences()
@@ -276,18 +225,6 @@ public class WorldHealthBar : MonoBehaviour
             return;
         }
 
-        if (hideWhenFull && targetPercent >= 0.99f)
-        {
-            SetVisible(false);
-            return;
-        }
-
-        if (visibleTimer == null || !visibleTimer.IsRunning)
-        {
-            SetVisible(false);
-            return;
-        }
-
         SetVisible(true);
     }
 
@@ -307,7 +244,6 @@ public class WorldHealthBar : MonoBehaviour
     private void OnValidate()
     {
         fillTweenTime = Mathf.Max(0f, fillTweenTime);
-        visibleDuration = Mathf.Max(0f, visibleDuration);
         backgroundAlpha = Mathf.Clamp01(backgroundAlpha);
         fillAlpha = Mathf.Clamp01(fillAlpha);
 

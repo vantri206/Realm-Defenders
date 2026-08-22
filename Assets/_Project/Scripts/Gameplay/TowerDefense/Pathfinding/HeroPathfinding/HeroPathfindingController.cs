@@ -119,12 +119,12 @@ public class HeroPathfindingController : MonoBehaviour
                 for (int i = 0; i < units.Count; i++)
                 {
                     UnitRuntime unit = units[i];
-                    if (unit == null || !unit.IsInitialized || unit.IsDead || unit.TeamIdentity == null)
+                    if (unit == null || !unit.IsInitialized || unit.IsDead || unit.BattleTeam == null)
                     {
                         continue;
                     }
 
-                    if (teamIdentity.IsEnemy(unit.TeamIdentity) && AttackTargetRulling.CanTarget(hero, unit))
+                    if (teamIdentity.IsEnemy(unit.BattleTeam) && AttackTargetRulling.CanTarget(hero.NormalAttackDefinition.AttackType, unit))
                     {
                         targetEnemyCells.Add(cellPosition);
                         break;

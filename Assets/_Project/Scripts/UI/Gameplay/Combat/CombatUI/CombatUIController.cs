@@ -6,41 +6,41 @@ public class CombatUIController : MonoBehaviour
     private readonly List<HeroCard> heroCards = new List<HeroCard>();
 
     private PlayerCombatAction combatAction;
-    private HeroInventoryView heroInventoryView;
+    private HeroSquadView heroSquadView;
     private GameInput gameInput;
 
     private HeroCard activeCard = null;
     private HeroCard deployingCard = null;
-    private HeroInstance deployingHero = null;
+    private HeroCombatState deployingHero = null;
     private float deployStartTime;
 
     private float deployHoldDuration = 0.2f;
 
     private bool isInitialized;
 
-    public void Initialize(PlayerCombatAction playerCombatAction, HeroInventoryView inventoryView)
+    public void Initialize(PlayerCombatAction playerCombatAction, HeroSquadView squadView)
     {
         if (isInitialized)
         {
             return;
         }
 
-        if (playerCombatAction == null || inventoryView == null)
+        if (playerCombatAction == null || squadView == null)
         {
             Debug.LogError("[CombatUIController] Required references are null.", this);
             return;
         }
 
         combatAction = playerCombatAction;
-        heroInventoryView = inventoryView;
+        heroSquadView = squadView;
         gameInput = GameInput.Instance;
 
         RegisterInputEvents();
-        RegisterInventoryEvents();
+        RegisterSquadEvents();
 
-        for (int i = 0; i < heroInventoryView.HeroCards.Count; i++)
+        for (int i = 0; i < heroSquadView.HeroCards.Count; i++)
         {
-            AddCard(heroInventoryView.HeroCards[i]);
+            AddCard(heroSquadView.HeroCards[i]);
         }
 
         isInitialized = true;
@@ -69,7 +69,7 @@ public class CombatUIController : MonoBehaviour
 
     private void OnDestroy()
     {
-        UnregisterInventoryEvents();
+        UnregisterSquadEvents();
         UnregisterInputEvents();
         UnregisterAllHeroCardInputs();
     }
@@ -155,27 +155,27 @@ public class CombatUIController : MonoBehaviour
         }
     }
 
-    private void RegisterInventoryEvents()
+    private void RegisterSquadEvents()
     {
-        if (heroInventoryView == null)
+        if (heroSquadView == null)
         {
-            Debug.LogError("[CombatUIController] HeroInventoryView is required to register inventory events.", this);
+            Debug.LogError("[CombatUIController] HeroSquadView is required to register squad events.", this);
             return;
         }
 
-        heroInventoryView.OnCardAdded += AddCard;
-        heroInventoryView.OnCardRemoved += RemoveCard;
+        heroSquadView.OnCardAdded += AddCard;
+        heroSquadView.OnCardRemoved += RemoveCard;
     }
 
-    private void UnregisterInventoryEvents()
+    private void UnregisterSquadEvents()
     {
-        if (heroInventoryView == null)
+        if (heroSquadView == null)
         {
             return;
         }
 
-        heroInventoryView.OnCardAdded -= AddCard;
-        heroInventoryView.OnCardRemoved -= RemoveCard;
+        heroSquadView.OnCardAdded -= AddCard;
+        heroSquadView.OnCardRemoved -= RemoveCard;
     }
 
     private void RegisterInputEvents()
@@ -257,13 +257,13 @@ public class CombatUIController : MonoBehaviour
             return;
         }
 
-        HeroInstance heroInstance = card.HeroInstance;
-        if (heroInstance == null || !heroInstance.IsValid)
+        HeroCombatState combatState = card.CombatState;
+        if (combatState == null || !combatState.IsValid)
         {
             return;
         }
 
-        StartDeploy(card, heroInstance);
+        StartDeploy(card, combatState);
         return;
     }
 
@@ -328,15 +328,15 @@ public class CombatUIController : MonoBehaviour
         combatAction.PerformAction();
     }
 
-    private void StartDeploy(HeroCard card, HeroInstance heroInstance)
+    private void StartDeploy(HeroCard card, HeroCombatState combatState)
     {
         if (combatAction != null)
         {
-            combatAction.ShowDetailHero(heroInstance);
+            combatAction.ShowDetailHero(combatState);
         }
 
         deployingCard = card;
-        deployingHero = heroInstance;
+        deployingHero = combatState;
         deployStartTime = Time.unscaledTime;
     }
 
@@ -354,10 +354,10 @@ public class CombatUIController : MonoBehaviour
         }
 
         HeroCard card = deployingCard;
-        HeroInstance heroInstance = deployingHero;
+        HeroCombatState combatState = deployingHero;
         ClearDeploy();
 
-        BeginDeployDrag(card, heroInstance, screenPosition);
+        BeginDeployDrag(card, combatState, screenPosition);
     }
 
     private void ClearDeploy()
@@ -372,15 +372,15 @@ public class CombatUIController : MonoBehaviour
         activeCard = null;
     }
 
-    private void BeginDeployDrag(HeroCard card, HeroInstance heroInstance, Vector2 screenPosition)
+    private void BeginDeployDrag(HeroCard card, HeroCombatState combatState, Vector2 screenPosition)
     {
-        if (card == null || heroInstance == null || !heroInstance.IsValid || combatAction == null)
+        if (card == null || combatState == null || !combatState.IsValid || combatAction == null)
         {
             activeCard = null;
             return;
         }
 
-        if (!combatAction.StartDeployHero(heroInstance, screenPosition))
+        if (!combatAction.StartDeployHero(combatState, screenPosition))
         {
             activeCard = null;
             return;

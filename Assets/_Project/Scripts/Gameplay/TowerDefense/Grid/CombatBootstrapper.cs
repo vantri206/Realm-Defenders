@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CombatBootstrapper : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private CombatGrid combatGrid;
-    [SerializeField] private HeroInventory heroInventory;
-    [SerializeField] private HeroInventoryView heroInventoryView;
+    [SerializeField] private HeroSquad heroSquad;
+    [SerializeField] private HeroSquadView heroSquadView;
     [SerializeField] private HeroPlacement heroPlacement;
     [SerializeField] private HeroDeploymentSystem heroDeploymentSystem;
     [SerializeField] private HeroDetailView heroDetailView;
@@ -51,8 +52,8 @@ public class CombatBootstrapper : MonoBehaviour
 
         // Initialize hero systems
         heroPlacement.Initialize(combatContext);
-        heroDeploymentSystem.Initialize(heroInventory, heroPlacement, combatTime);
-        heroInventory.Initialize(heroInventoryView, levelSystem);
+        heroDeploymentSystem.Initialize(heroSquad, heroPlacement, combatTime);
+        heroSquad.Initialize(heroSquadView, levelSystem);
 
         // Initialize enemy systems
         enemyWaveController.Initialize(combatContext, enemyRouteGraph, levelSystem);
@@ -60,7 +61,7 @@ public class CombatBootstrapper : MonoBehaviour
         // Initialize player input action and UI controller
         playerCombatAction.Initialize(mainCamera, combatGrid, heroDeploymentSystem, heroDetailView, tileOverlayRenderer, ghostHero, levelSystem, combatTime);
         playerCombatAction.ChangeMode(PlayerCombatActionMode.None);
-        combatUIController.Initialize(playerCombatAction, heroInventoryView);
+        combatUIController.Initialize(playerCombatAction, heroSquadView);
         levelMenuController.Initialize(levelSystem, playerCombatAction, combatTime);
 
         // Initialize level system
@@ -103,7 +104,7 @@ public class CombatBootstrapper : MonoBehaviour
     {
         playerCombatAction.ChangeMode(PlayerCombatActionMode.DeployingHero);
     }
-    
+
     private bool CheckReferences()
     {
         bool hasReferences = true;
@@ -120,15 +121,15 @@ public class CombatBootstrapper : MonoBehaviour
             hasReferences = false;
         }
 
-        if (heroInventory == null)
+        if (heroSquad == null)
         {
-            Debug.LogWarning("[CombatBootstrapper] heroInventory is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] heroSquad is not assigned.", this);
             hasReferences = false;
         }
 
-        if (heroInventoryView == null)
+        if (heroSquadView == null)
         {
-            Debug.LogWarning("[CombatBootstrapper] heroInventoryView is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] heroSquadView is not assigned.", this);
             hasReferences = false;
         }
 
@@ -209,7 +210,7 @@ public class CombatBootstrapper : MonoBehaviour
             Debug.LogWarning("[CombatBootstrapper] combatTime is not assigned.", this);
             hasReferences = false;
         }
-        
+
         return hasReferences;
     }
 }

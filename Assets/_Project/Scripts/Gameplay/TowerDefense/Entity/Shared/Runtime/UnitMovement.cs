@@ -11,7 +11,7 @@ public class UnitMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private UnitRuntime unitRuntime;
     
-    private UnitSpeed speed;
+    private UnitStats stats;
     private UnitMovementType movementType = UnitMovementType.Ground;
     private Vector2 currentMoveDirection;
     private Vector2 externalVelocity;
@@ -22,7 +22,6 @@ public class UnitMovement : MonoBehaviour
 
     private Vector2 rbCenterPosition => rb.position + unitRuntime.CenterOffset;
 
-    public UnitSpeed Speed => speed;
     public Vector2 CurrentMoveDirection => currentMoveDirection;
     public bool IsInitialized => isInitialized;
 
@@ -31,18 +30,18 @@ public class UnitMovement : MonoBehaviour
         CacheReferences();
     }
 
-    public bool Initialize(UnitSpeed speed, UnitMovementType movementType)
+    public bool Initialize(UnitStats stats, UnitMovementType movementType)
     {
         CacheReferences();
 
-        if (speed == null || rb == null || unitRuntime == null || unitRuntime.CombatGrid == null || unitRuntime.CombatGrid.Grid == null)
+        if (stats == null || rb == null || unitRuntime == null || unitRuntime.CombatGrid == null || unitRuntime.CombatGrid.Grid == null)
         {
             Debug.LogError("[UnitMovement] Missing required references.", this);
             isInitialized = false;
             return false;
         }
 
-        this.speed = speed;
+        this.stats = stats;
         this.movementType = movementType;
         ResetTransientMovement();
         isInitialized = true;
@@ -81,7 +80,7 @@ public class UnitMovement : MonoBehaviour
         }
         else if (currentMoveDirection.sqrMagnitude > Mathf.Epsilon)
         {
-            movement = currentMoveDirection.normalized * speed.MoveSpeed * fixedDeltaTime;
+            movement = currentMoveDirection.normalized * stats.MoveSpeed * fixedDeltaTime;
         }
         movement += GetImpulseMovement(fixedDeltaTime);
         Move(movement);
@@ -299,17 +298,6 @@ public class UnitMovement : MonoBehaviour
     private bool CanEnterWorldPosition(CombatGrid combatGrid, Vector3 worldPosition)
     {
         return combatGrid.TryWorldToCell(worldPosition, out CombatGridCell cell) && UnitMovementRules.CanEnterCell(movementType, cell);
-    }
-    
-    public void SetMoveSpeed(float newMoveSpeed)
-    {
-        if (!isInitialized)
-        {
-            Debug.LogError("[UnitMovement] Cannot set move speed before Initialize.", this);
-            return;
-        }
-        
-        speed.SetMoveSpeed(newMoveSpeed);
     }
 
     public void SetMoveDirection(Vector2 direction)

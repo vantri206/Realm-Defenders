@@ -25,7 +25,7 @@ MonoBehaviour:
   attackInterval: 2
   defense: 5
   specialDefense: 20
-  blockCount: 0
+  blockCount: 1
   moveSpeed: 0
   baseDeployCost: 20
   baseRedeployTime: 25

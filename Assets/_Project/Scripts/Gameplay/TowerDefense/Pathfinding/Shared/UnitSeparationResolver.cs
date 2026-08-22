@@ -41,7 +41,7 @@ public class UnitSeparationResolver : MonoBehaviour
             return Vector2.zero;
         }
 
-        TeamIdentity selfTeam = self.TeamIdentity;
+        TeamIdentity selfTeam = self.BattleTeam;
         if (selfTeam == null)
         {
             return Vector2.zero;
@@ -66,7 +66,7 @@ public class UnitSeparationResolver : MonoBehaviour
                 continue;
             }
 
-            TeamIdentity otherTeam = other.TeamIdentity;
+            TeamIdentity otherTeam = other.BattleTeam;
             if (otherTeam == null || otherTeam.Team != selfTeam.Team)
             {
                 continue;

@@ -26,6 +26,7 @@ MonoBehaviour:
   specialDefense: 0
   moveSpeed: 2
   movementType: 1
+  foodReward: 2
   attackType: 0
   targetPriorityMode: 0
   attackPattern: []
@@ -37,4 +38,4 @@ MonoBehaviour:
   normalAttackProjectilePrefab: {fileID: 0}
   normalAttackAOEHitPrefab: {fileID: 0}
   normalAttackHitVFXPrefab: {fileID: 5006250830996535109, guid: 326cade601d06734b89b36364c081a10, type: 3}
-  centerOffset: {x: 0, y: 0.15}
+  navigationOffset: {x: 0, y: 0.2}

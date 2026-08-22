@@ -9,7 +9,7 @@ public static class AttackPatternResolver
     {
         List<Vector2Int> resolvedAttackPattern = new List<Vector2Int>();
 
-        if (defaultAttackPattern == null)
+        if (defaultAttackPattern == null || defaultAttackPattern.Count == 0 || facingDirection == Vector2Int.zero)
         {
             return resolvedAttackPattern;
         }

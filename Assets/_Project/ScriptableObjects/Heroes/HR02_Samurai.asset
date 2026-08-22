@@ -26,12 +26,12 @@ MonoBehaviour:
   defense: 15
   specialDefense: 10
   blockCount: 2
-  moveSpeed: 4
+  moveSpeed: 0
   baseDeployCost: 16
   baseRedeployTime: 25
   attackType: 0
   targetPriorityMode: 0
-  canGuard: 1
+  canGuard: 0
   attackPattern:
   - {x: 0, y: 0}
   - {x: -1, y: 0}

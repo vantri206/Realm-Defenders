@@ -1,7 +1,5 @@
 public static class UnitMovementRules
 {
-    private const byte baseMovableCost = 1;
-
     public static bool CanEnterCell(UnitMovementType movementType, CombatGridCell cell)
     {
         if (cell == null)
@@ -14,6 +12,6 @@ public static class UnitMovementRules
 
     public static byte GetPathfindingCost(UnitMovementType movementType, CombatGridCell cell)
     {
-        return CanEnterCell(movementType, cell) ? baseMovableCost : GameplayConstants.BLOCKED_COST;
+        return CanEnterCell(movementType, cell) ? GameplayConstants.NORMAL_COST : GameplayConstants.BLOCKED_COST;
     }
 }

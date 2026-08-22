@@ -74,7 +74,7 @@ public class LevelSystem : MonoBehaviour
 
         this.combatTime = combatTime;
 
-        currentFood = startingFood;
+        currentFood = Mathf.Clamp(startingFood, 0, GameplayConstants.MAX_FOOD);
         currentLives = startingLives;
         levelEnemyCount = totalEnemyCount;
 
@@ -170,28 +170,42 @@ public class LevelSystem : MonoBehaviour
         }
         if (resolveReason == EnemyResolveReason.Escaped)
         {
-            currentLives -= trackingData.LivesDamage;
+            OnLoseLife(trackingData.LivesDamage, false);
         }
         else if (resolveReason == EnemyResolveReason.Killed)
         {
-            currentFood += trackingData.FoodReward;
+            OnGainFood(trackingData.FoodReward, false);
         }
 
         NotifyLevelStatsChanged();
     }
 
-    public void OnLoseLife(int lives)
+    public void OnLoseLife(int lives, bool isNotify = true)
     {
         currentLives -= lives;
-        
-        NotifyLevelStatsChanged();
+
+        if (isNotify)
+        {
+            NotifyLevelStatsChanged();
+        }
     }
 
-    public void OnGainFood(int food)
+    public void OnGainFood(int food, bool isNotify = true)
     {
-        currentFood += food;
+        currentFood = Mathf.Min(currentFood + Mathf.Max(0, food), GameplayConstants.MAX_FOOD);
 
-        NotifyLevelStatsChanged();
+        if (isNotify)
+        {
+            NotifyLevelStatsChanged();
+        }
+    }
+
+    public void RefundRetreatFood(int deployCost)
+    {
+        int refundFood = Mathf.FloorToInt(Mathf.Max(0, deployCost) * GameplayConstants.RETREAT_FOOD_REFUND_RATE);
+        int previousFood = currentFood;
+
+        OnGainFood(refundFood);
     }
 
     public bool TrySpendFood(int food)

@@ -4,47 +4,124 @@ using UnityEngine;
 
 public class EnemyRuntime : UnitRuntime, IBlockable
 {
+    private const float normalAttackStateDuration = 0.3f;
+
     // Enemy Identity
     private EnemyInstance enemyInstance;
     private EnemyDefinition enemyDefinition;
 
+    private IReadOnlyList<Vector2Int> defaultAttackPattern = new List<Vector2Int>();
+    private IReadOnlyList<Vector2Int> resolvedAttackPattern = new List<Vector2Int>();
+
     // Enemy Components
     [SerializeField] private EnemyPathfindingController enemyPathfindingController;
+    [SerializeField] private NormalAttackController normalAttackController;
+    [SerializeField] private TargetScanner targetScanner;
+    [SerializeField] private TargetSelector targetSelector;
+
     private EnemyDepthSorter enemyDepthSorter;
     private EnemyRouteGraph routeGraph;
+
     private IBlocker currentBlocker;
 
-    // Enemy Stats
-    public override UnitStats Stats => enemyInstance.Stats;
-    public UnitSpeed Speed => enemyInstance.Speed;
-    public override UnitMovementType MovementType => enemyDefinition.MovementType;
-    public override UnitAttackType AttackType => enemyDefinition.AttackType;
     // Getters
-    public EnemyInstance Instance => enemyInstance;
-    public EnemyDefinition Definition => enemyDefinition;
-    public EnemyPathfindingController PathfindingController => enemyPathfindingController;
     public float PathProgressScore => enemyPathfindingController.PathProgressScore;
-    public override Vector2 CenterOffset => enemyDefinition.CenterOffset;
+    public IBlocker CurrentBlocker => currentBlocker;
+
+    public override UnitMovementType MovementType => enemyDefinition != null ? enemyDefinition.MovementType : base.MovementType;
+    public override Vector2 CenterOffset => enemyDefinition != null ? enemyDefinition.NavigationOffset : Vector2.zero;
+    
+    public UnitRuntime Owner => this;
     public bool CanBeBlocked => IsInitialized && !IsDead && MovementType != UnitMovementType.Flying;
     public bool IsBlocked => currentBlocker != null;
-    public UnitRuntime Owner => this;
-    public IBlocker CurrentBlocker => currentBlocker;
     public override bool IsMovementBlocked => base.IsMovementBlocked || IsBlocked;
 
-    public override TargetSide TargetSide => enemyDefinition.TargetSide;
-    public override AttackEffect AttackEffect => enemyDefinition.AttackEffect;
-    public override AttackMethod AttackMethod => enemyDefinition.AttackMethod;
-    public override AttackDamageType AttackDamageType => enemyDefinition.AttackDamageType;
-    public override float NormalAttackEffectMultiplier => enemyDefinition.NormalAttackEffectMultiplier;
-    public override AttackProjectile NormalAttackProjectilePrefab => enemyDefinition.NormalAttackProjectilePrefab;
-    public override AttackAOEHit NormalAttackAOEHitPrefab => enemyDefinition.NormalAttackAOEHitPrefab;
-    public override SimpleSpriteAnimatorVFX NormalAttackHitVFXPrefab => enemyDefinition.NormalAttackHitVFXPrefab;
+    // Attack
+    public NormalAttackDefinition NormalAttackDefinition => enemyDefinition != null ? enemyDefinition.NormalAttackDefinition : null;
+    public IReadOnlyList<Vector2Int> ResolvedAttackPattern => resolvedAttackPattern;
 
     public event Action<EnemyRuntime> OnEscaped;
 
     private void Awake()
     {
         CacheReferences();
+    }
+
+    public void Initialize(EnemyInstance enemyInstance, UnitCombatContext combatContext, EnemyRouteGraph routeGraph, Vector3Int currentCell, string routeId, EnemyDepthSorter enemyDepthSorter)
+    {
+        isInitialized = false;
+
+        if (enemyInstance == null || !enemyInstance.IsValid)
+        {
+            Debug.LogError("[EnemyRuntime] A valid EnemyInstance is required to initialize enemy runtime.", this);
+            return;
+        }
+
+        this.enemyInstance = enemyInstance;
+        enemyDefinition = enemyInstance.Definition;
+        this.routeGraph = routeGraph;
+        this.combatContext = combatContext;
+        InitializeRuntimeStats(enemyInstance);
+
+        CacheReferences();
+
+        if (!CheckCoreReferences() ||
+            !CheckHealthSystemReferences() ||
+            !CheckMovementSystemReferences() ||
+            !CheckAttackSystemReferences() ||
+            !CheckPathfindingSystemReferences())
+        {
+            return;
+        }
+
+        SetupVisuals(enemyDefinition.EnemySprite, enemyDefinition.AnimatorController);
+        if (!InitializeMovementSystem(Stats, MovementType))
+        {
+            return;
+        }
+
+        if (!InitializeHealth())
+        {
+            return;
+        }
+
+        if (!InitializeAttackSystems())
+        {
+            return;
+        }
+        SetDepthSorter(enemyDepthSorter);
+        
+        if (combatContext.CombatGrid.TryGetCell(currentCell, out CombatGridCell cell))
+        {
+            SetActiveCell(cell);
+        }
+        else
+        {
+            Debug.LogError($"[EnemyRuntime] Failed to find a valid CombatGridCell at position {currentCell} for enemy initialization.", this);
+            SetActiveCell(null);
+        }
+        
+        defaultAttackPattern = new List<Vector2Int>(NormalAttackDefinition.AttackPattern);
+        SetFacingDirection(facingDirection);
+
+        centerOffset = enemyDefinition.NavigationOffset;
+
+        bool isPathfindingInitialized = enemyPathfindingController.Initialize(routeGraph, combatContext.UnitPathfindingSystem, routeId, () => OnEscaped?.Invoke(this));
+
+        if  (normalAttackController != null)
+        {
+            normalAttackController.OnAttack += HandleNormalAttack;
+        }
+
+        isInitialized = isPathfindingInitialized;
+    }
+
+    protected void OnDestroy()
+    {
+        if (normalAttackController != null)
+        {
+            normalAttackController.OnAttack -= HandleNormalAttack;
+        }
     }
 
     protected override void OnDisable()
@@ -62,71 +139,12 @@ public class EnemyRuntime : UnitRuntime, IBlockable
             currentDepthSorter.UnregisterEnemy(this);
         }
 
+        if (normalAttackController != null)
+        {
+            normalAttackController.OnAttack -= HandleNormalAttack;
+        }
+
         base.OnDisable();
-    }
-
-    public void Initialize(EnemyInstance enemyInstance, UnitCombatContext combatContext, EnemyRouteGraph routeGraph,
-                         Vector3Int currentCell, string routeId, EnemyDepthSorter enemyDepthSorter)
-    {
-        isInitialized = false;
-
-        if (enemyInstance == null || !enemyInstance.IsValid)
-        {
-            Debug.LogError("[EnemyRuntime] A valid EnemyInstance is required to initialize enemy runtime.", this);
-            return;
-        }
-
-        this.enemyInstance = enemyInstance;
-        enemyDefinition = enemyInstance.Definition;
-        this.routeGraph = routeGraph;
-        this.combatContext = combatContext;
-
-        CacheReferences();
-
-        if (!CheckCoreReferences() ||
-            !CheckHealthSystemReferences() ||
-            !CheckMovementSystemReferences(Speed) ||
-            !CheckAttackSystemReferences() ||
-            !CheckPathfindingSystemReferences())
-        {
-            return;
-        }
-
-        SetupVisuals(Definition.EnemySprite, Definition.AnimatorController);
-        if (!InitializeMovementSystem(Speed, MovementType))
-        {
-            return;
-        }
-
-        if (!InitializeHealth())
-        {
-            return;
-        }
-
-        if (!InitializeAttackSystems(Definition.TargetPriorityMode))
-        {
-            return;
-        }
-        SetDepthSorter(enemyDepthSorter);
-        
-        if (combatContext.CombatGrid.TryGetCell(currentCell, out CombatGridCell cell))
-        {
-            SetActiveCell(cell);
-        }
-        else
-        {
-            Debug.LogError($"[EnemyRuntime] Failed to find a valid CombatGridCell at position {currentCell} for enemy initialization.", this);
-            SetActiveCell(null);
-        }
-        
-        defaultAttackPattern = new List<Vector2Int>(Definition.AttackPattern);
-        SetFacingDirection(facingDirection);
-
-        centerOffset = Definition.CenterOffset;
-
-        bool isPathfindingInitialized = enemyPathfindingController.Initialize(routeGraph, combatContext.UnitPathfindingSystem, routeId, () => OnEscaped?.Invoke(this));
-
-        isInitialized = isPathfindingInitialized;
     }
 
     public void Update()
@@ -138,7 +156,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
 
         float combatDeltaTime = combatContext.CombatTime.CombatDeltaTime;
         TickState(combatDeltaTime);
-        normalAttackController.Tick(combatDeltaTime, resolvedAttackPattern, CanUseNormalAttack);
+        normalAttackController.Tick(combatDeltaTime, ResolvedAttackPattern, CanUseNormalAttack);
     }
 
     public void FixedUpdate()
@@ -184,15 +202,54 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         unitMovement.FixedTick(combatContext.CombatTime.CombatFixedDeltaTime);
     }
 
-    private bool CheckPathfindingSystemReferences()
+    protected bool InitializeAttackSystems()
     {
-        if (enemyPathfindingController != null && routeGraph != null && combatContext.UnitPathfindingSystem != null)
+        if (normalAttackController == null || targetScanner == null || targetSelector == null || combatContext.CombatTime == null)
         {
-            return true;
+            Debug.LogError("[EnemyRuntime] NormalAttackController is required to initialize attack systems.", this);
+            return false;
         }
 
-        Debug.LogError("[EnemyRuntime] Pathfinding system requires EnemyPathfindingController, EnemyRouteGraph, and UnitPathfindingSystem.", this);
-        return false;
+        targetScanner.Initialize(combatContext.CombatGrid, this);
+        targetSelector.Initialize(this);
+
+        if (!normalAttackController.Initialize(battleTeam, Stats, NormalAttackDefinition, targetScanner, targetSelector, combatContext.CombatTime))
+        {
+            Debug.LogError("[EnemyRuntime] Failed to initialize NormalAttackController.", this);
+            return false;
+        }
+
+        return true;
+    }
+
+    private void InitializeRuntimeStats(EnemyInstance enemyInstance)
+    {
+        runtimeStats = new UnitStats(enemyInstance.Stats);
+    }
+
+    protected override void SetFacingDirection(Vector2Int direction)
+    {
+        if (direction == Vector2Int.zero)
+        {
+            return;
+        }
+
+        resolvedAttackPattern = AttackPatternResolver.RefreshAttackPattern(defaultAttackPattern, direction);
+        
+        base.SetFacingDirection(direction);
+    }
+
+
+    protected void HandleNormalAttack(Hurtbox target)
+    {
+        if (target != null)
+        {
+            FacePosition(target.AimPosition);
+        }
+
+        TryStartActionState(UnitRuntimeState.Attacking, normalAttackStateDuration);
+
+        unitVisual.TriggerAttack();
     }
 
     protected void SetMovementDirection(Vector2 direction)
@@ -270,6 +327,28 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         SetFacingDirection(blockerFacingDirection);
     }
 
+    private bool CheckPathfindingSystemReferences()
+    {
+        if (enemyPathfindingController != null && routeGraph != null && combatContext.UnitPathfindingSystem != null)
+        {
+            return true;
+        }
+
+        Debug.LogError("[EnemyRuntime] Pathfinding system requires EnemyPathfindingController, EnemyRouteGraph, and UnitPathfindingSystem.", this);
+        return false;
+    }
+
+    protected bool CheckAttackSystemReferences()
+    {
+        if (normalAttackController != null && targetScanner != null && targetSelector != null && combatContext.CombatTime != null)
+        {
+            return true;
+        }
+
+        Debug.LogError("[EnemyRuntime] Attack system requires missing references.", this);
+        return false;
+    }
+
     protected override void CacheReferences()
     {
         base.CacheReferences();
@@ -286,12 +365,19 @@ public class EnemyRuntime : UnitRuntime, IBlockable
     }
 
 #if UNITY_EDITOR
-private void OnDrawGizmosSelected()
-{
-    Color centerGizmoColor = Color.purple;
-    float centerGizmoRadius = 0.1f;
-    Gizmos.color = centerGizmoColor;
-    Gizmos.DrawSphere(transform.position + (Vector3)centerOffset, centerGizmoRadius);
-}
+    private void OnDrawGizmosSelected()
+    {
+        const float navigationPointRadius = 0.025f;
+        const float crossHalfLength = 0.06f;
+
+        Vector3 navigationPosition = transform.position + (Vector3)centerOffset;
+
+        Gizmos.color = Color.purple;
+        Gizmos.DrawSphere(navigationPosition, navigationPointRadius);
+        Gizmos.DrawLine(navigationPosition + Vector3.left * crossHalfLength,
+                        navigationPosition + Vector3.right * crossHalfLength);
+        Gizmos.DrawLine(navigationPosition + Vector3.down * crossHalfLength,
+                        navigationPosition + Vector3.up * crossHalfLength);
+    }
 #endif
 }

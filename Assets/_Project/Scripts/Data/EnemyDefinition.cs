@@ -24,24 +24,10 @@ public class EnemyDefinition : ScriptableObject
     [SerializeField] private int foodReward = 2;
 
     [Header("Attack")]
-    [SerializeField] private UnitAttackType attackType = UnitAttackType.Melee;
-    [SerializeField] private TargetPriorityMode targetPriorityMode = TargetPriorityMode.Nearest;
-    [SerializeField] private List<Vector2Int> attackPattern = new List<Vector2Int>
-    {
-        Vector2Int.zero,
-    };
-
-    [SerializeField] private TargetSide targetSide = TargetSide.Enemy;
-    [SerializeField] private AttackEffect attackEffect = AttackEffect.Damage;
-    [SerializeField] private AttackMethod attackMethod;
-    [SerializeField] private AttackDamageType attackDamageType;
-    [SerializeField] private float normalAttackEffectMultiplier = 1f;
-    [SerializeField] private AttackProjectile normalAttackProjectilePrefab;
-    [SerializeField] private AttackAOEHit normalAttackAOEHitPrefab;
-    [SerializeField] private SimpleSpriteAnimatorVFX normalAttackHitVFXPrefab;
+    [SerializeField] private NormalAttackDefinition normalAttack;
 
     [Header("Customization")]
-    [SerializeField] private Vector2 centerOffset = new Vector2(0f, 0.5f);
+    [SerializeField] private Vector2 navigationOffset = new Vector2(0f, 0.5f);
 
     public string EnemyId => enemyId;
     public string EnemyName => enemyName;
@@ -56,20 +42,10 @@ public class EnemyDefinition : ScriptableObject
     public float Defense => defense;
     public float SpecialDefense => specialDefense;
     public float MoveSpeed => moveSpeed;
+    public NormalAttackDefinition NormalAttackDefinition => normalAttack;
     public UnitMovementType MovementType => movementType;
     public int FoodReward => foodReward;
-    public UnitAttackType AttackType => attackType;
-    public TargetPriorityMode TargetPriorityMode => targetPriorityMode;
-    public IReadOnlyList<Vector2Int> AttackPattern => attackPattern;
-    public TargetSide TargetSide => targetSide;
-    public AttackEffect AttackEffect => attackEffect;
-    public AttackMethod AttackMethod => attackMethod;
-    public AttackDamageType AttackDamageType => attackDamageType;
-    public float NormalAttackEffectMultiplier => normalAttackEffectMultiplier;
-    public AttackProjectile NormalAttackProjectilePrefab => normalAttackProjectilePrefab;
-    public AttackAOEHit NormalAttackAOEHitPrefab => normalAttackAOEHitPrefab;
-    public SimpleSpriteAnimatorVFX NormalAttackHitVFXPrefab => normalAttackHitVFXPrefab;
-    public Vector2 CenterOffset => centerOffset;
+    public Vector2 NavigationOffset => navigationOffset;
 
     public bool IsValid => enemyPrefab != null;
 
@@ -79,7 +55,6 @@ public class EnemyDefinition : ScriptableObject
         maxHealth = Mathf.Max(0f, maxHealth);
         attack = Mathf.Max(0f, attack);
         attackInterval = Mathf.Max(0f, attackInterval);
-        normalAttackEffectMultiplier = Mathf.Max(0f, normalAttackEffectMultiplier);
         moveSpeed = Mathf.Max(0f, moveSpeed);
     }
 #endif

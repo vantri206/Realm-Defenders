@@ -7,22 +7,6 @@ public enum UnitMovementType
     Flying,
 }
 
-public enum UnitSpeedType
-{
-    Slow,
-    Normal,
-    Fast,
-    VeryFast,
-}
-
-public enum UnitStatsRating
-{
-    Low,
-    Normal,
-    High,
-    VeryHigh,
-}
-
 public enum Team
 {
     Environment,    // Neutral entities can damage all other factions, and only be damaged by player
@@ -67,6 +51,14 @@ public enum HeroBlockState
 {
     NonBlocking,
     Blocking,
+}
+
+public enum HeroActionType
+{
+    None,
+    Retreat,
+    Skill,
+    Upgrade,
 }
 
 public enum UnitRuntimeState
