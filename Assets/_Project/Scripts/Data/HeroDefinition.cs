@@ -7,8 +7,9 @@ public class HeroDefinition : ScriptableObject
     [Header("Identity")]
     [SerializeField] private string heroId;
     [SerializeField] private string heroName;
-    [SerializeField] private Sprite heroSprite;
+    [SerializeField] private Sprite heroDefaultSprite;
     [SerializeField] private Sprite heroIcon;
+    [SerializeField] private Sprite heroDisplaySprite;
     [SerializeField] private ClassDefinition heroClass;
     [SerializeField] private string heroDescription;
     [SerializeField] private AnimatorOverrideController heroAnimator;
@@ -23,6 +24,7 @@ public class HeroDefinition : ScriptableObject
     [SerializeField] private int blockCount = 1;
     [SerializeField] private UnitMovementType movementType = UnitMovementType.Ground;
     [SerializeField] private float moveSpeed = 0f;
+    [SerializeField] private UnitStatProgressionTable statProgressionTable;
 
     [Header("Attack")]
     [SerializeField] private NormalAttackDefinition normalAttackDefinition;
@@ -33,7 +35,8 @@ public class HeroDefinition : ScriptableObject
 
     public string HeroId => heroId;
     public string HeroName => heroName;
-    public Sprite HeroSprite => heroSprite;
+    public Sprite HeroDisplaySprite => heroDisplaySprite;
+    public Sprite HeroDefaultSprite => heroDefaultSprite;
     public Sprite HeroIcon => heroIcon;
     public string HeroDescription => heroDescription;
     public ClassDefinition HeroClass => heroClass;

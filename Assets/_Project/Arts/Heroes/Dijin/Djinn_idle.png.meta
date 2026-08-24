@@ -306,7 +306,7 @@ TextureImporter:
       name: Djinn_idle_6
       rect:
         serializedVersion: 2
-        x: 64
+        x: 65
         y: 64
         width: 32
         height: 32
@@ -531,7 +531,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -540,6 +540,28 @@ TextureImporter:
       bones: []
       spriteID: bfe133e17f78a8c41836c2d59ded3119
       internalID: 702799308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Djinn_idle_17
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 96
+        width: 20
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fbc1275fcb63884db956790e39c9f63
+      internalID: -864492192
       vertices: []
       indices: 
       edges: []
@@ -569,6 +591,7 @@ TextureImporter:
       Djinn_idle_14: -7034567143569045144
       Djinn_idle_15: -8447707221003775085
       Djinn_idle_16: 702799308
+      Djinn_idle_17: -864492192
       Djinn_idle_2: 2302658199154404115
       Djinn_idle_3: 2520579092632208212
       Djinn_idle_4: -7632264903048187498

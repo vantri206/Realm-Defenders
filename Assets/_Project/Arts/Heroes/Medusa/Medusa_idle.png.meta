@@ -531,7 +531,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -540,6 +540,28 @@ TextureImporter:
       bones: []
       spriteID: a3490c772b2ca8847ae4d784f94b61d3
       internalID: -1309111644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Medusa_idle_17
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 96
+        width: 20
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2012001f0191b934eab2be64a1abfdb5
+      internalID: 1522908454
       vertices: []
       indices: 
       edges: []
@@ -569,6 +591,7 @@ TextureImporter:
       Medusa_idle_14: 8579762265878536570
       Medusa_idle_15: -3277757547590777037
       Medusa_idle_16: -1309111644
+      Medusa_idle_17: 1522908454
       Medusa_idle_2: 7828600304539526143
       Medusa_idle_3: 8604546184361958055
       Medusa_idle_4: 5648560729270772815

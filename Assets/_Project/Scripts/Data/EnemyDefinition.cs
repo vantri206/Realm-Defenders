@@ -22,6 +22,7 @@ public class EnemyDefinition : ScriptableObject
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private UnitMovementType movementType = UnitMovementType.Ground;
     [SerializeField] private int foodReward = 2;
+    [SerializeField] private UnitStatProgressionTable statProgressionTable;
 
     [Header("Attack")]
     [SerializeField] private NormalAttackDefinition normalAttack;

@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HeroDefinition
   heroId: HR01
   heroName: Paladin
-  heroSprite: {fileID: -1584166692726098483, guid: a0a976a8461496d40bc05de7a2758da8, type: 3}
+  heroDefaultSprite: {fileID: -1584166692726098483, guid: a0a976a8461496d40bc05de7a2758da8, type: 3}
   heroIcon: {fileID: 1338903352, guid: a0a976a8461496d40bc05de7a2758da8, type: 3}
+  heroDisplaySprite: {fileID: -7866291846334187677, guid: a0a976a8461496d40bc05de7a2758da8, type: 3}
   heroClass: {fileID: 11400000, guid: 102ddac959450214ea1258dbfcc54ace, type: 2}
-  heroDescription: 
+  heroDescription: A heavily armored knight acting as a frontline shield, blocking
+    multiple enemies with his high defense.
   heroAnimator: {fileID: 22100000, guid: 715a98f16933d544686e299ccf27095b, type: 2}
   heroPrefab: {fileID: 6873902697943297941, guid: cfdb2236ef19fe64c9462e151b552556, type: 3}
   maxHealth: 220
@@ -25,22 +27,10 @@ MonoBehaviour:
   attackInterval: 1.4
   defense: 40
   specialDefense: 30
-  blockCount: 3
+  blockCount: 2
+  movementType: 0
   moveSpeed: 0
+  statProgressionTable: {fileID: 11400000, guid: 26d176a80cbbcd1459a24aa87e04d074, type: 2}
+  normalAttackDefinition: {fileID: 11400000, guid: 36d1262e67e54b34bbcba05a5155c620, type: 2}
   baseDeployCost: 18
   baseRedeployTime: 20
-  attackType: 0
-  targetPriorityMode: 0
-  canGuard: 0
-  attackPattern:
-  - {x: 0, y: 0}
-  - {x: -1, y: 0}
-  targetSide: 0
-  attackEffect: 0
-  attackMethod: 0
-  attackDamageType: 0
-  normalAttackEffectMultiplier: 1
-  normalAttackProjectilePrefab: {fileID: 0}
-  normalAttackAOEHitPrefab: {fileID: 0}
-  normalAttackHitVFXPrefab: {fileID: 5006250830996535109, guid: 326cade601d06734b89b36364c081a10, type: 3}
-  normalAttackHealVFXPrefab: {fileID: 0}

@@ -2,40 +2,46 @@ using UnityEngine;
 
 public class RunSession : MonoBehaviour
 {
-    [SerializeField] private StartRunTeam startRunTeam = new StartRunTeam();
+    [SerializeField] private RunConfig runConfig;
+
+    [SerializeField] private StartHeroRoster startHeroRoster = new StartHeroRoster();
     [SerializeField] private bool loadStartTeam = true;
 
-    private RunTeam runTeam;
+    private RunProgression progression;
+    private RunHeroRoster heroRoster;
 
-    public RunTeam RunTeam => runTeam;
+    private bool isInitialized = false;
+
+    public RunProgression Progression => progression;
+    public RunHeroRoster HeroRoster => heroRoster;
 
     private void Awake()
     {
-        runTeam = new RunTeam();
+        heroRoster = new RunHeroRoster();
         
         if (loadStartTeam)
         {
-            LoadStartRunTeam();
+            LoadStartRoster();
         }
     }
 
-    public void LoadStartRunTeam()
+    public void LoadStartRoster()
     {
-        if (startRunTeam == null || !startRunTeam.HasHeroes)
+        if (startHeroRoster == null || !startHeroRoster.HasHeroes)
         {
             return;
         }
 
-        if (runTeam == null)
+        if (heroRoster == null)
         {
-            runTeam = new RunTeam();
+            heroRoster = new RunHeroRoster();
         }
 
-        runTeam.LoadInitialTeam(startRunTeam);
+        heroRoster.LoadInitialTeam(startHeroRoster);
     }
 
-    public bool HasTestTeam()
+    public bool HasRosterTest()
     {
-        return runTeam != null && runTeam.HasHeroes;
+        return heroRoster != null && heroRoster.HasHeroes;
     }
 }

@@ -82,7 +82,7 @@ public class GhostHeroView : MonoBehaviour
             return;
         }
 
-        SetHeroSprite(combatState.Definition.HeroSprite);
+        SetHeroSprite(combatState.Definition.HeroDefaultSprite);
         SetAnimatorController(combatState.Definition.AnimatorController);
         gameObject.SetActive(true);
         SetFacingDirection(Vector2Int.left);

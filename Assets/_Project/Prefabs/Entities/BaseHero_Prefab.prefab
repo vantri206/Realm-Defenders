@@ -187,13 +187,13 @@ MonoBehaviour:
   health: {fileID: 484668256975825859}
   unitVisual: {fileID: 6689265504623526020}
   unitMovement: {fileID: 6425519867161089796}
-  teamIdentity: {fileID: 5638550953452632778}
+  hurtbox: {fileID: 0}
+  battleTeam: {fileID: 0}
+  heroBlocker: {fileID: 1932848692319366539}
+  heroActionHUD: {fileID: 3028610042640151549}
   targetScanner: {fileID: 8792332204736689504}
   targetSelector: {fileID: 7947616607030417923}
   normalAttackController: {fileID: 2228095518467912174}
-  heroBlocker: {fileID: 1932848692319366539}
-  heroPathfindingController: {fileID: 664752502939576448}
-  heroActionHUD: {fileID: 3028610042640151549}
 --- !u!114 &484668256975825859
 MonoBehaviour:
   m_ObjectHideFlags: 0

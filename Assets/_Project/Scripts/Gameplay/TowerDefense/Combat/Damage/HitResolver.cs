@@ -16,7 +16,7 @@ public static class HitProcessor
                 (
                     hitData.Attacker,
                     damageable,
-                    hitData.BaseEffectValue,
+                    hitData.RawEffectValue,
                     hitData.DamageType,
                     hitData.HitPosition
                 );
@@ -29,7 +29,7 @@ public static class HitProcessor
                 (
                     hitData.Attacker,
                     damageable,
-                    hitData.BaseEffectValue,
+                    hitData.RawEffectValue,
                     hitData.HitPosition
                 );
 
@@ -47,7 +47,7 @@ public static class HitProcessor
     {
         damageable = null;
 
-        if (hitData.TargetHurtbox == null || hitData.AttackerTeam == null || hitData.BaseEffectValue <= 0f)
+        if (hitData.TargetHurtbox == null || hitData.AttackerTeam == null || hitData.RawEffectValue <= 0f)
         {
             return false;
         }

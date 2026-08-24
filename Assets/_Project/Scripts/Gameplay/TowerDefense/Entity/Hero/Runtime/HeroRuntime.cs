@@ -66,7 +66,7 @@ public class HeroRuntime : UnitRuntime
             return;
         }
 
-        SetupVisuals(heroDefinition.HeroSprite, heroDefinition.AnimatorController);
+        SetupVisuals(heroDefinition.HeroDefaultSprite, heroDefinition.AnimatorController);
         if (!InitializeMovementSystem(Stats, MovementType))
         {
             return;

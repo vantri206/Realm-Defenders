@@ -34,8 +34,10 @@ public class TargetScanner : MonoBehaviour
 
         this.combatGrid = combatGrid;
         this.owner = owner;
+
         ownerTeam = owner.BattleTeam;
         InitializeBuffer();
+        
         isInitialized = true;
         return true;
     }

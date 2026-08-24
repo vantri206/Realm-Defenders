@@ -9,7 +9,7 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
     [SerializeField] private Collider2D col;
 
     [Header("VFX")]
-    [SerializeField] private SimpleSpriteAnimatorVFX hitVFXPrefab;
+    [SerializeField] private SimpleSpriteAnimatorVFX areaVFXPrefab;
 
     [Header("Settings")]
     [SerializeField] private float aoeTime = 0.2f;
@@ -21,16 +21,14 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
     private TargetSide targetSide;
     private AttackEffect attackEffect;
     private UnitAttackType attackType;
-    private ParticleVFX healVFXPrefab;
-    private float baseEffectValue;
+    private float rawEffectValue;
     private AttackDamageType damageType;
     private CombatTimeController combatTime;
+    private AttackVFXData attackVFXData;
     private CountdownTimer aoeTimer;
 
     private bool isInitialized;
     private bool isReturningToPool;
-
-    protected virtual SimpleSpriteAnimatorVFX HitVFXPrefab => hitVFXPrefab;
 
     private void Awake()
     {
@@ -51,19 +49,16 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         }
     }
 
-    public void Initialize(GameObject attacker, TeamIdentity attackerTeam, TargetSide targetSide,
-                           AttackEffect attackEffect, UnitAttackType attackType, ParticleVFX healVFXPrefab,
-                           float baseEffectValue,
-                           AttackDamageType damageType, CombatTimeController combatTime)
+    public void Initialize(AttackExecutionData executionData, AttackVFXData vfxData, CombatTimeController combatTime)
     {
-        this.attacker = attacker;
-        this.attackerTeam = attackerTeam;
-        this.targetSide = targetSide;
-        this.attackEffect = attackEffect;
-        this.attackType = attackType;
-        this.healVFXPrefab = healVFXPrefab;
-        this.baseEffectValue = Mathf.Max(0f, baseEffectValue);
-        this.damageType = damageType;
+        this.attacker = executionData.Attacker;
+        this.attackerTeam = executionData.AttackerTeam;
+        this.targetSide = executionData.TargetSide;
+        this.attackEffect = executionData.AttackEffect;
+        this.attackType = executionData.AttackType;
+        this.rawEffectValue = Mathf.Max(0f, executionData.RawEffectValue);
+        this.damageType = executionData.DamageType;
+        this.attackVFXData = vfxData;
         this.combatTime = combatTime;
 
         isInitialized = true;
@@ -86,9 +81,9 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         aoeTimer = new CountdownTimer(aoeTime);
         aoeTimer.StartTimer();
 
-        if (HitVFXPrefab != null)
+        if (areaVFXPrefab != null)
         {
-            CombatVFXSpawner.SpawnSimpleSpriteVFX(HitVFXPrefab, transform.position, transform.rotation);
+            CombatVFXSpawner.SpawnSimpleSpriteVFX(areaVFXPrefab, transform.position, transform.rotation);
         }
     }
 
@@ -107,8 +102,7 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         targetSide = default;
         attackEffect = default;
         attackType = default;
-        healVFXPrefab = null;
-        baseEffectValue = 0f;
+        rawEffectValue = 0f;
         damageType = default;
         combatTime = null;
 
@@ -156,8 +150,7 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
 
         hitHurtboxes.Add(hurtbox);
 
-        HitData hitData = new HitData(attacker, hurtbox, attackerTeam, targetSide, attackEffect, attackType,
-                                      baseEffectValue, damageType, hurtbox.AimPosition);
+        HitData hitData = new HitData(attacker, hurtbox, attackerTeam, targetSide, attackEffect, attackType,  rawEffectValue, damageType, hurtbox.AimPosition);
 
         if (HitProcessor.TryProcessHit(hitData, out HitResult hitResult))
         {
@@ -166,24 +159,38 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
                 case AttackEffect.Heal:
                     SpawnHealVFX(hurtbox, hitResult);
                     break;
+                case AttackEffect.Damage:
+                    SpawnHitVFX(hurtbox.AimPosition);
+                    break;
             }
         }
     }
 
-    private void SpawnHealVFX(Hurtbox targetHurtbox, in HitResult hitResult)
+    private void SpawnHealVFX(Hurtbox hurtbox, HitResult hitResult)
     {
-        if (attackEffect != AttackEffect.Heal || hitResult.HealthRestored <= 0f ||
-            healVFXPrefab == null || targetHurtbox == null)
+        if (hitResult.HealthRestored <= 0f || attackVFXData.HealVFX == null)
         {
             return;
         }
 
-        CombatVFXSpawner.SpawnParticleVFX(healVFXPrefab, targetHurtbox);
+        CombatVFXSpawner.SpawnParticleVFX(attackVFXData.HealVFX, hurtbox.AimPosition, Quaternion.identity);
     }
 
+    private void SpawnHitVFX(Vector3 hitPosition)
+    {
+        if (attackVFXData.HitVFX == null)
+        {
+            return;
+        }
+
+        float hitVFXAngle = Mathf.Atan2(hitPosition.y - transform.position.y, hitPosition.x - transform.position.x) * Mathf.Rad2Deg;
+        Quaternion hitVFXRotation = Quaternion.Euler(0f, 0f, hitVFXAngle);
+        CombatVFXSpawner.SpawnSimpleSpriteVFX(attackVFXData.HitVFX, hitPosition, hitVFXRotation);
+    }
+    
     private bool CanStart()
     {
-        return isInitialized && col != null && attackerTeam != null && baseEffectValue > 0f && combatTime != null;
+        return isInitialized && col != null && attackerTeam != null && rawEffectValue > 0f && combatTime != null;
     }
 
     private void CacheReferences()

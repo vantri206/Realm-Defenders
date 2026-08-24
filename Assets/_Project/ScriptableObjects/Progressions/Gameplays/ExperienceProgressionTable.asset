@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd82572c48efc1e45a69022a50654742, type: 3}
+  m_Name: ExperienceProgressionTable
+  m_EditorClassIdentifier: Assembly-CSharp::ExperienceProgressionTable
+  experienceThresholds: 6d010000c30200003204000092050000060700006a080000d60900003e0b00009e0c0000fa0d0000690f0000d7100000391200009a130000fc1400006c160000cd17000041190000951a00000b1c0000721d00000c1f00004821000089230000da25000018280000582a0000982c0000e02e0000

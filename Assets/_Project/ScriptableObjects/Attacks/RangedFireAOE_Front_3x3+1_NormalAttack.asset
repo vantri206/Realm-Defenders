@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9fa83b62f6be74eb3a28752d46f233, type: 3}
+  m_Name: RangedFireAOE_Front_3x3+1_NormalAttack
+  m_EditorClassIdentifier: Assembly-CSharp::NormalAttackDefinition
+  attackType: 0
+  targetPriorityMode: 0
+  attackPattern:
+  - {x: 0, y: 0}
+  - {x: -1, y: 0}
+  - {x: -2, y: 0}
+  - {x: -3, y: 0}
+  - {x: -2, y: 1}
+  - {x: -1, y: 1}
+  - {x: -2, y: -1}
+  - {x: -1, y: -1}
+  - {x: 0, y: -1}
+  - {x: 0, y: 1}
+  targetSide: 0
+  attackEffect: 0
+  attackMethod: 2
+  attackDamageType: 1
+  normalAttackEffectMultiplier: 1
+  normalAttackProjectilePrefab: {fileID: 0}
+  normalAttackAOEHitPrefab: {fileID: 5242528492286644227, guid: 1ce7f8d243e91e745b37392c4aacb704, type: 3}
+  normalAttackHitVFXPrefab: {fileID: 8299993723848569851, guid: f5be5aadf08bcc1439477d607d13b1fc, type: 3}
+  normalAttackHealVFXPrefab: {fileID: 0}

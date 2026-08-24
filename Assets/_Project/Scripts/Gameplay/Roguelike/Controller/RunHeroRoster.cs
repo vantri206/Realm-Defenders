@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class StartRunTeam
+public class StartHeroRoster
 {
     [SerializeField] private List<HeroInstance> startHeroes = new List<HeroInstance>();
 
@@ -13,7 +13,7 @@ public class StartRunTeam
 }
 
 [Serializable]
-public class RunTeam
+public class RunHeroRoster
 {
     [SerializeField] private List<HeroInstance> heroes = new List<HeroInstance>();
 
@@ -21,7 +21,7 @@ public class RunTeam
     public int HeroCount => heroes.Count;
     public bool HasHeroes => heroes.Count > 0;
 
-    public void LoadInitialTeam(StartRunTeam startRunTeam)
+    public void LoadInitialTeam(StartHeroRoster startRunTeam)
     {
         heroes.Clear();
 

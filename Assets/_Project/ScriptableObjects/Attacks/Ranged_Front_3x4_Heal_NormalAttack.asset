@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9fa83b62f6be74eb3a28752d46f233, type: 3}
+  m_Name: Ranged_Front_3x4_Heal_NormalAttack
+  m_EditorClassIdentifier: Assembly-CSharp::NormalAttackDefinition
+  attackType: 0
+  targetPriorityMode: 0
+  attackPattern:
+  - {x: 0, y: 0}
+  - {x: -1, y: 0}
+  - {x: -2, y: 0}
+  - {x: -3, y: 0}
+  - {x: -3, y: 1}
+  - {x: -2, y: 1}
+  - {x: -1, y: 1}
+  - {x: -3, y: -1}
+  - {x: -2, y: -1}
+  - {x: -1, y: -1}
+  - {x: 0, y: -1}
+  - {x: 0, y: 1}
+  targetSide: 1
+  attackEffect: 1
+  attackMethod: 0
+  attackDamageType: 0
+  normalAttackEffectMultiplier: 1
+  normalAttackProjectilePrefab: {fileID: 0}
+  normalAttackAOEHitPrefab: {fileID: 0}
+  normalAttackHitVFXPrefab: {fileID: 0}
+  normalAttackHealVFXPrefab: {fileID: 2897203167134258638, guid: d944ff61e3387444b96accba9d4fd54d, type: 3}

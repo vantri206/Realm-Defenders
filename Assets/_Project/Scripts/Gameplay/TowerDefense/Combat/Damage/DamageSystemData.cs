@@ -63,12 +63,12 @@ public readonly struct HitData
     public TargetSide TargetSide { get; }
     public AttackEffect Effect { get; }
     public UnitAttackType AttackType { get; }
-    public float BaseEffectValue { get; }
+    public float RawEffectValue { get; }
     public AttackDamageType DamageType { get; }
     public Vector3 HitPosition { get; }
 
     public HitData(GameObject attacker, Hurtbox targetHurtbox, TeamIdentity attackerTeam, TargetSide targetSide,
-                   AttackEffect effect, UnitAttackType attackType, float baseEffectValue,
+                   AttackEffect effect, UnitAttackType attackType, float rawEffectValue,
                    AttackDamageType damageType, Vector3 hitPosition)
     {
         Attacker = attacker;
@@ -77,7 +77,7 @@ public readonly struct HitData
         TargetSide = targetSide;
         Effect = effect;
         AttackType = attackType;
-        BaseEffectValue = baseEffectValue;
+        RawEffectValue = rawEffectValue;
         DamageType = damageType;
         HitPosition = hitPosition;
     }

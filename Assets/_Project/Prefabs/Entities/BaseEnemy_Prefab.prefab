@@ -335,11 +335,12 @@ MonoBehaviour:
   health: {fileID: 240840444972765574}
   unitVisual: {fileID: 4003300659852317220}
   unitMovement: {fileID: 4783594736622769853}
-  teamIdentity: {fileID: 2003347439667740962}
+  hurtbox: {fileID: 0}
+  battleTeam: {fileID: 0}
+  enemyPathfindingController: {fileID: 3293046165401137460}
+  normalAttackController: {fileID: 5229667296458483134}
   targetScanner: {fileID: 4892403004967213831}
   targetSelector: {fileID: -4177675234555448301}
-  normalAttackController: {fileID: 5229667296458483134}
-  enemyPathfindingController: {fileID: 3293046165401137460}
 --- !u!114 &2003347439667740962
 MonoBehaviour:
   m_ObjectHideFlags: 0

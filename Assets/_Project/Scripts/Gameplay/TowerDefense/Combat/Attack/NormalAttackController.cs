@@ -2,7 +2,52 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-[DisallowMultipleComponent]
+public struct AttackExecutionData
+{
+    public GameObject Attacker { get; }
+    public TeamIdentity AttackerTeam { get; }
+    public TargetSide TargetSide { get; }
+    public AttackEffect AttackEffect { get; }
+    public UnitAttackType AttackType { get; }
+    public float RawEffectValue { get; }
+    public AttackDamageType DamageType { get; }
+
+    public AttackExecutionData(GameObject attacker, TeamIdentity attackerTeam, TargetSide targetSide, AttackEffect attackEffect, UnitAttackType attackType, float rawEffectValue, AttackDamageType damageType)
+    {
+        Attacker = attacker;
+        AttackerTeam = attackerTeam;
+        TargetSide = targetSide;
+        AttackEffect = attackEffect;
+        AttackType = attackType;
+        RawEffectValue = rawEffectValue;
+        DamageType = damageType;
+    }
+}
+
+public struct AttackVFXData
+{
+    public SimpleSpriteAnimatorVFX HitVFX { get; }
+    public ParticleVFX HealVFX { get; }
+
+    public AttackVFXData(SimpleSpriteAnimatorVFX hitVFX, ParticleVFX healVFX)
+    {
+        HitVFX = hitVFX;
+        HealVFX = healVFX;
+    }
+
+    public AttackVFXData(SimpleSpriteAnimatorVFX hitVFX)
+    {
+        HitVFX = hitVFX;
+        HealVFX = null;
+    }
+
+    public AttackVFXData(ParticleVFX healVFX)
+    {
+        HitVFX = null;
+        HealVFX = healVFX;
+    }
+}
+
 public class NormalAttackController : MonoBehaviour
 {
     [SerializeField] private Transform attackPoint;
@@ -170,7 +215,7 @@ public class NormalAttackController : MonoBehaviour
 
     private bool ExecuteDirectTargetAttack(Hurtbox target)
     {
-        float baseEffectValue = CalculateBaseEffectValue();
+        float baseEffectValue = CalculateRawEffectValue();
 
         HitData hitData = new HitData(gameObject, target, attackerTeam, normalAttack.TargetSide,  normalAttack.AttackEffect, 
                                     normalAttack.AttackType, baseEffectValue, normalAttack.AttackDamageType, target.AimPosition);
@@ -202,20 +247,18 @@ public class NormalAttackController : MonoBehaviour
             return false;
         }
 
-        float baseEffectValue = CalculateBaseEffectValue();
+        float rawEffectValue = CalculateRawEffectValue();
+
+        AttackExecutionData executionData = new AttackExecutionData(gameObject, attackerTeam, normalAttack.TargetSide, normalAttack.AttackEffect, normalAttack.AttackType, rawEffectValue, normalAttack.AttackDamageType);
+
+        AttackVFXData vfxData = normalAttack.AttackEffect == AttackEffect.Heal ? new AttackVFXData(normalAttack.NormalAttackHealVFXPrefab) : new AttackVFXData(normalAttack.NormalAttackHitVFXPrefab);
 
         AttackProjectile projectile = ObjectPoolingHelper.Spawn(normalAttack.NormalAttackProjectilePrefab, GetAttackPosition(), Quaternion.identity, spawnedProjectile =>
         spawnedProjectile.Initialize
         (
-            gameObject,
-            attackerTeam,
+            executionData,
             target,
-            normalAttack.TargetSide,
-            normalAttack.AttackEffect,
-            normalAttack.AttackType,
-            normalAttack.NormalAttackHealVFXPrefab,
-            baseEffectValue,
-            normalAttack.AttackDamageType,
+            vfxData,
             combatTime
         ));
 
@@ -224,30 +267,26 @@ public class NormalAttackController : MonoBehaviour
 
     private bool ExecuteAOEHitAttack(Hurtbox target)
     {
-        float baseEffectValue = CalculateBaseEffectValue();
+        float rawEffectValue = CalculateRawEffectValue();
+
+        AttackExecutionData executionData = new AttackExecutionData(gameObject, attackerTeam, normalAttack.TargetSide, normalAttack.AttackEffect, normalAttack.AttackType, rawEffectValue, normalAttack.AttackDamageType);
+
+        AttackVFXData vfxData = normalAttack.AttackEffect == AttackEffect.Heal ? new AttackVFXData(normalAttack.NormalAttackHealVFXPrefab) :  new AttackVFXData(normalAttack.NormalAttackHitVFXPrefab);
 
         AttackAOEHit aoeHit = ObjectPoolingHelper.Spawn(normalAttack.NormalAttackAOEHitPrefab, target.AimPosition, Quaternion.identity, spawnedAOEHit =>
         spawnedAOEHit.Initialize
         (
-            gameObject,
-            attackerTeam,
-            normalAttack.TargetSide,
-            normalAttack.AttackEffect,
-            normalAttack.AttackType,
-            normalAttack.NormalAttackHealVFXPrefab,
-            baseEffectValue,
-            normalAttack.AttackDamageType,
+            executionData,
+            vfxData,
             combatTime
         ));
 
         return aoeHit != null;
     }
 
-    private float CalculateBaseEffectValue()
+    private float CalculateRawEffectValue()
     {
-        return DamageCalculator.CalculateBaseEffectValue(
-            stats.Attack,
-            Mathf.Max(0f, normalAttack.NormalAttackEffectMultiplier));
+        return DamageCalculator.CalculateBaseEffectValue(stats.Attack, Mathf.Max(0f, normalAttack.NormalAttackEffectMultiplier));
     }
 
     private Vector2 GetAttackPosition()

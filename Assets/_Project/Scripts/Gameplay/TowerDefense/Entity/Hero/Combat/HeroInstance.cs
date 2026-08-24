@@ -5,11 +5,13 @@ using UnityEngine;
 public class HeroInstance
 {
     [SerializeField] private HeroDefinition definition;
-    [SerializeField] private int level = 1;
+    [SerializeField] private int experience = 0;
     [SerializeField] private UnitStats stats = new UnitStats();
 
+    private int currentLevel = 1;
+
     public HeroDefinition Definition => definition;
-    public int Level => level;
+    public int Level => currentLevel;
     public UnitStats Stats => stats;
     public bool IsValid => definition != null;
 
@@ -24,21 +26,21 @@ public class HeroInstance
         }
 
         definition = heroInstance.definition;
-        level = heroInstance.level;
+        experience = heroInstance.experience;
         stats = new UnitStats(heroInstance.stats);
     }
 
     public HeroInstance(HeroDefinition definition)
     {
-        Initialize(definition, 1, null);
+        Initialize(definition, 0, null);
     }
 
-    public HeroInstance(HeroDefinition definition, int level, UnitStats stats)
+    public HeroInstance(HeroDefinition definition, int experience, UnitStats stats)
     {
-        Initialize(definition, level, stats);
+        Initialize(definition, experience, stats);
     }
 
-    public void Initialize(HeroDefinition definition, int level, UnitStats stats)
+    public void Initialize(HeroDefinition definition, int experience, UnitStats stats)
     {
         if (definition == null)
         {
@@ -47,20 +49,21 @@ public class HeroInstance
         }
 
         this.definition = definition;
-        this.level = Mathf.Max(1, level);
+        this.experience = Mathf.Max(0, experience);
         if (stats != null)
         {
-            stats = new UnitStats(stats);
+            this.stats = new UnitStats(stats);
         }
         else
         {
-            stats = new UnitStats(GetDefaultStats(definition));
+            this.stats = new UnitStats(GetDefaultStats(definition));
         }
     }
 
-    public void SetLevel(int value)
+    public void SetProgression(int experience, int level)
     {
-        level = Mathf.Max(1, value);
+        this.experience = Mathf.Max(0, experience);
+        this.currentLevel = Mathf.Max(1, level);
     }
 
     public void SetCombatStats(UnitStats stats)
@@ -71,7 +74,7 @@ public class HeroInstance
             return;
         }
 
-        stats = new UnitStats(stats);
+        this.stats = new UnitStats(stats);
     }
 
     private static UnitBaseStats GetDefaultStats(HeroDefinition definition)
