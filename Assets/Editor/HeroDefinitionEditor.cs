@@ -23,6 +23,8 @@ public sealed class HeroDefinitionEditor : Editor
     private SerializedProperty moveSpeedProperty;
     private SerializedProperty statProgressionTableProperty;
     private SerializedProperty normalAttackDefinitionProperty;
+    private SerializedProperty passiveSkillProperty;
+    private SerializedProperty activeSkillProperty;
     private SerializedProperty baseDeployCostProperty;
     private SerializedProperty baseRedeployTimeProperty;
 
@@ -49,6 +51,8 @@ public sealed class HeroDefinitionEditor : Editor
         moveSpeedProperty = serializedObject.FindProperty("moveSpeed");
         statProgressionTableProperty = serializedObject.FindProperty("statProgressionTable");
         normalAttackDefinitionProperty = serializedObject.FindProperty("normalAttackDefinition");
+        passiveSkillProperty = serializedObject.FindProperty("passiveSkill");
+        activeSkillProperty = serializedObject.FindProperty("activeSkill");
         baseDeployCostProperty = serializedObject.FindProperty("baseDeployCost");
         baseRedeployTimeProperty = serializedObject.FindProperty("baseRedeployTime");
     }
@@ -62,6 +66,8 @@ public sealed class HeroDefinitionEditor : Editor
         DrawStatsSection();
         EditorGUILayout.Space(8f);
         DrawAttackSection();
+        EditorGUILayout.Space(8f);
+        DrawSkillsSection();
         EditorGUILayout.Space(8f);
         DrawDeployStatsSection();
 
@@ -159,5 +165,35 @@ public sealed class HeroDefinitionEditor : Editor
         EditorGUILayout.PropertyField(baseDeployCostProperty, new GUIContent("Base Deploy Cost"));
         EditorGUILayout.PropertyField(baseRedeployTimeProperty, new GUIContent("Base Redeploy Time"));
         EditorGUILayout.EndVertical();
+    }
+
+    private void DrawSkillsSection()
+    {
+        EditorGUILayout.LabelField("Skills", EditorStyles.boldLabel);
+        EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+
+        DrawSkillField(passiveSkillProperty, "Passive Skill", SkillType.Passive);
+        DrawSkillField(activeSkillProperty, "Active Skill", SkillType.Active);
+
+        EditorGUILayout.EndVertical();
+    }
+
+    private static void DrawSkillField(SerializedProperty skillProperty, string label, SkillType expectedType)
+    {
+        EditorGUILayout.PropertyField(skillProperty, new GUIContent(label));
+
+        SkillDefinition skillDefinition = skillProperty.objectReferenceValue as SkillDefinition;
+        if (skillDefinition == null)
+        {
+            EditorGUILayout.HelpBox($"A {expectedType} SkillDefinition is required.", MessageType.Warning);
+            return;
+        }
+
+        if (skillDefinition.SkillType != expectedType)
+        {
+            EditorGUILayout.HelpBox(
+                $"{skillDefinition.name} is {skillDefinition.SkillType}. This slot requires a {expectedType} Skill.",
+                MessageType.Error);
+        }
     }
 }

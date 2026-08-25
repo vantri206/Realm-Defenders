@@ -67,9 +67,9 @@ public class UIValueTextBinding
         SetInt((int)Math.Round(value, MidpointRounding.AwayFromZero));
     }
 
-    public void SetNumber(float value)
+    public void SetFloat(float value, string format = "0.#")
     {
-        SetText(FormatNumber(value));
+        SetText(FormatNumber(value, format));
     }
 
     public void SetSeconds(float value)
@@ -77,8 +77,8 @@ public class UIValueTextBinding
         SetText($"{FormatNumber(value)}s");
     }
 
-    private static string FormatNumber(float value)
+    private static string FormatNumber(float value, string format = "0.#")
     {
-        return value.ToString("0.#", CultureInfo.InvariantCulture);
+        return value.ToString(format, CultureInfo.InvariantCulture);
     }
 }

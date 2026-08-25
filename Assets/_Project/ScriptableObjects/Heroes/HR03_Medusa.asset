@@ -32,5 +32,7 @@ MonoBehaviour:
   moveSpeed: 0
   statProgressionTable: {fileID: 11400000, guid: 3334426e18c4b9b4d9196593a3680f5a, type: 2}
   normalAttackDefinition: {fileID: 11400000, guid: d0d163343d6cbf54da2e8bf1477bb023, type: 2}
+  passiveSkill: {fileID: 11400000, guid: f27b274a86f51a04b962c7466e3595fa, type: 2}
+  activeSkill: {fileID: 11400000, guid: 1893a3e926171844d8e0ce740c5eb85c, type: 2}
   baseDeployCost: 15
   baseRedeployTime: 20

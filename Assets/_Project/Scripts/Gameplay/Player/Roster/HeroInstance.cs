@@ -11,9 +11,12 @@ public class HeroInstance
     private int currentLevel = 1;
 
     public HeroDefinition Definition => definition;
+    public int Experience => experience;
     public int Level => currentLevel;
     public UnitStats Stats => stats;
     public bool IsValid => definition != null;
+
+    public event Action<HeroInstance> OnProgressionChanged;
 
     public HeroInstance() { }
 
@@ -27,6 +30,7 @@ public class HeroInstance
 
         definition = heroInstance.definition;
         experience = heroInstance.experience;
+        currentLevel = heroInstance.currentLevel;
         stats = new UnitStats(heroInstance.stats);
     }
 
@@ -62,8 +66,42 @@ public class HeroInstance
 
     public void SetProgression(int experience, int level)
     {
-        this.experience = Mathf.Max(0, experience);
-        this.currentLevel = Mathf.Max(1, level);
+        experience = Mathf.Max(0, experience);
+        level = Mathf.Max(1, level);
+
+        if (this.experience == experience && this.currentLevel == level)
+        {
+            return;
+        }
+
+        if (this.experience != experience)
+        {
+            this.experience = experience;
+        }
+
+        if (this.currentLevel != level)
+        {
+            currentLevel = level;
+        }
+
+        OnProgressionChanged?.Invoke(this);
+    }
+
+    public void SetBaseStats(UnitBaseStats baseStats)
+    {
+        if (baseStats == null)
+        {
+            Debug.LogError("[HeroInstance] Base stats cannot be null.");
+            return;
+        }
+
+        if (stats == null)
+        {
+            stats = new UnitStats(baseStats);
+            return;
+        }
+
+        stats.SetBaseStats(baseStats);
     }
 
     public void SetCombatStats(UnitStats stats)

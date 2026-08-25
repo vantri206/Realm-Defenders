@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9fa83b62f6be74eb3a28752d46f233, type: 3}
   m_Name: RangedFireAOE_Front_3x3+1_NormalAttack
   m_EditorClassIdentifier: Assembly-CSharp::NormalAttackDefinition
-  attackType: 0
+  attackType: 1
   targetPriorityMode: 0
   attackPattern:
   - {x: 0, y: 0}

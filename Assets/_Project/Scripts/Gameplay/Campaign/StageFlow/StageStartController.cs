@@ -13,13 +13,13 @@ public class StageStartController : MonoBehaviour
     {
         if (playerSession == null)
         {
-            Debug.LogError("[StageStartController] RunSession is required to start a stage.", this);
+            Debug.LogError("[StageStartController] PlayerSession is required to start a stage.", this);
             return;
         }
 
         if (string.IsNullOrWhiteSpace(stageSceneName))
         {
-            Debug.LogError("[StageStartController] Battle scene name is required.", this);
+            Debug.LogError("[StageStartController] Stage scene name is required.", this);
             return;
         }
 

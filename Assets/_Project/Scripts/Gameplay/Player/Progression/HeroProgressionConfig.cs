@@ -4,17 +4,15 @@ using UnityEngine;
 [Serializable]
 public class HeroProgressionConfig
 {
-    [SerializeField]private int maxLevel;
     [SerializeField] private ExperienceProgressionTable experienceTable;
     
-    public int MaxLevel => maxLevel;
+    public int MaxLevel => experienceTable != null ? experienceTable.MaxLevel : 1;
     public ExperienceProgressionTable ExperienceTable => experienceTable;
 
-    public bool IsValid => experienceTable != null && maxLevel > 0 && maxLevel <= experienceTable.MaxLevel;
+    public bool IsValid => experienceTable != null && MaxLevel > 0 && MaxLevel <= experienceTable.MaxLevel;
 
-    public HeroProgressionConfig(int maxLevel, ExperienceProgressionTable experienceTable)
+    public HeroProgressionConfig(ExperienceProgressionTable experienceTable)
     {
-        this.maxLevel = maxLevel;
         this.experienceTable = experienceTable;
     }
 } 

@@ -6,6 +6,7 @@ public enum UnitStatModifierType
     FlatBase,
     AdditivePercent,
     FinalMultiplier,
+    FlatFinal
 }
 
 [Serializable]

@@ -151,6 +151,7 @@ public class UnitStats
         float flatBase = 0f;
         float additivePercent = 0f;
         float finalMultiplier = 1f;
+        float flatFinal = 0f;
 
         for (int i = 0; i < modifiers.Count; i++)
         {
@@ -173,13 +174,16 @@ public class UnitStats
                 case UnitStatModifierType.FinalMultiplier:
                     finalMultiplier *= modifier.Value;
                     break;
+                case UnitStatModifierType.FlatFinal:
+                    flatFinal += modifier.Value;
+                    break;
                 default:
                     Debug.LogWarning($"[UnitStats] Unknown modifier type: {modifier.ModifierType}");
                     break;
             }
         }
 
-        float rawValue = (baseValue + flatBase) * (1f + additivePercent) * finalMultiplier;
+        float rawValue = (baseValue + flatBase) * (1f + additivePercent) * finalMultiplier + flatFinal;
         float finalValue = NormalizeFinalValue(statType, rawValue);
 
         return new UnitStatBreakdown(baseValue, flatBase, additivePercent, finalMultiplier, finalValue);

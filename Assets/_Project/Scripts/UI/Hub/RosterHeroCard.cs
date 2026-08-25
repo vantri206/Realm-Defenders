@@ -57,6 +57,7 @@ public class RosterHeroCard : MonoBehaviour
 
         if (levelText != null)
         {
+            Debug.Log($"Setting level text for hero {hero.Definition.HeroName} to LV.{hero.Level}");
             levelText.SetText($"LV.{hero.Level}");
         }
     }

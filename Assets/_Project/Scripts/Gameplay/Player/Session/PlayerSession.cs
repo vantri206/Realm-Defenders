@@ -15,6 +15,10 @@ public class PlayerSession : MonoBehaviour
 
     private void Awake()
     {
+        progression = new HeroProgression();
+        
+        progression.Initialize(progressionConfig);
+
         heroRoster = new HeroRoster();
         
         if (loadStartRoster)
@@ -24,7 +28,7 @@ public class PlayerSession : MonoBehaviour
     }
 
     public void LoadStartRoster()
-{
+    {
         if (startHeroRoster == null || !startHeroRoster.HasHeroes)
         {
             return;
@@ -36,6 +40,20 @@ public class PlayerSession : MonoBehaviour
         }
 
         heroRoster.LoadInitialRoster(startHeroRoster);
+        RefreshHeroProgression();
+    }
+
+    public void RefreshHeroProgression()
+    {
+        if (progression == null || !progression.IsInitialized || heroRoster == null)
+        {
+            return;
+        }
+
+        for (int i = 0; i < heroRoster.Heroes.Count; i++)
+        {
+            progression.RefreshHeroLevel(heroRoster.Heroes[i]);
+        }
     }
 
     public bool HasRosterTest()

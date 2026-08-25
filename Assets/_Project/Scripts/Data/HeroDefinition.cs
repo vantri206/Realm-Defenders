@@ -11,6 +11,7 @@ public class HeroDefinition : ScriptableObject
     [SerializeField] private Sprite heroIcon;
     [SerializeField] private Sprite heroDisplaySprite;
     [SerializeField] private ClassDefinition heroClass;
+    [SerializeField] private HeroRarity heroRarity;
     [SerializeField] private string heroDescription;
     [SerializeField] private AnimatorOverrideController heroAnimator;
     [SerializeField] private HeroRuntime heroPrefab;
@@ -29,6 +30,10 @@ public class HeroDefinition : ScriptableObject
     [Header("Attack")]
     [SerializeField] private NormalAttackDefinition normalAttackDefinition;
 
+    [Header("Abilities")]
+    [SerializeField] private SkillDefinition passiveSkill;
+    [SerializeField] private SkillDefinition activeSkill;
+
     [Header("Deploy Stats")]
     [SerializeField] private int baseDeployCost = 15;
     [SerializeField] private float baseRedeployTime = 20f;
@@ -40,6 +45,7 @@ public class HeroDefinition : ScriptableObject
     public Sprite HeroIcon => heroIcon;
     public string HeroDescription => heroDescription;
     public ClassDefinition HeroClass => heroClass;
+    public HeroRarity HeroRarity => heroRarity;
     public AnimatorOverrideController AnimatorController => heroAnimator;
     public HeroRuntime Prefab => heroPrefab;
     public float MaxHealth => maxHealth;
@@ -49,8 +55,11 @@ public class HeroDefinition : ScriptableObject
     public float SpecialDefense => specialDefense;
     public UnitMovementType MovementType => movementType;
     public NormalAttackDefinition NormalAttackDefinition => normalAttackDefinition;
+    public SkillDefinition PassiveSkill => passiveSkill;
+    public SkillDefinition ActiveSkill => activeSkill;
     public int BlockCount => blockCount;
     public float MoveSpeed => moveSpeed;
+    public UnitStatProgressionTable StatProgressionTable => statProgressionTable;
     public int BaseDeployCost => baseDeployCost;
     public float BaseRedeployTime => baseRedeployTime;
 

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b5ddb0efd3e33438972198b6abcd3a, type: 3}
   m_Name: E02_Bat
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDefinition
-  enemyId: E01
-  enemyName: Goblin
+  enemyId: E02
+  enemyName: Bat
   enemySprite: {fileID: -7400898004386097392, guid: 4313393ada3bf2942a953f57a2a09c0a, type: 3}
   enemyIcon: {fileID: -7400898004386097392, guid: 4313393ada3bf2942a953f57a2a09c0a, type: 3}
   enemyDescription: A fast flying enemy that deals no damage but can bypasses all
@@ -27,7 +27,7 @@ MonoBehaviour:
   specialDefense: 0
   moveSpeed: 2
   movementType: 1
-  foodReward: 2
+  meatReward: 2
   statProgressionTable: {fileID: 11400000, guid: 194e318ccd43a814ab2e53051bd7dda3, type: 2}
   normalAttack: {fileID: 0}
   navigationOffset: {x: 0, y: 0.2}

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023ac7769490ac74cb0ad848e7029d2b, type: 3}
+  m_Name: HR03_Active
+  m_EditorClassIdentifier: Assembly-CSharp::SkillDefinition
+  skillName: Medusa Shot
+  skillIcon: {fileID: 197679756, guid: 2672123c3a864d84d9503655df72d677, type: 3}
+  skillDescription: The next normal attack fires 3 arrows deals 60% Attack as Physical
+    Damage and Stuns the target for 1 second.
+  skillType: 0
+  targetType: 2
+  cooldown: 9

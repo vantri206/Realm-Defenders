@@ -6,7 +6,6 @@ public class HeroProgression
 
     private bool isInitialized = false;
 
-    public HeroProgressionConfig ProgressionConfig => progressionConfig;
     public int MaxLevel => progressionConfig != null ? progressionConfig.MaxLevel : 1;
 
     public bool IsInitialized => isInitialized;
@@ -89,6 +88,9 @@ public class HeroProgression
             return false;
         }
 
+        int currentLevel = GetLevelForExperience(hero.Experience);
+        UpdateHeroProgression(hero, hero.Experience, currentLevel);
+        
         return true;
     }
 
@@ -106,6 +108,54 @@ public class HeroProgression
             return false;
         }
 
+        if (experienceAmount <= 0)
+        {
+            return false;
+        }
+
+        int newExperience = hero.Experience + experienceAmount;
+
+        int previousLevel = hero.Level;
+        int newLevel = GetLevelForExperience(newExperience);
+
+        UpdateHeroProgression(hero, newExperience, newLevel);
+
         return true;
     }
+
+    private void UpdateHeroProgression(HeroInstance hero, int newExperience, int newLevel)
+    {
+        if (hero == null || !hero.IsValid)
+        {
+            Debug.LogError("[HeroProgression] Invalid HeroInstance provided for updating progression.");
+            return;
+        }
+
+        hero.SetProgression(newExperience, newLevel);
+        hero.SetBaseStats(CalculateHeroBaseStats(hero.Definition, newLevel));
+    }
+
+    public UnitBaseStats CalculateHeroBaseStats(HeroDefinition hero, int level)
+    {
+        UnitStatProgressionTable progressionTable = hero.StatProgressionTable;
+
+        if (progressionTable != null && level >= 1 && level <= progressionTable.MaxLevel)
+        {
+            UnitBaseStats progressionStats = progressionTable.GetStatsForLevel(level);
+            if (progressionStats != null)
+            {
+                return progressionStats;
+            }
+        }
+
+        return new UnitBaseStats(
+            hero.MaxHealth,
+            hero.Attack,
+            hero.AttackInterval,
+            hero.Defense,
+            hero.SpecialDefense,
+            hero.MoveSpeed,
+            hero.BlockCount);
+    }
+
 }

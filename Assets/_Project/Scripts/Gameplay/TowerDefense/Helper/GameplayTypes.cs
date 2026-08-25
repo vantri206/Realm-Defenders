@@ -258,3 +258,36 @@ public enum EnemyResolveReason
     Killed,
     Escaped,
 }
+
+public enum SkillType
+{
+    Active,
+    Passive,
+}
+
+public enum SkillTargetType
+{
+    Self,
+    Ally,
+    Enemy,
+    Area,
+}
+
+public enum GearType
+{
+    Weapon,
+    Armor,
+}
+
+public enum HeroRarity
+{
+    Normal,
+    Special,
+}
+
+public enum GearRarity
+{
+    Common,
+    Rare,
+    Epic,
+}
