@@ -11,7 +11,7 @@ public class PlayerCombatAction : MonoBehaviour
     private HeroDetailView heroDetailView;
     private TileOverlayRenderer tileOverlayRenderer;
     private GhostHeroView ghostHeroView;
-    private LevelSystem levelSystem;
+    private StageSystem stageSystem;
     private CombatTimeController combatTime;
 
     [Header("Hero Action")]
@@ -36,7 +36,7 @@ public class PlayerCombatAction : MonoBehaviour
     public bool HasSpeedOverride => speedMultiplierOverride != 1f;
 
     public void Initialize(Camera mainCamera, CombatGrid combatGrid, HeroDeploymentSystem heroDeploymentSystem, HeroDetailView heroDetailView,
-                           TileOverlayRenderer tileOverlayRenderer, GhostHeroView ghostHeroView, LevelSystem levelSystem, CombatTimeController combatTime)
+                           TileOverlayRenderer tileOverlayRenderer, GhostHeroView ghostHeroView, StageSystem stageSystem, CombatTimeController combatTime)
     {
         this.mainCamera = mainCamera;
         this.combatGrid = combatGrid;
@@ -44,7 +44,7 @@ public class PlayerCombatAction : MonoBehaviour
         this.heroDetailView = heroDetailView;
         this.tileOverlayRenderer = tileOverlayRenderer;
         this.ghostHeroView = ghostHeroView;
-        this.levelSystem = levelSystem;
+        this.stageSystem = stageSystem;
         this.combatTime = combatTime;
 
         currentMode = PlayerCombatActionMode.None;
@@ -263,7 +263,7 @@ public class PlayerCombatAction : MonoBehaviour
         }
 
         UnregisterDeployedHeroEvents(heroRuntime);
-        levelSystem.RefundRetreatFood(deployCost);
+        stageSystem.RefundRetreatMeat(deployCost);
 
         if (retreatVFXPrefab != null)
         {
@@ -663,11 +663,11 @@ public class PlayerCombatAction : MonoBehaviour
         {
             if (currentDeployCell != null && deployingHero != null)
             {
-                if (levelSystem != null)
+                if (stageSystem != null)
                 {
-                    if (!levelSystem.CanDeployHero(deployingHero.DeployCost))
+                    if (!stageSystem.CanDeployHero(deployingHero.DeployCost))
                     {
-                        Debug.LogWarning("[PlayerCombatAction] Cannot deploy hero due to level system restrictions.", this);
+                        Debug.LogWarning("[PlayerCombatAction] Cannot deploy hero due to stage system restrictions.", this);
                         return;
                     }
                 }
@@ -676,9 +676,9 @@ public class PlayerCombatAction : MonoBehaviour
                 if (deployedHero != null)
                 {
                     RegisterDeployedHeroEvents(deployedHero);
-                    if (levelSystem != null)
+                    if (stageSystem != null)
                     {
-                        levelSystem.TrySpendFood(deployingHero.DeployCost);
+                        stageSystem.TrySpendMeat(deployingHero.DeployCost);
                     }
                     FinishDeployHero();
                 }

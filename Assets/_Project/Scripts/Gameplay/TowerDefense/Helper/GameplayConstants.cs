@@ -15,8 +15,8 @@ public static class GameplayConstants
 
     public const int NORMAL_ENEMY_LIVES_DAMAGE = 1;
 
-    public const int MAX_FOOD = 999;
-    public const float RETREAT_FOOD_REFUND_RATE = 0.5f;
+    public const int MAX_MEAT = 999;
+    public const float RETREAT_MEAT_REFUND_RATE = 0.5f;
 
     public const float ACTION_SPEED_MULTIPLIER = 0.5f;
 }

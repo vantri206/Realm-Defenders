@@ -14,12 +14,12 @@ public class CombatBootstrapper : MonoBehaviour
     [SerializeField] private TileOverlayRenderer tileOverlayRenderer;
     [SerializeField] private PlayerCombatAction playerCombatAction;
     [SerializeField] private CombatUIController combatUIController;
-    [SerializeField] private LevelMenuController levelMenuController;
+    [SerializeField] private CombatStageHUDController stageHUDController;
     [SerializeField] private GhostHeroView ghostHeroPrefab;
     [SerializeField] private EnemyRouteGraph enemyRouteGraph;
     [SerializeField] private UnitPathfindingSystem pathfindingSystem;
     [SerializeField] private EnemyWaveController enemyWaveController;
-    [SerializeField] private LevelSystem levelSystem;
+    [SerializeField] private StageSystem stageSystem;
     [SerializeField] private CombatTimeController combatTime;
 
     private GhostHeroView ghostHero;
@@ -53,19 +53,19 @@ public class CombatBootstrapper : MonoBehaviour
         // Initialize hero systems
         heroPlacement.Initialize(combatContext);
         heroDeploymentSystem.Initialize(heroSquad, heroPlacement, combatTime);
-        heroSquad.Initialize(heroSquadView, levelSystem);
+        heroSquad.Initialize(heroSquadView, stageSystem);
 
         // Initialize enemy systems
-        enemyWaveController.Initialize(combatContext, enemyRouteGraph, levelSystem);
+        enemyWaveController.Initialize(combatContext, enemyRouteGraph, stageSystem);
 
         // Initialize player input action and UI controller
-        playerCombatAction.Initialize(mainCamera, combatGrid, heroDeploymentSystem, heroDetailView, tileOverlayRenderer, ghostHero, levelSystem, combatTime);
+        playerCombatAction.Initialize(mainCamera, combatGrid, heroDeploymentSystem, heroDetailView, tileOverlayRenderer, ghostHero, stageSystem, combatTime);
         playerCombatAction.ChangeMode(PlayerCombatActionMode.None);
         combatUIController.Initialize(playerCombatAction, heroSquadView);
-        levelMenuController.Initialize(levelSystem, playerCombatAction, combatTime);
+        stageHUDController.Initialize(stageSystem, playerCombatAction, combatTime);
 
-        // Initialize level system
-        levelSystem.Initialize(levelSystem.StartingFood, levelSystem.StartingLives, enemyWaveController.TotalSpawnCount, combatTime);
+        // Initialize stage system
+        stageSystem.Initialize(stageSystem.StartingMeat, stageSystem.StartingLives, enemyWaveController.TotalSpawnCount, combatTime);
 
 
         StartCombat();
@@ -169,9 +169,9 @@ public class CombatBootstrapper : MonoBehaviour
             hasReferences = false;
         }
 
-        if (levelMenuController == null)
+        if (stageHUDController == null)
         {
-            Debug.LogWarning("[CombatBootstrapper] levelMenuController is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] StageHUDController is not assigned.", this);
             hasReferences = false;
         }
 
@@ -199,9 +199,9 @@ public class CombatBootstrapper : MonoBehaviour
             hasReferences = false;
         }
 
-        if (levelSystem == null)
+        if (stageSystem == null)
         {
-            Debug.LogWarning("[CombatBootstrapper] levelSystem is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] StageSystem is not assigned.", this);
             hasReferences = false;
         }
 

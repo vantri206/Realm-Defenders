@@ -38,7 +38,7 @@ public class EnemyWaveController : MonoBehaviour
         }
     }
     
-    public void Initialize(UnitCombatContext combatContext, EnemyRouteGraph enemyRouteGraph, LevelSystem levelSystem)
+    public void Initialize(UnitCombatContext combatContext, EnemyRouteGraph enemyRouteGraph, StageSystem levelSystem)
     {
         StopWave();
         isInitialized = false;

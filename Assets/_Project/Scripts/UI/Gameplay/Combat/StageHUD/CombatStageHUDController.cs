@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelMenuController : MonoBehaviour
+public class CombatStageHUDController : MonoBehaviour
 {
     private const float pauseSpeedMultiplier = 0f;
     private const float normalSpeedMultiplier = 1f;
@@ -18,24 +18,24 @@ public class LevelMenuController : MonoBehaviour
     [SerializeField] private Image normalSpeedIcon;
     [SerializeField] private Image fastSpeedIcon;
 
-    private LevelSystem levelSystem;
+    private StageSystem stageSystem;
     private PlayerCombatAction playerCombatAction;
     private CombatTimeController combatTime;
     private bool isFastSpeed;
 
     private bool isInitialized;
 
-    public void Initialize(LevelSystem levelSystem, PlayerCombatAction playerCombatAction, CombatTimeController combatTime)
+    public void Initialize(StageSystem stageSystem, PlayerCombatAction playerCombatAction, CombatTimeController combatTime)
     {
-        if (levelSystem == null || playerCombatAction == null || combatTime == null || speedControlButton == null)
+        if (stageSystem == null || playerCombatAction == null || combatTime == null || speedControlButton == null)
         {
-            Debug.LogError("[LevelMenuController] LevelSystem, PlayerCombatAction, CombatTimeController, and speedControlButton are required to initialize level menu.", this);
+            Debug.LogError("[CombatStageHUDController] StageSystem, PlayerCombatAction, CombatTimeController, and speedControlButton are required to initialize combat stage HUD.", this);
             return;
         }
 
         UnregisterButtonEvents();
 
-        this.levelSystem = levelSystem;
+        this.stageSystem = stageSystem;
         this.playerCombatAction = playerCombatAction;
         this.combatTime = combatTime;
 

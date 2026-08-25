@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class RunConfig
+public class HeroProgressionConfig
 {
     [SerializeField]private int maxLevel;
     [SerializeField] private ExperienceProgressionTable experienceTable;
@@ -12,7 +12,7 @@ public class RunConfig
 
     public bool IsValid => experienceTable != null && maxLevel > 0 && maxLevel <= experienceTable.MaxLevel;
 
-    public RunConfig(int maxLevel, ExperienceProgressionTable experienceTable)
+    public HeroProgressionConfig(int maxLevel, ExperienceProgressionTable experienceTable)
     {
         this.maxLevel = maxLevel;
         this.experienceTable = experienceTable;

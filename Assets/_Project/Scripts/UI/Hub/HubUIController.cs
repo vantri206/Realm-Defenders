@@ -1,31 +1,31 @@
 using UnityEngine;
 
-public class HeadquartersUIController : MonoBehaviour
+public class HubUIController : MonoBehaviour
 {
     [Header("Data")]
-    [SerializeField] private RunSession runSession;
+    [SerializeField] private PlayerSession playerSession;
 
     [Header("Navigation")]
-    [SerializeField] private NavigationButton[] navigationButtons;
+    [SerializeField] private HubNavigationButton[] navigationButtons;
 
     [Header("Screens")]
     [SerializeField] private GameObject screenPanel;
-    [SerializeField] private TeamView teamView;
+    [SerializeField] private HeroRosterView rosterView;
 
-    private NavigationButton activeNavigationButton;
-    private HeadquartersScreenId activeScreenId = HeadquartersScreenId.None;
+    private HubNavigationButton activeNavigationButton;
+    private HubScreenId activeScreenId = HubScreenId.None;
     private bool isEventsRegistered = false;
 
     private void Awake()
     {
         CacheReferences();
 
-        if (teamView != null)
+        if (rosterView != null)
         {
-            teamView.Hide();
+            rosterView.Hide();
         }
 
-        activeScreenId = HeadquartersScreenId.None;
+        activeScreenId = HubScreenId.None;
         UpdateScreenPanelVisibility();
     }
 
@@ -53,17 +53,17 @@ public class HeadquartersUIController : MonoBehaviour
 
     public void CloseActiveScreen()
     {
-        if (teamView != null)
+        if (rosterView != null)
         {
-            teamView.Hide();
+            rosterView.Hide();
         }
 
-        activeScreenId = HeadquartersScreenId.None;
+        activeScreenId = HubScreenId.None;
         SetActiveNavigationButton(null);
         UpdateScreenPanelVisibility();
     }
 
-    private void HandleNavigationRequested(NavigationButton navigationButton)
+    private void HandleNavigationRequested(HubNavigationButton navigationButton)
     {
         if (navigationButton == null)
         {
@@ -73,24 +73,24 @@ public class HeadquartersUIController : MonoBehaviour
         OpenScreen(navigationButton.TargetScreenId, navigationButton);
     }
 
-    private void OpenScreen(HeadquartersScreenId screenId, NavigationButton sourceButton)
+    private void OpenScreen(HubScreenId screenId, HubNavigationButton sourceButton)
     {
         switch (screenId)
         {
-            case HeadquartersScreenId.Team:
-                if (teamView == null)
+            case HubScreenId.RosterHero:
+                if (rosterView == null)
                 {
-                    Debug.LogError("[HeadquartersUIController] TeamView reference is required to open the Team screen.", this);
+                    Debug.LogError("[HubUIController] RosterView reference is required to open the Roster screen.", this);
                     return;
                 }
 
-                activeScreenId = HeadquartersScreenId.Team;
+                activeScreenId = HubScreenId.RosterHero;
                 UpdateScreenPanelVisibility();
-                teamView.Show(runSession != null ? runSession.HeroRoster : null);
+                rosterView.Show(playerSession != null ? playerSession.HeroRoster : null);
                 SetActiveNavigationButton(sourceButton);
                 break;
 
-            case HeadquartersScreenId.None:
+            case HubScreenId.None:
             default:
                 CloseActiveScreen();
                 break;
@@ -101,11 +101,11 @@ public class HeadquartersUIController : MonoBehaviour
     {
         if (screenPanel != null)
         {
-            screenPanel.SetActive(activeScreenId != HeadquartersScreenId.None);
+            screenPanel.SetActive(activeScreenId != HubScreenId.None);
         }
     }
 
-    private void SetActiveNavigationButton(NavigationButton activeButton)
+    private void SetActiveNavigationButton(HubNavigationButton activeButton)
     {
         activeNavigationButton = activeButton;
 
@@ -116,7 +116,7 @@ public class HeadquartersUIController : MonoBehaviour
 
         for (int i = 0; i < navigationButtons.Length; i++)
         {
-            NavigationButton navigationButton = navigationButtons[i];
+            HubNavigationButton navigationButton = navigationButtons[i];
             if (navigationButton != null)
             {
                 navigationButton.SetActive(navigationButton == activeNavigationButton);
@@ -130,7 +130,7 @@ public class HeadquartersUIController : MonoBehaviour
         {
             for (int i = 0; i < navigationButtons.Length; i++)
             {
-                NavigationButton navigationButton = navigationButtons[i];
+                HubNavigationButton navigationButton = navigationButtons[i];
                 if (navigationButton == null)
                 {
                     continue;
@@ -141,10 +141,10 @@ public class HeadquartersUIController : MonoBehaviour
             }
         }
 
-        if (teamView != null)
+        if (rosterView != null)
         {
-            teamView.OnCloseRequested -= CloseActiveScreen;
-            teamView.OnCloseRequested += CloseActiveScreen;
+            rosterView.OnCloseRequested -= CloseActiveScreen;
+            rosterView.OnCloseRequested += CloseActiveScreen;
         }
 
         isEventsRegistered = true;
@@ -168,9 +168,9 @@ public class HeadquartersUIController : MonoBehaviour
             }
         }
 
-        if (teamView != null)
+        if (rosterView != null)
         {
-            teamView.OnCloseRequested -= CloseActiveScreen;
+            rosterView.OnCloseRequested -= CloseActiveScreen;
         }
 
         isEventsRegistered = false;
@@ -180,12 +180,12 @@ public class HeadquartersUIController : MonoBehaviour
     {
         if (navigationButtons == null || navigationButtons.Length == 0)
         {
-            navigationButtons = GetComponentsInChildren<NavigationButton>(true);
+            navigationButtons = GetComponentsInChildren<HubNavigationButton>(true);
         }
 
-        if (teamView == null)
+        if (rosterView == null)
         {
-            teamView = GetComponentInChildren<TeamView>(true);
+            rosterView = GetComponentInChildren<HeroRosterView>(true);
         }
     }
 }

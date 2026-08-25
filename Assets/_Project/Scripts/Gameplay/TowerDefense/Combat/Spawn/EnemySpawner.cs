@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     private UnitCombatContext combatContext;
     private EnemyRouteGraph routeGraph;
     private EnemyDepthSorter enemyDepthSorter;
-    private LevelSystem levelSystem;
+    private StageSystem stageSystem;
 
     private bool isInitialized;
 
@@ -18,14 +18,13 @@ public class EnemySpawner : MonoBehaviour
         CacheReferences();
     }
 
-    public void Initialize(UnitCombatContext combatContext, EnemyRouteGraph routeGraph, EnemyDepthSorter enemyDepthSorter, LevelSystem levelSystem)
+    public void Initialize(UnitCombatContext combatContext, EnemyRouteGraph routeGraph, EnemyDepthSorter enemyDepthSorter, StageSystem stageSystem)
     {
         this.combatContext = combatContext;
         this.routeGraph = routeGraph;
         this.enemyDepthSorter = enemyDepthSorter;
-        this.levelSystem = levelSystem;
-        isInitialized = this.combatContext != null && this.combatContext.IsValid &&
-                        this.enemyDepthSorter != null && this.levelSystem != null;
+        this.stageSystem = stageSystem;
+        isInitialized = this.combatContext != null && this.combatContext.IsValid && this.enemyDepthSorter != null && this.stageSystem != null;
 
         if (!isInitialized)
         {
@@ -91,7 +90,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         enemyDepthSorter.RegisterEnemy(enemy);
-        levelSystem.RegisterEnemy(enemy, new EnemyTrackingData(enemyInstance.IsObjectiveEnemy, GameplayConstants.NORMAL_ENEMY_LIVES_DAMAGE, enemyInstance.Definition.FoodReward));
+        stageSystem.RegisterEnemy(enemy, new EnemyTrackingData(enemyInstance.IsObjectiveEnemy, GameplayConstants.NORMAL_ENEMY_LIVES_DAMAGE, enemyInstance.Definition.MeatReward));
         RegisterEnemyEvents(enemy);
         return enemy;
     }
@@ -171,7 +170,7 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        levelSystem.ResolveEnemy(enemy, EnemyResolveReason.Killed);
+        stageSystem.ResolveEnemy(enemy, EnemyResolveReason.Killed);
         enemyDepthSorter.UnregisterEnemy(enemy);
         UnregisterEnemyEvents(enemy);
     }
@@ -183,7 +182,7 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        levelSystem.ResolveEnemy(enemy, EnemyResolveReason.Escaped);
+        stageSystem.ResolveEnemy(enemy, EnemyResolveReason.Escaped);
         enemyDepthSorter.UnregisterEnemy(enemy);
         UnregisterEnemyEvents(enemy);
     }

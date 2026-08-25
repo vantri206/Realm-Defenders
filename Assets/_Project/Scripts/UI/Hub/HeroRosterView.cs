@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TeamView : MonoBehaviour
+public class HeroRosterView : MonoBehaviour
 {
     [Header("Screen")]
     [SerializeField] private GameObject viewRoot;
@@ -11,15 +11,15 @@ public class TeamView : MonoBehaviour
 
     [Header("Hero Cards")]
     [SerializeField] private Transform heroCardContainer;
-    [SerializeField] private TeamHeroCard heroCardPrefab;
+    [SerializeField] private RosterHeroCard heroCardPrefab;
 
     [Header("Hero Detail")]
     [SerializeField] private GameObject heroDetailRoot;
     [SerializeField] private Image detailHeroImage;
     [SerializeField] private UIValueTextBinding detailHeroName = new UIValueTextBinding();
 
-    private readonly List<TeamHeroCard> spawnedCards = new List<TeamHeroCard>();
-    private TeamHeroCard selectedCard;
+    private readonly List<RosterHeroCard> spawnedCards = new List<RosterHeroCard>();
+    private RosterHeroCard selectedCard;
 
     public event Action OnCloseRequested;
 
@@ -45,7 +45,7 @@ public class TeamView : MonoBehaviour
         UnregisterCardEvents();
     }
 
-    public void Show(RunHeroRoster heroRoster)
+    public void Show(HeroRoster heroRoster)
     {
         viewRoot.SetActive(true);
         ResetHeroCards(heroRoster);
@@ -56,7 +56,7 @@ public class TeamView : MonoBehaviour
         viewRoot.SetActive(false);
     }
 
-    private void ResetHeroCards(RunHeroRoster heroRoster)
+    private void ResetHeroCards(HeroRoster heroRoster)
     {
         ClearSpawnedCards();
         HideDetail();
@@ -82,14 +82,14 @@ public class TeamView : MonoBehaviour
                 continue;
             }
 
-            TeamHeroCard card = Instantiate(heroCardPrefab, heroCardContainer);
+            RosterHeroCard card = Instantiate(heroCardPrefab, heroCardContainer);
             card.BindHeroData(hero);
             card.OnCardClicked += HandleHeroCardClicked;
             spawnedCards.Add(card);
         }
     }
 
-    private void HandleHeroCardClicked(TeamHeroCard card, HeroInstance hero)
+    private void HandleHeroCardClicked(RosterHeroCard card, HeroInstance hero)
     {
         if (hero == null || !hero.IsValid || hero.Definition == null)
         {
@@ -158,7 +158,7 @@ public class TeamView : MonoBehaviour
     {
         for (int i = 0; i < spawnedCards.Count; i++)
         {
-            TeamHeroCard card = spawnedCards[i];
+            RosterHeroCard card = spawnedCards[i];
             if (card == null)
             {
                 continue;

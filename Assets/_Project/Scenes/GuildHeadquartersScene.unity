@@ -129,7 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 29578119}
   - component: {fileID: 29578117}
-  - component: {fileID: 29578118}
   m_Layer: 15
   m_Name: Grid_Map
   m_TagString: Untagged
@@ -149,37 +148,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &29578118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29578116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b88b1ec62fe943e47a82bd44d796dd3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TileOverlayRenderer
-  areaOverlayTilemap: {fileID: 0}
-  warningOverlayTilemap: {fileID: 0}
-  cellStateOverlayTilemap: {fileID: 0}
-  brushes:
-  - type: 1
-    tile: {fileID: 11400000, guid: 785b1aa1c138a674989bc1082fcf36f4, type: 2}
-    color: {r: 1, g: 1, b: 1, a: 1}
-  - type: 2
-    tile: {fileID: 11400000, guid: caef2028551ecd24f9c1bcc203285afa, type: 2}
-    color: {r: 1, g: 1, b: 1, a: 1}
-  - type: 4
-    tile: {fileID: 11400000, guid: b794d526b9e695240ba37982777e12f4, type: 2}
-    color: {r: 1, g: 1, b: 1, a: 1}
-  - type: 3
-    tile: {fileID: 11400000, guid: a7be810e67707c249b274868bb867720, type: 2}
-    color: {r: 1, g: 1, b: 1, a: 1}
-  - type: 5
-    tile: {fileID: 11400000, guid: e3735199636c9fa4b935e6c15ad2faa1, type: 2}
-    color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &29578119
 Transform:
   m_ObjectHideFlags: 0
@@ -211,7 +179,7 @@ GameObject:
   - component: {fileID: 128100671}
   - component: {fileID: 128100670}
   m_Layer: 0
-  m_Name: Roguelike_Manager_System
+  m_Name: Session_Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,8 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 422776edbdc861f439ccdbe9b317cb90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleStartController
-  runSession: {fileID: 128100671}
-  battleSceneName: BattleLevelScene
+  playerSession: {fileID: 128100671}
+  stageSceneName: 
 --- !u!114 &128100671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e6c7d1240ff7a4293e7a87468ccf6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RunSession
+  progressionConfig:
+    maxLevel: 0
+    experienceTable: {fileID: 0}
   startHeroRoster:
     startHeroes:
     - definition: {fileID: 11400000, guid: ee72b87d84cf61542b99ed44dd38856d, type: 2}
@@ -344,7 +315,7 @@ MonoBehaviour:
           moveSpeed: 0
           blockCount: 0
         modifiers: []
-  loadStartTeam: 1
+  loadStartRoster: 1
 --- !u!1 &350904605
 GameObject:
   m_ObjectHideFlags: 0
@@ -4144,7 +4115,7 @@ GameObject:
   - component: {fileID: 413065920}
   - component: {fileID: 413065919}
   m_Layer: 0
-  m_Name: Roguelike_UI_Controller
+  m_Name: UI_Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4162,11 +4133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f660c9aa8f679e4a834826ea27dc7f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeadquartersUIController
-  runSession: {fileID: 128100671}
+  playerSession: {fileID: 128100671}
   navigationButtons:
   - {fileID: 519782988200539944}
   screenPanel: {fileID: 1451549722}
-  teamView: {fileID: 907581470}
+  rosterView: {fileID: 907581470}
 --- !u!4 &413065920
 Transform:
   m_ObjectHideFlags: 0
@@ -11784,6 +11755,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6536924177910079416, guid: a40fe88d493c34a4ebb5dad28f6ad4c2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574234854181630799, guid: a40fe88d493c34a4ebb5dad28f6ad4c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574234854181630799, guid: a40fe88d493c34a4ebb5dad28f6ad4c2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574234854181630799, guid: a40fe88d493c34a4ebb5dad28f6ad4c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574234854181630799, guid: a40fe88d493c34a4ebb5dad28f6ad4c2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}

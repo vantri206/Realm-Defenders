@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class StartHeroRoster
+public class StarterHeroRoster
 {
     [SerializeField] private List<HeroInstance> startHeroes = new List<HeroInstance>();
 
@@ -13,7 +13,7 @@ public class StartHeroRoster
 }
 
 [Serializable]
-public class RunHeroRoster
+public class HeroRoster
 {
     [SerializeField] private List<HeroInstance> heroes = new List<HeroInstance>();
 
@@ -21,17 +21,17 @@ public class RunHeroRoster
     public int HeroCount => heroes.Count;
     public bool HasHeroes => heroes.Count > 0;
 
-    public void LoadInitialTeam(StartHeroRoster startRunTeam)
+    public void LoadInitialRoster(StarterHeroRoster startRoster)
     {
         heroes.Clear();
 
-        if (startRunTeam == null)
+        if (startRoster == null)
         {
-            Debug.LogWarning("[RunTeam] Cannot load from a null StartRunTeam.");
+            Debug.LogWarning("[HeroRoster] Cannot load from a null StarterHeroRoster.");
             return;
         }
 
-        foreach (HeroInstance hero in startRunTeam.StartHeroes)
+        foreach (HeroInstance hero in startRoster.StartHeroes)
         {
             AddHero(hero);
         }
@@ -41,20 +41,20 @@ public class RunHeroRoster
     {
         if (hero == null)
         {
-            Debug.LogWarning("[RunTeam] Cannot add a null HeroInstance.");
+            Debug.LogWarning("[HeroRoster] Cannot add a null HeroInstance.");
             return false;
         }
 
         if (!hero.IsValid)
         {
-            Debug.LogWarning("[RunTeam] Failed to create a valid HeroInstance.");
+            Debug.LogWarning("[HeroRoster] Failed to create a valid HeroInstance.");
             return false;
         }
 
         HeroInstance instance = new HeroInstance(hero);
         if (!instance.IsValid)
         {
-            Debug.LogWarning("[RunTeam] Failed to create a valid HeroInstance.");
+            Debug.LogWarning("[HeroRoster] Failed to create a valid HeroInstance.");
             return false;
         }
 

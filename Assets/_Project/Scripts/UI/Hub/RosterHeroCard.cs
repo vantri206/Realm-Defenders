@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
-public class TeamHeroCard : MonoBehaviour
+public class RosterHeroCard : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Button button;
@@ -15,7 +15,7 @@ public class TeamHeroCard : MonoBehaviour
 
     public HeroInstance HeroInstance => heroInstance;
     public Image Background => background;
-    public event Action<TeamHeroCard, HeroInstance> OnCardClicked;
+    public event Action<RosterHeroCard, HeroInstance> OnCardClicked;
 
     private void Awake()
     {
@@ -96,7 +96,7 @@ public class TeamHeroCard : MonoBehaviour
     {
         if (button == null)
         {
-            Debug.LogError("[TeamHeroCard] Button reference is required.", this);
+            Debug.LogError("[RosterHeroCard] Button reference is required.", this);
             return;
         }
 

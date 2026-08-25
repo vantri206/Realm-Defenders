@@ -7,12 +7,12 @@ public class HeroSquad : MonoBehaviour
     private readonly List<HeroCombatState> heroCombatStates = new List<HeroCombatState>();
 
     private HeroSquadView heroSquadView;
-    private LevelSystem levelSystem;
+    private StageSystem levelSystem;
 
     public IReadOnlyList<HeroCombatState> HeroCombatStates => heroCombatStates;
     public int HeroCount => heroCombatStates.Count;
     
-    public void Initialize(HeroSquadView squadView, LevelSystem levelSystem)
+    public void Initialize(HeroSquadView squadView, StageSystem levelSystem)
     {
         if (squadView == null)
         {
@@ -27,7 +27,7 @@ public class HeroSquad : MonoBehaviour
 
         if (levelSystem != null)
         {
-            levelSystem.OnLevelStatsChanged += UpdateHeroDeployStates;
+            levelSystem.OnStageStatsChanged += UpdateHeroDeployStates;
         }
     }
 

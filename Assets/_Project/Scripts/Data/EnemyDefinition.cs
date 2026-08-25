@@ -21,7 +21,7 @@ public class EnemyDefinition : ScriptableObject
     [SerializeField] private float specialDefense = 0f;
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private UnitMovementType movementType = UnitMovementType.Ground;
-    [SerializeField] private int foodReward = 2;
+    [SerializeField] private int meatReward = 2;
     [SerializeField] private UnitStatProgressionTable statProgressionTable;
 
     [Header("Attack")]
@@ -45,7 +45,7 @@ public class EnemyDefinition : ScriptableObject
     public float MoveSpeed => moveSpeed;
     public NormalAttackDefinition NormalAttackDefinition => normalAttack;
     public UnitMovementType MovementType => movementType;
-    public int FoodReward => foodReward;
+    public int MeatReward => meatReward;
     public Vector2 NavigationOffset => navigationOffset;
 
     public bool IsValid => enemyPrefab != null;

@@ -5,7 +5,7 @@ public class HeroCombatState
 {
     private HeroInstance heroInstance;
     private UnitStats stats = new UnitStats();
-    private int star;
+    private int awakenRank;
     private int deployCost;
     private float redeployTime;
     private HeroDeployState deployState = HeroDeployState.Available;
@@ -15,7 +15,7 @@ public class HeroCombatState
     public UnitStats Stats => stats;
     public HeroInstance HeroInstance => heroInstance;
     public UnitBreakdownStats FinalStats => stats.FinalStats;
-    public int Star => star;
+    public int AwakenRank => awakenRank;
     public int DeployCost => deployCost;
     public float RedeployTime => redeployTime;
     public float RedeployCountdownTime => redeployTimer.RemainingTime;
@@ -43,7 +43,7 @@ public class HeroCombatState
 
         this.heroInstance = heroInstance;
         stats = new UnitStats(heroInstance.Stats);
-        star = 0;
+        awakenRank = 0;
         deployCost = Mathf.Max(0, heroInstance.Definition.BaseDeployCost);
         redeployTime = Mathf.Max(0f, heroInstance.Definition.BaseRedeployTime);
         deployState = HeroDeployState.Available;
@@ -51,9 +51,9 @@ public class HeroCombatState
         return true;
     }
 
-    public void SetStar(int value)
+    public void SetAwakenRank(int rank)
     {
-        star = Mathf.Max(0, value);
+        awakenRank = Mathf.Max(0, rank);
     }
 
     public void SetDeployCost(int value)

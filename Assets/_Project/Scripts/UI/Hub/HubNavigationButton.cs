@@ -2,21 +2,21 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum HeadquartersScreenId
+public enum HubScreenId
 {
     None,
-    Team
+    RosterHero
 }
 
 [RequireComponent(typeof(Button))]
-public class NavigationButton : MonoBehaviour
+public class HubNavigationButton : MonoBehaviour
 {
-    [SerializeField] private HeadquartersScreenId targetScreenId = HeadquartersScreenId.None;
+    [SerializeField] private HubScreenId targetScreenId = HubScreenId.None;
     [SerializeField] private Button button;
     [SerializeField] private UIButtonFeeling buttonFeeling;
 
-    public HeadquartersScreenId TargetScreenId => targetScreenId;
-    public event Action<NavigationButton> OnNavigationRequested;
+    public HubScreenId TargetScreenId => targetScreenId;
+    public event Action<HubNavigationButton> OnNavigationRequested;
 
     private void Awake()
     {
