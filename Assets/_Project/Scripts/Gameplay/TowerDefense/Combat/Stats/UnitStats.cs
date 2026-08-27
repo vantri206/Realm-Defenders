@@ -81,16 +81,51 @@ public class UnitStats
         return true;
     }
 
-    public int RemoveModifiers(string modifierId)
+    public bool RemoveModifier(UnitStatModifier modifier)
+    {
+        if (modifiers == null || modifiers.Count == 0 || !modifier.IsValid)
+        {
+            return false;
+        }
+
+        bool isRemoved = modifiers.Remove(modifier);
+
+        if (isRemoved)
+        {
+            needsResolve = true;
+        }
+
+        return isRemoved;
+    }
+
+    public void RemoveModifiers(IReadOnlyList<UnitStatModifier> modifiers)
     {
         if (modifiers == null || modifiers.Count == 0)
         {
-            return 0;
+            return;
+        }
+
+        int removedCount = 0;
+
+        for (int i = 0; i < modifiers.Count; i++)
+        {
+            if (RemoveModifier(modifiers[i]))
+            {
+                removedCount++;
+            }
+        }
+    }
+
+    public void RemoveModifiersById(string modifierId)
+    {
+        if (modifiers == null || modifiers.Count == 0)
+        {
+            return;
         }
 
         if (string.IsNullOrWhiteSpace(modifierId))
         {
-            return 0;
+            return;
         }
 
         int removedCount = modifiers.RemoveAll(modifier => string.Equals(modifier.ModifierId, modifierId, StringComparison.Ordinal));
@@ -99,8 +134,6 @@ public class UnitStats
         {
             needsResolve = true;
         }
-
-        return removedCount;
     }
 
     public void ClearModifiers()

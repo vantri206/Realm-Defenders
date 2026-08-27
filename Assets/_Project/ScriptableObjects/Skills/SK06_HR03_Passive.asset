@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023ac7769490ac74cb0ad848e7029d2b, type: 3}
+  m_Name: SK06_HR03_Passive
+  m_EditorClassIdentifier: Assembly-CSharp::SkillDefinition
+  skillId: SK06
+  skillName: Poison Shot
+  skillIcon: {fileID: 550468201, guid: 2672123c3a864d84d9503655df72d677, type: 3}
+  skillDescription: Normal attacks poison the target for 4 seconds, dealing 10% Attack
+    as Magic Damage every second. Stacks up to 3 times.
+  skillType: 1
+  targetType: 2
+  cooldown: 0

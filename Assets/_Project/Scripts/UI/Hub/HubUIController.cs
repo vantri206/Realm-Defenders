@@ -1,9 +1,13 @@
+using System.Globalization;
 using UnityEngine;
 
 public class HubUIController : MonoBehaviour
 {
     [Header("Data")]
     [SerializeField] private PlayerSession playerSession;
+
+    [Header("Resources HUD")]
+    [SerializeField] private UIValueTextBinding experiencePointsText = new UIValueTextBinding();
 
     [Header("Navigation")]
     [SerializeField] private HubNavigationButton[] navigationButtons;
@@ -39,6 +43,7 @@ public class HubUIController : MonoBehaviour
         CacheReferences();
 
         RegisterEvents();
+        RefreshExperiencePoints();
     }
 
     private void OnDisable()
@@ -147,6 +152,12 @@ public class HubUIController : MonoBehaviour
             rosterView.OnCloseRequested += CloseActiveScreen;
         }
 
+        if (playerSession != null)
+        {
+            playerSession.OnExperiencePointsChanged -= HandleExperiencePointsChanged;
+            playerSession.OnExperiencePointsChanged += HandleExperiencePointsChanged;
+        }
+
         isEventsRegistered = true;
     }
 
@@ -173,7 +184,42 @@ public class HubUIController : MonoBehaviour
             rosterView.OnCloseRequested -= CloseActiveScreen;
         }
 
+        if (playerSession != null)
+        {
+            playerSession.OnExperiencePointsChanged -= HandleExperiencePointsChanged;
+        }
+
         isEventsRegistered = false;
+    }
+
+    private void HandleExperiencePointsChanged(int experiencePoints)
+    {
+        SetExperiencePointsText(experiencePoints);
+    }
+
+    private void RefreshExperiencePoints()
+    {
+        if (playerSession == null)
+        {
+            if (experiencePointsText != null && experiencePointsText.Text != null)
+            {
+                experiencePointsText.Refresh();
+            }
+
+            return;
+        }
+
+        SetExperiencePointsText(playerSession.ExperiencePoints);
+    }
+
+    private void SetExperiencePointsText(int experiencePoints)
+    {
+        if (experiencePointsText == null || experiencePointsText.Text == null)
+        {
+            return;
+        }
+
+        experiencePointsText.SetText(experiencePoints.ToString("N0", CultureInfo.InvariantCulture));
     }
 
     private void CacheReferences()

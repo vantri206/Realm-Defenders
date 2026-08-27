@@ -5,12 +5,10 @@ using UnityEngine;
 public class EnemyInstance
 {
     private EnemyDefinition definition;
-    private int level = 1;
     private UnitStats stats = new UnitStats();
     private bool isObjectiveEnemy = true;
 
     public EnemyDefinition Definition => definition;
-    public int Level => level;
     public UnitStats Stats => stats;
     public bool IsObjectiveEnemy => isObjectiveEnemy;
 

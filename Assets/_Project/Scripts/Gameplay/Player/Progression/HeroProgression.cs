@@ -22,31 +22,6 @@ public class HeroProgression
         isInitialized = true;
     }
 
-    public int GetLevelForExperience(int experience)
-    {
-        if (!isInitialized)
-        {
-            Debug.LogError("[HeroProgression] Cannot get level for experience. HeroProgression is not initialized.");
-            return 1;
-        }
-
-        return Mathf.Min(MaxLevel, progressionConfig.ExperienceTable.GetLevelForExperience(experience));
-    }
-
-    public int GetExperienceForLevel(int level)
-    {
-        if (!isInitialized)
-        {
-            Debug.LogError("[HeroProgression] Cannot get experience for level. HeroProgression is not initialized.");
-            return 0;
-        }
-
-        if (level > 1) level = Mathf.Min(level, MaxLevel);
-        else level = 1;
-
-        return progressionConfig.ExperienceTable.GetExperienceForLevel(level);
-    }
-
     public bool IsMaxLevel(int level)
     {
         if (!isInitialized)
@@ -68,7 +43,7 @@ public class HeroProgression
 
         if (IsMaxLevel(level))
         {
-            return 0; // No experience needed to level up from the max level
+            return 0;
         }
 
         return progressionConfig.ExperienceTable.GetExperienceToLevelUp(level);
@@ -88,51 +63,46 @@ public class HeroProgression
             return false;
         }
 
-        int currentLevel = GetLevelForExperience(hero.Experience);
-        UpdateHeroProgression(hero, hero.Experience, currentLevel);
+        int currentLevel = Mathf.Clamp(hero.Level, 1, MaxLevel);
+        ApplyHeroLevel(hero, currentLevel);
         
         return true;
     }
 
-    public bool AddExperienceForHero(HeroInstance hero, int experienceAmount)
+    public bool UpgradeHeroLevel(HeroInstance hero)
     {
         if (!isInitialized)
         {
-            Debug.LogError("[HeroProgression] Cannot add experience for hero. HeroProgression is not initialized.");
+            Debug.LogError("[HeroProgression] Cannot upgrade hero level. HeroProgression is not initialized.");
             return false;
         }
 
         if (hero == null || !hero.IsValid)
         {
-            Debug.LogError("[HeroProgression] Invalid HeroInstance provided for adding experience.");
+            Debug.LogError("[HeroProgression] Invalid HeroInstance provided for level upgrade.");
             return false;
         }
 
-        if (experienceAmount <= 0)
+        if (IsMaxLevel(hero.Level))
         {
             return false;
         }
 
-        int newExperience = hero.Experience + experienceAmount;
-
-        int previousLevel = hero.Level;
-        int newLevel = GetLevelForExperience(newExperience);
-
-        UpdateHeroProgression(hero, newExperience, newLevel);
+        ApplyHeroLevel(hero, hero.Level + 1);
 
         return true;
     }
 
-    private void UpdateHeroProgression(HeroInstance hero, int newExperience, int newLevel)
+    private void ApplyHeroLevel(HeroInstance hero, int level)
     {
         if (hero == null || !hero.IsValid)
         {
-            Debug.LogError("[HeroProgression] Invalid HeroInstance provided for updating progression.");
+            Debug.LogError("[HeroProgression] Invalid HeroInstance provided for applying level progression.");
             return;
         }
 
-        hero.SetProgression(newExperience, newLevel);
-        hero.SetBaseStats(CalculateHeroBaseStats(hero.Definition, newLevel));
+        UnitBaseStats newBaseStats = CalculateHeroBaseStats(hero.Definition, level);
+        hero.ApplyProgression(level, newBaseStats);
     }
 
     public UnitBaseStats CalculateHeroBaseStats(HeroDefinition hero, int level)

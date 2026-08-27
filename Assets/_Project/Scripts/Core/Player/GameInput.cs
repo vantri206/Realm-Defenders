@@ -20,6 +20,7 @@ public class GameInput : SingletonMB<GameInput>
 
     public InputSystem_Actions.GameplayActions GameplayActions => inputActions.Gameplay;
     public InputSystem_Actions.SystemActions SystemActions => inputActions.System;
+    public InputSystem_Actions.UIActions UIActions => inputActions.UI;
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class GameInput : SingletonMB<GameInput>
 
         inputActions.Gameplay.Enable();
         inputActions.System.Enable();
+        inputActions.UI.Enable();
         UpdateMousePosition();
     }
 
@@ -50,6 +52,7 @@ public class GameInput : SingletonMB<GameInput>
         IsPrimaryHold = false;
         inputActions.Gameplay.Disable();
         inputActions.System.Disable();
+        inputActions.UI.Disable();
     }
 
     private void OnDestroy()
@@ -131,7 +134,7 @@ public class GameInput : SingletonMB<GameInput>
 
     private void RegisterInputEvents()
     {
-        inputActions.Gameplay.PointerPosition.performed += HandlePointerPosition;
+        inputActions.UI.Point.performed += HandlePointerPosition;
         inputActions.Gameplay.PrimaryPress.performed += HandlePrimaryPerformed;
         inputActions.Gameplay.PrimaryPress.canceled += HandlePrimaryCanceled;
         inputActions.Gameplay.SecondaryPress.performed += HandleSecondaryPerformed;
@@ -143,7 +146,7 @@ public class GameInput : SingletonMB<GameInput>
 
     private void UnregisterInputEvents()
     {
-        inputActions.Gameplay.PointerPosition.performed -= HandlePointerPosition;
+        inputActions.UI.Point.performed -= HandlePointerPosition;
         inputActions.Gameplay.PrimaryPress.performed -= HandlePrimaryPerformed;
         inputActions.Gameplay.PrimaryPress.canceled -= HandlePrimaryCanceled;
         inputActions.Gameplay.SecondaryPress.performed -= HandleSecondaryPerformed;
@@ -155,7 +158,7 @@ public class GameInput : SingletonMB<GameInput>
 
     private void UpdateMousePosition()
     {
-        MouseScreenPosition = inputActions.Gameplay.PointerPosition.ReadValue<Vector2>();
+        MouseScreenPosition = inputActions.UI.Point.ReadValue<Vector2>();
     }
 
     private Vector2Int GetDirection(InputControl control, Vector2 fallbackValue)

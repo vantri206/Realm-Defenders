@@ -63,7 +63,7 @@ public sealed class ProgressionGeneratorWindow : EditorWindow
 
     private void OnEnable()
     {
-        experienceGrowthCurve ??= CreateDefaultGrowthCurve();
+        experienceGrowthCurve ??= CreateDefaultExperienceGrowthCurve();
         unitStatGrowthCurve ??= CreateDefaultGrowthCurve();
         finalBreakdown ??= new UnitStatFinalBreakdown();
         levelBreakdowns ??= new List<UnitStatLevelBreakdown>();
@@ -106,6 +106,10 @@ public sealed class ProgressionGeneratorWindow : EditorWindow
             experienceGrowthCurve,
             Color.green,
             new Rect(0f, 0f, 1f, 1f));
+        if (GUILayout.Button("Reset EXP Curve To Default"))
+        {
+            experienceGrowthCurve = CreateDefaultExperienceGrowthCurve();
+        }
         experienceRandomness = EditorGUILayout.Slider(
             "Randomness",
             experienceRandomness,
@@ -484,5 +488,15 @@ public sealed class ProgressionGeneratorWindow : EditorWindow
         }
 
         return curve;
+    }
+
+    private static AnimationCurve CreateDefaultExperienceGrowthCurve()
+    {
+        const float startingSlope = 0.2f;
+        const float endingSlope = 1.8f;
+
+        return new AnimationCurve(
+            new Keyframe(0f, 0f, startingSlope, startingSlope),
+            new Keyframe(1f, 1f, endingSlope, endingSlope));
     }
 }

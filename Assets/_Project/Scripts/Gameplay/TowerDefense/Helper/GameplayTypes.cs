@@ -291,3 +291,11 @@ public enum GearRarity
     Rare,
     Epic,
 }
+
+public enum HeroChangeType
+{
+    Progression,
+    Stats,
+    Equipment,
+    Skills,
+}

@@ -12,8 +12,7 @@ public enum HubScreenId
 public class HubNavigationButton : MonoBehaviour
 {
     [SerializeField] private HubScreenId targetScreenId = HubScreenId.None;
-    [SerializeField] private Button button;
-    [SerializeField] private UIButtonFeeling buttonFeeling;
+    [SerializeField] private UIButtonFeedback button;
 
     public HubScreenId TargetScreenId => targetScreenId;
     public event Action<HubNavigationButton> OnNavigationRequested;
@@ -42,9 +41,9 @@ public class HubNavigationButton : MonoBehaviour
 
     public void SetActive(bool value)
     {
-        if (buttonFeeling != null)
+        if (button != null)
         {
-            buttonFeeling.SetActive(value);
+            button.SetActive(value);
         }
     }
 
@@ -52,23 +51,13 @@ public class HubNavigationButton : MonoBehaviour
     {
         if (button != null)
         {
-            button.interactable = value;
-        }
-
-        if (buttonFeeling != null)
-        {
-            buttonFeeling.SetInteractable(value);
+            button.SetInteractable(value);
         }
     }
 
     private void HandleClicked()
     {
-        if (button == null || !button.interactable)
-        {
-            return;
-        }
-
-        if (buttonFeeling != null && !buttonFeeling.TryPlayClickFeedback())
+        if (button == null || !button.IsInteractable)
         {
             return;
         }
@@ -84,15 +73,15 @@ public class HubNavigationButton : MonoBehaviour
             return;
         }
 
-        button.onClick.RemoveListener(HandleClicked);
-        button.onClick.AddListener(HandleClicked);
+        button.OnClicked -= HandleClicked;
+        button.OnClicked += HandleClicked;
     }
 
     private void UnregisterButtonEvent()
     {
         if (button != null)
         {
-            button.onClick.RemoveListener(HandleClicked);
+            button.OnClicked -= HandleClicked;
         }
     }
 
@@ -100,12 +89,7 @@ public class HubNavigationButton : MonoBehaviour
     {
         if (button == null)
         {
-            button = GetComponent<Button>();
-        }
-
-        if (buttonFeeling == null)
-        {
-            buttonFeeling = GetComponent<UIButtonFeeling>();
+            button = GetComponent<UIButtonFeedback>();
         }
     }
 }
