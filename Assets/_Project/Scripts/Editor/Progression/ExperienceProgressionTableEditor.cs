@@ -21,7 +21,15 @@ public sealed class ExperienceProgressionTableEditor : Editor
     {
         serializedObject.Update();
 
-        int thresholdCount = experienceThresholdsProperty?.arraySize ?? 0;
+        int thresholdCount;
+        if (experienceThresholdsProperty != null)
+        {
+            thresholdCount = experienceThresholdsProperty.arraySize;
+        }
+        else
+        {
+            thresholdCount = 0;
+        }
         int maxLevel = thresholdCount + 1;
         EditorGUILayout.LabelField("Max Level", maxLevel.ToString());
         EditorGUILayout.Space(4f);

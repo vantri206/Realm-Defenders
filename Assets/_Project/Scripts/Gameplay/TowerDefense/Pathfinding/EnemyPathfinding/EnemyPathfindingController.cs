@@ -3,18 +3,13 @@ using System;
 
 public class EnemyPathfindingController : MonoBehaviour
 {
-    [SerializeField] private UnitSeparationResolver separationResolver;
-    [SerializeField] private UnitSeparationSettings separationSettings;
-
     private UnitPathfindingSystem pathfindingSystem;
+    private CombatGrid combatGrid;
 
-    private string routeId;
     private EnemyRouteDefinition route;
 
     private int currentCheckpointIndex = 0;
     private int targetCheckpointIndex = 0;
-
-    private float flowWeight = 1.0f;
 
     private const float cornerTurnMinDot = -0.75f;
     private const float cornerTurnMaxDot = 0.01f;
@@ -37,19 +32,15 @@ public class EnemyPathfindingController : MonoBehaviour
     public event Action OnReachedFinalCheckpoint;
     public float PathProgressScore => pathProgressScore;
 
-    private void Awake()
+    public bool Initialize(EnemyRouteGraph routeGraph, UnitPathfindingSystem pathfindingSystem, CombatGrid combatGrid,
+                           string routeId, Action actionOnEscaped)
     {
-        CacheReferences();
-    }
-
-    public bool Initialize(EnemyRouteGraph routeGraph, UnitPathfindingSystem pathfindingSystem, string routeId, Action actionOnEscaped)
-    {
-        this.routeId = routeId;
         this.pathfindingSystem = pathfindingSystem;
+        this.combatGrid = combatGrid;
 
-        if (routeGraph == null)
+        if (routeGraph == null || combatGrid == null)
         {
-            Debug.LogError("[EnemyPathfindingController] EnemyRouteGraph reference is missing.", this);
+            Debug.LogError("[EnemyPathfindingController] EnemyRouteGraph and CombatGrid references are required.", this);
             return false;
         }
 
@@ -60,10 +51,7 @@ public class EnemyPathfindingController : MonoBehaviour
             return false;
         }
 
-        if (actionOnEscaped != null)
-        {
-            OnReachedFinalCheckpoint += actionOnEscaped;
-        }
+        OnReachedFinalCheckpoint = actionOnEscaped;
 
         currentCheckpointIndex = 0;
         targetCheckpointIndex = route.CheckpointCount > 1 ? 1 : 0; // Start with the next checkpoint as the target
@@ -76,7 +64,7 @@ public class EnemyPathfindingController : MonoBehaviour
         return true;
     }
 
-    public RouteCheckpoint GetCurrentCheckpoint()
+    public EnemyRouteCheckpointDefinition GetCurrentCheckpoint()
     {
         if (route == null || route.Checkpoints.Count == 0)
         {
@@ -87,7 +75,7 @@ public class EnemyPathfindingController : MonoBehaviour
         return route.Checkpoints[currentCheckpointIndex];
     }
 
-    public RouteCheckpoint GetTargetCheckpoint()
+    public EnemyRouteCheckpointDefinition GetTargetCheckpoint()
     {
         if (route == null || route.Checkpoints.Count == 0)
         {
@@ -105,14 +93,14 @@ public class EnemyPathfindingController : MonoBehaviour
             return ChangeMoveDirection(Vector2.zero, enemyCenterPosition);
         }
 
-        RouteCheckpoint targetCheckpoint = GetTargetCheckpoint();
+        EnemyRouteCheckpointDefinition targetCheckpoint = GetTargetCheckpoint();
         if (targetCheckpoint == null)
         {
             Debug.LogError("[EnemyPathfindingController] Target checkpoint is not defined.");
             return ChangeMoveDirection(Vector2.zero, enemyCenterPosition);
         }
 
-        RouteCheckpoint currentCheckpoint = GetCurrentCheckpoint();
+        EnemyRouteCheckpointDefinition currentCheckpoint = GetCurrentCheckpoint();
         if (currentCheckpoint == null)
         {
             Debug.LogError("[EnemyPathfindingController] Current checkpoint is not defined.");
@@ -126,7 +114,12 @@ public class EnemyPathfindingController : MonoBehaviour
         }
 
         Vector2 segmentDirection = GetCurrentMoveDirection(currentCheckpoint, targetCheckpoint);
-        if (HasCrossedCheckpointLine(targetCheckpoint.WorldPosition, segmentDirection, previousEnemyPosition, enemyCenterPosition, cellSize))
+        if (!TryGetCheckpointWorldPosition(targetCheckpoint, out Vector3 targetWorldPosition))
+        {
+            return ChangeMoveDirection(Vector2.zero, enemyCenterPosition);
+        }
+
+        if (HasCrossedCheckpointLine(targetWorldPosition, segmentDirection, previousEnemyPosition, enemyCenterPosition, cellSize))
         {
             if (OnCheckpointReached(targetCheckpoint))
             {
@@ -152,7 +145,7 @@ public class EnemyPathfindingController : MonoBehaviour
             if (activeCellPosition == targetCheckpoint.CellPosition)
             {
                 UpdatePathProgress(enemyCenterPosition);
-                return ChangeMoveDirection(ApplySeparation(directDirection, enemy), enemyCenterPosition);
+                return ChangeMoveDirection(directDirection, enemyCenterPosition);
             }
 
             if (!useFlowField && IsNextCellBlocked(enemy, activeCellPosition, enemyCenterPosition, directDirection))
@@ -164,14 +157,14 @@ public class EnemyPathfindingController : MonoBehaviour
             if (!useFlowField)
             {
                 UpdatePathProgress(enemyCenterPosition);
-                return ChangeMoveDirection(ApplySeparation(directDirection, enemy), enemyCenterPosition);
+                return ChangeMoveDirection(directDirection, enemyCenterPosition);
             }
         }
 
         if (activeCellPosition == targetCheckpoint.CellPosition)
         {
             UpdatePathProgress(enemyCenterPosition);
-            return ChangeMoveDirection(ApplySeparation(segmentDirection, enemy), enemyCenterPosition);
+            return ChangeMoveDirection(segmentDirection, enemyCenterPosition);
         }
 
         if (pathfindingSystem == null)
@@ -182,9 +175,8 @@ public class EnemyPathfindingController : MonoBehaviour
         Vector2 flowDirection = GetFlowFieldDirection(activeCellPosition, targetCheckpoint.CellPosition, movementType);
         Vector2 resolvedFlowDirection = movementType == UnitMovementType.Flying ? ResolvedDirection(flowDirection) : ResolveCornerSmoothedDirection(flowDirection, activeCellPosition, activeCellWorldCenter, enemyCenterPosition, cellSize);
 
-        Vector2 moveDirection = ApplySeparation(resolvedFlowDirection, enemy);
         UpdatePathProgress(enemyCenterPosition);
-        return ChangeMoveDirection(moveDirection, enemyCenterPosition);
+        return ChangeMoveDirection(resolvedFlowDirection, enemyCenterPosition);
     }
 
     private Vector2 GetFlowFieldDirection(Vector3Int activeCellPosition, Vector3Int targetCellPosition, UnitMovementType movementType)
@@ -195,37 +187,6 @@ public class EnemyPathfindingController : MonoBehaviour
         }
 
         return pathfindingSystem.TryGetFlowFieldDirection(activeCellPosition, targetCellPosition, movementType);
-    }
-
-    private Vector2 GetSeparationDirection(EnemyRuntime enemy)
-    {
-        if (enemy == null || separationResolver == null || enemy.CombatGrid == null)
-        {
-            return Vector2.zero;
-        }
-
-        return separationResolver.GetSeparationDirection(enemy, enemy.CombatGrid, separationSettings);
-    }
-
-    private Vector2 ApplySeparation(Vector2 navigationDirection, EnemyRuntime enemy)
-    {
-        Vector2 separationDirection = GetSeparationDirection(enemy);
-        return BlendMoveDirection(navigationDirection, separationDirection);
-    }
-
-    private Vector2 BlendMoveDirection(Vector2 flowDirection, Vector2 separationDirection)
-    {
-        Vector2 weightedSeparation = Vector2.zero;
-        if (separationResolver != null)
-        {
-            weightedSeparation = separationResolver.ApplyWeight(separationDirection, separationSettings);
-        }
-
-        float flowDirectionWeight = Mathf.Max(0f, flowWeight);
-
-        Vector2 moveDirection = flowDirection.normalized * flowDirectionWeight + weightedSeparation;
-
-        return ResolvedDirection(moveDirection);
     }
 
     private Vector2 ResolveCornerSmoothedDirection(Vector2 flowDirection, Vector3Int activeCellPosition, Vector3 activeCellWorldCenter, Vector3 enemyCenterPosition, Vector3 cellSize)
@@ -348,46 +309,75 @@ public class EnemyPathfindingController : MonoBehaviour
             return;
         }
 
-        RouteCheckpoint currentCheckpoint = GetCurrentCheckpoint();
-        RouteCheckpoint targetCheckpoint = GetTargetCheckpoint();
+        EnemyRouteCheckpointDefinition currentCheckpoint = GetCurrentCheckpoint();
+        EnemyRouteCheckpointDefinition targetCheckpoint = GetTargetCheckpoint();
         if (currentCheckpoint == null || targetCheckpoint == null)
         {
             pathProgressScore = currentCheckpointIndex;
             return;
         }
 
-        float segmentLength = Vector2.Distance(currentCheckpoint.WorldPosition, targetCheckpoint.WorldPosition);
+        if (!TryGetCheckpointWorldPosition(currentCheckpoint, out Vector3 currentWorldPosition) ||
+            !TryGetCheckpointWorldPosition(targetCheckpoint, out Vector3 targetWorldPosition))
+        {
+            pathProgressScore = currentCheckpointIndex;
+            return;
+        }
+
+        float segmentLength = Vector2.Distance(currentWorldPosition, targetWorldPosition);
         float segmentProgress = 0f;
 
         if (segmentLength > Mathf.Epsilon)
         {
-            float targetDistance = Vector2.Distance(enemyCenterPosition, targetCheckpoint.WorldPosition);
+            float targetDistance = Vector2.Distance(enemyCenterPosition, targetWorldPosition);
             segmentProgress = 1f - Mathf.Clamp01(targetDistance / segmentLength);
         }
 
         pathProgressScore = currentCheckpointIndex + segmentProgress;
     }
 
-    private Vector2 GetCurrentMoveDirection(RouteCheckpoint currentCheckpoint, RouteCheckpoint targetCheckpoint)
+    private Vector2 GetCurrentMoveDirection(EnemyRouteCheckpointDefinition currentCheckpoint, EnemyRouteCheckpointDefinition targetCheckpoint)
     {
         if (currentCheckpoint == null || targetCheckpoint == null)
         {
             return Vector2.zero;
         }
 
-        Vector2 direction = targetCheckpoint.WorldPosition - currentCheckpoint.WorldPosition;
+        if (!TryGetCheckpointWorldPosition(currentCheckpoint, out Vector3 currentWorldPosition) ||
+            !TryGetCheckpointWorldPosition(targetCheckpoint, out Vector3 targetWorldPosition))
+        {
+            return Vector2.zero;
+        }
+
+        Vector2 direction = targetWorldPosition - currentWorldPosition;
         return ResolvedDirection(direction);
     }
 
-    private Vector2 GetDirectionToCheckpoint(RouteCheckpoint targetCheckpoint, Vector3 enemyPosition)
+    private Vector2 GetDirectionToCheckpoint(EnemyRouteCheckpointDefinition targetCheckpoint, Vector3 enemyPosition)
     {
         if (targetCheckpoint == null)
         {
             return Vector2.zero;
         }
 
-        Vector2 direction = targetCheckpoint.WorldPosition - enemyPosition;
+        if (!TryGetCheckpointWorldPosition(targetCheckpoint, out Vector3 targetWorldPosition))
+        {
+            return Vector2.zero;
+        }
+
+        Vector2 direction = targetWorldPosition - enemyPosition;
         return ResolvedDirection(direction);
+    }
+
+    private bool TryGetCheckpointWorldPosition(EnemyRouteCheckpointDefinition checkpoint, out Vector3 worldPosition)
+    {
+        if (checkpoint == null || combatGrid == null)
+        {
+            worldPosition = Vector3.zero;
+            return false;
+        }
+
+        return combatGrid.TryCellToWorldCenter(checkpoint.CellPosition, out worldPosition);
     }
 
     private bool IsNextCellBlocked(EnemyRuntime enemy, Vector3Int activeCellPosition, Vector3 enemyPosition, Vector2 moveDirection)
@@ -439,8 +429,7 @@ public class EnemyPathfindingController : MonoBehaviour
 
     private bool CanEnterCell(CombatGrid combatGrid, Vector3Int cellPosition, UnitMovementType movementType)
     {
-        return combatGrid.TryGetCell(cellPosition, out CombatGridCell cell) &&
-               UnitMovementRules.CanEnterCell(movementType, cell);
+        return combatGrid.TryGetCell(cellPosition, out CombatGridCell cell) && UnitMovementRules.CanEnterCell(movementType, cell);
     }
 
     private bool HasCrossedCheckpointLine(Vector3 checkpointWorldPosition, Vector2 segmentDirection,
@@ -477,7 +466,7 @@ public class EnemyPathfindingController : MonoBehaviour
         return width * 0.5f;
     }
 
-    public bool OnCheckpointReached(RouteCheckpoint checkpoint)
+    public bool OnCheckpointReached(EnemyRouteCheckpointDefinition checkpoint)
     {
         if (route == null || route.Checkpoints.Count == 0)
         {
@@ -536,18 +525,5 @@ public class EnemyPathfindingController : MonoBehaviour
         pathProgressScore = 0f;
         hasReachedFinalCheckpoint = false;
         useFlowField = false;
-    }
-
-    private void CacheReferences()
-    {
-        if (pathfindingSystem == null)
-        {
-            pathfindingSystem = FindAnyObjectByType<UnitPathfindingSystem>();
-        }
-
-        if (separationResolver == null)
-        {
-            separationResolver = FindAnyObjectByType<UnitSeparationResolver>();
-        }
     }
 }

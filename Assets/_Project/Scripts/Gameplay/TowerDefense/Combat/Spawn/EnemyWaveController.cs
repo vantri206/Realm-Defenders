@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,23 +8,20 @@ public class EnemyWaveController : MonoBehaviour
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private EnemyDepthSorter enemyDepthSorter;
 
-    [Header("Wave Settings")]
-    [SerializeField] private List<EnemySpawnEvent> spawnEvents = new List<EnemySpawnEvent>();
-
     private readonly EnemyWaveDirector enemyWaveDirector = new EnemyWaveDirector();
 
     private UnitCombatContext combatContext;
-    private int totalSpawnCount;
-
     private bool isWaveRunning;
     private bool isSpawnCompleted;
+    private bool isWaveResolved;
     private bool isInitialized;
 
     public bool IsWaveRunning => isWaveRunning;
     public bool IsSpawnCompleted => isSpawnCompleted;
-    public IReadOnlyList<EnemySpawnEvent> SpawnEvents => spawnEvents;
-    public int TotalSpawnCount => totalSpawnCount;
+    public bool IsWaveResolved => isWaveResolved;
     public bool IsInitialized => isInitialized;
+
+    public event Action OnWaveResolved;
 
     private void Awake()
     {
@@ -37,15 +35,14 @@ public class EnemyWaveController : MonoBehaviour
             enemyDepthSorter = GetComponent<EnemyDepthSorter>();
         }
     }
-    
-    public void Initialize(UnitCombatContext combatContext, EnemyRouteGraph enemyRouteGraph, StageSystem levelSystem)
+
+    public void Initialize(UnitCombatContext combatContext, EnemyRouteGraph enemyRouteGraph, StageSystem stageSystem, CombatMapData mapData, IReadOnlyList<EnemySpawnEventDefinition> spawnEvents)
     {
-        StopWave();
-        isInitialized = false;
+        ClearWave();
 
         if (combatContext == null || !combatContext.IsValid)
         {
-            Debug.LogError("[EnemyWaveController] A valid CombatReferencesContext is required to initialize wave controller.", this);
+            Debug.LogError("[EnemyWaveController] A valid UnitCombatContext is required.", this);
             return;
         }
 
@@ -53,28 +50,17 @@ public class EnemyWaveController : MonoBehaviour
 
         if (enemySpawner != null)
         {
-            enemySpawner.Initialize(combatContext, enemyRouteGraph, enemyDepthSorter, levelSystem);
+            enemySpawner.Initialize(combatContext, enemyRouteGraph, enemyDepthSorter, stageSystem, mapData);
         }
 
         if (enemySpawner == null || !enemySpawner.IsInitialized)
         {
-            Debug.LogError("[EnemyWaveController] EnemySpawner must be initialized before initializing wave controller.", this);
+            Debug.LogError("[EnemyWaveController] EnemySpawner must be initialized before the wave controller.", this);
             return;
         }
 
         enemyWaveDirector.Initialize(enemySpawner, spawnEvents);
-
         isInitialized = true;
-        isSpawnCompleted = false;
-
-        totalSpawnCount = 0;
-        foreach (var spawnEvent in spawnEvents)
-        {
-            if (spawnEvent != null)
-            {
-                totalSpawnCount += spawnEvent.SpawnCount * spawnEvent.EnemyCount;
-            }
-        }
     }
 
     private void Update()
@@ -85,14 +71,14 @@ public class EnemyWaveController : MonoBehaviour
         }
 
         enemyWaveDirector.Tick(combatContext.CombatTime.CombatDeltaTime);
-        RefreshSpawnCompletion();
+        RefreshWaveState();
     }
 
     public void StartWave()
     {
         if (!isInitialized)
         {
-            Debug.LogError("[EnemyWaveController] EnemyWaveController must be initialized before starting wave.", this);
+            Debug.LogError("[EnemyWaveController] EnemyWaveController must be initialized before starting a wave.", this);
             return;
         }
 
@@ -104,9 +90,10 @@ public class EnemyWaveController : MonoBehaviour
 
         isWaveRunning = true;
         isSpawnCompleted = false;
+        isWaveResolved = false;
         enemyWaveDirector.StartDirector();
         enemyWaveDirector.Tick(0f);
-        RefreshSpawnCompletion();
+        RefreshWaveState();
     }
 
     public void StopWave()
@@ -119,30 +106,22 @@ public class EnemyWaveController : MonoBehaviour
     {
         StopWave();
         enemyWaveDirector.ClearDirector();
-
         combatContext = null;
         isInitialized = false;
         isSpawnCompleted = false;
+        isWaveResolved = false;
     }
 
-    private bool CheckWaveSpawnFinished()
+    private void RefreshWaveState()
     {
-        return enemyWaveDirector.CheckAllSpawnFinished();
-    }
-
-    private void RefreshSpawnCompletion()
-    {
-        if (!CheckWaveSpawnFinished())
+        isSpawnCompleted = enemyWaveDirector.CheckAllSpawnFinished();
+        if (isWaveResolved || !enemyWaveDirector.CheckAllSpawnResolved())
         {
             return;
         }
 
-        isSpawnCompleted = true;
+        isWaveResolved = true;
         isWaveRunning = false;
-    }
-
-    private bool CheckWaveResolved()
-    {
-        return CheckWaveSpawnFinished();    // Add logic resolved = kill all enmies, or all enemies are dead, or all enemies are despawned. PLACEHOLDER
+        OnWaveResolved?.Invoke();
     }
 }

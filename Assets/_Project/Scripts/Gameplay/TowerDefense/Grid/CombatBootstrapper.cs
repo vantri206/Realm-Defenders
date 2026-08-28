@@ -1,8 +1,10 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class CombatBootstrapper : MonoBehaviour
 {
+    [Header("Direct Test")]
+    [SerializeField] private CombatStageTestSetup stageTestSetup;
+
     [Header("References")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private CombatGrid combatGrid;
@@ -11,7 +13,6 @@ public class CombatBootstrapper : MonoBehaviour
     [SerializeField] private HeroPlacement heroPlacement;
     [SerializeField] private HeroDeploymentSystem heroDeploymentSystem;
     [SerializeField] private HeroDetailView heroDetailView;
-    [SerializeField] private TileOverlayRenderer tileOverlayRenderer;
     [SerializeField] private PlayerCombatAction playerCombatAction;
     [SerializeField] private CombatUIController combatUIController;
     [SerializeField] private CombatStageHUDController stageHUDController;
@@ -23,57 +24,154 @@ public class CombatBootstrapper : MonoBehaviour
     [SerializeField] private CombatTimeController combatTime;
 
     private GhostHeroView ghostHero;
-    private UnitCombatContext combatContext;
+    private bool isInitialized;
 
-    private void Awake()
-    {
-        InitializeCombatBootstrapper();
-    }
+    public bool IsInitialized => isInitialized;
 
-    public void InitializeCombatBootstrapper()
+    private void Start()
     {
-        if (!CheckReferences())
+        if (isInitialized || stageTestSetup == null)
         {
             return;
+        }
+
+        if (stageTestSetup.TryCreateBootstrapData(out CombatBootstrapData bootstrapData))
+        {
+            InitializeCombat(bootstrapData);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (enemyWaveController != null)
+        {
+            enemyWaveController.OnWaveResolved -= HandleWaveResolved;
+        }
+
+        if (stageSystem != null)
+        {
+            stageSystem.OnStageEnded -= HandleStageEnded;
+        }
+    }
+
+    public bool InitializeCombat(CombatBootstrapData bootstrapData)
+    {
+        if (isInitialized)
+        {
+            Debug.LogWarning("[CombatBootstrapper] Combat is already initialized.", this);
+            return false;
+        }
+
+        if (bootstrapData == null || !bootstrapData.IsValid)
+        {
+            Debug.LogError("[CombatBootstrapper] Valid CombatBootstrapData is required.", this);
+            return false;
+        }
+
+        if (!CheckReferences())
+        {
+            return false;
         }
 
         ghostHero = CreateGhostHeroView();
         if (ghostHero == null)
         {
-            return;
+            return false;
         }
 
-        combatContext = new UnitCombatContext(combatGrid, pathfindingSystem, combatTime);
+        if (!combatGrid.BuildGridMap(bootstrapData.MapView.Grid, bootstrapData.MapData.GridCells))
+        {
+            return false;
+        }
 
-        // Initialize grid map and pathfinding systems
-        combatGrid.BuildGridMap();
         pathfindingSystem.BuildCostGrid(combatGrid.Cells);
-        enemyRouteGraph.InitializeRoutes(combatGrid);
+        if (!enemyRouteGraph.InitializeRoutes(combatGrid, bootstrapData.MapData.Routes))
+        {
+            return false;
+        }
 
-        // Initialize hero systems
+        UnitCombatContext combatContext = new UnitCombatContext(combatGrid, pathfindingSystem, combatTime);
+        stageSystem.Initialize(bootstrapData.StartConfig, GetTotalSpawnCount(bootstrapData), combatTime);
+        if (!stageSystem.IsInitialized)
+        {
+            return false;
+        }
+        stageSystem.OnStageEnded += HandleStageEnded;
+
+        heroSquad.Initialize(heroSquadView, stageSystem);
+        AddSquadHeroes(bootstrapData);
         heroPlacement.Initialize(combatContext);
         heroDeploymentSystem.Initialize(heroSquad, heroPlacement, combatTime);
-        heroSquad.Initialize(heroSquadView, stageSystem);
 
-        // Initialize enemy systems
-        enemyWaveController.Initialize(combatContext, enemyRouteGraph, stageSystem);
+        enemyWaveController.Initialize(
+            combatContext,
+            enemyRouteGraph,
+            stageSystem,
+            bootstrapData.MapData,
+            bootstrapData.SpawnEvents);
+        if (!enemyWaveController.IsInitialized)
+        {
+            return false;
+        }
 
-        // Initialize player input action and UI controller
-        playerCombatAction.Initialize(mainCamera, combatGrid, heroDeploymentSystem, heroDetailView, tileOverlayRenderer, ghostHero, stageSystem, combatTime);
+        enemyWaveController.OnWaveResolved += HandleWaveResolved;
+
+        TileOverlayRenderer tileOverlayRenderer = bootstrapData.MapView.TileOverlayRenderer;
+        playerCombatAction.Initialize(
+            mainCamera,
+            combatGrid,
+            heroDeploymentSystem,
+            heroDetailView,
+            tileOverlayRenderer,
+            ghostHero,
+            stageSystem,
+            combatTime);
         playerCombatAction.ChangeMode(PlayerCombatActionMode.None);
         combatUIController.Initialize(playerCombatAction, heroSquadView);
         stageHUDController.Initialize(stageSystem, playerCombatAction, combatTime);
 
-        // Initialize stage system
-        stageSystem.Initialize(stageSystem.StartingMeat, stageSystem.StartingLives, enemyWaveController.TotalSpawnCount, combatTime);
-
-
-        StartCombat();
+        isInitialized = true;
+        enemyWaveController.StartWave();
+        return true;
     }
 
-    private void StartCombat()
+    private void AddSquadHeroes(CombatBootstrapData bootstrapData)
     {
-        enemyWaveController.StartWave();
+        if (bootstrapData.PlayerSquad == null)
+        {
+            return;
+        }
+
+        for (int i = 0; i < bootstrapData.PlayerSquad.Count; i++)
+        {
+            heroSquad.AddHeroInstance(bootstrapData.PlayerSquad[i]);
+        }
+    }
+
+    private int GetTotalSpawnCount(CombatBootstrapData bootstrapData)
+    {
+        int totalSpawnCount = 0;
+        for (int i = 0; i < bootstrapData.SpawnEvents.Count; i++)
+        {
+            EnemySpawnEventDefinition spawnEvent = bootstrapData.SpawnEvents[i];
+            if (spawnEvent != null)
+            {
+                totalSpawnCount += Mathf.Max(0, spawnEvent.GroupCount) * Mathf.Max(0, spawnEvent.EnemiesPerGroup);
+            }
+        }
+
+        return totalSpawnCount;
+    }
+
+    private void HandleWaveResolved()
+    {
+        stageSystem.NotifyWaveResolved();
+    }
+
+    private void HandleStageEnded(CombatStageResult result)
+    {
+        enemyWaveController.StopWave();
+        combatTime.PauseCombat();
     }
 
     private GhostHeroView CreateGhostHeroView()
@@ -121,57 +219,15 @@ public class CombatBootstrapper : MonoBehaviour
             hasReferences = false;
         }
 
-        if (heroSquad == null)
+        if (heroSquad == null || heroSquadView == null || heroPlacement == null || heroDeploymentSystem == null || heroDetailView == null)
         {
-            Debug.LogWarning("[CombatBootstrapper] heroSquad is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] Hero system references are not fully assigned.", this);
             hasReferences = false;
         }
 
-        if (heroSquadView == null)
+        if (playerCombatAction == null || combatUIController == null || stageHUDController == null)
         {
-            Debug.LogWarning("[CombatBootstrapper] heroSquadView is not assigned.", this);
-            hasReferences = false;
-        }
-
-        if (heroPlacement == null)
-        {
-            Debug.LogWarning("[CombatBootstrapper] heroPlacement is not assigned.", this);
-            hasReferences = false;
-        }
-
-        if (heroDeploymentSystem == null)
-        {
-            Debug.LogWarning("[CombatBootstrapper] heroDeploymentSystem is not assigned.", this);
-            hasReferences = false;
-        }
-
-        if (heroDetailView == null)
-        {
-            Debug.LogWarning("[CombatBootstrapper] heroDetailView is not assigned.", this);
-            hasReferences = false;
-        }
-
-        if (tileOverlayRenderer == null)
-        {
-            Debug.LogWarning("[CombatBootstrapper] tileOverlayRenderer is not assigned.", this);
-            hasReferences = false;
-        }
-
-        if (playerCombatAction == null)
-        {
-            Debug.LogWarning("[CombatBootstrapper] playerCombatAction is not assigned.", this);
-            hasReferences = false;
-        }
-
-        if (combatUIController == null)
-        {
-            Debug.LogWarning("[CombatBootstrapper] combatUIController is not assigned.", this);
-            hasReferences = false;
-        }
-
-        if (stageHUDController == null)
-        {
-            Debug.LogWarning("[CombatBootstrapper] StageHUDController is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] Combat UI references are not fully assigned.", this);
             hasReferences = false;
         }
 
@@ -181,33 +237,15 @@ public class CombatBootstrapper : MonoBehaviour
             hasReferences = false;
         }
 
-        if (enemyRouteGraph == null)
+        if (enemyRouteGraph == null || pathfindingSystem == null || enemyWaveController == null)
         {
-            Debug.LogWarning("[CombatBootstrapper] enemyRouteGraph is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] Enemy system references are not fully assigned.", this);
             hasReferences = false;
         }
 
-        if (pathfindingSystem == null)
+        if (stageSystem == null || combatTime == null)
         {
-            Debug.LogWarning("[CombatBootstrapper] pathfindingSystem is not assigned.", this);
-            hasReferences = false;
-        }
-
-        if (enemyWaveController == null)
-        {
-            Debug.LogWarning("[CombatBootstrapper] enemyWaveController is not assigned.", this);
-            hasReferences = false;
-        }
-
-        if (stageSystem == null)
-        {
-            Debug.LogWarning("[CombatBootstrapper] StageSystem is not assigned.", this);
-            hasReferences = false;
-        }
-
-        if (combatTime == null)
-        {
-            Debug.LogWarning("[CombatBootstrapper] combatTime is not assigned.", this);
+            Debug.LogWarning("[CombatBootstrapper] Stage system references are not fully assigned.", this);
             hasReferences = false;
         }
 

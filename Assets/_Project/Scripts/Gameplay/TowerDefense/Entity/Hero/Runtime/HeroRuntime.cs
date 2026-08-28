@@ -142,6 +142,7 @@ public class HeroRuntime : UnitRuntime
         float combatDeltaTime = combatContext.CombatTime.CombatDeltaTime;
         TickState(combatDeltaTime);
         normalAttackController.Tick(combatDeltaTime, ResolvedAttackPattern, CanUseNormalAttack);
+        ResetFacingDirection(unitMovement.CurrentMoveDirection);
     }
 
     private void FixedUpdate()
@@ -232,7 +233,7 @@ public class HeroRuntime : UnitRuntime
 
     private void ResetFacingDirection(Vector2 moveDirection)
     {
-        if (normalAttackController.HasCurrentTarget)
+        if (BlockState == HeroBlockState.Blocking)
         {
             return;
         }
@@ -273,7 +274,7 @@ public class HeroRuntime : UnitRuntime
 
     protected void HandleNormalAttack(Hurtbox target)
     {
-        if (target != null)
+        if (IsBlockingTarget(target))
         {
             FacePosition(target.AimPosition);
         }
@@ -281,6 +282,26 @@ public class HeroRuntime : UnitRuntime
         TryStartActionState(UnitRuntimeState.Attacking, normalAttackStateDuration);
 
         unitVisual.TriggerAttack();
+    }
+
+    private bool IsBlockingTarget(Hurtbox target)
+    {
+        if (!hasBlocker || heroBlocker == null || target == null || target.OwnerRuntime == null)
+        {
+            return false;
+        }
+
+        IReadOnlyList<IBlockable> blockedTargets = heroBlocker.BlockedTargets;
+        for (int i = 0; i < blockedTargets.Count; i++)
+        {
+            IBlockable blockedTarget = blockedTargets[i];
+            if (blockedTarget != null && blockedTarget.Owner == target.OwnerRuntime)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void SetMovementDirection(Vector2 direction)

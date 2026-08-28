@@ -131,7 +131,15 @@ internal static class ProgressionAssetWriter
 
     private static string SanitizeFileName(string outputName)
     {
-        string fileName = (outputName ?? string.Empty).Trim();
+        string fileName;
+        if (outputName != null)
+        {
+            fileName = outputName.Trim();
+        }
+        else
+        {
+            fileName = string.Empty;
+        }
         if (fileName.EndsWith(".asset"))
         {
             fileName = fileName.Substring(0, fileName.Length - ".asset".Length);

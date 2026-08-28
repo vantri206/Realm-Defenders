@@ -38,10 +38,13 @@ public class TargetSelector : MonoBehaviour
         switch (priorityMode)
         {
             case TargetPriorityMode.HighestPathProgress:
-                return SelectNearest(validTargets, origin, attackType);
+                return SelectHighestPathProgress(validTargets, origin, attackType);
 
             case TargetPriorityMode.LowestHealthPercent:
                 return SelectLowestHealthPercent(validTargets, attackType);
+
+            case TargetPriorityMode.AirPriority:
+                return SelectAirPriority(validTargets, origin, attackType);
 
             case TargetPriorityMode.Nearest:
             default:
@@ -103,9 +106,59 @@ public class TargetSelector : MonoBehaviour
         return selectedTarget;
     }
 
-    private Hurtbox SelectHighestPathProgress(IReadOnlyList<Hurtbox> validTargets, UnitAttackType attackType)
+    private Hurtbox SelectHighestPathProgress(IReadOnlyList<Hurtbox> validTargets, Vector3 position, UnitAttackType attackType)
     {
-        return SelectNearest(validTargets, owner.CenterPosition, attackType);
+        return SelectHighestPathProgress(validTargets, position, attackType, null);
+    }
+
+    private Hurtbox SelectAirPriority(IReadOnlyList<Hurtbox> validTargets, Vector3 position, UnitAttackType attackType)
+    {
+        Hurtbox airTarget = SelectHighestPathProgress(validTargets, position, attackType, UnitMovementType.Flying);
+        
+        if (airTarget != null)
+        {
+            return airTarget;
+        }
+
+        return SelectHighestPathProgress(validTargets, position, attackType, UnitMovementType.Ground);
+    }
+
+    private Hurtbox SelectHighestPathProgress(IReadOnlyList<Hurtbox> validTargets, Vector3 position, UnitAttackType attackType, UnitMovementType? movementTypeFilter = null)
+    {
+        Hurtbox selectedTarget = null;
+        float highestPathProgress = float.NegativeInfinity;
+        float nearestDistance = float.PositiveInfinity;
+
+        for (int i = 0; i < validTargets.Count; i++)
+        {
+            Hurtbox target = validTargets[i];
+            if (target == null || !AttackTargetRulling.CanTarget(attackType, target))
+            {
+                continue;
+            }
+
+            UnitRuntime targetRuntime = target.OwnerRuntime;
+            if (targetRuntime == null)
+            {
+                continue;
+            }
+
+            if (movementTypeFilter.HasValue && targetRuntime.MovementType != movementTypeFilter.Value)
+            {
+                continue;
+            }
+
+            float pathProgress = targetRuntime is EnemyRuntime enemy ? enemy.PathProgressScore : 0f;
+            float distance = ((Vector2)position - target.AimPosition).sqrMagnitude;
+            if (pathProgress > highestPathProgress || Mathf.Approximately(pathProgress, highestPathProgress) && distance < nearestDistance)
+            {
+                highestPathProgress = pathProgress;
+                nearestDistance = distance;
+                selectedTarget = target;
+            }
+        }
+
+        return selectedTarget;
     }
 
     public bool TrySelectLockedBlockingTarget(UnitAttackType attackType, out Hurtbox target)

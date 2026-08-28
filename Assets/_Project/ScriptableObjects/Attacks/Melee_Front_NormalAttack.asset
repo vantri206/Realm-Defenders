@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Melee_Front_NormalAttack
   m_EditorClassIdentifier: Assembly-CSharp::NormalAttackDefinition
   attackType: 0
-  targetPriorityMode: 0
+  targetPriorityMode: 1
   attackPattern:
   - {x: 0, y: 0}
   - {x: -1, y: 0}

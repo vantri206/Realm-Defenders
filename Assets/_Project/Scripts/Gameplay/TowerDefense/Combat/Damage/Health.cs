@@ -34,19 +34,21 @@ public class Health : MonoBehaviour, IDamageable
         {
             if (!isInitialized)
             {
-                return new HealthData(MaxHealth, MaxHealth);
+                return new HealthData(0f, 0f);
             }
 
-            return new HealthData(CurrentHealth, MaxHealth);
+            return new HealthData(currentHealth, MaxHealth);
         }
     }
 
     public float CurrentHealth => CurrentData.CurrentHealth;
-    public float MaxHealth => stats.MaxHealth;
-    public float Defense => stats.Defense;
-    public float SpecialDefense => stats.SpecialDefense;
+    public float MaxHealth => stats == null ? 0f : stats.MaxHealth;
+    public float Defense => stats == null ? 0f : stats.Defense;
+    public float SpecialDefense => stats == null ? 0f : stats.SpecialDefense;
 
     private bool isInitialized;
+
+    public bool IsInitialized => isInitialized;
 
     public void Initialize(UnitStats stats)
     {
@@ -62,6 +64,11 @@ public class Health : MonoBehaviour, IDamageable
 
     private void OnEnable()
     {
+        if (!isInitialized)
+        {
+            return;
+        }
+
         RefreshHealth(false);
     }
 

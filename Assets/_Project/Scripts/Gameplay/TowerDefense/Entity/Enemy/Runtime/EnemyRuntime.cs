@@ -68,7 +68,6 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         if (!CheckCoreReferences() ||
             !CheckHealthSystemReferences() ||
             !CheckMovementSystemReferences() ||
-            !CheckAttackSystemReferences() ||
             !CheckPathfindingSystemReferences())
         {
             return;
@@ -85,10 +84,11 @@ public class EnemyRuntime : UnitRuntime, IBlockable
             return;
         }
 
-        if (!InitializeAttackSystems())
+        if (NormalAttackDefinition != null && !InitializeAttackSystems())
         {
             return;
         }
+
         SetDepthSorter(enemyDepthSorter);
         
         if (combatContext.CombatGrid.TryGetCell(currentCell, out CombatGridCell cell))
@@ -101,14 +101,23 @@ public class EnemyRuntime : UnitRuntime, IBlockable
             SetActiveCell(null);
         }
         
-        defaultAttackPattern = new List<Vector2Int>(NormalAttackDefinition.AttackPattern);
+        if (NormalAttackDefinition != null)
+        {
+            defaultAttackPattern = new List<Vector2Int>(NormalAttackDefinition.AttackPattern);
+        }
+        else
+        {
+            defaultAttackPattern = new List<Vector2Int>();
+            resolvedAttackPattern = new List<Vector2Int>();
+        }
+
         SetFacingDirection(facingDirection);
 
         centerOffset = enemyDefinition.NavigationOffset;
 
-        bool isPathfindingInitialized = enemyPathfindingController.Initialize(routeGraph, combatContext.UnitPathfindingSystem, routeId, () => OnEscaped?.Invoke(this));
+        bool isPathfindingInitialized = enemyPathfindingController.Initialize(routeGraph, combatContext.UnitPathfindingSystem, combatContext.CombatGrid, routeId, () => OnEscaped?.Invoke(this));
 
-        if  (normalAttackController != null)
+        if  (NormalAttackDefinition != null && normalAttackController != null)
         {
             normalAttackController.OnAttack += HandleNormalAttack;
         }
@@ -156,7 +165,11 @@ public class EnemyRuntime : UnitRuntime, IBlockable
 
         float combatDeltaTime = combatContext.CombatTime.CombatDeltaTime;
         TickState(combatDeltaTime);
-        normalAttackController.Tick(combatDeltaTime, ResolvedAttackPattern, CanUseNormalAttack);
+
+        if (NormalAttackDefinition != null && normalAttackController != null)
+        {
+            normalAttackController.Tick(combatDeltaTime, ResolvedAttackPattern, CanUseNormalAttack);
+        }
     }
 
     public void FixedUpdate()

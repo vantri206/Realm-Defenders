@@ -5,25 +5,27 @@ public class EnemyWaveDirector
 {
     private class SpawnEventRuntime
     {
-        public int SpawnedCount;
+        public EnemySpawnEventState State = EnemySpawnEventState.Waiting;
+        public int SpawnedGroupCount;
+        public int ActiveEnemyCount;
         public float SpawnIntervalTimer;
         public float SpawnDelayTimer;
     }
 
-    private readonly Dictionary<EnemySpawnEvent, SpawnEventRuntime> spawnEventRuntimes = new Dictionary<EnemySpawnEvent, SpawnEventRuntime>();
+    private readonly Dictionary<EnemySpawnEventDefinition, SpawnEventRuntime> spawnEventRuntimes = new Dictionary<EnemySpawnEventDefinition, SpawnEventRuntime>();
+    private readonly Dictionary<string, EnemySpawnEventDefinition> spawnEventsById = new Dictionary<string, EnemySpawnEventDefinition>();
+    private readonly Dictionary<EnemyRuntime, SpawnEventRuntime> trackedEnemies = new Dictionary<EnemyRuntime, SpawnEventRuntime>();
 
     private EnemySpawner enemySpawner;
-    private IReadOnlyList<EnemySpawnEvent> spawnEvents;
-
+    private IReadOnlyList<EnemySpawnEventDefinition> spawnEvents;
     private bool isRunning;
 
-    public void Initialize(EnemySpawner enemySpawner, IReadOnlyList<EnemySpawnEvent> spawnEvents)
+    public void Initialize(EnemySpawner enemySpawner, IReadOnlyList<EnemySpawnEventDefinition> spawnEvents)
     {
         StopDirector();
-
+        ClearTracking();
         this.enemySpawner = enemySpawner;
         this.spawnEvents = spawnEvents;
-
         ResetSpawnEvents();
     }
 
@@ -42,65 +44,36 @@ public class EnemyWaveDirector
         }
 
         ResetSpawnEvents();
-        CheckSpawnEventRequirements();
-
-        for (int i = 0; i < spawnEvents.Count; i++)
-        {
-            var spawnEvent = spawnEvents[i];
-            if (spawnEvent == null)
-            {
-                Debug.LogWarning($"[EnemyWaveDirector] Spawn event at index {i} is null.");
-                continue;
-            }
-
-            if (!spawnEventRuntimes.TryGetValue(spawnEvent, out SpawnEventRuntime spawnEventRuntime))
-            {
-                spawnEventRuntime = new SpawnEventRuntime();
-                spawnEventRuntime.SpawnDelayTimer = 0f;
-                spawnEventRuntimes.Add(spawnEvent, spawnEventRuntime);
-            }
-
-        }
-
         isRunning = true;
     }
 
     public void Tick(float deltaTime)
     {
-        if (!isRunning)
+        if (!isRunning || spawnEvents == null)
         {
             return;
         }
 
-        if (spawnEvents != null)
+        for (int i = 0; i < spawnEvents.Count; i++)
         {
-            foreach (var spawnEvent in spawnEvents)
+            EnemySpawnEventDefinition spawnEvent = spawnEvents[i];
+            if (spawnEvent == null || !spawnEventRuntimes.TryGetValue(spawnEvent, out SpawnEventRuntime runtime))
             {
-                if (spawnEvent == null)
-                {
-                    continue;
-                }
+                continue;
+            }
 
-                spawnEventRuntimes.TryGetValue(spawnEvent, out SpawnEventRuntime spawnEventRuntime);
-                if (spawnEventRuntime == null)
-                {
-                    Debug.LogWarning($"[EnemyWaveDirector] Spawn event runtime for {spawnEvent.EventId} is null.");
-                    continue;
-                }
+            if (runtime.State == EnemySpawnEventState.Waiting && CanStartSpawnEvent(spawnEvent, runtime, deltaTime))
+            {
+                runtime.State = EnemySpawnEventState.Spawning;
+            }
 
-                if (CanStartSpawnEvent(spawnEvent, deltaTime))
-                {
-                    StartSpawnEvent(spawnEvent);
-                }
-
-                if (spawnEvent != null && spawnEvent.IsSpawning)
-                {
-                    TickSpawnEvent(spawnEvent, deltaTime);
-                }
+            if (runtime.State == EnemySpawnEventState.Spawning)
+            {
+                TickSpawnEvent(spawnEvent, runtime, deltaTime);
             }
         }
 
-        if (CheckAllSpawnFinished())
+        if (CheckAllSpawnResolved())
         {
             isRunning = false;
         }
@@ -114,8 +87,9 @@ public class EnemyWaveDirector
     public void ClearDirector()
     {
         StopDirector();
-        ResetSpawnEvents();
-
+        ClearTracking();
+        spawnEventRuntimes.Clear();
+        spawnEventsById.Clear();
         enemySpawner = null;
         spawnEvents = null;
     }
@@ -127,14 +101,11 @@ public class EnemyWaveDirector
             return true;
         }
 
-        foreach (var spawnEvent in spawnEvents)
+        for (int i = 0; i < spawnEvents.Count; i++)
         {
-            if (spawnEvent == null)
-            {
-                continue;
-            }
-
-            if (!spawnEvent.IsFinished && !spawnEvent.IsResolved)
+            EnemySpawnEventDefinition spawnEvent = spawnEvents[i];
+            if (spawnEvent != null && spawnEventRuntimes.TryGetValue(spawnEvent, out SpawnEventRuntime runtime) &&
+                runtime.State != EnemySpawnEventState.Finished && runtime.State != EnemySpawnEventState.Resolved)
             {
                 return false;
             }
@@ -143,204 +114,179 @@ public class EnemyWaveDirector
         return true;
     }
 
-    public bool TryGetSpawnEventById(string eventId, out EnemySpawnEvent spawnEvent)
+    public bool CheckAllSpawnResolved()
     {
-        spawnEvent = null;
-
-        if (string.IsNullOrEmpty(eventId) || spawnEvents == null)
+        if (spawnEvents == null || spawnEvents.Count == 0)
         {
-            return false;
+            return true;
         }
 
-        foreach (var currentSpawnEvent in spawnEvents)
+        for (int i = 0; i < spawnEvents.Count; i++)
         {
-            if (currentSpawnEvent == null)
+            EnemySpawnEventDefinition spawnEvent = spawnEvents[i];
+            if (spawnEvent != null && (!spawnEventRuntimes.TryGetValue(spawnEvent, out SpawnEventRuntime runtime) || runtime.State != EnemySpawnEventState.Resolved))
             {
-                continue;
-            }
-
-            if (currentSpawnEvent.EventId == eventId)
-            {
-                spawnEvent = currentSpawnEvent;
-                return true;
+                return false;
             }
         }
 
-        return false;
+        return true;
     }
 
     private void ResetSpawnEvents()
     {
+        ClearTracking();
         spawnEventRuntimes.Clear();
+        spawnEventsById.Clear();
 
         if (spawnEvents == null)
         {
             return;
         }
 
-        foreach (var spawnEvent in spawnEvents)
-        if (spawnEvent != null)
+        for (int i = 0; i < spawnEvents.Count; i++)
         {
-            spawnEvent.ResetState();
-        }
-    }
-
-    private void CheckSpawnEventRequirements()
-    {
-        if (spawnEvents == null)
-        {
-            return;
-        }
-
-        foreach (var spawnEvent in spawnEvents)
-        {
-            if (spawnEvent == null || spawnEvent.StartCondition != EnemySpawnEventStartCondition.AfterSpawnEventFinished)
+            EnemySpawnEventDefinition spawnEvent = spawnEvents[i];
+            if (spawnEvent == null)
             {
                 continue;
             }
 
-            if (string.IsNullOrEmpty(spawnEvent.RequiredEventId))
+            spawnEventRuntimes.Add(spawnEvent, new SpawnEventRuntime());
+            if (!string.IsNullOrWhiteSpace(spawnEvent.EventId))
             {
-                Debug.LogWarning($"[EnemyWaveDirector] Spawn event '{spawnEvent.EventId}' requires another event but has no required event id.");
-                continue;
-            }
-
-            if (!TryGetSpawnEventById(spawnEvent.RequiredEventId, out EnemySpawnEvent requiredEvent) || requiredEvent == null)
-            {
-                Debug.LogWarning($"[EnemyWaveDirector] Spawn event '{spawnEvent.EventId}' requires missing event '{spawnEvent.RequiredEventId}'.");
+                spawnEventsById[spawnEvent.EventId] = spawnEvent;
             }
         }
     }
 
-    private void StartSpawnEvent(EnemySpawnEvent spawnEvent)
+    private bool CanStartSpawnEvent(EnemySpawnEventDefinition spawnEvent, SpawnEventRuntime runtime, float deltaTime)
     {
-        if (spawnEvent == null)
+        if (spawnEvent.StartCondition == EnemySpawnEventStartCondition.AfterSpawnEventResolved)
         {
-            return;
+            if (string.IsNullOrWhiteSpace(spawnEvent.RequiredEventId) ||
+                !spawnEventsById.TryGetValue(spawnEvent.RequiredEventId, out EnemySpawnEventDefinition requiredEvent) ||
+                !spawnEventRuntimes.TryGetValue(requiredEvent, out SpawnEventRuntime requiredRuntime) ||
+                requiredRuntime.State != EnemySpawnEventState.Resolved)
+            {
+                return false;
+            }
         }
 
-        spawnEvent.MarkSpawning();
-        spawnEventRuntimes[spawnEvent] = new SpawnEventRuntime();
+        runtime.SpawnDelayTimer += deltaTime;
+        return runtime.SpawnDelayTimer >= Mathf.Max(0f, spawnEvent.StartDelay);
     }
 
-    private void TickSpawnEvent(EnemySpawnEvent spawnEvent, float deltaTime)
+    private void TickSpawnEvent(EnemySpawnEventDefinition spawnEvent, SpawnEventRuntime runtime, float deltaTime)
     {
-        spawnEventRuntimes.TryGetValue(spawnEvent, out SpawnEventRuntime spawnEventRuntime);
-        if (spawnEventRuntime == null)
+        int groupCount = Mathf.Max(0, spawnEvent.GroupCount);
+        if (runtime.SpawnedGroupCount >= groupCount)
+        {
+            MarkSpawnFinished(runtime);
+            return;
+        }
+
+        runtime.SpawnIntervalTimer -= deltaTime;
+        if (runtime.SpawnIntervalTimer > 0f)
         {
             return;
         }
 
-        int spawnCount = Mathf.Max(0, Mathf.CeilToInt(spawnEvent.SpawnCount));
-        if (spawnEventRuntime.SpawnedCount >= spawnCount)
+        float groupInterval = Mathf.Max(0f, spawnEvent.GroupInterval);
+        while (runtime.SpawnedGroupCount < groupCount)
         {
-            spawnEvent.MarkFinished();
-            return;
-        }
+            SpawnEnemyGroup(spawnEvent, runtime);
+            runtime.SpawnedGroupCount++;
 
-        if (spawnEventRuntime.SpawnIntervalTimer > 0f)
-        {
-            spawnEventRuntime.SpawnIntervalTimer -= deltaTime;
-            if (spawnEventRuntime.SpawnIntervalTimer > 0f)
+            if (runtime.SpawnedGroupCount >= groupCount)
             {
+                MarkSpawnFinished(runtime);
+                return;
+            }
+
+            if (groupInterval > 0f)
+            {
+                runtime.SpawnIntervalTimer = groupInterval;
                 return;
             }
         }
-
-        float spawnInterval = Mathf.Max(0f, spawnEvent.Interval);
-
-        while (spawnEventRuntime.SpawnedCount < spawnCount)
-        {
-            SpawnEnemyGroup(spawnEvent);
-            spawnEventRuntime.SpawnedCount++;
-
-            if (spawnEventRuntime.SpawnedCount >= spawnCount)
-            {
-                spawnEvent.MarkFinished();
-                break;
-            }
-
-            if (spawnInterval > 0f)
-            {
-                spawnEventRuntime.SpawnIntervalTimer = spawnInterval;
-                break;
-            }
-        }
     }
 
-    private void SpawnEnemyGroup(EnemySpawnEvent spawnEvent)
+    private void SpawnEnemyGroup(EnemySpawnEventDefinition spawnEvent, SpawnEventRuntime runtime)
     {
-        for (int i = 0; i < spawnEvent.EnemyCount; i++)
+        for (int i = 0; i < Mathf.Max(0, spawnEvent.EnemiesPerGroup); i++)
         {
-            if (spawnEvent.SpawnPoint == null || spawnEvent.EnemyDefinition == null)
+            EnemyRuntime enemy = enemySpawner.SpawnEnemy(spawnEvent);
+            if (enemy == null)
             {
-                Debug.LogWarning($"[EnemyWaveDirector] Spawn event '{spawnEvent.EventId}' has invalid spawn point or enemy definition.");
                 continue;
             }
 
-            enemySpawner.SpawnEnemy(spawnEvent);
+            runtime.ActiveEnemyCount++;
+            trackedEnemies.Add(enemy, runtime);
+            enemy.OnDestroyed += HandleEnemyDestroyed;
+            enemy.OnEscaped += HandleEnemyEscaped;
         }
     }
 
-    private bool CanStartSpawnEvent(EnemySpawnEvent spawnEvent, float deltaTime)
+    private void MarkSpawnFinished(SpawnEventRuntime runtime)
     {
-        if (spawnEvent == null || !spawnEvent.IsWaiting)
+        if (runtime.State == EnemySpawnEventState.Finished || runtime.State == EnemySpawnEventState.Resolved)
         {
-            return false;
+            return;
         }
 
-        switch (spawnEvent.StartCondition)
+        if (runtime.ActiveEnemyCount > 0)
         {
-            case EnemySpawnEventStartCondition.AfterDelay:
-                return TickDelay(spawnEvent, deltaTime);
+            runtime.State = EnemySpawnEventState.Finished;
+            return;
+        }
 
-            case EnemySpawnEventStartCondition.AfterSpawnEventFinished:
-                if (!IsRequiredConditionCompleted(spawnEvent))
-                {
-                    return false;
-                }
+        runtime.State = EnemySpawnEventState.Resolved;
+    }
 
-                return TickDelay(spawnEvent, deltaTime);
-
-            default:
-                return false;
+    private void HandleEnemyDestroyed(UnitRuntime unitRuntime)
+    {
+        if (unitRuntime is EnemyRuntime enemy)
+        {
+            ResolveTrackedEnemy(enemy);
         }
     }
 
-    private bool TickDelay(EnemySpawnEvent spawnEvent, float deltaTime)
+    private void HandleEnemyEscaped(EnemyRuntime enemy)
     {
-        if (spawnEvent == null)
-        {
-            return false;
-        }
-
-        SpawnEventRuntime spawnEventRuntime = spawnEventRuntimes[spawnEvent];
-        if (spawnEventRuntime != null)
-        {
-            spawnEventRuntime.SpawnDelayTimer += deltaTime;
-            return spawnEventRuntime.SpawnDelayTimer >= spawnEvent.StartDelay;
-        }
-
-        return false;
+        ResolveTrackedEnemy(enemy);
     }
 
-    private bool IsRequiredConditionCompleted(EnemySpawnEvent spawnEvent)
+    private void ResolveTrackedEnemy(EnemyRuntime enemy)
     {
-        if (spawnEvent == null)
+        if (enemy == null || !trackedEnemies.TryGetValue(enemy, out SpawnEventRuntime runtime))
         {
-            return false;
+            return;
         }
 
-        if (string.IsNullOrEmpty(spawnEvent.RequiredEventId))
+        enemy.OnDestroyed -= HandleEnemyDestroyed;
+        enemy.OnEscaped -= HandleEnemyEscaped;
+        trackedEnemies.Remove(enemy);
+        runtime.ActiveEnemyCount = Mathf.Max(0, runtime.ActiveEnemyCount - 1);
+
+        if (runtime.State == EnemySpawnEventState.Finished && runtime.ActiveEnemyCount == 0)
         {
-            return false;
+            runtime.State = EnemySpawnEventState.Resolved;
+        }
+    }
+
+    private void ClearTracking()
+    {
+        foreach (EnemyRuntime enemy in trackedEnemies.Keys)
+        {
+            if (enemy != null)
+            {
+                enemy.OnDestroyed -= HandleEnemyDestroyed;
+                enemy.OnEscaped -= HandleEnemyEscaped;
+            }
         }
 
-        if (!TryGetSpawnEventById(spawnEvent.RequiredEventId, out EnemySpawnEvent requiredEvent))
-        {
-            return false;
-        }
-
-        return requiredEvent.IsFinished || requiredEvent.IsResolved;
+        trackedEnemies.Clear();
     }
 }

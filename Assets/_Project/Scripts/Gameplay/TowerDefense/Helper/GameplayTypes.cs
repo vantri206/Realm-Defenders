@@ -19,7 +19,7 @@ public enum TargetPriorityMode
     Nearest,
     HighestPathProgress,
     LowestHealthPercent,
-    RangedPriority
+    AirPriority
 }
 
 [Flags]
@@ -172,14 +172,14 @@ public static class GridDirectionHelpers
     }
 }
 
-public enum RouteCheckpointType
+public enum EnemyRouteCheckpointType
 {
     Spawn,
     Checkpoint,
     End,
 }
 
-public enum RouteCheckpointDirection
+public enum EnemyRouteCheckpointDirection
 {
     Left,
     Right,
@@ -204,7 +204,7 @@ public enum SearchNodeState
 public enum EnemySpawnEventStartCondition
 {
     AfterDelay,
-    AfterSpawnEventFinished,
+    AfterSpawnEventResolved,
 }
 
 public enum EnemySpawnEventState
@@ -257,6 +257,12 @@ public enum EnemyResolveReason
 {
     Killed,
     Escaped,
+}
+
+public enum CombatStageResult
+{
+    Win,
+    Lose,
 }
 
 public enum SkillType

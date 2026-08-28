@@ -96,7 +96,7 @@ public class WorldHealthHUD : MonoBehaviour
 
     private void RefreshHealth()
     {
-        if (health == null || healthBar == null)
+        if (health == null || !health.IsInitialized || healthBar == null)
         {
             if (healthBar == null)
             {

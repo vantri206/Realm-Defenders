@@ -63,10 +63,25 @@ public sealed class ProgressionGeneratorWindow : EditorWindow
 
     private void OnEnable()
     {
-        experienceGrowthCurve ??= CreateDefaultExperienceGrowthCurve();
-        unitStatGrowthCurve ??= CreateDefaultGrowthCurve();
-        finalBreakdown ??= new UnitStatFinalBreakdown();
-        levelBreakdowns ??= new List<UnitStatLevelBreakdown>();
+        if (experienceGrowthCurve == null)
+        {
+            experienceGrowthCurve = CreateDefaultExperienceGrowthCurve();
+        }
+
+        if (unitStatGrowthCurve == null)
+        {
+            unitStatGrowthCurve = CreateDefaultGrowthCurve();
+        }
+
+        if (finalBreakdown == null)
+        {
+            finalBreakdown = new UnitStatFinalBreakdown();
+        }
+
+        if (levelBreakdowns == null)
+        {
+            levelBreakdowns = new List<UnitStatLevelBreakdown>();
+        }
         minSize = new Vector2(560f, 520f);
     }
 

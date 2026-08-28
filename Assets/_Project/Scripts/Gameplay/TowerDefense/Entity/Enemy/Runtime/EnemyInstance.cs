@@ -30,11 +30,11 @@ public class EnemyInstance
         this.definition = definition;
         if (stats != null)
         {
-            stats = new UnitStats(stats);
+            this.stats = new UnitStats(stats);
         }
         else
         {
-            stats = new UnitStats(GetDefaultStats(definition));
+            this.stats = new UnitStats(GetDefaultStats(definition));
         }
         isObjectiveEnemy = true;
     }

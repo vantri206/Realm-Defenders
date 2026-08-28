@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RangedFireAOE_Front_3x3+1_NormalAttack
   m_EditorClassIdentifier: Assembly-CSharp::NormalAttackDefinition
   attackType: 1
-  targetPriorityMode: 0
+  targetPriorityMode: 1
   attackPattern:
   - {x: 0, y: 0}
   - {x: -1, y: 0}
@@ -25,6 +25,11 @@ MonoBehaviour:
   - {x: -1, y: -1}
   - {x: 0, y: -1}
   - {x: 0, y: 1}
+  - {x: -3, y: 1}
+  - {x: -3, y: -1}
+  - {x: -4, y: 0}
+  - {x: -4, y: 1}
+  - {x: -4, y: -1}
   targetSide: 0
   attackEffect: 0
   attackMethod: 2

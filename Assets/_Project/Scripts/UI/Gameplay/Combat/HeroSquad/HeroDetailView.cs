@@ -48,7 +48,7 @@ public class HeroDetailView : MonoBehaviour
         Refresh();
         SetData(combatState);
 
-        Debug.Log($"Showing hero detail view for {combatState.Definition.HeroName}");
+        // Debug.Log($"Showing hero detail view for {combatState.Definition.HeroName}");
     }
 
     public void Show(HeroRuntime heroRuntime)

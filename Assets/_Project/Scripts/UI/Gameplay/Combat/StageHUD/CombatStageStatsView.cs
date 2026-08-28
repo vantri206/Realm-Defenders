@@ -60,15 +60,17 @@ public class CombatStageStatsView : MonoBehaviour
 
     private void Update()
     {
-        if (stageSystem.IsInitialized)
+        if (stageSystem == null || !stageSystem.IsInitialized)
         {
-            float remainingMeatTimerTime = stageSystem.MeatNaturalTimer.RemainingTime;
-            float totalMeatTimerTime = stageSystem.MeatNaturalTimer.TotalTime;
-            float fillAmount = Mathf.Clamp01(remainingMeatTimerTime / Mathf.Max(totalMeatTimerTime, 0.0001f));
-            if (meatIcon != null)
-            {
-                meatIcon.fillAmount = fillAmount;
-            }
+            return;
+        }
+
+        float remainingMeatTimerTime = stageSystem.MeatNaturalTimer.RemainingTime;
+        float totalMeatTimerTime = stageSystem.MeatNaturalTimer.TotalTime;
+        float fillAmount = Mathf.Clamp01(remainingMeatTimerTime / Mathf.Max(totalMeatTimerTime, 0.0001f));
+        if (meatIcon != null)
+        {
+            meatIcon.fillAmount = fillAmount;
         }
     }
 

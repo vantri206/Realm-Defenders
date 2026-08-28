@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: 2906155283392157334}
   - component: {fileID: 2564149174017949336}
   m_Layer: 5
-  m_Name: BattleScene_Player_HUD_Prefab
+  m_Name: Stage_HUD_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2158,10 +2158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659753e5768e6a54898fc01c6c4ea3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelStatsUI
-  foodIcon: {fileID: 3788094664368323535}
-  currentFoodText:
-    text: {fileID: 2269776478513964685}
-    emptyValue: 00
+  meatIcon: {fileID: 0}
+  currentMeatText:
+    text: {fileID: 0}
+    emptyValue: '-'
   currentLivesText:
     text: {fileID: 4741880218020151895}
     emptyValue: 00

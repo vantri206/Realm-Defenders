@@ -323,8 +323,16 @@ internal static class CharacterAnimatorPlaceholderScanner
             return;
         }
 
-        CharacterAnimationAction? stateMachineAction =
-            TryInferAction(stateMachine.name) ?? inheritedAction;
+        CharacterAnimationAction? inferredStateMachineAction = TryInferAction(stateMachine.name);
+        CharacterAnimationAction? stateMachineAction;
+        if (inferredStateMachineAction.HasValue)
+        {
+            stateMachineAction = inferredStateMachineAction;
+        }
+        else
+        {
+            stateMachineAction = inheritedAction;
+        }
 
         foreach (ChildAnimatorState childState in stateMachine.states)
         {
@@ -338,21 +346,51 @@ internal static class CharacterAnimatorPlaceholderScanner
                 ? state.name
                 : hierarchy + "/" + state.name;
 
-            CharacterAnimationAction? action =
-                TryInferAction(state.name) ??
-                stateMachineAction ??
-                TryInferAction(state.motion.name);
+            CharacterAnimationAction? stateAction = TryInferAction(state.name);
+            CharacterAnimationAction? action;
+            if (stateAction.HasValue)
+            {
+                action = stateAction;
+            }
+            else if (stateMachineAction.HasValue)
+            {
+                action = stateMachineAction;
+            }
+            else
+            {
+                action = TryInferAction(state.motion.name);
+            }
 
             AnimationClip directClip = state.motion as AnimationClip;
             if (directClip != null)
             {
-                CharacterAnimationAction? directAction = action ?? TryInferAction(directClip.name);
+                CharacterAnimationAction? directAction;
+                if (action.HasValue)
+                {
+                    directAction = action;
+                }
+                else
+                {
+                    directAction = TryInferAction(directClip.name);
+                }
+
                 if (directAction.HasValue)
                 {
+                    CharacterAnimationDirection? stateDirection = TryInferDirection(state.name);
+                    CharacterAnimationDirection? directDirection;
+                    if (stateDirection.HasValue)
+                    {
+                        directDirection = stateDirection;
+                    }
+                    else
+                    {
+                        directDirection = TryInferDirection(directClip.name);
+                    }
+
                     candidates.Add(new MotionCandidate
                     {
                         Action = directAction.Value,
-                        Direction = TryInferDirection(state.name) ?? TryInferDirection(directClip.name),
+                        Direction = directDirection,
                         Clip = directClip,
                         FromBlendTree = false,
                         Source = statePath
@@ -382,10 +420,16 @@ internal static class CharacterAnimatorPlaceholderScanner
                 ? childStateMachine.stateMachine.name
                 : hierarchy + "/" + childStateMachine.stateMachine.name;
 
+            CharacterAnimationAction? childStateMachineAction = TryInferAction(childStateMachine.stateMachine.name);
+            if (!childStateMachineAction.HasValue)
+            {
+                childStateMachineAction = stateMachineAction;
+            }
+
             ScanStateMachine(
                 childStateMachine.stateMachine,
                 childHierarchy,
-                TryInferAction(childStateMachine.stateMachine.name) ?? stateMachineAction,
+                childStateMachineAction,
                 candidates,
                 visited);
         }
@@ -404,7 +448,15 @@ internal static class CharacterAnimatorPlaceholderScanner
             return;
         }
 
-        CharacterAnimationAction? treeAction = inheritedAction ?? TryInferAction(blendTree.name);
+        CharacterAnimationAction? treeAction;
+        if (inheritedAction.HasValue)
+        {
+            treeAction = inheritedAction;
+        }
+        else
+        {
+            treeAction = TryInferAction(blendTree.name);
+        }
         bool directionalTree = IsDirectionalBlendTree(blendTree.blendType);
 
         foreach (ChildMotion child in blendTree.children)
@@ -417,19 +469,42 @@ internal static class CharacterAnimatorPlaceholderScanner
             CharacterAnimationDirection? childDirection = inheritedDirection;
             if (directionalTree)
             {
-                childDirection = TryInferDirection(child.position) ?? childDirection;
+                CharacterAnimationDirection? inferredChildDirection = TryInferDirection(child.position);
+                if (inferredChildDirection.HasValue)
+                {
+                    childDirection = inferredChildDirection;
+                }
             }
 
             AnimationClip childClip = child.motion as AnimationClip;
             if (childClip != null)
             {
-                CharacterAnimationAction? childAction = treeAction ?? TryInferAction(childClip.name);
+                CharacterAnimationAction? childAction;
+                if (treeAction.HasValue)
+                {
+                    childAction = treeAction;
+                }
+                else
+                {
+                    childAction = TryInferAction(childClip.name);
+                }
+
                 if (childAction.HasValue)
                 {
+                    CharacterAnimationDirection? resolvedChildDirection;
+                    if (childDirection.HasValue)
+                    {
+                        resolvedChildDirection = childDirection;
+                    }
+                    else
+                    {
+                        resolvedChildDirection = TryInferDirection(childClip.name);
+                    }
+
                     candidates.Add(new MotionCandidate
                     {
                         Action = childAction.Value,
-                        Direction = childDirection ?? TryInferDirection(childClip.name),
+                        Direction = resolvedChildDirection,
                         Clip = childClip,
                         FromBlendTree = true,
                         Source = statePath + "/" + blendTree.name
@@ -747,8 +822,18 @@ internal static class CharacterAnimationClipGenerator
                 currentOverrides.Select(pair => pair.Key).Where(clip => clip != null));
         }
 
+        IReadOnlyList<CharacterActionSheetSettings> actionSettings;
+        if (request.ActionSettings != null)
+        {
+            actionSettings = request.ActionSettings;
+        }
+        else
+        {
+            actionSettings = Array.Empty<CharacterActionSheetSettings>();
+        }
+
         Dictionary<CharacterAnimationAction, CharacterActionSheetSettings> settingsByAction =
-            (request.ActionSettings ?? Array.Empty<CharacterActionSheetSettings>())
+            actionSettings
             .Where(settings => settings != null)
             .GroupBy(settings => settings.Action)
             .ToDictionary(group => group.Key, group => group.First());

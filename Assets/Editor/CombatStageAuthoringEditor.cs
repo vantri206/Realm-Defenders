@@ -2,8 +2,8 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-[CustomEditor(typeof(EnemyRouteGraph))]
-public class EnemyRouteGraphEditor : Editor
+[CustomEditor(typeof(CombatStageAuthoring))]
+public class CombatStageAuthoringEditor : Editor
 {
     private SerializedProperty routesProperty;
     private ReorderableList routesList;
@@ -11,6 +11,11 @@ public class EnemyRouteGraphEditor : Editor
     private void OnEnable()
     {
         routesProperty = serializedObject.FindProperty("routes");
+        if (routesProperty == null)
+        {
+            return;
+        }
+
         routesList = new ReorderableList(serializedObject, routesProperty, true, true, true, true);
         routesList.drawHeaderCallback = DrawRoutesHeader;
         routesList.drawElementCallback = DrawRouteElement;
@@ -21,13 +26,36 @@ public class EnemyRouteGraphEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        routesList.DoLayoutList();
+        DrawPropertiesExcluding(serializedObject, "m_Script", "routes");
+
+        if (routesList != null)
+        {
+            EditorGUILayout.Space();
+            routesList.DoLayoutList();
+        }
+
         serializedObject.ApplyModifiedProperties();
+
+        EditorGUILayout.Space();
+        CombatStageAuthoring authoring = (CombatStageAuthoring)target;
+
+        if (GUILayout.Button("Validate Stage"))
+        {
+            if (authoring.TryCreateStageData(out _, out _))
+            {
+                Debug.Log($"[CombatStageAuthoring] Stage '{authoring.StageId}' is valid.", authoring);
+            }
+        }
+
+        if (GUILayout.Button("Export Stage Definition"))
+        {
+            CombatStageExporter.Export(authoring);
+        }
     }
 
     private void DrawRoutesHeader(Rect rect)
     {
-        EditorGUI.LabelField(rect, "Routes");
+        EditorGUI.LabelField(rect, "Enemy Routes");
     }
 
     private void DrawRouteElement(Rect rect, int index, bool isActive, bool isFocused)
@@ -46,8 +74,11 @@ public class EnemyRouteGraphEditor : Editor
 
     private void SelectRoute(ReorderableList list)
     {
-        EnemyRouteGraph routeGraph = (EnemyRouteGraph)target;
-        routeGraph.SetSelectedRouteIndex(list.index);
+        serializedObject.ApplyModifiedProperties();
+
+        CombatStageAuthoring authoring = (CombatStageAuthoring)target;
+        authoring.SetSelectedRouteIndex(list.index);
+        serializedObject.Update();
         SceneView.RepaintAll();
     }
 }

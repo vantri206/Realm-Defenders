@@ -561,6 +561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroActionHUD_Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 2810827952714470643, guid: 4146a6645268c6f46ba54a6078ce63fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2906133234920695015, guid: 4146a6645268c6f46ba54a6078ce63fd, type: 3}
       propertyPath: col
       value: 
@@ -577,6 +581,10 @@ PrefabInstance:
       propertyPath: isScaleUpHover
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3853015504164291586, guid: 4146a6645268c6f46ba54a6078ce63fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4340339183227196821, guid: 4146a6645268c6f46ba54a6078ce63fd, type: 3}
       propertyPath: actionButtons.Array.size
       value: 1
@@ -585,6 +593,10 @@ PrefabInstance:
       propertyPath: 'actionButtons.Array.data[0]'
       value: 
       objectReference: {fileID: 4497015148555256463}
+    - target: {fileID: 4593291134115145092, guid: 4146a6645268c6f46ba54a6078ce63fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7379426816842248338, guid: 4146a6645268c6f46ba54a6078ce63fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

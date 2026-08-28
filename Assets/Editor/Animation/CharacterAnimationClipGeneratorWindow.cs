@@ -603,8 +603,18 @@ public sealed class CharacterAnimationClipGeneratorWindow : EditorWindow
             _directionOrder = CharacterAnimationNaming.Directions.ToArray();
         }
 
+        List<CharacterActionSheetSettings> sourceSettings;
+        if (_actionSettings != null)
+        {
+            sourceSettings = _actionSettings;
+        }
+        else
+        {
+            sourceSettings = new List<CharacterActionSheetSettings>();
+        }
+
         Dictionary<CharacterAnimationAction, CharacterActionSheetSettings> existingSettings =
-            (_actionSettings ?? new List<CharacterActionSheetSettings>())
+            sourceSettings
             .Where(settings => settings != null)
             .GroupBy(settings => settings.Action)
             .ToDictionary(group => group.Key, group => group.First());
@@ -626,8 +636,15 @@ public sealed class CharacterAnimationClipGeneratorWindow : EditorWindow
 
         if (_outputFolder == null)
         {
-            _outputFolder = AssetDatabase.LoadAssetAtPath<DefaultAsset>(DefaultOutputFolder) ??
-                            AssetDatabase.LoadAssetAtPath<DefaultAsset>("Assets");
+            DefaultAsset defaultOutputFolder = AssetDatabase.LoadAssetAtPath<DefaultAsset>(DefaultOutputFolder);
+            if (defaultOutputFolder != null)
+            {
+                _outputFolder = defaultOutputFolder;
+            }
+            else
+            {
+                _outputFolder = AssetDatabase.LoadAssetAtPath<DefaultAsset>("Assets");
+            }
         }
     }
 

@@ -21,16 +21,15 @@ public class StageSystem : MonoBehaviour
     [Header("References")]
     [SerializeField] private CombatStageStatsView stageStatsUI;
     
-    [Header("Stage Config")]
-    [SerializeField] private int startingMeat = 20;
-    [SerializeField] private int startingLives = 10;
-    [SerializeField] private int meatNaturalPerSecond = 1;
-
     // Stage states
     private CountdownTimer meatNaturalTimer;
     private int stageEnemyCount;
+    private int startingMeat;
+    private int startingLives;
+    private int meatNaturalPerSecond;
     private float meatNaturalSpeedMultiplier = 1f;
-    private bool isStageEnded = false;
+    private bool isWaveResolved;
+    private bool isStageEnded;
 
     // Stage stats
     private int currentMeat;
@@ -55,10 +54,11 @@ public class StageSystem : MonoBehaviour
     public bool IsAllEnemiesSpawned => spawnedObjectiveEnemies >= stageEnemyCount;
 
     public event Action OnStageStatsChanged;
+    public event Action<CombatStageResult> OnStageEnded;
 
     public bool IsInitialized => isInitialized;
 
-    public void Initialize(int startingMeat, int startingLives, int totalEnemyCount, CombatTimeController combatTime)
+    public void Initialize(CombatStageStartConfig startConfig, int totalEnemyCount, CombatTimeController combatTime)
     {
         if (isInitialized)
         {
@@ -66,21 +66,26 @@ public class StageSystem : MonoBehaviour
             return;
         }
 
-        if (combatTime == null)
+        if (startConfig == null || combatTime == null)
         {
-            Debug.LogError("[StageSystem] CombatTimeController is required to initialize stage system.", this);
+            Debug.LogError("[StageSystem] Stage start config and CombatTimeController are required.", this);
             return;
         }
 
         this.combatTime = combatTime;
 
+        startingMeat = startConfig.StartingMeat;
+        startingLives = startConfig.StartingLives;
+        meatNaturalPerSecond = startConfig.NaturalMeatPerSecond;
         currentMeat = Mathf.Clamp(startingMeat, 0, GameplayConstants.MAX_MEAT);
-        currentLives = startingLives;
+        currentLives = Mathf.Max(0, startingLives);
         stageEnemyCount = totalEnemyCount;
 
         resolvedObjectiveEnemies = 0;
         spawnedObjectiveEnemies = 0;
         activeEnemies = new Dictionary<EnemyRuntime, EnemyTrackingData>();
+        isWaveResolved = false;
+        isStageEnded = false;
 
         if (stageStatsUI != null)
         {
@@ -103,13 +108,13 @@ public class StageSystem : MonoBehaviour
 
         if (IsStageCompleted())
         {
-            Debug.Log("[StageSystem] Stage Completed!");
-            isStageEnded = true;
+            EndStage(CombatStageResult.Win);
+            return;
         }
         else if (IsStageFailed())
         {
-            Debug.Log("[StageSystem] Stage Failed!");
-            isStageEnded = true;
+            EndStage(CombatStageResult.Lose);
+            return;
         }
 
         if (meatNaturalTimer != null)
@@ -203,8 +208,6 @@ public class StageSystem : MonoBehaviour
     public void RefundRetreatMeat(int deployCost)
     {
         int refundMeat = Mathf.FloorToInt(Mathf.Max(0, deployCost) * GameplayConstants.RETREAT_MEAT_REFUND_RATE);
-        int previousMeat = currentMeat;
-
         OnGainMeat(refundMeat);
     }
 
@@ -221,7 +224,7 @@ public class StageSystem : MonoBehaviour
 
     public bool IsStageCompleted()
     {
-        return IsAllEnemiesSpawned && resolvedObjectiveEnemies >= spawnedObjectiveEnemies && activeEnemies.Count == 0 && currentLives > 0;
+        return isWaveResolved && activeEnemies.Count == 0 && currentLives > 0;
     }
 
     public bool IsStageFailed()
@@ -236,6 +239,18 @@ public class StageSystem : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void NotifyWaveResolved()
+    {
+        isWaveResolved = true;
+    }
+
+    private void EndStage(CombatStageResult result)
+    {
+        isStageEnded = true;
+        Debug.Log($"[StageSystem] Stage ended with result: {result}.");
+        OnStageEnded?.Invoke(result);
     }
 
     private void NotifyStageStatsChanged()

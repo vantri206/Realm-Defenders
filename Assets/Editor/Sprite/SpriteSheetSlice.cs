@@ -1157,7 +1157,17 @@ public sealed class SpriteSheetSlice : EditorWindow
 
     private List<Texture2D> BuildUniqueTextureList()
     {
-        return (_textures ?? new List<Texture2D>())
+        List<Texture2D> sourceTextures;
+        if (_textures != null)
+        {
+            sourceTextures = _textures;
+        }
+        else
+        {
+            sourceTextures = new List<Texture2D>();
+        }
+
+        return sourceTextures
             .Where(texture => texture != null)
             .Distinct()
             .ToList();

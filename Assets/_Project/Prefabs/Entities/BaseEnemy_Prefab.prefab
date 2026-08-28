@@ -273,8 +273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hurtbox
   damageableMB: {fileID: 240840444972765574}
-  ownerRuntime: {fileID: 0}
-  ownerTeam: {fileID: 0}
+  ownerRuntime: {fileID: 1262049475646235035}
+  ownerTeam: {fileID: 2003347439667740962}
 --- !u!1 &8173713777979165277
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +293,6 @@ GameObject:
   - component: {fileID: 240840444972765574}
   - component: {fileID: 3293046165401137460}
   - component: {fileID: 8918522472569756605}
-  - component: {fileID: 5129207600510837879}
   m_Layer: 9
   m_Name: BaseEnemy_Prefab
   m_TagString: Untagged
@@ -335,8 +334,8 @@ MonoBehaviour:
   health: {fileID: 240840444972765574}
   unitVisual: {fileID: 4003300659852317220}
   unitMovement: {fileID: 4783594736622769853}
-  hurtbox: {fileID: 0}
-  battleTeam: {fileID: 0}
+  hurtbox: {fileID: 6820882781084436946}
+  battleTeam: {fileID: 2003347439667740962}
   enemyPathfindingController: {fileID: 3293046165401137460}
   normalAttackController: {fileID: 5229667296458483134}
   targetScanner: {fileID: 4892403004967213831}
@@ -429,12 +428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430905709cda14b42b024edf663612f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPathfindingController
-  separationResolver: {fileID: 5129207600510837879}
-  separationSettings:
-    radius: 0.55
-    weight: 0.35
-    maxForce: 0.8
-    cellSearchRange: 1
 --- !u!50 &8918522472569756605
 Rigidbody2D:
   serializedVersion: 5
@@ -462,23 +455,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &5129207600510837879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8173713777979165277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6b5e61097f4db49baac5f1dce7fc8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UnitSeparationResolver
-  defaultSettings:
-    radius: 0.4
-    weight: 0.2
-    maxForce: 0.8
-    cellSearchRange: 1
 --- !u!1001 &951481564693562051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -535,9 +511,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -1.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1573065323416766524, guid: 097c6a615af299a478ea6de7e725b3bf, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534390727455799398, guid: 097c6a615af299a478ea6de7e725b3bf, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4005631240944033359, guid: 097c6a615af299a478ea6de7e725b3bf, type: 3}
       propertyPath: m_Name
       value: WorldHealthHUD_Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 6707962867863689487, guid: 097c6a615af299a478ea6de7e725b3bf, type: 3}
+      propertyPath: fillAlpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6707962867863689487, guid: 097c6a615af299a478ea6de7e725b3bf, type: 3}
+      propertyPath: backgroundAlpha
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7820520941074980707, guid: 097c6a615af299a478ea6de7e725b3bf, type: 3}
       propertyPath: m_LocalScale.x

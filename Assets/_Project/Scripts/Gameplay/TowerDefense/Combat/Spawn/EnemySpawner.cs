@@ -1,14 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private const float spawnSpreadCell = 0.18f;
+    private const float spawnSpreadCell = 0.35f;
+    private const float minSpawnSpreadDistance = 0.45f;
+    private const int spawnPositionAttemptCount = 32;
+
+    private readonly Dictionary<string, CombatSpawnPointDefinition> spawnPoints = new Dictionary<string, CombatSpawnPointDefinition>();
 
     private UnitCombatContext combatContext;
     private EnemyRouteGraph routeGraph;
     private EnemyDepthSorter enemyDepthSorter;
     private StageSystem stageSystem;
-
     private bool isInitialized;
 
     public bool IsInitialized => isInitialized;
@@ -18,13 +22,27 @@ public class EnemySpawner : MonoBehaviour
         CacheReferences();
     }
 
-    public void Initialize(UnitCombatContext combatContext, EnemyRouteGraph routeGraph, EnemyDepthSorter enemyDepthSorter, StageSystem stageSystem)
+    public void Initialize(UnitCombatContext combatContext, EnemyRouteGraph routeGraph, EnemyDepthSorter enemyDepthSorter, StageSystem stageSystem, CombatMapData mapData)
     {
         this.combatContext = combatContext;
         this.routeGraph = routeGraph;
         this.enemyDepthSorter = enemyDepthSorter;
         this.stageSystem = stageSystem;
-        isInitialized = this.combatContext != null && this.combatContext.IsValid && this.enemyDepthSorter != null && this.stageSystem != null;
+
+        spawnPoints.Clear();
+        if (mapData != null)
+        {
+            for (int i = 0; i < mapData.SpawnPoints.Count; i++)
+            {
+                CombatSpawnPointDefinition spawnPoint = mapData.SpawnPoints[i];
+                if (spawnPoint != null && !string.IsNullOrWhiteSpace(spawnPoint.SpawnPointId))
+                {
+                    spawnPoints[spawnPoint.SpawnPointId] = spawnPoint;
+                }
+            }
+        }
+
+        isInitialized = this.combatContext != null && this.combatContext.IsValid && this.routeGraph != null && this.stageSystem != null && spawnPoints.Count > 0;
 
         if (!isInitialized)
         {
@@ -32,11 +50,11 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public EnemyRuntime SpawnEnemy(EnemySpawnEvent spawnEvent)
+    public EnemyRuntime SpawnEnemy(EnemySpawnEventDefinition spawnEvent)
     {
         if (spawnEvent == null)
         {
-            Debug.LogError("[EnemySpawner] EnemySpawnEvent is required to spawn enemy.", this);
+            Debug.LogError("[EnemySpawner] EnemySpawnEventDefinition is required to spawn enemy.", this);
             return null;
         }
 
@@ -52,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
             return null;
         }
 
-        if (!TryGetSpawnCell(spawnEvent.SpawnPoint, out CombatGridCell spawnCell))
+        if (!TryGetSpawnCell(spawnEvent.SpawnPointId, out CombatGridCell spawnCell))
         {
             return null;
         }
@@ -62,11 +80,11 @@ public class EnemySpawner : MonoBehaviour
             Debug.LogError($"[EnemySpawner] Failed to get spawn position for cell {spawnCell.CellPosition}.", this);
             return null;
         }
-        
+
         return SpawnEnemy(spawnEvent.EnemyDefinition, spawnPosition, spawnCell, spawnEvent.RouteId);
     }
 
-    public EnemyRuntime SpawnEnemy(EnemyDefinition enemyDefinition, Vector3 spawnPosition, CombatGridCell spawnCell, string routeId)
+    private EnemyRuntime SpawnEnemy(EnemyDefinition enemyDefinition, Vector3 spawnPosition, CombatGridCell spawnCell, string routeId)
     {
         EnemyInstance enemyInstance = CreateEnemyInstance(enemyDefinition);
         if (enemyInstance == null)
@@ -86,17 +104,21 @@ public class EnemySpawner : MonoBehaviour
         if (!enemy.IsInitialized)
         {
             Debug.LogError("[EnemySpawner] Spawned enemy failed to initialize.", enemy);
+            Destroy(enemy.gameObject);
             return null;
         }
 
         enemyDepthSorter.RegisterEnemy(enemy);
-        stageSystem.RegisterEnemy(enemy, new EnemyTrackingData(enemyInstance.IsObjectiveEnemy, GameplayConstants.NORMAL_ENEMY_LIVES_DAMAGE, enemyInstance.Definition.MeatReward));
+        stageSystem.RegisterEnemy(enemy, new EnemyTrackingData(
+            enemyInstance.IsObjectiveEnemy,
+            GameplayConstants.NORMAL_ENEMY_LIVES_DAMAGE,
+            enemyInstance.Definition.MeatReward));
         RegisterEnemyEvents(enemy);
         return enemy;
     }
 
     private EnemyInstance CreateEnemyInstance(EnemyDefinition enemyDefinition)
-{
+    {
         if (enemyDefinition == null)
         {
             Debug.LogError("[EnemySpawner] EnemyDefinition is required to create enemy instance.", this);
@@ -108,16 +130,22 @@ public class EnemySpawner : MonoBehaviour
         return enemyInstance;
     }
 
-    private bool TryGetSpawnCell(EnemySpawnPoint spawnPoint, out CombatGridCell cell)
+    private bool TryGetSpawnCell(string spawnPointId, out CombatGridCell cell)
     {
-        if (spawnPoint == null)
+        if (string.IsNullOrWhiteSpace(spawnPointId) || !spawnPoints.TryGetValue(spawnPointId, out CombatSpawnPointDefinition spawnPoint))
         {
-            Debug.LogError("[EnemySpawner] EnemySpawnPoint is required to resolve spawn cell.", this);
+            Debug.LogError($"[EnemySpawner] Spawn point '{spawnPointId}' was not found in combat map data.", this);
             cell = null;
             return false;
         }
 
-        return spawnPoint.TryGetSpawnCell(combatContext.CombatGrid, out cell);
+        if (!combatContext.CombatGrid.TryGetCell(spawnPoint.CellPosition, out cell))
+        {
+            Debug.LogError($"[EnemySpawner] Spawn point '{spawnPointId}' does not resolve to a built combat grid cell.", this);
+            return false;
+        }
+
+        return true;
     }
 
     private bool TryGetSpawnPosition(EnemyDefinition enemyDefinition, CombatGridCell spawnCell, out Vector3 spawnPosition)
@@ -134,20 +162,64 @@ public class EnemySpawner : MonoBehaviour
         }
 
         Vector3 cellSize = combatContext.CombatGrid.CellSize;
-        float spreadRadius = Mathf.Min(Mathf.Abs(cellSize.x), Mathf.Abs(cellSize.y)) * spawnSpreadCell;
-        Vector2 centerSpread = Random.insideUnitCircle * spreadRadius;
-        Vector3 enemyCenterSpawnPosition = cellCenter + (Vector3)centerSpread;
-        spawnPosition = enemyCenterSpawnPosition - (Vector3)enemyDefinition.NavigationOffset;
+        float spreadX = Mathf.Abs(cellSize.x) * spawnSpreadCell;
+        float spreadY = Mathf.Abs(cellSize.y) * spawnSpreadCell;
+        float minDistanceSqr = minSpawnSpreadDistance * minSpawnSpreadDistance;
+        float bestDistanceSqr = float.NegativeInfinity;
+        Vector3 bestCenterPosition = cellCenter;
+
+        for (int i = 0; i < spawnPositionAttemptCount; i++)
+        {
+            Vector2 centerSpread = new Vector2(
+                Random.Range(-spreadX, spreadX),
+                Random.Range(-spreadY, spreadY));
+            Vector3 candidateCenterPosition = cellCenter + (Vector3)centerSpread;
+            float nearestEnemyDistanceSqr = GetNearestEnemyDistanceSqr(candidateCenterPosition);
+
+            if (nearestEnemyDistanceSqr >= minDistanceSqr)
+            {
+                spawnPosition = candidateCenterPosition - (Vector3)enemyDefinition.NavigationOffset;
+                return true;
+            }
+
+            if (nearestEnemyDistanceSqr > bestDistanceSqr)
+            {
+                bestDistanceSqr = nearestEnemyDistanceSqr;
+                bestCenterPosition = candidateCenterPosition;
+            }
+        }
+
+        spawnPosition = bestCenterPosition - (Vector3)enemyDefinition.NavigationOffset;
         return true;
+    }
+
+    private float GetNearestEnemyDistanceSqr(Vector3 centerPosition)
+    {
+        if (stageSystem == null || stageSystem.ActiveEnemies == null || stageSystem.ActiveEnemies.Count == 0)
+        {
+            return float.PositiveInfinity;
+        }
+
+        float nearestDistanceSqr = float.PositiveInfinity;
+        foreach (EnemyRuntime enemy in stageSystem.ActiveEnemies.Keys)
+        {
+            if (enemy == null || enemy.IsDead)
+            {
+                continue;
+            }
+
+            float distanceSqr = ((Vector2)centerPosition - (Vector2)enemy.CenterPosition).sqrMagnitude;
+            if (distanceSqr < nearestDistanceSqr)
+            {
+                nearestDistanceSqr = distanceSqr;
+            }
+        }
+
+        return nearestDistanceSqr;
     }
 
     private void RegisterEnemyEvents(EnemyRuntime enemy)
     {
-        if (enemy == null)
-        {
-            return;
-        }
-
         enemy.OnDestroyed += HandleEnemyDestroyed;
         enemy.OnEscaped += HandleEnemyEscaped;
     }

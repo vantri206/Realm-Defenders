@@ -211,7 +211,7 @@ public class HeroCardView : MonoBehaviour
             countdownCircle.fillAmount = Mathf.Clamp01(remainingTime / totalTime);
         }
 
-        countdownText.SetFloat(remainingTime, "0.##");
+        countdownText.SetFloat(remainingTime, "0.0");
     }
 
     public void ClearCountdown()

@@ -23,7 +23,15 @@ public sealed class UnitStatProgressionTableEditor : Editor
     {
         serializedObject.Update();
 
-        int rowCount = statsByLevelProperty?.arraySize ?? 0;
+        int rowCount;
+        if (statsByLevelProperty != null)
+        {
+            rowCount = statsByLevelProperty.arraySize;
+        }
+        else
+        {
+            rowCount = 0;
+        }
         EditorGUILayout.LabelField("Max Level", rowCount.ToString());
         EditorGUILayout.Space(4f);
 

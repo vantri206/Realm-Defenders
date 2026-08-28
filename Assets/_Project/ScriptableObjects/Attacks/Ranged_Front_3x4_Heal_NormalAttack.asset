@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ranged_Front_3x4_Heal_NormalAttack
   m_EditorClassIdentifier: Assembly-CSharp::NormalAttackDefinition
   attackType: 1
-  targetPriorityMode: 0
+  targetPriorityMode: 2
   attackPattern:
   - {x: 0, y: 0}
   - {x: -1, y: 0}

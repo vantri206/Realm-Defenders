@@ -3,30 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class EnemyRouteDefinition
+public class EnemyRouteAuthoring
 {
     [SerializeField] private string routeId;
-    [SerializeField] private List<RouteCheckpoint> checkpoints = new List<RouteCheckpoint>();
+    [SerializeField] private List<EnemyRouteCheckpointAuthoring> checkpoints = new List<EnemyRouteCheckpointAuthoring>();
 
     public string RouteId => routeId;
-    public IReadOnlyList<RouteCheckpoint> Checkpoints => checkpoints;
+    public IReadOnlyList<EnemyRouteCheckpointAuthoring> Checkpoints => checkpoints;
     public int CheckpointCount => checkpoints != null ? checkpoints.Count : 0;
     public bool HasCheckpoints => CheckpointCount > 0;
-    public RouteCheckpoint StartCheckpoint => GetCheckpoint(0);
-    public RouteCheckpoint EndCheckpoint => GetCheckpoint(CheckpointCount - 1);
+    public EnemyRouteCheckpointAuthoring StartCheckpoint => GetCheckpoint(0);
+    public EnemyRouteCheckpointAuthoring EndCheckpoint => GetCheckpoint(CheckpointCount - 1);
 
-    public RouteCheckpoint GetCheckpoint(int index)
+    public EnemyRouteCheckpointAuthoring GetCheckpoint(int index)
     {
-        if (TryGetCheckpoint(index, out RouteCheckpoint checkpoint))
+        if (TryGetCheckpoint(index, out EnemyRouteCheckpointAuthoring checkpoint))
         {
             return checkpoint;
         }
 
-        Debug.LogError($"[EnemyRouteDefinition] Index {index} is out of bounds for route '{routeId}' with {CheckpointCount} checkpoints.");
+        Debug.LogError($"[EnemyRouteAuthoring] Index {index} is out of bounds for route '{routeId}' with {CheckpointCount} checkpoints.");
         return null;
     }
 
-    public bool TryGetCheckpoint(int index, out RouteCheckpoint checkpoint)
+    public bool TryGetCheckpoint(int index, out EnemyRouteCheckpointAuthoring checkpoint)
     {
         checkpoint = null;
 
@@ -39,7 +39,7 @@ public class EnemyRouteDefinition
         return checkpoint != null;
     }
 
-    public int GetCheckpointIndex(RouteCheckpoint checkpoint)
+    public int GetCheckpointIndex(EnemyRouteCheckpointAuthoring checkpoint)
     {
         if (checkpoint == null || checkpoints == null)
         {
@@ -49,12 +49,12 @@ public class EnemyRouteDefinition
         return checkpoints.IndexOf(checkpoint);
     }
 
-    public bool ContainsCheckpoint(RouteCheckpoint checkpoint)
+    public bool ContainsCheckpoint(EnemyRouteCheckpointAuthoring checkpoint)
     {
         return GetCheckpointIndex(checkpoint) >= 0;
     }
 
-    public bool AddCheckpoint(RouteCheckpoint checkpoint)
+    public bool AddCheckpoint(EnemyRouteCheckpointAuthoring checkpoint)
     {
         if (checkpoint == null)
         {
@@ -63,14 +63,14 @@ public class EnemyRouteDefinition
 
         if (checkpoints == null)
         {
-            checkpoints = new List<RouteCheckpoint>();
+            checkpoints = new List<EnemyRouteCheckpointAuthoring>();
         }
 
         checkpoints.Add(checkpoint);
         return true;
     }
 
-    public bool InsertCheckpoint(int index, RouteCheckpoint checkpoint)
+    public bool InsertCheckpoint(int index, EnemyRouteCheckpointAuthoring checkpoint)
     {
         if (checkpoint == null)
         {
@@ -79,7 +79,7 @@ public class EnemyRouteDefinition
 
         if (checkpoints == null)
         {
-            checkpoints = new List<RouteCheckpoint>();
+            checkpoints = new List<EnemyRouteCheckpointAuthoring>();
         }
         
         int insertIndex = Mathf.Clamp(index, 0, checkpoints.Count);
@@ -87,7 +87,7 @@ public class EnemyRouteDefinition
         return true;
     }
 
-    public bool RemoveCheckpoint(RouteCheckpoint checkpoint)
+    public bool RemoveCheckpoint(EnemyRouteCheckpointAuthoring checkpoint)
     {
         if (checkpoint == null || checkpoints == null)
         {
