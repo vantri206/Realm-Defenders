@@ -16,7 +16,30 @@ MonoBehaviour:
   skillName: Holy Burst
   skillIcon: {fileID: -1925026346, guid: 2672123c3a864d84d9503655df72d677, type: 3}
   skillDescription: Deal 120% Attack as Physical Damage to nearby enemies and gain
-    a shield equal to 15% Max Health.
+    a shield equal to 15% Max HP.
   skillType: 0
   targetType: 2
   cooldown: 11
+  skill:
+    rid: 7224588149785886798
+  references:
+    version: 2
+    RefIds:
+    - rid: 7224588149785886798
+      type: {class: HolyBurstSkill, ns: , asm: Assembly-CSharp}
+      data:
+        damageMultiplier: 1.2
+        shieldMultiplier: 0.15
+        attackType: 0
+        areaPattern:
+        - {x: 0, y: 0}
+        - {x: -1, y: 0}
+        - {x: -1, y: 1}
+        - {x: 0, y: 1}
+        - {x: 1, y: 1}
+        - {x: 1, y: 0}
+        - {x: 0, y: -1}
+        - {x: -1, y: -1}
+        - {x: 1, y: -1}
+        aoeHitPrefab: {fileID: 2542186368254637529, guid: 7ae834abdd5957047806fb09037be7b9, type: 3}
+        hitVFXPrefab: {fileID: 5006250830996535109, guid: 326cade601d06734b89b36364c081a10, type: 3}

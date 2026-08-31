@@ -5,7 +5,6 @@ public class EnemySpawner : MonoBehaviour
 {
     private const float spawnSpreadCell = 0.35f;
     private const float minSpawnSpreadDistance = 0.45f;
-    private const int spawnPositionAttemptCount = 32;
 
     private readonly Dictionary<string, CombatSpawnPointDefinition> spawnPoints = new Dictionary<string, CombatSpawnPointDefinition>();
 
@@ -109,10 +108,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         enemyDepthSorter.RegisterEnemy(enemy);
-        stageSystem.RegisterEnemy(enemy, new EnemyTrackingData(
-            enemyInstance.IsObjectiveEnemy,
-            GameplayConstants.NORMAL_ENEMY_LIVES_DAMAGE,
-            enemyInstance.Definition.MeatReward));
+        stageSystem.RegisterEnemy(enemy, new EnemyTrackingData(enemyInstance.IsObjectiveEnemy, GameplayConstants.NORMAL_ENEMY_LIVES_DAMAGE, enemyInstance.Definition.MeatReward));
         RegisterEnemyEvents(enemy);
         return enemy;
     }
@@ -162,60 +158,11 @@ public class EnemySpawner : MonoBehaviour
         }
 
         Vector3 cellSize = combatContext.CombatGrid.CellSize;
-        float spreadX = Mathf.Abs(cellSize.x) * spawnSpreadCell;
-        float spreadY = Mathf.Abs(cellSize.y) * spawnSpreadCell;
-        float minDistanceSqr = minSpawnSpreadDistance * minSpawnSpreadDistance;
-        float bestDistanceSqr = float.NegativeInfinity;
-        Vector3 bestCenterPosition = cellCenter;
-
-        for (int i = 0; i < spawnPositionAttemptCount; i++)
-        {
-            Vector2 centerSpread = new Vector2(
-                Random.Range(-spreadX, spreadX),
-                Random.Range(-spreadY, spreadY));
-            Vector3 candidateCenterPosition = cellCenter + (Vector3)centerSpread;
-            float nearestEnemyDistanceSqr = GetNearestEnemyDistanceSqr(candidateCenterPosition);
-
-            if (nearestEnemyDistanceSqr >= minDistanceSqr)
-            {
-                spawnPosition = candidateCenterPosition - (Vector3)enemyDefinition.NavigationOffset;
-                return true;
-            }
-
-            if (nearestEnemyDistanceSqr > bestDistanceSqr)
-            {
-                bestDistanceSqr = nearestEnemyDistanceSqr;
-                bestCenterPosition = candidateCenterPosition;
-            }
-        }
-
-        spawnPosition = bestCenterPosition - (Vector3)enemyDefinition.NavigationOffset;
+        float spreadRadius = Mathf.Min(Mathf.Abs(cellSize.x), Mathf.Abs(cellSize.y)) * spawnSpreadCell;
+        Vector2 centerSpread = Random.insideUnitCircle * spreadRadius;
+        Vector3 enemyCenterSpawnPosition = cellCenter + (Vector3)centerSpread;
+        spawnPosition = enemyCenterSpawnPosition - (Vector3)enemyDefinition.NavigationOffset;
         return true;
-    }
-
-    private float GetNearestEnemyDistanceSqr(Vector3 centerPosition)
-    {
-        if (stageSystem == null || stageSystem.ActiveEnemies == null || stageSystem.ActiveEnemies.Count == 0)
-        {
-            return float.PositiveInfinity;
-        }
-
-        float nearestDistanceSqr = float.PositiveInfinity;
-        foreach (EnemyRuntime enemy in stageSystem.ActiveEnemies.Keys)
-        {
-            if (enemy == null || enemy.IsDead)
-            {
-                continue;
-            }
-
-            float distanceSqr = ((Vector2)centerPosition - (Vector2)enemy.CenterPosition).sqrMagnitude;
-            if (distanceSqr < nearestDistanceSqr)
-            {
-                nearestDistanceSqr = distanceSqr;
-            }
-        }
-
-        return nearestDistanceSqr;
     }
 
     private void RegisterEnemyEvents(EnemyRuntime enemy)

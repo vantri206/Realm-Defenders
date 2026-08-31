@@ -22,6 +22,7 @@ public class CombatStageHUDController : MonoBehaviour
     private PlayerCombatAction playerCombatAction;
     private CombatTimeController combatTime;
     private bool isFastSpeed;
+    private float previousPauseSpeed = normalSpeedMultiplier;
 
     private bool isInitialized;
 
@@ -41,6 +42,7 @@ public class CombatStageHUDController : MonoBehaviour
 
         isFastSpeed = false;
         ApplySpeedState();
+        previousPauseSpeed = combatTime.CombatSpeedMultiplier;
 
         isInitialized = true;
         RegisterButtonEvents();
@@ -113,7 +115,15 @@ public class CombatStageHUDController : MonoBehaviour
             return;
         }
 
-        combatTime.SetSpeedMultiplier(pauseSpeedMultiplier);
+        if (combatTime.IsCombatPaused)
+        {
+            combatTime.SetSpeedMultiplier(previousPauseSpeed);
+        }
+        else
+        {
+            previousPauseSpeed = combatTime.CombatSpeedMultiplier;
+            combatTime.SetSpeedMultiplier(pauseSpeedMultiplier);
+        }
     }
 
     private void ApplySpeedState()

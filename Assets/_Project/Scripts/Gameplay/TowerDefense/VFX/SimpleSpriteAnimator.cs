@@ -7,6 +7,7 @@ public class SimpleSpriteAnimator : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private List<Sprite> frames = new List<Sprite>();
     [SerializeField] private float framesPerSecond = 12f;
+    [SerializeField] private int startFrameIndex;
     [SerializeField] private bool isLoop;
 
     private int currentFrameIndex;
@@ -15,6 +16,7 @@ public class SimpleSpriteAnimator : MonoBehaviour
 
     public bool IsPlaying => isPlaying;
     public bool IsLooping => isLoop;
+    public int StartFrameIndex => startFrameIndex;
 
     protected virtual void Awake()
     {
@@ -66,7 +68,7 @@ public class SimpleSpriteAnimator : MonoBehaviour
             return false;
         }
 
-        currentFrameIndex = 0;
+        currentFrameIndex = Mathf.Clamp(startFrameIndex, 0, frames.Count - 1);
 
         float frameDuration = 1f / framesPerSecond;
         frameTimer = new CountdownTimer(frameDuration);
@@ -103,6 +105,11 @@ public class SimpleSpriteAnimator : MonoBehaviour
         StopAnimation();
     }
 
+    public void SetLooping(bool shouldLoop)
+    {
+        isLoop = shouldLoop;
+    }
+
     private void AdvanceFrame()
     {
         currentFrameIndex++;
@@ -133,6 +140,13 @@ public class SimpleSpriteAnimator : MonoBehaviour
     protected virtual void OnValidate()
     {
         framesPerSecond = Mathf.Max(0.01f, framesPerSecond);
+        startFrameIndex = Mathf.Max(0, startFrameIndex);
+
+        if (frames != null && frames.Count > 0)
+        {
+            startFrameIndex = Mathf.Min(startFrameIndex, frames.Count - 1);
+        }
+
         CacheReferences();
     }
 #endif

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackTypeDefinition
   attackType: 0
   icon: {fileID: -1406253070, guid: 8acc7c0ec6c6cc944a7cb56ccc8c3123, type: 3}
-  description: Melee Attack
+  description: Melee Attack, cant attack Flying units.

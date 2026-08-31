@@ -36,6 +36,8 @@ public class UnitStats
     public float MoveSpeed => FinalStats.MoveSpeed;
     public int BlockCount => FinalStats.BlockCount;
 
+    public event Action OnStatsChanged;
+
     public UnitStats()
     {
         SetBaseStats(new UnitBaseStats());
@@ -62,6 +64,7 @@ public class UnitStats
     {
         baseStats = value != null ? new UnitBaseStats(value) : new UnitBaseStats();
         needsResolve = true;
+        OnStatsChanged?.Invoke();
     }
 
     public bool AddModifier(UnitStatModifier modifier)
@@ -78,6 +81,7 @@ public class UnitStats
 
         modifiers.Add(modifier);
         needsResolve = true;
+        OnStatsChanged?.Invoke();
         return true;
     }
 
@@ -93,6 +97,7 @@ public class UnitStats
         if (isRemoved)
         {
             needsResolve = true;
+            OnStatsChanged?.Invoke();
         }
 
         return isRemoved;
@@ -133,6 +138,7 @@ public class UnitStats
         if (removedCount > 0)
         {
             needsResolve = true;
+            OnStatsChanged?.Invoke();
         }
     }
 
@@ -150,6 +156,7 @@ public class UnitStats
 
         modifiers.Clear();
         needsResolve = true;
+        OnStatsChanged?.Invoke();
     }
 
     public UnitBreakdownStats ResolveFinalStats()

@@ -46682,6 +46682,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: UI assets (1x)_2
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 800
+        width: 48
+        height: 16
+      alignment: 9
+      pivot: {x: 0.08333334, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a27ff6311a213cf4984642ecff76c86b
+      internalID: -5274089537481114805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []

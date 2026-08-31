@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AttackProjectile : MonoBehaviour, IPoolable
@@ -31,6 +32,9 @@ public class AttackProjectile : MonoBehaviour, IPoolable
     private AttackDamageType damageType;
     private AttackVFXData attackVFXData;
     private CombatTimeController combatTime;
+    
+    private Action<HitData, HitResult> onHitResolved;
+    private Action onAttackFinished;
 
     private ProjectileMode currentMode;
     private Vector2 spawnPosition;
@@ -66,7 +70,8 @@ public class AttackProjectile : MonoBehaviour, IPoolable
         Move(combatFixedDeltaTime);
     }
 
-    public void Initialize(AttackExecutionData executionData, Hurtbox target, AttackVFXData vfxData, CombatTimeController combatTime)
+    public void Initialize(AttackExecutionData executionData, Hurtbox target, AttackVFXData vfxData, CombatTimeController combatTime,
+                           Action<HitData, HitResult> onHitResolved = null, Action onAttackFinished = null)
     {
         this.attacker = executionData.Attacker;
         this.attackerTeam = executionData.AttackerTeam;
@@ -78,6 +83,8 @@ public class AttackProjectile : MonoBehaviour, IPoolable
         this.damageType = executionData.DamageType;
         this.attackVFXData = vfxData;
         this.combatTime = combatTime;
+        this.onHitResolved = onHitResolved;
+        this.onAttackFinished = onAttackFinished;
 
         isInitialized = true;
     }
@@ -141,6 +148,8 @@ public class AttackProjectile : MonoBehaviour, IPoolable
         rawEffectValue = 0f;
         damageType = default;
         combatTime = null;
+        onHitResolved = null;
+        onAttackFinished = null;
 
         currentMode = projectileMode;
         spawnPosition = Vector2.zero;
@@ -159,6 +168,8 @@ public class AttackProjectile : MonoBehaviour, IPoolable
         }
 
         isReturningToPool = true;
+        onAttackFinished?.Invoke();
+        onAttackFinished = null;
         ObjectPoolingHelper.Release(this);
     }
 
@@ -250,9 +261,15 @@ public class AttackProjectile : MonoBehaviour, IPoolable
             return;
         }
 
+        onHitResolved?.Invoke(hitData, hitResult);
+
         if (attackVFXData.HitVFX != null)
         {
             SpawnHitVFX(hitPosition);
+        }
+        else if (attackVFXData.HealVFX != null && hitResult.HealthRestored > 0f)
+        {
+            CombatVFXSpawner.SpawnParticleVFX(attackVFXData.HealVFX, hurtbox.AimPosition, Quaternion.identity);
         }
 
         hasHitTarget = true;

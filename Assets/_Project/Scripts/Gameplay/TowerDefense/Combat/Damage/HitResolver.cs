@@ -43,7 +43,7 @@ public static class HitProcessor
         return hitResult.AppliedValue > 0f;
     }
 
-    private static bool CanProcessHit(in HitData hitData, out IDamageable damageable)
+    public static bool CanProcessHit(in HitData hitData, out IDamageable damageable)
     {
         damageable = null;
 

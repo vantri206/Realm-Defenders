@@ -40,18 +40,18 @@ public readonly struct HitResult
     public float AppliedValue { get; }
     public float DamageTaken => Effect == AttackEffect.Damage ? AppliedValue : 0f;
     public float HealthRestored => Effect == AttackEffect.Heal ? AppliedValue : 0f;
-    public bool IsLastHit { get; }
+    public bool IsKilledHit { get; }
 
-    public HitResult(float damageTaken, bool isLastHit)
-        : this(AttackEffect.Damage, damageTaken, isLastHit)
+    public HitResult(float damageTaken, bool isLastHit) : this(AttackEffect.Damage, damageTaken, isLastHit)
     {
+        
     }
 
-    public HitResult(AttackEffect effect, float appliedValue, bool isLastHit)
+    public HitResult(AttackEffect effect, float appliedValue, bool isKilledHit)
     {
         Effect = effect;
         AppliedValue = appliedValue;
-        IsLastHit = isLastHit;
+        IsKilledHit = isKilledHit;
     }
 }
 

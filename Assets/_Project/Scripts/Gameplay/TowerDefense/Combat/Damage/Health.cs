@@ -15,6 +15,8 @@ public readonly struct HealthData
 
 public class Health : MonoBehaviour, IDamageable
 {
+    [SerializeField] private Shield shield;
+
     // Defensive stats
     private UnitStats stats;
 
@@ -45,6 +47,8 @@ public class Health : MonoBehaviour, IDamageable
     public float MaxHealth => stats == null ? 0f : stats.MaxHealth;
     public float Defense => stats == null ? 0f : stats.Defense;
     public float SpecialDefense => stats == null ? 0f : stats.SpecialDefense;
+    
+    public Shield Shield => shield;
 
     private bool isInitialized;
 
@@ -52,6 +56,8 @@ public class Health : MonoBehaviour, IDamageable
 
     public void Initialize(UnitStats stats)
     {
+        CacheReferences();
+
         if (stats == null)
         {
             Debug.LogError("[Health] CombatStats cannot be null.");
@@ -103,11 +109,23 @@ public class Health : MonoBehaviour, IDamageable
             return default;
         }
 
-        currentHealth = Mathf.Max(0f, currentHealth - damage);
+        float remainingDamage = damage;
+        if (shield != null)
+        {
+            remainingDamage = shield.AbsorbDamage(damage);
+        }
+
+        if (remainingDamage > 0f)
+        {
+            currentHealth = Mathf.Max(0f, currentHealth - remainingDamage);
+        }
 
         OnDamaged?.Invoke(damage);
 
-        NotifyHealthChanged();
+        if (remainingDamage > 0f)
+        {
+            NotifyHealthChanged();
+        }
 
         if (currentHealth <= 0)
         {
@@ -156,6 +174,11 @@ public class Health : MonoBehaviour, IDamageable
         IsDead = false;
         isInitialized = true;
 
+        if (shield != null)
+        {
+            shield.Clear();
+        }
+
         if (isNotify)
         {
             NotifyHealthChanged();
@@ -165,6 +188,14 @@ public class Health : MonoBehaviour, IDamageable
     private void NotifyHealthChanged()
     {
         OnHealthChanged?.Invoke(CurrentData);
+    }
+
+    private void CacheReferences()
+    {
+        if (shield == null)
+        {
+            shield = GetComponent<Shield>();
+        }
     }
 
 #if UNITY_EDITOR

@@ -78,12 +78,6 @@ public class PlayerCombatAction : MonoBehaviour
 
         if (currentMode == PlayerCombatActionMode.SelectedDeployedHero && mode != PlayerCombatActionMode.SelectedDeployedHero)
         {
-            HeroRuntime selectedHeroRuntime = heroDeploymentSystem.SelectedHeroRuntime;
-            if (selectedHeroRuntime != null)
-            {
-                selectedHeroRuntime.HideActionHUD();
-            }
-
             heroDeploymentSystem.ClearSelection();
         }
 
@@ -219,6 +213,40 @@ public class PlayerCombatAction : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void HandlePrimaryClick(Vector2 screenPosition)
+    {
+        UpdateHover(screenPosition);
+
+        if (currentMode != PlayerCombatActionMode.SelectedDeployedHero || IsPointerOverHero(screenPosition))
+        {
+            return;
+        }
+
+        ChangeMode(PlayerCombatActionMode.None);
+    }
+
+    private bool IsPointerOverHero(Vector2 screenPosition)
+    {
+        if (mainCamera == null)
+        {
+            return false;
+        }
+
+        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(screenPosition);
+        Collider2D[] hits = Physics2D.OverlapPointAll(worldPosition);
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            Collider2D hit = hits[i];
+            if (hit != null && hit.GetComponentInParent<HeroRuntime>() != null)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void HandleCurrentHeroAction(HeroActionType actionType)
@@ -676,6 +704,7 @@ public class PlayerCombatAction : MonoBehaviour
                 if (deployedHero != null)
                 {
                     RegisterDeployedHeroEvents(deployedHero);
+                    ShowDetailHero(deployedHero);
                     if (stageSystem != null)
                     {
                         stageSystem.TrySpendMeat(deployingHero.DeployCost);
@@ -762,13 +791,7 @@ public class PlayerCombatAction : MonoBehaviour
             return;
         }
 
-        if (previousSelectedHero != null && previousSelectedHero != heroRuntime)
-        {
-            previousSelectedHero.HideActionHUD();
-        }
-
         ChangeMode(PlayerCombatActionMode.SelectedDeployedHero);
-        heroRuntime.ShowActionHUD(this);
         ShowDetailHero(heroRuntime);
     }
 

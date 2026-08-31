@@ -18,5 +18,16 @@ MonoBehaviour:
   skillDescription: Gain 20% Defense / Special Defense while blocking at least 1
     enemy.
   skillType: 1
-  targetType: 2
+  targetType: 0
   cooldown: 0
+  skill:
+    rid: 7224588149785886815
+  references:
+    version: 2
+    RefIds:
+    - rid: 7224588149785886815
+      type: {class: IronGuardSkill, ns: , asm: Assembly-CSharp}
+      data:
+        minimumBlockedEnemyCount: 1
+        defenseBonus: 0.2
+        specialDefenseBonus: 0.2

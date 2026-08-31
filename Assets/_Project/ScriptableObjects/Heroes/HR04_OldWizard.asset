@@ -18,8 +18,9 @@ MonoBehaviour:
   heroIcon: {fileID: 2090117177, guid: 74ee6dec9fc9b2d4eb53c9431212f436, type: 3}
   heroDisplaySprite: {fileID: -2029593453, guid: 74ee6dec9fc9b2d4eb53c9431212f436, type: 3}
   heroClass: {fileID: 11400000, guid: 3b99815df3e3792438e8a532bb11f635, type: 2}
-  heroDescription: A mage attacking with magic, dealing massive damage and very effective
-    with high defense enemies.
+  heroRarity: 0
+  heroDescription: A mage attacking with magic, dealing magic damage very effective
+    with high defense enemies. CAN ATTACK AOE.
   heroAnimator: {fileID: 22100000, guid: a6fffbc389361a44fb04f3927c3d38cf, type: 2}
   heroPrefab: {fileID: 6873902697943297941, guid: cfdb2236ef19fe64c9462e151b552556, type: 3}
   maxHealth: 110

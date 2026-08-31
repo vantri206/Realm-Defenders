@@ -50,4 +50,19 @@ public static class CombatVFXSpawner
 
         return SpawnParticleVFX(prefab, spawnPosition);
     }
+
+    public static LoopingStatusVFX SpawnLoopingStatusVFX(LoopingStatusVFX prefab, Transform anchor)
+    {
+        if (prefab == null || anchor == null)
+        {
+            return null;
+        }
+
+        return ObjectPoolingHelper.Spawn(prefab, anchor.position, anchor.rotation, spawnedVFX =>
+        {
+            spawnedVFX.transform.SetParent(anchor);
+            spawnedVFX.transform.localPosition = Vector3.zero;
+            spawnedVFX.transform.localRotation = Quaternion.identity;
+        });
+    }
 }

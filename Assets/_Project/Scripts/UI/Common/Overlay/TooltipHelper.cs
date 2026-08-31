@@ -4,6 +4,24 @@ using System.Text;
 
 public static class TooltipHelper
 {
+    public static string GetSkillTooltipText(SkillDefinition skill)
+    {
+        if (skill == null)
+        {
+            return string.Empty;
+        }
+
+        string skillDetail = skill.SkillType == SkillType.Passive ? "Passive" : $"Cooldown: {FormatValue(skill.Cooldown)}s";
+
+        string header = $"{skill.SkillName}. {skillDetail}";
+        if (string.IsNullOrWhiteSpace(skill.SkillDescription))
+        {
+            return header;
+        }
+
+        return $"{header}\n{skill.SkillDescription.Trim()}";
+    }
+
     public static string GetGearTooltipText(GearInstance gear)
     {
         if (gear == null || !gear.IsValid)

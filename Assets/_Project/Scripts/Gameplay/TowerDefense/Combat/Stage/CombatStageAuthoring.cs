@@ -161,6 +161,12 @@ public class CombatStageAuthoring : MonoBehaviour
     private bool TryCreateRoutes(HashSet<Vector3Int> validCells, out List<EnemyRouteDefinition> definitions)
     {
         definitions = new List<EnemyRouteDefinition>();
+        if (routes == null || spawnPoints == null)
+        {
+            Debug.LogError("[CombatStageAuthoring] Routes and spawn points are required.", this);
+            return false;
+        }
+
         HashSet<string> routeIds = new HashSet<string>();
 
         for (int i = 0; i < routes.Count; i++)
@@ -256,7 +262,12 @@ public class CombatStageAuthoring : MonoBehaviour
         for (int i = 0; i < spawnEvents.Count; i++)
         {
             EnemySpawnEvent spawnEvent = spawnEvents[i];
-            string spawnPointId = spawnEvent?.SpawnPoint != null ? spawnEvent.SpawnPoint.SpawnPointId : null;
+            string spawnPointId = string.Empty;
+            if (spawnEvent != null)
+            {
+                spawnPointId = spawnEvent.SpawnPointId;
+            }
+
             if (spawnEvent == null || string.IsNullOrWhiteSpace(spawnEvent.EventId) || !eventIds.Add(spawnEvent.EventId) ||
                 spawnEvent.EnemyDefinition == null || !spawnEvent.EnemyDefinition.IsValid ||
                 !spawnPointIds.Contains(spawnPointId) || !routeIds.Contains(spawnEvent.RouteId) ||
@@ -401,6 +412,86 @@ public class CombatStageAuthoring : MonoBehaviour
     }
 
 #if UNITY_EDITOR
+    public bool TryImportDefinition(CombatStageDefinition definition, out string error)
+    {
+        error = string.Empty;
+        if (definition == null)
+        {
+            error = "A combat stage definition is required.";
+            return false;
+        }
+
+        Dictionary<string, EnemySpawnPoint> spawnPointsById = new Dictionary<string, EnemySpawnPoint>();
+        if (spawnPoints != null)
+        {
+            for (int i = 0; i < spawnPoints.Count; i++)
+            {
+                EnemySpawnPoint spawnPoint = spawnPoints[i];
+                if (spawnPoint == null || string.IsNullOrWhiteSpace(spawnPoint.SpawnPointId) ||
+                    spawnPointsById.ContainsKey(spawnPoint.SpawnPointId))
+                {
+                    continue;
+                }
+
+                spawnPointsById.Add(spawnPoint.SpawnPointId, spawnPoint);
+            }
+        }
+
+        List<EnemySpawnEvent> importedSpawnEvents = new List<EnemySpawnEvent>();
+        IReadOnlyList<EnemySpawnEventDefinition> definitionSpawnEvents = definition.SpawnEvents;
+        if (definitionSpawnEvents != null)
+        {
+            for (int i = 0; i < definitionSpawnEvents.Count; i++)
+            {
+                EnemySpawnEventDefinition spawnEvent = definitionSpawnEvents[i];
+                if (spawnEvent == null)
+                {
+                    importedSpawnEvents.Add(new EnemySpawnEvent());
+                    continue;
+                }
+
+                EnemySpawnPoint spawnPoint = null;
+                if (!string.IsNullOrWhiteSpace(spawnEvent.SpawnPointId) &&
+                    spawnPointsById.ContainsKey(spawnEvent.SpawnPointId))
+                {
+                    spawnPoint = spawnPointsById[spawnEvent.SpawnPointId];
+                }
+
+                importedSpawnEvents.Add(new EnemySpawnEvent(
+                    spawnEvent.EventId,
+                    spawnEvent.EnemyDefinition,
+                    spawnPoint,
+                    spawnEvent.SpawnPointId,
+                    spawnEvent.RouteId,
+                    spawnEvent.GroupCount,
+                    spawnEvent.EnemiesPerGroup,
+                    spawnEvent.GroupInterval,
+                    spawnEvent.StartCondition,
+                    spawnEvent.RequiredEventId,
+                    spawnEvent.StartDelay));
+            }
+        }
+
+        CombatStageStartConfig definitionStartConfig = definition.StartConfig;
+        stageId = definition.StageId;
+        stageName = definition.StageName;
+        if (definitionStartConfig != null)
+        {
+            startConfig = new CombatStageStartConfig(
+                definitionStartConfig.StartingMeat,
+                definitionStartConfig.StartingLives,
+                definitionStartConfig.NaturalMeatPerSecond);
+        }
+        else
+        {
+            startConfig = new CombatStageStartConfig();
+        }
+
+        spawnEvents = importedSpawnEvents;
+        outputDefinition = definition;
+        return true;
+    }
+
     public void SetSelectedRouteIndex(int index)
     {
         selectedRouteIndex = Mathf.Max(0, index);

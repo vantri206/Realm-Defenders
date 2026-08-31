@@ -24,9 +24,9 @@ MonoBehaviour:
   attackInterval: 1.5
   defense: 5
   specialDefense: 5
-  moveSpeed: 1.5
+  moveSpeed: 1.2
   movementType: 0
-  foodReward: 2
+  meatReward: 2
   statProgressionTable: {fileID: 11400000, guid: 49e40dd2443a467409a8e76c94ad4977, type: 2}
   normalAttack: {fileID: 11400000, guid: 36d1262e67e54b34bbcba05a5155c620, type: 2}
   navigationOffset: {x: 0, y: 0.5}

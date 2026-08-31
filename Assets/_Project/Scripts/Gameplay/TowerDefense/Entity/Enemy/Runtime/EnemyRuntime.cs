@@ -79,7 +79,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
             return;
         }
 
-        if (!InitializeHealth())
+        if (!InitializeHealthAndStatus())
         {
             return;
         }
@@ -119,7 +119,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
 
         if  (NormalAttackDefinition != null && normalAttackController != null)
         {
-            normalAttackController.OnAttack += HandleNormalAttack;
+            normalAttackController.OnNormalAttackFired += HandleNormalAttack;
         }
 
         isInitialized = isPathfindingInitialized;
@@ -129,7 +129,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
     {
         if (normalAttackController != null)
         {
-            normalAttackController.OnAttack -= HandleNormalAttack;
+            normalAttackController.OnNormalAttackFired -= HandleNormalAttack;
         }
     }
 
@@ -150,7 +150,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
 
         if (normalAttackController != null)
         {
-            normalAttackController.OnAttack -= HandleNormalAttack;
+            normalAttackController.OnNormalAttackFired -= HandleNormalAttack;
         }
 
         base.OnDisable();
@@ -164,7 +164,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         }
 
         float combatDeltaTime = combatContext.CombatTime.CombatDeltaTime;
-        TickState(combatDeltaTime);
+        TickRuntime(combatDeltaTime);
 
         if (NormalAttackDefinition != null && normalAttackController != null)
         {
@@ -252,9 +252,24 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         base.SetFacingDirection(direction);
     }
 
-
-    protected void HandleNormalAttack(Hurtbox target)
+    protected override void HandleStunStatus()
     {
+        base.HandleStunStatus();
+
+        if (!IsStunned)
+        {
+            return;
+        }
+
+        if (currentState == UnitRuntimeState.Attacking)
+        {
+            ChangeState(UnitRuntimeState.Idle);
+        }
+    }
+
+    protected void HandleNormalAttack(NormalAttackFiredData firedData)
+    {
+        Hurtbox target = firedData.Target;
         if (target != null)
         {
             FacePosition(target.AimPosition);

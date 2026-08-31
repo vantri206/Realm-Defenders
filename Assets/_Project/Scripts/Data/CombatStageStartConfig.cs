@@ -20,4 +20,14 @@ public class CombatStageStartConfig
         this.startingLives = startingLives;
         this.naturalMeatPerSecond = naturalMeatPerSecond;
     }
+
+    public CombatStageStartConfig(CombatStageStartConfig other)
+    {
+        if (other != null)
+        {
+            this.startingMeat = other.startingMeat;
+            this.startingLives = other.startingLives;
+            this.naturalMeatPerSecond = other.naturalMeatPerSecond;
+        }
+    }
 }

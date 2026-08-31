@@ -63,8 +63,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldHealthBar
   backgroundRenderer: {fileID: 2534390727455799398}
   fillRenderer: {fileID: 1573065323416766524}
-  backgroundAlpha: 0.75
-  fillAlpha: 0.75
+  backgroundAlpha: 1
+  fillAlpha: 1
 --- !u!1 &7233715318288870087
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ SpriteRenderer:
   m_SortingOrder: 41
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7112393808605908381, guid: 4676be4bb59cdb74abe4512dfac66678, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.75}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -238,7 +238,7 @@ SpriteRenderer:
   m_SortingOrder: 40
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7112393808605908381, guid: 4676be4bb59cdb74abe4512dfac66678, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.75}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

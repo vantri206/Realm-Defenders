@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackTypeDefinition
   attackType: 1
   icon: {fileID: -1439497227, guid: 8acc7c0ec6c6cc944a7cb56ccc8c3123, type: 3}
-  description: Ranged Attack
+  description: Ranged Attack, can attack Flying units.

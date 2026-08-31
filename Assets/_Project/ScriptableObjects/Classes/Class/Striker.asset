@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClassDefinition
   classId: Striker
   icon: {fileID: -555769042, guid: 8acc7c0ec6c6cc944a7cb56ccc8c3123, type: 3}
-  description: Melee Attacker
+  description: Melee Attacker with high Attack stats.

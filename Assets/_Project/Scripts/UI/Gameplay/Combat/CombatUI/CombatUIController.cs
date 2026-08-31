@@ -295,7 +295,7 @@ public class CombatUIController : MonoBehaviour
             return;
         }
 
-        combatAction.UpdateHover(screenPosition);
+        combatAction.HandlePrimaryClick(screenPosition);
     }
 
     private void HandleSecondaryPerformed(Vector2 screenPosition)

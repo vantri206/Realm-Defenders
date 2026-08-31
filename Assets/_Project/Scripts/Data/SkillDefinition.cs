@@ -13,6 +13,7 @@ public class SkillDefinition : ScriptableObject
     [SerializeField] private SkillType skillType = SkillType.Active;
     [SerializeField] private SkillTargetType targetType = SkillTargetType.Enemy;
     [SerializeField] private float cooldown;
+    [SerializeReference] private BaseSkill skill;
 
     public string SkillId => skillId;
     public string SkillName => skillName;
@@ -21,11 +22,24 @@ public class SkillDefinition : ScriptableObject
     public SkillType SkillType => skillType;
     public SkillTargetType TargetType => targetType;
     public float Cooldown => cooldown;
+    public BaseSkill Skill => skill;
 
 #if UNITY_EDITOR
-    private void OnValidate()
+    protected virtual void OnValidate()
     {
         cooldown = Mathf.Max(0f, cooldown);
+
+        if (skill != null)
+        {
+            if (skill is AutoActiveSkill autoActiveSkill)
+            {
+                skillType = SkillType.Active;
+            }
+            else
+            {
+                skillType = SkillType.Passive;
+            }
+        }
     }
 #endif
 }

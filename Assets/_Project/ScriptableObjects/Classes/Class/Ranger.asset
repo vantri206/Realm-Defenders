@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClassDefinition
   classId: Ranger
   icon: {fileID: -303561796, guid: 8acc7c0ec6c6cc944a7cb56ccc8c3123, type: 3}
-  description: Ranged Physical Attacker
+  description: Ranged Attacker with Physical Damage.

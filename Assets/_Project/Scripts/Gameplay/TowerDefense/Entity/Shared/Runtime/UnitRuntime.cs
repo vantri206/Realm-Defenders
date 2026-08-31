@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class UnitRuntime : MonoBehaviour
 {
-    private const float deathStateDuration = 0.2f;
+    private const float deathStateDuration = 0.4f;
 
     protected UnitCombatContext combatContext;
     protected CombatGridCell activeCell;
 
     protected UnitStats runtimeStats;
+
+    private UnitStatusRuntime statusEffects;
 
     // States
     protected UnitRuntimeState currentState = UnitRuntimeState.Idle;
@@ -21,6 +23,14 @@ public class UnitRuntime : MonoBehaviour
     [SerializeField] protected UnitVisual unitVisual;
     [SerializeField] protected UnitMovement unitMovement;
     [SerializeField] protected Hurtbox hurtbox;
+
+    // Status VFX
+    [SerializeField] private Transform statusVFXAnchor;
+    [SerializeField] private LoopingStatusVFX stunStatusVFXPrefab;
+    [SerializeField] private LoopingStatusVFX poisonStatusVFXPrefab;
+
+    private LoopingStatusVFX activeStunStatusVFX;
+    private LoopingStatusVFX activePoisonStatusVFX;
 
     // Unit Battle System
     [SerializeField] protected TeamIdentity battleTeam;
@@ -48,11 +58,13 @@ public class UnitRuntime : MonoBehaviour
 
     // Getters
     public Health Health => health;
+    public Shield Shield => health != null ? health.Shield : null;
     public UnitVisual Visual => unitVisual;
     public UnitMovement Movement => unitMovement;
     public Hurtbox Hurtbox => hurtbox;
     public CombatGridCell ActiveCell => activeCell;
     public CombatGrid CombatGrid => combatContext?.CombatGrid;
+    public CombatTimeController CombatTime => combatContext?.CombatTime;
     public Vector3 WorldPosition => transform.position;
 
     public Vector3Int ActiveCellPosition => activeCell != null ? activeCell.CellPosition : Vector3Int.zero;
@@ -65,9 +77,12 @@ public class UnitRuntime : MonoBehaviour
 
     // State Checks
     public bool IsDead => currentState == UnitRuntimeState.Dead || health.IsDead;
+    public bool IsStunned => statusEffects != null && statusEffects.IsStunned;
+    public bool IsPoisoned => statusEffects != null && statusEffects.IsPoisoned;
     public virtual bool IsMovementBlocked => false;
-    public bool CanMove => !IsDead && !IsMovementBlocked && (currentState == UnitRuntimeState.Idle || currentState == UnitRuntimeState.Moving);
-    public bool CanUseNormalAttack => !IsDead && currentState == UnitRuntimeState.Idle;
+    public bool CanMove => !IsDead && !IsStunned && !IsMovementBlocked && (currentState == UnitRuntimeState.Idle || currentState == UnitRuntimeState.Moving);
+    public virtual bool CanUseNormalAttack => !IsDead && !IsStunned && currentState == UnitRuntimeState.Idle;
+    public bool CanUseSkill => !IsDead && !IsStunned && currentState == UnitRuntimeState.Idle;
 
     public event Action<UnitRuntime, UnitRuntimeState, UnitRuntimeState> OnStateChanged;
     public event Action<UnitRuntime> OnDestroyed;
@@ -76,6 +91,13 @@ public class UnitRuntime : MonoBehaviour
 
     protected virtual void OnDisable()
     {
+        statusEffects?.Clear();
+        if (Shield != null)
+        {
+            Shield.Clear();
+        }
+
+        ClearStatusVFX();
         ClearActiveCell();
     }
 
@@ -87,7 +109,57 @@ public class UnitRuntime : MonoBehaviour
         }
 
         hasNotifiedDestroyed = true;
+        statusEffects?.Clear();
+        if (Shield != null)
+        {
+            Shield.Clear();
+        }
+
+        ClearStatusVFX();
+
         OnDestroyed?.Invoke(this);
+    }
+
+    public bool ApplyStun(string statusId, GameObject source, float duration)
+    {
+        if (!isInitialized || statusEffects == null)
+        {
+            return false;
+        }
+
+        bool isStunned = statusEffects.ApplyStun(statusId, source, duration);
+        if (isStunned)
+        {
+            HandleStatusEffects();
+        }
+
+        return isStunned;
+    }
+
+    public bool ApplyPoison(string statusId, GameObject attacker, float damagePerTick, float duration, float tickInterval, int maxStackCount)
+    {
+        if (!isInitialized || statusEffects == null)
+        {
+            return false;
+        }
+
+        bool isPoisoned = statusEffects.ApplyPoison(statusId, attacker, damagePerTick, duration, tickInterval, maxStackCount);
+        if (isPoisoned)
+        {
+            HandleStatusEffects();
+        }
+
+        return isPoisoned;
+    }
+
+    public bool ApplyTemporaryStatModifiers(string statusId, GameObject source, IReadOnlyList<UnitStatModifier> modifiers, float duration)
+    {
+        if (!isInitialized || statusEffects == null)
+        {
+            return false;
+        }
+
+        return statusEffects.ApplyTemporaryStatModifiers(statusId, source, modifiers, duration);
     }
 
     public void SetActiveCell(CombatGridCell cell)
@@ -156,12 +228,74 @@ public class UnitRuntime : MonoBehaviour
         return direction.y >= 0f ? Vector2Int.up : Vector2Int.down;
     }
 
-    protected bool InitializeHealth()
+    protected bool InitializeHealthAndStatus()
     {
         health.Initialize(Stats);
         health.OnDied -= HandleDied;
         health.OnDied += HandleDied;
+
+        InitializeStatusEffects();
+
         return true;
+    }
+
+    protected void TickRuntime(float deltaTime)
+    {
+        statusEffects?.Tick(deltaTime);
+        HandleStatusEffects();
+        TickState(deltaTime);
+    }
+
+    protected void HandleStatusEffects()
+    {
+        HandleStunStatus();
+        HandlePoisonStatus();
+    }
+
+    protected virtual void HandleStunStatus()
+    {
+        if (IsStunned)
+        {
+            if (activeStunStatusVFX == null)
+            {
+                activeStunStatusVFX = CombatVFXSpawner.SpawnLoopingStatusVFX(stunStatusVFXPrefab, statusVFXAnchor);
+            }
+
+            unitMovement.SetMoveDirection(Vector2.zero);
+            unitVisual.SetIsMoving(false);
+
+            if (currentState == UnitRuntimeState.Moving)
+            {
+                ChangeState(UnitRuntimeState.Idle);
+            }
+
+            return;
+        }
+
+        if (activeStunStatusVFX != null)
+        {
+            activeStunStatusVFX.StopVFX();
+            activeStunStatusVFX = null;
+        }
+    }
+
+    protected virtual void HandlePoisonStatus()
+    {
+        if (IsPoisoned)
+        {
+            if (activePoisonStatusVFX == null)
+            {
+                activePoisonStatusVFX = CombatVFXSpawner.SpawnLoopingStatusVFX(poisonStatusVFXPrefab, statusVFXAnchor);
+            }
+
+            return;
+        }
+
+        if (activePoisonStatusVFX != null)
+        {
+            activePoisonStatusVFX.StopVFX();
+            activePoisonStatusVFX = null;
+        }
     }
 
     protected bool InitializeMovementSystem(UnitStats combatStats, UnitMovementType movementType)
@@ -259,6 +393,8 @@ public class UnitRuntime : MonoBehaviour
         }
 
         ChangeState(UnitRuntimeState.Dead);
+        statusEffects?.Clear();
+        ClearStatusVFX();
 
         StartStateTimer(deathStateDuration);
 
@@ -310,6 +446,35 @@ public class UnitRuntime : MonoBehaviour
         actionStateTimer.StopTimer();
         actionStateTimer.Reset(duration);
         actionStateTimer.StartTimer();
+    }
+
+    private void InitializeStatusEffects()
+    {
+        ClearStatusVFX();
+
+        if (statusEffects != null)
+        {
+            statusEffects.Clear();
+        }
+        else
+        {
+            statusEffects = new UnitStatusRuntime(this);
+        }
+    }
+
+    private void ClearStatusVFX()
+    {
+        if (activeStunStatusVFX != null)
+        {
+            activeStunStatusVFX.StopVFX();
+            activeStunStatusVFX = null;
+        }
+
+        if (activePoisonStatusVFX != null)
+        {
+            activePoisonStatusVFX.StopVFX();
+            activePoisonStatusVFX = null;
+        }
     }
 
     

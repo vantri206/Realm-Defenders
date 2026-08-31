@@ -15,8 +15,23 @@ MonoBehaviour:
   skillId: SK09
   skillName: Battle Wish
   skillIcon: {fileID: 986999087, guid: 2672123c3a864d84d9503655df72d677, type: 3}
-  skillDescription: Next normal heal 120% Attack health to all allies in range and
-    increases their Attack by 15% for 4 seconds.
+  skillDescription: Next normal heal equals 120% Attack HP to all allies in range
+    and increases their Attack by 15% for 4 seconds.
   skillType: 0
-  targetType: 2
+  targetType: 3
   cooldown: 12
+  skill:
+    rid: 7224588149785886836
+  references:
+    version: 2
+    RefIds:
+    - rid: 7224588149785886836
+      type: {class: BattleWishSkill, ns: , asm: Assembly-CSharp}
+      data:
+        healMultiplier: 1.2
+        attackBonus: 0.15
+        buffDuration: 4
+        attackType: 1
+        areaPattern:
+        - {x: 0, y: 0}
+        healVFXPrefab: {fileID: 0}

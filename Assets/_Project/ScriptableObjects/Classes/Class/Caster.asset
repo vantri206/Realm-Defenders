@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClassDefinition
   classId: Caster
   icon: {fileID: 977108938, guid: 8acc7c0ec6c6cc944a7cb56ccc8c3123, type: 3}
-  description: Ranged Magic Attacker
+  description: Ranged Attacker can deal Magic Damage.

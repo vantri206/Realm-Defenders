@@ -15,13 +15,20 @@ public class HeroRuntime : UnitRuntime
 
     private IReadOnlyList<Vector2Int> defaultAttackPattern = new List<Vector2Int>();
     private IReadOnlyList<Vector2Int> resolvedAttackPattern = new List<Vector2Int>();
+    private readonly List<Hurtbox> skillTargets = new List<Hurtbox>();
+
+    private BaseSkill passiveSkill;
+    private AutoActiveSkill activeSkill;
+    private SkillDefinition passiveSkillRuntimeDefinition;
+    private SkillDefinition activeSkillRuntimeDefinition;
+    private SkillAttackController skillAttackController;
 
     // Hero Components
     [SerializeField] private HeroBlocker heroBlocker;
-    [SerializeField] private HeroActionHUD heroActionHUD;    
     [SerializeField] protected TargetScanner targetScanner;
     [SerializeField] protected TargetSelector targetSelector;
     [SerializeField] protected NormalAttackController normalAttackController;
+    [SerializeField] private CombatStatHUD combatStatHUD;
 
     private bool hasBlocker;
 
@@ -34,18 +41,24 @@ public class HeroRuntime : UnitRuntime
     public HeroDefinition Definition => heroDefinition;
     public HeroBlocker HeroBlocker => heroBlocker;
     public CombatGridCell AnchorCell => anchorCell;
+    public BaseSkill PassiveSkill => passiveSkill;
+    public AutoActiveSkill ActiveSkill => activeSkill;
+    public NormalAttackController NormalAttackController => normalAttackController;
+    public SkillAttackController SkillAttackController => skillAttackController;
 
     // Attack Pattern
     public NormalAttackDefinition NormalAttackDefinition => heroDefinition != null ? heroDefinition.NormalAttackDefinition : null;
     public IReadOnlyList<Vector2Int> ResolvedAttackPattern => resolvedAttackPattern;
     public HeroBlockState BlockState => heroBlocker != null ? heroBlocker.BlockState : HeroBlockState.NonBlocking;
-    public override bool IsMovementBlocked => base.IsMovementBlocked || (BlockState == HeroBlockState.Blocking);
+    public override bool IsMovementBlocked => base.IsMovementBlocked || BlockState == HeroBlockState.Blocking || (activeSkill != null && activeSkill.IsActiving);
+    public override bool CanUseNormalAttack => base.CanUseNormalAttack && (activeSkill == null || !activeSkill.IsActiving);
 
     public event Action<HeroRuntime> OnSelected;
 
     public void Initialize(HeroCombatState combatState, UnitCombatContext combatContext, Vector3Int currentCell)
     {
         isInitialized = false;
+        ClearSkills();
 
         if (combatState == null || !combatState.IsValid)
         {
@@ -59,7 +72,6 @@ public class HeroRuntime : UnitRuntime
         InitializeRuntimeStats(combatState);
 
         CacheReferences();
-        HideActionHUD();
 
         if (!CheckCoreReferences() || !CheckHealthSystemReferences() || !CheckMovementSystemReferences() || !CheckAttackSystemReferences() || !CheckBlockSystemReferences())
         {
@@ -72,7 +84,7 @@ public class HeroRuntime : UnitRuntime
             return;
         }
 
-        if (!InitializeHealth())
+        if (!InitializeHealthAndStatus())
         {
             return;
         }
@@ -96,22 +108,30 @@ public class HeroRuntime : UnitRuntime
 
         if (normalAttackController != null)
         {
-            normalAttackController.OnAttack += HandleNormalAttack;
+            normalAttackController.OnNormalAttackFired -= HandleNormalAttackFired;
+            normalAttackController.OnNormalAttackFired += HandleNormalAttackFired;
         }
 
+        skillAttackController = new SkillAttackController();
         isInitialized = true;
+        InitializeSkills();
+        RefreshSkillCharge();
     }
 
     protected void OnDestroy()
     {
+        ClearSkills();
+
         if (normalAttackController != null)
         {
-            normalAttackController.OnAttack -= HandleNormalAttack;
+            normalAttackController.OnNormalAttackFired -= HandleNormalAttackFired;
         }
     }
 
     protected override void OnDisable()
     {
+        ClearSkills();
+
         if (heroBlocker != null)
         {
             heroBlocker.ClearBlocks();
@@ -121,7 +141,7 @@ public class HeroRuntime : UnitRuntime
 
         if (normalAttackController != null)
         {
-            normalAttackController.OnAttack -= HandleNormalAttack;
+            normalAttackController.OnNormalAttackFired -= HandleNormalAttackFired;
         }
 
         base.OnDisable();
@@ -140,8 +160,16 @@ public class HeroRuntime : UnitRuntime
         }
 
         float combatDeltaTime = combatContext.CombatTime.CombatDeltaTime;
-        TickState(combatDeltaTime);
+        TickRuntime(combatDeltaTime);
+        TickSkills(combatDeltaTime);
+
+        if (IsMovementBlocked && unitMovement.CurrentMoveDirection != Vector2.zero)
+        {
+            SetMovementDirection(Vector2.zero);
+        }
+
         normalAttackController.Tick(combatDeltaTime, ResolvedAttackPattern, CanUseNormalAttack);
+        RefreshSkillCharge();
         ResetFacingDirection(unitMovement.CurrentMoveDirection);
     }
 
@@ -175,6 +203,159 @@ public class HeroRuntime : UnitRuntime
         }
 
         return true;
+    }
+
+    public bool HasSkillTarget(IReadOnlyList<Vector2Int> pattern, UnitAttackType attackType)
+    {
+        if (targetScanner == null || !targetScanner.IsInitialized || pattern == null)
+        {
+            return false;
+        }
+
+        targetScanner.Scan(CenterPosition, pattern, TargetSide.Enemy, AttackEffect.Damage, attackType, skillTargets);
+        return skillTargets.Count > 0;
+    }
+
+    public bool TrySelectSkillTarget(IReadOnlyList<Vector2Int> pattern, TargetSide targetSide, AttackEffect attackEffect,
+                                     UnitAttackType attackType, out Hurtbox target)
+    {
+        target = null;
+        if (targetScanner == null || !targetScanner.IsInitialized || targetSelector == null || pattern == null)
+        {
+            return false;
+        }
+
+        targetScanner.Scan(CenterPosition, pattern, targetSide, attackEffect, attackType, skillTargets);
+        target = targetSelector.SelectTarget(skillTargets, CenterPosition, NormalAttackDefinition.TargetPriorityMode, attackType);
+        return target != null;
+    }
+
+    public void CollectSkillTargets(IReadOnlyList<Vector2Int> pattern, TargetSide targetSide, AttackEffect attackEffect,
+                                    UnitAttackType attackType, List<Hurtbox> results)
+    {
+        if (results == null)
+        {
+            return;
+        }
+
+        results.Clear();
+        if (targetScanner == null || !targetScanner.IsInitialized || pattern == null)
+        {
+            return;
+        }
+
+        targetScanner.Scan(CenterPosition, pattern, targetSide, attackEffect, attackType, results);
+    }
+
+    public void TriggerSkillAttackAnimation()
+    {
+        unitVisual.TriggerAttack();
+    }
+
+    private void InitializeSkills()
+    {
+        if (heroDefinition.PassiveSkill != null)
+        {
+            passiveSkillRuntimeDefinition = Instantiate(heroDefinition.PassiveSkill);
+            passiveSkillRuntimeDefinition.hideFlags = HideFlags.DontSave;
+            passiveSkill = passiveSkillRuntimeDefinition.Skill;
+
+            if (passiveSkill is AutoActiveSkill)
+            {
+                Debug.LogError("[HeroRuntime] Passive skill definition cannot contain an AutoActiveSkill.", heroDefinition.PassiveSkill);
+                passiveSkill = null;
+            }
+            else if (passiveSkill != null)
+            {
+                passiveSkill.Initialize(this, passiveSkillRuntimeDefinition);
+            }
+        }
+
+        if (heroDefinition.ActiveSkill != null)
+        {
+            activeSkillRuntimeDefinition = Instantiate(heroDefinition.ActiveSkill);
+            activeSkillRuntimeDefinition.hideFlags = HideFlags.DontSave;
+
+            BaseSkill activeSkillRuntime = activeSkillRuntimeDefinition.Skill;
+            activeSkill = activeSkillRuntime as AutoActiveSkill;
+
+            if (activeSkillRuntime != null && activeSkill == null)
+            {
+                Debug.LogError("[HeroRuntime] Active skill definition must contain an AutoActiveSkill.", heroDefinition.ActiveSkill);
+            }
+            else if (activeSkill != null)
+            {
+                activeSkill.Initialize(this, activeSkillRuntimeDefinition);
+            }
+        }
+    }
+
+    private void TickSkills(float deltaTime)
+    {
+        if (passiveSkill != null)
+        {
+            passiveSkill.Tick(deltaTime);
+        }
+
+        if (activeSkill != null)
+        {
+            activeSkill.Tick(deltaTime);
+        }
+    }
+
+    private void ClearSkills()
+    {
+        if (passiveSkill != null)
+        {
+            passiveSkill.ClearData();
+            passiveSkill = null;
+        }
+
+        if (activeSkill != null)
+        {
+            activeSkill.ClearData();
+            activeSkill = null;
+        }
+
+        if (passiveSkillRuntimeDefinition != null)
+        {
+            Destroy(passiveSkillRuntimeDefinition);
+            passiveSkillRuntimeDefinition = null;
+        }
+
+        if (activeSkillRuntimeDefinition != null)
+        {
+            Destroy(activeSkillRuntimeDefinition);
+            activeSkillRuntimeDefinition = null;
+        }
+
+        if (skillAttackController != null)
+        {
+            skillAttackController.Clear();
+            skillAttackController = null;
+        }
+
+        if (combatStatHUD != null)
+        {
+            combatStatHUD.SetSkillCharge(0f, 0f);
+        }
+    }
+
+    private void RefreshSkillCharge()
+    {
+        if (combatStatHUD == null)
+        {
+            return;
+        }
+
+        if (activeSkill != null)
+        {
+            combatStatHUD.SetSkillCharge(activeSkill.CooldownRemaining, activeSkill.CooldownTime);
+        }
+        else
+        {
+            combatStatHUD.SetSkillCharge(0f, 0f);
+        }
     }
 
     protected override void SetFacingDirection(Vector2Int direction)
@@ -213,11 +394,6 @@ public class HeroRuntime : UnitRuntime
     private void FixedTickMovement()
     {
         unitMovement.FixedTick(combatContext.CombatTime.CombatFixedDeltaTime);
-    }
-
-    private void StopGuardMovement()
-    {
-        SetMovementDirection(Vector2.zero);
     }
 
     public void SetInitialFacingDirection(Vector2Int direction)
@@ -272,8 +448,9 @@ public class HeroRuntime : UnitRuntime
         return true;
     }
 
-    protected void HandleNormalAttack(Hurtbox target)
+    private void HandleNormalAttackFired(NormalAttackFiredData firedData)
     {
+        Hurtbox target = firedData.Target;
         if (IsBlockingTarget(target))
         {
             FacePosition(target.AimPosition);
@@ -356,25 +533,6 @@ public class HeroRuntime : UnitRuntime
         OnSelected?.Invoke(this);
     }
 
-    public void ShowActionHUD(PlayerCombatAction playerCombatAction)
-    {
-        if (heroActionHUD == null)
-        {
-            Debug.LogWarning("[HeroRuntime] HeroActionHUD is not assigned.", this);
-            return;
-        }
-
-        heroActionHUD.Show(playerCombatAction);
-    }
-
-    public void HideActionHUD()
-    {
-        if (heroActionHUD != null)
-        {
-            heroActionHUD.Hide();
-        }
-    }
-
     protected bool CheckAttackSystemReferences()
     {
         if (normalAttackController == null || targetScanner == null || targetSelector == null)
@@ -395,11 +553,6 @@ public class HeroRuntime : UnitRuntime
             heroBlocker = GetComponent<HeroBlocker>();
         }
 
-        if (heroActionHUD == null)
-        {
-            heroActionHUD = GetComponentInChildren<HeroActionHUD>(true);
-        }
-
         if (targetScanner == null)
         {
             targetScanner = GetComponentInChildren<TargetScanner>(true);
@@ -413,6 +566,11 @@ public class HeroRuntime : UnitRuntime
         if (normalAttackController == null)
         {
             normalAttackController = GetComponentInChildren<NormalAttackController>(true);
+        }
+
+        if (combatStatHUD == null)
+        {
+            combatStatHUD = GetComponentInChildren<CombatStatHUD>(true);
         }
     }
 }

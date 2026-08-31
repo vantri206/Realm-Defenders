@@ -20,3 +20,15 @@ MonoBehaviour:
   skillType: 0
   targetType: 2
   cooldown: 8
+  skill:
+    rid: 7224588149785886830
+  references:
+    version: 2
+    RefIds:
+    - rid: 7224588149785886830
+      type: {class: TripleSlashSkill, ns: , asm: Assembly-CSharp}
+      data:
+        hitCount: 3
+        damageMultiplierPerHit: 0.6
+        hitInterval: 0.1
+        hitVFXPrefab: {fileID: 0}

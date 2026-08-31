@@ -13,7 +13,6 @@ public class WorldHealthBar : MonoBehaviour
 
     private Transform fillTransform;
     private Vector3 fullFillScale;
-    private int maxFillPixels;
 
     private float targetPercent = 1f;
     private float displayedPercent = 1f;
@@ -24,12 +23,12 @@ public class WorldHealthBar : MonoBehaviour
     private bool isDead;
     private bool isInitialized;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         Initialize();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         if (!isInitialized)
         {
@@ -41,12 +40,12 @@ public class WorldHealthBar : MonoBehaviour
         ApplyVisibility();
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         KillFillTween();
     }
 
-    public void Initialize()
+    public virtual void Initialize()
     {
         if (isInitialized)
         {
@@ -63,7 +62,7 @@ public class WorldHealthBar : MonoBehaviour
         ApplyVisibility();
     }
 
-    public void SetValue(float currentHealth, float maxHealth)
+    public virtual void SetValue(float currentHealth, float maxHealth)
     {
         float maxHealthValue = Mathf.Max(0f, maxHealth);
         float currentHealthValue = Mathf.Clamp(currentHealth, 0f, maxHealthValue);
@@ -77,34 +76,16 @@ public class WorldHealthBar : MonoBehaviour
         isDead = currentHealthValue <= 0f;
 
         AnimateFill(targetPercent);
-        
+
         ApplyVisibility();
     }
 
-    public void SetDead()
+    public virtual void SetDead()
     {
         isDead = true;
         KillFillTween();
 
         ApplyVisibility();
-    }
-
-    private void CacheReferences()
-    {
-        if (backgroundRenderer == null)
-        {
-            backgroundRenderer = GetComponent<SpriteRenderer>();
-        }
-
-        if (fillRenderer == null)
-        {
-            Debug.LogWarning("[WorldHealthBar] Missing fill SpriteRenderer.", this);
-            return;
-        }
-
-        fillTransform = fillRenderer.transform;
-        fullFillScale = fillTransform.localScale;
-        maxFillPixels = CalculateMaxFillPixels();
     }
 
     private void AnimateFill(float percent)
@@ -154,37 +135,8 @@ public class WorldHealthBar : MonoBehaviour
         }
 
         Vector3 fillScale = fullFillScale;
-        fillScale.x = fullFillScale.x * GetPixelSnappedPercent(percent);
+        fillScale.x = Mathf.Clamp01(percent);
         fillTransform.localScale = fillScale;
-    }
-
-    private float GetPixelSnappedPercent(float percent)
-    {
-        percent = Mathf.Clamp01(percent);
-
-        if (maxFillPixels <= 0)
-        {
-            return percent;
-        }
-
-        int visiblePixels = Mathf.RoundToInt(maxFillPixels * percent);
-        if (percent > 0f && visiblePixels == 0)
-        {
-            visiblePixels = 1;
-        }
-
-        return visiblePixels / (float)maxFillPixels;
-    }
-
-    private int CalculateMaxFillPixels()
-    {
-        if (fillRenderer == null || fillRenderer.sprite == null)
-        {
-            return 0;
-        }
-
-        float pixelWidth = fillRenderer.sprite.rect.width * Mathf.Abs(fullFillScale.x);
-        return Mathf.Max(1, Mathf.RoundToInt(pixelWidth));
     }
 
     private void ApplyAlpha()
@@ -228,7 +180,7 @@ public class WorldHealthBar : MonoBehaviour
         SetVisible(true);
     }
 
-    private void SetVisible(bool isVisible)
+    protected virtual void SetVisible(bool isVisible)
     {
         if (backgroundRenderer != null)
         {
@@ -240,6 +192,24 @@ public class WorldHealthBar : MonoBehaviour
             fillRenderer.enabled = isVisible;
         }
     }
+
+    protected virtual void CacheReferences()
+    {
+        if (backgroundRenderer == null)
+        {
+            backgroundRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        if (fillRenderer == null)
+        {
+            Debug.LogWarning("[WorldHealthBar] Missing fill SpriteRenderer.", this);
+            return;
+        }
+
+        fillTransform = fillRenderer.transform;
+        fullFillScale = new Vector3(1f, fillTransform.localScale.y, fillTransform.localScale.z);
+    }
+
 #if UNITY_EDITOR
     private void OnValidate()
     {

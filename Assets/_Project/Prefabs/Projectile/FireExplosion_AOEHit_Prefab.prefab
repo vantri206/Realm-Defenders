@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackAOEHit
   col: {fileID: 4756786984615059799}
-  hitVFXPrefab: {fileID: 8383761116173810426, guid: 9bb8fce4e80921940adda52a932420c8, type: 3}
+  areaVFXPrefab: {fileID: 8383761116173810426, guid: 9bb8fce4e80921940adda52a932420c8, type: 3}
   aoeTime: 0.2
 --- !u!212 &7297493891380333025
 SpriteRenderer:

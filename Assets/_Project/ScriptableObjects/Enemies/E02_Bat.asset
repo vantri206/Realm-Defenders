@@ -25,7 +25,7 @@ MonoBehaviour:
   attackInterval: 0
   defense: 0
   specialDefense: 0
-  moveSpeed: 2
+  moveSpeed: 1.5
   movementType: 1
   meatReward: 2
   statProgressionTable: {fileID: 11400000, guid: 194e318ccd43a814ab2e53051bd7dda3, type: 2}

@@ -15,8 +15,32 @@ MonoBehaviour:
   skillId: SK07
   skillName: Magic Storm
   skillIcon: {fileID: -511756630, guid: 2672123c3a864d84d9503655df72d677, type: 3}
-  skillDescription: Stop attacking and create a magic storm on the current target
+  skillDescription: Stop attacking and create a magic storm on current target position
     for 4 seconds. Deal 50% Attack as Magic Damage each second to enemy inside.
   skillType: 0
   targetType: 2
   cooldown: 13
+  skill:
+    rid: 7224588149785886834
+  references:
+    version: 2
+    RefIds:
+    - rid: 7224588149785886834
+      type: {class: MagicStormSkill, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 4
+        tickInterval: 1
+        damageMultiplierPerTick: 0.5
+        attackType: 1
+        areaPattern:
+        - {x: 0, y: 0}
+        - {x: -1, y: 1}
+        - {x: -1, y: 0}
+        - {x: 0, y: 1}
+        - {x: 1, y: 1}
+        - {x: 1, y: 0}
+        - {x: 1, y: -1}
+        - {x: 0, y: -1}
+        - {x: -1, y: -1}
+        aoeHitPrefab: {fileID: 0}
+        hitVFXPrefab: {fileID: 0}

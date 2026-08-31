@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
     [SerializeField] private float aoeTime = 0.2f;
 
     private readonly HashSet<Hurtbox> hitHurtboxes = new HashSet<Hurtbox>();
+    private readonly List<Collider2D> overlapBuffer = new List<Collider2D>();
+    private readonly List<Hurtbox> aoeTargets = new List<Hurtbox>();
 
     private GameObject attacker;
     private TeamIdentity attackerTeam;
@@ -26,6 +29,13 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
     private CombatTimeController combatTime;
     private AttackVFXData attackVFXData;
     private CountdownTimer aoeTimer;
+
+    private Action onAttackFinished;
+    private Action<HitData, HitResult> onHitResolved;
+    private Action<int> onTargetsCollected;
+
+    private bool countTargetsBeforeHit;
+    private bool hasCountedTargets;
 
     private bool isInitialized;
     private bool isReturningToPool;
@@ -42,6 +52,11 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
             return;
         }
 
+        if (countTargetsBeforeHit && !hasCountedTargets)
+        {
+            CollectAOETargetsAndResolveHits();
+        }
+
         aoeTimer.Tick(combatTime.CombatFixedDeltaTime);
         if (aoeTimer.IsFinished)
         {
@@ -49,7 +64,9 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         }
     }
 
-    public void Initialize(AttackExecutionData executionData, AttackVFXData vfxData, CombatTimeController combatTime)
+    public void Initialize(AttackExecutionData executionData, AttackVFXData vfxData, CombatTimeController combatTime,
+                           Action onFinished = null, Action<HitData, HitResult> onHitResolved = null,
+                           Action<int> onTargetsCollected = null, bool countTargetsBeforeHit = false)
     {
         this.attacker = executionData.Attacker;
         this.attackerTeam = executionData.AttackerTeam;
@@ -60,6 +77,10 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         this.damageType = executionData.DamageType;
         this.attackVFXData = vfxData;
         this.combatTime = combatTime;
+        this.onAttackFinished = onFinished;
+        this.onHitResolved = onHitResolved;
+        this.onTargetsCollected = onTargetsCollected;
+        this.countTargetsBeforeHit = countTargetsBeforeHit;
 
         isInitialized = true;
     }
@@ -68,6 +89,9 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
     {
         isReturningToPool = false;
         hitHurtboxes.Clear();
+        overlapBuffer.Clear();
+        aoeTargets.Clear();
+        hasCountedTargets = false;
 
         CacheReferences();
 
@@ -96,6 +120,8 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         }
 
         hitHurtboxes.Clear();
+        overlapBuffer.Clear();
+        aoeTargets.Clear();
 
         attacker = null;
         attackerTeam = null;
@@ -105,6 +131,11 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         rawEffectValue = 0f;
         damageType = default;
         combatTime = null;
+        onAttackFinished = null;
+        onHitResolved = null;
+        onTargetsCollected = null;
+        countTargetsBeforeHit = false;
+        hasCountedTargets = false;
 
         isInitialized = false;
         isReturningToPool = true;
@@ -118,6 +149,8 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         }
 
         isReturningToPool = true;
+        onAttackFinished?.Invoke();
+        onAttackFinished = null;
         ObjectPoolingHelper.Release(this);
     }
 
@@ -133,7 +166,7 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
 
     private void TryProcessAOEHit(Collider2D other)
     {
-        if (!isInitialized || isReturningToPool)
+        if (!isInitialized || isReturningToPool || countTargetsBeforeHit)
         {
             return;
         }
@@ -148,12 +181,58 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
             return;
         }
 
-        hitHurtboxes.Add(hurtbox);
+        ProcessHurtbox(hurtbox);
+    }
 
-        HitData hitData = new HitData(attacker, hurtbox, attackerTeam, targetSide, attackEffect, attackType,  rawEffectValue, damageType, hurtbox.AimPosition);
+    private void CollectAOETargetsAndResolveHits()
+    {
+        hasCountedTargets = true;
+
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.SetLayerMask(GameLayer.HurtboxMask);
+        contactFilter.useTriggers = true;
+
+        Physics2D.OverlapCollider(col, contactFilter, overlapBuffer);
+        for (int i = 0; i < overlapBuffer.Count; i++)
+        {
+            Collider2D targetCollider = overlapBuffer[i];
+            if (targetCollider == null || !targetCollider.TryGetComponent(out Hurtbox hurtbox) || hitHurtboxes.Contains(hurtbox))
+            {
+                continue;
+            }
+
+            if (!col.OverlapPoint(hurtbox.AimPosition))
+            {
+                continue;
+            }
+
+            HitData hitData = CreateHitData(hurtbox);
+            if (!HitProcessor.CanProcessHit(hitData, out _))
+            {
+                continue;
+            }
+
+            hitHurtboxes.Add(hurtbox);
+            aoeTargets.Add(hurtbox);
+        }
+
+        onTargetsCollected?.Invoke(aoeTargets.Count);
+        onTargetsCollected = null;
+
+        for (int i = 0; i < aoeTargets.Count; i++)
+        {
+            ProcessHurtbox(aoeTargets[i]);
+        }
+    }
+
+    private void ProcessHurtbox(Hurtbox hurtbox)
+    {
+        HitData hitData = CreateHitData(hurtbox);
 
         if (HitProcessor.TryProcessHit(hitData, out HitResult hitResult))
         {
+            onHitResolved?.Invoke(hitData, hitResult);
+
             switch(attackEffect)
             {
                 case AttackEffect.Heal:
@@ -164,6 +243,12 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
                     break;
             }
         }
+    }
+
+    private HitData CreateHitData(Hurtbox hurtbox)
+    {
+        return new HitData(attacker, hurtbox, attackerTeam, targetSide, attackEffect, attackType,
+                           rawEffectValue, damageType, hurtbox.AimPosition);
     }
 
     private void SpawnHealVFX(Hurtbox hurtbox, HitResult hitResult)

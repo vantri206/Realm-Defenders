@@ -3,19 +3,19 @@ using UnityEngine;
 public class WorldHealthHUD : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Health health;
-    [SerializeField] private WorldHealthBar healthBar;
+    [SerializeField] protected Health health;
+    [SerializeField] protected WorldHealthBar healthBar;
 
     private bool isInitialized;
 
     private bool isHealthEventSubscribed;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         Initialize();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         if (!isInitialized)
         {
@@ -27,12 +27,12 @@ public class WorldHealthHUD : MonoBehaviour
         RefreshHealth();
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         UnregisterHealthEvents();
     }
 
-    public void Initialize()
+    public virtual void Initialize()
     {
         CacheReferences();
 
@@ -68,7 +68,7 @@ public class WorldHealthHUD : MonoBehaviour
         }
     }
 
-    private void CacheReferences()
+    protected virtual void CacheReferences()
     {
         if (healthBar == null)
         {

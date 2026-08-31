@@ -20,3 +20,16 @@ MonoBehaviour:
   skillType: 0
   targetType: 2
   cooldown: 9
+  skill:
+    rid: 7224588149785886832
+  references:
+    version: 2
+    RefIds:
+    - rid: 7224588149785886832
+      type: {class: MedusaShotSkill, ns: , asm: Assembly-CSharp}
+      data:
+        projectileCount: 3
+        damageMultiplierPerHit: 0.6
+        stunDuration: 1
+        projectilePrefab: {fileID: 0}
+        hitVFXPrefab: {fileID: 0}

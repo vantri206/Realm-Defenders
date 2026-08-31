@@ -18,8 +18,9 @@ MonoBehaviour:
   heroIcon: {fileID: -1309111644, guid: a882b06dff9b3c94e86371f8d20b3655, type: 3}
   heroDisplaySprite: {fileID: 1522908454, guid: a882b06dff9b3c94e86371f8d20b3655, type: 3}
   heroClass: {fileID: 11400000, guid: 2c440a5f700186347869b8c9055fb59d, type: 2}
-  heroDescription: A ranged archer attacking enemies from a distance with rapid arrow
-    shots.
+  heroRarity: 0
+  heroDescription: A ranged archer attacking enemies with rapid arrow shots. PRIORITY
+    ATTACK FLYING ENEMIES.
   heroAnimator: {fileID: 22100000, guid: 8e24f866d2a114044ba1f0bc4b45825b, type: 2}
   heroPrefab: {fileID: 6873902697943297941, guid: cfdb2236ef19fe64c9462e151b552556, type: 3}
   maxHealth: 120

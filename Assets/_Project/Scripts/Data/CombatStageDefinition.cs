@@ -31,6 +31,7 @@ public class CombatStageDefinition : ScriptableObject
         this.stageId = stageId;
         this.stageName = stageName;
         this.mapPrefab = mapPrefab;
+
         if (mapData != null)
         {
             this.mapData = mapData;
@@ -42,7 +43,7 @@ public class CombatStageDefinition : ScriptableObject
 
         if (startConfig != null)
         {
-            this.startConfig = startConfig;
+            this.startConfig = new CombatStageStartConfig(startConfig);
         }
         else
         {
