@@ -171,353 +171,375 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_0
+      name: WolfRider_idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b8202017c770e429f0f75732192b36
+      internalID: -182659704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd7a20cf111c7ef43abe1c872cf3fe1b
+      internalID: 1919022291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09c57744edce79f49b86c8b3fd50f1fb
+      internalID: -166570724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07ed50cc11966114da826b6fb85311d2
+      internalID: 218444427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c057955e4414de4ba57d3a911ca2308
+      internalID: 1142517396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3100ada004ab3434daf508bccbaea92a
+      internalID: -1994240750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5df4fe01fb34afd46b40bc8cfca7c4e6
+      internalID: -551303697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d98bf13163b0a14f97ef735333a18d6
+      internalID: 1391813007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3774249b6d6cba24f86500c9c4d6b6d8
+      internalID: 1542175702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f76475702a68ff341937549233d7c911
+      internalID: 675733935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 660f3689f24d0a94b80999334cd08b58
+      internalID: 701267338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a28ef914268b348489b133bc4968144d
+      internalID: -1664480404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a8a486512884af40967e111f8b3f4b1
+      internalID: 632525262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_13
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 526f3e956c587d94d975f702fa002fd1
+      internalID: 796147073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d140bc0f50740be44aacfa9fffb23acf
+      internalID: -548906057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e518f026fc31644c806c6fc14cd6d18
+      internalID: 420706275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WolfRider_idle_16
       rect:
         serializedVersion: 2
         x: 8
-        y: 95
+        y: 100
         width: 16
-        height: 23
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 787e0bb4dd0910b50800000000000000
-      internalID: 6557681812560209799
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_1
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 95
-        width: 16
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 24b6e3123b2ccacd0800000000000000
-      internalID: -2545445614758499518
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_2
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 95
-        width: 16
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 84466ea636fc97730800000000000000
-      internalID: 3997454170170221640
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_3
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 95
-        width: 16
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 79af7544013f54aa0800000000000000
-      internalID: -6177264062677124457
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_4
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 63
-        width: 19
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8ff8e5ed574e3d9b0800000000000000
-      internalID: -5056446761713889288
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_5
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 63
-        width: 19
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 93d6989d9e446f040800000000000000
-      internalID: 4681004633865940281
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_6
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 63
-        width: 19
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 202ccd9ee32c7aad0800000000000000
-      internalID: -2690968676863262206
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_7
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 63
-        width: 19
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d78706ca2ecb9d230800000000000000
-      internalID: 3664167453583243389
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_8
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 31
-        width: 19
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 05a92995af48007d0800000000000000
-      internalID: -2954215144775574960
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_9
-      rect:
-        serializedVersion: 2
-        x: 39
-        y: 31
-        width: 19
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a2fdeea0be9479780800000000000000
-      internalID: -8676384883256402134
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_10
-      rect:
-        serializedVersion: 2
-        x: 71
-        y: 31
-        width: 19
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aa27dddeb02a22e00800000000000000
-      internalID: 1018554637858206378
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_11
-      rect:
-        serializedVersion: 2
-        x: 103
-        y: 31
-        width: 19
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c4a8d54b417c9c140800000000000000
-      internalID: 4740538974523460172
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_12
-      rect:
-        serializedVersion: 2
-        x: 9
-        y: 0
-        width: 14
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a80184ca05c9945f0800000000000000
-      internalID: -771913990815608694
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_13
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 0
-        width: 14
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 530ba689233cf28b0800000000000000
-      internalID: -5174702824752500683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_14
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 0
-        width: 14
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8ed4cb073468526c0800000000000000
-      internalID: -4168778255849206296
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_15
-      rect:
-        serializedVersion: 2
-        x: 105
-        y: 0
-        width: 14
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 82e255773ecafd5d0800000000000000
-      internalID: -3035517530864800216
+      spriteID: 09f58441f5060d04bbcd8b7424aacb09
+      internalID: -1863887910
       vertices: []
       indices: 
       edges: []
@@ -526,7 +548,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e9887f8a66fdaae4e85e7c188b48cb56
     internalID: 0
     vertices: []
     indices: 
@@ -534,24 +556,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":4.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_0: 6557681812560209799
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_1: -2545445614758499518
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_10: 1018554637858206378
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_11: 4740538974523460172
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_12: -771913990815608694
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_13: -5174702824752500683
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_14: -4168778255849206296
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_15: -3035517530864800216
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_2: 3997454170170221640
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_3: -6177264062677124457
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_4: -5056446761713889288
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_5: 4681004633865940281
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_6: -2690968676863262206
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_7: 3664167453583243389
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_8: -2954215144775574960
-      WolfRider_idle.png-670f65a3942614dd317adcce247bae2c_9: -8676384883256402134
+      WolfRider_idle_0: -182659704
+      WolfRider_idle_1: 1919022291
+      WolfRider_idle_10: 701267338
+      WolfRider_idle_11: -1664480404
+      WolfRider_idle_12: 632525262
+      WolfRider_idle_13: 796147073
+      WolfRider_idle_14: -548906057
+      WolfRider_idle_15: 420706275
+      WolfRider_idle_16: -1863887910
+      WolfRider_idle_2: -166570724
+      WolfRider_idle_3: 218444427
+      WolfRider_idle_4: 1142517396
+      WolfRider_idle_5: -1994240750
+      WolfRider_idle_6: -551303697
+      WolfRider_idle_7: 1391813007
+      WolfRider_idle_8: 1542175702
+      WolfRider_idle_9: 675733935
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

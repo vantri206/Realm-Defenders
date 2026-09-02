@@ -16,7 +16,7 @@ MonoBehaviour:
   skillName: Holy Burst
   skillIcon: {fileID: -1925026346, guid: 2672123c3a864d84d9503655df72d677, type: 3}
   skillDescription: Deal 120% Attack as Physical Damage to nearby enemies and gain
-    a shield equal to 15% Max HP.
+    a shield equal to 15% Max HP, stacking up to 100% Max HP.
   skillType: 0
   targetType: 2
   cooldown: 11

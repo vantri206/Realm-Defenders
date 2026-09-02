@@ -2,6 +2,12 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AttackAOEHitMode
+{
+    OneHit,
+    Continuous
+}
+
 public class AttackAOEHit : MonoBehaviour, IPoolable
 {
     public int PrefabID { get; set; }
@@ -11,9 +17,7 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
 
     [Header("VFX")]
     [SerializeField] private SimpleSpriteAnimatorVFX areaVFXPrefab;
-
-    [Header("Settings")]
-    [SerializeField] private float aoeTime = 0.2f;
+    [SerializeField] private TriggeredSpriteAnimatorVFX triggeredAreaVFXPrefab;
 
     private readonly HashSet<Hurtbox> hitHurtboxes = new HashSet<Hurtbox>();
     private readonly List<Collider2D> overlapBuffer = new List<Collider2D>();
@@ -28,14 +32,18 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
     private AttackDamageType damageType;
     private CombatTimeController combatTime;
     private AttackVFXData attackVFXData;
-    private CountdownTimer aoeTimer;
+    private CountdownTimer durationTimer;
+    private CountdownTimer tickTimer;
+    private CountdownTimer effectDelayTimer;
+
+    private AttackAOEHitMode hitMode;
+    private float duration;
+    private float tickInterval;
+    private float effectDelay;
 
     private Action onAttackFinished;
     private Action<HitData, HitResult> onHitResolved;
-    private Action<int> onTargetsCollected;
-
-    private bool countTargetsBeforeHit;
-    private bool hasCountedTargets;
+    private Func<int, float> onTargetsTriggered;
 
     private bool isInitialized;
     private bool isReturningToPool;
@@ -47,26 +55,46 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
 
     private void FixedUpdate()
     {
-        if (!isInitialized || isReturningToPool || aoeTimer == null)
+        if (!isInitialized || isReturningToPool)
         {
             return;
         }
 
-        if (countTargetsBeforeHit && !hasCountedTargets)
+        float deltaTime = combatTime.CombatFixedDeltaTime;
+
+        if (effectDelayTimer != null && effectDelayTimer.IsRunning)
         {
-            CollectAOETargetsAndResolveHits();
+            effectDelayTimer.Tick(deltaTime);
+            if (effectDelayTimer.IsRunning)
+            {
+                return;
+            }
         }
 
-        aoeTimer.Tick(combatTime.CombatFixedDeltaTime);
-        if (aoeTimer.IsFinished)
+        if (hitMode == AttackAOEHitMode.OneHit)
+        {
+            TriggerOneHit();
+            return;
+        }
+
+        TickContinuousHit(deltaTime);
+
+        if (durationTimer == null)
+        {
+            return;
+        }
+
+        durationTimer.Tick(deltaTime);
+        if (durationTimer.IsFinished)
         {
             ReturnToPool();
         }
     }
 
     public void Initialize(AttackExecutionData executionData, AttackVFXData vfxData, CombatTimeController combatTime,
-                           Action onFinished = null, Action<HitData, HitResult> onHitResolved = null,
-                           Action<int> onTargetsCollected = null, bool countTargetsBeforeHit = false)
+                        Action onFinished = null, Action<HitData, HitResult> onHitResolved = null, Func<int, float> onTargetsTriggered = null,
+                        AttackAOEHitMode hitMode = AttackAOEHitMode.OneHit,
+                        float duration = 0f, float tickInterval = 0f, float effectDelay = 0f)
     {
         this.attacker = executionData.Attacker;
         this.attackerTeam = executionData.AttackerTeam;
@@ -79,8 +107,11 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         this.combatTime = combatTime;
         this.onAttackFinished = onFinished;
         this.onHitResolved = onHitResolved;
-        this.onTargetsCollected = onTargetsCollected;
-        this.countTargetsBeforeHit = countTargetsBeforeHit;
+        this.onTargetsTriggered = onTargetsTriggered;
+        this.hitMode = hitMode;
+        this.duration = Mathf.Max(0f, duration);
+        this.tickInterval = Mathf.Max(0.01f, tickInterval);
+        this.effectDelay = Mathf.Max(0f, effectDelay);
 
         isInitialized = true;
     }
@@ -91,7 +122,6 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         hitHurtboxes.Clear();
         overlapBuffer.Clear();
         aoeTargets.Clear();
-        hasCountedTargets = false;
 
         CacheReferences();
 
@@ -102,21 +132,49 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
             return;
         }
 
-        aoeTimer = new CountdownTimer(aoeTime);
-        aoeTimer.StartTimer();
-
-        if (areaVFXPrefab != null)
+        if (effectDelay > 0f)
         {
-            CombatVFXSpawner.SpawnSimpleSpriteVFX(areaVFXPrefab, transform.position, transform.rotation);
+            effectDelayTimer = new CountdownTimer(effectDelay);
+            effectDelayTimer.StartTimer();
+        }
+
+        if (hitMode == AttackAOEHitMode.Continuous)
+        {
+            durationTimer = new CountdownTimer(duration);
+            durationTimer.StartTimer();
+
+            tickTimer = new CountdownTimer(tickInterval);
+            tickTimer.StartTimer();
+        }
+
+        if (triggeredAreaVFXPrefab != null)
+        {
+            CombatVFXSpawner.SpawnTriggeredSpriteVFX(triggeredAreaVFXPrefab, transform.position, transform.rotation, combatTime);
+        }
+        else if (areaVFXPrefab != null)
+        {
+            CombatVFXSpawner.SpawnSimpleSpriteVFX(areaVFXPrefab, transform.position, transform.rotation, combatTime);
         }
     }
 
     public void OnDespawn()
     {
-        if (aoeTimer != null)
+        if (durationTimer != null)
         {
-            aoeTimer.StopTimer();
-            aoeTimer = null;
+            durationTimer.StopTimer();
+            durationTimer = null;
+        }
+
+        if (tickTimer != null)
+        {
+            tickTimer.StopTimer();
+            tickTimer = null;
+        }
+
+        if (effectDelayTimer != null)
+        {
+            effectDelayTimer.StopTimer();
+            effectDelayTimer = null;
         }
 
         hitHurtboxes.Clear();
@@ -133,9 +191,11 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         combatTime = null;
         onAttackFinished = null;
         onHitResolved = null;
-        onTargetsCollected = null;
-        countTargetsBeforeHit = false;
-        hasCountedTargets = false;
+        onTargetsTriggered = null;
+        hitMode = AttackAOEHitMode.OneHit;
+        duration = 0f;
+        tickInterval = 0f;
+        effectDelay = 0f;
 
         isInitialized = false;
         isReturningToPool = true;
@@ -154,39 +214,17 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
         ObjectPoolingHelper.Release(this);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void TriggerOneHit()
     {
-        TryProcessAOEHit(other);
+        CollectAOETargets();
+        TriggerAOETargets();
+        ReturnToPool();
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void CollectAOETargets()
     {
-        TryProcessAOEHit(other);
-    }
-
-    private void TryProcessAOEHit(Collider2D other)
-    {
-        if (!isInitialized || isReturningToPool || countTargetsBeforeHit)
-        {
-            return;
-        }
-
-        if (!other.TryGetComponent(out Hurtbox hurtbox) || hitHurtboxes.Contains(hurtbox))
-        {
-            return;
-        }
-
-        if (col == null || !col.OverlapPoint(hurtbox.AimPosition))
-        {
-            return;
-        }
-
-        ProcessHurtbox(hurtbox);
-    }
-
-    private void CollectAOETargetsAndResolveHits()
-    {
-        hasCountedTargets = true;
+        overlapBuffer.Clear();
+        aoeTargets.Clear();
 
         ContactFilter2D contactFilter = new ContactFilter2D();
         contactFilter.SetLayerMask(GameLayer.HurtboxMask);
@@ -201,11 +239,6 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
                 continue;
             }
 
-            if (!col.OverlapPoint(hurtbox.AimPosition))
-            {
-                continue;
-            }
-
             HitData hitData = CreateHitData(hurtbox);
             if (!HitProcessor.CanProcessHit(hitData, out _))
             {
@@ -215,17 +248,44 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
             hitHurtboxes.Add(hurtbox);
             aoeTargets.Add(hurtbox);
         }
+    }
 
-        onTargetsCollected?.Invoke(aoeTargets.Count);
-        onTargetsCollected = null;
+    private void TriggerAOETargets()
+    {
+        if (onTargetsTriggered != null)
+        {
+            rawEffectValue = Mathf.Max(0f, onTargetsTriggered.Invoke(aoeTargets.Count));
+        }
+        onTargetsTriggered = null;
 
         for (int i = 0; i < aoeTargets.Count; i++)
         {
-            ProcessHurtbox(aoeTargets[i]);
+            ProcessTargetHit(aoeTargets[i]);
         }
     }
 
-    private void ProcessHurtbox(Hurtbox hurtbox)
+    private void TickContinuousHit(float deltaTime)
+    {
+        if (tickTimer == null)
+        {
+            return;
+        }
+
+        tickTimer.Tick(deltaTime);
+        if (!tickTimer.IsFinished)
+        {
+            return;
+        }
+
+        hitHurtboxes.Clear();
+        CollectAOETargets();
+        TriggerAOETargets();
+
+        tickTimer.Reset();
+        tickTimer.StartTimer();
+    }
+
+    private void ProcessTargetHit(Hurtbox hurtbox)
     {
         HitData hitData = CreateHitData(hurtbox);
 
@@ -239,7 +299,7 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
                     SpawnHealVFX(hurtbox, hitResult);
                     break;
                 case AttackEffect.Damage:
-                    SpawnHitVFX(hurtbox.AimPosition);
+                    SpawnHitVFX(hurtbox);
                     break;
             }
         }
@@ -247,8 +307,7 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
 
     private HitData CreateHitData(Hurtbox hurtbox)
     {
-        return new HitData(attacker, hurtbox, attackerTeam, targetSide, attackEffect, attackType,
-                           rawEffectValue, damageType, hurtbox.AimPosition);
+        return new HitData(attacker, hurtbox, attackerTeam, targetSide, attackEffect, attackType, rawEffectValue, damageType, hurtbox.AimPosition);
     }
 
     private void SpawnHealVFX(Hurtbox hurtbox, HitResult hitResult)
@@ -258,19 +317,20 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
             return;
         }
 
-        CombatVFXSpawner.SpawnParticleVFX(attackVFXData.HealVFX, hurtbox.AimPosition, Quaternion.identity);
+        CombatVFXSpawner.SpawnParticleVFX(attackVFXData.HealVFX, hurtbox.AimPosition, Quaternion.identity, combatTime);
     }
 
-    private void SpawnHitVFX(Vector3 hitPosition)
+    private void SpawnHitVFX(Hurtbox hurtbox)
     {
         if (attackVFXData.HitVFX == null)
         {
             return;
         }
 
+        Vector3 hitPosition = hurtbox.AimPosition;
         float hitVFXAngle = Mathf.Atan2(hitPosition.y - transform.position.y, hitPosition.x - transform.position.x) * Mathf.Rad2Deg;
         Quaternion hitVFXRotation = Quaternion.Euler(0f, 0f, hitVFXAngle);
-        CombatVFXSpawner.SpawnSimpleSpriteVFX(attackVFXData.HitVFX, hitPosition, hitVFXRotation);
+        CombatVFXSpawner.SpawnSimpleSpriteVFX(attackVFXData.HitVFX, hurtbox, hitVFXRotation, combatTime);
     }
     
     private bool CanStart()
@@ -289,7 +349,6 @@ public class AttackAOEHit : MonoBehaviour, IPoolable
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        aoeTime = Mathf.Max(0f, aoeTime);
         CacheReferences();
     }
 #endif

@@ -162,6 +162,12 @@ public class UIButtonFeedback : MonoBehaviour
             return;
         }
 
+        GameAudioManager audioManager = GameAudioManager.Instance;
+        if (audioManager != null)
+        {
+            audioManager.PlayUIButtonClick();
+        }
+
         OnClicked?.Invoke();
     }
 

@@ -96,7 +96,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -171,353 +171,353 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Swashbuckler_walk_0
+      name: Swashbuckler_walk_16
       rect:
         serializedVersion: 2
-        x: 33
-        y: 317
-        width: 30
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 288
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: af8e5c4cbc39ad0c0800000000000000
-      internalID: -4550161970115516166
+      spriteID: 3b4f71f388d4d424bbf07a0925eee8d2
+      internalID: -1736290854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_1
+      name: Swashbuckler_walk_17
       rect:
         serializedVersion: 2
-        x: 129
-        y: 319
-        width: 30
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 288
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a4e52cb29d7792f90800000000000000
-      internalID: -6977914373008105910
+      spriteID: 51779e131c607694387d5f007ce58198
+      internalID: -1503423696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_2
+      name: Swashbuckler_walk_18
       rect:
         serializedVersion: 2
-        x: 225
-        y: 317
-        width: 30
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 192
+        y: 288
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2d9c477700ddcf610800000000000000
-      internalID: 1656441757039380946
+      spriteID: ff33f4c4c3c632647b1a3f57f69731c0
+      internalID: 1853527243
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_3
+      name: Swashbuckler_walk_19
       rect:
         serializedVersion: 2
-        x: 321
-        y: 319
-        width: 30
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 288
+        y: 288
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c013a1fec8a63daf0800000000000000
-      internalID: -372837190602182388
+      spriteID: a41ae37aacf9c57479e63bb6832098c8
+      internalID: 1183057739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_4
+      name: Swashbuckler_walk_20
       rect:
         serializedVersion: 2
-        x: 31
-        y: 223
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 192
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4cd4256cd646666f0800000000000000
-      internalID: -691755070113296956
+      spriteID: cffa0ad9853b63f42b68109743ba50fc
+      internalID: 990952330
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_5
+      name: Swashbuckler_walk_21
       rect:
         serializedVersion: 2
-        x: 127
-        y: 223
-        width: 32
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 192
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 040a5b268ddf71370800000000000000
-      internalID: 8293376344636891200
+      spriteID: 80d9639e9a88bf442ba5e20b86be008f
+      internalID: 691841563
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_6
+      name: Swashbuckler_walk_22
       rect:
         serializedVersion: 2
-        x: 223
-        y: 223
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 192
+        y: 192
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 101c517335af79aa0800000000000000
-      internalID: -6154175130465091327
+      spriteID: 6c92f709d3bb6e04ba780d785eea2c89
+      internalID: 1051328105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_7
+      name: Swashbuckler_walk_23
       rect:
         serializedVersion: 2
-        x: 319
-        y: 223
-        width: 32
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 288
+        y: 192
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0ea617bb52c940980800000000000000
-      internalID: -8573556104734086432
+      spriteID: b339ecc99c9f592499367810d27a1326
+      internalID: 964002774
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_8
+      name: Swashbuckler_walk_24
       rect:
         serializedVersion: 2
-        x: 33
-        y: 127
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 96
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e6a4dc53fcfe23170800000000000000
-      internalID: 8156845548361304686
+      spriteID: c74306776dde94540a884d6fcfe44430
+      internalID: -1583984330
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_9
+      name: Swashbuckler_walk_25
       rect:
         serializedVersion: 2
-        x: 129
-        y: 127
-        width: 32
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 96
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 704ff6de6008509c0800000000000000
-      internalID: -3961619529960786937
+      spriteID: 7660d036bd4efa5418d92a4038b78e14
+      internalID: -1821842962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_10
+      name: Swashbuckler_walk_26
       rect:
         serializedVersion: 2
-        x: 225
-        y: 127
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 192
+        y: 96
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0a7fb46a4d980e270800000000000000
-      internalID: 8277767661523040160
+      spriteID: e62f53fe6d4c44f46aa3e462503a6f0a
+      internalID: -568059221
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_11
+      name: Swashbuckler_walk_27
       rect:
         serializedVersion: 2
-        x: 321
-        y: 127
-        width: 32
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 288
+        y: 96
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2b97d88ea47b5e740800000000000000
-      internalID: 5180748478716672434
+      spriteID: 57b316a2e189bec42872a32e5ec8b57c
+      internalID: -1917456312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_12
+      name: Swashbuckler_walk_28
       rect:
         serializedVersion: 2
-        x: 33
-        y: 29
-        width: 30
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6378c8df38b3655a0800000000000000
-      internalID: -6532968771373725898
+      spriteID: cd0084ef6bb759c42b08236cb0bc5ae6
+      internalID: 1576748011
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_13
+      name: Swashbuckler_walk_29
       rect:
         serializedVersion: 2
-        x: 129
-        y: 31
-        width: 30
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3511a0be97db0ec30800000000000000
-      internalID: 4386714368390861139
+      spriteID: c27e55947b53c88499eb82741a79c44d
+      internalID: -293467457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_14
+      name: Swashbuckler_walk_30
       rect:
         serializedVersion: 2
-        x: 225
-        y: 29
-        width: 30
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 192
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ebb3d82421455ef10800000000000000
-      internalID: 2298335622245202878
+      spriteID: 7beb55fff55673f438991951ec85c5d0
+      internalID: -1431080427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_walk_15
+      name: Swashbuckler_walk_31
       rect:
         serializedVersion: 2
-        x: 321
-        y: 31
-        width: 30
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 288
+        y: 0
+        width: 96
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33333334}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 212057aba0e933ea0800000000000000
-      internalID: -5894193718382755310
+      spriteID: cf70dd119859f0c47a175aa1226af243
+      internalID: -960298676
       vertices: []
       indices: 
       edges: []
@@ -526,7 +526,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1d457057b325597419198b6bd156f855
     internalID: 0
     vertices: []
     indices: 
@@ -534,7 +534,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":4.0},"gridSpriteSize":{"x":96.0,"y":96.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.3333333432674408},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":1,"spriteAlignment":9,"pivotUnitMode":1,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Swashbuckler_walk_0: -4550161970115516166
       Swashbuckler_walk_1: -6977914373008105910
@@ -544,8 +546,24 @@ TextureImporter:
       Swashbuckler_walk_13: 4386714368390861139
       Swashbuckler_walk_14: 2298335622245202878
       Swashbuckler_walk_15: -5894193718382755310
+      Swashbuckler_walk_16: -1736290854
+      Swashbuckler_walk_17: -1503423696
+      Swashbuckler_walk_18: 1853527243
+      Swashbuckler_walk_19: 1183057739
       Swashbuckler_walk_2: 1656441757039380946
+      Swashbuckler_walk_20: 990952330
+      Swashbuckler_walk_21: 691841563
+      Swashbuckler_walk_22: 1051328105
+      Swashbuckler_walk_23: 964002774
+      Swashbuckler_walk_24: -1583984330
+      Swashbuckler_walk_25: -1821842962
+      Swashbuckler_walk_26: -568059221
+      Swashbuckler_walk_27: -1917456312
+      Swashbuckler_walk_28: 1576748011
+      Swashbuckler_walk_29: -293467457
       Swashbuckler_walk_3: -372837190602182388
+      Swashbuckler_walk_30: -1431080427
+      Swashbuckler_walk_31: -960298676
       Swashbuckler_walk_4: -691755070113296956
       Swashbuckler_walk_5: 8293376344636891200
       Swashbuckler_walk_6: -6154175130465091327

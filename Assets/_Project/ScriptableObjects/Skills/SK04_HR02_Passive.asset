@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillDefinition
   skillId: SK04
   skillName: Fourth Strike
-  skillIcon: {fileID: -751318407, guid: 2672123c3a864d84d9503655df72d677, type: 3}
-  skillDescription: Every 4th normal attack heals self HP equals 60% Physical Damage.
+  skillIcon: {fileID: 1577829210, guid: 2672123c3a864d84d9503655df72d677, type: 3}
+  skillDescription: Every 4th normal attack heals self for 60% of the Physical Damage
+    dealt.
   skillType: 1
   targetType: 0
   cooldown: 0
@@ -29,4 +30,4 @@ MonoBehaviour:
       data:
         requiredNormalAttackCount: 4
         healMultiplier: 0.6
-        healVFXPrefab: {fileID: 0}
+        healVFXPrefab: {fileID: 2897203167134258638, guid: d944ff61e3387444b96accba9d4fd54d, type: 3}

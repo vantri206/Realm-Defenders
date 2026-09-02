@@ -21,7 +21,7 @@ public class SimpleSpriteAnimatorVFX : SimpleSpriteAnimator, IPoolable
             return;
         }
 
-        playTimer.Tick(Time.deltaTime);
+        playTimer.Tick(CombatDeltaTime);
 
         if (playTimer.IsFinished)
         {
@@ -57,6 +57,7 @@ public class SimpleSpriteAnimatorVFX : SimpleSpriteAnimator, IPoolable
         }
 
         Restart();
+        SetCombatTime(null);
     }
 
     public void ReturnToPool()

@@ -24,8 +24,19 @@ public class EnemyWaveDirector
     {
         StopDirector();
         ClearTracking();
+
+        if (this.enemySpawner != null)
+        {
+            this.enemySpawner.OnEnemyReplaced -= HandleEnemyReplaced;
+        }
+
         this.enemySpawner = enemySpawner;
         this.spawnEvents = spawnEvents;
+        if (this.enemySpawner != null)
+        {
+            this.enemySpawner.OnEnemyReplaced += HandleEnemyReplaced;
+        }
+
         ResetSpawnEvents();
     }
 
@@ -90,6 +101,12 @@ public class EnemyWaveDirector
         ClearTracking();
         spawnEventRuntimes.Clear();
         spawnEventsById.Clear();
+
+        if (enemySpawner != null)
+        {
+            enemySpawner.OnEnemyReplaced -= HandleEnemyReplaced;
+        }
+
         enemySpawner = null;
         spawnEvents = null;
     }
@@ -256,6 +273,23 @@ public class EnemyWaveDirector
     private void HandleEnemyEscaped(EnemyRuntime enemy)
     {
         ResolveTrackedEnemy(enemy);
+    }
+
+    private void HandleEnemyReplaced(EnemyRuntime source, EnemyRuntime replacement)
+    {
+        if (source == null || replacement == null || trackedEnemies.ContainsKey(replacement) ||
+            !trackedEnemies.TryGetValue(source, out SpawnEventRuntime runtime))
+        {
+            return;
+        }
+
+        source.OnDestroyed -= HandleEnemyDestroyed;
+        source.OnEscaped -= HandleEnemyEscaped;
+        trackedEnemies.Remove(source);
+
+        trackedEnemies.Add(replacement, runtime);
+        replacement.OnDestroyed += HandleEnemyDestroyed;
+        replacement.OnEscaped += HandleEnemyEscaped;
     }
 
     private void ResolveTrackedEnemy(EnemyRuntime enemy)

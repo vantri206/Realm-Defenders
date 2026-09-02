@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     private bool isInitialized;
 
     public bool IsInitialized => isInitialized;
+    public event Action<EnemyRuntime, EnemyRuntime> OnEnemyReplaced;
 
     private void Awake()
     {
@@ -85,6 +87,20 @@ public class EnemySpawner : MonoBehaviour
 
     private EnemyRuntime SpawnEnemy(EnemyDefinition enemyDefinition, Vector3 spawnPosition, CombatGridCell spawnCell, string routeId)
     {
+        EnemyRuntime enemy = CreateEnemyRuntime(enemyDefinition, spawnPosition, spawnCell, routeId);
+        if (enemy == null)
+        {
+            return null;
+        }
+
+        stageSystem.RegisterEnemy(enemy, new EnemyTrackingData(enemy.IsObjectiveEnemy, GameplayConstants.NORMAL_ENEMY_LIVES_DAMAGE, enemyDefinition.MeatReward));
+        RegisterEnemyEvents(enemy);
+        PlayEnemyEncounterSound();
+        return enemy;
+    }
+
+    private EnemyRuntime CreateEnemyRuntime(EnemyDefinition enemyDefinition, Vector3 spawnPosition, CombatGridCell spawnCell, string routeId)
+    {
         EnemyInstance enemyInstance = CreateEnemyInstance(enemyDefinition);
         if (enemyInstance == null)
         {
@@ -108,8 +124,6 @@ public class EnemySpawner : MonoBehaviour
         }
 
         enemyDepthSorter.RegisterEnemy(enemy);
-        stageSystem.RegisterEnemy(enemy, new EnemyTrackingData(enemyInstance.IsObjectiveEnemy, GameplayConstants.NORMAL_ENEMY_LIVES_DAMAGE, enemyInstance.Definition.MeatReward));
-        RegisterEnemyEvents(enemy);
         return enemy;
     }
 
@@ -159,7 +173,7 @@ public class EnemySpawner : MonoBehaviour
 
         Vector3 cellSize = combatContext.CombatGrid.CellSize;
         float spreadRadius = Mathf.Min(Mathf.Abs(cellSize.x), Mathf.Abs(cellSize.y)) * spawnSpreadCell;
-        Vector2 centerSpread = Random.insideUnitCircle * spreadRadius;
+        Vector2 centerSpread = UnityEngine.Random.insideUnitCircle * spreadRadius;
         Vector3 enemyCenterSpawnPosition = cellCenter + (Vector3)centerSpread;
         spawnPosition = enemyCenterSpawnPosition - (Vector3)enemyDefinition.NavigationOffset;
         return true;
@@ -189,9 +203,69 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
+        EnemyRuntime replacement = TrySpawnDeathReplacement(enemy);
+        if (replacement != null)
+        {
+            enemyDepthSorter.UnregisterEnemy(enemy);
+            UnregisterEnemyEvents(enemy);
+            OnEnemyReplaced?.Invoke(enemy, replacement);
+            return;
+        }
+
         stageSystem.ResolveEnemy(enemy, EnemyResolveReason.Killed);
         enemyDepthSorter.UnregisterEnemy(enemy);
         UnregisterEnemyEvents(enemy);
+    }
+
+    private EnemyRuntime TrySpawnDeathReplacement(EnemyRuntime source)
+    {
+        if (source == null || source.Definition == null || source.Definition.DeathReplacement == null)
+        {
+            return null;
+        }
+
+        EnemyDefinition replacementDefinition = source.Definition.DeathReplacement;
+        if (!replacementDefinition.IsValid)
+        {
+            Debug.LogError($"[EnemySpawner] Death replacement for '{source.Definition.EnemyName}' is invalid.", source);
+            return null;
+        }
+
+        CombatGridCell spawnCell = source.ActiveCell;
+        if (spawnCell == null && !combatContext.CombatGrid.TryWorldToCell(source.CenterPosition, out spawnCell))
+        {
+            Debug.LogError($"[EnemySpawner] Could not resolve a spawn cell for death replacement of '{source.Definition.EnemyName}'.", source);
+            return null;
+        }
+
+        Vector3 spawnPosition = source.CenterPosition - (Vector3)replacementDefinition.NavigationOffset;
+        EnemyRuntime replacement = CreateEnemyRuntime(replacementDefinition, spawnPosition, spawnCell, source.RouteId);
+        if (replacement == null)
+        {
+            Debug.LogError($"[EnemySpawner] Failed to spawn death replacement for '{source.Definition.EnemyName}'.", source);
+            return null;
+        }
+
+        if (!replacement.TryCopyPathProgressFrom(source) || !stageSystem.TryTransferEnemyTracking(source, replacement))
+        {
+            Debug.LogError($"[EnemySpawner] Failed to transfer death replacement state from '{source.Definition.EnemyName}'.", source);
+            enemyDepthSorter.UnregisterEnemy(replacement);
+            Destroy(replacement.gameObject);
+            return null;
+        }
+
+        RegisterEnemyEvents(replacement);
+        PlayEnemyEncounterSound();
+        return replacement;
+    }
+
+    private void PlayEnemyEncounterSound()
+    {
+        GameAudioManager audioManager = GameAudioManager.Instance;
+        if (audioManager != null)
+        {
+            audioManager.PlayEnemyEncounter();
+        }
     }
 
     private void HandleEnemyEscaped(EnemyRuntime enemy)

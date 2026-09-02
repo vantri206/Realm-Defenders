@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5dd41a2ac021f7419e4bf64f2690b08, type: 3}
+  m_Name: HR09_Pixie
+  m_EditorClassIdentifier: Assembly-CSharp::HeroDefinition
+  heroId: HR09
+  heroName: Pixie
+  heroDefaultSprite: {fileID: 2883317154245245944, guid: 5a7f1ee3e5881c848bb1c7fadecbb283, type: 3}
+  heroIcon: {fileID: -2005298369, guid: 5a7f1ee3e5881c848bb1c7fadecbb283, type: 3}
+  heroDisplaySprite: {fileID: 3395245733518382455, guid: 5a7f1ee3e5881c848bb1c7fadecbb283, type: 3}
+  heroClass: {fileID: 11400000, guid: c7b06004691892f43963e27505e89691, type: 2}
+  heroRarity: 0
+  heroDescription: A small fairy that heals and supports allies from the backline.
+  heroAnimator: {fileID: 22100000, guid: 84b17ea63ed4417e82b4cb2067b1c0dc, type: 2}
+  heroPrefab: {fileID: 6873902697943297941, guid: cfdb2236ef19fe64c9462e151b552556, type: 3}
+  maxHealth: 110
+  attack: 26
+  attackInterval: 1.3
+  defense: 6
+  specialDefense: 16
+  blockCount: 0
+  movementType: 0
+  moveSpeed: 0
+  statProgressionTable: {fileID: 11400000, guid: 26901b0edeed0214b8b2cc40687b520d, type: 2}
+  normalAttackDefinition: {fileID: 11400000, guid: 19a58175eae86c7459402643642052f4, type: 2}
+  passiveSkill: {fileID: 11400000, guid: fffb69460485478a946c67132fdf7d99, type: 2}
+  activeSkill: {fileID: 11400000, guid: 44c2b297af134c35b3233ca5f46491a3, type: 2}
+  baseDeployCost: 16
+  baseRedeployTime: 20

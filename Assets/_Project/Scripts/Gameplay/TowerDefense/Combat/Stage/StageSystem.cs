@@ -160,6 +160,23 @@ public class StageSystem : MonoBehaviour
         NotifyStageStatsChanged();
     }
 
+    public bool TryTransferEnemyTracking(EnemyRuntime source, EnemyRuntime replacement)
+    {
+        if (source == null || replacement == null || ReferenceEquals(source, replacement) || activeEnemies.ContainsKey(replacement))
+        {
+            return false;
+        }
+
+        if (!activeEnemies.TryGetValue(source, out EnemyTrackingData trackingData))
+        {
+            return false;
+        }
+
+        activeEnemies.Remove(source);
+        activeEnemies.Add(replacement, trackingData);
+        return true;
+    }
+
     public void ResolveEnemy(EnemyRuntime enemy, EnemyResolveReason resolveReason)
     {
         if(!activeEnemies.TryGetValue(enemy, out var trackingData))

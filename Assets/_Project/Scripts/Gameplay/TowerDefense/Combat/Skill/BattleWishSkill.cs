@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -12,77 +11,23 @@ public class BattleWishSkill : NormalAttackOverrideSkill
     [SerializeField] private float healMultiplier = 1.2f;
     [SerializeField] private float attackBonus = 0.15f;
     [SerializeField] private float buffDuration = 4f;
-    [SerializeField] private UnitAttackType attackType = UnitAttackType.Ranged;
-    [SerializeField] private List<Vector2Int> areaPattern = new List<Vector2Int> { Vector2Int.zero };
     [SerializeField] private ParticleVFX healVFXPrefab;
 
-    [NonSerialized] private List<Hurtbox> targets;
+    protected override int MaxTargetCount => int.MaxValue;
+    protected override TargetSide OverrideTargetSide => TargetSide.Ally;
+    protected override AttackEffect OverrideAttackEffect => AttackEffect.Damage;
 
-    public override void Initialize(HeroRuntime owner, SkillDefinition definition)
+    protected override bool ExecuteOverrideAttack()
     {
-        base.Initialize(owner, definition);
-        targets = new List<Hurtbox>();
-    }
-
-protected override bool CanUseOverrideAttack(out Hurtbox target)
-{
-    target = null;
-
-    if (Owner == null || Owner.NormalAttackController == null || !Owner.NormalAttackController.IsReadyAttack)
-    {
-        return false;
-    }
-
-    return TrySelectBattleWishTarget(out target);
-}
-
-    protected override bool TryUseOverrideAttack(out Hurtbox target)
-    {
-        if (!TrySelectBattleWishTarget(out target))
-        {
-            return false;
-        }
-
-        return Owner.NormalAttackController.TryUseOverrideAttack(target);
-    }
-
-    private bool TrySelectBattleWishTarget(out Hurtbox target)
-    {
-        target = null;
-        if (Owner == null)
-        {
-            return false;
-        }
-
-        IReadOnlyList<Vector2Int> resolvedPattern = AttackPatternResolver.RefreshAttackPattern(areaPattern, Owner.FacingDirection);
-        Owner.CollectSkillTargets(resolvedPattern, TargetSide.Ally, AttackEffect.Damage, attackType, targets);
-        if (targets.Count == 0)
-        {
-            return false;
-        }
-
-        target = targets[0];
-        return target != null;
-    }
-
-    protected override bool ExecuteOverrideAttack(Hurtbox target)
-    {
-        IReadOnlyList<Vector2Int> resolvedPattern = AttackPatternResolver.RefreshAttackPattern(areaPattern, Owner.FacingDirection);
-        Owner.CollectSkillTargets(resolvedPattern, TargetSide.Ally, AttackEffect.Damage, attackType, targets);
-        if (targets.Count == 0)
-        {
-            return false;
-        }
-
         float rawHeal = DamageCalculator.CalculateBaseEffectValue(Owner.Attack, Mathf.Max(0f, healMultiplier));
         UnitStatModifier[] attackModifiers =
         {
             new UnitStatModifier(UnitStatType.Attack, UnitStatModifierType.AdditivePercent, attackBonus, AttackModifierId)
         };
 
-        for (int i = 0; i < targets.Count; i++)
+        for (int i = 0; i < OverrideTargets.Count; i++)
         {
-            Hurtbox ally = targets[i];
+            Hurtbox ally = OverrideTargets[i];
             if (ally == null || ally.OwnerRuntime == null || ally.OwnerRuntime.IsDead)
             {
                 continue;
@@ -103,28 +48,22 @@ protected override bool CanUseOverrideAttack(out Hurtbox target)
                 Owner.BattleTeam,
                 TargetSide.Ally,
                 AttackEffect.Heal,
-                attackType,
+                Owner.NormalAttackDefinition.AttackType,
                 rawHeal,
                 AttackDamageType.TrueDamage,
                 ally.AimPosition
             );
 
-            if (Owner.SkillAttackController.TryProcessHit(hitData, out HitResult hitResult))
+            if (Owner.SkillAttackController.TryProcessHit(hitData, out _))
             {
                 if (healVFXPrefab != null)
                 {
-                    CombatVFXSpawner.SpawnParticleVFX(healVFXPrefab, ally.AimPosition, Quaternion.identity);
+                    CombatVFXSpawner.SpawnParticleVFX(healVFXPrefab, ally.AimPosition, Quaternion.identity, Owner.CombatTime);
                 }
             }
         }
 
         FinishOverrideAttack();
         return true;
-    }
-
-    public override void ClearData()
-    {
-        targets?.Clear();
-        base.ClearData();
     }
 }

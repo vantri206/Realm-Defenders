@@ -5148,6 +5148,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2590168701296664188, guid: 692950a02dc9099439b527373510023b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2930213074221855400, guid: 692950a02dc9099439b527373510023b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5243,6 +5247,14 @@ PrefabInstance:
     - target: {fileID: 4659303441576451289, guid: 692950a02dc9099439b527373510023b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413090074939920183, guid: 692950a02dc9099439b527373510023b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 96.00098
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413090074939920183, guid: 692950a02dc9099439b527373510023b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 5860475929247385745, guid: 692950a02dc9099439b527373510023b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -7023,6 +7035,16 @@ MonoBehaviour:
     - definition: {fileID: 11400000, guid: e5192aabd29b20a40a77ca0044d5d62b, type: 2}
       startingLevel: 1
     - definition: {fileID: 11400000, guid: 0b2c29c1b24aade4dada2450aa488bb7, type: 2}
+      startingLevel: 1
+    - definition: {fileID: 11400000, guid: c01dae633dc3989459a74692a243dc80, type: 2}
+      startingLevel: 1
+    - definition: {fileID: 11400000, guid: 30f5aad2d3b4a9648a1c237a8a051372, type: 2}
+      startingLevel: 1
+    - definition: {fileID: 11400000, guid: 1f49e46e799ced24a9f02bb6d9245cb9, type: 2}
+      startingLevel: 1
+    - definition: {fileID: 11400000, guid: 578293ee9fc526d4f93b5d098086b773, type: 2}
+      startingLevel: 1
+    - definition: {fileID: 11400000, guid: 0364c75fc45c9ec44a0c6f8b91038996, type: 2}
       startingLevel: 1
 --- !u!4 &1391731005
 Transform:
@@ -9178,8 +9200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c731a2d7b5f42aedc126c9e75f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatStageAuthoring
-  stageId: ST01
-  stageName: The Lake
+  stageId: ST00
+  stageName: The Lake-0
   mapView: {fileID: 1728462893}
   tilemapSources:
   - tilemap: {fileID: 1981803385}
@@ -9198,43 +9220,123 @@ MonoBehaviour:
     - {fileID: 1591369299}
     - {fileID: 375281841}
     - {fileID: 723523046}
+  - routeId: Ground_B
+    checkpoints:
+    - {fileID: 200158413}
+    - {fileID: 1591369299}
+    - {fileID: 148897633}
+    - {fileID: 1787352067}
+    - {fileID: 723523046}
   - routeId: Air_A
     checkpoints:
     - {fileID: 1136134562}
     - {fileID: 1064258267}
     - {fileID: 936679976}
     - {fileID: 723523046}
+  - routeId: Air_B
+    checkpoints:
+    - {fileID: 1136134562}
+    - {fileID: 148897633}
+    - {fileID: 1787352067}
+    - {fileID: 936679976}
+    - {fileID: 723523046}
   spawnPoints:
   - {fileID: 200158414}
   - {fileID: 1136134561}
   startConfig:
-    startingMeat: 20
-    startingLives: 5
+    startingMeat: 200
+    startingLives: 20
     naturalMeatPerSecond: 1
   spawnEvents:
-  - eventId: ST01_GoblinStream
+  - eventId: ST00_GoblinGroundA
     enemyDefinition: {fileID: 11400000, guid: 638a81c734ff23942b1cf02dc3f29bdd, type: 2}
     spawnPoint: {fileID: 200158414}
     spawnPointId: S1
     routeId: Ground_A
-    groupCount: 10
-    enemyCount: 1
-    interval: 6
+    groupCount: 3
+    enemyCount: 2
+    interval: 8
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 2
+  - eventId: ST00_GoblinGroundB
+    enemyDefinition: {fileID: 11400000, guid: 638a81c734ff23942b1cf02dc3f29bdd, type: 2}
+    spawnPoint: {fileID: 200158414}
+    spawnPointId: S1
+    routeId: Ground_B
+    groupCount: 3
+    enemyCount: 2
+    interval: 8
     startCondition: 0
     requiredEventId: 
     startDelay: 4
-  - eventId: ST01_BatCheck
+  - eventId: ST00_WolfGroundA
+    enemyDefinition: {fileID: 11400000, guid: 53e6452d2aa7f494b8981eddccc5c9a9, type: 2}
+    spawnPoint: {fileID: 200158414}
+    spawnPointId: S1
+    routeId: Ground_A
+    groupCount: 3
+    enemyCount: 2
+    interval: 9
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 10
+  - eventId: ST00_VampireGroundB
+    enemyDefinition: {fileID: 11400000, guid: 28209eb47fc50af46a7594351f4f944e, type: 2}
+    spawnPoint: {fileID: 200158414}
+    spawnPointId: S1
+    routeId: Ground_B
+    groupCount: 3
+    enemyCount: 2
+    interval: 9
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 13
+  - eventId: ST00_DemonGroundA
+    enemyDefinition: {fileID: 11400000, guid: 24046381101414749b83537b48e32ba6, type: 2}
+    spawnPoint: {fileID: 200158414}
+    spawnPointId: S1
+    routeId: Ground_A
+    groupCount: 3
+    enemyCount: 2
+    interval: 10
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 20
+  - eventId: ST00_WolfGroundB
+    enemyDefinition: {fileID: 11400000, guid: 53e6452d2aa7f494b8981eddccc5c9a9, type: 2}
+    spawnPoint: {fileID: 200158414}
+    spawnPointId: S1
+    routeId: Ground_B
+    groupCount: 3
+    enemyCount: 2
+    interval: 9
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 25
+  - eventId: ST00_BatAirA
     enemyDefinition: {fileID: 11400000, guid: 81055afce59c9544692675ce55dc68fe, type: 2}
     spawnPoint: {fileID: 1136134561}
     spawnPointId: S2
     routeId: Air_A
-    groupCount: 3
+    groupCount: 5
     enemyCount: 1
-    interval: 10
+    interval: 9
     startCondition: 0
     requiredEventId: 
-    startDelay: 24
-  outputDefinition: {fileID: 11400000, guid: c970eb5586686f148bd86384eb7876f7, type: 2}
+    startDelay: 8
+  - eventId: ST00_BatAirB
+    enemyDefinition: {fileID: 11400000, guid: 81055afce59c9544692675ce55dc68fe, type: 2}
+    spawnPoint: {fileID: 1136134561}
+    spawnPointId: S2
+    routeId: Air_B
+    groupCount: 5
+    enemyCount: 1
+    interval: 9
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 12
+  outputDefinition: {fileID: 11400000, guid: ab99a02cde0fe434d98b1fd9907d91b1, type: 2}
 --- !u!1 &1981803382
 GameObject:
   m_ObjectHideFlags: 0
@@ -9294,7 +9396,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3db0d7d99c2232a42b43c69623c8361b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9336,8 +9438,8 @@ Tilemap:
   - first: {x: -1, y: -4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 4
+      m_TileIndex: 2
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9426,7 +9528,7 @@ Tilemap:
   - first: {x: 8, y: -4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 4
+      m_TileIndex: 3
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
@@ -9516,8 +9618,8 @@ Tilemap:
   - first: {x: -15, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 3
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9526,8 +9628,8 @@ Tilemap:
   - first: {x: -14, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 3
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9536,8 +9638,8 @@ Tilemap:
   - first: {x: -13, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 3
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9656,8 +9758,8 @@ Tilemap:
   - first: {x: -1, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 6
-      m_TileSpriteIndex: 6
+      m_TileIndex: 5
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9736,8 +9838,8 @@ Tilemap:
   - first: {x: -1, y: 3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 5
-      m_TileSpriteIndex: 5
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9826,8 +9928,8 @@ Tilemap:
   - first: {x: 8, y: 3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 7
-      m_TileSpriteIndex: 7
+      m_TileIndex: 6
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9835,12 +9937,10 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 24
+  - m_RefCount: 27
     m_Data: {fileID: 11400000, guid: d00fe485ebef2ba42b8d30c8d78e89e5, type: 2}
   - m_RefCount: 18
     m_Data: {fileID: 11400000, guid: cc20a27cd9ebabd40867e12e0071e424, type: 2}
-  - m_RefCount: 3
-    m_Data: {fileID: 11400000, guid: 3b8f27de88f1e0d43b9ad46dbccad456, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 7b97598ccd107f442b9ea01844bd3e85, type: 2}
   - m_RefCount: 1
@@ -9852,14 +9952,12 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 8b116530bcbc74e48b0243e5974dd707, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 24
+  - m_RefCount: 27
     m_Data: {fileID: -1177112403, guid: f3784b8bc926e5843a766db50aadda85, type: 3}
   - m_RefCount: 18
     m_Data: {fileID: -624051114, guid: f3784b8bc926e5843a766db50aadda85, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 646422566, guid: f3784b8bc926e5843a766db50aadda85, type: 3}
-  - m_RefCount: 3
-    m_Data: {fileID: -842344334, guid: f3784b8bc926e5843a766db50aadda85, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 520308332, guid: f3784b8bc926e5843a766db50aadda85, type: 3}
   - m_RefCount: 1

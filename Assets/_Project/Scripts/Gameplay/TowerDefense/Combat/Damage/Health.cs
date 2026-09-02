@@ -65,6 +65,11 @@ public class Health : MonoBehaviour, IDamageable
         }
 
         this.stats = stats;
+        if (shield != null)
+        {
+            shield.Initialize(stats);
+        }
+
         RefreshHealth(false);
     }
 
@@ -142,12 +147,14 @@ public class Health : MonoBehaviour, IDamageable
             return default;
         }
 
+        float healthBefore = currentHealth;
         currentHealth = Mathf.Min(MaxHealth, currentHealth + request.BaseHeal);
+        float healthRestored = currentHealth - healthBefore;
 
-        OnHealed?.Invoke(request.BaseHeal);
+        OnHealed?.Invoke(healthRestored);
 
         NotifyHealthChanged();
-        return new HitResult(AttackEffect.Heal, request.BaseHeal, false);
+        return new HitResult(AttackEffect.Heal, healthRestored, false);
     }
 
     public void Heal(float healAmount, Vector3 hitPosition)

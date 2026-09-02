@@ -5,7 +5,10 @@ using UnityEngine.UI;
 public enum HubScreenId
 {
     None,
-    RosterHero
+    RosterHero,
+    EnemyDictionary,
+    Quest,
+    Guide
 }
 
 [RequireComponent(typeof(Button))]

@@ -59,7 +59,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2151da8ab5db46f9b7c9e6063d3c6b41, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: -3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -6773244484139742949, guid: 5f42c09cebc93a94b8f6adce82a890af, type: 3}
+  m_Sprite: {fileID: -7048968944120983531, guid: e60fc4e029ebb3f45a20ac57eeb2aea9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,15 +106,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SimpleSpriteAnimatorVFX
   spriteRenderer: {fileID: 1449505053527239378}
   frames:
-  - {fileID: 7540658515752462423, guid: 5f42c09cebc93a94b8f6adce82a890af, type: 3}
-  - {fileID: -2541030485862224131, guid: 5f42c09cebc93a94b8f6adce82a890af, type: 3}
-  - {fileID: -1204343188267239981, guid: 5f42c09cebc93a94b8f6adce82a890af, type: 3}
-  - {fileID: -6773244484139742949, guid: 5f42c09cebc93a94b8f6adce82a890af, type: 3}
-  - {fileID: -4283348710101334157, guid: 5f42c09cebc93a94b8f6adce82a890af, type: 3}
-  - {fileID: -7009930442073758030, guid: 5f42c09cebc93a94b8f6adce82a890af, type: 3}
-  - {fileID: -1962665812, guid: 5f42c09cebc93a94b8f6adce82a890af, type: 3}
-  - {fileID: 1804862957, guid: 5f42c09cebc93a94b8f6adce82a890af, type: 3}
-  - {fileID: 358288139, guid: 5f42c09cebc93a94b8f6adce82a890af, type: 3}
+  - {fileID: -7048968944120983531, guid: e60fc4e029ebb3f45a20ac57eeb2aea9, type: 3}
+  - {fileID: -6148933825300231367, guid: e60fc4e029ebb3f45a20ac57eeb2aea9, type: 3}
+  - {fileID: -1824712975645874580, guid: e60fc4e029ebb3f45a20ac57eeb2aea9, type: 3}
+  - {fileID: 3812825411009521099, guid: e60fc4e029ebb3f45a20ac57eeb2aea9, type: 3}
+  - {fileID: 3181126395108900219, guid: e60fc4e029ebb3f45a20ac57eeb2aea9, type: 3}
   framesPerSecond: 12
+  startFrameIndex: 0
   isLoop: 0
-  playTime: 1
+  playTime: 0.75

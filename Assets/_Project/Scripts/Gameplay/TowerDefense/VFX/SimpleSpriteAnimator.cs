@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,11 +13,15 @@ public class SimpleSpriteAnimator : MonoBehaviour
 
     private int currentFrameIndex;
     private CountdownTimer frameTimer;
+    private CombatTimeController combatTime;
     private bool isPlaying;
 
     public bool IsPlaying => isPlaying;
     public bool IsLooping => isLoop;
     public int StartFrameIndex => startFrameIndex;
+
+    public event Action<int> FrameChanged;
+    public event Action AnimationCompleted;
 
     protected virtual void Awake()
     {
@@ -30,7 +35,7 @@ public class SimpleSpriteAnimator : MonoBehaviour
             return;
         }
 
-        frameTimer.Tick(Time.deltaTime);
+        frameTimer.Tick(CombatDeltaTime);
 
         if (!frameTimer.IsRunning)
         {
@@ -47,6 +52,11 @@ public class SimpleSpriteAnimator : MonoBehaviour
     public void Play()
     {
         TryPlay();
+    }
+
+    public void SetCombatTime(CombatTimeController combatTime)
+    {
+        this.combatTime = combatTime;
     }
 
     protected bool TryPlay()
@@ -74,8 +84,8 @@ public class SimpleSpriteAnimator : MonoBehaviour
         frameTimer = new CountdownTimer(frameDuration);
         frameTimer.StartTimer();
 
-        spriteRenderer.sprite = frames[currentFrameIndex];
         isPlaying = true;
+        ShowCurrentSprite();
         return true;
     }
 
@@ -100,9 +110,23 @@ public class SimpleSpriteAnimator : MonoBehaviour
         }
     }
 
+    protected float CombatDeltaTime
+    {
+        get
+        {
+            if (combatTime != null)
+            {
+                return combatTime.CombatDeltaTime;
+            }
+
+            return 0f;
+        }
+    }
+
     protected virtual void CompleteAnimation()
     {
         StopAnimation();
+        AnimationCompleted?.Invoke();
     }
 
     public void SetLooping(bool shouldLoop)
@@ -125,7 +149,13 @@ public class SimpleSpriteAnimator : MonoBehaviour
             currentFrameIndex = 0;
         }
 
+        ShowCurrentSprite();
+    }
+
+    private void ShowCurrentSprite()
+    {
         spriteRenderer.sprite = frames[currentFrameIndex];
+        FrameChanged?.Invoke(currentFrameIndex);
     }
 
     private void CacheReferences()

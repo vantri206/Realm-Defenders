@@ -1,0 +1,225 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6198297e2f310e247ab2e15ad069799d, type: 3}
+  m_Name: HR07_BlueWyrmling_StatProgressionTable
+  m_EditorClassIdentifier: Assembly-CSharp::UnitStatProgressionTable
+  statsByLevel:
+  - maxHealth: 105
+    attack: 48
+    attackInterval: 1.8
+    defense: 5
+    specialDefense: 22
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 108
+    attack: 49
+    attackInterval: 1.8
+    defense: 5
+    specialDefense: 22
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 108
+    attack: 52
+    attackInterval: 1.8
+    defense: 5
+    specialDefense: 23
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 111
+    attack: 55
+    attackInterval: 1.8
+    defense: 5
+    specialDefense: 24
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 114
+    attack: 55
+    attackInterval: 1.8
+    defense: 5
+    specialDefense: 24
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 115
+    attack: 58
+    attackInterval: 1.8
+    defense: 5
+    specialDefense: 25
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 117
+    attack: 58
+    attackInterval: 1.8
+    defense: 5
+    specialDefense: 26
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 120
+    attack: 60
+    attackInterval: 1.8
+    defense: 6
+    specialDefense: 26
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 122
+    attack: 61
+    attackInterval: 1.8
+    defense: 6
+    specialDefense: 27
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 124
+    attack: 66
+    attackInterval: 1.8
+    defense: 6
+    specialDefense: 27
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 124
+    attack: 66
+    attackInterval: 1.8
+    defense: 6
+    specialDefense: 28
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 128
+    attack: 70
+    attackInterval: 1.8
+    defense: 6
+    specialDefense: 28
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 129
+    attack: 70
+    attackInterval: 1.8
+    defense: 6
+    specialDefense: 28
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 133
+    attack: 71
+    attackInterval: 1.8
+    defense: 6
+    specialDefense: 29
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 135
+    attack: 73
+    attackInterval: 1.8
+    defense: 6
+    specialDefense: 30
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 135
+    attack: 75
+    attackInterval: 1.8
+    defense: 6
+    specialDefense: 30
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 139
+    attack: 78
+    attackInterval: 1.8
+    defense: 6
+    specialDefense: 31
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 139
+    attack: 79
+    attackInterval: 1.8
+    defense: 6
+    specialDefense: 31
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 142
+    attack: 82
+    attackInterval: 1.8
+    defense: 6
+    specialDefense: 32
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 143
+    attack: 83
+    attackInterval: 1.8
+    defense: 6
+    specialDefense: 32
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 145
+    attack: 84
+    attackInterval: 1.8
+    defense: 7
+    specialDefense: 33
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 148
+    attack: 87
+    attackInterval: 1.8
+    defense: 7
+    specialDefense: 34
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 150
+    attack: 88
+    attackInterval: 1.8
+    defense: 7
+    specialDefense: 34
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 152
+    attack: 92
+    attackInterval: 1.8
+    defense: 7
+    specialDefense: 36
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 155
+    attack: 96
+    attackInterval: 1.8
+    defense: 7
+    specialDefense: 36
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 161
+    attack: 99
+    attackInterval: 1.8
+    defense: 7
+    specialDefense: 37
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 165
+    attack: 102
+    attackInterval: 1.8
+    defense: 7
+    specialDefense: 38
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 167
+    attack: 106
+    attackInterval: 1.8
+    defense: 7
+    specialDefense: 39
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 170
+    attack: 106
+    attackInterval: 1.8
+    defense: 7
+    specialDefense: 40
+    moveSpeed: 0
+    blockCount: 0
+  - maxHealth: 173
+    attack: 110
+    attackInterval: 1.8
+    defense: 8
+    specialDefense: 41
+    moveSpeed: 0
+    blockCount: 0

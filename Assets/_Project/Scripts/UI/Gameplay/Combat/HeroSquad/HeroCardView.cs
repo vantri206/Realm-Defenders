@@ -237,7 +237,7 @@ public class HeroCardView : MonoBehaviour
         ShowCountdown(combatState.RedeployCountdownTime, combatState.RedeployTime);
     }
 
-    public void Tick(float deltaTime)
+    public void Tick()
     {
         if (combatState == null)
         {

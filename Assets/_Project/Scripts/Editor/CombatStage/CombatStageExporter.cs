@@ -50,6 +50,7 @@ public static class CombatStageExporter
             mapData,
             authoring.StartConfig,
             spawnEvents);
+        CombatStagePreviewExporter.GenerateMapPreview(authoring, definition);
 
         EditorUtility.SetDirty(definition);
         AssetDatabase.SaveAssets();
@@ -69,7 +70,12 @@ public static class CombatStageExporter
         }
 
         string definitionPath = AssetDatabase.GetAssetPath(definition);
-        string directory = Path.GetDirectoryName(definitionPath)?.Replace('\\', '/');
+        string directory = Path.GetDirectoryName(definitionPath);
+        if (!string.IsNullOrEmpty(directory))
+        {
+            directory = directory.Replace('\\', '/');
+        }
+
         return $"{directory}/{GetSafeFileName(stageId)}_Map.prefab";
     }
 

@@ -15,6 +15,8 @@ public class HubUIController : MonoBehaviour
     [Header("Screens")]
     [SerializeField] private GameObject screenPanel;
     [SerializeField] private HeroRosterView rosterView;
+    [SerializeField] private EnemyDictonaryView enemyDictonaryView;
+    [SerializeField] private QuestStageView questStageView;
 
     private HubNavigationButton activeNavigationButton;
     private HubScreenId activeScreenId = HubScreenId.None;
@@ -27,6 +29,16 @@ public class HubUIController : MonoBehaviour
         if (rosterView != null)
         {
             rosterView.Hide();
+        }
+
+        if (enemyDictonaryView != null)
+        {
+            enemyDictonaryView.Hide();
+        }
+
+        if (questStageView != null)
+        {
+            questStageView.Hide();
         }
 
         activeScreenId = HubScreenId.None;
@@ -63,6 +75,16 @@ public class HubUIController : MonoBehaviour
             rosterView.Hide();
         }
 
+        if (enemyDictonaryView != null)
+        {
+            enemyDictonaryView.Hide();
+        }
+
+        if (questStageView != null)
+        {
+            questStageView.Hide();
+        }
+
         activeScreenId = HubScreenId.None;
         SetActiveNavigationButton(null);
         UpdateScreenPanelVisibility();
@@ -89,10 +111,71 @@ public class HubUIController : MonoBehaviour
                     return;
                 }
 
+                if (enemyDictonaryView != null)
+                {
+                    enemyDictonaryView.Hide();
+                }
+
+                if (questStageView != null)
+                {
+                    questStageView.Hide();
+                }
+
                 activeScreenId = HubScreenId.RosterHero;
                 UpdateScreenPanelVisibility();
                 rosterView.Show(playerSession != null ? playerSession.HeroRoster : null);
                 SetActiveNavigationButton(sourceButton);
+                break;
+
+            case HubScreenId.EnemyDictionary:
+                if (enemyDictonaryView == null)
+                {
+                    Debug.LogError("[HubUIController] EnemyDictonaryView reference is required to open the Enemy Dictionary screen.", this);
+                    return;
+                }
+
+                if (rosterView != null)
+                {
+                    rosterView.Hide();
+                }
+
+                if (questStageView != null)
+                {
+                    questStageView.Hide();
+                }
+
+                activeScreenId = HubScreenId.EnemyDictionary;
+                UpdateScreenPanelVisibility();
+                enemyDictonaryView.Show();
+                SetActiveNavigationButton(sourceButton);
+                break;
+
+            case HubScreenId.Quest:
+                if (questStageView == null)
+                {
+                    Debug.LogError("[HubUIController] QuestStageView reference is required to open the Quest screen.", this);
+                    return;
+                }
+
+                if (rosterView != null)
+                {
+                    rosterView.Hide();
+                }
+
+                if (enemyDictonaryView != null)
+                {
+                    enemyDictonaryView.Hide();
+                }
+
+                activeScreenId = HubScreenId.Quest;
+                UpdateScreenPanelVisibility();
+                questStageView.Show();
+                SetActiveNavigationButton(sourceButton);
+                break;
+
+            case HubScreenId.Guide:
+                Debug.LogWarning("[HubUIController] Guide screen is not implemented yet.", this);
+                CloseActiveScreen();
                 break;
 
             case HubScreenId.None:
@@ -152,6 +235,18 @@ public class HubUIController : MonoBehaviour
             rosterView.OnCloseRequested += CloseActiveScreen;
         }
 
+        if (enemyDictonaryView != null)
+        {
+            enemyDictonaryView.OnCloseRequested -= CloseActiveScreen;
+            enemyDictonaryView.OnCloseRequested += CloseActiveScreen;
+        }
+
+        if (questStageView != null)
+        {
+            questStageView.OnCloseRequested -= CloseActiveScreen;
+            questStageView.OnCloseRequested += CloseActiveScreen;
+        }
+
         if (playerSession != null)
         {
             playerSession.OnExperiencePointsChanged -= HandleExperiencePointsChanged;
@@ -182,6 +277,16 @@ public class HubUIController : MonoBehaviour
         if (rosterView != null)
         {
             rosterView.OnCloseRequested -= CloseActiveScreen;
+        }
+
+        if (enemyDictonaryView != null)
+        {
+            enemyDictonaryView.OnCloseRequested -= CloseActiveScreen;
+        }
+
+        if (questStageView != null)
+        {
+            questStageView.OnCloseRequested -= CloseActiveScreen;
         }
 
         if (playerSession != null)
@@ -232,6 +337,16 @@ public class HubUIController : MonoBehaviour
         if (rosterView == null)
         {
             rosterView = GetComponentInChildren<HeroRosterView>(true);
+        }
+
+        if (enemyDictonaryView == null)
+        {
+            enemyDictonaryView = GetComponentInChildren<EnemyDictonaryView>(true);
+        }
+
+        if (questStageView == null)
+        {
+            questStageView = GetComponentInChildren<QuestStageView>(true);
         }
     }
 }

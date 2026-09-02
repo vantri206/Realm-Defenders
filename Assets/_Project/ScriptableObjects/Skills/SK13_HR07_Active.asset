@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023ac7769490ac74cb0ad848e7029d2b, type: 3}
+  m_Name: SK13_HR07_Active
+  m_EditorClassIdentifier: Assembly-CSharp::SkillDefinition
+  skillId: SK13
+  skillName: Frost Storm
+  skillIcon: {fileID: -532346209, guid: 2672123c3a864d84d9503655df72d677, type: 3}
+  skillDescription: The next normal attack creates a frost storm, dealing 70% Attack
+    as Magic Damage to enemies in the area and reducing their Move Speed by 35% for
+    5 seconds.
+  skillType: 0
+  targetType: 2
+  cooldown: 11
+  skill:
+    rid: 731300000000000001
+  references:
+    version: 2
+    RefIds:
+    - rid: 731300000000000001
+      type: {class: FrostStormSkill, ns: , asm: Assembly-CSharp}
+      data:
+        damageMultiplier: 0.7
+        moveSpeedReduction: 0.35
+        slowDuration: 5
+        effectDelay: 1
+        aoeHitPrefab: {fileID: 2542186368254637529, guid: 4ff6f8213772eab4a8b882b4da1484d5, type: 3}
+        hitVFXPrefab: {fileID: 5006250830996535109, guid: fa77fd4ed2625334cb60070085ec1b69, type: 3}

@@ -2,19 +2,29 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public readonly struct NormalAttackFiredData
+public sealed class NormalAttackFiredData
 {
     public int AttackId { get; }
     public Hurtbox Target { get; }
-    public int UniqueTargetCount { get; }
+    public int UniqueTargetCount { get; private set; }
     public float AttackSnapshot { get; }
+    public float RawEffectValue { get; set; }
+    public AttackMethod AttackMethod { get; set; }
 
-    public NormalAttackFiredData(int attackId, Hurtbox target, int uniqueTargetCount, float attackSnapshot)
+    public NormalAttackFiredData(int attackId, Hurtbox target, int uniqueTargetCount, float attackSnapshot,
+                                 float rawEffectValue, AttackMethod attackMethod)
     {
         AttackId = attackId;
         Target = target;
         UniqueTargetCount = uniqueTargetCount;
         AttackSnapshot = attackSnapshot;
+        RawEffectValue = rawEffectValue;
+        AttackMethod = attackMethod;
+    }
+
+    public void SetUniqueTargetCount(int value)
+    {
+        UniqueTargetCount = Mathf.Max(0, value);
     }
 }
 
@@ -24,6 +34,7 @@ public class NormalAttackController : MonoBehaviour
 
     // References
     private readonly List<Hurtbox> validTargets = new List<Hurtbox>();
+    private readonly List<Hurtbox> selectedTargets = new List<Hurtbox>();
     private TargetScanner targetScanner;
     private TargetSelector targetSelector;
     private TeamIdentity attackerTeam;
@@ -31,7 +42,7 @@ public class NormalAttackController : MonoBehaviour
     private CountdownTimer attackTimer = new CountdownTimer(0f);
     private Hurtbox currentTarget;
     private int nextNormalAttackCount = 1;
-    private bool skipNextAttackTimerTick;
+    private bool skipAttackerTimer;
 
     private UnitStats stats;
     private NormalAttackDefinition normalAttack;
@@ -87,12 +98,12 @@ public class NormalAttackController : MonoBehaviour
         this.combatTime = combatTime;
 
         nextNormalAttackCount = 1;
-        skipNextAttackTimerTick = false;
+        skipAttackerTimer = false;
         isInitialized = true;
         return true;
     }
 
-    public void Tick(float deltaTime, IReadOnlyList<Vector2Int> patternOffsets, bool canTriggerAttack)
+    public void TickAttackTimer(float deltaTime)
     {
         if (!isInitialized)
         {
@@ -101,14 +112,22 @@ public class NormalAttackController : MonoBehaviour
 
         if (attackTimer.IsRunning)
         {
-            if (skipNextAttackTimerTick)
+            if (skipAttackerTimer)
             {
-                skipNextAttackTimerTick = false;
+                skipAttackerTimer = false;
             }
             else
             {
                 attackTimer.Tick(deltaTime);
             }
+        }
+    }
+
+    public void TryTriggerAttack(IReadOnlyList<Vector2Int> patternOffsets, bool canTriggerAttack)
+    {
+        if (!isInitialized)
+        {
+            return;
         }
 
         if (!canTriggerAttack || !IsReadyAttack)
@@ -143,25 +162,64 @@ public class NormalAttackController : MonoBehaviour
 
     private Hurtbox SelectTarget(IReadOnlyList<Vector2Int> patternOffsets)
     {
+        SelectTargets
+        (
+            patternOffsets,
+            normalAttack.TargetSide,
+            normalAttack.AttackEffect,
+            1,
+            selectedTargets
+        );
+
+        return selectedTargets.Count > 0 ? selectedTargets[0] : null;
+    }
+
+    private void SelectTargets(IReadOnlyList<Vector2Int> patternOffsets, TargetSide targetSide, AttackEffect attackEffect,
+                               int maxTargetCount, List<Hurtbox> results)
+    {
+        results.Clear();
         validTargets.Clear();
 
         if (patternOffsets == null)
         {
             Debug.LogError("[NormalAttackController] Attack pattern is required to select a target.", this);
-            return null;
+            return;
         }
 
-        if (normalAttack.AttackEffect == AttackEffect.Damage && normalAttack.TargetSide == TargetSide.Enemy &&
+        if (maxTargetCount <= 0)
+        {
+            return;
+        }
+
+        if (attackEffect == AttackEffect.Damage && targetSide == TargetSide.Enemy &&
             targetSelector.TrySelectLockedBlockingTarget(normalAttack.AttackType, out Hurtbox lockedTarget))     //logic lock 1 enemy blocked
         {
-            validTargets.Add(lockedTarget);
-            return lockedTarget;
+            results.Add(lockedTarget);
+            if (results.Count >= maxTargetCount)
+            {
+                return;
+            }
         }
 
         Vector2 attackPosition = GetAttackPosition();
-        targetScanner.Scan(attackPosition, patternOffsets, normalAttack.TargetSide, normalAttack.AttackEffect, normalAttack.AttackType, validTargets);
+        targetScanner.Scan(attackPosition, patternOffsets, targetSide, attackEffect, normalAttack.AttackType, validTargets);
 
-        return targetSelector.SelectTarget(validTargets, attackPosition, normalAttack.TargetPriorityMode, normalAttack.AttackType);
+        if (results.Count > 0)
+        {
+            validTargets.Remove(results[0]);
+        }
+
+        while (results.Count < maxTargetCount && validTargets.Count > 0)
+        {
+            Hurtbox target = targetSelector.SelectTarget(validTargets, attackPosition, normalAttack.TargetPriorityMode, normalAttack.AttackType);
+            if (target == null)
+            {
+                return;
+            }
+
+            results.Add(target);
+            validTargets.Remove(target);
+        }
     }
 
     private bool ExecuteNormalAttack(Hurtbox target)
@@ -169,30 +227,40 @@ public class NormalAttackController : MonoBehaviour
         currentTarget = target;
         int attackId = nextNormalAttackCount++;
         float attackSnapshot = stats.Attack;
+        float rawEffectValue = CalculateRawEffectValue();
+        NormalAttackFiredData firedData = new NormalAttackFiredData
+        (
+            attackId,
+            target,
+            normalAttack.AttackMethod == AttackMethod.AOEHit ? 0 : 1,
+            attackSnapshot,
+            rawEffectValue,
+            normalAttack.AttackMethod
+        );
 
         if (normalAttack.AttackMethod != AttackMethod.AOEHit)
         {
-            OnNormalAttackFired?.Invoke(new NormalAttackFiredData(attackId, target, 1, attackSnapshot));
+            OnNormalAttackFired?.Invoke(firedData);
         }
 
         bool isAttackExecuted = false;
 
-        switch (normalAttack.AttackMethod)
+        switch (firedData.AttackMethod)
         {
             case AttackMethod.DirectTarget:
-                isAttackExecuted = ExecuteDirectTargetAttack(target, attackId);
+                isAttackExecuted = ExecuteDirectTargetAttack(target, attackId, firedData.RawEffectValue);
                 break;
 
             case AttackMethod.Projectile:
-                isAttackExecuted = ExecuteProjectileAttack(target, attackId);
+                isAttackExecuted = ExecuteProjectileAttack(target, attackId, firedData.RawEffectValue);
                 break;
 
             case AttackMethod.AOEHit:
-                isAttackExecuted = ExecuteAOEHitAttack(target, attackId, attackSnapshot);
+                isAttackExecuted = ExecuteAOEHitAttack(target, firedData);
                 break;
 
             default:
-                Debug.LogError($"[NormalAttackController] Unsupported attack method: {normalAttack.AttackMethod}.", this);
+                Debug.LogError($"[NormalAttackController] Unsupported attack method: {firedData.AttackMethod}.", this);
                 isAttackExecuted = false;
                 break;
         }
@@ -206,12 +274,10 @@ public class NormalAttackController : MonoBehaviour
         return true;
     }
 
-    private bool ExecuteDirectTargetAttack(Hurtbox target, int attackId)
+    private bool ExecuteDirectTargetAttack(Hurtbox target, int attackId, float rawEffectValue)
     {
-        float baseEffectValue = CalculateRawEffectValue();
-
         HitData hitData = new HitData(gameObject, target, attackerTeam, normalAttack.TargetSide,  normalAttack.AttackEffect, 
-                                    normalAttack.AttackType, baseEffectValue, normalAttack.AttackDamageType, target.AimPosition);
+                                    normalAttack.AttackType, Mathf.Max(0f, rawEffectValue), normalAttack.AttackDamageType, target.AimPosition);
 
         if (HitProcessor.TryProcessHit(hitData, out HitResult hitResult))
         {
@@ -224,7 +290,7 @@ public class NormalAttackController : MonoBehaviour
                     break;
                 case AttackEffect.Damage:
                 default:
-                    SpawnHitVFX(hitData.HitPosition);
+                    SpawnHitVFX(target);
                     break;
             }
         }
@@ -234,7 +300,7 @@ public class NormalAttackController : MonoBehaviour
         return true;
     }
 
-    private bool ExecuteProjectileAttack(Hurtbox target, int attackId)
+    private bool ExecuteProjectileAttack(Hurtbox target, int attackId, float rawEffectValue)
     {
         UnitRuntime targetRuntime = target.OwnerRuntime;
 
@@ -244,9 +310,8 @@ public class NormalAttackController : MonoBehaviour
             return false;
         }
 
-        float rawEffectValue = CalculateRawEffectValue();
-
-        AttackExecutionData executionData = new AttackExecutionData(gameObject, attackerTeam, normalAttack.TargetSide, normalAttack.AttackEffect, normalAttack.AttackType, rawEffectValue, normalAttack.AttackDamageType);
+        AttackExecutionData executionData = new AttackExecutionData(gameObject, attackerTeam, normalAttack.TargetSide, normalAttack.AttackEffect,
+                                                                    normalAttack.AttackType, Mathf.Max(0f, rawEffectValue), normalAttack.AttackDamageType);
 
         AttackVFXData vfxData = normalAttack.AttackEffect == AttackEffect.Heal ? new AttackVFXData(normalAttack.NormalAttackHealVFXPrefab) : new AttackVFXData(normalAttack.NormalAttackHitVFXPrefab);
 
@@ -264,11 +329,10 @@ public class NormalAttackController : MonoBehaviour
         return projectile != null;
     }
 
-    private bool ExecuteAOEHitAttack(Hurtbox target, int attackId, float attackSnapshot)
+    private bool ExecuteAOEHitAttack(Hurtbox target, NormalAttackFiredData firedData)
     {
-        float rawEffectValue = CalculateRawEffectValue();
-
-        AttackExecutionData executionData = new AttackExecutionData(gameObject, attackerTeam, normalAttack.TargetSide, normalAttack.AttackEffect, normalAttack.AttackType, rawEffectValue, normalAttack.AttackDamageType);
+        AttackExecutionData executionData = new AttackExecutionData(gameObject, attackerTeam, normalAttack.TargetSide, normalAttack.AttackEffect,
+                                                                    normalAttack.AttackType, firedData.RawEffectValue, normalAttack.AttackDamageType);
 
         AttackVFXData vfxData = normalAttack.AttackEffect == AttackEffect.Heal ? new AttackVFXData(normalAttack.NormalAttackHealVFXPrefab) :  new AttackVFXData(normalAttack.NormalAttackHitVFXPrefab);
 
@@ -278,10 +342,14 @@ public class NormalAttackController : MonoBehaviour
             executionData,
             vfxData,
             combatTime,
-            () => OnNormalAttackFinished?.Invoke(attackId),
-            (hitData, hitResult) => HandleNormalAttackHitResolved(attackId, hitData, hitResult),
-            uniqueTargetCount => OnNormalAttackFired?.Invoke(new NormalAttackFiredData(attackId, target, uniqueTargetCount, attackSnapshot)),
-            true
+            () => OnNormalAttackFinished?.Invoke(firedData.AttackId),
+            (hitData, hitResult) => HandleNormalAttackHitResolved(firedData.AttackId, hitData, hitResult),
+            uniqueTargetCount =>
+            {
+                firedData.SetUniqueTargetCount(uniqueTargetCount);
+                OnNormalAttackFired?.Invoke(firedData);
+                return firedData.RawEffectValue;
+            }
         ));
 
         return aoeHit != null;
@@ -292,41 +360,74 @@ public class NormalAttackController : MonoBehaviour
         return DamageCalculator.CalculateBaseEffectValue(stats.Attack, Mathf.Max(0f, normalAttack.NormalAttackEffectMultiplier));
     }
 
-    public bool CanUseOverrideAttack(IReadOnlyList<Vector2Int> patternOffsets, out Hurtbox target)
+    public bool TrySelectTarget(IReadOnlyList<Vector2Int> patternOffsets, TargetSide targetSide, AttackEffect attackEffect, out Hurtbox target)
     {
-        target = IsReadyAttack ? SelectTarget(patternOffsets) : null;
+        target = null;
+        if (!isInitialized)
+        {
+            return false;
+        }
+
+        SelectTargets(patternOffsets, targetSide, attackEffect, 1, selectedTargets);
+        target = selectedTargets.Count > 0 ? selectedTargets[0] : null;
         return target != null;
     }
 
-    public bool TryUseOverrideAttack(IReadOnlyList<Vector2Int> patternOffsets, out Hurtbox target)
+    public bool TrySetupOverrideAttack(IReadOnlyList<Vector2Int> patternOffsets, TargetSide targetSide, AttackEffect attackEffect,
+                                       int maxTargetCount, List<Hurtbox> targets)
     {
-        if (!CanUseOverrideAttack(patternOffsets, out target))
+        if (!IsReadyAttack || targets == null)
         {
             return false;
         }
 
-        currentTarget = target;
-        StartAttackTimer(true);
-        return true;
-    }
-
-    public bool TryUseOverrideAttack(Hurtbox target)
-    {
-        if (!IsReadyAttack || target == null || target.OwnerRuntime == null || target.OwnerRuntime.IsDead)
+        SelectTargets(patternOffsets, targetSide, attackEffect, maxTargetCount, targets);
+        if (targets.Count == 0)
         {
             return false;
         }
 
-        currentTarget = target;
-        StartAttackTimer(true);
+        currentTarget = targets[0];
         return true;
     }
 
-    private void StartAttackTimer(bool isExternalConsumption)
+    public bool TryConsumeOverrideAttack()
+    {
+        if (!isInitialized || !IsReadyAttack)
+        {
+            return false;
+        }
+
+        StartAttackTimer(false);
+        return true;
+    }
+
+    public void StopNormalAttack()
+    {
+        if (!isInitialized)
+        {
+            return;
+        }
+
+        attackTimer.Pause();
+        skipAttackerTimer = false;
+    }
+
+    public void ResumeNormalAttack()
+    {
+        if (!isInitialized)
+        {
+            return;
+        }
+
+        StartAttackTimer(true);
+    }
+
+    private void StartAttackTimer(bool skipFirstTick)
     {
         attackTimer.Reset(stats.AttackInterval);
         attackTimer.StartTimer();
-        skipNextAttackTimerTick = isExternalConsumption;
+        skipAttackerTimer = skipFirstTick;
     }
 
     private void HandleNormalAttackHitResolved(int attackId, HitData hitData, HitResult hitResult)
@@ -339,14 +440,14 @@ public class NormalAttackController : MonoBehaviour
         return attackPoint != null ? attackPoint.position : transform.position;
     }
 
-    private void SpawnHitVFX(Vector3 hitPosition)
+    private void SpawnHitVFX(Hurtbox target)
     {
         if (normalAttack.NormalAttackHitVFXPrefab == null)
         {
             return;
         }
 
-        CombatVFXSpawner.SpawnSimpleSpriteVFX(normalAttack.NormalAttackHitVFXPrefab, hitPosition);
+        CombatVFXSpawner.SpawnSimpleSpriteVFX(normalAttack.NormalAttackHitVFXPrefab, target, combatTime);
     }
 
     private void SpawnHealVFX(Hurtbox target, in HitResult hitResult)
@@ -356,7 +457,7 @@ public class NormalAttackController : MonoBehaviour
             return;
         }
 
-        CombatVFXSpawner.SpawnParticleVFX(normalAttack.NormalAttackHealVFXPrefab, target);
+        CombatVFXSpawner.SpawnParticleVFX(normalAttack.NormalAttackHealVFXPrefab, target, combatTime);
     }
 
     private bool CheckRequiredReferences(TeamIdentity team, UnitStats stats, NormalAttackDefinition definition, TargetScanner scanner, TargetSelector selector, CombatTimeController combatTime)

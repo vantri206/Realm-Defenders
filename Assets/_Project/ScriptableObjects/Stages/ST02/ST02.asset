@@ -15,6 +15,7 @@ MonoBehaviour:
   stageId: ST02
   stageName: The Lake-2
   mapPrefab: {fileID: 2066007061675316323, guid: 5053958b8fc102b4b8124657e973030f, type: 3}
+  mapPreview: {fileID: -4073882617974334261, guid: dd971d8a38d899c44a9d92b3b1b772ff, type: 3}
   mapData:
     gridCells:
     - cellPosition: {x: -15, y: -9, z: 0}
@@ -951,6 +952,7 @@ MonoBehaviour:
     startingMeat: 20
     startingLives: 10
     naturalMeatPerSecond: 1
+  rewardDefinition: {fileID: 11400000, guid: 7dba660bb7a998748891134206158b2b, type: 2}
   spawnEvents:
   - eventId: ST02_GoblinStream
     enemyDefinition: {fileID: 11400000, guid: 638a81c734ff23942b1cf02dc3f29bdd, type: 2}

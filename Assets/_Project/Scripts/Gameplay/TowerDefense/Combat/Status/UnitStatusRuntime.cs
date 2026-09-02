@@ -6,6 +6,7 @@ public class UnitStatusRuntime
     private readonly List<StunStatus> stunStatuses = new List<StunStatus>();
     private readonly List<PoisonStatus> poisonStatuses = new List<PoisonStatus>();
     private readonly List<TemporaryStatModifierStatus> temporaryStatStatuses = new List<TemporaryStatModifierStatus>();
+    private readonly List<DefenseReductionStatus> defenseReductionStatuses = new List<DefenseReductionStatus>();
     private readonly UnitRuntime owner;
 
     private bool isTicking;
@@ -78,6 +79,27 @@ public class UnitStatusRuntime
         return true;
     }
 
+    public bool ApplyDefenseReduction(string statusId, GameObject source, float defenseReduction, float duration,
+                                      int maxStackCount, string modifierId)
+    {
+        if (!CanApplyStatus(statusId, source) || owner.Stats == null || defenseReduction <= 0f || duration <= 0f ||
+            maxStackCount <= 0 || string.IsNullOrWhiteSpace(modifierId))
+        {
+            return false;
+        }
+
+        StatusKey key = CreateStatusKey(statusId, source);
+        DefenseReductionStatus reductionStatus = FindDefenseReductionStatus(key);
+        if (reductionStatus == null)
+        {
+            reductionStatus = new DefenseReductionStatus(key, owner.Stats, maxStackCount);
+            defenseReductionStatuses.Add(reductionStatus);
+        }
+
+        reductionStatus.AddStack(defenseReduction, duration, maxStackCount, modifierId);
+        return true;
+    }
+
     public void Tick(float deltaTime)
     {
         if (deltaTime <= 0f || owner == null)
@@ -90,6 +112,7 @@ public class UnitStatusRuntime
         TickStunStatuses(deltaTime);
         TickPoisonStatuses(deltaTime);
         TickStatStatuses(deltaTime);
+        TickDefenseReductionStatuses(deltaTime);
 
         isTicking = false;
 
@@ -160,6 +183,19 @@ public class UnitStatusRuntime
         }
     }
 
+    private void TickDefenseReductionStatuses(float deltaTime)
+    {
+        for (int i = defenseReductionStatuses.Count - 1; i >= 0; i--)
+        {
+            DefenseReductionStatus reductionStatus = defenseReductionStatuses[i];
+            reductionStatus.Tick(deltaTime);
+            if (!reductionStatus.IsActive)
+            {
+                defenseReductionStatuses.RemoveAt(i);
+            }
+        }
+    }
+
     private StunStatus FindStunStatus(StatusKey key)
     {
         for (int i = 0; i < stunStatuses.Count; i++)
@@ -202,6 +238,20 @@ public class UnitStatusRuntime
         return null;
     }
 
+    private DefenseReductionStatus FindDefenseReductionStatus(StatusKey key)
+    {
+        for (int i = 0; i < defenseReductionStatuses.Count; i++)
+        {
+            DefenseReductionStatus reductionStatus = defenseReductionStatuses[i];
+            if (reductionStatus.Key.IsStatus(key))
+            {
+                return reductionStatus;
+            }
+        }
+
+        return null;
+    }
+
     private bool CanApplyStatus(string statusId, GameObject source)
     {
         return owner != null && !owner.IsDead && !string.IsNullOrWhiteSpace(statusId) && source != null;
@@ -224,9 +274,15 @@ public class UnitStatusRuntime
             temporaryStatStatuses[i].Clear();
         }
 
+        for (int i = 0; i < defenseReductionStatuses.Count; i++)
+        {
+            defenseReductionStatuses[i].Clear();
+        }
+
         stunStatuses.Clear();
         poisonStatuses.Clear();
         temporaryStatStatuses.Clear();
+        defenseReductionStatuses.Clear();
         isClearing = false;
     }
 }

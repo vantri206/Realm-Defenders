@@ -1,5 +1,12 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+
+public enum ProjectileHitMode
+{
+    Single,
+    Piercing
+}
 
 public class AttackProjectile : MonoBehaviour, IPoolable
 {
@@ -40,7 +47,10 @@ public class AttackProjectile : MonoBehaviour, IPoolable
     private Vector2 spawnPosition;
     private Vector2 moveDirection;
     private CountdownTimer lifetimeTimer;
-    
+
+    private readonly HashSet<Hurtbox> hitTargets = new HashSet<Hurtbox>();
+    private ProjectileHitMode hitMode;
+    private int maxPiercingTargets;
     private bool hasHitTarget;
 
     private bool isInitialized;
@@ -71,7 +81,8 @@ public class AttackProjectile : MonoBehaviour, IPoolable
     }
 
     public void Initialize(AttackExecutionData executionData, Hurtbox target, AttackVFXData vfxData, CombatTimeController combatTime,
-                           Action<HitData, HitResult> onHitResolved = null, Action onAttackFinished = null)
+                           Action<HitData, HitResult> onHitResolved = null, Action onAttackFinished = null,
+                           ProjectileHitMode hitMode = ProjectileHitMode.Single, int maxPiercingTargets = 1)
     {
         this.attacker = executionData.Attacker;
         this.attackerTeam = executionData.AttackerTeam;
@@ -85,6 +96,8 @@ public class AttackProjectile : MonoBehaviour, IPoolable
         this.combatTime = combatTime;
         this.onHitResolved = onHitResolved;
         this.onAttackFinished = onAttackFinished;
+        this.hitMode = hitMode;
+        this.maxPiercingTargets = Mathf.Max(1, maxPiercingTargets);
 
         isInitialized = true;
     }
@@ -93,7 +106,8 @@ public class AttackProjectile : MonoBehaviour, IPoolable
     {
         isReturningToPool = false;
         hasHitTarget = false;
-        currentMode = projectileMode;
+        hitTargets.Clear();
+        currentMode = hitMode == ProjectileHitMode.Piercing ? ProjectileMode.Linear : projectileMode;
 
         CacheReferences();
 
@@ -154,6 +168,9 @@ public class AttackProjectile : MonoBehaviour, IPoolable
         currentMode = projectileMode;
         spawnPosition = Vector2.zero;
         moveDirection = Vector2.zero;
+        hitTargets.Clear();
+        hitMode = ProjectileHitMode.Single;
+        maxPiercingTargets = 1;
 
         isInitialized = false;
         hasHitTarget = false;
@@ -249,7 +266,7 @@ public class AttackProjectile : MonoBehaviour, IPoolable
             return;
         }
 
-        if (!other.TryGetComponent(out Hurtbox hurtbox))
+        if (!other.TryGetComponent(out Hurtbox hurtbox) || hitTargets.Contains(hurtbox))
         {
             return;
         }
@@ -261,26 +278,30 @@ public class AttackProjectile : MonoBehaviour, IPoolable
             return;
         }
 
+        hitTargets.Add(hurtbox);
         onHitResolved?.Invoke(hitData, hitResult);
 
         if (attackVFXData.HitVFX != null)
         {
-            SpawnHitVFX(hitPosition);
+            SpawnHitVFX(hurtbox);
         }
         else if (attackVFXData.HealVFX != null && hitResult.HealthRestored > 0f)
         {
-            CombatVFXSpawner.SpawnParticleVFX(attackVFXData.HealVFX, hurtbox.AimPosition, Quaternion.identity);
+            CombatVFXSpawner.SpawnParticleVFX(attackVFXData.HealVFX, hurtbox.AimPosition, Quaternion.identity, combatTime);
         }
 
-        hasHitTarget = true;
-        ReturnToPool();
+        if (hitMode == ProjectileHitMode.Single || hitTargets.Count >= maxPiercingTargets)
+        {
+            hasHitTarget = true;
+            ReturnToPool();
+        }
     }
 
-    private void SpawnHitVFX(Vector3 hitPosition)
+    private void SpawnHitVFX(Hurtbox hurtbox)
     {
         float hitVFXAngle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg + hitVFXRotationOffset;
         Quaternion hitVFXRotation = Quaternion.Euler(0f, 0f, hitVFXAngle);
-        CombatVFXSpawner.SpawnSimpleSpriteVFX(attackVFXData.HitVFX, hitPosition, hitVFXRotation);
+        CombatVFXSpawner.SpawnSimpleSpriteVFX(attackVFXData.HitVFX, hurtbox, hitVFXRotation, combatTime);
     }
 
     private Vector3 GetHitPosition(Collider2D otherCollider, Hurtbox hurtbox)

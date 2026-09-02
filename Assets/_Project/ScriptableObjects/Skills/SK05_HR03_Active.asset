@@ -15,8 +15,8 @@ MonoBehaviour:
   skillId: SK05
   skillName: Medusa Shot
   skillIcon: {fileID: 197679756, guid: 2672123c3a864d84d9503655df72d677, type: 3}
-  skillDescription: The next normal attack fires 3 arrows deals 60% Attack as Physical
-    Damage and Stuns the target for 1 second.
+  skillDescription: The next normal attack fires 3 arrows, each dealing 60% Attack
+    as Physical Damage and Stunning the target for 1 second.
   skillType: 0
   targetType: 2
   cooldown: 9
@@ -30,6 +30,7 @@ MonoBehaviour:
       data:
         projectileCount: 3
         damageMultiplierPerHit: 0.6
+        fireRate: 0.25
         stunDuration: 1
-        projectilePrefab: {fileID: 0}
-        hitVFXPrefab: {fileID: 0}
+        projectilePrefab: {fileID: 3870154896822293685, guid: 5874c99a39eabb94f899d10fcea33b8a, type: 3}
+        hitVFXPrefab: {fileID: 5006250830996535109, guid: 326cade601d06734b89b36364c081a10, type: 3}

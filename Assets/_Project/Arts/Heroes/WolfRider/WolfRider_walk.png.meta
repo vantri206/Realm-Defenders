@@ -171,353 +171,353 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_0
+      name: WolfRider_walk_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 95
-        width: 16
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8369b567e21c251f0800000000000000
-      internalID: -1057570557180275144
+      spriteID: 292b14722ede992498dc48a14a2154fd
+      internalID: -726920503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_1
+      name: WolfRider_walk_1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 95
-        width: 16
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3c45016a5a06a6970800000000000000
-      internalID: 8748911490692568259
+      spriteID: 805df8009b9335e4b94080f9e01a8523
+      internalID: -425076032
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_2
+      name: WolfRider_walk_2
       rect:
         serializedVersion: 2
-        x: 72
-        y: 95
-        width: 16
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2b29edf50eace10b0800000000000000
-      internalID: -5755940208703008078
+      spriteID: ad177361d01ea2d4c90222d5778f3485
+      internalID: -138054732
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_3
+      name: WolfRider_walk_3
       rect:
         serializedVersion: 2
-        x: 104
-        y: 95
-        width: 16
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a49b4eaffe31e1380800000000000000
-      internalID: -8998733084012267190
+      spriteID: 41af65f3379064840b10d654c051310b
+      internalID: -1046557325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_4
+      name: WolfRider_walk_4
       rect:
         serializedVersion: 2
-        x: 6
-        y: 63
-        width: 19
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e3d487de584d6d130800000000000000
-      internalID: 3591291424554372414
+      spriteID: 045d2e5a48e82dc47983861ddb59335b
+      internalID: -2001220806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_5
+      name: WolfRider_walk_5
       rect:
         serializedVersion: 2
-        x: 38
-        y: 63
-        width: 20
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 403cf85bfce8e34b0800000000000000
-      internalID: -5458768675570990332
+      spriteID: bfb3a85ff1e0f934088b4b3ecd784743
+      internalID: -794507396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_6
+      name: WolfRider_walk_6
       rect:
         serializedVersion: 2
-        x: 70
-        y: 63
-        width: 19
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b244165e0681c57f0800000000000000
-      internalID: -622595844039687125
+      spriteID: e165d65e7cdefd84f96d179e0e89059e
+      internalID: -902446390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_7
+      name: WolfRider_walk_7
       rect:
         serializedVersion: 2
-        x: 102
-        y: 63
-        width: 20
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9150644b90d8a0cf0800000000000000
-      internalID: -285260553565895399
+      spriteID: f2380e3b2dc4f5545b4d32b00ffc11b6
+      internalID: 381694552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_8
+      name: WolfRider_walk_8
       rect:
         serializedVersion: 2
-        x: 7
-        y: 31
-        width: 19
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0767cb68ad4a07600800000000000000
-      internalID: 464052020089484912
+      spriteID: e3ada6354c90dce44b4ae69ec46557e4
+      internalID: -614829510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_9
+      name: WolfRider_walk_9
       rect:
         serializedVersion: 2
-        x: 38
-        y: 31
-        width: 20
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 910c8ce0410df98e0800000000000000
-      internalID: -1684398951047315431
+      spriteID: 980f7a2a0c6ac834eb379f05728d0c43
+      internalID: -1997497244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_10
+      name: WolfRider_walk_10
       rect:
         serializedVersion: 2
-        x: 71
-        y: 31
-        width: 19
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e03812ac3a43cacf0800000000000000
-      internalID: -239758802081971442
+      spriteID: 0597ffe5d5b73b344a3ba0200d90298b
+      internalID: -1569085895
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_11
+      name: WolfRider_walk_11
       rect:
         serializedVersion: 2
-        x: 102
-        y: 31
-        width: 20
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7fc5d8d8c4364f060800000000000000
-      internalID: 6986318102401998071
+      spriteID: 9f5dc4471fcac2545b0ab0838c34f601
+      internalID: -1403499019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_12
+      name: WolfRider_walk_12
       rect:
         serializedVersion: 2
-        x: 9
+        x: 0
         y: 0
-        width: 14
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e02752b10bf0ba3c0800000000000000
-      internalID: -4347363766251982322
+      spriteID: af01bf72c059928479cd2bec466a7af9
+      internalID: -1587432039
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_13
+      name: WolfRider_walk_13
       rect:
         serializedVersion: 2
-        x: 41
+        x: 32
         y: 0
-        width: 14
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0ca3ffc12dce02980800000000000000
-      internalID: -8565586104084907328
+      spriteID: 082bf61158ef9e44d967bce5a872ff17
+      internalID: 1294866982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_14
+      name: WolfRider_walk_14
       rect:
         serializedVersion: 2
-        x: 73
+        x: 64
         y: 0
-        width: 14
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f1c2c70cc3b703970800000000000000
-      internalID: 8732615178329009183
+      spriteID: 483b0f78311e2ed4fac3cb7edf8b21ab
+      internalID: 891296441
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_15
+      name: WolfRider_walk_15
       rect:
         serializedVersion: 2
-        x: 105
+        x: 96
         y: 0
-        width: 14
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dea36a5415a43a710800000000000000
-      internalID: 1703286796997507821
+      spriteID: 40c621b2592458c46b91997337b474ce
+      internalID: 344195756
       vertices: []
       indices: 
       edges: []
@@ -526,7 +526,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 599a46c899872244a83adec1902b9e2c
     internalID: 0
     vertices: []
     indices: 
@@ -534,24 +534,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":4.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_0: -1057570557180275144
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_1: 8748911490692568259
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_10: -239758802081971442
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_11: 6986318102401998071
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_12: -4347363766251982322
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_13: -8565586104084907328
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_14: 8732615178329009183
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_15: 1703286796997507821
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_2: -5755940208703008078
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_3: -8998733084012267190
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_4: 3591291424554372414
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_5: -5458768675570990332
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_6: -622595844039687125
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_7: -285260553565895399
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_8: 464052020089484912
-      WolfRider_walk.png-203fcc5b47dd5de61a8c4becd6799696_9: -1684398951047315431
+      WolfRider_walk_0: -726920503
+      WolfRider_walk_1: -425076032
+      WolfRider_walk_10: -1569085895
+      WolfRider_walk_11: -1403499019
+      WolfRider_walk_12: -1587432039
+      WolfRider_walk_13: 1294866982
+      WolfRider_walk_14: 891296441
+      WolfRider_walk_15: 344195756
+      WolfRider_walk_2: -138054732
+      WolfRider_walk_3: -1046557325
+      WolfRider_walk_4: -2001220806
+      WolfRider_walk_5: -794507396
+      WolfRider_walk_6: -902446390
+      WolfRider_walk_7: 381694552
+      WolfRider_walk_8: -614829510
+      WolfRider_walk_9: -1997497244
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

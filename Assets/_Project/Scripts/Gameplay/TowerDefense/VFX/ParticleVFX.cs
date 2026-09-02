@@ -7,6 +7,7 @@ public class ParticleVFX : MonoBehaviour, IPoolable
 
     [SerializeField] private ParticleSystem particle;
 
+    private CombatTimeController combatTime;
     private bool isReturningToPool;
 
     private void Awake()
@@ -16,6 +17,8 @@ public class ParticleVFX : MonoBehaviour, IPoolable
 
     private void Update()
     {
+        SyncSimulationSpeed();
+
         if (isReturningToPool || particle == null || particle.IsAlive(true))
         {
             return;
@@ -24,14 +27,20 @@ public class ParticleVFX : MonoBehaviour, IPoolable
         ReturnToPool();
     }
 
+    public void SetCombatTime(CombatTimeController combatTime)
+    {
+        this.combatTime = combatTime;
+        SyncSimulationSpeed();
+    }
+
     public void OnSpawn()
     {
         isReturningToPool = false;
         CacheReferences();
 
-        if (particle == null)
+        if (particle == null || combatTime == null)
         {
-            Debug.LogError("[ParticleVFX] ParticleSystem reference is missing.", this);
+            Debug.LogError("[ParticleVFX] ParticleSystem and CombatTimeController are required before spawning.", this);
             ReturnToPool();
             return;
         }
@@ -39,6 +48,7 @@ public class ParticleVFX : MonoBehaviour, IPoolable
         ParticleSystem.MainModule main = particle.main;
         main.loop = false;
         main.stopAction = ParticleSystemStopAction.None;
+        main.simulationSpeed = combatTime.CombatSpeedMultiplier;
 
         particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         particle.Play(true);
@@ -50,8 +60,12 @@ public class ParticleVFX : MonoBehaviour, IPoolable
 
         if (particle != null)
         {
+            ParticleSystem.MainModule main = particle.main;
+            main.simulationSpeed = 1f;
             particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
+
+        combatTime = null;
     }
 
     public void ReturnToPool()
@@ -71,6 +85,17 @@ public class ParticleVFX : MonoBehaviour, IPoolable
         {
             particle = GetComponent<ParticleSystem>();
         }
+    }
+
+    private void SyncSimulationSpeed()
+    {
+        if (particle == null || combatTime == null)
+        {
+            return;
+        }
+
+        ParticleSystem.MainModule main = particle.main;
+        main.simulationSpeed = combatTime.CombatSpeedMultiplier;
     }
 
 #if UNITY_EDITOR

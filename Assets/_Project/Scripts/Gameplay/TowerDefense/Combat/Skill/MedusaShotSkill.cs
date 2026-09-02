@@ -9,38 +9,83 @@ public class MedusaShotSkill : NormalAttackOverrideSkill
     [Header("Medusa Shot")]
     [SerializeField] private int projectileCount = 3;
     [SerializeField] private float damageMultiplierPerHit = 0.6f;
+    [SerializeField] private float fireRate = 0.1f;
     [SerializeField] private float stunDuration = 1f;
     [SerializeField] private AttackProjectile projectilePrefab;
     [SerializeField] private SimpleSpriteAnimatorVFX hitVFXPrefab;
 
+    [NonSerialized] private CountdownTimer fireTimer;
+    [NonSerialized] private int nextProjectileIndex;
     [NonSerialized] private int pendingProjectileCount;
+    [NonSerialized] private float rawDamagePerHit;
 
-    protected override bool ExecuteOverrideAttack(Hurtbox target)
+    protected override int MaxTargetCount => Mathf.Max(1, projectileCount);
+
+    public override void Tick(float deltaTime)
     {
-        if (projectilePrefab == null || target.OwnerRuntime == null || target.OwnerRuntime.IsDead)
+        base.Tick(deltaTime);
+
+        if (fireTimer == null || !fireTimer.IsRunning)
+        {
+            return;
+        }
+
+        fireTimer.Tick(deltaTime);
+        if (fireTimer.IsFinished)
+        {
+            SpawnNextProjectile();
+        }
+    }
+
+    protected override bool ExecuteOverrideAttack()
+    {
+        if (projectilePrefab == null)
         {
             return false;
         }
 
-        int resolvedProjectileCount = Mathf.Max(1, projectileCount);
-        float rawDamage = DamageCalculator.CalculateBaseDamage(Owner.Attack, Mathf.Max(0f, damageMultiplierPerHit));
-        AttackExecutionData executionData = new AttackExecutionData
-        (
-            Owner.gameObject,
-            Owner.BattleTeam,
-            TargetSide.Enemy,
-            AttackEffect.Damage,
-            Owner.NormalAttackDefinition.AttackType,
-            rawDamage,
-            AttackDamageType.PhysicalDamage
-        );
-        AttackVFXData vfxData = new AttackVFXData(hitVFXPrefab);
+        rawDamagePerHit = DamageCalculator.CalculateBaseDamage(Owner.Attack, Mathf.Max(0f, damageMultiplierPerHit));
+        fireTimer = new CountdownTimer(Mathf.Max(0f, fireRate));
+        nextProjectileIndex = 0;
+        pendingProjectileCount = MaxTargetCount;
+        SpawnNextProjectile();
+        return true;
+    }
 
-        pendingProjectileCount = resolvedProjectileCount;
-        Owner.FacePosition(target.AimPosition);
+    public override void ClearData()
+    {
+        StopFireTimer();
+        nextProjectileIndex = 0;
+        pendingProjectileCount = 0;
+        rawDamagePerHit = 0f;
+        base.ClearData();
+    }
 
-        for (int i = 0; i < resolvedProjectileCount; i++)
+    private void SpawnNextProjectile()
+    {
+        if (Owner == null || nextProjectileIndex >= MaxTargetCount)
         {
+            StopFireTimer();
+            return;
+        }
+
+        Hurtbox projectileTarget = ResolveProjectileTarget(nextProjectileIndex);
+        nextProjectileIndex++;
+
+        if (projectileTarget != null)
+        {
+            AttackExecutionData executionData = new AttackExecutionData
+            (
+                Owner.gameObject,
+                Owner.BattleTeam,
+                TargetSide.Enemy,
+                AttackEffect.Damage,
+                Owner.NormalAttackDefinition.AttackType,
+                rawDamagePerHit,
+                AttackDamageType.PhysicalDamage
+            );
+            AttackVFXData vfxData = new AttackVFXData(hitVFXPrefab);
+
             AttackProjectile projectile = ObjectPoolingHelper.Spawn
             (
                 projectilePrefab,
@@ -49,7 +94,7 @@ public class MedusaShotSkill : NormalAttackOverrideSkill
                 spawnedProjectile => spawnedProjectile.Initialize
                 (
                     executionData,
-                    target,
+                    projectileTarget,
                     vfxData,
                     Owner.CombatTime,
                     HandleProjectileHitResolved,
@@ -62,14 +107,53 @@ public class MedusaShotSkill : NormalAttackOverrideSkill
                 HandleProjectileFinished();
             }
         }
+        else
+        {
+            HandleProjectileFinished();
+        }
 
-        return true;
+        if (nextProjectileIndex >= MaxTargetCount)
+        {
+            StopFireTimer();
+            return;
+        }
+
+        if (fireTimer.TotalTime <= 0f)
+        {
+            SpawnNextProjectile();
+            return;
+        }
+
+        fireTimer.Reset();
+        fireTimer.StartTimer();
     }
 
-    public override void ClearData()
+    private void StopFireTimer()
     {
-        pendingProjectileCount = 0;
-        base.ClearData();
+        if (fireTimer != null)
+        {
+            fireTimer.StopTimer();
+            fireTimer = null;
+        }
+    }
+
+    private static bool IsTargetValid(Hurtbox target)
+    {
+        return target != null && target.OwnerRuntime != null && !target.OwnerRuntime.IsDead;
+    }
+
+    private Hurtbox ResolveProjectileTarget(int targetIndex)
+    {
+        for (int i = 0; i < OverrideTargets.Count; i++)
+        {
+            Hurtbox target = OverrideTargets[(targetIndex + i) % OverrideTargets.Count];
+            if (IsTargetValid(target))
+            {
+                return target;
+            }
+        }
+
+        return null;
     }
 
     private void HandleProjectileHitResolved(HitData hitData, HitResult hitResult)

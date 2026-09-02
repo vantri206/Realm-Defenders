@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CombatUIController : MonoBehaviour
 {
@@ -295,10 +296,25 @@ public class CombatUIController : MonoBehaviour
             return;
         }
 
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         combatAction.HandlePrimaryClick(screenPosition);
     }
 
     private void HandleSecondaryPerformed(Vector2 screenPosition)
+    {
+        if (!isInitialized)
+        {
+            return;
+        }
+
+        CancelCurrentAction();
+    }
+
+    public void CancelCurrentAction()
     {
         if (!isInitialized)
         {

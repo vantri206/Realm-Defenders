@@ -13,16 +13,34 @@ public class PlayerSession : MonoBehaviour
     private HeroProgression progression;
     private HeroRoster heroRoster;
     private PlayerInventory playerInventory;
+    private bool suppressEquipmentSounds;
+
+    public static PlayerSession Current { get; private set; }
 
     public HeroProgression Progression => progression;
     public HeroRoster HeroRoster => heroRoster;
     public int ExperiencePoints => playerInventory != null ? playerInventory.ExperiencePoints : 0;
+    public CombatStageDefinition SelectedStage { get; private set; }
 
     public event Action<HeroInstance, HeroChangeType> OnHeroChanged;
     public event Action<int> OnExperiencePointsChanged;
 
     private void Awake()
     {
+        if (Current != null && Current != this)
+        {
+            TakeOverRuntimeState(Current);
+
+            GameObject previousSessionObject = Current.gameObject;
+            Current = this;
+            DontDestroyOnLoad(gameObject);
+            Destroy(previousSessionObject);
+            return;
+        }
+
+        Current = this;
+        DontDestroyOnLoad(gameObject);
+
         progression = new HeroProgression();
 
         progression.Initialize(progressionConfig);
@@ -33,8 +51,37 @@ public class PlayerSession : MonoBehaviour
 
         if (loadStartPlayerData)
         {
+            suppressEquipmentSounds = true;
             LoadStartPlayerData();
+            suppressEquipmentSounds = false;
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (Current == this)
+        {
+            Current = null;
+        }
+    }
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetCurrentSession()
+    {
+        Current = null;
+    }
+
+    public void SetSelectedStage(CombatStageDefinition stageDefinition)
+    {
+        SelectedStage = stageDefinition;
+    }
+
+    private void TakeOverRuntimeState(PlayerSession previousSession)
+    {
+        progression = previousSession.progression;
+        heroRoster = previousSession.heroRoster;
+        playerInventory = previousSession.playerInventory;
+        SelectedStage = previousSession.SelectedStage;
     }
 
     private void LoadStartPlayerData()
@@ -247,6 +294,15 @@ public class PlayerSession : MonoBehaviour
         {
             NotifyHeroEquipmentChanged(previousEquippedHero);
         }
+
+        if (!suppressEquipmentSounds)
+        {
+            GameAudioManager audioManager = GameAudioManager.Instance;
+            if (audioManager != null)
+            {
+                audioManager.PlayEquipGear();
+            }
+        }
     }
 
     public void EquipArmor(HeroInstance hero, GearInstance armor)
@@ -287,6 +343,15 @@ public class PlayerSession : MonoBehaviour
         {
             NotifyHeroEquipmentChanged(previousEquippedHero);
         }
+
+        if (!suppressEquipmentSounds)
+        {
+            GameAudioManager audioManager = GameAudioManager.Instance;
+            if (audioManager != null)
+            {
+                audioManager.PlayEquipGear();
+            }
+        }
     }
 
     public void UnequipWeapon(HeroInstance hero)
@@ -298,6 +363,15 @@ public class PlayerSession : MonoBehaviour
 
         ApplyUnequipment(hero, GearType.Weapon);
         NotifyHeroEquipmentChanged(hero);
+
+        if (!suppressEquipmentSounds)
+        {
+            GameAudioManager audioManager = GameAudioManager.Instance;
+            if (audioManager != null)
+            {
+                audioManager.PlayUnequipGear();
+            }
+        }
     }
 
     public void UnequipArmor(HeroInstance hero)
@@ -314,6 +388,15 @@ public class PlayerSession : MonoBehaviour
 
         OnHeroChanged?.Invoke(hero, HeroChangeType.Equipment);
         OnHeroChanged?.Invoke(hero, HeroChangeType.Stats);
+
+        if (!suppressEquipmentSounds)
+        {
+            GameAudioManager audioManager = GameAudioManager.Instance;
+            if (audioManager != null)
+            {
+                audioManager.PlayUnequipGear();
+            }
+        }
     }
 
     private void ApplyEquipment(HeroInstance hero, GearInstance gear)

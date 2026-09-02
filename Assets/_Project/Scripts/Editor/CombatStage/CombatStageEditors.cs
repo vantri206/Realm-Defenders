@@ -278,6 +278,8 @@ public class CombatStageDefinitionEditor : Editor
     private SerializedProperty stageIdProperty;
     private SerializedProperty stageNameProperty;
     private SerializedProperty mapPrefabProperty;
+    private SerializedProperty mapPreviewProperty;
+    private SerializedProperty rewardDefinitionProperty;
     private SerializedProperty spawnEventsProperty;
     private ReorderableList spawnEventList;
 
@@ -286,6 +288,8 @@ public class CombatStageDefinitionEditor : Editor
         stageIdProperty = serializedObject.FindProperty("stageId");
         stageNameProperty = serializedObject.FindProperty("stageName");
         mapPrefabProperty = serializedObject.FindProperty("mapPrefab");
+        mapPreviewProperty = serializedObject.FindProperty("mapPreview");
+        rewardDefinitionProperty = serializedObject.FindProperty("rewardDefinition");
         spawnEventsProperty = serializedObject.FindProperty("spawnEvents");
 
         spawnEventList = new ReorderableList(serializedObject, spawnEventsProperty, false, true, false, false);
@@ -312,6 +316,14 @@ public class CombatStageDefinitionEditor : Editor
             EditorGUILayout.PropertyField(mapPrefabProperty);
         }
 
+        EditorGUILayout.PropertyField(mapPreviewProperty);
+        if (GUILayout.Button("Regenerate Map Preview"))
+        {
+            serializedObject.ApplyModifiedProperties();
+            CombatStagePreviewExporter.GenerateMapPreview(definition);
+            serializedObject.Update();
+        }
+
         CombatMapData mapData = definition.MapData;
         if (mapData != null)
         {
@@ -328,6 +340,9 @@ public class CombatStageDefinitionEditor : Editor
             EditorGUILayout.LabelField("Starting Lives", startConfig.StartingLives.ToString());
             EditorGUILayout.LabelField("Natural Meat / Second", startConfig.NaturalMeatPerSecond.ToString());
         }
+
+        DrawSection("Reward");
+        EditorGUILayout.PropertyField(rewardDefinitionProperty);
 
         EditorGUILayout.Space(8f);
         spawnEventList.DoLayoutList();

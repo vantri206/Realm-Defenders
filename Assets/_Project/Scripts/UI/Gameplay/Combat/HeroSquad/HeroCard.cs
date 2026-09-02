@@ -33,7 +33,7 @@ public class HeroCard : MonoBehaviour
                 return;
             }
 
-            heroCardView.Tick(Time.deltaTime);
+            heroCardView.Tick();
         }
     }
 

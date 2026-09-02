@@ -52,6 +52,8 @@ public class HeroRuntime : UnitRuntime
     public HeroBlockState BlockState => heroBlocker != null ? heroBlocker.BlockState : HeroBlockState.NonBlocking;
     public override bool IsMovementBlocked => base.IsMovementBlocked || BlockState == HeroBlockState.Blocking || (activeSkill != null && activeSkill.IsActiving);
     public override bool CanUseNormalAttack => base.CanUseNormalAttack && (activeSkill == null || !activeSkill.IsActiving);
+    public override bool CanUseSkill => !IsDead && !IsStunned &&
+                                        (currentState == UnitRuntimeState.Idle || currentState == UnitRuntimeState.Attacking);
 
     public event Action<HeroRuntime> OnSelected;
 
@@ -161,6 +163,7 @@ public class HeroRuntime : UnitRuntime
 
         float combatDeltaTime = combatContext.CombatTime.CombatDeltaTime;
         TickRuntime(combatDeltaTime);
+        normalAttackController.TickAttackTimer(combatDeltaTime);
         TickSkills(combatDeltaTime);
 
         if (IsMovementBlocked && unitMovement.CurrentMoveDirection != Vector2.zero)
@@ -168,7 +171,8 @@ public class HeroRuntime : UnitRuntime
             SetMovementDirection(Vector2.zero);
         }
 
-        normalAttackController.Tick(combatDeltaTime, ResolvedAttackPattern, CanUseNormalAttack);
+        bool canTriggerNormalAttack = CanUseNormalAttack && (activeSkill == null || !activeSkill.ActivatedThisTick);
+        normalAttackController.TryTriggerAttack(ResolvedAttackPattern, canTriggerNormalAttack);
         RefreshSkillCharge();
         ResetFacingDirection(unitMovement.CurrentMoveDirection);
     }
@@ -230,26 +234,28 @@ public class HeroRuntime : UnitRuntime
         return target != null;
     }
 
-    public void CollectSkillTargets(IReadOnlyList<Vector2Int> pattern, TargetSide targetSide, AttackEffect attackEffect,
-                                    UnitAttackType attackType, List<Hurtbox> results)
-    {
-        if (results == null)
-        {
-            return;
-        }
-
-        results.Clear();
-        if (targetScanner == null || !targetScanner.IsInitialized || pattern == null)
-        {
-            return;
-        }
-
-        targetScanner.Scan(CenterPosition, pattern, targetSide, attackEffect, attackType, results);
-    }
-
     public void TriggerSkillAttackAnimation()
     {
         unitVisual.TriggerAttack();
+    }
+
+    public void PlayActionSound()
+    {
+        GameAudioManager audioManager = GameAudioManager.Instance;
+        if (audioManager != null)
+        {
+            audioManager.PlayHeroAction(heroDefinition);
+        }
+    }
+
+    public void CancelNormalAttackForSkill()
+    {
+        if (normalAttackController != null)
+        {
+            normalAttackController.StopNormalAttack();
+        }
+
+        CancelActionState(UnitRuntimeState.Attacking);
     }
 
     private void InitializeSkills()
@@ -450,9 +456,16 @@ public class HeroRuntime : UnitRuntime
 
     private void HandleNormalAttackFired(NormalAttackFiredData firedData)
     {
+        PlayActionSound();
+
         Hurtbox target = firedData.Target;
         if (IsBlockingTarget(target))
         {
+            if (firedData.AttackMethod == AttackMethod.Projectile)
+            {
+                firedData.AttackMethod = AttackMethod.DirectTarget;
+            }
+
             FacePosition(target.AimPosition);
         }
 

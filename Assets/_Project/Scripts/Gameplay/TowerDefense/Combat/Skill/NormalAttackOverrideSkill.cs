@@ -1,49 +1,76 @@
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public abstract class NormalAttackOverrideSkill : AutoActiveSkill
 {
+    [NonSerialized] private List<Hurtbox> targets;
+
+    protected List<Hurtbox> OverrideTargets => targets;
+    protected virtual int MaxTargetCount => 1;
+    protected virtual TargetSide OverrideTargetSide => Owner.NormalAttackDefinition.TargetSide;
+    protected virtual AttackEffect OverrideAttackEffect => Owner.NormalAttackDefinition.AttackEffect;
+    protected override bool InterruptsNormalAttack => false;
+
+    public override void Initialize(HeroRuntime owner, SkillDefinition definition)
+    {
+        base.Initialize(owner, definition);
+        targets = new List<Hurtbox>();
+    }
+
     public override bool CanActivate()
     {
-        if (!CanCastSkill || Owner.NormalAttackController == null)
+        if (!CanCastSkill || Owner.CurrentState != UnitRuntimeState.Idle || Owner.NormalAttackController == null)
         {
             return false;
         }
 
-        return CanUseOverrideAttack(out Hurtbox target) && target != null;
+        return Owner.NormalAttackController.TrySetupOverrideAttack
+        (
+            Owner.ResolvedAttackPattern,
+            OverrideTargetSide,
+            OverrideAttackEffect,
+            MaxTargetCount,
+            targets
+        );
     }
 
     public override void Activate()
     {
-        if (!TryUseOverrideAttack(out Hurtbox target))
+        if (targets == null || targets.Count == 0)
         {
             FinishSkill();
             return;
         }
 
-        Owner.FacePosition(target.AimPosition);
-        Owner.TriggerSkillAttackAnimation();
+        if (!Owner.NormalAttackController.TryConsumeOverrideAttack())
+        {
+            FinishSkill();
+            return;
+        }
 
-        if (!ExecuteOverrideAttack(target))
+        Hurtbox target = targets[0];
+        Owner.FacePosition(target.AimPosition);
+        // Owner.TriggerSkillAttackAnimation();
+
+        if (!ExecuteOverrideAttack())
         {
             FinishSkill();
         }
     }
 
-    protected virtual bool CanUseOverrideAttack(out Hurtbox target)
+    public override void ClearData()
     {
-        target = null;
-        return Owner != null && Owner.NormalAttackController != null &&
-               Owner.NormalAttackController.CanUseOverrideAttack(Owner.ResolvedAttackPattern, out target);
+        if (targets != null)
+        {
+            targets.Clear();
+            targets = null;
+        }
+
+        base.ClearData();
     }
 
-    protected virtual bool TryUseOverrideAttack(out Hurtbox target)
-    {
-        target = null;
-        return Owner != null && Owner.NormalAttackController != null && Owner.NormalAttackController.TryUseOverrideAttack(Owner.ResolvedAttackPattern, out target);
-    }
-
-    protected abstract bool ExecuteOverrideAttack(Hurtbox target);
+    protected abstract bool ExecuteOverrideAttack();
 
     protected void FinishOverrideAttack()
     {

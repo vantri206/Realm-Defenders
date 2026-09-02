@@ -526,4 +526,23 @@ public class EnemyPathfindingController : MonoBehaviour
         hasReachedFinalCheckpoint = false;
         useFlowField = false;
     }
+
+    public bool TryCopyProgressFrom(EnemyPathfindingController source, Vector3 currentWorldPosition)
+    {
+        if (source == null || source.route == null || route == null || source.route.RouteId != route.RouteId)
+        {
+            return false;
+        }
+
+        currentCheckpointIndex = source.currentCheckpointIndex;
+        targetCheckpointIndex = source.targetCheckpointIndex;
+        hasReachedFinalCheckpoint = source.hasReachedFinalCheckpoint;
+        useFlowField = source.useFlowField;
+
+        ResetCornerSmoothing();
+        previousEnemyPosition = currentWorldPosition;
+        hasPreviousEnemyPosition = true;
+        UpdatePathProgress(currentWorldPosition);
+        return true;
+    }
 }

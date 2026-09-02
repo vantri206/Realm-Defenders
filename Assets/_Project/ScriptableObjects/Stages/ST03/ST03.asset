@@ -15,6 +15,7 @@ MonoBehaviour:
   stageId: ST03
   stageName: The Lake-3
   mapPrefab: {fileID: 6953300994499391365, guid: 433807c8185d1484491b6424a96d1f42, type: 3}
+  mapPreview: {fileID: -4073882617974334261, guid: dd971d8a38d899c44a9d92b3b1b772ff, type: 3}
   mapData:
     gridCells:
     - cellPosition: {x: -15, y: -9, z: 0}
@@ -951,6 +952,7 @@ MonoBehaviour:
     startingMeat: 20
     startingLives: 10
     naturalMeatPerSecond: 1
+  rewardDefinition: {fileID: 11400000, guid: 7471c60cb7f52934e85cae835ba2cfdc, type: 2}
   spawnEvents:
   - eventId: ST03_GoblinStream
     enemyDefinition: {fileID: 11400000, guid: 638a81c734ff23942b1cf02dc3f29bdd, type: 2}

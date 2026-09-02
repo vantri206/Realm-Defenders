@@ -24,21 +24,32 @@ public class CombatBootstrapper : MonoBehaviour
     [SerializeField] private CombatTimeController combatTime;
 
     private GhostHeroView ghostHero;
+    private CombatMapView runtimeMapView;
     private bool isInitialized;
 
     public bool IsInitialized => isInitialized;
 
     private void Start()
     {
-        if (isInitialized || stageTestSetup == null)
+        if (isInitialized)
         {
             return;
         }
 
-        if (stageTestSetup.TryCreateBootstrapData(out CombatBootstrapData bootstrapData))
+        PlayerSession playerSession = PlayerSession.Current;
+        if (playerSession != null && playerSession.SelectedStage != null)
+        {
+            InitializeSessionCombat(playerSession);
+            return;
+        }
+
+        if (stageTestSetup != null && stageTestSetup.TryCreateBootstrapData(out CombatBootstrapData bootstrapData))
         {
             InitializeCombat(bootstrapData);
+            return;
         }
+
+        Debug.LogError("[CombatBootstrapper] No selected runtime stage or direct test setup was provided.", this);
     }
 
     private void OnDestroy()
@@ -128,11 +139,44 @@ public class CombatBootstrapper : MonoBehaviour
             combatTime);
         playerCombatAction.ChangeMode(PlayerCombatActionMode.None);
         combatUIController.Initialize(playerCombatAction, heroSquadView);
-        stageHUDController.Initialize(stageSystem, playerCombatAction, combatTime);
+        stageHUDController.Initialize(bootstrapData.StageId, stageSystem, playerCombatAction, combatUIController, combatTime);
 
         isInitialized = true;
         enemyWaveController.StartWave();
         return true;
+    }
+
+    private void InitializeSessionCombat(PlayerSession playerSession)
+    {
+        CombatStageDefinition stageDefinition = playerSession.SelectedStage;
+        if (stageDefinition == null || stageDefinition.MapPrefab == null || playerSession.HeroRoster == null)
+        {
+            Debug.LogError("[CombatBootstrapper] Selected stage, stage map prefab, and player roster are required for runtime combat.", this);
+            return;
+        }
+
+        DisableAuthoringMapViews();
+
+        runtimeMapView = Instantiate(stageDefinition.MapPrefab);
+        CombatBootstrapData bootstrapData = new CombatBootstrapData(stageDefinition, runtimeMapView, playerSession.HeroRoster.Heroes);
+        if (!InitializeCombat(bootstrapData))
+        {
+            Destroy(runtimeMapView.gameObject);
+            runtimeMapView = null;
+        }
+    }
+
+    private void DisableAuthoringMapViews()
+    {
+        CombatMapView[] sceneMapViews = FindObjectsByType<CombatMapView>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        for (int i = 0; i < sceneMapViews.Length; i++)
+        {
+            CombatMapView mapView = sceneMapViews[i];
+            if (mapView != null && mapView.gameObject.scene == gameObject.scene)
+            {
+                mapView.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void AddSquadHeroes(CombatBootstrapData bootstrapData)

@@ -10,6 +10,12 @@ public sealed class CharacterAnimationClipGeneratorWindow : EditorWindow
 {
     private const string DefaultOutputFolder = "Assets/_Project/Animations/Characters";
 
+    private static readonly string[] IdleSearchAliases = { "idle" };
+    private static readonly string[] WalkSearchAliases = { "walk", "run", "move", "fly" };
+    private static readonly string[] AttackSearchAliases = { "attack", "strike" };
+    private static readonly string[] HitSearchAliases = { "hit", "hurt", "damage" };
+    private static readonly string[] DeathSearchAliases = { "death", "die" };
+
     [SerializeField] private AnimatorOverrideController _overrideController;
     [SerializeField] private string _characterName = string.Empty;
     [SerializeField] private int _sampleRate = 12;
@@ -47,11 +53,12 @@ public sealed class CharacterAnimationClipGeneratorWindow : EditorWindow
 
         EnsureSerializedState();
 
-        if (_overrideController == null &&
-            Selection.activeObject is AnimatorOverrideController selectedOverride)
+        if (Selection.activeObject is AnimatorOverrideController selectedOverride &&
+            selectedOverride != _overrideController)
         {
             _overrideController = selectedOverride;
             _characterName = selectedOverride.name;
+            ApplyControllerAssetDefaults(selectedOverride);
         }
 
         RefreshControllerScan();
@@ -59,11 +66,12 @@ public sealed class CharacterAnimationClipGeneratorWindow : EditorWindow
 
     private void OnSelectionChange()
     {
-        if (_overrideController == null &&
-            Selection.activeObject is AnimatorOverrideController selectedOverride)
+        if (Selection.activeObject is AnimatorOverrideController selectedOverride &&
+            selectedOverride != _overrideController)
         {
             _overrideController = selectedOverride;
             _characterName = selectedOverride.name;
+            ApplyControllerAssetDefaults(selectedOverride);
             RefreshControllerScan();
             ClearValidation();
             Repaint();
@@ -140,6 +148,7 @@ public sealed class CharacterAnimationClipGeneratorWindow : EditorWindow
                 _characterName = selectedController.name;
             }
 
+            ApplyControllerAssetDefaults(selectedController);
             RefreshControllerScan();
             GUI.changed = true;
         }
@@ -582,6 +591,159 @@ public sealed class CharacterAnimationClipGeneratorWindow : EditorWindow
         }
 
         _outputFolder = folderAsset;
+    }
+
+    private void ApplyControllerAssetDefaults(AnimatorOverrideController controller)
+    {
+        foreach (CharacterActionSheetSettings settings in _actionSettings)
+        {
+            settings.SpriteSheet = null;
+        }
+
+        if (controller == null)
+        {
+            return;
+        }
+
+        string controllerPath = AssetDatabase.GetAssetPath(controller);
+        string controllerFolderPath = Path.GetDirectoryName(controllerPath);
+        if (controllerFolderPath != null)
+        {
+            controllerFolderPath = controllerFolderPath.Replace('\\', '/');
+        }
+
+        if (!string.IsNullOrEmpty(controllerFolderPath) && AssetDatabase.IsValidFolder(controllerFolderPath))
+        {
+            DefaultAsset controllerFolder = AssetDatabase.LoadAssetAtPath<DefaultAsset>(controllerFolderPath);
+            if (controllerFolder != null)
+            {
+                _outputFolder = controllerFolder;
+            }
+        }
+
+        string[] texturePaths = AssetDatabase.FindAssets("t:Texture2D", new[] { "Assets" })
+            .Select(AssetDatabase.GUIDToAssetPath)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToArray();
+
+        foreach (CharacterActionSheetSettings settings in _actionSettings)
+        {
+            settings.SpriteSheet = FindBestSpriteSheet(controller.name, settings.Action, texturePaths);
+        }
+    }
+
+    private static Texture2D FindBestSpriteSheet(
+        string characterName,
+        CharacterAnimationAction action,
+        IEnumerable<string> texturePaths)
+    {
+        string bestPath = null;
+        int bestScore = int.MinValue;
+        string characterKey = NormalizeSearchValue(characterName);
+        string[] actionAliases = GetActionSearchAliases(action);
+
+        foreach (string texturePath in texturePaths)
+        {
+            int score = GetSpriteSheetMatchScore(characterKey, actionAliases, texturePath);
+            if (score > bestScore ||
+                score == bestScore && bestPath != null &&
+                string.Compare(texturePath, bestPath, StringComparison.OrdinalIgnoreCase) < 0)
+            {
+                bestPath = texturePath;
+                bestScore = score;
+            }
+        }
+
+        if (bestScore == int.MinValue || string.IsNullOrEmpty(bestPath))
+        {
+            return null;
+        }
+
+        return AssetDatabase.LoadAssetAtPath<Texture2D>(bestPath);
+    }
+
+    private static int GetSpriteSheetMatchScore(
+        string characterKey,
+        IEnumerable<string> actionAliases,
+        string texturePath)
+    {
+        string fileKey = NormalizeSearchValue(Path.GetFileNameWithoutExtension(texturePath));
+        string pathKey = NormalizeSearchValue(texturePath);
+        if (string.IsNullOrEmpty(characterKey) || string.IsNullOrEmpty(fileKey) ||
+            !pathKey.Contains(characterKey) || fileKey.Contains("hitbox"))
+        {
+            return int.MinValue;
+        }
+
+        int bestScore = int.MinValue;
+        foreach (string alias in actionAliases)
+        {
+            int actionIndex = fileKey.LastIndexOf(alias, StringComparison.Ordinal);
+            if (actionIndex <= 0)
+            {
+                continue;
+            }
+
+            string suffix = fileKey.Substring(actionIndex + alias.Length);
+            if (suffix.Length > 0 && !suffix.All(char.IsDigit))
+            {
+                continue;
+            }
+
+            int score = 100;
+            if (fileKey == characterKey + alias)
+            {
+                score = 500;
+            }
+            else if (fileKey.StartsWith(characterKey, StringComparison.Ordinal))
+            {
+                score = 300;
+            }
+
+            string folderPath = Path.GetDirectoryName(texturePath);
+            string folderName = folderPath != null ? Path.GetFileName(folderPath) : string.Empty;
+            string folderKey = NormalizeSearchValue(folderName);
+            if (folderKey == characterKey)
+            {
+                score += 100;
+            }
+
+            bestScore = Mathf.Max(bestScore, score);
+        }
+
+        return bestScore;
+    }
+
+    private static string[] GetActionSearchAliases(CharacterAnimationAction action)
+    {
+        switch (action)
+        {
+            case CharacterAnimationAction.Idle:
+                return IdleSearchAliases;
+            case CharacterAnimationAction.Walk:
+                return WalkSearchAliases;
+            case CharacterAnimationAction.Attack:
+                return AttackSearchAliases;
+            case CharacterAnimationAction.Hit:
+                return HitSearchAliases;
+            case CharacterAnimationAction.Death:
+                return DeathSearchAliases;
+            default:
+                return Array.Empty<string>();
+        }
+    }
+
+    private static string NormalizeSearchValue(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return string.Empty;
+        }
+
+        return new string(value
+            .Where(char.IsLetterOrDigit)
+            .Select(char.ToLowerInvariant)
+            .ToArray());
     }
 
     private void RefreshControllerScan()

@@ -31,7 +31,4 @@ MonoBehaviour:
         healMultiplier: 1.2
         attackBonus: 0.15
         buffDuration: 4
-        attackType: 1
-        areaPattern:
-        - {x: 0, y: 0}
-        healVFXPrefab: {fileID: 0}
+        healVFXPrefab: {fileID: 2897203167134258638, guid: d944ff61e3387444b96accba9d4fd54d, type: 3}

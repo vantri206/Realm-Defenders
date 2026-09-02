@@ -135,89 +135,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WolfRider_die.png-5bf801e170104a5aa63e72e2c407fa73_0
+      name: WolfRider_die_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 95
-        width: 16
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 90a9d1562ca96e2d0800000000000000
-      internalID: -3249739921390462455
+      spriteID: fb10a55b772befb48ae34262834f25ba
+      internalID: -845057260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_die.png-5bf801e170104a5aa63e72e2c407fa73_1
+      name: WolfRider_die_1
       rect:
         serializedVersion: 2
-        x: 6
-        y: 63
-        width: 20
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c95363656b0d40220800000000000000
-      internalID: 2451313578745410972
+      spriteID: b194117ce02794045941953a2c68653d
+      internalID: 593350698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_die.png-5bf801e170104a5aa63e72e2c407fa73_2
+      name: WolfRider_die_2
       rect:
         serializedVersion: 2
-        x: 6
-        y: 31
-        width: 20
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 14db5a1cca1a3b0c0800000000000000
-      internalID: -4561124234240869055
+      spriteID: cd5eda63df8090c4d98aed29930b2aab
+      internalID: -508342087
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WolfRider_die.png-5bf801e170104a5aa63e72e2c407fa73_3
+      name: WolfRider_die_3
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 0
-        width: 16
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3a9eb77ad24eb2100800000000000000
-      internalID: 84411902771063203
+      spriteID: f24a3516fee7e914e8412b6241db6d9e
+      internalID: -540512514
       vertices: []
       indices: 
       edges: []
@@ -226,7 +226,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 833ea76fb384acb42a3e05fc960ef993
     internalID: 0
     vertices: []
     indices: 
@@ -234,12 +234,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":4.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      WolfRider_die.png-5bf801e170104a5aa63e72e2c407fa73_0: -3249739921390462455
-      WolfRider_die.png-5bf801e170104a5aa63e72e2c407fa73_1: 2451313578745410972
-      WolfRider_die.png-5bf801e170104a5aa63e72e2c407fa73_2: -4561124234240869055
-      WolfRider_die.png-5bf801e170104a5aa63e72e2c407fa73_3: 84411902771063203
+      WolfRider_die_0: -845057260
+      WolfRider_die_1: 593350698
+      WolfRider_die_2: -508342087
+      WolfRider_die_3: -540512514
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b929ef8da414e2486dad3a917daf867, type: 3}
+  m_Name: GameAudioLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::GameAudioLibrary
+  headquartersBGM: {fileID: 8300000, guid: 441a6a18199275948b32c7bb599d5f87, type: 3}
+  battleBGM: {fileID: 8300000, guid: 441a6a18199275948b32c7bb599d5f87, type: 3}
+  heroSounds:
+  - heroDefinition: {fileID: 11400000, guid: ee72b87d84cf61542b99ed44dd38856d, type: 2}
+    actionSound: {fileID: 8300000, guid: e23a90748bc21b944a23c96b71030f71, type: 3}
+  - heroDefinition: {fileID: 11400000, guid: fa42b247b1696c64d929a73af6da0ce1, type: 2}
+    actionSound: {fileID: 8300000, guid: e23a90748bc21b944a23c96b71030f71, type: 3}
+  - heroDefinition: {fileID: 11400000, guid: 7578d0aa3be44ff40bd69529451aad41, type: 2}
+    actionSound: {fileID: 8300000, guid: a0aaf74f25e9a254699ad7055e6469da, type: 3}
+  - heroDefinition: {fileID: 11400000, guid: e5192aabd29b20a40a77ca0044d5d62b, type: 2}
+    actionSound: {fileID: 8300000, guid: fcc4384bdad2db640aa98d03b056e24a, type: 3}
+  - heroDefinition: {fileID: 11400000, guid: 0b2c29c1b24aade4dada2450aa488bb7, type: 2}
+    actionSound: {fileID: 8300000, guid: fcc4384bdad2db640aa98d03b056e24a, type: 3}
+  - heroDefinition: {fileID: 11400000, guid: c01dae633dc3989459a74692a243dc80, type: 2}
+    actionSound: {fileID: 8300000, guid: a7f834015c031dd43bb23e17a6c00b20, type: 3}
+  - heroDefinition: {fileID: 11400000, guid: 30f5aad2d3b4a9648a1c237a8a051372, type: 2}
+    actionSound: {fileID: 8300000, guid: a29e289fe23560c459bd347ddabd7b5b, type: 3}
+  - heroDefinition: {fileID: 11400000, guid: 1f49e46e799ced24a9f02bb6d9245cb9, type: 2}
+    actionSound: {fileID: 8300000, guid: e23a90748bc21b944a23c96b71030f71, type: 3}
+  - heroDefinition: {fileID: 11400000, guid: 578293ee9fc526d4f93b5d098086b773, type: 2}
+    actionSound: {fileID: 8300000, guid: fcc4384bdad2db640aa98d03b056e24a, type: 3}
+  - heroDefinition: {fileID: 11400000, guid: 0364c75fc45c9ec44a0c6f8b91038996, type: 2}
+    actionSound: {fileID: 8300000, guid: a0aaf74f25e9a254699ad7055e6469da, type: 3}
+  enemyEncounterSound: {fileID: 8300000, guid: 33aa3b6786c9c784fbce08920ccd2ea0, type: 3}
+  enemyDeathSound: {fileID: 8300000, guid: 0713d51a0543ec24d949f2846af63ec9, type: 3}
+  victorySound: {fileID: 8300000, guid: 8a3d59158c1892349b3a906cf8be9704, type: 3}
+  defeatSound: {fileID: 8300000, guid: 4a745c0e108d06f4fb7b8cf858d9f312, type: 3}
+  uiButtonClickSound: {fileID: 8300000, guid: 43fc29faf70053c4dbf3a3435b2964a6, type: 3}
+  equipGearSound: {fileID: 8300000, guid: e8a95aaebba0a7545b201682f2983f61, type: 3}
+  unequipGearSound: {fileID: 8300000, guid: bf5de3e17b0f612478ca1e892f4e4354, type: 3}
+  bgmVolume: 0.6
+  sfxVolume: 1
+  repeatedSfxInterval: 0.04

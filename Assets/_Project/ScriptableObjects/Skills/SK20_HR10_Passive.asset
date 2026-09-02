@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023ac7769490ac74cb0ad848e7029d2b, type: 3}
+  m_Name: SK20_HR10_Passive
+  m_EditorClassIdentifier: Assembly-CSharp::SkillDefinition
+  skillId: SK20
+  skillName: Armor Piercing
+  skillIcon: {fileID: -751318407, guid: 2672123c3a864d84d9503655df72d677, type: 3}
+  skillDescription: Damaging attacks reduce the target's Defense by 8% for 4 seconds,
+    stacking up to 3 times.
+  skillType: 1
+  targetType: 2
+  cooldown: 0
+  skill:
+    rid: 732000000000000001
+  references:
+    version: 2
+    RefIds:
+    - rid: 732000000000000001
+      type: {class: ArmorPiercingSkill, ns: , asm: Assembly-CSharp}
+      data:
+        defenseReductionPerStack: 0.08
+        duration: 4
+        maxStackCount: 3

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,6 +35,9 @@ public class PlayerCombatAction : MonoBehaviour
     private bool isInitialized;
 
     public bool HasSpeedOverride => speedMultiplierOverride != 1f;
+    public PlayerCombatActionMode CurrentMode => currentMode;
+
+    public event Action<PlayerCombatActionMode> OnModeChanged;
 
     public void Initialize(Camera mainCamera, CombatGrid combatGrid, HeroDeploymentSystem heroDeploymentSystem, HeroDetailView heroDetailView,
                            TileOverlayRenderer tileOverlayRenderer, GhostHeroView ghostHeroView, StageSystem stageSystem, CombatTimeController combatTime)
@@ -111,6 +115,8 @@ public class PlayerCombatAction : MonoBehaviour
             default:
                 break;
         }
+
+        OnModeChanged?.Invoke(currentMode);
     }
 
     private static bool IsActionMode(PlayerCombatActionMode mode)
@@ -295,7 +301,7 @@ public class PlayerCombatAction : MonoBehaviour
 
         if (retreatVFXPrefab != null)
         {
-            CombatVFXSpawner.SpawnSimpleSpriteVFX(retreatVFXPrefab, retreatPosition);
+            CombatVFXSpawner.SpawnSimpleSpriteVFX(retreatVFXPrefab, retreatPosition, combatTime);
         }
 
         ChangeMode(PlayerCombatActionMode.None);
@@ -687,6 +693,12 @@ public class PlayerCombatAction : MonoBehaviour
 
     public void PerformAction()
     {
+        if (currentMode == PlayerCombatActionMode.SelectedDeployedHero)
+        {
+            HandleCurrentHeroAction(HeroActionType.Retreat);
+            return;
+        }
+
         if (currentMode == PlayerCombatActionMode.SelectingDeployDirection)
         {
             if (currentDeployCell != null && deployingHero != null)

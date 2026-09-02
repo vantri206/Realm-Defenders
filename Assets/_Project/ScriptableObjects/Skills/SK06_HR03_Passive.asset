@@ -15,8 +15,8 @@ MonoBehaviour:
   skillId: SK06
   skillName: Poison Shot
   skillIcon: {fileID: 550468201, guid: 2672123c3a864d84d9503655df72d677, type: 3}
-  skillDescription: Attacks poison the target for 4 seconds, dealing 10% Attack as
-    Magic Damage every second. Stacks up to 3 times.
+  skillDescription: Prioritizes flying enemies. Attacks poison the target for 2 seconds,
+    dealing 40% Attack as Magic Damage every 0.5 second. Stacks up to 3 times.
   skillType: 1
   targetType: 2
   cooldown: 0
@@ -28,7 +28,7 @@ MonoBehaviour:
     - rid: 7224588149785886833
       type: {class: PoisonShotSkill, ns: , asm: Assembly-CSharp}
       data:
-        poisonDuration: 4
-        tickInterval: 1
-        damageMultiplierPerTick: 0.1
+        poisonDuration: 2
+        tickInterval: 0.5
+        damageMultiplierPerTick: 0.4
         maxStackCount: 3

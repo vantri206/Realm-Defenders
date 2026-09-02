@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07b5ddb0efd3e33438972198b6abcd3a, type: 3}
+  m_Name: E04_Demon
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDefinition
+  enemyId: E04
+  enemyName: Demon
+  enemySprite: {fileID: -5491686319463197585, guid: 5817fab47eb07164db1e7b6f36db4849, type: 3}
+  enemyIcon: {fileID: 41222040, guid: 5817fab47eb07164db1e7b6f36db4849, type: 3}
+  enemyDescription: A ranged ground enemy that fires magical attacks at Heroes within
+    its attack range.
+  enemyAnimator: {fileID: 22100000, guid: 27dccd18d85840cdb549b1f83f6a2b99, type: 2}
+  enemyPrefab: {fileID: 1262049475646235035, guid: b7d4a188a06efe342ab7cba6ba439b78, type: 3}
+  maxHealth: 120
+  attack: 26
+  attackInterval: 2.4
+  defense: 5
+  specialDefense: 5
+  moveSpeed: 1
+  movementType: 0
+  meatReward: 2
+  normalAttack: {fileID: 11400000, guid: a58fa147822a8b345bc4c2caf608dcc8, type: 2}
+  canAttackWhenNotBlocked: 1
+  navigationOffset: {x: 0, y: 0.5}

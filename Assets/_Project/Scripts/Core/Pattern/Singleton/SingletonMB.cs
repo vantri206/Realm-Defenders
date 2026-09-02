@@ -36,6 +36,13 @@ public class SingletonMB<T> : MonoBehaviour where T : MonoBehaviour
             }
         }
     }
+
+    protected static void ResetSingletonState()
+    {
+        instance = null;
+        isShuttingDown = false;
+    }
+
     private void OnApplicationQuit()
     {
         isShuttingDown = true;

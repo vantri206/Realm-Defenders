@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5dd41a2ac021f7419e4bf64f2690b08, type: 3}
+  m_Name: HR06_AnubisWarrior
+  m_EditorClassIdentifier: Assembly-CSharp::HeroDefinition
+  heroId: HR06
+  heroName: Anubis Warrior
+  heroDefaultSprite: {fileID: -1160073146, guid: f0a29536a962ad24a8f6590a50766632, type: 3}
+  heroIcon: {fileID: 76643884, guid: f0a29536a962ad24a8f6590a50766632, type: 3}
+  heroDisplaySprite: {fileID: -1670633291, guid: 240df7328b75a494f99c11d268a2c695, type: 3}
+  heroClass: {fileID: 11400000, guid: 102ddac959450214ea1258dbfcc54ace, type: 2}
+  heroRarity: 0
+  heroDescription: A frontline guardian with high defense who can hold back multiple
+    enemies.
+  heroAnimator: {fileID: 22100000, guid: 94a4881ec6e14c55a841f7fad5c5a70a, type: 2}
+  heroPrefab: {fileID: 6873902697943297941, guid: cfdb2236ef19fe64c9462e151b552556, type: 3}
+  maxHealth: 200
+  attack: 28
+  attackInterval: 1.4
+  defense: 35
+  specialDefense: 25
+  blockCount: 3
+  movementType: 0
+  moveSpeed: 0
+  statProgressionTable: {fileID: 11400000, guid: 15f40fb2c34004a4f820554d5e61e274, type: 2}
+  normalAttackDefinition: {fileID: 11400000, guid: 36d1262e67e54b34bbcba05a5155c620, type: 2}
+  passiveSkill: {fileID: 11400000, guid: 8bfc03e76d8d41e5bcaa424b2db968e6, type: 2}
+  activeSkill: {fileID: 11400000, guid: e2a7a6a53121403a98686513f1cfe36f, type: 2}
+  baseDeployCost: 20
+  baseRedeployTime: 25

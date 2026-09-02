@@ -15,6 +15,18 @@ public class LoopingStatusVFX : MonoBehaviour, IPoolable
         SetAnimatorsLooping();
     }
 
+    public void SetCombatTime(CombatTimeController combatTime)
+    {
+        for (int i = 0; i < spriteAnimators.Length; i++)
+        {
+            SimpleSpriteAnimator spriteAnimator = spriteAnimators[i];
+            if (spriteAnimator != null)
+            {
+                spriteAnimator.SetCombatTime(combatTime);
+            }
+        }
+    }
+
     public void OnSpawn()
     {
         isReturningToPool = false;
@@ -46,6 +58,8 @@ public class LoopingStatusVFX : MonoBehaviour, IPoolable
                 spriteAnimator.Restart();
             }
         }
+
+        SetCombatTime(null);
     }
 
     public void ReturnToPool()

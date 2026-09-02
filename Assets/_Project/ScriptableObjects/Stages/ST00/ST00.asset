@@ -1,0 +1,1070 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7d19c9473759a4bbbab31c12454fec, type: 3}
+  m_Name: ST00
+  m_EditorClassIdentifier: Assembly-CSharp::CombatStageDefinition
+  stageId: ST00
+  stageName: The Lake-0
+  mapPrefab: {fileID: 5881342233130171689, guid: 9a1242cce16010b4486a32971a053011, type: 3}
+  mapPreview: {fileID: 21300000, guid: dd971d8a38d899c44a9d92b3b1b772ff, type: 3}
+  mapData:
+    gridCells:
+    - cellPosition: {x: -15, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 0, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 2, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 3, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 4, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 5, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 6, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 7, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 9, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: -9, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 0, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 2, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 3, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 4, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 5, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 6, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 7, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 9, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: -8, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 0, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 2, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 3, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 4, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 5, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 6, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 7, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 9, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: -7, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 0, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 2, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 3, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 4, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 5, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 6, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 7, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 9, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: -6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 0, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 2, y: -5, z: 0}
+      cellStates: 6
+    - cellPosition: {x: 3, y: -5, z: 0}
+      cellStates: 6
+    - cellPosition: {x: 4, y: -5, z: 0}
+      cellStates: 6
+    - cellPosition: {x: 5, y: -5, z: 0}
+      cellStates: 6
+    - cellPosition: {x: 6, y: -5, z: 0}
+      cellStates: 6
+    - cellPosition: {x: 7, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 9, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: -5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: -4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: -4, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 0, y: -4, z: 0}
+      cellStates: 1
+    - cellPosition: {x: 1, y: -4, z: 0}
+      cellStates: 1
+    - cellPosition: {x: 2, y: -4, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 3, y: -4, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 4, y: -4, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 5, y: -4, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 6, y: -4, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 7, y: -4, z: 0}
+      cellStates: 1
+    - cellPosition: {x: 8, y: -4, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 9, y: -4, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 10, y: -4, z: 0}
+      cellStates: 1
+    - cellPosition: {x: 11, y: -4, z: 0}
+      cellStates: 1
+    - cellPosition: {x: 12, y: -4, z: 0}
+      cellStates: 1
+    - cellPosition: {x: -15, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: -3, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 0, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 2, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 3, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 4, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 5, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 6, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 7, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: -3, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 9, y: -3, z: 0}
+      cellStates: 6
+    - cellPosition: {x: 10, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: -3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: -2, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 0, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: -2, z: 0}
+      cellStates: 6
+    - cellPosition: {x: 2, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 3, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 4, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 5, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 6, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 7, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: -2, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 9, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: -2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: -14, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: -13, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: -12, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: -11, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: -10, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: -9, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: -8, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: -7, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: -6, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: -5, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: -4, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: -3, y: -1, z: 0}
+      cellStates: 3
+    - cellPosition: {x: -2, y: -1, z: 0}
+      cellStates: 3
+    - cellPosition: {x: -1, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: 0, y: -1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: -1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 2, y: -1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 3, y: -1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 4, y: -1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 5, y: -1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 6, y: -1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 7, y: -1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: -1, z: 0}
+      cellStates: 1
+    - cellPosition: {x: 9, y: -1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: -1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: -1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: -1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: 0, z: 0}
+      cellStates: 1
+    - cellPosition: {x: 0, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 2, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 3, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 4, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 5, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 6, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 7, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: 0, z: 0}
+      cellStates: 1
+    - cellPosition: {x: 9, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: 0, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: 1, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 0, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 2, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 3, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 4, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 5, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 6, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 7, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: 1, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 9, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: 1, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: 2, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 0, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 2, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 3, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 4, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 5, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 6, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 7, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: 2, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 9, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: 2, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: 3, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 0, y: 3, z: 0}
+      cellStates: 1
+    - cellPosition: {x: 1, y: 3, z: 0}
+      cellStates: 1
+    - cellPosition: {x: 2, y: 3, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 3, y: 3, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 4, y: 3, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 5, y: 3, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 6, y: 3, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 7, y: 3, z: 0}
+      cellStates: 1
+    - cellPosition: {x: 8, y: 3, z: 0}
+      cellStates: 3
+    - cellPosition: {x: 9, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: 3, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 0, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 2, y: 4, z: 0}
+      cellStates: 6
+    - cellPosition: {x: 3, y: 4, z: 0}
+      cellStates: 6
+    - cellPosition: {x: 4, y: 4, z: 0}
+      cellStates: 6
+    - cellPosition: {x: 5, y: 4, z: 0}
+      cellStates: 6
+    - cellPosition: {x: 6, y: 4, z: 0}
+      cellStates: 6
+    - cellPosition: {x: 7, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 9, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: 4, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 0, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 2, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 3, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 4, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 5, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 6, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 7, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 9, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: 5, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -15, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -14, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -13, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -12, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -11, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -10, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -9, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -8, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -7, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -6, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -5, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -4, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -3, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -2, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: -1, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 0, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 1, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 2, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 3, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 4, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 5, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 6, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 7, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 8, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 9, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 10, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 11, y: 6, z: 0}
+      cellStates: 4
+    - cellPosition: {x: 12, y: 6, z: 0}
+      cellStates: 4
+    routes:
+    - routeId: Ground_A
+      checkpoints:
+      - checkpointId: S1
+        checkpointType: 0
+        cellPosition: {x: -15, y: -1, z: 0}
+      - checkpointId: P1
+        checkpointType: 1
+        cellPosition: {x: -1, y: -1, z: 0}
+      - checkpointId: P3
+        checkpointType: 1
+        cellPosition: {x: -1, y: -4, z: 0}
+      - checkpointId: E1
+        checkpointType: 2
+        cellPosition: {x: 12, y: -4, z: 0}
+    - routeId: Ground_B
+      checkpoints:
+      - checkpointId: S1
+        checkpointType: 0
+        cellPosition: {x: -15, y: -1, z: 0}
+      - checkpointId: P1
+        checkpointType: 1
+        cellPosition: {x: -1, y: -1, z: 0}
+      - checkpointId: P2
+        checkpointType: 1
+        cellPosition: {x: -1, y: 3, z: 0}
+      - checkpointId: P4
+        checkpointType: 1
+        cellPosition: {x: 8, y: 3, z: 0}
+      - checkpointId: E1
+        checkpointType: 2
+        cellPosition: {x: 12, y: -4, z: 0}
+    - routeId: Air_A
+      checkpoints:
+      - checkpointId: S2
+        checkpointType: 0
+        cellPosition: {x: -1, y: 6, z: 0}
+      - checkpointId: P5
+        checkpointType: 1
+        cellPosition: {x: -1, y: -4, z: 0}
+      - checkpointId: P6
+        checkpointType: 1
+        cellPosition: {x: 8, y: -4, z: 0}
+      - checkpointId: E1
+        checkpointType: 2
+        cellPosition: {x: 12, y: -4, z: 0}
+    - routeId: Air_B
+      checkpoints:
+      - checkpointId: S2
+        checkpointType: 0
+        cellPosition: {x: -1, y: 6, z: 0}
+      - checkpointId: P2
+        checkpointType: 1
+        cellPosition: {x: -1, y: 3, z: 0}
+      - checkpointId: P4
+        checkpointType: 1
+        cellPosition: {x: 8, y: 3, z: 0}
+      - checkpointId: P6
+        checkpointType: 1
+        cellPosition: {x: 8, y: -4, z: 0}
+      - checkpointId: E1
+        checkpointType: 2
+        cellPosition: {x: 12, y: -4, z: 0}
+    spawnPoints:
+    - spawnPointId: S1
+      cellPosition: {x: -15, y: -1, z: 0}
+    - spawnPointId: S2
+      cellPosition: {x: -1, y: 6, z: 0}
+  startConfig:
+    startingMeat: 200
+    startingLives: 20
+    naturalMeatPerSecond: 1
+  rewardDefinition: {fileID: 11400000, guid: c0a488485591dfd4c8dd57b46c7dcf70, type: 2}
+  spawnEvents:
+  - eventId: ST00_GoblinGroundA
+    enemyDefinition: {fileID: 11400000, guid: 638a81c734ff23942b1cf02dc3f29bdd, type: 2}
+    spawnPointId: S1
+    routeId: Ground_A
+    groupCount: 3
+    enemiesPerGroup: 2
+    groupInterval: 8
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 2
+  - eventId: ST00_GoblinGroundB
+    enemyDefinition: {fileID: 11400000, guid: 638a81c734ff23942b1cf02dc3f29bdd, type: 2}
+    spawnPointId: S1
+    routeId: Ground_B
+    groupCount: 3
+    enemiesPerGroup: 2
+    groupInterval: 8
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 4
+  - eventId: ST00_WolfGroundA
+    enemyDefinition: {fileID: 11400000, guid: 53e6452d2aa7f494b8981eddccc5c9a9, type: 2}
+    spawnPointId: S1
+    routeId: Ground_A
+    groupCount: 3
+    enemiesPerGroup: 1
+    groupInterval: 9
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 10
+  - eventId: ST00_VampireGroundB
+    enemyDefinition: {fileID: 11400000, guid: 28209eb47fc50af46a7594351f4f944e, type: 2}
+    spawnPointId: S1
+    routeId: Ground_B
+    groupCount: 3
+    enemiesPerGroup: 1
+    groupInterval: 9
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 13
+  - eventId: ST00_DemonGroundA
+    enemyDefinition: {fileID: 11400000, guid: 24046381101414749b83537b48e32ba6, type: 2}
+    spawnPointId: S1
+    routeId: Ground_A
+    groupCount: 3
+    enemiesPerGroup: 1
+    groupInterval: 10
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 20
+  - eventId: ST00_WolfGroundB
+    enemyDefinition: {fileID: 11400000, guid: 53e6452d2aa7f494b8981eddccc5c9a9, type: 2}
+    spawnPointId: S1
+    routeId: Ground_B
+    groupCount: 3
+    enemiesPerGroup: 1
+    groupInterval: 9
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 25
+  - eventId: ST00_BatAirA
+    enemyDefinition: {fileID: 11400000, guid: 81055afce59c9544692675ce55dc68fe, type: 2}
+    spawnPointId: S2
+    routeId: Air_A
+    groupCount: 5
+    enemiesPerGroup: 1
+    groupInterval: 9
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 8
+  - eventId: ST00_BatAirB
+    enemyDefinition: {fileID: 11400000, guid: 81055afce59c9544692675ce55dc68fe, type: 2}
+    spawnPointId: S2
+    routeId: Air_B
+    groupCount: 5
+    enemiesPerGroup: 1
+    groupInterval: 9
+    startCondition: 0
+    requiredEventId: 
+    startDelay: 12

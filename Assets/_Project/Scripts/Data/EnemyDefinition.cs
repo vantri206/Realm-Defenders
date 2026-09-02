@@ -9,7 +9,7 @@ public class EnemyDefinition : ScriptableObject
     [SerializeField] private string enemyName;
     [SerializeField] private Sprite enemySprite;
     [SerializeField] private Sprite enemyIcon;
-    [SerializeField] private string enemyDescription;
+    [SerializeField, TextArea(3, 10)] private string enemyDescription;
     [SerializeField] private AnimatorOverrideController enemyAnimator;
     [SerializeField] private EnemyRuntime enemyPrefab;
 
@@ -21,11 +21,17 @@ public class EnemyDefinition : ScriptableObject
     [SerializeField] private float specialDefense = 0f;
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private UnitMovementType movementType = UnitMovementType.Ground;
+    [SerializeField] private bool canBeBlocked = true;
     [SerializeField] private int meatReward = 2;
-    [SerializeField] private UnitStatProgressionTable statProgressionTable;
 
     [Header("Attack")]
     [SerializeField] private NormalAttackDefinition normalAttack;
+    [SerializeField] private bool canAttackWhenNotBlocked = false;
+
+    [Header("Passive")]
+    [SerializeField] private float normalAttackDamageMultiplier = 1f;
+    [SerializeField] private float normalAttackLifeSteal;
+    [SerializeField] private EnemyDefinition deathReplacement;
 
     [Header("Customization")]
     [SerializeField] private Vector2 navigationOffset = new Vector2(0f, 0.5f);
@@ -44,8 +50,13 @@ public class EnemyDefinition : ScriptableObject
     public float SpecialDefense => specialDefense;
     public float MoveSpeed => moveSpeed;
     public NormalAttackDefinition NormalAttackDefinition => normalAttack;
+    public bool CanAttackWhenNotBlocked => canAttackWhenNotBlocked;
     public UnitMovementType MovementType => movementType;
+    public bool CanBeBlocked => canBeBlocked;
     public int MeatReward => meatReward;
+    public float NormalAttackDamageMultiplier => normalAttackDamageMultiplier;
+    public float NormalAttackLifeSteal => normalAttackLifeSteal;
+    public EnemyDefinition DeathReplacement => deathReplacement;
     public Vector2 NavigationOffset => navigationOffset;
 
     public bool IsValid => enemyPrefab != null;
@@ -57,6 +68,8 @@ public class EnemyDefinition : ScriptableObject
         attack = Mathf.Max(0f, attack);
         attackInterval = Mathf.Max(0f, attackInterval);
         moveSpeed = Mathf.Max(0f, moveSpeed);
+        normalAttackDamageMultiplier = Mathf.Max(0f, normalAttackDamageMultiplier);
+        normalAttackLifeSteal = Mathf.Max(0f, normalAttackLifeSteal);
     }
 #endif
 }

@@ -21,24 +21,46 @@ public class EnemyRuntime : UnitRuntime, IBlockable
 
     private EnemyDepthSorter enemyDepthSorter;
     private EnemyRouteGraph routeGraph;
+    private string routeId;
 
     private IBlocker currentBlocker;
 
     // Getters
     public float PathProgressScore => enemyPathfindingController.PathProgressScore;
     public IBlocker CurrentBlocker => currentBlocker;
+    public EnemyDefinition Definition => enemyDefinition;
+    public bool IsObjectiveEnemy => enemyInstance != null && enemyInstance.IsObjectiveEnemy;
+    public string RouteId => routeId;
 
     public override UnitMovementType MovementType => enemyDefinition != null ? enemyDefinition.MovementType : base.MovementType;
     public override Vector2 CenterOffset => enemyDefinition != null ? enemyDefinition.NavigationOffset : Vector2.zero;
     
     public UnitRuntime Owner => this;
-    public bool CanBeBlocked => IsInitialized && !IsDead && MovementType != UnitMovementType.Flying;
+    public bool CanBeBlocked => IsInitialized && !IsDead && MovementType != UnitMovementType.Flying && enemyDefinition != null && enemyDefinition.CanBeBlocked;
     public bool IsBlocked => currentBlocker != null;
     public override bool IsMovementBlocked => base.IsMovementBlocked || IsBlocked;
 
     // Attack
     public NormalAttackDefinition NormalAttackDefinition => enemyDefinition != null ? enemyDefinition.NormalAttackDefinition : null;
     public IReadOnlyList<Vector2Int> ResolvedAttackPattern => resolvedAttackPattern;
+    public override bool CanUseNormalAttack
+    {
+        get
+        {
+            if (IsDead || IsStunned || enemyDefinition == null)
+            {
+                return false;
+            }
+
+            if (IsBlocked)
+            {
+                return currentState == UnitRuntimeState.Idle;
+            }
+
+            return enemyDefinition.CanAttackWhenNotBlocked &&
+                   (currentState == UnitRuntimeState.Idle || currentState == UnitRuntimeState.Moving);
+        }
+    }
 
     public event Action<EnemyRuntime> OnEscaped;
 
@@ -60,6 +82,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         this.enemyInstance = enemyInstance;
         enemyDefinition = enemyInstance.Definition;
         this.routeGraph = routeGraph;
+        this.routeId = routeId;
         this.combatContext = combatContext;
         InitializeRuntimeStats(enemyInstance);
 
@@ -83,6 +106,9 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         {
             return;
         }
+
+        health.OnDied -= HandleDeathSound;
+        health.OnDied += HandleDeathSound;
 
         if (NormalAttackDefinition != null && !InitializeAttackSystems())
         {
@@ -120,6 +146,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         if  (NormalAttackDefinition != null && normalAttackController != null)
         {
             normalAttackController.OnNormalAttackFired += HandleNormalAttack;
+            normalAttackController.OnNormalAttackHitResolved += HandleNormalAttackHitResolved;
         }
 
         isInitialized = isPathfindingInitialized;
@@ -127,14 +154,19 @@ public class EnemyRuntime : UnitRuntime, IBlockable
 
     protected void OnDestroy()
     {
+        UnregisterHealthEvents();
+
         if (normalAttackController != null)
         {
             normalAttackController.OnNormalAttackFired -= HandleNormalAttack;
+            normalAttackController.OnNormalAttackHitResolved -= HandleNormalAttackHitResolved;
         }
     }
 
     protected override void OnDisable()
     {
+        UnregisterHealthEvents();
+
         if (currentBlocker != null)
         {
             currentBlocker.ReleaseBlockedTarget(this);
@@ -151,6 +183,7 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         if (normalAttackController != null)
         {
             normalAttackController.OnNormalAttackFired -= HandleNormalAttack;
+            normalAttackController.OnNormalAttackHitResolved -= HandleNormalAttackHitResolved;
         }
 
         base.OnDisable();
@@ -168,7 +201,8 @@ public class EnemyRuntime : UnitRuntime, IBlockable
 
         if (NormalAttackDefinition != null && normalAttackController != null)
         {
-            normalAttackController.Tick(combatDeltaTime, ResolvedAttackPattern, CanUseNormalAttack);
+            normalAttackController.TickAttackTimer(combatDeltaTime);
+            normalAttackController.TryTriggerAttack(ResolvedAttackPattern, CanUseNormalAttack);
         }
     }
 
@@ -269,6 +303,8 @@ public class EnemyRuntime : UnitRuntime, IBlockable
 
     protected void HandleNormalAttack(NormalAttackFiredData firedData)
     {
+        firedData.RawEffectValue *= Mathf.Max(0f, enemyDefinition.NormalAttackDamageMultiplier);
+
         Hurtbox target = firedData.Target;
         if (target != null)
         {
@@ -278,6 +314,52 @@ public class EnemyRuntime : UnitRuntime, IBlockable
         TryStartActionState(UnitRuntimeState.Attacking, normalAttackStateDuration);
 
         unitVisual.TriggerAttack();
+    }
+
+    private void HandleDeathSound()
+    {
+        GameAudioManager audioManager = GameAudioManager.Instance;
+        if (audioManager != null)
+        {
+            audioManager.PlayEnemyDeath();
+        }
+    }
+
+    private void UnregisterHealthEvents()
+    {
+        if (health == null)
+        {
+            return;
+        }
+
+        health.OnDied -= HandleDeathSound;
+    }
+
+    private void HandleNormalAttackHitResolved(int attackId, HitData hitData, HitResult hitResult)
+    {
+        if (enemyDefinition == null || health == null || IsDead || hitData.Effect != AttackEffect.Damage || hitResult.DamageTaken <= 0f)
+        {
+            return;
+        }
+
+        float lifeSteal = Mathf.Max(0f, enemyDefinition.NormalAttackLifeSteal);
+        if (lifeSteal <= 0f)
+        {
+            return;
+        }
+
+        float healValue = DamageCalculator.CalculateBaseEffectValue(hitResult.DamageTaken, lifeSteal);
+        DamageSystem.ApplyHeal(new HealRequest(gameObject, health, healValue, CenterPosition));
+    }
+
+    public bool TryCopyPathProgressFrom(EnemyRuntime source)
+    {
+        if (source == null || enemyPathfindingController == null || source.enemyPathfindingController == null)
+        {
+            return false;
+        }
+
+        return enemyPathfindingController.TryCopyProgressFrom(source.enemyPathfindingController, CenterPosition);
     }
 
     protected void SetMovementDirection(Vector2 direction)

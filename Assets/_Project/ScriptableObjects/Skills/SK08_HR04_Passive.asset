@@ -15,8 +15,8 @@ MonoBehaviour:
   skillId: SK08
   skillName: Magic Surge
   skillIcon: {fileID: -1866983168, guid: 2672123c3a864d84d9503655df72d677, type: 3}
-  skillDescription: Normal attack deal 20% more magic damage when they hit at least
-    2 enemies.
+  skillDescription: Normal attacks can hit multiple enemies. Normal attacks deal
+    20% more Magic Damage when they hit at least 2 enemies.
   skillType: 1
   targetType: 2
   cooldown: 0

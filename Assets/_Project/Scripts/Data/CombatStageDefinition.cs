@@ -10,10 +10,14 @@ public class CombatStageDefinition : ScriptableObject
 
     [Header("Map")]
     [SerializeField] private CombatMapView mapPrefab;
+    [SerializeField] private Sprite mapPreview;
     [SerializeField] private CombatMapData mapData = new CombatMapData();
 
     [Header("Stage Config")]
     [SerializeField] private CombatStageStartConfig startConfig = new CombatStageStartConfig();
+
+    [Header("Reward")]
+    [SerializeField] private StageRewardDefinition rewardDefinition;
 
     [Header("Spawn Events")]
     [SerializeField] private List<EnemySpawnEventDefinition> spawnEvents = new List<EnemySpawnEventDefinition>();
@@ -21,8 +25,10 @@ public class CombatStageDefinition : ScriptableObject
     public string StageId => stageId;
     public string StageName => stageName;
     public CombatMapView MapPrefab => mapPrefab;
+    public Sprite MapPreview => mapPreview;
     public CombatMapData MapData => mapData;
     public CombatStageStartConfig StartConfig => startConfig;
+    public StageRewardDefinition RewardDefinition => rewardDefinition;
     public IReadOnlyList<EnemySpawnEventDefinition> SpawnEvents => spawnEvents;
 
 #if UNITY_EDITOR
@@ -58,6 +64,11 @@ public class CombatStageDefinition : ScriptableObject
         {
             this.spawnEvents = new List<EnemySpawnEventDefinition>();
         }
+    }
+
+    public void SetMapPreview(Sprite mapPreview)
+    {
+        this.mapPreview = mapPreview;
     }
 #endif
 }

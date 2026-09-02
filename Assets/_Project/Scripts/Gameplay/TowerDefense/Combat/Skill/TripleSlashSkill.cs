@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -8,6 +9,7 @@ public class TripleSlashSkill : NormalAttackOverrideSkill
     [SerializeField] private int hitCount = 3;
     [SerializeField] private float damageMultiplierPerHit = 0.6f;
     [SerializeField] private float hitInterval = 0.1f;
+    [SerializeField] private List<SimpleSpriteAnimatorVFX> slashVFXPrefabs = new List<SimpleSpriteAnimatorVFX>();
     [SerializeField] private SimpleSpriteAnimatorVFX hitVFXPrefab;
 
     [NonSerialized] private Hurtbox sequenceTarget;
@@ -31,14 +33,14 @@ public class TripleSlashSkill : NormalAttackOverrideSkill
         }
     }
 
-    protected override bool ExecuteOverrideAttack(Hurtbox target)
+    protected override bool ExecuteOverrideAttack()
     {
+        Hurtbox target = OverrideTargets[0];
         sequenceTarget = target;
         remainingHitCount = Mathf.Max(1, hitCount);
         rawDamagePerHit = DamageCalculator.CalculateBaseDamage(Owner.Attack, Mathf.Max(0f, damageMultiplierPerHit));
         hitTimer = new CountdownTimer(Mathf.Max(0f, hitInterval));
 
-        Owner.FacePosition(target.AimPosition);
         ProcessNextHit();
         return true;
     }
@@ -71,11 +73,22 @@ public class TripleSlashSkill : NormalAttackOverrideSkill
                 sequenceTarget.AimPosition
             );
 
-            if (Owner.SkillAttackController.TryProcessHit(hitData, out HitResult hitResult))
+            if (Owner.SkillAttackController.TryProcessHit(hitData, out _))
             {
+                int hitIndex = Mathf.Max(1, hitCount) - remainingHitCount;
+                if (hitIndex < slashVFXPrefabs.Count && slashVFXPrefabs[hitIndex] != null)
+                {
+                    SimpleSpriteAnimatorVFX slashVFXPrefab = slashVFXPrefabs[hitIndex];
+                    Vector2Int facingDirection = Owner.FacingDirection;
+                    float facingAngle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
+                    float rotationAngle = slashVFXPrefab.transform.eulerAngles.z + facingAngle;
+                    Quaternion rotation = Quaternion.Euler(0f, 0f, rotationAngle);
+                    CombatVFXSpawner.SpawnSimpleSpriteVFX(slashVFXPrefab, Owner.NormalAttackController.AttackOrigin, rotation, Owner.CombatTime);
+                }
+
                 if (hitVFXPrefab != null)
                 {
-                    CombatVFXSpawner.SpawnSimpleSpriteVFX(hitVFXPrefab, hitData.HitPosition);
+                    CombatVFXSpawner.SpawnSimpleSpriteVFX(hitVFXPrefab, sequenceTarget, Owner.CombatTime);
                 }
             }
         }

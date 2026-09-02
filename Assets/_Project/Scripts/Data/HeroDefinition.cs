@@ -12,7 +12,7 @@ public class HeroDefinition : ScriptableObject
     [SerializeField] private Sprite heroDisplaySprite;
     [SerializeField] private ClassDefinition heroClass;
     [SerializeField] private HeroRarity heroRarity;
-    [SerializeField] private string heroDescription;
+    [SerializeField, TextArea(3, 10)] private string heroDescription;
     [SerializeField] private AnimatorOverrideController heroAnimator;
     [SerializeField] private HeroRuntime heroPrefab;
 

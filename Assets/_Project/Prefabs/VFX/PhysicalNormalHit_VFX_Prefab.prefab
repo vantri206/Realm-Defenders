@@ -113,5 +113,6 @@ MonoBehaviour:
   - {fileID: 1996984371621399092, guid: 463c0b958c9a7184e8941ee7b497c292, type: 3}
   - {fileID: 195578533852356399, guid: 463c0b958c9a7184e8941ee7b497c292, type: 3}
   framesPerSecond: 24
+  startFrameIndex: 0
   isLoop: 0
-  playTime: 1
+  playTime: 0.5

@@ -94,7 +94,7 @@ public class FourthStrikeSkill : BaseSkill
         HitResult healResult = DamageSystem.ApplyHeal(new HealRequest(Owner.gameObject, Owner.Health, healValue, Owner.CenterPosition));
         if (healResult.HealthRestored > 0f && healVFXPrefab != null)
         {
-            CombatVFXSpawner.SpawnParticleVFX(healVFXPrefab, Owner.Hurtbox);
+            CombatVFXSpawner.SpawnParticleVFX(healVFXPrefab, Owner.Hurtbox, Owner.CombatTime);
         }
     }
 }

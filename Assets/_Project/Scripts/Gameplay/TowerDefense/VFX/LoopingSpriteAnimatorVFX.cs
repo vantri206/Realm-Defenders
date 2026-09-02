@@ -33,6 +33,7 @@ public class LoopingSpriteAnimatorVFX : SimpleSpriteAnimator, IPoolable
     {
         isReturningToPool = true;
         Restart();
+        SetCombatTime(null);
     }
 
     public void ReturnToPool()

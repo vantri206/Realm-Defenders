@@ -24,7 +24,8 @@ public class UnitRuntime : MonoBehaviour
     [SerializeField] protected UnitMovement unitMovement;
     [SerializeField] protected Hurtbox hurtbox;
 
-    // Status VFX
+    // VFX
+    [SerializeField] private Transform vFXAnchor;
     [SerializeField] private Transform statusVFXAnchor;
     [SerializeField] private LoopingStatusVFX stunStatusVFXPrefab;
     [SerializeField] private LoopingStatusVFX poisonStatusVFXPrefab;
@@ -62,6 +63,7 @@ public class UnitRuntime : MonoBehaviour
     public UnitVisual Visual => unitVisual;
     public UnitMovement Movement => unitMovement;
     public Hurtbox Hurtbox => hurtbox;
+    public Transform VFXAnchor => vFXAnchor;
     public CombatGridCell ActiveCell => activeCell;
     public CombatGrid CombatGrid => combatContext?.CombatGrid;
     public CombatTimeController CombatTime => combatContext?.CombatTime;
@@ -81,8 +83,8 @@ public class UnitRuntime : MonoBehaviour
     public bool IsPoisoned => statusEffects != null && statusEffects.IsPoisoned;
     public virtual bool IsMovementBlocked => false;
     public bool CanMove => !IsDead && !IsStunned && !IsMovementBlocked && (currentState == UnitRuntimeState.Idle || currentState == UnitRuntimeState.Moving);
-    public virtual bool CanUseNormalAttack => !IsDead && !IsStunned && currentState == UnitRuntimeState.Idle;
-    public bool CanUseSkill => !IsDead && !IsStunned && currentState == UnitRuntimeState.Idle;
+    public virtual bool CanUseNormalAttack => !IsDead && !IsStunned && (currentState == UnitRuntimeState.Idle || currentState == UnitRuntimeState.Moving);
+    public virtual bool CanUseSkill => !IsDead && !IsStunned && currentState == UnitRuntimeState.Idle;
 
     public event Action<UnitRuntime, UnitRuntimeState, UnitRuntimeState> OnStateChanged;
     public event Action<UnitRuntime> OnDestroyed;
@@ -160,6 +162,17 @@ public class UnitRuntime : MonoBehaviour
         }
 
         return statusEffects.ApplyTemporaryStatModifiers(statusId, source, modifiers, duration);
+    }
+
+    public bool ApplyDefenseReduction(string statusId, GameObject source, float defenseReduction, float duration,
+                                      int maxStackCount, string modifierId)
+    {
+        if (!isInitialized || statusEffects == null)
+        {
+            return false;
+        }
+
+        return statusEffects.ApplyDefenseReduction(statusId, source, defenseReduction, duration, maxStackCount, modifierId);
     }
 
     public void SetActiveCell(CombatGridCell cell)
@@ -258,7 +271,7 @@ public class UnitRuntime : MonoBehaviour
         {
             if (activeStunStatusVFX == null)
             {
-                activeStunStatusVFX = CombatVFXSpawner.SpawnLoopingStatusVFX(stunStatusVFXPrefab, statusVFXAnchor);
+                activeStunStatusVFX = CombatVFXSpawner.SpawnLoopingStatusVFX(stunStatusVFXPrefab, statusVFXAnchor, CombatTime);
             }
 
             unitMovement.SetMoveDirection(Vector2.zero);
@@ -285,7 +298,7 @@ public class UnitRuntime : MonoBehaviour
         {
             if (activePoisonStatusVFX == null)
             {
-                activePoisonStatusVFX = CombatVFXSpawner.SpawnLoopingStatusVFX(poisonStatusVFXPrefab, statusVFXAnchor);
+                activePoisonStatusVFX = CombatVFXSpawner.SpawnLoopingStatusVFX(poisonStatusVFXPrefab, statusVFXAnchor, CombatTime);
             }
 
             return;
@@ -363,6 +376,18 @@ public class UnitRuntime : MonoBehaviour
 
         StartStateTimer(duration);
         return true;
+    }
+
+    protected bool CancelActionState(UnitRuntimeState actionState)
+    {
+        if (currentState != actionState)
+        {
+            return false;
+        }
+
+        actionStateTimer.StopTimer();
+        actionStateTimer.Reset(0f);
+        return ChangeState(UnitRuntimeState.Idle);
     }
 
     protected void SetMovementState(bool isMoving)
@@ -504,5 +529,6 @@ public class UnitRuntime : MonoBehaviour
         {
             hurtbox = GetComponentInChildren<Hurtbox>(true);
         }
+
     }
 }

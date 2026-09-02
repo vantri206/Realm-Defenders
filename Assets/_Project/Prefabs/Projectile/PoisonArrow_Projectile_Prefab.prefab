@@ -126,7 +126,7 @@ MonoBehaviour:
   hitVFXRotationOffset: 180
   healVFXPrefab: {fileID: 0}
   projectileMode: 1
-  moveSpeed: 8
+  moveSpeed: 6.5
   lifetime: 8
   maxRange: 20
   maxTurnAngle: 45
@@ -188,7 +188,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 30391f21c295ac9428264144c134d703, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

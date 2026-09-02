@@ -16,7 +16,7 @@ MonoBehaviour:
   skillName: Triple Slash
   skillIcon: {fileID: -1263442262, guid: 2672123c3a864d84d9503655df72d677, type: 3}
   skillDescription: The next normal attack becomes a triple slash, hitting the target
-    3 times for 60% Attack as Physical Damage.
+    3 times for 60% Attack as Physical Damage per hit.
   skillType: 0
   targetType: 2
   cooldown: 8
@@ -31,4 +31,8 @@ MonoBehaviour:
         hitCount: 3
         damageMultiplierPerHit: 0.6
         hitInterval: 0.1
-        hitVFXPrefab: {fileID: 0}
+        slashVFXPrefabs:
+        - {fileID: 8383761116173810426, guid: 643787d97e758984eaadf203278b419a, type: 3}
+        - {fileID: 8383761116173810426, guid: dce314252c679844886ae75d9e8b2e49, type: 3}
+        - {fileID: 8383761116173810426, guid: eb71cf71573456b4badd19a4c2af0902, type: 3}
+        hitVFXPrefab: {fileID: 5006250830996535109, guid: 326cade601d06734b89b36364c081a10, type: 3}

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023ac7769490ac74cb0ad848e7029d2b, type: 3}
+  m_Name: SK14_HR07_Passive
+  m_EditorClassIdentifier: Assembly-CSharp::SkillDefinition
+  skillId: SK14
+  skillName: Arcane Focus
+  skillIcon: {fileID: 752241005, guid: 2672123c3a864d84d9503655df72d677, type: 3}
+  skillDescription: Repeated normal attacks against the same enemy deal 8% more damage
+    per hit, stacking up to 3 times.
+  skillType: 1
+  targetType: 2
+  cooldown: 0
+  skill:
+    rid: 731400000000000001
+  references:
+    version: 2
+    RefIds:
+    - rid: 731400000000000001
+      type: {class: ArcaneFocusSkill, ns: , asm: Assembly-CSharp}
+      data:
+        damageBonusPerStack: 0.08
+        maxStackCount: 3

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023ac7769490ac74cb0ad848e7029d2b, type: 3}
+  m_Name: SK19_HR10_Active
+  m_EditorClassIdentifier: Assembly-CSharp::SkillDefinition
+  skillId: SK19
+  skillName: Giant Spear
+  skillIcon: {fileID: -2035659042, guid: 2672123c3a864d84d9503655df72d677, type: 3}
+  skillDescription: The next normal attack throws a giant spear, dealing 180% Attack
+    as Physical Damage and piercing up to 3 enemies.
+  skillType: 0
+  targetType: 2
+  cooldown: 9
+  skill:
+    rid: 731900000000000001
+  references:
+    version: 2
+    RefIds:
+    - rid: 731900000000000001
+      type: {class: GiantSpearSkill, ns: , asm: Assembly-CSharp}
+      data:
+        damageMultiplier: 1.8
+        maxPiercingTargets: 3
+        projectilePrefab: {fileID: 3870154896822293685, guid: 2fe22665c060c53478a49ae20e6c14d0, type: 3}
+        hitVFXPrefab: {fileID: 5006250830996535109, guid: 326cade601d06734b89b36364c081a10, type: 3}

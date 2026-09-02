@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023ac7769490ac74cb0ad848e7029d2b, type: 3}
+  m_Name: SK11_HR06_Active
+  m_EditorClassIdentifier: Assembly-CSharp::SkillDefinition
+  skillId: SK11
+  skillName: Guardian of the Dead
+  skillIcon: {fileID: 1356695194, guid: 2672123c3a864d84d9503655df72d677, type: 3}
+  skillDescription: Active when blocking. Gain 30% Defense and Special Defense for
+    6 seconds.
+  skillType: 0
+  targetType: 0
+  cooldown: 12
+  skill:
+    rid: 731100000000000001
+  references:
+    version: 2
+    RefIds:
+    - rid: 731100000000000001
+      type: {class: GuardianOfDeadSkill, ns: , asm: Assembly-CSharp}
+      data:
+        defenseBonus: 0.3
+        specialDefenseBonus: 0.3
+        duration: 6

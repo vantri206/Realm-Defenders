@@ -3,11 +3,28 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
+    private UnitStats stats;
     private float currentShield;
 
     public float CurrentShield => currentShield;
 
     public event Action<float> OnShieldValueChanged;
+
+    public void Initialize(UnitStats stats)
+    {
+        if (this.stats != null)
+        {
+            this.stats.OnStatsChanged -= HandleStatsChanged;
+        }
+
+        this.stats = stats;
+        if (this.stats != null)
+        {
+            this.stats.OnStatsChanged += HandleStatsChanged;
+        }
+
+        ClampToMaxHealth();
+    }
 
     public void AddShield(float value)
     {
@@ -16,7 +33,8 @@ public class Shield : MonoBehaviour
             return;
         }
 
-        currentShield += value;
+        float maxShield = stats != null ? stats.MaxHealth : 0f;
+        currentShield = Mathf.Min(maxShield, currentShield + value);
         OnShieldValueChanged?.Invoke(currentShield);
     }
 
@@ -43,6 +61,32 @@ public class Shield : MonoBehaviour
         }
 
         currentShield = 0f;
+        OnShieldValueChanged?.Invoke(currentShield);
+    }
+
+    private void OnDestroy()
+    {
+        if (stats != null)
+        {
+            stats.OnStatsChanged -= HandleStatsChanged;
+        }
+    }
+
+    private void HandleStatsChanged()
+    {
+        ClampToMaxHealth();
+    }
+
+    private void ClampToMaxHealth()
+    {
+        float maxShield = stats != null ? stats.MaxHealth : 0f;
+        float clampedShield = Mathf.Min(currentShield, maxShield);
+        if (Mathf.Approximately(clampedShield, currentShield))
+        {
+            return;
+        }
+
+        currentShield = clampedShield;
         OnShieldValueChanged?.Invoke(currentShield);
     }
 }

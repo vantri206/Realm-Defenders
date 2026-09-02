@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023ac7769490ac74cb0ad848e7029d2b, type: 3}
+  m_Name: SK17_HR09_Active
+  m_EditorClassIdentifier: Assembly-CSharp::SkillDefinition
+  skillId: SK17
+  skillName: Pixie Blessing
+  skillIcon: {fileID: 1553860027, guid: 2672123c3a864d84d9503655df72d677, type: 3}
+  skillDescription: Reduce Attack Interval by 35% for 6 seconds. Successful heals
+    grant a shield equal to 50% of actual HP restored, stacking up to 100% Max HP.
+  skillType: 0
+  targetType: 1
+  cooldown: 12
+  skill:
+    rid: 731700000000000001
+  references:
+    version: 2
+    RefIds:
+    - rid: 731700000000000001
+      type: {class: PixieBlessingSkill, ns: , asm: Assembly-CSharp}
+      data:
+        attackIntervalReduction: 0.35
+        duration: 6
+        shieldMultiplier: 0.5
